@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base=".">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>首页 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <div class="hero">
+        <h1>SAS 知识站</h1>
+        <p class="subtitle-en">A browsable tutorial site for small-angle scattering</p>
+        <p>面向小角散射（SAXS / SANS / GISAXS 等）的<strong>中文教程站</strong>：一条从零开始的学习路径，一套按主题查阅的专题手册，可悬停、可跳转的中英术语表，以及可按 DOI 打开原文的文献题录。</p>
+      </div>
+
+      <h2>四条入口</h2>
+      <div class="card-grid">
+        <a class="card" href="learn/index.html">
+          <strong>学习路径</strong>
+          教材式综合讲解：从「SAS 是什么」到仪器、数据还原、Guinier / IFT 与应用岔路。适合按顺序学。
+        </a>
+        <a class="card" href="topics/index.html">
+          <strong>专题手册</strong>
+          文献导读式速查：标定、GISAXS、生物 SAS 等。适合带着问题跳进某一主题。
+        </a>
+        <a class="card" href="glossary/index.html">
+          <strong>术语表</strong>
+          专有名词独立词条；正文中虚线术语可悬停看英文全称与短释义，点击进入详解。
+        </a>
+        <a class="card" href="catalog/index.html">
+          <strong>文献目录</strong>
+          本站依据的核心文献题录；点击 DOI 可跳转出版商页面查阅原文。
+        </a>
+      </div>
+
+      <h2>怎么读这个站</h2>
+      <ol>
+        <li>若你几乎没做过散射：从 <a href="learn/01-what-is-sas.html">学习路径 01</a> 顺序读。</li>
+        <li>若你要查某一实验问题：从 <a href="topics/index.html">专题手册</a> 进入。</li>
+        <li>正文里带虚线的词是术语：悬停看英文全称与一句解释，点击进词条页。</li>
+      </ol>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="assets/nav.js"></script>
+  <script src="assets/glossary-data.js"></script>
+  <script src="assets/glossary.js"></script>
+  <script src="assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

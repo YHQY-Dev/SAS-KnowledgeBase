@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>绝对强度 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>绝对强度</h1>
+      <p class="subtitle-en">absolute intensity</p>
+
+      <h2>定义</h2>
+      <p><strong>绝对强度</strong>指把实验测得的 $I(q)$ 放到样品微分散射截面 $\mathrm{d}\Sigma/\mathrm{d}\Omega$ 的物理尺度上，常用单位 $\mathrm{cm}^{-1}$（有时写作 $\mathrm{cm}^{-1}\,\mathrm{sr}^{-1}$，视归一化约定而定）。绝对标定通过标样（纯水、玻璃碳 / NIST SRM 3600 等）或直接测入射通量，把任意计数率转换为可跨仪器比较的截面。</p>
+
+      <h2>要点</h2>
+      <ul>
+        <li>相对单位足以做 <span data-term="guinier-analysis">Guinier</span> 求 $R_g$（斜率与绝对尺度无关）；分子量、体积分数、比表面积与跨台站拼接则<strong>必须</strong>绝对尺度。</li>
+        <li>稀溶液中 <span data-term="forward-scattering">前向散射</span> $I(0) \propto n V^2 (\Delta\rho)^2$，已知 <span data-term="contrast">衬度</span> 时可估数密度或分子量。</li>
+        <li>标定前置：可靠的 $q$ 刻度、透射/厚度、背景扣除与同一几何下测标样。</li>
+        <li>二级标样（玻璃碳）快而稳，但须锚定认证曲线；标准蛋白只宜作流程检查，不宜替代绝对标定。</li>
+      </ul>
+
+      <h2>常见混淆</h2>
+      <ul>
+        <li>「归一化到入射束」≠ 绝对截面：还须立体角、厚度、透射与探测器效率等因子齐全。</li>
+        <li>单位混乱：nm$^{-1}$ vs Å$^{-1}$、$I$ 的 a.u. vs cm$^{-1}$ 混用会导致 $M_w$ 差数量级。</li>
+        <li>狭缝 <span data-term="instrument-smearing">smear</span> 的标样曲线与针孔样品直接比强度会系统偏差。</li>
+      </ul>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="forward-scattering">前向散射</span> $I(0)$</li>
+        <li><span data-term="contrast">衬度</span> $\Delta\rho$</li>
+        <li><span data-term="scattering-length-density">散射长度密度</span></li>
+        <li><span data-term="usaxs">超小角散射</span>（一级标定常见平台）</li>
+      </ul>
+
+            <h2>出现于</h2>
+      <ul>
+        <li><a href="../learn/05-absolute-calibration.html">学习路径 05 · 绝对标定</a></li>
+        <li><a href="../topics/calibration/index.html">专题 · 绝对标定</a></li>
+        <li><a href="../topics/usaxs/index.html">专题 · USAXS</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

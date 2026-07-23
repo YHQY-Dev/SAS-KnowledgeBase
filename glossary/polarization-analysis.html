@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>极化分析 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>极化分析</h1>
+      <p class="subtitle-en">neutron polarization analysis</p>
+
+      <h2>定义</h2>
+      <p><strong>极化分析</strong>（含 SANSPOL、XYZ 极化分析等）控制入射中子自旋并分析散射中子自旋，从而把核相干、自旋不相干与磁散射截面分开。</p>
+
+      <h2>物理直觉</h2>
+      <p>校正链长（偏振度、翻转效率、本底）；磁场几何（垂直/平行于 $q$）改变可见的磁贡献。</p>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="magnetic-sans">磁性小角中子散射</span></li>
+        <li><span data-term="sans">小角中子散射</span></li>
+        <li><span data-term="coherent-scattering">相干散射</span></li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../topics/magnetic-sans/index.html">专题 magnetic-sans</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

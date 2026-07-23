@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>绝对标定 · 专题手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>绝对标定（Absolute calibration）</h1>
+      <p class="subtitle-en">Placing $I(q)$ on the differential scattering cross-section scale</p>
+
+      <p>本导读综合 Dreiss 等（2006）对台式 <span data-term="saxs">SAXS</span> 标定方法的比较、Zhang 等（2010）对<span data-term="glassy-carbon">玻璃碳</span>（glassy carbon）均匀性与稳定性的系统评估、Allen 等（2017）发布的 NIST SRM 3600 认证流程、Cookson 等（2006）对同步辐射针孔 <span data-term="saxs">SAXS</span> 采集与归一化策略、Zeng 等（2017）对专用束线标定与分子量验证的实践，以及 Wignall &amp; Bates（1987）对 <span data-term="sans">SANS</span> 绝对标定的经典框架。目标：理解<strong>为什么</strong>需要绝对标定、<strong>怎样</strong>用一级/二级标样把数据放到 $\mathrm{d}\Sigma/\mathrm{d}\Omega$（单位 $\mathrm{cm}^{-1}$，常写作 $\mathrm{cm}^{-1}\,\mathrm{sr}^{-1}$ 视归一化约定而定）尺度，以及实验室与束线日常中最易踩的坑。</p>
+      <p>绝对标定不是还原链末端的「锦上添花」，而是把散射强度与材料本征性质挂钩的<strong>定量关口</strong>。未标定数据仍可做 Guinier 斜率、条纹位置等几何分析，但无法可靠回答：粒子数密度多少、体积分数多少、比表面积多少、与 <span data-term="sans">SANS</span> 或其他台站数据能否直接拼接、模型拟合中的振幅参数是否物理。工业与医药实验室长期停留在任意单位，正是 Allen 2017 推动 SRM 3600 的动因；生物 <span data-term="saxs">SAXS</span> 发表规范（Trewhella 2017）则明确要求 $\mathrm{cm}^{-1}$ 尺度以便 $M$ 交叉验证。</p>
+
+      <h2>问题是什么</h2>
+      <p>小角散射测得的是探测器上的计数率或归一化强度 $I(q)$。若不做绝对标定，曲线往往只有<strong>任意单位</strong>：换仪器、换光强、换样品厚度或测量时间，数值就无法直接比较。绝对标定的任务，是把 $I(q)$ 与样品的<strong>微分散射截面</strong> $\mathrm{d}\Sigma/\mathrm{d}\Omega$ 联系起来——它由材料的本征<span data-term="scattering-length-density">散射长度密度</span>差与纳米结构决定，与几何因子无关地承载「材料有多能散射」的定量信息。</p>
+      <p>从还原链视角（Pauw 2013），绝对标定对应校正代号 <strong>AU</strong>：此前 TR、FL、TI、TH、BG 等步骤须已完成且可追溯。Zeng 2017 把强度分为三档——原始计数、归一化强度、绝对截面——只有最后一档才支持分子量、数密度、比表面积等推论。跳过 AU 并不等于「不能做科学」，但任何涉及 $I(0)$ 绝对值、<span data-term="porod-invariant">Porod 不变量</span>、与理论截面比对的结论都失去定量基础。</p>
+      <p>绝对标定一旦成立，你可以：</p>
+      <ul>
+        <li>从<span data-term="forward-scattering">前向散射</span> $I(0)$ 估计粒子数密度、体积分数、比表面积；</li>
+        <li>把 <span data-term="saxs">SAXS</span> 与 <span data-term="sans">SANS</span>、不同 $q$ 区仪器上的数据拼接；</li>
+        <li>用已知<span data-term="form-factor">形式因子</span>或<span data-term="porod-law">Porod 定律</span>约束模型参数，而不是任意缩放；</li>
+        <li>发现<span data-term="multiple-scattering">多重散射</span>、异常聚集或背景扣除错误（未标定数据常把这些问题藏起来）。</li>
+      </ul>
+      <p>实验室台式 <span data-term="saxs">SAXS</span> 尤其容易长期停留在任意单位：初级标样（纯水等）信号弱、测量慢，而用户又误以为 Guinier 拟合不需要绝对强度。事实上，<span data-term="guinier-analysis">Guinier 分析</span>虽可在相对强度上做，但分子量、孔隙率、界面面积等<strong>定量</strong>解释离不开绝对尺度（Zhang 2010；Allen 2017）。同步辐射束线上，Cookson 2006 指出：探测器动态范围、$I_0$/$I_t$ 监测与能量扫描时的归一化漂移，往往比「有没有标样」更早限制定量质量——标定须嵌入整套采集策略，而非事后补一步。</p>
+      <p><span data-term="sans">SANS</span> 社区因 Wignall &amp; Bates（1987）及 Oak Ridge 等中心的预标定二级标样传统，绝对标定普及度高于 <span data-term="saxs">SAXS</span>；但轻水作一级标样时的非弹性散射、钒标样的<span data-term="multiple-scattering">多重散射</span>等，在 <span data-term="sans">SANS</span> 中有独立陷阱。X 射线与中子标定在<strong>物理量</strong>上一致（$\mathrm{d}\Sigma/\mathrm{d}\Omega$，$\mathrm{cm}^{-1}$），但探测器响应、背景来源与标样选择不同，不可照搬公式而忽略单位与几何约定。</p>
+
+      <h2>核心文献主线</h2>
+      <h3>Dreiss 2006：台式仪器上多种标样的并排比较</h3>
+      <p>Dreiss 等在 Bruker NanoStar 类针孔台式 <span data-term="saxs">SAXS</span> 上，用同一套几何设置比较了：</p>
+      <ol>
+        <li><strong>纯液体（一级标样）</strong>：水及多种有机溶剂的相干散射由等温压缩率 $\chi_T$ 决定，$\mathrm{d}\Sigma/\mathrm{d}\Omega$ 可理论计算；但台式源上统计差，单次标定可需数十小时测量。</li>
+        <li><strong><span data-term="glassy-carbon">玻璃碳</span>（二级标样）</strong>：先用 <span data-term="sans">SANS</span> 测定其绝对截面，再用于 <span data-term="saxs">SAXS</span>；信号强、测量快，适合日常复标，但首次仍需与一级方法锚定。</li>
+        <li><strong>单分散硅胶溶胶</strong>：界面清晰时可用 Porod 区求截面；长期稳定性存疑。</li>
+      </ol>
+      <p>多种溶剂得到的标定因子 CF 在约 $\pm 5\%$ 内一致，说明方法可靠；作者建议<strong>日常用<span data-term="glassy-carbon">玻璃碳</span>快速复标</strong>，而初次或争议时用液体做一级校验。</p>
+      <p>数值直觉：台式 NanoStar 上纯水标定单次可需 20–40 h（密封管 X 射线源）；<span data-term="glassy-carbon">玻璃碳</span>二级标定约 10–30 min。因此 Dreiss 工作流的<strong>经济最优策略</strong>是：立项时用液体或硅胶溶胶锚定 CF，运行中用固定批次<span data-term="glassy-carbon">玻璃碳</span>复标；争议时液体再测一次。旋转阳极源上纯水信号可达实用水平（Pedersen 2004），但暗电流与空池背景仍须与信号同量级对待。CF 还耦合探测器增益与软件归一约定——换计算机或升级软件后应复测 GC。</p>
+      <figure class="figure">
+        <img src="../../assets/figures/fig-07-absolute-calibration-workflow.png" alt="绝对强度标定流程" width="900">
+        <figcaption>Dreiss 等在 Bruker NanoStar 上比较多种标样得到的标定因子 CF：纯水（一级）、<span data-term="glassy-carbon">玻璃碳</span>（二级）与硅胶溶胶结果在 $\pm 5\%$ 内一致，验证二级标定可行性。<span class="fig-source">配图：自制示意</span></figcaption>
+      </figure>
+
+      <h3>Zhang 2010：<span data-term="glassy-carbon">玻璃碳</span>能否当「通用」二级标样？</h3>
+      <p>Zhang 等利用 APS <span data-term="usaxs">USAXS</span> 的<strong>一级标定能力</strong>（光电二极管线性动态范围覆盖主束与弱散射），把 pinhole <span data-term="saxs">SAXS</span> 与 <span data-term="usaxs">USAXS</span>、<span data-term="sans">SANS</span> 数据在<span data-term="glassy-carbon">玻璃碳</span>上交叉验证。主线结论：</p>
+      <ul>
+        <li>散射来自碳基体中的微孔，结构在 $q > 0.01\,\mathrm{\AA}^{-1}$ 区空间均匀性优于约 2%；</li>
+        <li>同批次片材片间差异约 $\pm 2.5\%$，不同生产批次可差 $>10\%$——<strong>标样必须固定批次并记录证书</strong>；</li>
+        <li>常规束流照射下强度稳定，适合作为 pinhole / <span data-term="usaxs">USAXS</span> 之间的桥梁。</li>
+        <li>低 $q$ 区受狭缝 smear 影响，与 pinhole 比较前须 <span data-term="desmearing">desmear</span> 或 smeared 模型；</li>
+        <li>与 <span data-term="sans">SANS</span> 测定的 GC 截面在重叠 $Q$ 区一致，支撑 <span data-term="saxs">SAXS</span> 二级标准地位。</li>
+      </ul>
+      <figure class="figure">
+        <img src="../../assets/figures/fig-08-glassy-carbon-standard.png" alt="<span data-term="glassy-carbon">玻璃碳</span>标样概念图" width="900">
+        <figcaption><span data-term="glassy-carbon">玻璃碳</span>在 $q > 0.01$ Å$^{-1}$ 区空间均匀性优于约 2%；同批次片间差异 $\pm 2.5\%$，不同批次可差 $>10\%$。APS <span data-term="usaxs">USAXS</span> 一级法与 <span data-term="sans">SANS</span> 交叉验证其绝对截面。<span class="fig-source">配图：自制示意</span></figcaption>
+      </figure>
+
+      <h3>Allen 2017：NIST SRM 3600 认证</h3>
+      <p>在 Zhang 等工作基础上，NIST 发布 SRM 3600：以 <span data-term="usaxs">USAXS</span> 一级法认证<span data-term="glassy-carbon">玻璃碳</span>小片的 $\mathrm{d}\Sigma/\mathrm{d}\Omega(Q)$ 曲线（认证 $Q$ 范围约 $0.008$–$0.25\,\mathrm{\AA}^{-1}$），附带不确定度。用户只需在<strong>相同仪器配置</strong>下测标样与样品，比较认证曲线即可得到模型无关的标定因子，无需对标样曲线做 Guinier 拟合。SRM 旨在解决工业/医药实验室 <span data-term="saxs">SAXS</span>「根本没有强度标定」的普遍问题（Allen 2017）。</p>
+      <p>使用要点：认证证书给出特定 $Q$ 点的截面值与扩展不确定度；pinhole <span data-term="saxs">SAXS</span> 须在重叠 $Q$ 区内取 CF，勿外推至认证范围之外。SRM 片材应平放、避免划伤与污染；与样品测量保持相同池型、光路真空段与探测器位置。若台站 $q_{\min} > 0.01\,\mathrm{\AA}^{-1}$，仍可用<span data-term="glassy-carbon">玻璃碳</span>中高 $q$ 区标定，但须用 Zhang 2010 验证的低 $q$ 行为或与液体一级法交叉核对。</p>
+
+      <h3>Cookson 2006：同步辐射针孔 <span data-term="saxs">SAXS</span> 的采集与归一化策略</h3>
+      <p>Cookson 等以 APS ChemMatCARS 15-ID 针孔 <span data-term="saxs">SAXS</span>/<span data-term="waxs">WAXS</span> 为例，强调<strong>标定是采集策略的一部分</strong>，而非单独实验日的工作：</p>
+      <ol>
+        <li><strong>$q$ 刻度与束心：</strong> 飞行管后端内置介孔二氧化硅标准，产生各向同性衍射环，软件自动拟合束心与样品–探测器距离 $L$；改 $L$ 后 15 min 内可恢复运行，但须重跑标定序列。</li>
+        <li><strong>动态范围：</strong> CCD 读出噪声使短曝光高 $q$ 不可靠，长曝光低 $q$ 饱和；多曝光时间叠加或单图分区积分（masking）拼接 $I(q)$，弱标样（纯水）尤须如此。</li>
+        <li><strong>$I_0$ 与透射：</strong> 样品前用 mica 箔 Laue 散射监测 $I_0$（低寄生散射）；透射用大面积下游探测器，比束阻处小面积二极管更抗束漂。变能量时 $I_0$/$I_t$ 灵敏度关系可能变——须用内置二氧化硅环强度作二级强度归一化曲线。</li>
+        <li><strong>绝对截面：</strong> 归一化 profile 再用水（Orthaber 等）或<span data-term="glassy-carbon">玻璃碳</span>（Russell 等）二级标样换到 $\mathrm{d}\Sigma/\mathrm{d}\Omega$；与 Dreiss 2006 结论一致。</li>
+      </ol>
+      <p>对用户的启示：同步辐射上「测得漂亮 2D 图」不等于「定量 $I(q)$」；曝光策略、透射监测与能量扫描归一化与标样测量同等重要。</p>
+
+      <h3>Zeng 2017：束线标定流程与分子量作为 QC</h3>
+      <p>SSRF BL16B1 工作把散射强度分为<strong>原始计数 → 归一化强度 → 绝对截面</strong>三阶段，明确只有末级才支持分子量、散射体数密度、比表面积等定量（Zeng 2017）。标定程序：</p>
+      <ul>
+        <li><strong>一级：</strong> <span data-term="glassy-carbon">玻璃碳</span>（与 Zhang / SRM 路线一致）锚定绝对尺度；</li>
+        <li><strong>二级：</strong> 纯水验证；分钟级完成，不同 $L$、波长下重复性良好；</li>
+        <li><strong>应用：</strong> 用 $M = I(0) N_A / [C(\Delta\rho_M)^2]$ 测标准蛋白，与已知 $M$ 偏差 $<10\%$ 作为束线性能与样品 QC。</li>
+      </ul>
+      <p>该文的价值在于把「标定」从偶发标定日变成<strong>可重复的台站规程</strong>，并示范如何用分子量反查数据质量——若 $M$ 系统性偏高，优先查浓度、背景与 CF，而非强行调 <span data-term="maximum-dimension">$D_{\max}$</span> 或 Guinier 区间。</p>
+
+      <h3>Wignall &amp; Bates 1987：<span data-term="sans">SANS</span> 绝对标定的经典框架</h3>
+      <p>Wignall &amp; Bates 系统讨论 <span data-term="sans">SANS</span> 绝对标定的方法、不确定度与标样陷阱，核心公式（探测器元面积 $\Delta a$，效率 $\varepsilon$，样品厚度 $t$，透射 $T$）：</p>
+      <p>$$\frac{\mathrm{d}\Sigma}{\mathrm{d}\Omega}=\frac{I(Q)}{t\,T}\,\frac{r^{2}}{\varepsilon\,I_{0}\,\Delta a\,A}.$$</p>
+      <p>文献主线包括四类一级/二级途径：</p>
+      <ol>
+        <li><strong>直测 $I_0$ 与 $\varepsilon$：</strong> $^3$He 计数器；需衰减器避免探测器饱和；</li>
+        <li><strong>钒（V）：</strong> 非相干、近似 $Q$ 无关；须校正<span data-term="multiple-scattering">多重散射</span>（厚样 $\sim 8\%$）；</li>
+        <li><strong>轻水（$H_2O$）：</strong> 信号强但非弹性散射显著（$g \approx 1.37$ @ 4.75 Å），截面非严格强度量；$>30\%$ <span data-term="multiple-scattering">多重散射</span>；</li>
+        <li><strong>预标定二级标样：</strong> 聚乙烯、单分散氘代聚合物等；Oak Ridge 政策是用户 $<30$ min 完成标定，各 $Q$ 几何配套标准，避免测样与标定间重调仪器。</li>
+      </ol>
+      <p>绝对标定在 <span data-term="sans">SANS</span> 中的「诊断」角色：氘标记共混物超额散射、嵌段共聚物同位素效应、胶束模型参数约束、Porod 比表面积——均依赖 $\mathrm{d}\Sigma/\mathrm{d}\Omega$ 而非任意计数。Wignall 强调多方法交叉一致约 $\pm 5\%$；偏差更大应查标样而非样品模型。</p>
+      <p><span data-term="sans">SANS</span> 水标定细节：轻水非弹性使表观截面依赖厚度与 $\lambda$；Jacrot 给出 inelasticity 因子 $g(\lambda)$，$g \approx 1.37$ @ 4.75 Å。勿把 <span data-term="saxs">SAXS</span> 纯水公式直接用于 <span data-term="sans">SANS</span>。钒标样<span data-term="multiple-scattering">多重散射</span>可用厚度外推 $t\to 0$ 减小（Hayashi 等）。</p>
+
+      <h2>关键公式与结论</h2>
+      <h3>绝对强度的定义（Dreiss 记号）</h3>
+      <p>样品散射强度可写为</p>
+      <p>$$I_S(q)=\frac{N_S(q)}{t_S}=I_0(\lambda)\,A\,\Delta\Omega\,\eta(\lambda)\,T_S(\lambda)\,d_S\left(\frac{\partial\Sigma}{\partial\Omega}\right)_S(q)+\mathrm{BG}_S,$$</p>
+      <p>其中 $q = 4\pi\sin(\theta/2)/\lambda$，$\theta$ 为散射角；$I_0$ 为入射通量，$A$ 光照面积，$\Delta\Omega$ 探测器立体角元，$\eta$ 效率，$T_S$ 透射，$d_S$ 厚度，BG 为背景。实验目标是求 $\mathrm{d}\Sigma/\mathrm{d}\Omega$（$\mathrm{cm}^{-1}$）。</p>
+
+      <h3>一级标定：衰减主束与光电二极管（<span data-term="usaxs">USAXS</span> / 同步辐射）</h3>
+      <p>Zhang 2010 与 Allen 2017 的「一级」能力来自 APS <span data-term="usaxs">USAXS</span>：光电二极管线性动态范围覆盖主束与弱散射，按式直接得 $\mathrm{d}\Sigma/\mathrm{d}\Omega$，无需已知标样物性。pinhole <span data-term="saxs">SAXS</span> 用户通常无此硬件，但原理上<strong>直测 $I_0$ 与探测器效率</strong>仍是一级路线（Wignall 1987 在 <span data-term="sans">SANS</span> 中用 $^3$He 计数器）。关键要求：衰减器自身须波长标定；探测器在线性区；几何因子 $A$、$\Delta\Omega$、$\eta$ 独立测定或交叉验证。</p>
+
+      <h3>二级标定比值公式</h3>
+      <p>用已知截面的标样（st）标定未知样品（s），几何因子相消：</p>
+      <p>$$\left(\frac{\partial\Sigma}{\partial\Omega}\right)_s(q)=\left(\frac{\partial\Sigma}{\partial\Omega}\right)_{st}(q)\,\frac{[I_s(q)-\mathrm{BG}_s]\,d_{st}T_{st}}{[I_{st}(q)-\mathrm{BG}_{st}]\,d_s T_s}.$$</p>
+      <p>标定因子 $\mathrm{CF} = (\mathrm{d}\Sigma/\mathrm{d}\Omega)_{st}\cdot d_{st}T_{st}/[I_{st}-\mathrm{BG}_{st}]$；校正后的样品强度乘以 CF 即得绝对单位（Dreiss 2006）。</p>
+
+      <h3>纯水一级标样（生物/稀溶液常用）</h3>
+      <p>纯液体在 $q\to 0$ 的相干截面由涨落理论给出：</p>
+      <p>$$\left(\frac{\partial\Sigma}{\partial\Omega}\right)_{H_2O}(0)=\rho n_e^2 b_e^2 (\rho k T)\chi_T,$$</p>
+      <p>293 K、$10^5$ Pa 下水 $\chi_T \approx 4.591\times 10^{-10}\,\mathrm{Pa}^{-1}$，得 $(\mathrm{d}\Sigma/\mathrm{d}\Omega)_{H_2O}(0)\approx 1.65\times 10^{-2}\,\mathrm{cm}^{-1}$（Dreiss 2006）。<span data-term="sans">SANS</span> 中水作二级标样很常见；<span data-term="saxs">SAXS</span> 上信号弱，但在高流强旋转阳极 + 优化光路后已可行（Pedersen 2004，见 Dreiss 引文）。</p>
+
+      <h3><span data-term="usaxs">USAXS</span> 一级法与 SRM 3600</h3>
+      <p>APS <span data-term="usaxs">USAXS</span> 用光电二极管同时测 $I_0(0)$ 与 $I_S(Q)$，直接按定义归一（Allen 2017）：</p>
+      <p>$$\frac{\mathrm{d}\Sigma'}{\mathrm{d}\Omega}=\frac{I_S(Q)}{I_0(0)}\frac{1}{T_S\,\tau_S\,\Delta\Omega},$$</p>
+      <p>$\tau_S$ 为样品厚度。此法无需衰减片即可跨越多个数量级的强度动态范围，因而能「认证」<span data-term="glassy-carbon">玻璃碳</span>的绝对曲线供其他 pinhole <span data-term="saxs">SAXS</span> 作二级标定。</p>
+
+      <h3>生物样品分子量（绝对尺度 QC）</h3>
+      <p>稀溶液、单分散、已知 $\Delta\rho_M$ 时（Zeng 2017；Trewhella 2017）：</p>
+      <p>$$M=\frac{I(0)\,N_A}{C\,(\Delta\rho_M)^2},$$</p>
+      <p>$C$ 为质量浓度（g/cm$^3$），$I(0)$ 为绝对单位 <span data-term="forward-scattering">前向散射</span>。与序列/组成预测 $M$、Porod 体积/$M$、<span data-term="pair-distance-distribution">$p(r)$</span> 积分比对的<strong>三法互证</strong>是标定是否可信的最快检验。相对强度法依赖 BSA 等标准蛋白比值，<span data-term="radiation-damage">辐射损伤</span>与聚集使 $I(0)/c$ 漂移，不可替代绝对标定。</p>
+
+      <h3><span data-term="porod-invariant">Porod 不变量</span>与界面（绝对尺度）</h3>
+      <p>两相体系高 $q$ 区 <span data-term="porod-law">Porod 定律</span>：$I(q) \to K_p/q^4$，<span data-term="porod-invariant">Porod 不变量</span> $Q_P = \int_0^\infty q^2 I(q)\,\mathrm{d}q$ 与比表面积 $S/V$、体积分数 $\phi$ 相关（Wignall 1987）。绝对 $K_p$ 可约束孔洞数密度、乳胶核壳参数等——相对单位下 $K_p$ 无物理意义。</p>
+
+      <h3><span data-term="saxs">SAXS</span> 与 <span data-term="sans">SANS</span> 标定对照</h3>
+      <table>
+        <thead>
+          <tr><th>维度</th><th><span data-term="saxs">SAXS</span>（Dreiss / Zhang / Allen）</th><th><span data-term="sans">SANS</span>（Wignall &amp; Bates）</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>目标量</td><td>$\mathrm{d}\Sigma/\mathrm{d}\Omega$，$\mathrm{cm}^{-1}$</td><td>同左；与 Rayleigh 比类比</td></tr>
+          <tr><td>常用一级标样</td><td>纯水（弱信号）、主束衰减直测</td><td>钒、轻水（强但非弹性复杂）</td></tr>
+          <tr><td>常用二级标样</td><td><span data-term="glassy-carbon">玻璃碳</span> SRM 3600</td><td>预标定 PE、氘代聚合物、<span data-term="glassy-carbon">玻璃碳</span>（Russell 等）</td></tr>
+          <tr><td>典型不确定度</td><td>二级 2–5%（同批次 GC）；一级 5–10%</td><td>多法交叉 $\pm 5\%$</td></tr>
+          <tr><td>特殊陷阱</td><td>批次差异、低 $q$ 狭缝 smear</td><td>$H_2O$ 非弹性、V <span data-term="multiple-scattering">多重散射</span>、波长依赖 $\sigma$</td></tr>
+          <tr><td>生物 QC</td><td>$M$ 与 $I(0)/c$（绝对）</td><td>同左；对比匹配溶剂</td></tr>
+        </tbody>
+      </table>
+
+      <h3>方法选择小结</h3>
+      <table>
+        <thead>
+          <tr><th>方法</th><th>类型</th><th>典型不确定度</th><th>测量时间（台式 <span data-term="saxs">SAXS</span>）</th><th>优点</th><th>局限 / 适用条件</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>衰减主束直测</td><td>一级</td><td>5–10%</td><td>数小时（含衰减器标定）</td><td>不依赖标样物性</td><td>衰减器波长依赖、探测器线性范围；需同步辐射或高动态范围探测器</td></tr>
+          <tr><td>纯水 / 纯溶剂</td><td>一级</td><td>5–8%</td><td>20–40 h（密封管）；2–5 h（旋转阳极）</td><td>理论截面已知，可溯源</td><td><span data-term="saxs">SAXS</span> 信号极弱；暗电流与空池背景须精确扣除</td></tr>
+          <tr><td><span data-term="glassy-carbon">玻璃碳</span>（SRM 3600）</td><td>二级（认证）</td><td>2–5%（同批次）</td><td>10–30 min</td><td>信号强、稳定、可采购</td><td>须匹配认证 $Q$ 区（0.008–0.25 Å$^{-1}$）；批次差异 $>10\%$ 可能</td></tr>
+          <tr><td><span data-term="glassy-carbon">玻璃碳</span>（自标定）</td><td>二级</td><td>5–10%</td><td>10–30 min</td><td>日常快速复标</td><td>首次须与一级方法锚定；不同来源<span data-term="glassy-carbon">玻璃碳</span>不可互换</td></tr>
+          <tr><td>单分散胶体 + Porod</td><td>一级/二级</td><td>5–15%</td><td>1–3 h</td><td>界面清晰时 Porod 区截面准</td><td>长期稳定性存疑；聚集风险；多分散洗平 Porod 尾</td></tr>
+          <tr><td>标准蛋白（BSA 等）</td><td>流程检查</td><td>10–20%</td><td>30 min</td><td>验证还原流程</td><td><strong>不可替代</strong>绝对标定；<span data-term="radiation-damage">辐射损伤</span>与聚集导致 $I(0)$ 漂移</td></tr>
+        </tbody>
+      </table>
+
+      <div class="keybox">
+        <strong>绝对标定工作流检查清单</strong>
+        <ol>
+          <li><strong>前置条件：</strong> $q$ 刻度已用银二十二酸或光栅标定；背景（空池/暗电流）已扣除；透射率 $T$ 与厚度 $d$ 已独立测量。</li>
+          <li><strong>选标样：</strong> 首次标定 → 纯水（一级）或 SRM 3600（认证二级）；日常复标 → 固定批次<span data-term="glassy-carbon">玻璃碳</span>；争议/跨台站比较 → 液体 + <span data-term="glassy-carbon">玻璃碳</span>双验证。</li>
+          <li><strong>测量标样：</strong> 与样品<strong>相同几何</strong>（相机长度、针孔、光强、探测器位置）；曝光使标样 $I(q)$ 在认证 $Q$ 区统计误差 $< 2\%$。</li>
+          <li><strong>计算 CF：</strong> $\mathrm{CF} = (\mathrm{d}\Sigma/\mathrm{d}\Omega)_{st} \cdot d_{st} T_{st} / [I_{st}(q) - \mathrm{BG}_{st}]$；在 $q > 0.01$ Å$^{-1}$ 区取平均或加权拟合。</li>
+          <li><strong>应用至样品：</strong> $(\mathrm{d}\Sigma/\mathrm{d}\Omega)_s = \mathrm{CF} \cdot [I_s - \mathrm{BG}_s] / (d_s T_s)$；检查 $I(0)$ 与化学 $M$ 是否自洽（生物样品 $\pm 10\%$）。</li>
+          <li><strong>记录与复标触发：</strong> 记录标样批次号、测量日期、CF 值与不确定度；以下任一改变须复标：相机长度、针孔、光强、探测器位置、波长。</li>
+        </ol>
+      </div>
+
+      <h2>实践要点与坑</h2>
+      <div class="keybox">
+        <strong>标定失败快速诊断</strong>
+        <table>
+          <thead>
+            <tr><th>现象</th><th>可能原因</th><th>优先检查</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>$M$ 系统性偏高 20%+</td><td>CF 过大、浓度偏高、背景欠扣</td><td>重测 blank；独立称量 $C$；<span data-term="glassy-carbon">玻璃碳</span> CF 复测</td></tr>
+            <tr><td>不同 $q$ 区 CF 不一致</td><td>smearing、探测器非线性、$q$ 刻度错</td><td><span data-term="desmearing">desmear</span> 或 smeared 比较；多曝光拼接；银二十二酸 $q$ 标定</td></tr>
+            <tr><td>与 <span data-term="sans">SANS</span> 拼接台阶 $>10\%$</td><td>单位约定、$\Delta\rho$、溶剂衬度</td><td>确认 $\mathrm{cm}^{-1}$ vs $\mathrm{cm}^{-1}\,\mathrm{sr}^{-1}$；对比匹配点</td></tr>
+            <tr><td><span data-term="glassy-carbon">玻璃碳</span> CF 逐日漂移</td><td>光强、针孔、探测器位</td><td>每次改几何后首测 GC；查 $I_0$ 监测</td></tr>
+            <tr><td>纯水标定 CF 发散</td><td>统计不足、暗电流、空池</td><td>延长曝光/多曝光拼接；密封毛细管同一位置测 blank</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <ul>
+        <li><strong>背景与空池 → 如何判断：</strong> 液体标定必须正确扣除毛细管/空池散射与暗电流；Dreiss 指出暗电流与纯水信号可比，不可忽略。若 blank 扣除后低 $q$ 仍抬高，检查空池是否在相同样品位置测量。</li>
+        <li><strong>透射率 → 如何判断：</strong> 样品与标样的 $T$、厚度 $d$ 必须独立测量；间接透射法（用<span data-term="glassy-carbon">玻璃碳</span>发散主束）在台式机上常用。$T$ 误差 5% 直接转化为强度误差 5%。</li>
+        <li><strong>几何改变即复标 → 如何判断：</strong> 相机长度、针孔、光强、探测器位置任一改变，CF 即变；用<span data-term="glassy-carbon">玻璃碳</span>做快速复标（Dreiss 2006）。换配置后首测标样，CF 变化 $>3\%$ 须调查。</li>
+        <li><strong><span data-term="glassy-carbon">玻璃碳</span>批次与 $Q$ 区 → 如何判断：</strong> 不同批次截面可差 $>10\%$；标定拟合用 $q>0.01$ Å$^{-1}$ 较稳（Zhang 2010）。SRM 3600 给出认证值与 95% 置信带，勿随意换批次。</li>
+        <li><strong>狭缝与 <span data-term="desmearing">desmearing</span> → 如何判断：</strong> <span data-term="usaxs">USAXS</span> 数据常狭缝 smear；与 pinhole 比较前需 Lake 等算法 <span data-term="desmearing">desmear</span>，或比较 smeared 模型（Zhang 2010）。未 <span data-term="desmearing">desmear</span> 时低 $q$ 抬高、$I(0)$ 偏大。</li>
+        <li><strong>单位与 $I(0)$ 分子量 → 如何判断：</strong> 生物 <span data-term="saxs">SAXS</span> 发表规范要求 $\mathrm{cm}^{-1}$ 绝对尺度，以便用 $M = I(0) N_A / [C(\Delta\rho_M)^2]$ 验证样品（Trewhella 2017）；相对单位无法做此检验。$M$ 偏差 $>15\%$ 提示标定或浓度问题。</li>
+        <li><strong>不要只靠「标准蛋白」→ 如何判断：</strong> BSA、溶菌酶等易<span data-term="radiation-damage">辐射损伤</span>或聚集，仅宜作流程检查，不宜替代绝对标定（Trewhella 2017）。标准蛋白 $I(0)/c$ 随曝光漂移 $>5\%$ 即失效。</li>
+        <li><strong>浓度与 $I(0)$ 线性 → 如何判断：</strong> 绝对标定后，稀释系列 $I(0)/c$ 应恒定（$\pm 5\%$）；非线性提示聚集、$S(q)$ 或浓度测定错误（Zeng 2017）。</li>
+        <li><strong>能量扫描 / <span data-term="asaxs">ASAXS</span> → 如何判断：</strong> 变 $\lambda$ 后 $I_0$/$I_t$ 线性关系可能变（Cookson 2006）；须用二级环状标样或 GC 在每个能量点复标，勿假设 CF 能量无关。</li>
+        <li><strong><span data-term="sans">SANS</span> 水标样 → 如何判断：</strong> 轻水非弹性使表观截面依赖厚度与 $\lambda$（Wignall 1987）；勿把 <span data-term="saxs">SAXS</span> 纯水公式直接用于 <span data-term="sans">SANS</span> 而不查 $g(\lambda)$ 与<span data-term="multiple-scattering">多重散射</span>校正。</li>
+        <li><strong>记录与溯源 → 如何判断：</strong> 发表须报告标样类型、批次、CF 值、不确定度、是否 SRM 3600 证书值；SASBDB 等库要求绝对尺度 $I(q)$（Trewhella 2017）。</li>
+      </ul>
+
+      <h3>场景化标定策略</h3>
+      <table>
+        <thead>
+          <tr><th>场景</th><th>推荐路径</th><th>预期不确定度</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>台式 <span data-term="saxs">SAXS</span> 首次验收</td><td>纯水（一级）+ <span data-term="glassy-carbon">玻璃碳</span>（二级）双验证</td><td>5–8%</td></tr>
+          <tr><td>台式日常复标</td><td>固定批次<span data-term="glassy-carbon">玻璃碳</span>；几何不变则每周/每月</td><td>2–5%</td></tr>
+          <tr><td>同步辐射 pinhole</td><td>SRM 3600 或束线二级 GC；多曝光拼接弱标样</td><td>2–5%</td></tr>
+          <tr><td>生物发表 $M$</td><td>绝对 AU + $M$ 三法互证</td><td>$M$ 目标 $\pm 10\%$</td></tr>
+          <tr><td><span data-term="sans">SANS</span> 用户束时</td><td>预标定二级标样 $<30$ min（Wignall 1987）</td><td>$\pm 5\%$</td></tr>
+          <tr><td><span data-term="usaxs">USAXS</span>–<span data-term="saxs">SAXS</span> 拼接</td><td><span data-term="usaxs">USAXS</span> 一级认证 GC；pinhole 二级；<span data-term="desmearing">desmear</span> 一致</td><td>视 $Q$ overlap</td></tr>
+        </tbody>
+      </table>
+
+      <h2>相关词条</h2>
+      <p>
+        <span data-term="scattering-vector-q">散射矢量 $q$</span>、
+        <span data-term="scattering-length-density">散射长度密度</span>、
+        <span data-term="forward-scattering">前向散射</span>、
+        <span data-term="porod-law">Porod 定律</span>、
+        <span data-term="guinier-analysis">Guinier 分析</span>、
+        <span data-term="contrast">衬度</span>、
+        <span data-term="absolute-intensity">绝对强度</span>
+      </p>
+
+      <h2>相关学习章</h2>
+      <ul>
+        <li><a href="../../learn/04-data-reduction.html">04 数据还原</a> — 背景、透射、2D→$I(q)$ 是标定前置步骤</li>
+        <li><a href="../../learn/05-absolute-calibration.html">05 绝对标定</a> — 学习路径中的系统讲解</li>
+        <li><a href="../../learn/03-instruments.html">03 仪器与几何</a> — 针孔/狭缝与 $q$ 刻度</li>
+        <li><a href="../data-reduction/index.html">专题：数据还原</a> — 标定前的 $q$、背景、透射校正</li>
+        <li><a href="../ift/index.html">专题：IFT</a> — 绝对 $I(0)$ 与 $p(r)$ 积分</li>
+        <li><a href="../../learn/06-guinier-porod.html">06 Guinier / Porod</a> — 绝对尺度上的 $I(0)$ 与界面分析</li>
+      </ul>
+
+      <h2>文献列表</h2>
+      <ul>
+        <li><em>On the absolute calibration of bench-top small-angle X-ray scattering instruments: a comparison of different standard methods</em>. Cécile A. Dreiss, Kevin S. Jack, Andrew P. Parker (2006). DOI: <a href="https://doi.org/10.1107/S0021889805033091" target="_blank" rel="noopener noreferrer">10.1107/S0021889805033091</a></li>
+        <li><em>Glassy Carbon as an Absolute Intensity Calibration Standard for Small-Angle Scattering</em>. Fan Zhang et al. (2010). DOI: <a href="https://doi.org/10.1007/s11661-009-9950-x" target="_blank" rel="noopener noreferrer">10.1007/s11661-009-9950-x</a></li>
+        <li><em>NIST Standard Reference Material 3600: Absolute Intensity Calibration Standard for Small-Angle X-ray Scattering</em>. Andrew J. Allen et al. (2017). DOI: <a href="https://doi.org/10.1107/S1600576717001972" target="_blank" rel="noopener noreferrer">10.1107/S1600576717001972</a></li>
+        <li><em>Strategies for data collection and calibration with a pinhole-geometry <span data-term="saxs">SAXS</span> instrument on a synchrotron beamline</em>. David Cookson et al. (2006). DOI: <a href="https://doi.org/10.1107/S0909049506030184" target="_blank" rel="noopener noreferrer">10.1107/S0909049506030184</a></li>
+        <li><em>Performance on absolute scattering intensity calibration and protein molecular weight determination at BL16B1, a dedicated <span data-term="saxs">SAXS</span> beamline at SSRF</em>. Jianrong Zeng et al. (2017). DOI: <a href="https://doi.org/10.1107/S1600577516019135" target="_blank" rel="noopener noreferrer">10.1107/S1600577516019135</a></li>
+        <li><em>Absolute Calibration of Small-Angle Neutron Scattering Data</em>. G. D. Wignall, F. S. Bates (1987). DOI: <a href="https://doi.org/10.1107/S0021889887087181" target="_blank" rel="noopener noreferrer">10.1107/S0021889887087181</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

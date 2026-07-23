@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>分形散射 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>分形散射</h1>
+      <p class="subtitle-en">fractal scattering</p>
+
+      <h2>定义</h2>
+      <p>自相似聚集体或粗糙界面常在某 $q$ 窗呈现 <strong>$I(q)\propto q^{-P}$</strong>。质量分形通常 $1\lesssim P\lesssim 3$，光滑表面 Porod 为 $P=4$；扩散界面可介于其间。</p>
+
+      <h2>物理直觉</h2>
+      <p>幂律区须足够宽且信噪比足够才有意义；多层级结构用 Unified/Beaucage 等多 level 模型更稳妥。</p>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="porod-law">Porod 定律</span></li>
+        <li><span data-term="beaucage-unified">Beaucage 统一模型</span></li>
+        <li><span data-term="guinier-porod-model">Guinier–Porod 模型</span></li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../topics/usaxs/index.html">专题 usaxs</a></li>
+        <li><a href="../learn/06-guinier-porod.html">学习路径 06-guinier-porod</a></li>
+        <li><a href="../learn/08-models-polydispersity.html">学习路径 08-models-polydispersity</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

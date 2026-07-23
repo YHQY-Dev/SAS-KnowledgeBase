@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>08 模型与多分散 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>08 · 模型与多分散</h1>
+      <p class="subtitle-en">Models &amp; polydispersity — shape fits, size distributions, identifiability</p>
+
+      <h2>导语：何时从「读曲线」升级到「拟合模型」</h2>
+      <p>第 06 章用 Guinier / Porod 锚定两端；第 07 章用 <span data-term="indirect-fourier-transform">IFT</span> 得到模型无关的 <span data-term="pair-distance-distribution">$p(r)$</span> 与 <span data-term="maximum-dimension">$D_{\max}$</span>。到这一步，你通常已经知道：整体尺寸、是否紧凑/细长、界面是否尖锐、有没有聚集迹象。若问题仍停在「大概多大、大概什么形貌」，不必急着上显式形状模型。</p>
+      <p>显式模型拟合在下列情形才真正划算：需要报告几何参数（半径、长度、壳厚）、需要尺寸分布宽度、需要把相互作用与形状分开、或需要用同一模型比较一批样品。本章给出 <span data-term="form-factor">形式因子</span> $P(q)$、<span data-term="structure-factor">结构因子</span> $S(q)$、多分散如何抹平振荡与加权 $R_g$，以及 Beaucage / Guinier–Porod 粗模型与详细形状模型的分工；重点是<strong>可辨识性</strong>——参数多并不等于信息多。</p>
+
+      <h2>从模型无关结果到显式拟合</h2>
+      <p>稀溶液、近似各向同性取向平均后，常写</p>
+      $$I(q) = n\,(\Delta\rho)^2\,V^2\,P(q)\,S(q) + B,$$
+      <p>其中 $n$ 为数密度，$V$ 为粒子体积，$\Delta\rho$ 为<span data-term="contrast">衬度</span>（散射长度密度差），$B$ 为常数本底。稀释极限下 $S(q)\to 1$，形状信息集中在 $P(q)$。</p>
+      <p>升级判据可以很实用：</p>
+      <ul>
+        <li><strong>IFT 已稳定、形状假设清晰：</strong> $p(r)$ 呈球状/棒状/核壳特征峰，且 $q$ 覆盖足够宽 → 可试对应解析 $P(q)$。</li>
+        <li><strong>需要分布宽度：</strong> 单分散模型残差系统化（振荡相位对不上、高 $q$ 衰减过陡）→ 引入尺寸分布。</li>
+        <li><strong>浓度系列低 $q$ 被压低：</strong> 相互作用不可忽略 → 显式 $S(q)$ 或外推至无限稀释。</li>
+        <li><strong>仅需粗粒度全 $q$ 描述：</strong> Beaucage / Hammouda Guinier–Porod 可能够用，不必堆满几何参数。</li>
+      </ul>
+      <p>反过来：若 Guinier 区质量差、$q$ 窗口窄、本底未定、衬度未知，再精细的形状模型也只是「好看的过拟合」。先把第 04–07 章的地基打牢。</p>
+
+      <h2>$P(q)$ 与 $S(q)$ 的可辨识性：先拆再拟</h2>
+      <p>Jeffries 等（2021）Primer 把稀溶液写为 $I(q)=n(\Delta\rho)^2 V^2 P(q)S(q)$：低浓度时 $S(q)\to 1$，形状信息在 $P(q)$；一旦相互作用不可忽略，<strong>同一段低 $q$ 曲线同时承载粒径与粒间距信息</strong>，二者强相关。Fukasawa &amp; Sato（2011）的 SQ-IFT 与 Fritz 等（2000）的 <span data-term="gift">GIFT</span> 从不同角度处理这一退化：前者对有效 $S(q)$ 做模型无关反演得 $g(r)$，后者在假设 $S(q)$ 闭包的同时保留模型无关 $p(r)$。</p>
+      <p>可辨识性的实用判据：</p>
+      <ul>
+        <li><strong>浓度系列：</strong> $I(0)/c$ 与 Guinier $R_g$ 随 $c$ 线性外推至 $c\to 0$ 仍稳定 → $S(q)$ 可忽略，可只做 $P(q)$ 或 IFT。</li>
+        <li><strong>低 $q$ 方向：</strong> 斥力体系 $S(0)<1$ 压低表观 $I(0)$、$R_g$；聚集上翘方向相反——勿混为一谈。</li>
+        <li><strong>峰位：</strong> $S(q)$ 宽峰随 $\phi$ 或盐浓度移动；$P(q)$ 振荡极小随稀释不变（仅强度缩放）。</li>
+        <li><strong>同时自由拟合：</strong> 除非 $q$ 窗极宽且有独立 $\phi$/ζ 约束，否则 $P$ 与 $S$ 参数会互换解释低 $q$——优先稀释或固定其一。</li>
+      </ul>
+
+      <h2>形式因子 $P(q)$：球、柱、核壳</h2>
+      <p><span data-term="form-factor">形式因子</span>描述<strong>单个</strong>粒子内部干涉。约定常取 $P(0)=1$。不同形状在 $\log I$–$\log q$ 上的中区斜率、振荡位置与高 $q$ 渐近不同——这是选模型的第一直觉，也是与第 02 章散射基础的衔接点。</p>
+      <figure class="figure">
+        <img src="../assets/figures/fig-04-form-factors.png" alt="不同形状的形式因子 P(q)" width="900">
+        <figcaption>球、长柱、薄盘（及柔性链）等形式因子在对数–对数图上的定性差异：球有清晰振荡；柱在中间区约 $q^{-1}$；盘约 $q^{-2}$。多分散会抹平振荡，使「像不像球」更难一眼判断。<span class="fig-source">配图：自制示意</span></figcaption>
+      </figure>
+
+      <h3>球：最常用的「默认形状」</h3>
+      <p>均匀实心球半径 $R$ 的经典结果（Rayleigh）：</p>
+      $$P_{\mathrm{sphere}}(q)=\left[\frac{3\,(\sin x-x\cos x)}{x^3}\right]^2,\quad x=qR.$$
+      <p>第一极小约在 $x\approx 4.49$。低 $q$ 回到 Guinier，且 $R_g=R\sqrt{3/5}$。适用：近似等轴纳米粒子、胶束疏水核可粗视为球、许多无机胶体。不适用：明显长径比、空心/多层、强各向异性。</p>
+
+      <h3>圆柱（棒）：长度与截面分离</h3>
+      <p>细长圆柱在中间 $q$ 常出现近似 $I\sim q^{-1}$ 的区段；极低 $q$ 仍由整体长度决定的 Guinier 控制，较高 $q$ 转而敏感于截面半径。拟合时常报告长度 $L$、半径 $R$（及取向平均约定）。适用：纳米棒、纤维状聚集体、某些胶束柱状相；若 $L$ 远大于仪器可及尺寸，低 $q$ 可能看不到完整 Guinier，只能约束截面。Hamley（2004）与 Weyerich 等（1999）指出：棒状粒子的 $S(q)$ 与长度多分散耦合时，<span data-term="gift">GIFT</span> 需用有效结构因子或分步近似——学习路径上先用 $p(r)$ 拖尾判断棒状，再试圆柱 $P(q)$，最后才在浓溶液中加棒状 $S(q)$。</p>
+
+      <h3>核–壳：两相衬度同在一个粒子内</h3>
+      <p>核半径 $R_{\mathrm{c}}$、壳外半径 $R_{\mathrm{s}}$、核/壳/溶剂三段 $\rho$ 决定振幅相消与增强。壳厚、核尺寸与衬度比高度相关：同一条曲线可被「厚壳低衬度」与「薄壳高衬度」近似互换。适用：核壳纳米粒子、载药胶束、有水化壳的蛋白–表面活性剂复合物。实务上尽量用对比变分（X 射线换溶剂、中子用 H/D）打破退化。Grillo（2008）在软物质 <span data-term="sans">SANS</span> 教程中给出同心壳 $P(q)$ 的解析式——学习路径上记住：核壳至少需<strong>两个独立衬度点</strong>或固定化学计量之一，否则壳厚与 $\Delta\rho$ 不可分。</p>
+
+      <h3>算例：第一极小与半径</h3>
+      <p>均匀球第一极小在 $qR\approx 4.49$。若在 $\log I$–$\log q$ 上读到极小在 $q_1=0.15\,\mathrm{nm^{-1}}$，粗估 $R\approx 4.49/q_1\approx 30\,\mathrm{nm}$。若同一样品 Guinier 给 $R_g\approx 26\,\mathrm{nm}$，与 $R_g=R\sqrt{3/5}$ 自洽。若极小被抹平而 $R_g$ 仍合理，先试 <span data-term="polydispersity">多分散</span> Schulz 球（$\sigma_R/\langle R\rangle\gtrsim 10\%$ 即可抹平），再考虑椭球/柱——勿跳过分布直接改形状。</p>
+
+      <table>
+        <thead>
+          <tr><th>模型</th><th>主要参数</th><th>曲线直觉</th><th>何时优先选用</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>均匀球</td><td>$R$（或 $R_g$）</td><td>振荡极小；高 $q\sim q^{-4}$</td><td>等轴、单峰 $p(r)$、无明显长径比</td></tr>
+          <tr><td>圆柱 / 椭圆棒</td><td>$L$, $R$（±多分散）</td><td>中区 $\sim q^{-1}$；截面振荡较弱</td><td>$p(r)$ 拖尾长、Kratky/斜率暗示棒状</td></tr>
+          <tr><td>薄圆盘 / 片</td><td>半径、厚度</td><td>中区 $\sim q^{-2}$</td><td>膜片、盘状胶束、二维聚集体</td></tr>
+          <tr><td>核–壳球</td><td>$R_{\mathrm{c}}$, $R_{\mathrm{s}}$, $\rho$ 比</td><td>极小位置移动；可能出现「肩」</td><td>已知有壳层化学结构；有对比数据更佳</td></tr>
+          <tr><td>多分散球（Schulz 等）</td><td>$\langle R\rangle$, $\sigma$ 或 $z$</td><td>振荡抹平；表观 Guinier 偏大端</td><td>单分散球残差系统化、TEM 已知宽分布</td></tr>
+        </tbody>
+      </table>
+
+      <h2>结构因子 $S(q)$：稀限与相互作用</h2>
+      <p>粒子间干涉由<span data-term="structure-factor">结构因子</span> $S(q)$ 承担。完全无规、无相互作用的理想气体极限：$S(q)=1$。有斥力时，低 $q$ 的 $S(0)$ 常被压低（渗透压升高、密度涨落受抑）；有吸引力或临界涨落时，低 $q$ 可上翘。硬球、带电胶体常用 Percus–Yevick / RMSA 等闭包给出解析或半解析 $S(q)$。</p>
+      <p>实践分工：</p>
+      <ul>
+        <li><strong>先稀释：</strong> 生物 SAS 与许多胶体实验优先做浓度系列，把表观 $I(0)$、$R_g$ 外推到无限稀释，避免把 $S(q)$ 误读成形状。</li>
+        <li><strong>必须浓样时：</strong> 同时拟合 $P(q)\times S(q)$，但体积分数、电荷、尺寸彼此相关——需要独立约束（浓度、ζ 电位、已知形貌）。</li>
+        <li><strong>峰不一定是「晶格」：</strong> 液体样短程有序即可在某一 $q$ 出现宽峰；$2\pi/q_{\mathrm{peak}}$ 只是特征间距量级，不是严格晶格常数。</li>
+      </ul>
+      <p>记住：低 $q$ 被 $S(q)$ 压低时，表观 Guinier $R_g$ 与 $I(0)$ 都会偏小；这与聚集导致的低 $q$ 上翘方向相反，勿用同一套「修 $q_{\min}$」故事解释两种现象。带电胶体（胶束、latex）即使稀释仍可能有可测 $S(q)$：Fritz 等（2000）用 CTAB 胶束展示，1%–20% 浓度下必须 <span data-term="gift">GIFT</span> 分离 $P$ 与 $S$；生物蛋白在生理离子强度下通常可稀释至 $S(q)\approx 1$，但高浓度或低盐缓冲仍是例外。</p>
+
+      <h2>多分散：分布、强度加权与振荡抹平</h2>
+      <p>真实样品几乎总有尺寸分布。若数密度分布为 $f(R)$，观测强度是各尺寸贡献的叠加。对球等，$I(q)$ 大致按 $n(R)\,V(R)^2\,P(q;R)$ 加权——体积（或体积平方）大的粒子贡献远强于按个数计的「平均尺寸」。因此：</p>
+      <ul>
+        <li><span data-term="guinier-analysis">Guinier</span> 得到的表观<span data-term="radius-of-gyration">$R_g$</span> 是<strong>强度加权</strong>（偏大端）的，不是数均半径。</li>
+        <li>分布越宽，$q_{\min}$ 不足时越容易低估大端；同时 Guinier「线性窗口」变窄。</li>
+        <li>单分散球的振荡在 $\sigma_R/\langle R\rangle\gtrsim 10\%$–$15\%$ 时即可显著抹平——「没有极小」不能否定球状，只说明可能多分散或分辨率/狭缝 smearing 不足。</li>
+      </ul>
+      <p>常用分布：Schulz–Zimm（解析便利）、对数正态（材料学常见）、高斯（窄分布近似）。拟合时报告 $\langle R\rangle$ 的哪一种矩、以及多分散度定义（$\mathrm{PD}=\sigma/\langle R\rangle$ 或 $z$ 参数），并与电镜/DLS 的矩定义对照，否则「和文献差 20%」可能只是加权方式不同。Beaucage（2004）从 unified 拟合的 $B,G,R_g$ 直接提取 $\langle R^2\rangle,\langle R^6\rangle,\langle R^8\rangle$ 等矩，并可与 BET 比表面积矩对照——这是软物质纳米粉体常用的内部一致性检验。</p>
+      <p>从 IFT 到显式分布的分工：第 07 章 <span data-term="gnom">GNOM</span> 亦可给出尺寸分布，但多分散宽时 <span data-term="maximum-dimension">$D_{\max}$</span> 与 $\alpha$ 不稳；学习路径上先用 $p(r)$ 判断「单峰还是宽化」，再在第 08 章用 Schulz 球或 Beaucage PDI 量化宽度。Weyerich 等（1999）的 <span data-term="gift">GIFT</span> 多分散扩展适合浓相互作用 + 宽分布并存，但非线性强，不建议作为入门首选。</p>
+      <p>仪器 <span data-term="instrument-smearing">smearing</span>（狭缝准直、有限 $\Delta\lambda$、探测器像素）会进一步抹平尖锐特征。若数据来自狭缝几何，应 <span data-term="desmearing">desmear</span> 或在模型中卷积分辨率函数（见 Pedersen 等仪器学讨论）；否则<span data-term="polydispersity">多分散度</span>会被高估。Grillo（2008）在软物质 <span data-term="sans">SANS</span> 教程中系统讨论了分辨率与多分散的卷积效应——二者在数据上同为「振荡变钝」，必须用几何信息区分。</p>
+
+      <h3>多分散 vs 形状：谁抹平了振荡？</h3>
+      <p>这是第 08 章最常见的误判。下列对照帮助在拟合前定假说：</p>
+      <table>
+        <thead>
+          <tr><th>观测</th><th>更可能原因</th><th>下一步</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>第一极小消失，$p(r)$ 仍单峰对称</td><td><span data-term="polydispersity">多分散</span> 或 smearing</td><td>试 Schulz 球；换针孔几何或卷积 smearing 核</td></tr>
+          <tr><td>中区斜率 $\sim q^{-1}$，$p(r)$ 右拖尾长</td><td>棒/柱形状</td><td>圆柱 $P(q)$，而非加宽球</td></tr>
+          <tr><td>中区 $\sim q^{-2}$，Guinier $R_g$ 偏小</td><td>盘/片</td><td>薄盘模型；勿强行球+大 $\sigma_R$</td></tr>
+          <tr><td>稀释后极小重现、峰位不变</td><td>曾误把 $S(q)$ 峰当 $P(q)$ 极小</td><td>浓度外推；显式 $S(q)$</td></tr>
+          <tr><td>TEM 窄分布，SAS 仍无振荡</td><td>smearing 或壳层/核壳退化</td><td><span data-term="desmearing">desmear</span>；对比变分破简并</td></tr>
+        </tbody>
+      </table>
+      <p>Weyerich 等（1999）在 <span data-term="gift">GIFT</span> 框架下处理多分散体系时指出：对 $S(q)$ 与尺寸分布同时反演时非线性强、参数简并加剧——学习路径上<strong>先单分散/单峰 $p(r)$ 定形状假说，再加 Schulz 宽度</strong>，比一上来全参数自由搜索更稳。</p>
+
+      <h2>粗模型 vs 详细形式因子</h2>
+      <p>并非所有曲线都值得上「球 + Schulz + 硬球 $S(q)$ + 本底」全套。两类粗粒度工具在第 06 章已露面，这里从<strong>模型选择</strong>角度再定位：</p>
+      <figure class="figure">
+        <img src="../assets/figures/fig-05-guinier-porod.png" alt="<span data-term="guinier-porod-model">Guinier–Porod 模型</span>示意" width="900">
+        <figcaption>Hammouda Guinier–Porod：低 $q$ 尺寸与高 $q$ 幂律在衔接点光滑连接，参数少、适合粗描述；需要精确振荡相位或壳层几何时，应改用显式 $P(q)$。<span class="fig-source">配图：自制示意</span></figcaption>
+      </figure>
+      <table>
+        <thead>
+          <tr><th>层次</th><th>代表</th><th>擅长</th><th>不擅长</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>模型无关</td><td>Guinier、Porod、IFT/$p(r)$</td><td>尺寸、界面、形状直觉</td><td>直接给出壳厚、分布宽度</td></tr>
+          <tr><td>粗统一模型</td><td>Beaucage 全局散射；Hammouda Guinier–Porod</td><td>宽 $q$、多层级、少参数扫描</td><td>精细振荡、强 $S(q)$、发表级几何细节</td></tr>
+          <tr><td>显式 $P(q)$（±分布±$S(q)$）</td><td>球/柱/核壳 + Schulz + PY</td><td>可解释的几何与相互作用</td><td>$q$ 窄、衬度未知时参数退化</td></tr>
+        </tbody>
+      </table>
+      <p>Beaucage（2004）等强调：用全局散射函数可以从 SAS 提取尺寸分布信息，但前提是层级划分与 $q$ 窗口合理，且承认参数相关。Beaucage 提出无量纲<span data-term="polydispersity">多分散指数</span> PDI $= BR_g^4/(1.62G)$：单分散实心球为 1.00；气溶胶自保持对数正态分布约 4.9–5.6；PDI 越大，Guinier–Porod 过渡区越「圆滑」，Porod 外推可高于 Guinier 切线——这是宽分布的散射签名，而非额外壳层。</p>
+      <table>
+        <thead>
+          <tr><th>问题类型</th><th>Beaucage / Guinier–Porod 够用？</th><th>应升级显式 $P(q)$ 的信号</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>初级粒子 $R_g$、PDI、层级数</td><td>是（宽 $q$，含 <span data-term="usaxs">USAXS</span> 更佳）</td><td>需第一极小相位定 $R$</td></tr>
+          <tr><td>分形聚集体 + 初级球</td><td>是（多级 unified）</td><td>需单球壳厚/核壳化学</td></tr>
+          <tr><td>强 $S(q)$、带电浓胶体</td><td>否（不分离 $P$、$S$）</td><td>$P(q)\times S(q)$ 或稀释系列</td></tr>
+          <tr><td>棒/盘明显各向异性</td><td>仅粗 $R_g$、幂律指数</td><td>柱/盘 $P(q)$ + 取向或粉末平均</td></tr>
+          <tr><td>发表级几何（壳厚 Å 级）</td><td>否</td><td>核壳 $P(q)$ + 对比数据</td></tr>
+        </tbody>
+      </table>
+      <p>经验规则：先用粗模型判断「几个尺度、什么幂律、PDI 量级」，再决定是否上显式形状；不要反过来用十个自由参数去「证明」一个事先没有证据的复杂形貌。Beaucage 亦警告：中等长径比（$<2$）颗粒的散射与多分散球在过渡区可高度相似——此时 PDI 与电镜分布必须交叉验证。</p>
+
+      <h2>拟合陷阱与可辨识性</h2>
+      <p>最小二乘可以永远降 $\chi^2$；物理上可辨识的参数却有限。下列退化几乎每次都会遇到：</p>
+      <ul>
+        <li><strong>尺度–衬度–浓度：</strong> 绝对强度下 $n(\Delta\rho)^2 V^2$ 乘在一起。未知 $\Delta\rho$ 时，体积与数密度可互换；相对强度时尺度因子完全自由——只能谈形状，不能谈「有多少粒子」。</li>
+        <li><strong>核壳衬度比 ↔ 几何：</strong> 壳厚与 $\Delta\rho_{\mathrm{shell}}$ 强相关；无对比变分时固定其一。</li>
+        <li><strong>本底 $B$ ↔ Porod 尾：</strong> 高 $q$ 常数本底与界面散射纠缠；先独立估本底再放开。</li>
+        <li><strong>$q$ 范围不足：</strong> 看不到第一极小就很难区分「多分散球」与「稍扁的椭球」；低 $q$ 不够则长度/大 $R_g$ 无约束。</li>
+        <li><strong>$P$ 与 $S$ 同时自由：</strong> 低 $q$ 形状与相互作用争夺同一段曲线；优先稀释或固定形貌。</li>
+        <li><strong>多分散 + 形状 + $S(q)$ 全自由：</strong> <span data-term="gift">GIFT</span> 类反演在非线性极强时电荷–半径–$\phi$ 简并（Fritz 2000）；需电泳、渗透压或 <span data-term="saxs">SAXS</span>/<span data-term="sans">SANS</span> 对比破退化。</li>
+        <li><strong>Beaucage PDI 当几何：</strong> PDI 是散射曲线形状指标，不能直接换成 Schulz $\sigma$ 或壳厚——需在同一假设下与 TEM/BET 矩对照。</li>
+      </ul>
+      <div class="keybox">
+        <strong>实用拟合工作流检查清单</strong>
+        <ol>
+          <li><strong>地基：</strong> 还原、本底、绝对/相对强度约定已明确；$q$ 单位与掩膜无误（第 04–05 章）。</li>
+          <li><strong>模型无关先行：</strong> Guinier $R_g$、$I(0)$；Porod 斜率；IFT $p(r)$/<span data-term="maximum-dimension">$D_{\max}$</span>——写下「形状假说」再选 $P(q)$。</li>
+          <li><strong>从简到繁：</strong> 单分散球/柱 → 加多分散 → 仅在必要时加 $S(q)$ 或核壳；每加一层参数做 $F$-检验或信息准则，并看残差是否<strong>系统性</strong>改善。</li>
+          <li><strong>固定退化自由度：</strong> 用化学计量、已知 $\Delta\rho$、电镜先验、对比点固定尺度或衬度；报告哪些参数被固定。</li>
+          <li><strong>自洽检查：</strong> 拟合 $R_g$ vs Guinier / $p(r)$；$P(q)$ 极小位置 vs 多分散宽度；浓度系列是否共用同一 $P(q)$。</li>
+          <li><strong>报告完整：</strong> 模型名、参数及误差、拟合 $q$ 范围、本底处理、分布定义、软件/版本；避免只贴一条「漂亮曲线」。</li>
+          <li><strong>层级模型：</strong> 分形聚集体用 Beaucage 多级 unified 先定「几级结构」，再对初级粒子加 Schulz；勿把聚集体幂律当单球 Porod。</li>
+        </ol>
+      </div>
+
+      <div class="keybox">
+        <strong>Beaucage PDI 读数速查（球状初级粒子，Beaucage 2004）</strong>
+        <ul>
+          <li>PDI $= BR_g^4/(1.62G)$；单分散球 $\approx 1.0$</li>
+          <li>气溶胶自保持对数正态（连续区）$\approx 4.9$；自由分子区 $\approx 5.6$</li>
+          <li>PDI $\gg 6$：Guinier–Porod 过渡极圆滑，单独 Guinier/Porod 切线会系统性偏——必须用 unified 全局拟合</li>
+          <li>PDI 与 $\sigma_g=\exp\sigma$ 在对数正态球假设下可互推：PDI $=\exp(12\sigma^2)$</li>
+        </ul>
+      </div>
+
+      <h2>常见坑</h2>
+      <ul>
+        <li><strong>坑 1：参数过多，残差好看但不可复现 → 如何判断：</strong> 稍改初值或删掉一段 $q$，最优参数跳变；相关矩阵接近奇异。减参数或加先验，直到稳定。</li>
+        <li><strong>坑 2：尺度–衬度退化当成「测到了体积分数」→ 如何判断：</strong> 未独立给定 $\Delta\rho$ 或绝对标定，却报告 $\phi$ 到三位小数。只能报相对尺度或补齐衬度测定。</li>
+        <li><strong>坑 3：本底吞掉高 $q$ 形状信息 → 如何判断：</strong> 放开 $B$ 后壳厚/Porod 指数剧烈漂移；高 $q$ 残差平坦却无物理振荡。先固定本底再拟合形状。</li>
+        <li><strong>坑 4：$q$ 窗口不够仍拟合「长度 / 大壳」→ 如何判断：</strong> $q_{\min}R_g\not\ll 1$ 或第一极小落在窗口外，参数误差棒巨大且与上限相关。承认只能约束截面/小尺度。</li>
+        <li><strong>坑 5：把 $S(q)$ 峰当成形式因子振荡 → 如何判断：</strong> 稀释后峰消失或低 $q$ 抬升；峰位随浓度移动。改做浓度外推或显式结构因子，勿硬改 $R$。</li>
+        <li><strong>坑 6：忽略多分散，用「错误形状」解释抹平 → 如何判断：</strong> 单分散球极小对不上，改椭球/柱勉强拟合但 $p(r)$ 仍像球。先试 Schulz 球，再与 TEM 分布对照。</li>
+        <li><strong>坑 7：狭缝 smearing 当成超宽分布 → 如何判断：</strong> 同一样品在针孔几何振荡更清晰；或分辨率函数已知却未卷积。<span data-term="desmearing">desmear</span> / 拟合 smeared 模型后再报 $\mathrm{PD}$。</li>
+        <li><strong>坑 8：粗模型参数当作精密几何 → 如何判断：</strong> 用 Beaucage / Guinier–Porod 的 $R_g$、幂律指数直接写成「壳厚 = …」。粗模型只报告尺度与维度，细节改显式 $P(q)$。</li>
+        <li><strong>坑 9：Schulz 宽度拟合一切抹平 → 如何判断：</strong> 加 $\sigma_R$ 后 $\chi^2$ 降但 $p(r)$ 仍呈棒状拖尾。对照形状表（多分散 vs 形状节），先试柱/椭球再试分布。</li>
+        <li><strong>坑 10：忽略矩定义 → 如何判断：</strong> Beaucage（2004）从 $B,G,R_g$ 得 $\langle R^2\rangle/\langle R^3\rangle$ 等强度加权矩，与 TEM 数均半径差 20% 可能只是加权不同。报告时写明「强度加权 / 体积加权 / 数均」。</li>
+      </ul>
+
+      <h2>小结</h2>
+      <p>显式模型把 $I(q)$ 写成 $P(q)$（形状）×$S(q)$（相互作用）×尺度因子，并在需要时对尺寸分布积分。球、柱、核壳给出可解释的几何，但<span data-term="polydispersity">多分散</span>会抹平振荡并把 Guinier $R_g$ 拉向大端；衬度、本底与 $q$ 范围决定哪些参数真正可辨识。Beaucage unified 函数与 PDI 适合宽 $q$ 粗粒度全曲线与纳米粉体分布矩，不能替代有第一极小证据的详细 $P(q)$；Hammouda Guinier–Porod 适合单级形状粗描。带电浓体系优先 <span data-term="gift">GIFT</span> 或稀释 + $S(q)$ 模型，勿把 $S(q)$ 峰当 $P(q)$ 振荡。下一章按应用岔路（生物 SAS、软物质、<span data-term="gisaxs">GISAXS</span>）把第 01–08 章的工具落到具体实验路径上。</p>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="form-factor">形式因子 $P(q)$</span></li>
+        <li><span data-term="structure-factor">结构因子 $S(q)$</span></li>
+        <li><span data-term="guinier-analysis">Guinier 分析</span></li>
+        <li><span data-term="porod-law">Porod 定律</span></li>
+        <li><span data-term="radius-of-gyration">回转半径 $R_g$</span></li>
+        <li><span data-term="contrast">衬度</span></li>
+        <li><span data-term="scattering-vector-q">散射矢量 $q$</span></li>
+        <li><span data-term="pair-distance-distribution">距离分布 $p(r)$</span></li>
+        <li><span data-term="indirect-fourier-transform">间接傅里叶变换</span></li>
+      </ul>
+
+      <h2>延伸阅读</h2>
+      <ul>
+        <li><em>Particle size distributions from small-angle scattering using global scattering functions</em>. G. Beaucage, H. K. Kammler, S. E. Pratsinis (2004). DOI: <a href="https://doi.org/10.1107/S0021889804008969" target="_blank" rel="noopener noreferrer">10.1107/S0021889804008969</a></li>
+        <li><em>A new Guinier–Porod model</em>. Boualem Hammouda (2010). DOI: <a href="https://doi.org/10.1107/S0021889810015773" target="_blank" rel="noopener noreferrer">10.1107/S0021889810015773</a></li>
+        <li><em>Evaluation of small-angle scattering data of charged particles using the generalized indirect Fourier transformation technique</em>. G. Fritz, A. Bergmann, O. Glatter (2000). DOI: <a href="https://doi.org/10.1063/1.1321770" target="_blank" rel="noopener noreferrer">10.1063/1.1321770</a></li>
+        <li><em>Small-angle scattering of interacting particles. II. Generalized indirect Fourier transformation for polydisperse systems</em>. B. Weyerich, J. Brunner-Popela, O. Glatter (1999). DOI: <a href="https://doi.org/10.1107/S0021889898011790" target="_blank" rel="noopener noreferrer">10.1107/S0021889898011790</a></li>
+        <li><em>Small-angle X-ray and neutron scattering</em>. Cy M. Jeffries et al. (2021). DOI: <a href="https://doi.org/10.1038/s43586-021-00064-9" target="_blank" rel="noopener noreferrer">10.1038/s43586-021-00064-9</a></li>
+        <li><em>Instrumentation for small-angle scattering</em>. Jan Skov Pedersen. DOI: <a href="https://doi.org/10.1007/978-94-015-8457-9_2" target="_blank" rel="noopener noreferrer">10.1007/978-94-015-8457-9_2</a></li>
+      </ul>
+
+      <nav class="pager">
+        <a href="07-real-space-ift.html">← 上一章：07 实空间与 IFT</a>
+        <a href="09-application-paths.html">下一章：09 应用岔路 →</a>
+      </nav>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

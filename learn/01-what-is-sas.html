@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>01 什么是 SAS · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>01 · 什么是 SAS</h1>
+      <p class="subtitle-en">What is small-angle scattering?</p>
+
+      <h2>导语：一种「看纳米结构统计」的实验</h2>
+      <p>小角散射（small-angle scattering, <strong>SAS</strong>）泛指在<strong>很小的散射角</strong>（对应较低的动量转移）测量 X 射线或中子被样品散射后强度分布的一类实验。最常见的两个分支是 <strong><span data-term="saxs">SAXS</span></strong>（small-angle X-ray scattering，小角 X 射线散射）与 <strong><span data-term="sans">SANS</span></strong>（small-angle neutron scattering，小角中子散射）。在生物大分子、聚合物、胶体、纳米复合材料乃至金属析出相等领域，SAS 几乎是唯一能<strong>在溶液或近原生条件下</strong>、对<strong>纳米到亚微米尺度</strong>的不均匀性做统计表征的通用手段。</p>
+      <p>与「拍一张实空间照片」不同，SAS 记录的是散射强度 $I$ 随<span data-term="scattering-vector-q">散射矢量</span> $\mathbf{q}$ 的分布。$\mathbf{q}$ 连接实空间结构与倒易空间信号：大致有 $d \approx 2\pi/q$，其中 $d$ 是所探测的特征长度。因此，SAS 擅长回答「体系里有哪些典型尺寸、它们如何排列、浓度或环境变化时结构如何响应」，而不是给出单个分子的原子分辨率结构。</p>
+      <p>Jeffries 等人在 2021 年的 SAS Primer 中指出，SAS 能够探测材料内部电子密度或核散射长度密度的纳米级不均匀性，并可在变温、变压、流动、剪切等条件下原位或时间分辨测量——这使它成为连接「化学组成」与「介观组织」的桥梁性工具。</p>
+      <h3>SAS 的适用边界</h3>
+      <p>标准 SAS 分析建立在<strong>弹性、相干</strong>散射之上：入射与散射光子/中子能量相同，且各散射中心保持固定相位关系。不相干散射（如热运动、自旋翻转）与<span data-term="multiple-scattering">多重散射</span>通常作为背景或系统误差处理，而非结构信号的主体。Jeffries 亦提醒，XFEL 等极端亮度实验须单独评估非弹性贡献；中子实验中的非弹性/准弹性散射、极化自旋散射与磁性散射属于独立专题，不在本章「经典 $I(q)$」框架内。</p>
+      <p>样品侧边界同样重要：SAS 敏感的是<strong>时间平均、空间平均</strong>后的密度关联——快于曝光时间的动力学会被抹平；照射体积内若存在多种互不相关的相，曲线是各相信号的加权叠加，须靠衬度、分馏或模型拆解。</p>
+      <table>
+        <thead>
+          <tr><th>问题类型</th><th>SAS 通常能答</th><th>SAS 通常不能单独答</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>整体尺寸与紧凑度</td><td>$R_g$、<span data-term="maximum-dimension">$D_{\max}$</span>、$I(0)$</td><td>侧链原子坐标</td></tr>
+          <tr><td>溶液寡聚/复合物</td><td>分子量趋势、整体形状包络</td><td>亚基界面氢键网络</td></tr>
+          <tr><td>纳米相分布</td><td>粒径分布、相关长度、比表面积</td><td>单个颗粒的化学价态</td></tr>
+          <tr><td>薄膜面内周期</td><td>晶格间距（<span data-term="gisaxs">GISAXS</span> 条纹）</td><td>表面原子排布（需实空间探针）</td></tr>
+        </tbody>
+      </table>
+      <div class="keybox">
+        <strong>关键结论：</strong>SAS 输出的是 $I(q)$ 统计曲线，不是实空间图像。它能回答「有哪些典型尺寸、是否寡聚、浓度如何影响结构」，不能单独给出原子坐标。
+      </div>
+
+      <h2>SAS 探测的尺度：从埃到微米</h2>
+      <p>「小角」并非随意命名，而是由波长 $\lambda$ 与散射角 $2\theta$ 共同决定的<span data-term="scattering-vector-q">$q$ 窗口</span>所对应。真空中常用的定义是</p>
+      $$ q = \frac{4\pi\sin\theta}{\lambda} $$
+      <figure class="figure">
+        <img src="../assets/figures/fig-01-q-geometry.png" alt="散射矢量几何：ki、ks、q 与 2θ" width="720">
+        <figcaption>
+          图：弹性散射下散射矢量 $\mathbf{q}=\mathbf{k}_s-\mathbf{k}_i$，$q=4\pi\sin\theta/\lambda$（$\theta$ 为半散射角）。
+          <span class="fig-source">配图：自制示意（FIG-01）</span>
+        </figcaption>
+      </figure>
+      <p>其中 $2\theta$ 为入射与散射方向的夹角。当 $\theta$ 很小时，$\sin\theta \approx \theta$，故 $q$ 与 $\theta$ 近似成正比。上式默认真空或空气路径；若样品或飞行管充 He 等低密度气体，有效 $\lambda$ 与几何校正须按实际光路处理（第 04 章）。</p>
+      <p>典型实验室 <span data-term="saxs">SAXS</span> 的 $q$ 范围大约从 $10^{-3}$ Å$^{-1}$ 到 $1$ Å$^{-1}$ 量级，对应实空间尺度约 <strong>1 nm–1 μm</strong>。<span data-term="usaxs">USAXS</span>（<span data-term="bonse-hart">Bonse–Hart</span> 双晶等）可把 $q_{\min}$ 推至 $10^{-4}$ Å$^{-1}$ 以下，对应 <strong>1–2 μm</strong> 级结构；同步辐射常在一台仪器上同时覆盖 <span data-term="saxs">SAXS</span> 与 <span data-term="waxs">WAXS</span>（$q > 5$ nm$^{-1}$），但 <span data-term="waxs">WAXS</span> 区对应晶格间距，已超出「小角」惯用分析框架。</p>
+      <p><strong>波长与 $q$ 窗口：</strong> 同一 $2\theta$ 下，$\lambda$ 越短则 $q$ 越大。实验室常用 Cu K$\alpha$（1.54 Å）、Mo K$\alpha$（0.71 Å）、Ag K$\alpha$（0.59 Å）：Mo/Ag 可在相同准直下抬高 $q_{\max}$，但样品吸收亦增强，厚水相样品常仍选 Cu。</p>
+      <p><strong>算例：</strong> Cu K$\alpha$，$\lambda=1.54$ Å，$2\theta=1.0°$ → $\theta=0.5°=0.00873$ rad → $q = 4\pi\times 0.00873/1.54 \approx 0.071$ Å$^{-1}$，$d=2\pi/q \approx 88$ Å。若目标 $R_g=50$ Å 的蛋白，需 $q_{\min} \lesssim 1/R_g = 0.02$ Å$^{-1}$，对应 $2\theta \lesssim 0.28°$——低 $q$ 端对束阻与寄生散射极敏感。</p>
+      <p>下表给出几个直觉性的对应关系（取 $\lambda = 1.54$ Å，Cu K$\alpha$）：</p>
+      <table>
+        <thead>
+          <tr><th>散射角 $2\theta$</th><th>$q$ (Å$^{-1}$)</th><th>特征长度 $d=2\pi/q$</th><th>可能对应的结构</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>0.1°</td><td>0.007</td><td>≈ 90 nm</td><td>大胶束、囊泡、相分离域</td></tr>
+          <tr><td>1°</td><td>0.07</td><td>≈ 9 nm</td><td>蛋白质复合物、小角晶畴</td></tr>
+          <tr><td>5°</td><td>0.35</td><td>≈ 1.8 nm</td><td>紧凑球状蛋白、小纳米颗粒</td></tr>
+        </tbody>
+      </table>
+      <p>需要强调：<strong>$d$ 不是「粒径」的简单读数</strong>，而是傅里叶空间中敏感尺度的量度。具体能提取的尺寸参数（如<span data-term="radius-of-gyration">回转半径</span> $R_g$、最大尺寸 <span data-term="maximum-dimension">$D_{\max}$</span>）取决于样品模型与 $q$ 覆盖范围，这将在后续章节展开。</p>
+      <p><strong>实验设计算例（延伸）：</strong> 若样品含 $R_g \approx 150$ Å 的囊泡，Guinier 要求 $q_{\min} \lesssim 1/R_g \approx 0.007$ Å$^{-1}$。Cu K$\alpha$、$2\theta_{\min}=0.1°$ 时 $q \approx 0.007$ Å$^{-1}$——已踩在仪器极限边缘；须 <span data-term="usaxs">USAXS</span> 或更长样品–探测器距离 $L$。反之，$5$ nm 金颗粒（$R_g \sim 20$ Å）在 $q_{\min}=0.01$ Å$^{-1}$ 时 Guinier 区宽裕，但若要分辨 $q^{-4}$ Porod 尾，$q_{\max}$ 宜 $\gtrsim 0.3$ Å$^{-1}$。</p>
+      <table>
+        <thead>
+          <tr><th>目标结构</th><th>典型 $R_g$ 或 $d$</th><th>建议 $q_{\min}$</th><th>建议 $q_{\max}$（形状/界面）</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>球状蛋白</td><td>$R_g$ 15–50 Å</td><td>$\lesssim 0.03$ Å$^{-1}$</td><td>$\gtrsim 0.3$ Å$^{-1}$</td></tr>
+          <tr><td>胶束 / 小囊泡</td><td>5–50 nm</td><td>$\lesssim 0.005$ Å$^{-1}$</td><td>视壳层厚度</td></tr>
+          <tr><td>相分离域</td><td>0.1–10 μm</td><td><span data-term="usaxs">USAXS</span>，$q < 10^{-3}$ Å$^{-1}$</td><td>低 $q$ 标度律</td></tr>
+          <tr><td>致密纳米孔固体</td><td>孔径 2–50 nm</td><td>视基质散射</td><td>Porod 区，$q R_g \gg 1$</td></tr>
+        </tbody>
+      </table>
+      <p>在<span data-term="forward-scattering">前向散射</span>（极低 $q$）区域，信号对整体尺寸与<span data-term="contrast">衬度</span>加权后的「总散射质量」最敏感；高 $q$ 尾则更多反映界面锐利程度与局部细节（与<span data-term="porod-law">Porod 定律</span>相关，见第 06 章）。</p>
+      <div class="keybox">
+        <strong>关键结论：</strong>实验前先算 $q_{\min}$、$q_{\max}$ 与目标尺寸 $d=2\pi/q$ 的对应关系。$q$ 窗口缺 Guinier 区 → 无法可靠得 $R_g$；缺高 $q$ 尾 → 无法做 Porod 或精细形状拟合。
+      </div>
+
+      <h2>散射几何一瞥</h2>
+      <p>透射 SAS 的典型布局：单色束 → 样品 → 二维探测器记录以直射束为中心的散射环/斑。Svergun &amp; Koch（2003）在溶液散射综述中给出的几何示意概括了入射波矢 $\mathbf{k}_i$、散射波矢 $\mathbf{k}_s$ 与探测器像素—$q$ 的对应关系——后续第 03 章将展开仪器细节，此处只需建立「测到的是角度分布，换算成 $q$」的图像。</p>
+      <p>对<strong>各向同性</strong>稀溶液，散射强度在方位角 $\varphi$ 上均匀，环向平均即可得一维 $I(q)$；对取向纤维、剪切流或液晶，2D 图样保留 $I(q,\varphi)$ 信息，环向平均会抹平取向差异。Boldon 等（2015）指出，从原子模型计算理论 $I(q)$ 须对取向做球平均（Debye 公式、球谐展开等）——实验与理论对比时，平均方式必须一致。</p>
+      <p>照射体积 $V_{\text{beam}} = A_{\text{beam}} \times t$（束斑面积 × 有效厚度）决定参与统计的散射体数目。稀释样品中粒子数 $N = n V_{\text{beam}}$ 须足够大，$I(q)$ 才代表系综平均；过稀则信噪比不足，过浓则 $S(q)$ 介入（第 02 章）。</p>
+      <figure class="figure">
+        <img src="../assets/figures/fig-02-transmission-saxs-beamline.png" alt="透射 SAS 光路总览：源、准直、样品、飞行管、束阻、探测器" width="900">
+        <figcaption>
+          图：透射 SAS 几何与散射矢量定义。
+          <span class="fig-source">配图：自制示意（FIG-02）</span>
+        </figcaption>
+      </figure>
+
+      <h2>物理图像：衬度、相干散射与统计平均</h2>
+      <p>弹性相干散射的强度，本质上是样品内<span data-term="scattering-length-density">散射长度密度</span>起伏的傅里叶变换的模方。Jeffries 2021 将背景扣除后的信号写为过剩密度 $\Delta\rho(\mathbf{r})=\rho(\mathbf{r})-\rho_s$ 的傅里叶变换模方；相位在探测中丢失，故只能读强度。对稀释、各向同性体系，背景扣除后的强度常写为</p>
+      $$ I(q) = n\,(\Delta\rho)^2 V^2 P(q)\, S(q) $$
+      <p>其中 $n$ 为数密度，$V$ 为单粒子体积，$\Delta\rho$ 为粒子与溶剂的<span data-term="contrast">衬度</span>（散射长度密度差），$P(q)$ 为<span data-term="form-factor">形式因子</span>（单粒子形状与尺寸），$S(q)$ 为<span data-term="structure-factor">结构因子</span>（粒子间关联）。稀溶液中常近似 $S(q)\approx 1$，此时曲线几乎只反映 $P(q)$。</p>
+      <p><strong>直觉：</strong> 可把每个散射中心视为向外辐射的球面波；$\mathbf{q}$ 固定时，波程差由散射体内部距离决定，相干叠加产生干涉条纹。$P(q)$ 编码「单个物体内部」的距离分布；$S(q)$ 编码「物体与物体之间」的距离分布。晶体学中的 structure factor 指倒易格点上的衍射振幅——与 SAS 的 $S(q)$ <strong>同名不同物</strong>，读文献时须看上下文。</p>
+      <p>实验上测到的是<strong>大量散射体</strong>的统计平均（球对称样品为方位角平均后的 $I(q)$）。这意味着：</p>
+      <ul>
+        <li>优势：无需单晶，溶液、粉末、薄膜均可；对无序或部分有序体系天然适用。</li>
+        <li>代价：丢失方位信息（除非有取向）；多组分重叠时须结合模型、对比度变化或分离手段（如 <span data-term="sec-saxs">SEC-SAXS</span>）拆解。</li>
+      </ul>
+      <p>Boldon 等（2015）在综述中强调，SAS 的球平均使空间信息降维到一维 $I(q)$（或二维探测器上的 $I(q,\varphi)$），因而属于<strong>低分辨</strong>技术——但这正是其能处理柔性大分子、多构象系综和复杂软物质的关键。</p>
+      <p><strong>衬度算例（<span data-term="saxs">SAXS</span>）：</strong>球状蛋白电子密度 $\rho_p \approx 0.43$ e/Å$^3$，水 $\rho_w \approx 0.33$ e/Å$^3$，$\Delta\rho \approx 0.10$ e/Å$^3$。若缓冲盐使溶剂密度升至 $0.40$ e/Å$^3$，则 $\Delta\rho$ 减半 → 强度降为 $1/4$。<span data-term="sans">SANS</span> 中 $^1$H 与 $^2$H 散射长度符号相反，$100\%$ D$_2$O 匹配可使 $\Delta\rho \to 0$，信号「消失」——这是设计实验而非仪器故障。</p>
+      <p><strong>衬度算例（<span data-term="sans">SANS</span>）：</strong> Jeffries 指出中子散射长度<strong>不</strong>随原子序数单调变化：金 $b_{\text{Au}} \approx 0.76\times 10^{-12}$ cm 与碳 $b_{\text{C}} \approx 0.67\times 10^{-12}$ cm 接近，而 $^1$H 为 $-0.37\times 10^{-12}$ cm。因此 <span data-term="saxs">SAXS</span> 中「重元素亮、轻元素暗」的直觉在 <span data-term="sans">SANS</span> 中常失效——须查表计算 SLD，而非凭 $Z$ 猜测。</p>
+      <div class="keybox">
+        <strong>关键结论：</strong>强度 $\propto (\Delta\rho)^2$。信号弱时先查衬度（盐浓度、氘代比例、造影剂），再查浓度与 $S(q)$。
+      </div>
+
+      <h2>与 XRD、显微术及其他方法的互补</h2>
+      <p>初学者常问：「既然有同步辐射，为何不用衍射或电镜？」下表概括方法分工（非绝对排斥，而是<strong>典型优势区</strong>）：</p>
+      <table>
+        <thead>
+          <tr><th>方法</th><th>典型尺度</th><th>样品要求</th><th>SAS 的相对位置</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>X 射线衍射（XRD）</td><td>晶格间距（Å 级）</td><td>长程有序、常需单晶或粉末</td><td>SAS 看<strong>非晶/溶液</strong>中的介观不均匀性，不依赖 Bragg 峰</td></tr>
+          <tr><td>冷冻电镜（cryo-EM）</td><td>亚 nm–nm（实空间成像）</td><td>薄层、低浓度、制样苛刻</td><td>SAS 可在<strong>溶液原位</strong>、批量统计；与 EM 结合可约束三维重建</td></tr>
+          <tr><td>动态光散射（DLS）</td><td>流体动力学半径</td><td>稀溶液、粒径分布</td><td>SAS 给出<strong>结构因子与形状</strong>信息，不仅粒径</td></tr>
+          <tr><td>NMR</td><td>原子级（局部）</td><td>溶解度、分子量限制</td><td>SAS 对<strong>大复合物整体形状</strong>更直接，分辨率低</td></tr>
+        </tbody>
+      </table>
+      <p><strong>XRD vs SAS 决策表：</strong></p>
+      <table>
+        <thead>
+          <tr><th>问题类型</th><th>优先方法</th><th>原因</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>原子分辨率晶体结构</td><td>XRD / cryo-EM</td><td>Bragg 峰或实空间成像可达 Å 级</td></tr>
+          <tr><td>溶液中整体形状、寡聚态</td><td>SAS</td><td>无需结晶；$R_g$、$I(0)$ 直接可读</td></tr>
+          <tr><td>纳米析出相尺寸分布（非晶）</td><td>SAS</td><td>无长程有序时 XRD 仅见宽峰或漫散射</td></tr>
+          <tr><td>晶格常数、相鉴定</td><td>XRD</td><td>SAS 对晶格间距不敏感（$q$ 窗口错配）</td></tr>
+          <tr><td>验证晶体结构在溶液中是否保持</td><td>SAS + XRD 联用</td><td>比较 $R_g$、<span data-term="maximum-dimension">$D_{\max}$</span> 与晶体模型</td></tr>
+        </tbody>
+      </table>
+      <p>在结构生物学中，SAS 常作为 X 射线晶体学或 cryo-EM 的<strong>互补约束</strong>：晶体学给出原子模型，SAS 可验证溶液中是否保持同一折叠态、是否发生寡聚化或构象变化。Svergun 等（2003）强调，$R_g$ 与 $I(0)$ 是溶液体系的一级参数，往往先于复杂建模完成；对无法结晶的膜蛋白复合物、内在无序蛋白（IDP）的系综，SAS 往往是少数可行手段之一。</p>
+      <p>在软物质与硬材料领域，SAS 可追踪相分离、胶束化、剪切诱导取向、温度诱导有序等过程；掠入射变体 <span data-term="gisaxs">GISAXS</span> 则专门用于薄膜与表面纳米结构（见第 03 章与专题手册）。Jeffries 2021 综述还列举：合金析出相（SAS 最早应用之一）、岩石孔隙度、混凝土水化、电池电极微结构等——共同点是<strong>纳米尺度不均匀性</strong>且常无需长程有序。</p>
+      <div class="note">
+        <strong>易混对照：</strong> DLS 给出流体动力学半径 $R_h$，对柔性链、非球颗粒与 $R_g$ 可差 20–50%；SAS 的 $R_g$ 是质量加权回转半径。NMR 见局部构象，SAS 见整体包络——联用而非互替。
+      </div>
+
+      <h2><span data-term="saxs">SAXS</span> 与 <span data-term="sans">SANS</span>：何时选哪一种</h2>
+      <p>两者共享同一套散射几何与数据分析框架，但探针与<span data-term="contrast">衬度</span>机制不同：</p>
+      <ul>
+        <li><strong><span data-term="saxs">SAXS</span>：</strong>电子散射。衬度大致随原子序数 $Z$ 增大而增强；重元素（如金属离子、碘造影）信号强。样品吸收随 $Z$ 和能量变化，厚样品或含水样品需关注束透与荧光背景。</li>
+        <li><strong><span data-term="sans">SANS</span>：</strong>核散射。散射长度<strong>不</strong>单调随 $Z$ 变化，同位素差异显著（$^1$H 与 $^2$H 符号相反）。可通过 H/D 替换实现<strong><span data-term="contrast-matching">衬度匹配</span></strong>，选择性「照亮」复合物中的某一组分——这是生物 <span data-term="sans">SANS</span> 的核心利器。</li>
+      </ul>
+      <table>
+        <thead>
+          <tr><th>维度</th><th><span data-term="saxs">SAXS</span></th><th><span data-term="sans">SANS</span></th></tr>
+        </thead>
+        <tbody>
+          <tr><td>探针</td><td>电子（$\rho_e$，e/Å$^3$）</td><td>核（SLD，cm$^{-2}$）</td></tr>
+          <tr><td>衬度调控</td><td>盐浓度、重原子造影（自由度低）</td><td>H/D 替换、氘代标记（自由度高）</td></tr>
+          <tr><td>典型通量</td><td>同步辐射：$10^{12}$–$10^{14}$ ph/s</td><td>反应堆/散裂源：低 1–3 个数量级</td></tr>
+          <tr><td><span data-term="radiation-damage">辐射损伤</span></td><td>生物样品敏感（尤其高亮源）</td><td>通常较小</td></tr>
+          <tr><td>磁性</td><td>不敏感</td><td>极化 <span data-term="sans">SANS</span> 可测磁矩分布</td></tr>
+          <tr><td>可及性</td><td>实验室台站多</td><td>需中子源，机时稀缺</td></tr>
+        </tbody>
+      </table>
+      <p><strong>何时用 / 何时不用：</strong></p>
+      <table>
+        <thead>
+          <tr><th>场景</th><th>推荐</th><th>避免</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>快速筛选蛋白折叠/寡聚</td><td>实验室或同步辐射 <span data-term="saxs">SAXS</span></td><td>为<span data-term="contrast-matching">衬度匹配</span>专门跑 <span data-term="sans">SANS</span>（周期长）</td></tr>
+          <tr><td>多组分复合物，需「看见」其中一条链</td><td><span data-term="sans">SANS</span> + 氘代</td><td>仅靠 <span data-term="saxs">SAXS</span>（各组分电子密度接近）</td></tr>
+          <tr><td>毫秒级动力学（混合停流）</td><td>同步辐射 <span data-term="saxs">SAXS</span></td><td><span data-term="sans">SANS</span>（曝光通常秒–分钟级）</td></tr>
+          <tr><td>金属纳米颗粒在聚合物基体</td><td><span data-term="saxs">SAXS</span>（$Z$ 衬度高）</td><td><span data-term="sans">SANS</span>（金属核 SLD 与聚合物接近时信号弱）</td></tr>
+          <tr><td>膜蛋白–去垢剂复合物，需隐藏去垢剂信号</td><td><span data-term="sans">SANS</span> + 匹配氘代去垢剂</td><td>高浓度去垢剂 <span data-term="saxs">SAXS</span>（$\Delta\rho$ 小）</td></tr>
+        </tbody>
+      </table>
+      <div class="keybox">
+        <strong>关键结论：</strong>默认从 <span data-term="saxs">SAXS</span> 起步（可及性高）；当需要组分选择性衬度、磁性或低损伤原位测量时再申请 <span data-term="sans">SANS</span> 机时。
+      </div>
+
+      <h2>典型实验场景一览</h2>
+      <p>下列场景在文献中反复出现，有助于建立「SAS 到底能干什么」的具体印象：</p>
+      <figure class="figure">
+        <img src="../assets/figures/fig-09-biosas-info-layers.png" alt="BioSAS 信息层次" width="900">
+        <figcaption>
+          图：<span data-term="saxs">SAXS</span> 在生物大分子结构生物学中的典型应用流程与信息层次。
+          <span class="fig-source">配图：自制示意</span>
+        </figcaption>
+      </figure>
+      <table>
+        <thead>
+          <tr><th>场景</th><th>可读参数</th><th>典型 $q$ 需求</th><th>常用变体</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>稀溶液蛋白质</td><td>$R_g$、$I(0)$/MW、寡聚态</td><td>$q_{\min} \lesssim 0.02$ Å$^{-1}$</td><td><span data-term="sec-saxs">SEC-SAXS</span>、TR-<span data-term="saxs">SAXS</span></td></tr>
+          <tr><td>聚合物溶液/熔体</td><td>$R_g$、标度指数 $\nu$、相分离</td><td>极低 $q$ 见大域（<span data-term="usaxs">USAXS</span>）</td><td>剪切 <span data-term="saxs">SAXS</span>、变温</td></tr>
+          <tr><td>胶体与纳米颗粒</td><td>粒径分布、$S(q)$ 峰位</td><td>低 $q$ 见相关峰</td><td>浓度系列</td></tr>
+          <tr><td>多孔固体</td><td>孔径、比表面积（Porod）</td><td>高 $q$ 尾 $q^{-4}$</td><td><span data-term="usaxs">USAXS</span> + <span data-term="saxs">SAXS</span></td></tr>
+          <tr><td>薄膜与表面</td><td>面内周期、膜厚</td><td>掠入射几何</td><td><span data-term="gisaxs">GISAXS</span></td></tr>
+          <tr><td>原位动力学</td><td>$R_g(t)$、相变动力学</td><td>时间分辨 + 足够 SNR</td><td>停流、T-jump</td></tr>
+        </tbody>
+      </table>
+      <p>无论场景如何变化，实验输出几乎总是「校正后的 $I(q)$（或 2D 图）」——后续章节点将围绕如何把这条曲线变成物理参数展开。</p>
+      <p><strong>信息层次（生物 SAS）：</strong> 由浅入深通常为：(1) $R_g$、$I(0)$/分子量；(2) $p(r)$ 与 <span data-term="maximum-dimension">$D_{\max}$</span>；(3) 低分辨 ab initio 包络；(4) 与晶体/NMR/EM 联合约束的全原子模型。Boldon 等（2015）将 Guinier、Fourier（IFT）、Porod 三区对应上述不同信息密度——并非每条曲线都能走完四层。</p>
+
+      <h2>相对强度与<span data-term="absolute-intensity">绝对强度</span></h2>
+      <p>许多实验室筛选实验只比较同一样品、同一光路下的相对 $I(q)$ 形状——足以看折叠、寡聚趋势。但分子量、孔隙比表面积、体积分数等<strong>定量</strong>量须把数据标到绝对截面 $I(q)$（cm$^{-1}$），并已知 $\Delta\rho$、浓度与束流监测。Jeffries 2021 指出，绝对标定后 $I(0)$ 直接与散射截面、原子组成挂钩；Svergun 等（2003）给出由 $I(0)$ 估算溶质分子量的标准流程（<span data-term="glassy-carbon">玻璃碳</span>、水、参考蛋白等，详见第 05 章）。</p>
+      <table>
+        <thead>
+          <tr><th>分析目标</th><th>是否需绝对强度</th><th>备注</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>$R_g$、形状趋势</td><td>否</td><td>Guinier 斜率与 $\Delta\rho$ 无关</td></tr>
+          <tr><td>分子量 / $I(0)$ 定量</td><td>是</td><td>须 $S(q)\approx 1$、正确 $\Delta\rho$</td></tr>
+          <tr><td>Porod 比表面积</td><td>是</td><td>$K=2\pi(\Delta\rho)^2 S/V$ 含衬度</td></tr>
+          <tr><td>跨台站、跨论文比较</td><td>强烈建议</td><td>相对强度仅在同仪器可比</td></tr>
+        </tbody>
+      </table>
+
+      <h2>常见误解与坑</h2>
+      <div class="note">
+        <strong>坑 1：把 SAS 当成「低分辨电镜」。</strong> $I(q)$ 是统计平均，不能直接「读出」原子结构；需要模型、<span data-term="guinier-analysis">Guinier</span>、IFT 或联合其它方法解释。
+      </div>
+      <table>
+        <thead>
+          <tr><th>现象</th><th>可能原因</th><th>诊断步骤</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>信号极弱或平坦</td><td><span data-term="contrast-matching">衬度匹配</span>、浓度过低、样品未进入束斑</td><td>算 $\Delta\rho$；提高浓度；检查束线对齐与样品位置</td></tr>
+          <tr><td>低 $q$ 异常抬高</td><td>浓溶液 $S(q)$、灰尘聚集体、束阻溢出</td><td>浓度系列外推；过滤样品；检查直射束遮挡</td></tr>
+          <tr><td>Guinier 外推 $R_g$ 不合理</td><td>$q_{\min}$ 太高、多分散、形状非紧凑</td><td>核对 $q_{\min} R_g \lesssim 1$；IFT 得 $p(r)$；SEC 分馏</td></tr>
+          <tr><td>高 $q$ 不遵循 $q^{-4}$</td><td>界面模糊、柔性链、未扣背景</td><td>检查背景扣除；勿强行做 Porod；考虑分形或聚合物模型</td></tr>
+          <tr><td>重复测量曲线漂移</td><td><span data-term="radiation-damage">辐射损伤</span>、沉淀、温度变化</td><td>分次短曝光对比；流动池；温控</td></tr>
+          <tr><td>与晶体结构 $R_g$ 差 &gt;10%</td><td>溶液构象不同、寡聚、结合配体</td><td>非错误——正是 SAS 的价值；做复合物模型拟合</td></tr>
+        </tbody>
+      </table>
+      <ul>
+        <li><strong>坑 2：忽视衬度。</strong> $\Delta\rho \to 0$ 时信号消失。<span data-term="sans">SANS</span> 中错误匹配溶剂、<span data-term="saxs">SAXS</span> 中缓冲盐浓度过高导致电子密度接近，都会让实验「看似失败」。</li>
+        <li><strong>坑 3：浓度效应误判为形状变化。</strong> 浓溶液中 $S(q)\neq 1$，低 $q$ 抬起或出现相关峰；须做浓度系列或理论修正。</li>
+        <li><strong>坑 4：$q$ 范围不足。</strong> 只覆盖高 $q$ 无法可靠得 $R_g$；只覆盖极低 $q$ 无法分辨内部细节。实验设计应先估算目标尺寸对应的 $q$。</li>
+        <li><strong>坑 5：忽略<span data-term="radiation-damage">辐射损伤</span>（<span data-term="saxs">SAXS</span>）。</strong> 尤其生物样品，须分次曝光检查、流动样品池或低温。</li>
+        <li><strong>坑 6：混淆「强度」与「绝对强度」。</strong> 相对强度足以看形状趋势；分子量、比表面积等定量量需要绝对标定（第 05 章）。</li>
+        <li><strong>坑 7：忽视照射体积与浓度耦合。</strong> 微束同步辐射 <span data-term="saxs">SAXS</span> 束斑仅数十 μm，毛细管边缘浓度梯度或沉淀可导致 $I(q)$ 不代表体相；须流动或多次位置扫描验证。</li>
+        <li><strong>坑 8：把 <span data-term="waxs">WAXS</span> 晶格峰当 SAS 粒径信号。</strong> 部分有序样品在 <span data-term="waxs">WAXS</span> 区有 Bragg 峰，与小角 Guinier/Porod 分析无关——混在同一曲线中须分段处理。</li>
+      </ul>
+      <div class="keybox">
+        <strong>关键结论：</strong>「实验失败」多数是衬度、浓度或 $q$ 窗口问题，而非样品「没有结构」。排障顺序：衬度 → 浓度/$S(q)$ → $q$ 覆盖 → 背景与仪器。
+      </div>
+
+      <h2>小结</h2>
+      <p>SAS 是在小散射角测量 $I(q)$ 的通用纳米结构探针，核心思想是：通过<span data-term="scattering-vector-q">$q$</span> 选择性敏感于不同实空间尺度，通过<span data-term="contrast">衬度</span>突出感兴趣相，通过 $P(q)$ 与 $S(q)$ 分解形状与相互作用。<span data-term="saxs">SAXS</span> 与 <span data-term="sans">SANS</span> 共享分析语言，却在衬度操控与样品环境上各有优势。下一章将深入散射公式与 $I(q)$ 各部分的物理含义。</p>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="scattering-vector-q">散射矢量 q</span></li>
+        <li><span data-term="contrast">衬度</span></li>
+        <li><span data-term="scattering-length-density">散射长度密度</span></li>
+        <li><span data-term="form-factor">形式因子 P(q)</span></li>
+        <li><span data-term="structure-factor">结构因子 S(q)</span></li>
+        <li><span data-term="forward-scattering">前向散射</span></li>
+        <li><span data-term="gisaxs">GISAXS</span></li>
+        <li><span data-term="usaxs">USAXS</span></li>
+        <li><span data-term="absolute-intensity">绝对强度</span></li>
+      </ul>
+
+      <h2>延伸阅读</h2>
+      <ul>
+        <li><em>Small-angle X-ray and neutron scattering</em>. Cy M. Jeffries et al. (2021). DOI: <a href="https://doi.org/10.1038/s43586-021-00064-9" target="_blank" rel="noopener noreferrer">10.1038/s43586-021-00064-9</a></li>
+        <li><em>Review of the fundamental theories behind small angle X-ray scattering, molecular dynamics simulations, and relevant integrated application</em>. Lauren Boldon, Fallon Laliberte, Li Liu (2015). DOI: <a href="https://doi.org/10.3402/nano.v6.25661" target="_blank" rel="noopener noreferrer">10.3402/nano.v6.25661</a></li>
+        <li><em>Small-angle scattering studies of biological macromolecules in solution</em>. Dmitri I. Svergun, Michel H. J. Koch (2003). DOI: <a href="https://doi.org/10.1088/0034-4885/66/10/R05" target="_blank" rel="noopener noreferrer">10.1088/0034-4885/66/10/R05</a></li>
+        <li><em>Small-angle scattering: a view on the properties, structures and structural changes of biological macromolecules in solution</em>. Michel H. J. Koch, Patrice Vachette, Dmitri I. Svergun (2003). DOI: <a href="https://doi.org/10.1017/S0033583503003871" target="_blank" rel="noopener noreferrer">10.1017/S0033583503003871</a></li>
+      </ul>
+
+      <nav class="pager">
+        <a href="index.html">← 学习路径总览</a>
+        <a href="02-scattering-basics.html">下一章：02 散射基础 →</a>
+      </nav>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

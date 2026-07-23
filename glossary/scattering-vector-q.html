@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>散射矢量 q · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>散射矢量 q</h1>
+      <p class="subtitle-en">scattering vector</p>
+
+      <h2>定义</h2>
+      <p>在小角散射实验中，入射波矢 $\mathbf{k}_i$ 与散射波矢 $\mathbf{k}_s$ 之差称为<strong>散射矢量</strong>（动量转移矢量）$\mathbf{q}$：</p>
+      $$ \mathbf{q} = \mathbf{k}_s - \mathbf{k}_i $$
+      <p>其模长 $q = |\mathbf{q}|$ 是 SAS 曲线横轴最常用的变量。对波长 $\lambda$、散射角 $2\theta$ 的实验几何，在弹性散射下常用近似</p>
+      $$ q = \frac{4\pi}{\lambda}\sin\theta $$
+      <p>（有时文献写 $2\theta$ 为全散射角，书写时请对照该章符号表。）</p>
+
+      <h2>物理直觉</h2>
+      <p>$q$ 越大，对应探测的实空间尺度越小。粗略关系 $d \sim 2\pi/q$ 可帮助判断某一 $q$ 窗口对样品中哪一类结构敏感：低 $q$ 看整体尺寸与长程关联，高 $q$ 看界面、局部密度起伏与原子级细节（在仪器 $q$ 上限内）。</p>
+      <p>因此 SAS 曲线 $I(q)$ 实质上是「不同尺度上的结构信息」按 $q$ 展开；读图时先问：当前 $q$ 范围对应多大的 $d$？</p>
+
+      <h2>与实验量的关系</h2>
+      <ul>
+        <li><strong>SAXS</strong>：$q$ 由波长与探测器上的散射角确定；需做几何校正（样品—探测器距离、像素尺寸、光束中心）。</li>
+        <li><strong>SANS</strong>：同样由 $\lambda$ 与角度定义 $q$；常配合不同波长做对比实验。</li>
+        <li><strong>GISAXS</strong>：面内 $q_y$ 与面外 $q_z$ 分量分开，见词条 <span data-term="gisaxs">GISAXS</span>。</li>
+      </ul>
+
+      <h2>常见混淆</h2>
+      <ul>
+        <li>把 $q$ 与 $2\theta$ 混为一谈：$q$ 已含 $1/\lambda$，不同波长下相同 $2\theta$ 对应不同 $q$。</li>
+        <li>单位：本站默认 $\mathrm{nm}^{-1}$ 或 $\mathrm{\AA}^{-1}$，读文献时注意换算（$1\,\mathrm{nm}^{-1} = 10\,\mathrm{\AA}^{-1}$）。</li>
+        <li>「小角」指 $q$ 小（$d$ 大），不是指探测器上的角一定「很小」——取决于波长与几何。</li>
+      </ul>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="forward-scattering">前向散射</span>：$q \to 0$ 附近的散射行为</li>
+        <li><span data-term="form-factor">形式因子</span> $P(q)$：单粒子形状在 $q$ 上的调制</li>
+        <li><span data-term="structure-factor">结构因子</span> $S(q)$：粒子间关联在 $q$ 上的调制</li>
+        <li><span data-term="guinier-analysis">Guinier 分析</span>：低 $q$ 区 $I(q)$ 的近似</li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../learn/02-scattering-basics.html">学习路径 02 · 散射基础</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

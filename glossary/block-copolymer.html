@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>嵌段共聚物 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>嵌段共聚物</h1>
+      <p class="subtitle-en">block copolymer</p>
+
+      <h2>定义</h2>
+      <p><strong>嵌段共聚物</strong>（block copolymer, BCP）由两种或多种化学性质不同的聚合物嵌段共价连接而成。不相容嵌段可发生<strong>微相分离</strong>，形成球、柱、层状、双连续等纳米畴（典型周期 5–100 nm），是透射 SAS 与薄膜 <span data-term="gisaxs">GISAXS</span> 的经典样品体系。</p>
+
+      <h2>要点</h2>
+      <ul>
+        <li>体相熔体/溶液：用透射 SAXS/SANS 读有序峰位置（晶格常数）与 <span data-term="form-factor">形式因子</span> 包络；衬度常靠氘化某一嵌段调节。</li>
+        <li>薄膜：取向、厚度与基底相互作用决定畴取向；GISAXS + <span data-term="dwba">DWBA</span> 是标准表征路线。</li>
+        <li>站内聚合物 / BCP 专题仍在规划中；当前可从应用岔路 B/C 与 GISAXS 专题进入。</li>
+      </ul>
+
+      <h2>常见混淆</h2>
+      <ul>
+        <li>无规共聚物 ≠ 嵌段共聚物：前者通常不形成长程有序微相。</li>
+        <li>有序峰的 $q^*$ 给出周期，不等于「粒径」；形态判别需结合高次峰与 <span data-term="form-factor">$P(q)$</span>。</li>
+      </ul>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="gisaxs">GISAXS</span></li>
+        <li><span data-term="contrast">衬度</span></li>
+        <li><span data-term="structure-factor">结构因子</span> $S(q)$</li>
+        <li><span data-term="dwba">畸变波玻恩近似</span></li>
+      </ul>
+
+            <h2>出现于</h2>
+      <ul>
+        <li><a href="../learn/09-application-paths.html">学习路径 09 · 应用岔路</a></li>
+        <li><a href="../topics/gisaxs/index.html">专题 · GISAXS</a></li>
+        <li><a href="../topics/polymers-bcp/index.html">专题 · 聚合物 / BCP</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

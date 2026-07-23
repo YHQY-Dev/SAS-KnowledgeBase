@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>间接傅里叶变换 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>间接傅里叶变换</h1>
+      <p class="subtitle-en">indirect Fourier transform</p>
+
+      <h2>定义</h2>
+      <p><strong>间接傅里叶变换</strong>（IFT）是从实验散射曲线 $I(q)$ 稳定反演 <span data-term="pair-distance-distribution">距离分布函数</span> $p(r)$ 的数值方法族。代表软件如 GNOM（ATSAS 套件）：在参数化 $p(r)$（分段线性或样条）基础上，最小化实验数据与正演 $I(q)$ 的差异，并加入平滑正则项以避免噪声放大。</p>
+      <p>正演关系（示意）：</p>
+      $$ I(q) = 4\pi \int_0^{D_{\max}} p(r)\,\frac{\sin(qr)}{qr}\, dr $$
+      <p>其中 $D_{\max}$ 为最大粒子尺寸估计，是重要用户输入。</p>
+
+      <h2>为何「间接」</h2>
+      <p>直接对 $I(q)$ 做离散傅里叶变换在有限 $q$ 范围、噪声与背景存在时病态（振荡伪峰）。IFT 通过</p>
+      <ul>
+        <li>在实空间参数化 $p(r)$</li>
+        <li>正则化（惩罚过于曲折的 $p(r)$）</li>
+        <li>同时拟合低角度背景（如多项式）</li>
+      </ul>
+      <p>得到物理上可解释的 $p(r)$，并给出拟合优度（如 $\chi^2$、$R_g$、$I(0)$）。</p>
+
+      <h2>典型工作流</h2>
+      <ol>
+        <li>输入已还原的 $I(q)$ 及实验误差 $\sigma(q)$。</li>
+        <li>估计 $D_{\max}$（可从 Guinier $R_g$、样品化学尺寸或试探迭代）。</li>
+        <li>选择 $p(r)$ 节点数与正则化强度（软件常自动或给建议）。</li>
+        <li>检查 $\chi^2 \approx 1$、$p(r)$ 尾部归零、$R_g$ 与 Guinier 一致。</li>
+        <li>将 GNOM 输出用于后续形状重建（如 DAMMIF）或发表附图。</li>
+      </ol>
+
+      <h2>常见混淆</h2>
+      <ul>
+        <li>IFT 不是「万能反演」：$q$ 范围不足时 $p(r)$ 只是允许类中的一条解。</li>
+        <li>$D_{\max}$ 过大 → $p(r)$ 尾部长、振荡；过小 → 截断真实结构。</li>
+        <li>与模型拟合 $P(q)$ 并列：IFT 更模型自由，但分辨率受数据限制；模型拟合可给参数误差但依赖形状假设。</li>
+        <li>浓溶液或强 $S(q)$ 时，需先稀释或分离 $S(q)$ 再 IFT。</li>
+      </ul>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="pair-distance-distribution">距离分布函数</span> $p(r)$</li>
+        <li><span data-term="guinier-analysis">Guinier 分析</span></li>
+        <li><span data-term="radius-of-gyration">回转半径</span> $R_g$</li>
+        <li><span data-term="form-factor">形式因子</span> $P(q)$（模型路线对比）</li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../learn/07-real-space-ift.html">学习路径 07 · 实空间与 IFT</a></li>
+        <li><a href="../topics/ift/index.html">专题 · IFT</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

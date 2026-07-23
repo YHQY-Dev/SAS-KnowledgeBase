@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>术语表</h1>
+      <p class="subtitle-en">Glossary — bilingual terms for reading SAS literature</p>
+
+      <p>术语表与<strong>学习路径 / 专题手册</strong>同一套交互：<strong>左侧点选词条，右侧读详解</strong>。每个词条含中文主标题、英文全称、定义、物理直觉与相关链接。教程正文里虚线标注的术语（如 <span data-term="contrast">衬度</span>）可悬停看短释义，点击同样进入词条页。</p>
+
+      <div class="note">
+        完整词条目录在<strong>左侧侧栏</strong>（按中文排序）。也可用顶栏「搜索」或 <kbd>Ctrl</kbd>+<kbd>K</kbd> 全站检索。本页是<strong>导读与主题入口</strong>，不再重复罗列全部词条。
+      </div>
+
+      <h2>怎么用这套术语</h2>
+      <ul>
+        <li><strong>读教程时：</strong>遇到虚线术语 → 悬停确认英文全称 → 需要细节再点进词条。</li>
+        <li><strong>查文献时：</strong>先在左侧找缩写（如 $R_g$、<span data-term="gisaxs">GISAXS</span>、<span data-term="gnom">GNOM</span>），再跟到相关学习章或专题。</li>
+        <li><strong>写报告时：</strong>核对单位与符号约定（$q$ vs $s$、绝对强度 $\mathrm{cm}^{-1}$、衬度匹配用语等）。</li>
+      </ul>
+
+      <h2>按主题进入（可点）</h2>
+      <p class="muted">每组只列最常用入口；其余词条请用左侧侧栏浏览。</p>
+
+      <h3>探针与实验变体</h3>
+      <div class="card-grid">
+        <a class="card" href="saxs.html">
+          <strong><span data-term="saxs">SAXS</span></strong>
+          小角 X 射线散射：电子密度起伏、实验室与同步辐射的通用探针。
+        </a>
+        <a class="card" href="sans.html">
+          <strong><span data-term="sans">SANS</span></strong>
+          小角中子散射：核 SLD、H/D 衬度操控；与磁散射边界见磁性 SANS。
+        </a>
+        <a class="card" href="gisaxs.html">
+          <strong><span data-term="gisaxs">GISAXS</span></strong>
+          掠入射几何；配套 <span data-term="dwba">DWBA</span>、<span data-term="yoneda">Yoneda</span>、<span data-term="critical-angle">临界角</span>。
+        </a>
+        <a class="card" href="usaxs.html">
+          <strong><span data-term="usaxs">USAXS</span></strong>
+          超小角 / 微米尺度；常遇 <span data-term="bonse-hart">Bonse–Hart</span> 与 <span data-term="desmearing">desmearing</span>。
+        </a>
+        <a class="card" href="asaxs.html">
+          <strong><span data-term="asaxs">ASAXS</span></strong>
+          反常小角散射；依赖 <span data-term="anomalous-dispersion">反常色散</span> $f'$、$f''$。
+        </a>
+        <a class="card" href="waxs.html">
+          <strong><span data-term="waxs">WAXS</span></strong>
+          广角区：晶格与分子堆积；常与 SAXS/USAXS 跨尺度联用。
+        </a>
+      </div>
+
+      <h3>核心物理量</h3>
+      <div class="card-grid">
+        <a class="card" href="scattering-vector-q.html">
+          <strong><span data-term="scattering-vector-q">散射矢量 $q$</span></strong>
+          动量转移与实空间尺度窗口；$d\sim 2\pi/q$。
+        </a>
+        <a class="card" href="scattering-length-density.html">
+          <strong><span data-term="scattering-length-density">散射长度密度</span></strong>
+          SLD / 电子密度；强度量级的来源。
+        </a>
+        <a class="card" href="contrast.html">
+          <strong><span data-term="contrast">衬度</span></strong>
+          $\Delta\rho$；延伸到 <span data-term="contrast-matching">衬度匹配</span> 与 <span data-term="contrast-variation">衬度变化</span>。
+        </a>
+        <a class="card" href="form-factor.html">
+          <strong><span data-term="form-factor">形式因子 $P(q)$</span></strong>
+          单粒子形状与尺寸；与 <span data-term="structure-factor">结构因子 $S(q)$</span> 成对出现。
+        </a>
+        <a class="card" href="coherent-scattering.html">
+          <strong><span data-term="coherent-scattering">相干散射</span></strong>
+          结构信息的载体；对照 <span data-term="incoherent-background">不相干本底</span>。
+        </a>
+        <a class="card" href="volume-fraction.html">
+          <strong><span data-term="volume-fraction">体积分数 $\phi$</span></strong>
+          绝对强度下浓度/相含量解释的关键参数。
+        </a>
+      </div>
+
+      <h3>读谱与初级分析</h3>
+      <div class="card-grid">
+        <a class="card" href="guinier-analysis.html">
+          <strong><span data-term="guinier-analysis">Guinier 分析</span></strong>
+          低 $q$ 求 <span data-term="radius-of-gyration">$R_g$</span> 与 <span data-term="forward-scattering">$I(0)$</span>。
+        </a>
+        <a class="card" href="porod-law.html">
+          <strong><span data-term="porod-law">Porod 定律</span></strong>
+          高 $q$ 界面标度；相关 <span data-term="porod-invariant">Porod 不变量</span>。
+        </a>
+        <a class="card" href="kratky-plot.html">
+          <strong><span data-term="kratky-plot">Kratky 图</span></strong>
+          紧凑 / 柔性 / 无序构象的快速读谱辅助。
+        </a>
+        <a class="card" href="pair-distance-distribution.html">
+          <strong><span data-term="pair-distance-distribution">$p(r)$</span></strong>
+          实空间距离分布；边界参数 <span data-term="maximum-dimension">$D_{\max}$</span>。
+        </a>
+        <a class="card" href="indirect-fourier-transform.html">
+          <strong><span data-term="indirect-fourier-transform">IFT</span></strong>
+          间接傅里叶变换；程序入口 <span data-term="gnom">GNOM</span> / <span data-term="gift">GIFT</span>。
+        </a>
+        <a class="card" href="polydispersity.html">
+          <strong><span data-term="polydispersity">多分散</span></strong>
+          尺寸分布抹平振荡；连接 <span data-term="beaucage-unified">Unified</span> / <span data-term="guinier-porod-model">Guinier–Porod</span> 模型。
+        </a>
+      </div>
+
+      <h3>仪器、还原与样品</h3>
+      <div class="card-grid">
+        <a class="card" href="data-reduction.html">
+          <strong><span data-term="data-reduction">数据还原</span></strong>
+          2D→$I(q)$ 校正链总览。
+        </a>
+        <a class="card" href="absolute-intensity.html">
+          <strong><span data-term="absolute-intensity">绝对强度</span></strong>
+          $\mathrm{cm}^{-1}$ 尺度；标样常看 <span data-term="glassy-carbon">玻璃碳</span>。
+        </a>
+        <a class="card" href="instrument-smearing.html">
+          <strong><span data-term="instrument-smearing">仪器模糊</span></strong>
+          分辨率卷积；狭缝数据常需 <span data-term="desmearing">去模糊</span>。
+        </a>
+        <a class="card" href="radial-average.html">
+          <strong><span data-term="radial-average">径向平均</span></strong>
+          各向同性一维化；配套 <span data-term="beamstop">束阻</span> 与 <span data-term="transmission">透射率</span>。
+        </a>
+        <a class="card" href="sec-saxs.html">
+          <strong><span data-term="sec-saxs">SEC-SAXS</span></strong>
+          色谱联用减聚集；生物实验常见 <span data-term="radiation-damage">辐射损伤</span> 控制。
+        </a>
+        <a class="card" href="multiple-scattering.html">
+          <strong><span data-term="multiple-scattering">多重散射</span></strong>
+          厚样品/强散射体上的系统误差来源。
+        </a>
+      </div>
+
+      <h3>薄膜、聚合物与进阶方法</h3>
+      <div class="card-grid">
+        <a class="card" href="block-copolymer.html">
+          <strong><span data-term="block-copolymer">嵌段共聚物</span></strong>
+          连接 <span data-term="microphase-separation">微相分离</span>、<span data-term="order-disorder-transition">ODT</span> 与 $\chi$。
+        </a>
+        <a class="card" href="dwba.html">
+          <strong><span data-term="dwba">DWBA</span></strong>
+          GISAXS 理论框架；读图常看 <span data-term="yoneda">Yoneda 峰</span>。
+        </a>
+        <a class="card" href="magnetic-sans.html">
+          <strong><span data-term="magnetic-sans">磁性 SANS</span></strong>
+          核/磁分离；进阶见 <span data-term="polarization-analysis">极化分析</span>。
+        </a>
+        <a class="card" href="ab-initio-reconstruction.html">
+          <strong><span data-term="ab-initio-reconstruction">ab initio 形状</span></strong>
+          溶液低分辨重建；柔性体系看 <span data-term="ensemble-optimization">EOM</span>。
+        </a>
+        <a class="card" href="fractal-scattering.html">
+          <strong><span data-term="fractal-scattering">分形散射</span></strong>
+          幂律区与层次结构解读。
+        </a>
+        <a class="card" href="persistence-length.html">
+          <strong><span data-term="persistence-length">持续长度</span></strong>
+          半柔顺链；相关 <span data-term="correlation-length">关联长度</span>。
+        </a>
+      </div>
+
+      <h2>建议学习顺序</h2>
+      <ol>
+        <li>先建立 <a href="scattering-vector-q.html">$q$</a>、<a href="contrast.html">衬度</a>、<a href="form-factor.html">$P(q)$</a> / <a href="structure-factor.html">$S(q)$</a> 四件套。</li>
+        <li>再学 <a href="guinier-analysis.html">Guinier</a> 与 <a href="porod-law.html">Porod</a>，能对曲线「分区说话」。</li>
+        <li>做实验时补 <a href="data-reduction.html">数据还原</a>、<a href="absolute-intensity.html">绝对强度</a>、<a href="instrument-smearing.html">smearing</a>。</li>
+        <li>按样品类型跳到 <a href="saxs.html">SAXS</a> / <a href="sans.html">SANS</a> / <a href="gisaxs.html">GISAXS</a> 等变体词条，再回 <a href="../learn/index.html">学习路径</a> 或 <a href="../topics/index.html">专题手册</a>。</li>
+      </ol>
+
+      <nav class="pager">
+        <a href="../index.html">← 返回首页</a>
+        <a href="scattering-vector-q.html">从「散射矢量 $q$」开始 →</a>
+      </nav>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

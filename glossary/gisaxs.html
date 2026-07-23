@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>掠入射小角 X 射线散射 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>掠入射小角 X 射线散射</h1>
+      <p class="subtitle-en">grazing-incidence small-angle X-ray scattering</p>
+
+      <h2>定义</h2>
+      <p><strong>GISAXS</strong>（grazing-incidence small-angle X-ray scattering）将 X 射线以接近临界角的极小入射角照射薄膜或表面样品。由于全反射与折射效应，电场在样品内形成驻波，散射主要来自表面附近纳米结构；探测器记录面内 <span data-term="scattering-vector-q">散射矢量</span> 分量 $q_y$ 与面外 $q_z$ 组成的二维散射图。</p>
+      <p>与透射 SAXS 不同，GISAXS 对表面/薄膜敏感，适合纳米点阵、嵌段共聚物薄膜、纳米线阵列等有序或无序表面结构。</p>
+
+      <h2>物理直觉</h2>
+      <p>掠入射几何拉长了 X 射线在样品内的有效光程，并增强表面附近散射体的贡献；同时折射使散射图在 $q_z$ 方向出现 Yoneda 峰、层状 Bragg 棒等特征。读 GISAXS 图需同时看 $q_y$（面内周期/关联）与 $q_z$（垂直方向电子密度轮廓）。</p>
+
+      <h2>关键量与现象</h2>
+      <ul>
+        <li><strong>临界角</strong> $\alpha_c$：与衬底/薄膜平均电子密度相关；入射角 $\alpha_i$ 常取 $\alpha_i \approx \alpha_c$ 附近以增强表面灵敏度。</li>
+        <li><span data-term="yoneda">Yoneda 峰</span>：出射临界角附近的增强，反映垂直方向折射。</li>
+        <li><strong>Bragg 棒</strong>：面内有序结构在 $q_y$ 处的峰，沿 $q_z$ 展宽反映垂直关联长度。</li>
+        <li><span data-term="dwba">畸变波玻恩近似（DWBA）</span>：解释 GISAXS 强度的常用理论框架。</li>
+      </ul>
+
+      <h2>与透射 SAS 的对比</h2>
+      <table>
+        <thead>
+          <tr><th>方面</th><th>透射 SAXS/SANS</th><th>GISAXS</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>样品</td><td>溶液、粉末、块体</td><td>薄膜、表面图案</td></tr>
+          <tr><td>散射图</td><td>常 $I(q)$ 一维曲线</td><td>$I(q_y,q_z)$ 二维图</td></tr>
+          <tr><td>理论</td><td><span data-term="form-factor">P(q)</span>、<span data-term="structure-factor">S(q)</span></td><td><span data-term="dwba">DWBA</span> + 折射</td></tr>
+          <tr><td>衬度</td><td>体相 <span data-term="scattering-length-density">SLD</span> 差</td><td>电子密度 + 界面</td></tr>
+        </tbody>
+      </table>
+
+      <h2>常见混淆</h2>
+      <ul>
+        <li>把 GISAXS 图上的亮斑直接当作透射 SAXS 的 $q$ 峰，忽略 $q_z$ 折射效应。</li>
+        <li>入射角远高于 $\alpha_c$：体相散射占主导，失去表面选择性。</li>
+        <li>样品粗糙度与基底散射未扣除，误认薄膜信号。</li>
+        <li>GISAXS 与 GISANS：后者用中子，对核衬度与磁性敏感，几何类似。</li>
+      </ul>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="scattering-vector-q">散射矢量</span> $q$</li>
+        <li><span data-term="scattering-length-density">散射长度密度</span> / 电子密度</li>
+        <li><span data-term="dwba">畸变波玻恩近似</span>与 <span data-term="yoneda">Yoneda 峰</span></li>
+        <li><span data-term="form-factor">形式因子</span>与 <span data-term="structure-factor">结构因子</span>（透射 SAS 对照）</li>
+        <li><span data-term="block-copolymer">嵌段共聚物</span></li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../topics/gisaxs/index.html">专题 · GISAXS</a></li>
+        <li><a href="../learn/03-instruments.html">学习路径 03 · 仪器与几何</a></li>
+        <li><a href="../learn/09-application-paths.html">学习路径 09 · 应用岔路</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

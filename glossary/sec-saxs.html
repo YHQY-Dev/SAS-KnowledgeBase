@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>色谱联用小角散射 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>色谱联用小角散射</h1>
+      <p class="subtitle-en">size-exclusion chromatography SAXS</p>
+
+      <h2>定义</h2>
+      <p><strong>SEC-SAXS</strong>（或 SEC-SAS）把尺寸排阻色谱流出液直接送入散射池连续采集。在单分散峰顶附近积分帧，可显著降低体相聚集与寡聚混合物的影响。</p>
+
+      <h2>物理直觉</h2>
+      <p>须对齐 UV 与 SAXS 时间轴、考虑柱后稀释与峰展宽；自动管道适合筛选，发表仍需人工 QC 与完整元数据。</p>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="radiation-damage">辐射损伤</span></li>
+        <li><span data-term="radius-of-gyration">回转半径</span></li>
+        <li><span data-term="forward-scattering">前向散射</span></li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../topics/biosas/index.html">专题 biosas</a></li>
+        <li><a href="../topics/atsas/index.html">专题 atsas</a></li>
+        <li><a href="../topics/sample-env/index.html">专题 sample-env</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

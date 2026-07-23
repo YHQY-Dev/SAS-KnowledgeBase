@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>03 仪器与几何 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>03 · 仪器与几何</h1>
+      <p class="subtitle-en">Instrumentation and beam geometry</p>
+
+      <h2>导语：仪器不是「透明管道」</h2>
+      <p>理想实验希望得到真实的微分截面 $d\sigma/d\Omega$。现实仪器在有限通量下必须在<strong>分辨率</strong>与<strong>强度</strong>之间妥协：更严的准直带来更窄的<span data-term="scattering-vector-q">$q$</span> 分布，但到达样品的光子/中子数锐减。Pedersen（1995）在仪器综述开篇即指出，测得的 $I(q)$ 往往是真实截面与仪器权重函数的卷积——即 <strong>smearing（模糊）</strong>。</p>
+      <p>本章目标：理解透射与掠入射几何、实验室与同步辐射/中子源束线的典型配置、针孔与 Kratky 狭缝的差异，以及这些选择如何影响你能测到的 $q$ 范围与数据解释。数据还原与绝对标定留待第 04–05 章；这里聚焦「光路长什么样」。</p>
+      <p>Jeffries 2021 将经典 SAS 光路概括为：源 → 光学元件（能量、形状、准直）→ 样品 → 2D 探测器；<span data-term="usaxs">USAXS</span>/<span data-term="gisaxs">GISAXS</span> 等变体在样品后或入射角上增加额外光学环节。任何环节都会改变有效 $q$ 分布与<span data-term="instrument-smearing">仪器模糊</span>——测得的从来不是「理想 $d\sigma/d\Omega$」，而是其与仪器权重函数的卷积。</p>
+
+      <h2>透射几何：经典 SAS 布局</h2>
+      <p>绝大多数溶液与块体 SAS 采用<strong>透射几何</strong>：入射束穿过样品，二维探测器记录以直射束为中心的散射图样。Jeffries 2021 描述的「经典布局」包含：</p>
+      <ol>
+        <li><strong>源</strong>：X 射线管、同步辐射弯铁/波荡器，或反应堆/散裂中子源；</li>
+        <li><strong>单色与准直</strong>：单色器、狭缝或针孔，定义波长 $\lambda$ 与束发散；</li>
+        <li><strong>样品</strong>：毛细管、石英池、固体片等；</li>
+        <li><strong>束阻（beamstop）</strong>：遮挡直射束，保护探测器；</li>
+        <li><strong>探测器</strong>：记录 $I$ 随位置分布，换算为 $I(q)$。</li>
+      </ol>
+      <p>Pedersen 给出的对称 <span data-term="saxs">SAXS</span> 示意强调：前两道狭缝定义入射方向，第三道「guard slit」抑制第二狭缝的寄生散射；样品紧贴 guard slit 之后，光路常抽真空以减少空气散射与吸收。</p>
+      <figure class="figure">
+        <img src="../assets/figures/fig-02-transmission-saxs-beamline.png" alt="透射 <span data-term="saxs">SAXS</span> 仪器光路：源、准直、样品、飞行管、束阻、探测器" width="900">
+        <figcaption>典型对称 <span data-term="saxs">SAXS</span> 布局：源 → 准直狭缝 → guard slit → 样品 → 真空飞行管 → 束阻 → 探测器；狭缝间距与尺寸共同决定 $q$ 分辨率与寄生散射水平。<span class="fig-source">配图：自制示意（FIG-02）</span></figcaption>
+      </figure>
+      <p>对稀释生物样品，寄生散射在束阻附近须低至直射束的 $10^{-4}$–$10^{-5}$，否则极低 $q$ 数据不可用——这直接限制可测的<span data-term="forward-scattering">前向散射</span>下限。</p>
+      <p>Pedersen（1995）强调对称布局中<strong>入射束监测器（monitor）</strong>应置于光路前段，记录入射通量涨落，使散射强度与源漂移解耦；监测器本身亦须避免向样品方向产生寄生散射。样品紧贴 guard slit 之后、飞行管抽真空，是为压低空气散射与吸收——未抽真空时，低 $q$ 本底可抬高 1–2 个数量级。</p>
+      <table>
+        <thead>
+          <tr><th>光路元件</th><th>主要功能</th><th>配置失误的典型后果</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>单色器</td><td>选定 $\lambda$、$\Delta\lambda/\lambda$</td><td>高 $q$ 谱宽过大；荧光本底（边沿能量）</td></tr>
+          <tr><td>准直狭缝 / 针孔</td><td>定义发散 $\Delta\theta$</td><td>$q$ 分辨率差；通量不足</td></tr>
+          <tr><td>Guard slit</td><td>遮挡第二狭缝寄生散射</td><td>低 $q$ 抬高；Guinier 失真</td></tr>
+          <tr><td>束阻</td><td>保护探测器、定义 $q_{\min}$</td><td>$q_{\min}$ 过高；或探测器损坏</td></tr>
+          <tr><td>Monitor</td><td>归一化入射通量</td><td>重复测量不可比</td></tr>
+        </tbody>
+      </table>
+
+      <h2>分辨率与通量的根本权衡</h2>
+      <p>理想仪器需要完美准直与完美单色；有限源强迫使放宽条件。Pedersen 归纳两类主要放宽策略：</p>
+      <ul>
+        <li><strong>X 射线长狭缝（Kratky / line collimation）：</strong> 匹配线聚焦 X 射线管，在狭缝窄方向积分，换取通量，但 $q$ 分布变宽（非对称拖尾）。</li>
+        <li><strong>中子波长展宽：</strong> 对白谱中子用速度选择器，允许 $\Delta\lambda/\lambda$ 达 10–20%，在针孔几何下仍获足够通量。</li>
+      </ul>
+      <p>一阶估算：波长展宽导致</p>
+      $$ \Delta q \approx -q\,\frac{\Delta\lambda}{\lambda} $$
+      <p>准直发散导致（小角近似）</p>
+      $$ \Delta q \approx \frac{4\pi}{\lambda}\,\Delta\theta $$
+      <p>后者与 $q$ 无关，而前者随 $q$ 增大——故高 $q$ 端谱宽常由 $\Delta\lambda/\lambda$ 主导。分析数据时须么<strong><span data-term="desmearing">去模糊</span></strong>，要么对<strong>模糊后的模型</strong>拟合。</p>
+      <p>Pedersen 给出各向同性样品的 smearing 积分形式：测得 $I(q)$ 为真实截面在 $q_\parallel$、$q_\perp$、$\lambda$ 上的加权积分，权重函数 $W$ 来自狭缝几何、探测器分辨与波长分布。针孔相机可用 Gaussian 分辨率函数解析组合；Kratky 长狭缝则产生<strong>非对称</strong>拖尾（Fig. 1–2, Pedersen 1995）——固定「中心 $q$」处实际探测到一族偏低 $q$ 值。</p>
+      <p><strong>算例：</strong> <span data-term="sans">SANS</span> 针孔、$\Delta\lambda/\lambda=20\%$ 时，Pedersen 示意的 $q$ 分布显著宽于 X 射线实验室源（$\Delta\lambda/\lambda \sim 1\%$）。在 $q=0.2$ Å$^{-1}$ 拟合球体 $P(q)$ 振荡时，若忽略 smearing，第一极小位置可偏移 5–15%，$\chi^2$ 系统性偏高。</p>
+
+      <div class="keybox">
+        <strong>分辨率–通量权衡检查清单</strong>
+        <ul>
+          <li><strong>先定 $q$ 需求：</strong> 目标结构尺度 $d \sim 2\pi/q$；Guinier 区至少需 $q_{\min} \lesssim 1/R_g$。$q_{\min}$ 由束阻尺寸、样品–探测器距离 $L$ 与准直发散共同决定，不是软件可调参数。</li>
+          <li><strong>估算谱宽预算：</strong> 对 Cu K$\alpha$（$\lambda=1.54$ Å），$\Delta\theta=0.1$ mrad 时 $\Delta q \approx 0.0016$ Å$^{-1}$；若 $\Delta\lambda/\lambda=2\%$，在 $q=0.5$ Å$^{-1}$ 处 $\Delta q \approx 0.01$ Å$^{-1}$——高 $q$ 常由波长展宽主导。</li>
+          <li><strong>选准直策略：</strong> 各向同性稀溶液 + 需绝对标定 → 针孔；弱散射生物样品 + 可接受 smearing → Kratky；中子白谱 → 针孔 + 宽 $\Delta\lambda/\lambda$（10–20%）是常见组合。</li>
+          <li><strong>曝光与统计：</strong> 通量加倍 ≠ 分辨率加倍；若拟合 $R_g$ 精度要求 $\pm 5\%$，Guinier 区相对误差应 $\lesssim 2\%$——弱信号时优先延长曝光或换高亮源，而非无限收窄狭缝。</li>
+          <li><strong>分析端对齐：</strong> 记录仪器 smearing 函数（狭缝几何、$\Delta\lambda/\lambda$）；拟合前确认软件是否对模型做 smearing 卷积，避免「理想模型 + 模糊数据」。</li>
+        </ul>
+      </div>
+
+      <h2>针孔相机 vs Kratky 狭缝相机</h2>
+      <h3>针孔（pinhole）准直</h3>
+      <p>点源 + 针孔给出近似平行束，散射角与探测器像素位置一一对应，$I(q)$ 解释最直接。实验室针孔相机多用 Cu、Mo、Ag 靶（$\lambda \approx 1.54$、0.71、0.59 Å）；同步辐射针孔束线可聚焦至微米级束斑，配合像素阵列探测器做高通量筛选。</p>
+      <p>优点：几何简单，各向同性样品数据处理标准。缺点：通量低于 Kratky，弱散射样品曝光时间长。</p>
+      <h3>Kratky 线准直</h3>
+      <p>入射束呈线状（可视为无穷多个横向排列的点源），相邻点的散射在探测器上<strong>错位叠加</strong>，测得曲线为真实 $I(q)$ 与线几何权重的卷积。Kratky 相机照亮样品体积更大，对轻元素（生物分子）有利。</p>
+      <p>Pedersen 图 1–2 对比：长狭缝几何下，固定「中心 $q$」实际探测到一族偏低的 $q$ 拖尾；针孔几何分布近似对称。对稀溶液各向同性样品，<span data-term="desmearing">去模糊</span>算法成熟；各向异性或薄膜样品则困难得多。</p>
+      <figure class="figure">
+        <img src="../assets/figures/fig-06-pinhole-vs-slit.png" alt="针孔 vs 狭缝 smearing" width="900">
+        <figcaption>针孔（左）与长狭缝（右）几何下的 $q$ 权重函数：狭缝在固定「中心 $q$」处实际积分一族偏低 $q$ 值，形成非对称 smearing；针孔分布近似对称。<span class="fig-source">配图：自制示意</span></figcaption>
+      </figure>
+      <table>
+        <thead>
+          <tr><th>特性</th><th>针孔（pinhole）</th><th>Kratky 狭缝（line collimation）</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>$q$ 分辨率</td><td>高，各向同性对称</td><td>低 $q$ 较锐，高 $q$ 非对称拖尾</td></tr>
+          <tr><td>通量 / 照明体积</td><td>较低（点束）</td><td>较高（线照明，体积 $\sim$ 线长）</td></tr>
+          <tr><td>数据解释</td><td>直接，2D→1D 环向平均标准</td><td>须 smearing 校正或 smeared 模型拟合</td></tr>
+          <tr><td>绝对标定</td><td>几何因子明确，一级/二级标定友好</td><td>smearing 校正引入额外不确定度</td></tr>
+          <tr><td>各向异性样品</td><td>可分辨取向差异</td><td>线方向积分，取向信息丢失</td></tr>
+          <tr><td>典型场景</td><td>同步辐射、<span data-term="usaxs">USAXS</span>、定量比较</td><td>实验室生物 <span data-term="saxs">SAXS</span> 经典配置</td></tr>
+        </tbody>
+      </table>
+
+      <h3>实验室 vs 同步辐射：选型决策表</h3>
+      <p>仪器选择不是「同步辐射一定更好」——取决于样品散射强度、时间分辨需求与可及性。下表给出常见决策维度：</p>
+      <table>
+        <thead>
+          <tr><th>决策维度</th><th>优先实验室 <span data-term="saxs">SAXS</span></th><th>优先同步辐射 <span data-term="saxs">SAXS</span></th></tr>
+        </thead>
+        <tbody>
+          <tr><td>样品散射强度</td><td>浓溶液、高衬度颗粒、薄膜（$\Delta\rho$ 大）</td><td>稀生物溶液（$\Delta\rho \sim 10^{-6}$ Å$^{-2}$）、弱散射复合物</td></tr>
+          <tr><td>样品量 / 通量</td><td>毫克级常规筛选可接受数小时曝光</td><td>微升级、微流控、需秒级采集</td></tr>
+          <tr><td>$q$ 范围</td><td>单距离覆盖 1–2 个数量级通常足够</td><td>需 <span data-term="saxs">SAXS</span>+<span data-term="waxs">WAXS</span> 联测、<span data-term="usaxs">USAXS</span> 延伸极低 $q$</td></tr>
+          <tr><td>能量 / 衬度</td><td>固定 Cu/Mo 靶，<span data-term="asaxs">ASAXS</span> 不可行</td><td>能量扫描优化 $\Delta\rho$、元素特异 <span data-term="asaxs">ASAXS</span></td></tr>
+          <tr><td>时间分辨</td><td>分钟–小时动力学</td><td>停流、混合、泵浦探测（ms–μs）</td></tr>
+          <tr><td><span data-term="radiation-damage">辐射损伤</span>敏感样品</td><td>低通量，损伤慢，适合初筛</td><td>高通量但损伤快——须流动池/子曝光/低温</td></tr>
+          <tr><td>定量 / 跨台站比较</td><td>针孔台式机 + <span data-term="glassy-carbon">玻璃碳</span>定期复标可行</td><td>绝对标定成熟，但几何改变须复标</td></tr>
+        </tbody>
+      </table>
+      <p>数值直觉：密封管实验室源亮度 $\sim 10^6$ ph/(s·mm²·mrad²·0.1%BW)，同步辐射弯铁束线 $\sim 10^{12}$–$10^{14}$ ph/s——相差 $10^5$–$10^7$ 倍；稀生物样品（$I/I_0 \sim 10^{-6}$）在实验室上 Guinier 区统计常需数小时至一夜，同步辐射可压缩至秒–分钟。</p>
+      <p>Jeffries 2021 补充：近年 MetalJet 等实验室源可达 $\sim 10^9$ ph/s、束斑 $\sim 100$ μm²，使稀聚合物/蛋白溶液分钟级采集成为可能；但 $q_{\min}$ 与绝对标定精度仍通常不及同步辐射多距离布局。</p>
+
+      <h2><span data-term="usaxs">USAXS</span> 与极低 $q$</h2>
+      <p>当结构尺度迈向 0.1–10 μm（相分离域、晶界、大孔隙），常规 <span data-term="saxs">SAXS</span> 的 $q_{\min}$ 不足。<span data-term="usaxs">USAXS</span> 在样品后采用 <span data-term="bonse-hart">Bonse–Hart</span> 双晶等光学元件，以极高角度分辨率筛选散射角，可探 $q \lesssim 0.01$ nm$^{-1}$（$d \gtrsim 0.6$ μm）。代价是：额外光学吸收通量、对准苛刻，且仍可能有 <span data-term="desmearing">desmearing</span> 需求。Jeffries 指出，同步辐射高亮度是 <span data-term="usaxs">USAXS</span> 可行关键——实验室 <span data-term="usaxs">USAXS</span> 多限于高衬度硬材料。</p>
+      <p><span data-term="usaxs">USAXS</span> 与常规 <span data-term="saxs">SAXS</span> 数据 merge 时，重叠 $q$ 区须统一绝对强度、分辨函数与背景模型（第 04 章）；各向异性样品 merge 更复杂。</p>
+
+      <h2>实验室 <span data-term="saxs">SAXS</span> 源与组件</h2>
+      <p>实验室源主要包括：</p>
+      <ul>
+        <li><strong>密封管</strong>（~2 kW）：Kratky 标配，亮度 $\sim 10^6$ ph/(s·mm²·mrad²·0.1%BW)；</li>
+        <li><strong>旋转阳极</strong>（10–100 kW）：更高通量，束斑可小至 0.1 mm；</li>
+        <li><strong>金属喷射源（MetalJet）</strong>：液态金属靶，近年实验室高亮度方案。</li>
+      </ul>
+      <p>样品厚度常取 $t \approx 1/\mu$（$\mu$ 为线吸收系数），在透射与吸收间折中。Zn 等元素的 K 吸收边附近（~10 keV）可能产生强荧光背景——选能须避开或接受本底惩罚。</p>
+      <p>组件链：源 → 单色（石墨、多层膜或晶体）→ 准直狭缝 → 样品 → 真空飞行管 → 束阻 → 探测器（CCD 闪烁屏或像素阵列 PAD）。现代 PAD（Eiger、Pilatus 等）具备高动态范围与单光子计数，是同步辐射与高端实验室台站主流。</p>
+      <p><strong>样品厚度：</strong> Pedersen 与 Kratky 传统建议透射 $T \approx e^{-\mu t} \approx 1/e$，即 $t \approx 1/\mu$ 时散射信号与吸收折中。算例：水相蛋白池对 Cu K$\alpha$，$t \sim 1$–2 mm 常见；过厚（$T<0.7$）使体散射权重偏向靠近出射面的一层，$I(q)$ 形状畸变。<span data-term="sans">SANS</span> 中子穿透深，池厚可达 cm，但须防<span data-term="multiple-scattering">多重散射</span>（$T \gtrsim 0.8$–0.9 为经验起点）。</p>
+
+      <h2>同步辐射 <span data-term="saxs">SAXS</span> 束线</h2>
+      <p>电子储存环提供比实验室高 $10^5$–$10^7$ 的亮度，且束斑、能量可调。Jeffries 2021 强调同步辐射的独特能力：</p>
+      <ul>
+        <li><strong>微束与高通量筛选：</strong> $10^{12}$–$10^{14}$ ph/s，稀样品、微流控进样；</li>
+        <li><strong>能量扫描：</strong> 优化<span data-term="contrast">衬度</span>与吸收，支持 <span data-term="asaxs">ASAXS</span>（元素特异）；</li>
+        <li><strong>时间分辨：</strong> 毫秒至微秒（停流、混合、泵浦探测）；</li>
+        <li><strong>宽 $q$ 覆盖：</strong> 多探测器距离、可变波长，<span data-term="saxs">SAXS</span>+<span data-term="waxs">WAXS</span> 联测。</li>
+      </ul>
+      <p>典型 $q$ 覆盖约两个数量级（如 0.05–5 nm$^{-1}$）；<span data-term="usaxs">USAXS</span> 光学（<span data-term="bonse-hart">Bonse–Hart</span> 双晶）可探 $q < 0.01$ nm$^{-1}$，对应微米级结构，但需极高通量才能穿透额外光学元件。</p>
+      <p><span data-term="radiation-damage">辐射损伤</span>是同步辐射 <span data-term="saxs">SAXS</span> 的主要样品风险：须分次测量、流动样品池或低温。Pedersen 亦提醒：强束可导致生物样品化学环境改变，须用子曝光检查一致性。</p>
+      <p><strong><span data-term="asaxs">ASAXS</span>（异常小角散射）：</strong> 同步辐射可调能量至特定元素吸收边附近，$\Delta\rho$ 对该元素贡献急剧变化，从而「点亮」金属离子、重原子标签等。Jeffries 2021 举例： metalloprotein 中的金属、DNA 上的离子、表面活性剂胶束中的反离子。实验室固定 Cu/Mo 靶无法做 <span data-term="asaxs">ASAXS</span>——这是同步辐射的独有维度，与通量并列。</p>
+
+      <h2><span data-term="sans">SANS</span> 仪器要点</h2>
+      <p>中子源分<strong>反应堆</strong>（连续谱）与<strong>散裂源</strong>（脉冲，时间飞行 ToF）。中子经慢化剂调节动能，速度选择器或 ToF 定义 $\lambda$ 与 $\Delta\lambda/\lambda$。</p>
+      <p>Jeffries 2021 对比：反应堆提供连续中子流，散裂源为脉冲多色束，ToF 在单距离上展开宽 $q$ 但还原需处理时间–能量关联。通量约 $10^7$–$10^{15}$ cm$^{-2}$ s$^{-1}$，比 X 射线低数个数量级；补偿手段是更大束斑、更长曝光、更厚样品（在<span data-term="multiple-scattering">多重散射</span>可控前提下）。中子深穿透使剪切池、高温炉、磁场等复杂样品环境成为 <span data-term="sans">SANS</span> 强项。</p>
+      <p>与 <span data-term="saxs">SAXS</span> 对比的关键差异：</p>
+      <table>
+        <thead>
+          <tr><th>项目</th><th><span data-term="sans">SANS</span> 特点</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>通量</td><td>显著低于 X 射线；曝光更长，样品量更大</td></tr>
+          <tr><td>穿透</td><td>深，适合厚样品、复杂样品环境（剪切、磁场）</td></tr>
+          <tr><td>本底</td><td>$^1$H 不相干散射强；氘代与空泡本底控制关键</td></tr>
+          <tr><td>$q$ 覆盖</td><td>常换探测器距离，多段 merge；ToF 单距离宽 $q$ 但还原复杂</td></tr>
+          <tr><td>衬度</td><td>H/D 匹配是核心实验设计维度</td></tr>
+        </tbody>
+      </table>
+      <p>探测器多为 $^3$He 或硼转换型，像素 mm–cm 量级，比 X 射线 PAD 粗糙，但对热中子足够。VSANS/USANS 用磁透镜或 <span data-term="bonse-hart">Bonse–Hart</span> 晶体延伸极低 $q$；SESANS 等实空间技术可探数十 μm 尺度（专题规划）。</p>
+      <p>多距离测量时，各段数据须按样品透射、$q$ 分辨率函数合并——Jeffries 指出 merge 须考虑 $\Delta\lambda/\lambda$、重力、几何与像素尺寸对 $q$ 展宽的贡献。</p>
+
+      <h2>掠入射几何与 <span data-term="gisaxs">GISAXS</span></h2>
+      <p><span data-term="gisaxs">GISAXS</span>（grazing-incidence <span data-term="saxs">SAXS</span>）用于薄膜、表面自组装层、纳米线阵列等<strong>二维纳米结构</strong>。入射角 $\alpha_i$ 接近基底<span data-term="critical-angle">临界角</span>（常 0.1°–1°），束在薄膜平面内路径长，面内<span data-term="scattering-vector-q">$q$</span> 与面外 $q_z$ 须分开处理：</p>
+      $$ q_{x,y,z} = \frac{2\pi}{\lambda}\begin{bmatrix} \cos\alpha_f\cos 2\theta_f - \cos\alpha_i \\ \cos\alpha_f\sin 2\theta_f \\ \sin\alpha_f + \sin\alpha_i \end{bmatrix} $$
+      <p>（Jeffries 式 4；符号依坐标系略有差异。）</p>
+      <p>掠入射时反射、透射与衬底多次散射路径相干叠加，须用<strong>畸变波玻恩近似（<span data-term="dwba">DWBA</span>）</strong> 解释 2D 散射图，而非简单透射 $P(q)S(q)$。有序超晶格出现 Bragg 条纹；条纹位置给晶格参数，强度受形式因子调制。</p>
+      <p>Jeffries 2021 列出掠入射中的主要散射通道：束在膜内传播散射、衬底反射回膜内再散射、透射至衬底再散射及多重反射——表面缺陷使有效表面形式因子复杂化。<strong><span data-term="yoneda">Yoneda</span> 峰</strong>出现在<span data-term="critical-angle">临界角</span>附近，反映薄膜与衬底电子密度对比；镜面反射峰与条纹随入射角 $\alpha_i$ 移动是 DWBA 指纹，透射 SAS 无此行为。</p>
+      <p>实验注意：样品台倾角精度（常要求 0.01° 级）、直射束与<span data-term="critical-angle">临界角</span>附近的强反射区束阻、以及表面粗糙度对 DWBA 项的权重。Jeffries 指出掠入射束在膜平面内路径长，信号可强于同厚度透射样——但穿透深度受 $\alpha_i$ 限制，体衬底贡献通常较低。低反射极限（$\alpha_i$ 远低于<span data-term="critical-angle">临界角</span>）下分析有时可退化为类似透射 SAS，但须逐案例验证。</p>
+
+      <h2>探测器、束阻与 $q$ 标定</h2>
+      <p>无论 <span data-term="saxs">SAXS</span> 还是 <span data-term="sans">SANS</span>，从像素到 $q$ 的映射依赖：</p>
+      <ul>
+        <li>波长 $\lambda$（或 ToF 反推）；</li>
+        <li>样品–探测器距离 $L$；</li>
+        <li>束心位置与探测器倾斜（球面波校正，高 $q$ 或大像素时重要）。</li>
+      </ul>
+      <p>$q$ 标定常用银二十二酸（silver behenate）等标准样，或已知光栅间距。改变 $L$ 或 $\lambda$ 后须重新标定。</p>
+      <p>探测器缺陷（热噪、坏点、宇宙线 zingers）须在还原前修正。动态范围须覆盖 $I(q)$ 跨数个数量级的衰减——Guinier 区像素接近束阻，高 $q$ 区计数稀少。</p>
+      <p>强度标定（绝对 cm$^{-1}$）用纯水、<span data-term="glassy-carbon">玻璃碳</span>或 NIST SRM3600 等——详见第 05 章；仪器章只需知：<strong>没有强度与 $q$ 的双重标定，跨台站比较无意义</strong>。</p>
+      <p><strong>$q$ 标定流程要点：</strong> (1) 银二十二酸（AgBe）或已知间距标准样得 $q$ 刻度；(2) 精测 $L$ 与束心；(3) 大像素或近距离时做球面波/几何畸变校正；(4) 改变 $\lambda$、$L$ 或探测器后<strong>必须</strong>重标定。Jeffries 2021 强调，仪器参数与样品条件须一并记入元数据，否则复现与比对失败。</p>
+
+      <h2>样品环境与原位测量</h2>
+      <p>SAS 的价值很大程度来自样品环境可扩展性。Jeffries 2021 列举：变温、变压、流动、剪切、反应池、微流控进样等。设计原则：</p>
+      <ul>
+        <li>窗口材料（Kapton、石英、蓝宝石）须已知吸收与自身散射，计入背景；</li>
+        <li>复杂池体增加低 $q$ 寄生散射——空池背景测量不可或缺；</li>
+        <li>时间分辨实验须平衡时间分辨率与单帧 SNR（同步辐射子毫秒 vs 实验室分钟）；</li>
+        <li><span data-term="sans">SANS</span> 中 $^1$H <span data-term="incoherent-background">不相干本底</span>强，氘代溶剂与空泡本底控制比 <span data-term="saxs">SAXS</span> 更苛刻。</li>
+      </ul>
+
+      <h2>常见坑</h2>
+      <div class="note">
+        <strong>坑 1：忽视 smearing → 如何判断：</strong> 用理想 $P(q)$ 拟合 Kratky 或宽 $\Delta\lambda/\lambda$ 的 <span data-term="sans">SANS</span> 数据时，$\chi^2$ 在低 $q$ 系统性偏高、拟合 $R_g$ 偏大 10–30%。检查：比较 <span data-term="desmearing">desmear</span>ed 与 smeared 模型拟合的 $\chi^2$；若仪器有 smearing 参数记录，确认拟合软件已启用。
+      </div>
+      <ul>
+        <li><strong>坑 2：$q_{\min}$ 由束阻硬截断 → 如何判断：</strong> Guinier 线性区起始点距束阻阴影仅 2–3 个像素；$I(q)$ 在最低 $q$ 点异常抬高或斜率突变。低于 $q_{\min}$ 的外推不可靠——需 <span data-term="usaxs">USAXS</span> 或增大 $L$。</li>
+        <li><strong>坑 3：样品太厚/太薄 → 如何判断：</strong> 透射 $T < 0.7$ 或 $T > 0.95$ 时体散射权重失真；<span data-term="saxs">SAXS</span> 吸收校正后 $I(q)$ 形状仍异常。<span data-term="sans">SANS</span> 过厚（$T < 0.8$）可能出现<span data-term="multiple-scattering">多重散射</span>——低 $q$ 抬高、Porod 尾变平。</li>
+        <li><strong>坑 4：未抽真空或寄生散射过高 → 如何判断：</strong> 空样品架（无样品）在低 $q$ 仍有可测信号；$I_{\mathrm{empty}}(q_{\min})/I_0 > 10^{-4}$。Guinier 区上翘、$R_g$ 偏大。</li>
+        <li><strong>坑 5：<span data-term="gisaxs">GISAXS</span> 当透射 <span data-term="saxs">SAXS</span> 解 → 如何判断：</strong> 2D 图样出现强镜面峰/Yoneda 峰，但分析时只用环向平均 $I(q_\parallel)$ 且忽略 $\alpha_i$ 依赖。条纹位置随 $\alpha_i$ 移动——这是 DWBA 特征，非 $P(q)$ 单独决定。</li>
+        <li><strong>坑 6：多距离 <span data-term="sans">SANS</span> merge 不当 → 如何判断：</strong> 重叠 $q$ 区出现非物理振荡或台阶；各段 $I(q)$ 在 overlap 处偏离 $>5\%$。检查：各段分辨率函数是否一致、权重是否按 $1/\sigma^2$ 过渡。</li>
+        <li><strong>坑 7：只看强度不看误差 → 如何判断：</strong> 高 $q$ 区仅 3–5 个有效点且 $\sigma/I > 30\%$，但拟合仍强制过 Porod 尾。应截断不可靠 $q$ 区或合并重复测量以降低统计噪声。</li>
+      </ul>
+
+      <h2>小结</h2>
+      <p>SAS 仪器在「理想分辨率」与「可用通量」之间折中：针孔几何解释直接，Kratky 与波长展宽则用 smearing 换信号。同步辐射 <span data-term="saxs">SAXS</span> 强在亮度、可调能量与时间分辨；<span data-term="sans">SANS</span> 强在深穿透与 H/D 衬度。掠入射 <span data-term="gisaxs">GISAXS</span> 把 SAS 拓展到表面与薄膜，但分析框架升级为 DWBA。理解光路后，下一章将讨论如何把探测器图像变成校正过的 $I(q)$。</p>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="scattering-vector-q">散射矢量 q</span></li>
+        <li><span data-term="contrast">衬度</span></li>
+        <li><span data-term="forward-scattering">前向散射</span></li>
+        <li><span data-term="gisaxs">GISAXS</span></li>
+        <li><span data-term="usaxs">USAXS</span></li>
+        <li><span data-term="asaxs">ASAXS</span></li>
+        <li><span data-term="instrument-smearing">仪器模糊 smearing</span></li>
+        <li><span data-term="dwba">DWBA</span></li>
+        <li><span data-term="yoneda">Yoneda 峰</span></li>
+        <li><span data-term="absolute-intensity">绝对强度</span></li>
+      </ul>
+
+      <h2>延伸阅读</h2>
+      <ul>
+        <li><em>Instrumentation for Small-Angle Scattering</em>. Jan Skov Pedersen (1995). DOI: <a href="https://doi.org/10.1007/978-94-015-8457-9_2" target="_blank" rel="noopener noreferrer">10.1007/978-94-015-8457-9_2</a></li>
+        <li><em>Small-angle X-ray and neutron scattering</em>. Cy M. Jeffries et al. (2021). DOI: <a href="https://doi.org/10.1038/s43586-021-00064-9" target="_blank" rel="noopener noreferrer">10.1038/s43586-021-00064-9</a></li>
+        <li><em>Review of the fundamental theories behind small angle X-ray scattering, molecular dynamics simulations, and relevant integrated application</em>. Lauren Boldon, Fallon Laliberte, Li Liu (2015). DOI: <a href="https://doi.org/10.3402/nano.v6.25661" target="_blank" rel="noopener noreferrer">10.3402/nano.v6.25661</a></li>
+      </ul>
+
+      <nav class="pager">
+        <a href="02-scattering-basics.html">← 上一章：02 散射基础</a>
+        <a href="04-data-reduction.html">下一章：04 数据还原 →</a>
+      </nav>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

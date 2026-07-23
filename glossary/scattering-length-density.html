@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>散射长度密度 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>散射长度密度</h1>
+      <p class="subtitle-en">scattering length density</p>
+
+      <h2>定义</h2>
+      <p><strong>散射长度密度</strong>（SLD，记作 $\rho$）是单位体积内所有原子（核）相干散射长度 $b$ 之和：</p>
+      $$ \rho = \sum_i n_i b_i $$
+      <p>其中 $n_i$ 为第 $i$ 种原子的数密度。SANS 中 $b$ 为核散射长度（fm）；SAXS 中常用<strong>电子密度</strong> $\rho_e$（$\mathrm{e/\AA^3}$），与材料的 X 射线散射因子相关。</p>
+
+      <h2>物理直觉</h2>
+      <p>SLD 是「这一小块物质有多会散射」的宏观量。两区域 SLD 不同就形成 <span data-term="contrast">衬度</span>，产生 SAS 信号。计算 SLD 时要知道化学组成、密度，以及同位素（氘/氢对 SANS 影响极大）。</p>
+
+      <h2>常用关系</h2>
+      <p>稀溶液中溶质颗粒的散射强度常写为</p>
+      $$ I(q) \propto N V^2 (\rho_\mathrm{particle} - \rho_\mathrm{solvent})^2 P(q) S(q) $$
+      <p>其中 $N$ 为数密度，$V$ 为粒子体积。绝对强度标定可把实验 $I(q)$ 与 $\Delta\rho$ 联系起来。</p>
+
+      <h2>实验与计算</h2>
+      <ul>
+        <li>表格工具（如 NIST SLD calculator）可根据化学式与密度估算 $\rho$。</li>
+        <li>氘化溶剂、$\mathrm{H_2O/D_2O}$ 比例可调节 $\rho_\mathrm{solvent}$，实现匹配或增强衬度。</li>
+        <li>多相材料需分别计算各相 SLD，再谈有效衬度或两相模型。</li>
+      </ul>
+
+      <h2>常见混淆</h2>
+      <ul>
+        <li>SANS 的 $\rho$ 与 SAXS 的 $\rho_e$ 数值与单位不同，不可直接混用。</li>
+        <li>散射长度 $b$ 可为负（如天然氢），故 $\rho$ 也可为负；强度看差值平方。</li>
+        <li>「平均密度」≠ SLD：SLD 是散射长度的体积和，包含同位素与相干散射长度加权。</li>
+      </ul>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="contrast">衬度</span> $\Delta\rho$</li>
+        <li><span data-term="form-factor">形式因子</span> $P(q)$</li>
+        <li><span data-term="structure-factor">结构因子</span> $S(q)$</li>
+        <li><span data-term="absolute-intensity">绝对强度</span></li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../learn/02-scattering-basics.html">学习路径 02 · 散射基础</a></li>
+        <li><a href="../topics/sans-contrast/index.html">专题 · SANS 衬度</a></li>
+        <li><a href="../topics/calibration/index.html">专题 · 绝对标定</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

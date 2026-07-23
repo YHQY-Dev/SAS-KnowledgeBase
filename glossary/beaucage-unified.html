@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Beaucage 统一模型 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>Beaucage 统一模型</h1>
+      <p class="subtitle-en">Beaucage unified scattering function</p>
+
+      <h2>定义</h2>
+      <p><strong>Beaucage 统一散射函数</strong>在每个结构层级上用 Guinier 项与幂律项光滑连接，并可串联多个 level，描述从初级粒子到大尺度聚集体的层次结构。</p>
+
+      <h2>物理直觉</h2>
+      <p>参数多，易过拟合；需宽 $q$ 覆盖与物理边界（$P$、$R_g$ 合理）。常与 USAXS–SAXS 拼接数据联用。</p>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="guinier-porod-model">Guinier–Porod 模型</span></li>
+        <li><span data-term="fractal-scattering">分形散射</span></li>
+        <li><span data-term="guinier-analysis">Guinier 分析</span></li>
+        <li><span data-term="polydispersity">多分散性</span></li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../learn/08-models-polydispersity.html">学习路径 08-models-polydispersity</a></li>
+        <li><a href="../topics/usaxs/index.html">专题 usaxs</a></li>
+        <li><a href="../learn/06-guinier-porod.html">学习路径 06-guinier-porod</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

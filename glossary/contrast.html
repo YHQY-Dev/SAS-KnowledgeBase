@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>衬度 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>衬度</h1>
+      <p class="subtitle-en">scattering contrast</p>
+
+      <h2>定义</h2>
+      <p><strong>散射衬度</strong>描述样品内部（或溶质与溶剂之间）<span data-term="scattering-length-density">散射长度密度</span> 的差异。两相 $\alpha$、$\beta$ 的体积平均衬度常写为</p>
+      $$ \Delta\rho = \rho_\alpha - \rho_\beta $$
+      <p>散射强度正比于 $\Delta\rho^2$（在相同体积分数与几何下）。衬度为零时，相干散射信号在理想情况下消失——这是 SANS 同位素替换与溶剂匹配实验的核心思想。</p>
+
+      <h2>物理直觉</h2>
+      <p>可把 SAS 想象为「密度（或散射长度）起伏」在 $q$ 空间的傅里叶变换。起伏越大（$\Delta\rho$ 越大），信号越强。聚合物在氘化溶剂中、蛋白质在 $\mathrm{D_2O/H_2O}$ 混合溶剂中，都是通过调节 $\rho_\mathrm{solvent}$ 使某一组分衬度最大或匹配为零。</p>
+
+      <h2>实验含义</h2>
+      <ul>
+        <li><strong>溶剂匹配</strong>：选择溶剂使 $\rho_\mathrm{solute} \approx \rho_\mathrm{solvent}$，可「隐藏」某一相，只观察另一相。</li>
+        <li><strong>部分氘化</strong>：用氘替换氢改变链段 $\rho$，实现选择性衬度。</li>
+        <li><strong>多组分体系</strong>：各组分衬度同时贡献，信号解释需知体积分数与混合规则。</li>
+      </ul>
+
+      <h2>常见混淆</h2>
+      <ul>
+        <li>「光学衬度」与「散射衬度」：SAS 用的是相干散射长度密度，不是折射率差（虽然概念类似）。</li>
+        <li>SAXS 中常谈电子密度差 $\Delta\rho_e$；SANS 中谈核散射长度密度 $\rho$（单位 $\mathrm{cm}^{-2}$ 或 $\mathrm{fm\,\AA^{-3}}$ 等，注意文献单位）。</li>
+        <li>衬度大并不总更好：过高可能导致多重散射、透射衰减与校正困难（尤其 SANS 厚样品）。</li>
+      </ul>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="scattering-length-density">散射长度密度</span>（SLD）</li>
+        <li><span data-term="form-factor">形式因子</span>与 <span data-term="structure-factor">结构因子</span>：在衬度平方因子之外描述 $q$ 依赖</li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../learn/02-scattering-basics.html">学习路径 02 · 散射基础</a></li>
+        <li><a href="../topics/sans-contrast/index.html">专题 · SANS 衬度</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

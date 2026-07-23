@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>回转半径 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>回转半径</h1>
+      <p class="subtitle-en">radius of gyration</p>
+
+      <h2>定义</h2>
+      <p><strong>回转半径</strong> $R_g$ 描述散射体质量（散射长度）相对于质心的展宽程度：</p>
+      $$ R_g^2 = \frac{\int r^2 \rho(\mathbf{r})\, d\mathbf{r}}{\int \rho(\mathbf{r})\, d\mathbf{r}} $$
+      <p>对离散点质量模型，$R_g^2 = \langle r^2 \rangle - \langle \mathbf{r} \rangle^2$。它是与形状无关的「整体尺寸」标度，单位与长度相同（常用 nm）。</p>
+
+      <h2>与 Guinier 区的关系</h2>
+      <p>在 <span data-term="guinier-analysis">Guinier 分析</span> 适用的低 $q$ 区（$q R_g \lesssim 1$），</p>
+      $$ I(q) \approx I(0)\, \exp\!\left(-\frac{q^2 R_g^2}{3}\right) $$
+      <p>因此 $\ln I$ 对 $q^2$ 作图得直线，斜率为 $-R_g^2/3$。这是从 SAS 曲线快速估计整体尺寸最常用的方法之一。</p>
+
+      <h2>不同形状的 $R_g$</h2>
+      <ul>
+        <li>实心球：$R_g = \sqrt{3/5}\,R$</li>
+        <li>薄壳球：$R_g = R$（壳在半径 $R$ 上）</li>
+        <li>高斯链（理想）：$R_g = b\sqrt{N/6}$，$b$ 为统计段长，$N$ 为段数</li>
+        <li>刚性棒：$R_g$ 与棒长 $L$ 与横截面半径有关，各向异性时需分 $R_{g,\parallel}$、$R_{g,\perp}$</li>
+      </ul>
+
+      <h2>常见混淆</h2>
+      <ul>
+        <li>$R_g$ 不是「半径」：非球形物体的 $R_g$ 不能等同于某一几何半径，需对照模型换算。</li>
+        <li>Guinier 拟合的 $q$ 范围过宽会引入系统误差；应只取 $q R_g \lesssim 1$ 且线性段。</li>
+        <li>多分散样品：Guinier 给出的是 $z$-平均 $R_g$，与数平均、重平均不同。</li>
+        <li>浓溶液中 $S(q)$ 影响低 $q$，直接 Guinier 可能失效。</li>
+      </ul>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="guinier-analysis">Guinier 分析</span></li>
+        <li><span data-term="forward-scattering">前向散射</span>与 $I(0)$</li>
+        <li><span data-term="pair-distance-distribution">距离分布函数</span> $p(r)$：实空间尺寸的另一视角</li>
+        <li><span data-term="form-factor">形式因子</span> $P(q)$</li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../learn/02-scattering-basics.html">学习路径 02 · 散射基础</a></li>
+        <li><a href="../learn/06-guinier-porod.html">学习路径 06 · Guinier / Porod</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

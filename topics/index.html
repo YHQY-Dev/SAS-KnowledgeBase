@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>专题手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>专题手册</h1>
+      <p class="subtitle-en">Topic guides — literature-oriented quick reference</p>
+
+      <p>专题页以<strong>文献导读</strong>为主：带着一个实验或分析问题进入，沿核心论文的主线理解关键公式、常见坑与延伸阅读。与学习路径的教材式改写互补——这里不追求从零讲起，而追求「查得到、读得深」。</p>
+
+      <p class="muted">下列 12 个专题均已提供详细导读；可按样品类型与实验问题选读。</p>
+
+      <h2>全部专题（12）</h2>
+      <div class="card-grid">
+        <a class="card" href="calibration/index.html">
+          <strong>绝对标定 <span class="pill">已就绪</span></strong>
+          实验室与同步辐射 <span data-term="saxs">SAXS</span> 的绝对强度、标样选择与 NIST SRM 3600；如何把 $I(q)$ 放到 $\mathrm{d}\Sigma/\mathrm{d}\Omega$ 尺度。
+        </a>
+        <a class="card" href="data-reduction/index.html">
+          <strong>数据还原 <span class="pill">已就绪</span></strong>
+          2D 图样→$I(q)$、背景扣除、透射率与误差传播；校正链条的系统梳理。
+        </a>
+        <a class="card" href="ift/index.html">
+          <strong>IFT / <span data-term="gnom">GNOM</span> <span class="pill">已就绪</span></strong>
+          从 $I(q)$ 到 $p(r)$ 的间接傅里叶变换、正则化与解的唯一性直觉。
+        </a>
+        <a class="card" href="biosas/index.html">
+          <strong>生物 SAS <span class="pill">已就绪</span></strong>
+          溶液中生物大分子的 <span data-term="saxs">SAXS</span>：样品质量、Guinier、$p(r)$、低分辨建模与发表规范。
+        </a>
+        <a class="card" href="atsas/index.html">
+          <strong>ATSAS 工具链 <span class="pill">已就绪</span></strong>
+          ATSAS 程序族导读：PRIMUS、<span data-term="gnom">GNOM</span>、DAMMIF、CRYSOL 等在典型流程中的位置。
+        </a>
+        <a class="card" href="sans-contrast/index.html">
+          <strong><span data-term="sans">SANS</span> <span data-term="contrast-variation">衬度变化</span> <span class="pill">已就绪</span></strong>
+          氘代与匹配点；多组分复合物的衬度设计与 Stuhrmann 分析入门。
+        </a>
+        <a class="card" href="gisaxs/index.html">
+          <strong><span data-term="gisaxs">GISAXS</span> <span class="pill">已就绪</span></strong>
+          掠入射几何、2D 图样、DWBA 与薄膜/表面纳米结构的散射解释。
+        </a>
+        <a class="card" href="asaxs/index.html">
+          <strong><span data-term="asaxs">ASAXS</span> <span class="pill">已就绪</span></strong>
+          反常小角散射：元素分辨与近边能量扫描在纳米结构中的应用。
+        </a>
+        <a class="card" href="magnetic-sans/index.html">
+          <strong>磁性 <span data-term="sans">SANS</span> <span class="pill">已就绪</span></strong>
+          磁散射衬度、自旋与磁纳米结构的 <span data-term="sans">SANS</span> 信号解读。
+        </a>
+        <a class="card" href="polymers-bcp/index.html">
+          <strong>聚合物 / 嵌段共聚物 <span class="pill">已就绪</span></strong>
+          链构象、<span data-term="microphase-separation">微相分离</span>与 BCP 薄膜的 SAS 特征；与 <span data-term="gisaxs">GISAXS</span> 的衔接。
+        </a>
+        <a class="card" href="usaxs/index.html">
+          <strong><span data-term="usaxs">USAXS</span> <span class="pill">已就绪</span></strong>
+          超小角区仪器、狭缝效应与多尺度拼接；与 pinhole <span data-term="saxs">SAXS</span> 的绝对标定联系。
+        </a>
+        <a class="card" href="sample-env/index.html">
+          <strong>样品环境 <span class="pill">已就绪</span></strong>
+          原位池、温控、流动与 <span data-term="sec-saxs">SEC-SAS</span> 等环境装置对数据质量的影响。
+        </a>
+      </div>
+
+      <h2>怎么选专题</h2>
+      <ul>
+        <li>数据只有任意单位、无法算分子量或体积分数 → 从 <a href="calibration/index.html">绝对标定</a> 开始。</li>
+        <li>薄膜或表面纳米结构、需要 2D 散射图 → <a href="gisaxs/index.html"><span data-term="gisaxs">GISAXS</span></a>。</li>
+        <li>蛋白质/核酸溶液、结构生物学问题 → <a href="biosas/index.html">生物 SAS</a>。</li>
+        <li>还不熟悉 $q$、$P(q)$、$S(q)$ → 先读 <a href="../learn/02-scattering-basics.html">学习路径 02</a>，再回专题。</li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

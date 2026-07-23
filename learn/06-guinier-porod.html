@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>06 Guinier 与 Porod · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>06 · Guinier 与 Porod</h1>
+      <p class="subtitle-en">Guinier &amp; Porod — $R_g$, $I(0)$, and high-$q$ interface asymptotes</p>
+
+      <h2>导语：先读两端，再谈中间</h2>
+      <p>校正并（最好）绝对标定之后的 $I(q)$，不必立刻做全曲线形状拟合。多数工作流先回答两个「端点问题」：</p>
+      <ul>
+        <li><strong>低 $q$（Guinier 区）：</strong> 粒子/分子有多大？前向强度 $I(0)$ 是否合理？</li>
+        <li><strong>高 $q$（Porod 区）：</strong> 界面是否尖锐？比表面积量级如何？</li>
+      </ul>
+      <p>两端读通后，中间区（形式因子振荡、结构因子峰）才有可靠语境。本章给出 Guinier / Porod 的公式直觉、适用条件、作图与拟合流程、Hammouda 统一 <span data-term="guinier-porod-model">Guinier–Porod 模型</span>，以及一组常见坑。实空间完整反演见第 07 章与 <a href="../topics/ift/index.html">IFT 专题</a>。</p>
+
+      <figure class="figure">
+        <img src="../assets/figures/fig-03-iq-regimes.png" alt="I(q) 曲线三区示意" width="900">
+        <figcaption>对数–对数 $I(q)$ 的典型分区：低 $q$ Guinier → 中间形式因子/结构因子 → 高 $q$ Porod 尾。真实曲线分区边界因尺寸与多分散而移动。<span class="fig-source">配图：自制示意</span></figcaption>
+      </figure>
+
+      <h2>回转半径 $R_g$ 是什么</h2>
+      <p><span data-term="radius-of-gyration">回转半径</span> $R_g$ 是散射长度密度「质心」的二阶矩：</p>
+      $$R_g^2 = \frac{\displaystyle\int (\mathbf{r}-\mathbf{r}_0)^2\,\Delta\rho(\mathbf{r})\,\mathrm{d}V}{\displaystyle\int \Delta\rho(\mathbf{r})\,\mathrm{d}V}.$$
+      <p>它不是「半径」本身，而是形状的整体尺寸度量。对均匀球体 $R = R_g\sqrt{5/3}$；对细长棒、薄盘、空心壳，换算系数不同。稀溶液单分散无相互作用体系中，$R_g$ 几乎总是第一批要报告的参数——它对绝对强度标定不敏感（Guinier 斜率只依赖形状），但对<strong>低 $q$ 数据质量</strong>极度敏感。</p>
+      <table>
+        <thead>
+          <tr><th>对象</th><th>$R_g$ 与几何尺寸</th><th>备注</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>均匀实心球（半径 $R$）</td><td>$R_g = R\sqrt{5/3}\approx 0.775\,R$</td><td>最常用换算</td></tr>
+          <tr><td>细长棒（长度 $L$，忽略截面）</td><td>$R_g \approx L/\sqrt{12}$</td><td>低 $q$ 看到长度主导</td></tr>
+          <tr><td>薄圆盘（半径 $R$）</td><td>$R_g \approx R/\sqrt{2}$</td><td>厚度贡献可另加</td></tr>
+          <tr><td>高斯链（均方末端距 $\langle R^2\rangle$）</td><td>$R_g = \sqrt{\langle R^2\rangle/6}$</td><td>聚合物溶液经典关系</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Guinier 近似</h2>
+      <p>在 $q R_g \ll 1$ 时，任意形状（各向同性平均后）的散射可展开为</p>
+      $$I(q) \approx I(0)\,\exp\!\left(-\frac{q^2 R_g^2}{3}\right).$$
+      <p>两边取对数得直线形式（Guinier 图）：</p>
+      $$\ln I(q) = \ln I(0) - \frac{R_g^2}{3}\,q^2.$$
+      <p>以 $q^2$ 为横轴、$\ln I$ 为纵轴：斜率 $= -R_g^2/3$，截距 $= \ln I(0)$。这就是<span data-term="guinier-analysis">Guinier 分析</span>的操作定义。</p>
+
+      <h3>适用窗口：$q R_g$ 上限</h3>
+      <p>教科书常写 $q R_g &lt; 1$。实践中上限取决于形状与多分散（Glatter &amp; Kratky 1982；Hammouda 2010）：</p>
+      <table>
+        <thead>
+          <tr><th>散射体类型</th><th>推荐 $q_{\max} R_g$</th><th>偏离症状</th><th>备注</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>紧凑球、近球形蛋白</td><td>$\lesssim 1.3$</td><td>$&gt;1.3$ 时 $\ln I$–$q^2$ 下弯，$R_g$ 高估</td><td>Hammouda 球形 micelle：$R_g=46$ Å，拟合至 $Q=0.075$ Å$^{-1}$，$Q_1=0.053$ Å$^{-1}$</td></tr>
+          <tr><td>细长棒、盘状、中空壳</td><td>$\lesssim 0.8$–$1.0$</td><td>中间区 $1/q$ 或 $1/q^2$ 提前出现</td><td>须用广义 Guinier（$s=1$ 棒，$s=2$ 盘）</td></tr>
+          <tr><td>高斯链（良溶剂）</td><td>$\lesssim 1.0$</td><td>高 $q$ 过渡到 $q^{-5/3}$ 或 $q^{-2}$</td><td>Porod 指数 $d=5/3$–$2$ 非界面</td></tr>
+          <tr><td>多分散体系</td><td>收紧 $q_{\max}$；保证 $q_{\min} R_{g,\max} \ll 1$</td><td>表观 $R_g$ 偏大（大粒子加权）</td><td>见下文多分散节</td></tr>
+          <tr><td>浓溶液（$S(q)\neq 1$）</td><td>不适用经典 Guinier</td><td>低 $q$ 压低，$I(0)$、$R_g$ 偏小</td><td>稀释或显式 <span data-term="structure-factor">$S(q)$</span></td></tr>
+        </tbody>
+      </table>
+      <p>自洽流程：先粗估 $R_g$ → 检查 $q_{\max} R_g$ → 越界则缩短区间 → 迭代至 $\mathrm{d}\ln I/\mathrm{d}q^2$ 在拟用窗内近似常数。ATSAS Autorg 自动搜索线性段，但生物 <span data-term="saxs">SAXS</span> 仍建议目视 $\ln I$–$q^2$ 图。</p>
+      <div class="keybox">
+        <strong>Guinier 拟合检查清单</strong>
+        <ol>
+          <li>确认低 $q$ 无束阻挡、无寄生散射抬高；$\mathrm{d}\ln I/\mathrm{d}q^2$ 在拟用区间近似常数。</li>
+          <li>用 $q_{\max} R_g \approx 1.0$–$1.3$ 自洽：先估 $R_g$，再检查所用 $q_{\max}$ 是否越界；越界则缩短区间重拟合。</li>
+          <li>报告 $R_g$、$I(0)$ 及拟合区间；生物 <span data-term="saxs">SAXS</span> 另报 Autorg / 手工拟合对比。</li>
+          <li>与 $p(r)$ 得到的 $R_g$（第 07 章）交叉：偏差 $>10\%$ 须查聚集、本底或 $q_{\min}$。</li>
+          <li>绝对标定后，$I(0)/c$ 应与化学分子量粗略一致（第 05 章）。</li>
+        </ol>
+      </div>
+
+      <h3>$I(0)$ 的物理含义</h3>
+      <p><span data-term="forward-scattering">前向散射</span> $I(0)$ 正比于「总衬度体积」的平方：稀溶液单分散时</p>
+      $$I(0) = n\,V^2\,(\Delta\rho)^2 = c\,M\,(\Delta\rho_M)^2 / N_A$$
+      <p>（记号随质量浓度 / 数密度约定而变）。因此：</p>
+      <ul>
+        <li>$I(0)$ 对<strong>聚集</strong>极敏感：二聚体可使 $I(0)$ 近似翻倍（同浓度）。</li>
+        <li>$I(0)$ 对<strong>浓度误差、绝对标定误差</strong>线性敏感。</li>
+        <li>仅相对强度时，$I(0)$ 仍可用于同系列相对比较，但不可报分子量。</li>
+      </ul>
+
+      <h3>手工示例（数量级）</h3>
+      <p>设某球状蛋白 Guinier 区测得斜率 $s = \mathrm{d}\ln I/\mathrm{d}q^2 = -120\,\mathrm{\AA}^2$（$q$ 以 Å$^{-1}$ 计）：</p>
+      $$R_g = \sqrt{-3s} = \sqrt{360}\approx 19.0\,\mathrm{\AA}.$$
+      <p>若拟合用到 $q_{\max}=0.06\,\mathrm{\AA}^{-1}$，则 $q_{\max} R_g \approx 1.14$，落在可接受窗口；若盲目用到 $0.10\,\mathrm{\AA}^{-1}$，$q R_g\approx 1.9$，直线已弯，结果不可信。</p>
+      <p><strong>算例 2（绝对 $I(0)$ 与分子量）：</strong> 绝对标定后 Guinier 截距得 $I(0)=0.12\,\mathrm{cm}^{-1}$，浓度 $C=5\,\mathrm{mg/mL}=5\times 10^{-3}\,\mathrm{g/cm}^3$，$\Delta\rho_M = 2.0\times 10^{10}\,\mathrm{cm}^{-2}$（电子密度差）：</p>
+      $$M = \frac{I(0)\,N_A}{C\,(\Delta\rho_M)^2} \approx \frac{0.12 \times 6.02\times 10^{23}}{5\times 10^{-3} \times (2.0\times 10^{10})^2} \approx 3.6\times 10^4\,\mathrm{g/mol}.$$
+      <p>与化学 $M$ 偏差 $>15\%$ 时优先查标定、浓度、聚集，而非强行扩 Guinier 区间。</p>
+
+      <h3>多分散对 Guinier 的影响</h3>
+      <p>多分散时 $I(q)$ 为尺寸分布加权平均，Guinier 斜率给出的是<strong>表观</strong> $R_g$（接近 $z$-平均而非数平均）。分布宽时：</p>
+      <ul>
+        <li>$\ln I$–$q^2$ 线性变差，$R_g$ 对大尺寸端敏感；$q_{\min}$ 须满足 $q_{\min} \bar{R}_g \ll 1$ 且覆盖足够多小粒子贡献。</li>
+        <li>粒径分布半宽 $&gt;30\%$ 时，经典 Guinier 常与 <span data-term="pair-distance-distribution">$p(r)$</span> 的 $R_g$ 偏差 $>10\%$——应以 IFT 交叉验证（第 07 章）。</li>
+        <li>不可将表观 $R_g$ 直接代入 $R=\sqrt{3/5}\,R_g$ 球半径换算；须已知或假设分布形状。</li>
+      </ul>
+
+      <h2>Porod 定律与高 $q$ 渐近</h2>
+      <p>当 $q$ 足够高、探针尺度远小于粒子尺寸、界面近似锐利时，散射强度服从<span data-term="porod-law">Porod 定律</span>：</p>
+      $$I(q)\;\xrightarrow{q\to\infty}\; \frac{2\pi\,(\Delta\rho)^2\,S}{q^4},$$
+      <p>其中 $S$ 为样品中（单位体积）的界面面积。对数–对数图上斜率约 $-4$。实务上常作 $q^4 I(q)$ vs $q$（或 vs $q^4$）检验是否趋近平台。绝对强度下，两相体系比表面积：</p>
+      $$S_V = \frac{1}{2\pi (\Delta\rho)^2}\lim_{q\to\infty} q^4 I(q)$$
+      <p>（$S_V$ 为单位体积界面面积；须已知 <span data-term="contrast">衬度</span> $\Delta\rho$ 与可靠背景扣除）。Hammouda（2010）强调：$d=4$ 为光滑粒子表面；$d=3$ 可为粗糙界面或不良溶剂 collapsed 链；$d=5/3$ 为良溶剂 fully swollen 链；$d=2$ 为高斯链或薄片；$d=1$ 为刚性棒——须结合 $q$ 位置判断，勿把聚合物质量分形当界面 Porod。</p>
+
+      <h3>指数偏离：粗糙与弥散界面</h3>
+      <table>
+        <thead>
+          <tr><th>高 $q$ 行为</th><th>典型含义</th><th>注意</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>$I\sim q^{-4}$</td><td>锐利、光滑界面（经典 Porod）</td><td>背景扣除后才可信</td></tr>
+          <tr><td>$I\sim q^{-3}$–$q^{-4}$ 之间</td><td>分形表面或粗糙界面</td><td>需足够宽的高 $q$ 窗口</td></tr>
+          <tr><td>$I\sim q^{-2}$ 等</td><td>薄片、高斯链等「质量分形」区</td><td>未必是「坏 Porod」</td></tr>
+          <tr><td>指数衰减更快</td><td>弥散界面（Debye–Bueche 等）</td><td>勿硬套 $q^{-4}$ 求面积</td></tr>
+        </tbody>
+      </table>
+
+      <h3><span data-term="porod-invariant">Porod 不变量</span></h3>
+      <p>对两相体系，不变量</p>
+      $$Q = \int_0^\infty q^2 I(q)\,\mathrm{d}q = 2\pi^2\,(\Delta\rho)^2\,\phi(1-\phi)$$
+      <p>（绝对强度、$q$ 覆盖足够时）联系体积分数 $\phi$。实践中积分上下限截断会产生系统误差：低 $q$ 用 Guinier 外推，高 $q$ 用 Porod 尾外推——这正是绝对标定与背景质量再次关键的地方。</p>
+
+      <p>（绝对强度、$q$ 覆盖足够时）联系体积分数 $\phi$。实践中积分上下限截断会产生系统误差：低 $q$ 用 Guinier 外推，高 $q$ 用 Porod 尾外推——这正是绝对标定与背景质量再次关键的地方。</p>
+      <div class="keybox">
+        <strong>Porod 平台算例（数量级）</strong>
+        <p>绝对标定后，高 $q$ 区 $q^4 I(q)$ 平台 $\approx 8\times 10^{-5}\,\mathrm{cm}^{-1}\,\mathrm{Å}^4$，$\Delta\rho = 3\times 10^{-6}\,\mathrm{Å}^{-2}$：</p>
+        $$S_V \approx \frac{8\times 10^{-5}}{2\pi (3\times 10^{-6})^2} \approx 1.4\times 10^{6}\,\mathrm{Å}^{-1} \approx 140\,\mathrm{m}^2/\mathrm{cm}^3.$$
+        <p>若 $\sigma/I > 30\%$ 或平台来自常数背景而非 $q^{-4}$，此数无物理意义——先查第 04 章本底与第 05 章标定。</p>
+      </div>
+
+      <h2>Hammouda Guinier–Porod 统一模型</h2>
+      <p>许多软物质、纳米粒子体系同时需要低 $q$ 尺寸与高 $q$ 幂律。Hammouda（2010）给出在 Guinier 区与 Porod 区连续衔接的经验模型：低 $q$ 用 Guinier 形式，高 $q$ 用 $q^{-d}$，并在衔接点 $Q_1$ 强制函数值与一阶导数连续。</p>
+      <p><strong>球形（$s=0$）：</strong></p>
+      $$I(Q) = G\exp\!\left(-\frac{Q^2 R_g^2}{3}\right)\quad (Q \leq Q_1), \qquad I(Q) = D/Q^d\quad (Q \geq Q_1),$$
+      $$Q_1 = \frac{1}{R_g}\sqrt{\frac{3d}{2}}, \qquad D = G\exp\!\left(-\frac{d}{2}\right)\left(\frac{3d}{2}\right)^{d/2}\frac{1}{R_g^d}.$$
+      <p><strong>非球形推广（$s=0$ 球，$s=1$ 棒，$s=2$ 盘）：</strong></p>
+      $$I(Q) = \frac{G}{Q^s}\exp\!\left(-\frac{Q^2 R_g^2}{3-s}\right)\quad (Q \leq Q_1), \qquad Q_1 = \frac{1}{R_g}\sqrt{\frac{(d-s)(3-s)}{2}},$$
+      <p>约束 $d > s$ 且 $s &lt; 3$。圆柱等可含<strong>两个 Guinier 区</strong>（低 $q$ 见全长 $R_{g2}$，中间 $q$ 见截面 $R_{g1}$）加一个 Porod 区——共三或四个 $q$ 区（Hammouda §4）。</p>
+      <figure class="figure">
+        <img src="../assets/figures/fig-05-guinier-porod.png" alt="<span data-term="guinier-porod-model">Guinier–Porod 模型</span>示意" width="900">
+        <figcaption>Guinier 区与 Porod（幂律）区在衔接点 $q_1$ 光滑连接；$R_g$ 与幂律指数是主要可调参数。<span class="fig-source">配图：自制示意</span></figcaption>
+      </figure>
+      <p>适用场景：宽 $q$ 范围的粗粒度描述、多层级结构的第一轮参数化（如 Pluronic P85 从 unimer→球状 micelle→柱状 micelle→层状 micelle，Hammouda Table 1）。不适用：需要精确 <span data-term="form-factor">$P(q)$</span> 振荡、强 <span data-term="structure-factor">$S(q)$</span> 峰、或必须报生物发表级 $R_g$/<span data-term="maximum-dimension">$D_{\max}$</span> 时——后者仍优先经典 Guinier + <span data-term="indirect-fourier-transform">IFT</span>。模型不能再现单分散紧凑粒子的振荡；峰可用 $P(q)\times S(q)$ 扩展。</p>
+      <table>
+        <thead>
+          <tr><th>相（P85/d-water，Hammouda 2010）</th><th>$T$ (K)</th><th>$R_g$ (Å)</th><th>$d$</th><th>$3-s$（维数）</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Unimer</td><td>283</td><td>15.8</td><td>1.53</td><td>2.75（近链）</td></tr>
+          <tr><td>球形 micelle</td><td>323</td><td>46.4</td><td>3.91</td><td>3.0</td></tr>
+          <tr><td>柱状 micelle</td><td>343</td><td>37.1</td><td>4.82</td><td>2.06（棒截面）</td></tr>
+          <tr><td>层状 micelle</td><td>363</td><td>27.2</td><td>2.87</td><td>1.21（盘）</td></tr>
+        </tbody>
+      </table>
+
+      <h2>与 Beaucage 统一拟合的关系</h2>
+      <p>Beaucage 全局散射函数（含多分散尺寸分布分析，2004 等）把 Guinier 与幂律写成可叠加的多层级形式，广泛用于气溶胶、枝状聚合物、层级纳米结构。与 Hammouda 模型同属「粗粒度统一描述」家族：优点是参数少、覆盖全 $q$；代价是参数相关、物理解释需额外约束。第 08 章讨论模型可辨识性时会再回到这一点。</p>
+
+      <h2>工作流：从曲线到可报告数字</h2>
+      <ol>
+        <li><strong>目视分区：</strong> 对数–对数图标出疑似 Guinier 平坦/缓降区与高 $q$ 幂律区。</li>
+        <li><strong>Guinier：</strong> 作 $\ln I$–$q^2$ 图；选线性段；自洽 $q_{\max}R_g$；记录 $R_g$、$I(0)$。</li>
+        <li><strong>Porod：</strong> 作 $q^4 I(q)$；判断平台；必要时估 $S$（须绝对强度 + 已知 $\Delta\rho$）。</li>
+        <li><strong>交叉验证：</strong> $R_g$（Guinier）vs $R_g$（$p(r)$）；$I(0)$ vs 分子量预期；高 $q$ 斜率是否与形貌假设一致。</li>
+        <li><strong>再升级：</strong> 需要 <span data-term="maximum-dimension">$D_{\max}$</span>、$p(r)$ 形状 → 第 07 章 IFT；需要显式形状/多分散 → 第 08 章。</li>
+      </ol>
+
+      <h2>常见坑</h2>
+      <ul>
+        <li><strong>坑 1：Guinier 区间选太宽 → 如何判断：</strong> $\ln I$–$q^2$ 已明显下弯仍硬拟合；$q_{\max}R_g&gt;1.5$。收紧 $q_{\max}$ 或换形状感知方法。</li>
+        <li><strong>坑 2：低 $q$ 上翘当「大 $R_g$」→ 如何判断：</strong> 聚集、气泡、束阻挡、本底欠扣都会抬高最低几个点。先查还原与样品，勿盲目外推 $I(0)$。</li>
+        <li><strong>坑 3：狭缝 smearing 未处理 → 如何判断：</strong> Kratky / 某些 <span data-term="usaxs">USAXS</span> 几何下 Guinier 区被抹平，$R_g$ 偏大。<span data-term="desmearing">desmear</span> 或拟合 smeared 模型（第 03–04 章）。</li>
+        <li><strong>坑 4：Porod 区被常数背景淹没 → 如何判断：</strong> 高 $q$ 平台来自荧光/非相干/探测器本底，假 $q^{-4}$。先可靠扣本底再谈界面面积。</li>
+        <li><strong>坑 5：多分散当单分散 Guinier → 如何判断：</strong> 表观 $R_g$ 被大端加权；分布宽时 Guinier 线性差。报告时注明「$z$-平均类」并考虑尺寸分布模型。</li>
+        <li><strong>坑 6：结构因子当形式因子 → 如何判断：</strong> 浓溶液低 $q$ 被 $S(q)$ 压低，表观 $R_g$、$I(0)$ 偏小。稀释至相互作用可忽略，或显式建模 $S(q)$。</li>
+        <li><strong>坑 7：相对强度硬算 Porod 面积 → 如何判断：</strong> 缺绝对标定与 $\Delta\rho$ 时，$S$ 只有任意单位。先完成第 05 章。</li>
+      </ul>
+
+      <h2>小结</h2>
+      <p>Guinier 从低 $q$ 给出 $R_g$ 与 $I(0)$——整体尺寸与「有多少散射物质」的第一估计；Porod 从高 $q$ 约束界面锐利度与比表面积。二者是读 $I(q)$ 的两端锚点。下一章进入实空间：用 IFT 从整条（可用）曲线得到 $p(r)$ 与 <span data-term="maximum-dimension">$D_{\max}$</span>，并与本章 $R_g$ 交叉验证。</p>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="guinier-analysis">Guinier 分析</span></li>
+        <li><span data-term="radius-of-gyration">回转半径 $R_g$</span></li>
+        <li><span data-term="forward-scattering">前向散射 $I(0)$</span></li>
+        <li><span data-term="porod-law">Porod 定律</span></li>
+        <li><span data-term="form-factor">形式因子</span></li>
+        <li><span data-term="structure-factor">结构因子</span></li>
+        <li><span data-term="pair-distance-distribution">距离分布 $p(r)$</span></li>
+        <li><span data-term="indirect-fourier-transform">间接傅里叶变换</span></li>
+      </ul>
+
+      <h2>延伸阅读</h2>
+      <ul>
+        <li><em>A new Guinier–Porod model</em>. Boualem Hammouda (2010). DOI: <a href="https://doi.org/10.1107/S0021889810015773" target="_blank" rel="noopener noreferrer">10.1107/S0021889810015773</a></li>
+        <li><em>Particle size distributions from small-angle scattering using global scattering functions</em>. G. Beaucage, H. K. Kammler, S. E. Pratsinis (2004). DOI: <a href="https://doi.org/10.1107/S0021889804008969" target="_blank" rel="noopener noreferrer">10.1107/S0021889804008969</a></li>
+        <li><em>Small-angle X-ray and neutron scattering</em>. Cy M. Jeffries et al. (2021). DOI: <a href="https://doi.org/10.1038/s43586-021-00064-9" target="_blank" rel="noopener noreferrer">10.1038/s43586-021-00064-9</a></li>
+        <li>站内专题：<a href="../topics/ift/index.html">IFT / $p(r)$</a>（与 Guinier $R_g$ 交叉验证）</li>
+      </ul>
+
+      <nav class="pager">
+        <a href="05-absolute-calibration.html">← 上一章：05 绝对标定</a>
+        <a href="07-real-space-ift.html">下一章：07 实空间与 IFT →</a>
+      </nav>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

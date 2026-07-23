@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <title>ATSAS 工具链 · 专题手册 · SAS 知识站</title>
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+ <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+ <div id="site-header"></div>
+ <div class="layout">
+ <aside id="site-sidebar"></aside>
+ <main class="content">
+ <h1>ATSAS：溶液 SAS 分析工具链</h1>
+ <p class="subtitle-en">PRIMUS → Guinier → <span data-term="gnom">GNOM</span> → DAMMIF → CRYSOL / <span data-term="ensemble-optimization">EOM</span></p>
+
+ <p>本导读以 Franke 等（2017）ATSAS 2.8 程序包综述为主线，结合 Petoukhov 等（2012）与 Petoukhov &amp; Konarev 等（2007）早期 ATSAS 发展、Franke &amp; Svergun（2009）DAMMIF、Petoukhov &amp; Svergun（2013）生物应用边界、Trewhella 等（2017）发表指南与 Jeffries 等（2021）方法学 Primer，说明溶液 SAS 从 $I(q)$ 到整体参数、实空间、$ab\ initio$ 形状与原子模型比较的<strong>推荐工作流</strong>与<strong>解读陷阱</strong>。焦点是管线逻辑与判断标准，而非安装或界面操作。</p>
+
+ <figure class="figure">
+ <img src="../../assets/figures/fig-15-atsas-pipeline.png" alt="ATSAS 溶液分析管线" width="900">
+ <figcaption>ATSAS 典型管线：PRIMUS 预处理 → Guinier/AUTORG → <span data-term="gnom">GNOM</span>/$p(r)$ → DAMMIF/DAMMIN → CRYSOL 原子模型比较；柔性体系改走 <span data-term="ensemble-optimization">EOM</span> 系综。每步合格再进入下一步。<span class="fig-source">配图：自制示意</span></figcaption>
+ </figure>
+
+ <h2>问题是什么</h2>
+ <p>溶液 <span data-term="saxs">SAXS</span>/<span data-term="sans">SANS</span> 给出的是一条（或少数几条）一维曲线 $I(q)$。从曲线到「结构结论」通常分多层——ATSAS 2.8 将每层对应到可脚本化的 DATTOOLS 子程序（Franke 2017）：</p>
+ <ol>
+ <li><strong>整体参数：</strong> <span data-term="radius-of-gyration">$R_g$</span>、<span data-term="forward-scattering">$I(0)$</span>、分子量估计、Porod 体积；</li>
+ <li><strong>实空间：</strong> <span data-term="pair-distance-distribution">$p(r)$</span> 与 <span data-term="maximum-dimension">$D_{\max}$</span>（经 <span data-term="indirect-fourier-transform">IFT</span>/<span data-term="gnom">GNOM</span>）；</li>
+ <li><strong>低分辨形状：</strong> 哑原子模型（DAMMIF/DAMMIN）及多轮平均；</li>
+ <li><strong>与已知结构对照：</strong> CRYSOL（X 射线）等从原子坐标算理论 $I(q)$；</li>
+ <li><strong>柔性体系：</strong> 单一刚体不够时用 <span data-term="ensemble-optimization">EOM</span> 等系综方法。</li>
+ </ol>
+ <p>ATSAS（EMBL Hamburg）把上述步骤做成可串联的模块：PRIMUS/qt 作交互入口，DATTOOLS 做批处理，<span data-term="gnom">GNOM</span>、DAMMIF、CRYSOL、<span data-term="ensemble-optimization">EOM</span> 等各司其职（Franke et al. 2017）。2.8 版新增 AMBIMETER（形状歧义评分）、DATCLASS（紧凑/扁平/无序分类）、CHROMIXS（SEC 联用）、SASRES（FSC 分辨率估计）、SHANUM（有效 $q$ 范围）、SREFLEX/SASREF（柔性/刚体混合）等——使「该不该建模、用哪种建模」可在进入 DAM 之前有定量依据。核心难题不是「会点哪个按钮」，而是：前一步数据/假设不合格时，后一步的漂亮拟合往往是<strong>假阳性</strong>；以及如何按发表规范报告与存档（Trewhella 2017 → SASBDB）。</p>
+
+ <h2>文献主线</h2>
+ <h3>Franke et al. 2017：ATSAS 2.8 管线地图</h3>
+ <p>综述按「数据工具 → 整体参数 → 实空间 → 形状/刚体/系综」组织程序族：</p>
+ <ul>
+ <li><strong>PRIMUS / DATTOOLS：</strong> DATCMP/CORMAP 比较曲线显著性；DATAVER 平均重复测量；DATMERGE/ALMERGE 合并浓度系列或外推无限稀释；DATABSOLUTE 绝对标定（水/<span data-term="glassy-carbon">玻璃碳</span>）；SHANUM/DATCROP 确定有效 Shannon 通道与 $q$ 范围；AUTORG/DATRG 自动 Guinier；</li>
+ <li><strong><span data-term="gnom">GNOM</span> / DATGNOM：</strong> 正则化 IFT，输出 $p(r)$、$R_g$、$I(0)$、<span data-term="maximum-dimension">$D_{\max}$</span>；GNOM5（2.8 默认）支持多探测器 <span data-term="sans">SANS</span> 数据联合反演；</li>
+ <li><strong>DATCLASS / AMBIMETER：</strong> 建模前分类（紧凑/扁平/无序）与歧义评分（$<1.5$ 较唯一，$>2.5$ 高歧义）；</li>
+ <li><strong>DAMMIN / DAMMIF / GASBOR：</strong> 哑原子或 dummy residue $ab\ initio$ 形状；DAMMIF 比 DAMMIN 快 25–40 倍，无限搜索体积（Franke &amp; Svergun 2009）；DAMAVER/DAMSEL/DAMCLUST 聚类与选代表模型；SASRES 报告 FSC 分辨率；</li>
+ <li><strong>MONSA / SASREFCV：</strong> 多相/<span data-term="contrast-variation">衬度变化</span>数据联合重建（与 <a href="../sans-contrast/index.html"><span data-term="sans">SANS</span> 衬度</a> 联用）；</li>
+ <li><strong>CRYSOL / CRYSON / CRYSOL 3：</strong> 原子结构 → 理论散射，含水合壳层；</li>
+ <li><strong><span data-term="ensemble-optimization">EOM</span> / SREFLEX / SASREF：</strong> 柔性系综、正常模柔性精修、刚体拼合；</li>
+ <li><strong>CHROMIXS：</strong> <span data-term="sec-saxs">SEC-SAXS</span> 帧选取与在线分析接口。</li>
+ </ul>
+ <p>设计哲学是「小工具可组合」：交互界面与命令行批处理（DATTOOLS）共享同一算法内核，便于可重复脚本化分析（Franke 2017）。</p>
+
+      <h3>Petoukhov et al. 2012 与 Petoukhov et al. 2007</h3>
+      <p>2012 综述 ATSAS 2.5 时代的程序族演进（AUTORG、AUTOGNOM、在线服务），是理解 DATTOOLS 命名与批处理逻辑的桥梁；2007 文记录 ATSAS 2.1 向自动化/Web 支持的转折。两篇共同强调：ATSAS 各模块应对照样品状态选用——整体参数与 $p(r)$ 是稳健起点；聚集、寡聚平衡、IDP 不宜默认跑完全部管线。</p>
+
+ <h3>Franke &amp; Svergun 2009：DAMMIF 算法要点</h3>
+ <p>DAMMIF 重写 DAMMIN 的模拟退火搜索：哑原子（dummy atom/bead）模型用球谐加速计算散射；目标函数 = 数据残差 + 紧致/连通惩罚。关键实践：（1）至少 10–20 轮独立运行（AMBIMETER 高时更多）；（2）对称性（P2、P3…）须有生化或 EM 依据；（3）DAMMIF 从 DATCLASS 预测的紧凑初体出发，避免有限搜索体积伪影；（4）发表用 DAMSTART 精修后的模型，而非 DAMAVER 占用包络（包络散射不匹配数据）。</p>
+
+ <h3>Petoukhov &amp; Svergun 2013：生物语境下的用途边界</h3>
+ <p>该文把溶液 SAS 放在生物大分子表征框架中：整体参数与 $p(r)$ 是稳健起点；$ab\ initio$ 与刚体建模需样品单分散；柔性蛋白、寡聚平衡不宜强行单一珠粒模型。ATSAS 各模块应对照样品生物学状态选用，而非默认跑完全部管线。</p>
+
+ <h3>Trewhella 2017：发表与 SASBDB 心态</h3>
+ <p>更新版发表指南要求报告样品、采集/还原、整体参数验证、建模歧义性；强烈建议将 $I(q)$、$p(r)$ 与模型存入公共库（SASBDB）。用 ATSAS 分析时，应把「可复现报告」当作管线终点：ATSAS 版本号、Guinier 拟合区间、<span data-term="maximum-dimension">$D_{\max}$</span>/对称性假设、多轮 DAM 聚类结果、SASRES 分辨率与 AMBIMETER 分数均需可追溯。</p>
+
+ <h3>Jeffries et al. 2021：方法学入门与质量意识</h3>
+ <p>Nature Reviews Methods Primer 从实验到分析给出现代溶液 SAS 全景：强调浓度系列、缓冲匹配、<span data-term="radiation-damage">辐射损伤</span>与 <span data-term="sec-saxs">SEC-SAS</span>；分析侧与 ATSAS 类管线一致——先 QC 与 Guinier/$p(r)$，再谈建模。本站将其作为「为何不能跳过 PRIMUS/Guinier」的外层文献锚点。</p>
+
+ <h3>DATTOOLS 批处理与 PRIMUS 的对应关系</h3>
+ <table>
+ <thead>
+ <tr><th>任务</th><th>命令行工具</th><th>PRIMUS/qt 等价</th><th>典型输出</th></tr>
+ </thead>
+ <tbody>
+ <tr><td>曲线比较</td><td>DATCMP, CORMAP</td><td>Compare</td><td>是否可平均/合并</td></tr>
+ <tr><td>浓度合并</td><td>DATMERGE, ALMERGE</td><td>Merge</td><td>无限稀释 $I(q)$</td></tr>
+ <tr><td>绝对标定</td><td>DATABSOLUTE</td><td>Scale → Absolute</td><td>$\mathrm{cm}^{-1}$ 强度</td></tr>
+ <tr><td>Guinier</td><td>AUTORG, DATRG</td><td>Analysis → Guinier</td><td>$R_g$, $I(0)$</td></tr>
+ <tr><td>IFT</td><td>DATGNOM, <span data-term="gnom">GNOM</span></td><td>Analysis → <span data-term="gnom">GNOM</span></td><td>$p(r)$, <span data-term="maximum-dimension">$D_{\max}$</span></td></tr>
+ <tr><td>分子量</td><td>DATABSMW, DATMOW, DATVC</td><td>MW 工具</td><td>$M$ 估计</td></tr>
+ <tr><td>有效 $q$ 范围</td><td>SHANUM, DATSHANUM</td><td>—</td><td>Shannon 通道数</td></tr>
+ </tbody>
+ </table>
+ <p>高通量管线（同步辐射在线分析）常串联 DATGNOM → DAMMIF → DAMAVER，但<strong>人工 QC 节点</strong>不可省略（Jeffries 2021；Trewhella 2017）。CHROMIXS 将 SEC 色谱帧选取嵌入同一逻辑。</p>
+
+ <h2>关键公式与结论</h2>
+ <h3>管线对应的物理量</h3>
+ <p><span data-term="guinier-analysis">Guinier 区</span>（AUTORG / PRIMUS）：</p>
+ $$I(q)=I(0)\exp\left(-\frac{R_g^2 q^2}{3}\right), \quad q R_g \lesssim 1.3.$$
+ <p>合格判据：$R_g$ 与 <span data-term="gnom">GNOM</span> 从 $p(r)$ 导出的 $R_g$ 宜在约 $\pm 5\%$ 内一致；线性残差无系统趋势。</p>
+ <p>IFT / <span data-term="gnom">GNOM</span>：</p>
+ $$I(q)=\int_0^{D_{\max}} p(r)\,\frac{\sin(qr)}{qr}\,\mathrm{d}r$$
+ <p>（仪器 smearing 时核更复杂；见 <a href="../ift/index.html">IFT 专题</a>）。$p(r)$ 是进入 DAMMIF 的标准输入之一。</p>
+ <p>哑原子模型拟合实验曲线时，目标函数含数据残差与紧致/连通惩罚项（DAMMIN/DAMMIF）；多轮独立运行后 DAMSEL/DAMCLUST 聚类，SASRES 用 FSC 思路估计有效分辨率（Franke 2017）。AMBIMETER 分数 $>2.5$ 时须报告多簇模型而非单一形状。</p>
+ <p>CRYSOL：由原子坐标与水合壳层参数计算理论 $I_{\mathrm{calc}}(q)$，用约化 $\chi^2$（或 CORMAP 类无误差棒检验）判断是否与溶液数据相容——晶体结构未必等于溶液构象。CRYSOL 3（2.8 测试版）用表面水珠粒分层处理凹凸表面水合，改善高 $q$ 拟合。</p>
+
+ <h3>推荐工作流（解读层）</h3>
+ <table>
+ <thead>
+ <tr><th>步骤</th><th>典型工具</th><th>产出</th><th>进入下一步的门槛</th></tr>
+ </thead>
+ <tbody>
+ <tr><td>0. 歧义预判</td><td>DATCLASS / AMBIMETER</td><td>形状类、歧义分数</td><td>无序 → <span data-term="ensemble-optimization">EOM</span>；高歧义 → 多轮 DAM + 聚类报告</td></tr>
+ <tr><td>1. 预处理</td><td>PRIMUS / DATTOOLS</td><td>减背景、$I(q)$ 合并/缩放、DATABSOLUTE</td><td>浓度系列可比；CORMAP 无显著差异再平均；无帧间损伤漂移</td></tr>
+ <tr><td>2. 整体参数</td><td>AUTORG / Guinier</td><td>$R_g$、$I(0)$、$M$ 初估</td><td>Guinier 线性；$q_{\min}$ 足够低</td></tr>
+ <tr><td>3. 实空间</td><td><span data-term="gnom">GNOM</span> / DATGNOM</td><td>$p(r)$、<span data-term="maximum-dimension">$D_{\max}$</span></td><td>尾部归零；$R_g$ 与 Guinier 一致</td></tr>
+ <tr><td>4. 形状</td><td>DAMMIF / DAMMIN / GASBOR</td><td>珠粒包络、SASRES 分辨率</td><td>$\geq 10$ 轮收敛；对称性有依据；DAMSTART 精修后发表</td></tr>
+ <tr><td>5a. 原子对照</td><td>CRYSOL / CRYSON</td><td>$\chi^2$、残差曲线</td><td>壳层与排除体积合理；残差无系统趋势</td></tr>
+ <tr><td>5b. 柔性</td><td><span data-term="ensemble-optimization">EOM</span> / SREFLEX</td><td>构象系综、$R_g$/<span data-term="maximum-dimension">$D_{\max}$</span> 分布</td><td>Kratky/柔性证据充分；报告分布非单一结构</td></tr>
+ <tr><td>5c. 多组分/衬度</td><td>MONSA / SASREFCV</td><td>分相重建或刚体+衬度联合</td><td>各衬度点 QC 合格；见 <span data-term="sans">SANS</span> 衬度专题</td></tr>
+ <tr><td>6. 存档</td><td>SASBDB 心态</td><td>可审稿数据包</td><td>样品+数据+模型+软件版本齐全</td></tr>
+ </tbody>
+ </table>
+
+ <div class="keybox">
+ <strong>ATSAS 实践清单（工作流，非安装）</strong>
+ <ol>
+ <li><strong>PRIMUS 先 QC：</strong> DATCMP/CORMAP 比较浓度系列与重复帧；ALMERGE 外推无限稀释；低 $q$ 上翘/下弯未解释前，勿进入 DAM。</li>
+ <li><strong>DATCLASS + AMBIMETER：</strong> 扁平/无序样品改走 <span data-term="ensemble-optimization">EOM</span> 或刚体+约束，勿强行 DAMMIF。</li>
+ <li><strong>Guinier / AUTORG：</strong> 记录拟合区间与 $q_{\max} R_g$；与手动 Guinier、<span data-term="gnom">GNOM</span> $R_g$ 三方交叉（$\pm 5\%$）。</li>
+ <li><strong><span data-term="gnom">GNOM</span>：</strong> 扫描 <span data-term="maximum-dimension">$D_{\max}$</span>；$p(r)$ 在 <span data-term="maximum-dimension">$D_{\max}$</span> 附近自然衰减；SHANUM 确认有效 $q$ 范围（详见 <a href="../ift/index.html">IFT</a>）。</li>
+ <li><strong>DAMMIF/DAMMIN：</strong> 至少十余轮 + DAMSEL 聚类；SASRES 分辨率写入补充材料；对称性须有独立证据。</li>
+ <li><strong>CRYSOL：</strong> 先固定合理水合壳层再调参；$\chi^2$ 好但残差有系统波纹 → 溶液构象或寡聚态与晶体不符。</li>
+ <li><strong><span data-term="ensemble-optimization">EOM</span> / SREFLEX：</strong> 柔性证据明确时用；<span data-term="ensemble-optimization">EOM</span> 报告 $R_g$/<span data-term="maximum-dimension">$D_{\max}$</span> 分布相对随机池的变化量。</li>
+ <li><strong>CHROMIXS（SEC）：</strong> UV–<span data-term="saxs">SAXS</span> 对齐后取峰顶帧；勿对拖尾积分。</li>
+ <li><strong>SASBDB：</strong> 按发表指南打包 $I(q)$、$p(r)$、模型、ATSAS 版本与关键日志（Trewhella 2017）。</li>
+ </ol>
+ </div>
+
+ <h2>常见坑</h2>
+ <ul>
+ <li><strong>跳过 Guinier / $p(r)$ 直接 DAM → 如何判断：</strong> 珠粒模型「好看」但 $R_g$ 与数据不一致，或浓度系列形状不同。回到步骤 2–3。</li>
+ <li><strong>聚集数据做形状重建 → 如何判断：</strong> Guinier 低 $q$ 上翘、$I(0)/c$ 随浓度升、<span data-term="maximum-dimension">$D_{\max}$</span> 虚高。先 <span data-term="sec-saxs">SEC-SAS</span> 或稀释，勿用 DAM 「消化」聚集。</li>
+ <li><strong><span data-term="maximum-dimension">$D_{\max}$</span> 凑合 → 如何判断：</strong> $p(r)$ 尾部振荡或截断；DAM 包络随 <span data-term="maximum-dimension">$D_{\max}$</span> 剧烈变。扫描并报告稳定性。</li>
+ <li><strong>过强对称性约束 → 如何判断：</strong> 强制 P2/P3 后 $\chi^2$ 略好但与无对称平均模型拓扑冲突。对称须独立证据。</li>
+ <li><strong>把 CRYSOL $\chi^2$ 当唯一真理 → 如何判断：</strong> 误差棒低估会使 $\chi^2\gg 1$ 即使形状合理；改看残差趋势与 CORMAP（Franke 2017）。反之 $\chi^2\approx 1$ 也不能证明唯一构象。</li>
+ <li><strong>柔性体系硬跑 DAMMIF → 如何判断：</strong> Kratky 平台高、$p(r)$ 随 $\alpha$ 不稳、多轮 DAM 高度发散。改用 <span data-term="ensemble-optimization">EOM</span>/系综，报告分布而非单一形状。</li>
+ <li><strong>忽略 AMBIMETER 高歧义 → 如何判断：</strong> 分数 $>2.5$ 仍只交单一 DAM 图。须 DAMCLUST 多簇 + SASRES，或承认低分辨率形状不确定。</li>
+ <li><strong>用 DAMAVER 包络发表 → 如何判断：</strong> 包络散射 $\chi^2$ 远大于 1。用 DAMSTART 精修模型或 CRYSOL 对照结构。</li>
+ <li><strong>只交一张图、不交数据 → 如何判断：</strong> 审稿无法复现 $q$ 范围与拟合。按 SASBDB / Trewhella 清单提交原始与派生曲线及 ATSAS 日志。</li>
+ </ul>
+
+ <h2>相关词条</h2>
+ <p>
+ <span data-term="guinier-analysis">Guinier 分析</span>、
+ <span data-term="radius-of-gyration">回转半径 $R_g$</span>、
+ <span data-term="forward-scattering">前向散射 $I(0)$</span>、
+ <span data-term="pair-distance-distribution">距离分布函数 $p(r)$</span>、
+ <span data-term="indirect-fourier-transform">间接傅里叶变换（IFT）</span>
+ </p>
+
+ <h2>相关链接</h2>
+ <ul>
+ <li><a href="../biosas/index.html">BioSAS 专题</a> — 样品 QC、发表与建模歧义性</li>
+ <li><a href="../ift/index.html">IFT / <span data-term="gnom">GNOM</span> 专题</a> — <span data-term="maximum-dimension">$D_{\max}$</span>、$\alpha$ 与感知准则</li>
+ <li><a href="../../learn/06-guinier-porod.html">06 Guinier / Porod</a> — 低 $q$ 与 $R_g$ 学习章</li>
+ <li><a href="../../learn/07-real-space-ift.html">07 实空间与 IFT</a> — <span data-term="gnom">GNOM</span> 系统讲解</li>
+ </ul>
+
+ <h2>文献列表</h2>
+ <ul>
+ <li><em>ATSAS 2.8: a comprehensive data analysis suite for small-angle scattering from macromolecular solutions</em>. D. Franke et al. (2017). DOI: <a href="https://doi.org/10.1107/S1600576717007786" target="_blank" rel="noopener noreferrer">10.1107/S1600576717007786</a></li>
+ <li><em>New developments in the ATSAS program package for small-angle scattering data analysis</em>. Maxim V. Petoukhov et al. (2012). DOI: <a href="https://doi.org/10.1107/S0021889812007662" target="_blank" rel="noopener noreferrer">10.1107/S0021889812007662</a></li>
+ <li><em>ATSAS 2.1 – towards automated and web-supported small-angle scattering data analysis</em>. Maxim V. Petoukhov et al. (2007). DOI: <a href="https://doi.org/10.1107/S0021889807002853" target="_blank" rel="noopener noreferrer">10.1107/S0021889807002853</a></li>
+ <li><em>DAMMIF, a program for rapid ab-initio shape determination in small-angle scattering</em>. Daniel Franke, Dmitri I. Svergun (2009). DOI: <a href="https://doi.org/10.1107/S0021889809000338" target="_blank" rel="noopener noreferrer">10.1107/S0021889809000338</a></li>
+ <li><em>Applications of small-angle X-ray scattering to biomacromolecular solutions</em>. Maxim V. Petoukhov, Dmitri I. Svergun (2013). DOI: <a href="https://doi.org/10.1016/j.biocel.2012.10.017" target="_blank" rel="noopener noreferrer">10.1016/j.biocel.2012.10.017</a></li>
+ <li><em>2017 publication guidelines for structural modelling of small-angle scattering data from biomolecules in solution: an update</em>. Jill Trewhella et al. (2017). DOI: <a href="https://doi.org/10.1107/S2059798317011597" target="_blank" rel="noopener noreferrer">10.1107/S2059798317011597</a></li>
+ <li><em>Small-angle X-ray and neutron scattering</em>. Cy M. Jeffries et al. (2021). DOI: <a href="https://doi.org/10.1038/s43586-021-00064-9" target="_blank" rel="noopener noreferrer">10.1038/s43586-021-00064-9</a></li>
+ <li><em>Advanced ensemble modelling of flexible macromolecules using X-ray solution scattering</em>. Giancarlo Tria et al. (2015). DOI: <a href="https://doi.org/10.1107/S205225251500202X" target="_blank" rel="noopener noreferrer">10.1107/S205225251500202X</a></li>
+ </ul>
+ </main>
+ </div>
+ <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+ <script src="../../assets/nav.js"></script>
+ <script src="../../assets/glossary-data.js"></script>
+ <script src="../../assets/glossary.js"></script>
+ <script src="../../assets/figures-boot.js"></script>
+ <script>
+ document.addEventListener("DOMContentLoaded", function () {
+ if (window.renderMathInElement) {
+ renderMathInElement(document.querySelector("main.content"), {
+ delimiters: [
+ { left: "$$", right: "$$", display: true },
+ { left: "$", right: "$", display: false }
+ ]
+ });
+ }
+ if (window.SASNav) SASNav.init();
+ if (window.SASGlossary) SASGlossary.init();
+ });
+ </script>
+</body>
+</html>

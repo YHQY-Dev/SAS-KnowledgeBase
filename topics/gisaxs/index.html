@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><span data-term="gisaxs">GISAXS</span> · 专题手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>掠入射小角 X 射线散射（<span data-term="gisaxs">GISAXS</span>）</h1>
+      <p class="subtitle-en">Grazing-incidence small-angle X-ray scattering</p>
+
+      <p>本导读以 Müller-Buschbaum（2009）<span data-term="gisaxs">GISAXS</span> 入门章节为骨架，结合聚合物高分辨 <span data-term="gisaxs">GISAXS</span>（2006）、Hexemer &amp; Müller-Buschbaum（2015）先进掠入射技术综述、嵌段共聚物薄膜计量学（2016）与光栅纳米计量（Wernecke 2012），说明反射几何下 2D 散射图样的来源、<span data-term="dwba">DWBA</span> 动力学效应，以及薄膜与表面纳米结构实验中的关键概念。<span data-term="gisaxs">GISAXS</span> 把<span data-term="gisaxs">GISAXS</span>与 grazing incidence diffraction、X 射线反射率三条技术路线汇合，是软物质、半导体、金属与生物聚合物薄膜领域的标准表征手段之一。</p>
+
+      <h2>问题是什么</h2>
+      <p>透射 <span data-term="scattering-vector-q">小角 X 射线散射（SAXS）</span> 要求 X 射线穿透整块样品；对衬底上的薄膜、表面岛状结构或埋藏界面，衬底吸收强、信号路径复杂，透射几何往往不适用。<strong><span data-term="gisaxs">GISAXS</span></strong> 以小掠入射角 $\alpha_i$ 照射样品表面，探测面内与面外的<span data-term="scattering-vector-q">散射矢量</span> $\boldsymbol{q}=(q_x,q_y,q_z)$，在统计平均意义上给出大面积上的纳米结构信息，并可探测 AFM/TEM 难以到达的埋藏层。</p>
+      <p><span data-term="gisaxs">GISAXS</span> 要回答的典型问题包括：</p>
+      <ul>
+        <li>薄膜或表面纳米粒子的尺寸、形状与<span data-term="form-factor">形式因子</span> $P(q)$；</li>
+        <li>粒子间距与<span data-term="structure-factor">结构因子</span> $S(q)$ 引起的条纹（Bragg 峰或相关峰）；</li>
+        <li>入射角 $\alpha_i$ 与<span data-term="critical-angle">临界角</span> $\alpha_c$ 关系决定的<strong>探测深度</strong>；</li>
+        <li>原位条件下（温度、溶剂、反应）的动力学演化。</li>
+      </ul>
+      <p>与透射 <span data-term="saxs">SAXS</span> 不同，<span data-term="gisaxs">GISAXS</span> 必须处理<strong>界面反射与折射</strong>：同一散射事件可伴随入射或出射方向的 Fresnel 反射，形成所谓的 <span data-term="dwba">DWBA</span>（distorted-wave Born approximation）图像，而非简单的 Born 近似条纹。掠入射 footprint 效应使束在膜内路径 $\sim 2t/\sin\alpha_i$，在 $\alpha_i\sim\alpha_c$ 时可在弱散射软物质薄膜中获得足够计数（Hexemer &amp; Müller-Buschbaum 2015）。</p>
+
+      <figure class="figure">
+        <img src="../../assets/figures/fig-11-gisaxs-geometry.png" alt="<span data-term="gisaxs">GISAXS</span> 反射几何与 Yoneda / 镜面峰" width="900">
+        <figcaption>
+          图：掠入射几何、$\alpha_i$/$\alpha_f$、镜面峰与 Yoneda 峰在 2D 探测器上的位置关系。
+          <span class="fig-source">配图：自制示意</span>
+        </figcaption>
+      </figure>
+
+      <h2>核心文献主线</h2>
+      <h3>Müller-Buschbaum 2009：从几何到 2D 图样</h3>
+      <p>该章按「历史 → 几何 → 粗糙表面 → 形式因子与干涉 → 层状体系 → 模拟与实验对照」展开：</p>
+      <ol>
+        <li><strong>历史脉络</strong>：1989 年 Levine 等在旋转阳极上做金纳米粒子 <span data-term="gisaxs">GISAXS</span>；90 年代硬凝聚态多层膜与软物质聚合物体系相继引入；2000 年代后原位、微束 <span data-term="gisaxs">GISAXS</span> 与 GIUSAXS 扩展可探测横向尺度。</li>
+        <li><strong>散射几何</strong>：样品表面为 $xy$ 平面，入射面为 $xz$ 平面；$\alpha_i$、出射角 $\alpha_f$、面外角 $\psi$ 定义散射方向；2D 探测器记录 $q_x$、$q_y$、$q_z$ 分量。</li>
+        <li><strong>四种散射路径</strong>（图 3.1）：直接散射（Born）、反射后散射、散射后反射、双反射路径相干叠加，各路径乘 Fresnel 反射系数 $R_F(\alpha_i)$、$R_F(\alpha_f)$。</li>
+        <li><strong><span data-term="critical-angle">临界角</span>与三种 regime</strong>：$\alpha_i$ 相对聚合物膜与衬底 $\alpha_c$ 的大小划分倏逝波区、动态区与运动学区；不同区需不同理论近似（IsGISAXS 等软件中的 BA / DWBA）。</li>
+        <li><strong>$P(q)$ 与 $S(q)$ 的劈裂</strong>：与 <span data-term="saxs">SAXS</span> 相同，<span data-term="gisaxs">GISAXS</span> 截面常分解为粒子形状因子与干涉函数；但有效形式因子在 DWBA 下含折射权重，Yoneda 峰、镜面峰与 off-specular 条纹需一并解读。</li>
+      </ol>
+
+      <h3>与透射 <span data-term="saxs">SAXS</span> 社区的关系</h3>
+      <p><span data-term="gisaxs">GISAXS</span> 可视为「把透射 <span data-term="saxs">SAXS</span> 转到反射几何」：面内 $q_\parallel=\sqrt{q_x^2+q_y^2}$ 探测横向结构，$q_z$ 携带深度与膜厚信息。同步辐射的高通量、良好准直与 2D 探测器是主流配置；实验室源 <span data-term="gisaxs">GISAXS</span> 能力有限，但仪器进步已使部分实验室配置可行（Müller-Buschbaum 2009；Hexemer &amp; Müller-Buschbaum 2015）。</p>
+
+      <h3>Müller-Buschbaum 2006：聚合物薄膜的高分辨 <span data-term="gisaxs">GISAXS</span></h3>
+      <p>聚合物混合膜与纳米结构可跨越分子尺度（~nm）到微米级相分离；AFM/TEM 统计代表性不足，而 <span data-term="gisaxs">GISAXS</span> 大面积平均且可非破坏探测埋藏结构（Müller-Buschbaum 2006）。该文区分三种 <span data-term="gisaxs">GISAXS</span> 配置（IsGISAXS 模拟）：</p>
+      <ol>
+        <li><strong>$\alpha_i &lt; \alpha_c$：</strong> 镜面峰在 Yoneda 翼下方；表面敏感极强，但低 $q_y$ 常被线性 beam stop 遮挡，不利高分辨。</li>
+        <li><strong>$\alpha_i \approx \alpha_c$：</strong> 镜面与 Yoneda 重合，低 $q_y$ 被 stop 阴影——类似透射 <span data-term="saxs">SAXS</span> 的「束挡困境」，应避免作高分辨分析。</li>
+        <li><strong>$\alpha_i &gt; \alpha_c$：</strong> Yoneda 在镜面峰下方，可延长样品–探测器距离、狭缝准直至像素极限，实现 relaxed / high / ultra-high 分辨；可探测聚合物共混的大尺度相分离并与光学显微重叠（Müller-Buschbaum 2006）。</li>
+      </ol>
+      <p>反射几何下直射束不在探测器上，低 $q$ 不受透射 <span data-term="usaxs">USAXS</span> 式 beam stop 限制——这是 <span data-term="gisaxs">GISAXS</span> 相对透射 <span data-term="usaxs">USAXS</span> 的分辨优势之一（Müller-Buschbaum 2006）。</p>
+
+      <h3>Hexemer &amp; Müller-Buschbaum 2015：先进掠入射技术图谱</h3>
+      <p>IUCrJ 综述归纳近年软物质薄膜表征的扩展方向（Hexemer &amp; Müller-Buschbaum 2015）：</p>
+      <ul>
+        <li><strong><span data-term="gisaxs">GISAXS</span> + GIWAXS：</strong> 小角看介观形貌，宽角看分子取向与晶格；有机光伏等需跨尺度联用。</li>
+        <li><strong>微束 / 纳米束 <span data-term="gisaxs">GISAXS</span>：</strong> 局域缺陷、图案化区域与工艺不均匀性。</li>
+        <li><strong>毫秒级时间分辨：</strong> 快单光子计数探测器 + 高 brilliance 源，原位成膜、退火、溶剂退火动力学。</li>
+        <li><strong>软 X 射线 / tender X 射线 <span data-term="gisaxs">GISAXS</span>：</strong> 在吸收边附近微调能量，强烈改变衬度而不改几何。</li>
+        <li><strong>GISANS / TOF-GISANS：</strong> 中子衬度与氘代策略；时间飞行模式扩展 $q$ 与深度信息。</li>
+        <li><strong>分析软件：</strong> IsGISAXS、BornAgain 等支持 DWBA；DA / LMA / SSCA 处理多分散与尺寸–间距关联（Hexemer &amp; Müller-Buschbaum 2015）。</li>
+      </ul>
+      <p>有效表面近似下漫散射截面：</p>
+      $$\left.\frac{d\sigma}{d\Omega}\right|_{\mathrm{diff}}=\frac{C\pi^2}{\lambda^4}(1-n^2)^2|T_i|^2|T_f|^2 P(\mathbf{q}),$$
+      <p>四路径 DWBA 将 Born 形式因子 $F(\mathbf{q})$ 替换为含 $R(\alpha_i),R(\alpha_f)$ 的叠加；$\alpha_{i,f}\gg\alpha_c$ 时退回 BA（Hexemer &amp; Müller-Buschbaum 2015）。</p>
+
+      <h3>Müller-Buschbaum 2016：BCP 薄膜三维计量</h3>
+      <p>嵌段共聚物（<span data-term="block-copolymer">BCP</span>）<span data-term="microphase-separation">微相分离</span>周期可达 sub-10 nm，是半导体「自下而上」光刻候选。SEM 直观但统计有限；<strong><span data-term="gisaxs">GISAXS</span> 与 GISANS</strong> 作为计量（metrology）手段可统计性给出三维畴形貌、取向、缺陷密度与线边缘粗糙度（Müller-Buschbaum 2016）。</p>
+      <ul>
+        <li>薄膜中基底/空气界面相互作用使体相球–柱–层形态之外出现平行/垂直取向等薄膜特有态；需 graphoepitaxy / chemoepitaxy 引导（Moon et al., 引自 Müller-Buschbaum 2016）。</li>
+        <li>PS-b-PMMA、PS-b-PDMS 等体系：热退火与溶剂蒸气退火动力学可用 <span data-term="gisaxs">GISAXS</span> 跟踪；warm solvent annealing 可在 0.5 min 内形成 13 nm 线宽图案（Kim et al., 引自 Müller-Buschbaum 2016）。</li>
+        <li>高 $\chi$ 嵌段（如含 PDMS）可达 &lt;10 nm 周期但自组装动力学慢；<span data-term="gisaxs">GISAXS</span> 适合监测缺陷湮灭与取向演化，补足成像（Müller-Buschbaum 2016）。</li>
+      </ul>
+
+      <h3>Wernecke 等 2012：光栅结构的傅里叶计量</h3>
+      <p>对周期 $P\sim833$ nm 的电子束光栅，<span data-term="gisaxs">GISAXS</span> 在光栅线平行/垂直两种方位下，用<strong>傅里叶分析</strong>（无需完整 DWBA 拟合）提取线宽、槽宽、线高，结果与标称值一致，面向可溯源纳米计量（Wernecke, Scholze &amp; Krumrey 2012）。要点：倒易空间光栅截断杆（GTR）与 Ewald 球交截决定峰位；$\alpha_i\gtrsim3\alpha_c$ 时运动学近似常足够分析 $q_y$ 方向剖面。</p>
+
+      <h2>关键公式与结论</h2>
+      <h3>折射率与<span data-term="critical-angle">临界角</span></h3>
+      <p>X 射线在介质中折射率 $n_j = 1 - \delta_j + i\beta_j$，略小于 1。色散项</p>
+      <p>$$\delta_j(\boldsymbol{q},\lambda)=\frac{e^2\lambda^2}{8\pi^2 m_e c^2 \varepsilon_0}\rho_j \frac{\sum [f_k^o(\boldsymbol{q},\lambda)+f_k'(\lambda)]}{\sum M_k},$$</p>
+      <p>吸收项 $\beta_j$ 含 $f_k''$。材料 $j$ 的全反射<span data-term="critical-angle">临界角</span>（小角近似）</p>
+      <p>$$\alpha_{c,j}\approx\sqrt{2\delta_j},$$</p>
+      <p>故<span data-term="critical-angle">临界角</span>位置反映<span data-term="scattering-length-density">电子密度 / SLD</span>，可用于识别材料（Müller-Buschbaum 2009）。</p>
+
+      <h3>散射矢量分量</h3>
+      <p>固定波长 $\lambda$，$k_0=2\pi/\lambda$，</p>
+      <p>$$q_x=\frac{2\pi}{\lambda}\bigl[\cos\psi\cos\alpha_f-\cos\alpha_i\bigr],\quad q_y=\frac{2\pi}{\lambda}\sin\psi\cos\alpha_f,\quad q_z=\frac{2\pi}{\lambda}\bigl[\sin\alpha_i+\sin\alpha_f\bigr].$$</p>
+      <p>镜面散射：$q_x=q_y=0$，$q_z\neq 0$，主要探深度；离轴散射 $q_\parallel\neq 0$ 探面内结构。实验常用 beam stop 遮挡直射束与镜面峰，避免探测器饱和。</p>
+
+      <h3>三种入射角 regime（聚合物/衬底体系）</h3>
+      <p>入射角 $\alpha_i$ 相对薄膜与衬底<span data-term="critical-angle">临界角</span> $\alpha_c$ 的位置决定探测深度、DWBA 权重与可用理论近似。下表汇总三种 regime 的物理图像与实验含义（Müller-Buschbaum 2009）：</p>
+      <table>
+        <thead>
+          <tr><th>Regime</th><th>$\alpha_i$ 条件</th><th>探测深度</th><th>场分布</th><th>适用理论</th><th>典型 2D 图样特征</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>倏逝波区</strong>（evanescent）</td><td>$\alpha_i < \alpha_c(\mathrm{film})$</td><td>数十 nm（$\sim \lambda/4\pi\sqrt{\delta}$）</td><td>场局域表面附近，指数衰减</td><td>全 DWBA；BA 失效</td><td>Yoneda 峰极强；面内条纹弱；深度敏感</td></tr>
+          <tr><td><strong>动态区</strong>（dynamic）</td><td>$\alpha_c(\mathrm{film}) < \alpha_i < \alpha_c(\mathrm{sub})$</td><td>膜厚量级（100 nm–1 μm）</td><td>膜内传播 + 衬底全反射；倏逝场耦合</td><td>DWBA 必需；IsGISAXS BA/DWBA 切换</td><td>Yoneda 双峰（膜/衬底 $\alpha_c$）；条纹随 $\alpha_i$ 移动</td></tr>
+          <tr><td><strong>运动学区</strong>（kinematic）</td><td>$\alpha_i > \alpha_c(\mathrm{sub})$</td><td>可达 μm（束在膜内路径 $\sim t/\sin\alpha_i$）</td><td>透射主导，反射项减弱</td><td>低 $\alpha_i$ 仍须 DWBA；极高 $\alpha_i$ 可近似 BA</td><td>镜面峰减弱；off-specular 条纹接近透射 <span data-term="saxs">SAXS</span> 形态</td></tr>
+        </tbody>
+      </table>
+      <p>数值直觉：聚合物膜 $\alpha_c \sim 0.12°$–$0.15°$（8–10 keV），Si 衬底 $\alpha_c \sim 0.20°$。$\alpha_i = 0.10°$ 时场深 $\sim 5$ nm；$\alpha_i = 0.14°$（略高于膜 $\alpha_c$）时可达 100–200 nm；$\alpha_i = 0.25°$ 时束在 100 nm 膜内路径 $\sim 23$ μm。</p>
+      <p>IsGISAXS 模拟表明：同一 PNIPAM 圆柱岛阵列，改变 $\alpha_i$ 会显著改变 Yoneda 峰位置与条纹对比（Müller-Buschbaum 2009，图 3.4）。<strong>切勿固定单一 $\alpha_i$ 解读结构</strong>——至少做 2–3 个 $\alpha_i$ 扫描验证深度与 DWBA 一致性。</p>
+
+      <h3>DWBA vs Born 近似：何时必须升级</h3>
+      <table>
+        <thead>
+          <tr><th>条件</th><th>Born 近似（BA）可接受</th><th>必须 DWBA</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>$\alpha_i$ 相对 $\alpha_c$</td><td>$\alpha_i \gg \alpha_c$（$>3\times$），且远离 Yoneda</td><td>$\alpha_i \sim \alpha_c$ 或 $\alpha_f \sim \alpha_c$</td></tr>
+          <tr><td>反射系数</td><td>$R_F(\alpha_i), R_F(\alpha_f) \ll 1$</td><td>$R_F \sim 0.1$–$1$（<span data-term="critical-angle">临界角</span>附近）</td></tr>
+          <tr><td>图样特征</td><td>仅 off-specular 弱条纹，无 Yoneda</td><td>强镜面峰、Yoneda 峰、条纹随 $\alpha_i$ 移动</td></tr>
+          <tr><td>拟合偏差</td><td>BA 与 DWBA 预测差异 $<10\%$</td><td>BA 系统性低估/高估条纹强度 $>30\%$</td></tr>
+          <tr><td>推荐软件</td><td>简单形状因子估算</td><td>IsGISAXS、BornAgain、Refl1D+<span data-term="gisaxs">GISAXS</span> 模块</td></tr>
+        </tbody>
+      </table>
+
+      <h3>散射截面与 $P$、$S$ 分解</h3>
+      <p>运动学近似下</p>
+      <p>$$\frac{d\sigma}{d\Omega}(\boldsymbol{q})=\frac{1}{N}\sum_{i,j} F^i(\boldsymbol{q}) F^{j,*}(\boldsymbol{q}) \exp\bigl[i\boldsymbol{q}\cdot(\boldsymbol{R}_\parallel^i-\boldsymbol{R}_\parallel^j)\bigr],$$</p>
+      <p>Born 近似中 $F^i$ 为形状函数的傅里叶变换；DWBA 中 $F^i$ 含界面传播因子。常用简化：解耦近似（DA）、局域单分散近似（LMA）、尺寸-间距相关近似（SSCA），与 AFM/TEM 对照选用（Müller-Buschbaum 2009）。</p>
+
+      <h3>2D 图样上的特征峰</h3>
+      <ul>
+        <li><strong>镜面峰（S）</strong>：$\alpha_i=\alpha_f$，$q_x=q_y=0$；全反射条件下极强，须 beam stop 遮挡；</li>
+        <li><strong><span data-term="yoneda">Yoneda 峰（Y）</span></strong>：$\alpha_f\approx\alpha_c$，电子密度对比引起的增强；探测器上位置 $\alpha_Y\approx\alpha_i+\alpha_c$；位置给出材料 $\alpha_c$（Yoneda 1963；Hexemer &amp; Müller-Buschbaum 2015）；</li>
+        <li><strong>Bragg / 相关条纹</strong>：面内有序或相关间距在 $q_y$（或 $q_\parallel$）方向的峰列，反映 $S(q)$。</li>
+      </ul>
+
+      <div class="keybox">
+        <strong>镜面峰 / Yoneda 峰 / off-specular 条纹检查清单</strong>
+        <ol>
+          <li><strong>镜面峰（S）：</strong> 位于 $q_x=q_y=0$ 竖直条纹；强度可比漫散射高 $10^3$–$10^6$ 倍。确认 beam stop 已遮挡且未饱和；stop 阴影区在分析中须掩膜。镜面峰宽度反映界面粗糙度（Nevot–Croce）。</li>
+          <li><strong>Yoneda 峰（Y）：</strong> 出现在 $q_z$ 对应 $\alpha_f \approx \alpha_c$ 处；膜/衬底各有一个 $\alpha_c$ → 可能双峰。峰位可用于识别材料层：$q_{z,Y} \approx 2k_0 \alpha_c$。若 Yoneda 缺失，检查 $\alpha_i$ 是否过低（倏逝波区）或膜过于光滑。</li>
+          <li><strong>Off-specular 条纹：</strong> $q_\parallel \neq 0$ 的散射；条纹间距 $\Delta q_y \approx 2\pi/d$ 给出面内周期 $d$。须与 Yoneda 区分——条纹平行于 $q_y$ 轴，Yoneda 为竖直增强带。</li>
+          <li><strong>$\alpha_i$ 扫描验证：</strong> 固定样品，测 $\alpha_i = 0.8\alpha_c$、$\alpha_c$、$1.2\alpha_c$、$2\alpha_c$（膜/衬底）；条纹位置与强度应可用 DWBA 一致解释。若仅单角度数据，建模时须固定 $\alpha_i$ 并报告敏感性。</li>
+          <li><strong>$q$ 刻度：</strong> 掠入射几何下 $q_x, q_y, q_z$ 非正交；标定须用 <span data-term="gisaxs">GISAXS</span> 专用标准（如 gratings）或理论 $\alpha_c$ 位置校验。勿直接套用透射 <span data-term="saxs">SAXS</span> 的 $q = 4\pi\sin\theta/\lambda$。</li>
+        </ol>
+      </div>
+
+      <h2>实践要点与坑</h2>
+      <ul>
+        <li><strong>同步辐射与 2D 探测器 → 如何判断：</strong> <span data-term="gisaxs">GISAXS</span> 信噪比高度依赖通量；聚合物共混等弱衬度体系常需同步辐射或高分辨长时曝光（Müller-Buschbaum 2006）。实验室源若 off-specular 条纹信噪比 $< 3$，勿强行拟合 $P(q)$。</li>
+        <li><strong>beam stop 与饱和 → 如何判断：</strong> 镜面与直射束比漫散射高几个数量级；stop 形状会在低 $q$ 留下阴影，拟合时需掩膜。$\alpha_i\approx\alpha_c$ 时 stop 阴影与 Yoneda 重叠，高分辨失效（Müller-Buschbaum 2006）。</li>
+        <li><strong>$\alpha_i$ 选取 → 如何判断：</strong> 不要盲目固定角度；应相对 $\alpha_c$ 规划，并可用多个 $\alpha_i$ 扫描深度。薄膜无纳米结构时 <span data-term="gisaxs">GISAXS</span> 几乎只有镜面峰——光滑膜只适合做反射率，不产生 <span data-term="gisaxs">GISAXS</span> 条纹。</li>
+        <li><strong>DWBA 不是可选项 → 如何判断：</strong> 在 $\alpha_i\sim\alpha_c$ 附近用 Born 解释条纹会系统性偏差；Yoneda 峰强度被 BA 低估可达 50% 以上。应用 IsGISAXS、BornAgain 等支持 <span data-term="dwba">DWBA</span> 的软件（Hexemer &amp; Müller-Buschbaum 2015）。</li>
+        <li><strong>取向与 $\omega$ 角 → 如何判断：</strong> 光栅或取向 BCP 薄膜图样对样品方位角 $\omega$ 敏感；旋转 $\omega$ 90° 后条纹消失或移位 → 须做 $\omega$ 扫描，不可假设「2D 粉末」。光栅计量需区分平行/垂直取向（Wernecke 2012）。</li>
+        <li><strong>GIWAXS 与 <span data-term="gisaxs">GISAXS</span> 分工 → 如何判断：</strong> 结晶峰（如 P3HT $\pi$–$\pi$ 堆叠）在典型 GIWAXS 几何下可能不可达，勿用 <span data-term="gisaxs">GISAXS</span> 单独判分子取向（Hexemer &amp; Müller-Buschbaum 2015）。</li>
+        <li><strong>多分散与动力学 → 如何判断：</strong> 与 <span data-term="saxs">SAXS</span> 相同，粒径分布会洗平条纹；原位实验注意<span data-term="radiation-damage">辐射损伤</span>与漂移。毫秒级时间分辨可捕捉退火中间态（Hexemer &amp; Müller-Buschbaum 2015；Santoro &amp; Yu 2017）。</li>
+        <li><strong>与 AFM/TEM 互补 → 如何判断：</strong> <span data-term="gisaxs">GISAXS</span> 给统计平均；局域缺陷需显微；建模时常用 AFM 高度分布约束 $P(q)$。BCP 计量中 SEM 看局域、<span data-term="gisaxs">GISAXS</span> 给周期与缺陷统计（Müller-Buschbaum 2016）。</li>
+      </ul>
+
+      <h2>相关词条</h2>
+      <p>
+        <span data-term="gisaxs">GISAXS</span>、
+        <span data-term="dwba">DWBA</span>、
+        <span data-term="yoneda">Yoneda 峰</span>、
+        <span data-term="scattering-vector-q">散射矢量 $q$</span>、
+        <span data-term="form-factor">形式因子</span>、
+        <span data-term="structure-factor">结构因子</span>、
+        <span data-term="scattering-length-density">散射长度密度</span>、
+        <span data-term="contrast">衬度</span>、
+        <span data-term="block-copolymer">嵌段共聚物</span>、
+        <span data-term="porod-law">Porod 定律</span>
+      </p>
+
+      <h2>相关学习章</h2>
+      <ul>
+        <li><a href="../../learn/02-scattering-basics.html">02 散射基础</a> — $q$、$P(q)$、$S(q)$ 概念</li>
+        <li><a href="../../learn/03-instruments.html">03 仪器与几何</a> — 针孔 <span data-term="saxs">SAXS</span> 与 2D 探测器</li>
+        <li><a href="../../learn/09-application-paths.html">09 应用岔路</a> — 软物质 / 薄膜分支</li>
+        <li><a href="../calibration/index.html">绝对标定</a> — 若需与透射 <span data-term="saxs">SAXS</span> 定量拼接</li>
+      </ul>
+
+      <h2>文献列表</h2>
+      <ul>
+        <li><em>A Basic Introduction to Grazing Incidence Small-Angle X-Ray Scattering</em>. Peter Müller-Buschbaum (2009). In: Soft Matter Characterization（书章节；无独立期刊 DOI）。</li>
+        <li><em>High-resolution grazing incidence small angle X-ray scattering: investigation of micrometer sized structured polymer films</em>. P. Müller-Buschbaum (2006). DOI: <a href="https://doi.org/10.1007/2882_031" target="_blank" rel="noopener noreferrer">10.1007/2882_031</a></li>
+        <li><em>Advanced grazing-incidence techniques for modern soft-matter materials analysis</em>. Alexander Hexemer, Peter Müller-Buschbaum (2015). DOI: <a href="https://doi.org/10.1107/S2052252514024178" target="_blank" rel="noopener noreferrer">10.1107/S2052252514024178</a></li>
+        <li><em><span data-term="gisaxs">GISAXS</span> and GISANS as metrology technique for understanding the 3D morphology of block copolymer thin films</em>. Peter Müller-Buschbaum (2016). DOI: <a href="https://doi.org/10.1016/j.eurpolymj.2016.04.007" target="_blank" rel="noopener noreferrer">10.1016/j.eurpolymj.2016.04.007</a></li>
+        <li><em>Direct structural characterisation of line gratings with grazing incidence small-angle x-ray scattering</em>. Jan Wernecke, Frank Scholze, Michael Krumrey (2012). DOI: <a href="https://doi.org/10.1063/1.4758283" target="_blank" rel="noopener noreferrer">10.1063/1.4758283</a></li>
+        <li><em>Grazing incidence small angle X-ray scattering as a tool for In-situ time-resolved studies</em>. Gonzalo Santoro, Shun Yu (2017). DOI: <a href="https://doi.org/10.5772/64877" target="_blank" rel="noopener noreferrer">10.5772/64877</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>02 散射基础 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>02 · 散射基础</h1>
+      <p class="subtitle-en">Scattering fundamentals — q, contrast, P(q) and S(q)</p>
+
+      <h2>导语：从一条 $I(q)$ 曲线读出什么</h2>
+      <p>上一章建立了 SAS 的「全景」。本章进入核心语言：<strong>如何把实验测得的散射强度 $I(q)$ 与样品内部的密度起伏、几何形状和粒子间距联系起来</strong>。掌握本章后，你应能：</p>
+      <ul>
+        <li>写出<span data-term="scattering-vector-q">$q$</span> 的定义并估算所敏感的长度尺度；</li>
+        <li>解释<span data-term="scattering-length-density">散射长度密度</span>与<span data-term="contrast">衬度</span> $\Delta\rho$ 如何决定信号强弱；</li>
+        <li>区分<span data-term="form-factor">形式因子</span> $P(q)$ 与<span data-term="structure-factor">结构因子</span> $S(q)$ 的物理来源；</li>
+        <li>知道低 $q$ 的<span data-term="forward-scattering">前向散射</span>与<span data-term="guinier-analysis">Guinier 区</span>、高 $q$ 的<span data-term="porod-law">Porod 区</span>各携带何种信息。</li>
+      </ul>
+      <p>以下推导以弹性、相干、各向同性散射为主——这是稀溶液 SAS 的标准起点。取向样品、表面薄膜与磁性散射将在后续章节与专题中扩展。</p>
+      <h3>式 (2.1) 的成立条件</h3>
+      <p>Jeffries 2021 与 Boldon 等（2015）共同强调，$I(q)=n(\Delta\rho)^2 V^2 P(q)S(q)$ 要求：(1) 粒子可视为相同散射体（或已知多分散分布）；(2) 衬度 $\Delta\rho$ 在粒子体积内近似常数（排除强溶剂渗透梯度）；(3) 单次散射占主导（<span data-term="sans">SANS</span> 厚样须防<span data-term="multiple-scattering">多重散射</span>）；(4) 探测器记录的是相干散射强度的时间/空间平均。违反任一条时，须引入额外项（如粒子间密度差、DWBA 表面项、<span data-term="instrument-smearing">仪器模糊</span>卷积）。</p>
+      <div class="keybox">
+        <strong>关键结论：</strong>式 $I(q)=n(\Delta\rho)^2 V^2 P(q)S(q)$ 是整站分析的语言。任何曲线异常，先分解为衬度、形状、浓度三项排查。
+      </div>
+
+      <h2>散射矢量 $q$：倒易空间标尺</h2>
+      <p>散射过程遵守动量守恒。定义散射矢量</p>
+      $$ \mathbf{q} = \mathbf{k}_s - \mathbf{k}_i $$
+      <p>其中 $\mathbf{k}_i$、$\mathbf{k}_s$ 分别为入射与散射波矢，$|\mathbf{k}| = 2\pi/\lambda$。对弹性散射（$|\mathbf{k}_s| = |\mathbf{k}_i|$），在真空中</p>
+      $$ q = |\mathbf{q}| = \frac{4\pi\sin\theta}{\lambda} $$
+      <figure class="figure">
+        <img src="../assets/figures/fig-01-q-geometry.png" alt="散射矢量几何：ki、ks、q 与 2θ" width="720">
+        <figcaption>
+          图：$\mathbf{q}=\mathbf{k}_s-\mathbf{k}_i$；弹性散射下 $|\mathbf{k}_s|=|\mathbf{k}_i|=2\pi/\lambda$。
+          <span class="fig-source">配图：自制示意（FIG-01）</span>
+        </figcaption>
+      </figure>
+      <p>这里 $2\theta$ 为散射角。$q$ 的量纲为长度$^{-1}$，习惯用 Å$^{-1}$ 或 nm$^{-1}$（$1\,\text{nm}^{-1} = 0.1\,\text{Å}^{-1}$）。</p>
+      <p><strong>尺度换算：</strong> 一阶对应关系为</p>
+      $$ d \approx \frac{2\pi}{q} $$
+      <p>例如 $q = 0.1\,\text{Å}^{-1}$ 对应 $d \approx 63$ Å（6.3 nm）。更精确地说，$d$ 是傅里叶空间中周期，而非粒径；粒径参数 $R_g$、<span data-term="maximum-dimension">$D_{\max}$</span> 需通过特定分析（Guinier、<span data-term="pair-distance-distribution">$p(r)$</span> 等）获得。</p>
+      <p><strong>单位换算算例：</strong> 文献给出 $q_{\max}=6.0$ nm$^{-1}$ → $0.60$ Å$^{-1}$。若 $R_g=35$ Å，则 Guinier 上限 $q \lesssim 1/R_g = 0.029$ Å$^{-1}$（$\approx 0.29$ nm$^{-1}$）。混用 nm$^{-1}$ 与 Å 是拟合软件报错的常见原因。</p>
+      <table>
+        <thead>
+          <tr><th>$q$ (Å$^{-1}$)</th><th>$d=2\pi/q$</th><th>敏感对象（示意）</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>0.001</td><td>≈ 6.3 μm</td><td>大相分离域、<span data-term="usaxs">USAXS</span></td></tr>
+          <tr><td>0.01</td><td>≈ 630 nm</td><td>大复合物、囊泡</td></tr>
+          <tr><td>0.1</td><td>≈ 63 nm</td><td>蛋白质、小胶束</td></tr>
+          <tr><td>1.0</td><td>≈ 6.3 nm</td><td>紧凑纳米颗粒</td></tr>
+        </tbody>
+      </table>
+      <div class="keybox">
+        <strong>关键结论：</strong>Guinier 需要 $q R_g \lesssim 1$（经验上 $q_{\max}^{\text{Guinier}} \approx 1.3/R_g$）。实验前用目标 $R_g$ 反推所需 $q_{\min}$。
+      </div>
+      <p>在二维探测器上，每个像素对应一组 $(q_x, q_y)$；各向同性样品的 $I(q)$ 由以束心为圆心的方位角平均得到。各向异性样品则须保留 $I(q,\varphi)$ 或在选定楔区积分——这是数据还原阶段的话题（第 04 章）。</p>
+      <h3>由几何估算 $q_{\min}$、$q_{\max}$</h3>
+      <p>透射针孔几何一阶估算（小角）：</p>
+      $$ q_{\min} \approx \frac{4\pi}{\lambda}\,\frac{r_{\text{bs}}}{L}, \qquad q_{\max} \approx \frac{4\pi}{\lambda}\,\frac{R_{\text{det}}/2}{L} $$
+      <p>其中 $r_{\text{bs}}$ 为束阻半径，$L$ 为样品–探测器距离，$R_{\text{det}}$ 为探测器有效半径。算例：$\lambda=1.54$ Å，$L=4$ m，$r_{\text{bs}}=1.5$ mm → $q_{\min} \approx 0.003$ Å$^{-1}$（$d \sim 2$ μm）；$R_{\text{det}}=150$ mm → $q_{\max} \approx 0.3$ Å$^{-1}$。改变 $L$ 或波长是扩展 $q$ 窗口的物理手段，非后处理可补救。</p>
+      <table>
+        <thead>
+          <tr><th>参数</th><th>增大 → 对 $q$ 的影响</th><th>副作用</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>$L$</td><td>$q_{\min}$、$q_{\max}$ 同比例减小</td><td>通量 $\propto 1/L^2$；需更大探测器</td></tr>
+          <tr><td>$\lambda$（更长）</td><td>同角度下 $q$ 减小</td><td>吸收增强</td></tr>
+          <tr><td>束阻 $r_{\text{bs}}$</td><td>减小 → $q_{\min}$ 降低</td><td>寄生散射抬高前向区</td></tr>
+        </tbody>
+      </table>
+
+      <h2>散射长度密度与衬度</h2>
+      <p>样品内每一点具有<span data-term="scattering-length-density">散射长度密度</span> $\rho(\mathbf{r})$：单位体积内所有相干散射中心（X 射线为电子，中子为核心）的散射长度之和。溶剂或基体贡献 $\rho_s$。背景扣除后，实验敏感的是<strong>过剩密度</strong></p>
+      $$ \Delta\rho(\mathbf{r}) = \rho(\mathbf{r}) - \rho_s $$
+      <p>其体积平均即为<span data-term="contrast">衬度</span></p>
+      $$ \Delta\rho = \langle \Delta\rho(\mathbf{r}) \rangle_V $$
+      <p>当 $\Delta\rho = 0$（<span data-term="contrast-matching">衬度匹配</span>）时，相干散射几乎消失，只剩微弱的不均匀性信号。<span data-term="sans">SANS</span> 中通过 H/D 替换调节溶剂 $\rho_s$ 是常规操作；<span data-term="saxs">SAXS</span> 中改变缓冲盐浓度或加入重原子也可微调电子密度，但自由度较低。</p>
+      <p>对均匀球体粒子（半径 $R$，内部 $\rho_p$，溶剂 $\rho_s$），衬度为 $\Delta\rho = \rho_p - \rho_s$。散射强度正比于 $\Delta\rho^2$——衬度减半，强度降为四分之一。设计实验时应用计算器（如 MULCh、NIST SLD 数据库）预估 $\Delta\rho$，避免「测了但看不见」。</p>
+      <p><strong>体积分数与有效衬度：</strong> 两相混合物中，若粒子体积分数 $\phi$，稀极限下相干强度仍 $\propto \phi(\Delta\rho)^2$；浓体系须同时处理 $S(q)$ 与可能的界面散射。<span data-term="saxs">SAXS</span> 中造影剂（碘、钽等）可局部抬高 $\rho_p$，但改变化学环境；<span data-term="sans">SANS</span> 中氘代标记可选择性抬高某一组分的 SLD，而不改其化学功能——这是生物 <span data-term="sans">SANS</span> 的核心优势。</p>
+      <p><strong>数值例（<span data-term="sans">SANS</span>）：</strong> 蛋白质在 D$_2$O 中，$\rho_{\text{protein}} \approx 3.0\times 10^{10}$ cm$^{-2}$，$42\%$ D$_2$O 缓冲液 $\rho_s \approx 3.0\times 10^{10}$ cm$^{-2}$ → 匹配点，$\Delta\rho \approx 0$，<span data-term="sans">SANS</span> 信号极弱。改用 $8\%$ D$_2$O（$\rho_s \approx 1.0\times 10^{10}$ cm$^{-2}$）则 $\Delta\rho \approx 2.0\times 10^{10}$ cm$^{-2}$，信号恢复。<span data-term="saxs">SAXS</span> 中无此「开关」，只能靠盐浓度微调。</p>
+      <table>
+        <thead>
+          <tr><th>材料</th><th><span data-term="saxs">SAXS</span> $\rho_e$ (e/Å$^3$)</th><th><span data-term="sans">SANS</span> SLD (×$10^{10}$ cm$^{-2}$)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>水 / H$_2$O</td><td>0.33</td><td>−0.56</td></tr>
+          <tr><td>蛋白质（平均）</td><td>0.43</td><td>+3.0</td></tr>
+          <tr><td>DNA</td><td>0.55</td><td>+4.1</td></tr>
+          <tr><td>PS 微球</td><td>0.34</td><td>+1.4</td></tr>
+          <tr><td>D$_2$O</td><td>0.66</td><td>+6.4</td></tr>
+        </tbody>
+      </table>
+      <div class="keybox">
+        <strong>关键结论：</strong>强度 $\propto (\Delta\rho)^2$。改变缓冲液后曲线整体升降 4 倍以内，优先怀疑<span data-term="contrast-variation">衬度变化</span>而非形状变化。
+      </div>
+      <p><span data-term="saxs">SAXS</span> 常用电子密度单位 e/Å$^3$；<span data-term="sans">SANS</span> 用 cm$^{-2}$。两者符号体系不同，但物理角色相同：决定<strong>散射振幅的权重</strong>。</p>
+
+      <h2>从傅里叶变换到 $I(q)$</h2>
+      <p>相干散射强度是过剩密度傅里叶变换的模方。对体积 $V$ 内样品，</p>
+      $$ I(q) \propto \frac{1}{V}\left|\int_V \Delta\rho(\mathbf{r})\, e^{i\mathbf{q}\cdot\mathbf{r}}\, d\mathbf{r}\right|^2 $$
+      <p>相位信息在探测中丢失，只余强度。对<strong>单分散、稀释、各向同性</strong>的相同粒子体系，上式化为</p>
+      $$ I(q) = n\,(\Delta\rho)^2 V^2 P(q)\, S(q) \quad \text{(式 2.1)} $$
+      <p>各项含义：</p>
+      <ul>
+        <li>$n$：粒子数密度；</li>
+        <li>$(\Delta\rho)^2 V^2$：单粒子「散射功率」的量级，与<span data-term="forward-scattering">前向散射</span> $I(0)$ 直接相关；</li>
+        <li>$P(q)$：<span data-term="form-factor">形式因子</span>，仅由单粒子形状与尺寸决定；</li>
+        <li>$S(q)$：<span data-term="structure-factor">结构因子</span>，粒子间位置关联。</li>
+      </ul>
+      <p>稀溶液中 $S(q)\approx 1$，故 $I(q) \propto P(q)$。浓度升高时须显式处理 $S(q)$，否则会把相互作用误判为形状效应。</p>
+      <p><strong>分解排查表：</strong> 曲线整体上下平移 → 先查 $n$、$\Delta\rho$、绝对标定；低 $q$ 形状异常 → $S(q)$ 或聚集体；中间 $q$ 振荡 → $P(q)$/多分散；高 $q$ 斜率 → 界面/Porod 或背景。</p>
+      <figure class="figure">
+        <img src="../assets/figures/fig-03-iq-regimes.png" alt="I(q) 曲线三区示意" width="900">
+        <figcaption>
+          图：稀释溶液 $I(q)$ 的典型分区——Guinier 区、中间形状区、Porod 尾。
+          <span class="fig-source">配图：自制示意</span>
+        </figcaption>
+      </figure>
+      <p><strong>前向散射与分子量：</strong> 稀溶液中 $I(0) = n(\Delta\rho)^2 V^2$。对相同形状系列，$I(0) \propto M_w^2$（$M_w$ 为分子量）。实验上从 Guinier 外推 $\ln I(0)$，结合 $\Delta\rho$ 与绝对标定可估 MW——但须确认 $S(q)\approx 1$ 且 $q_{\min}$ 足够低。</p>
+      <div class="keybox">
+        <strong>关键结论：</strong>式 (2.1) 中四项独立可调：$n$（浓度）、$\Delta\rho$（缓冲液）、$V$/$P(q)$（尺寸形状）、$S(q)$（相互作用）。拟合前须固定已知项。
+      </div>
+
+      <h2>形式因子 $P(q)$：形状在倒易空间的指纹</h2>
+      <p>形式因子定义为（对单粒子体积 $V$）</p>
+      $$ P(q) = \frac{1}{V^2}\left\langle \left|\int_V e^{i\mathbf{q}\cdot\mathbf{r}}\, d\mathbf{r}\right|^2 \right\rangle $$
+      <p>尖括号表示对随机取向平均。对半径 $R$ 的实心球，解析结果为</p>
+      $$ P_{\text{sphere}}(q) = \left[\frac{3V(\sin qR - qR\cos qR)}{(qR)^3}\right]^2 $$
+      <p>其中 $V = \frac{4}{3}\pi R^3$。低频极限 $qR \ll 1$ 给出</p>
+      $$ P(q) \approx \exp\left(-\frac{q^2 R_g^2}{3}\right), \quad R_g = \sqrt{\frac{3}{5}}R $$
+      <p>此即<span data-term="guinier-analysis">Guinier 定律</span>所依托的展开：低 $q$ 区 $\ln I(q)$ 对 $q^2$ 呈线性，斜率给出<span data-term="radius-of-gyration">回转半径</span> $R_g$。</p>
+      <p><strong>多分散与<span data-term="polydispersity">多分散度</span>：</strong> 若半径分布为 Gauss 型、相对宽度 $\sigma_R/R \sim 10\%$，第一 $P(q)$ 极小可被完全抹平，Guinier 区仍常可用（$R_g$ 变为分布矩）。Boldon 等（2015）指出，多分散体系的实验 $I(q)$ 为各尺寸 $P(q)$ 的加权叠加；拟合单分散球而忽略 $\sigma_R$ 会导致 $\chi^2$ 系统性偏差，但 $R_g$ 有时仍合理。</p>
+      <figure class="figure">
+        <img src="../assets/figures/fig-04-form-factors.png" alt="不同形状的形式因子 P(q)" width="900">
+        <figcaption>
+          图：球、圆柱、圆盘等形式因子 $P(q)$ 在 $\log I$–$\log q$ 上的典型差异。
+          <span class="fig-source">配图：自制示意</span>
+        </figcaption>
+      </figure>
+      <p><strong>球体 $P(q)$ 特征振荡：</strong> 第一极小约在 $qR \approx 4.49$（$P(q)\to 0$）。对 $R=50$ Å，第一极小在 $q \approx 0.09$ Å$^{-1}$。多分散（$\sigma_R/R \sim 10\%$）即可抹平振荡，使曲线看似单调衰减——勿因「没有振荡」就否定球模型。</p>
+      <p>不同形状有截然不同的 $P(q)$ 振荡与衰减：</p>
+      <table>
+        <thead>
+          <tr><th>形状</th><th>低 $q$ 行为</th><th>高 $q$ 渐近（两相界面清晰时）</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>实心球</td><td>Guinier，$R_g=\sqrt{3/5}\,R$</td><td>$\propto q^{-4}$（Porod）</td></tr>
+          <tr><td>薄圆盘</td><td>$R_g$ 反映面内尺寸</td><td>衰减较慢，形状敏感</td></tr>
+          <tr><td>长圆柱</td><td>交叉项 $R$ 与长度 $L$</td><td>轴向与径向贡献不同</td></tr>
+          <tr><td>分形簇</td><td>幂律 $I \propto q^{-\alpha}$</td><td>分形维数相关</td></tr>
+        </tbody>
+      </table>
+      <p>实验曲线很少「像教科书球」——多分散、溶剂层、柔性链段都会抹平振荡。因此 $P(q)$ 在实践中有两层用法：<strong>（1）</strong>低 $q$ 提取 $R_g$、$I(0)$；<strong>（2）</strong>全 $q$ 区模型拟合（第 08 章）。</p>
+      <table>
+        <thead>
+          <tr><th>形状</th><th>何时用该模型</th><th>何时不用</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>实心球</td><td>紧凑球状蛋白、胶体微球</td><td>柔性链、盘状、空心壳（需壳模型）</td></tr>
+          <tr><td>长圆柱</td><td>纤维、病毒棒状、蠕虫状胶束</td><td>$L \ll R$ 或严重多分散</td></tr>
+          <tr><td>薄圆盘</td><td>脂质盘、片层堆叠</td><td>各向同性溶液中取向平均复杂</td></tr>
+          <tr><td>分形/质量分形</td><td>凝胶、絮凝胶体</td><td>稀溶液单分散球</td></tr>
+        </tbody>
+      </table>
+      <div class="keybox">
+        <strong>关键结论：</strong>低 $q$ 的 $R_g$ 对形状不敏感（Guinier 普适）；形状判别靠中间 $q$ 衰减斜率与振荡，需足够 SNR 和 $q$ 覆盖。
+      </div>
+
+      <h3>读谱辅助图：Kratky 与 Porod 图</h3>
+      <p>Boldon 等（2015）除 $\ln I$–$q^2$（Guinier）外，还常用：</p>
+      <ul>
+        <li><strong><span data-term="kratky-plot">Kratky 图</span></strong> $q^2 I(q)$ vs $q$：紧凑球状蛋白呈隆起后下降；无序/展开链在较高 $q$ 保持较高平台——快速区分「球 vs 链」的定性工具，但不能替代 $p(r)$。</li>
+        <li><strong>Porod 图</strong> $q^4 I(q)$ vs $q$：界面清晰的两相体系在高 $q$ 趋于常数 $K$；斜率偏离水平提示背景未扣净或界面模糊。</li>
+      </ul>
+      <p><span data-term="porod-invariant">Porod 不变量</span> $Q = \int_0^\infty q^2 I(q)\,dq$ 与比表面积 $S/V$ 相关（见第 06 章）；须有足够高 $q$ 数据且背景可靠。</p>
+
+      <h2>结构因子 $S(q)$：浓度与有序</h2>
+      <p><span data-term="structure-factor">$S(q)$</span> 描述不同粒子散射波的干涉，与粒子间势 $U(r)$ 和数密度 $n$ 有关。理想气体极限 $S(q)=1$。硬球流体在体积分数 $\phi$ 下，低 $q$ 可能压低（渗透压效应），高 $q$ 可能出现相关峰——峰位反映平均粒子间距 $d \sim 2\pi/q_{\text{peak}}$。</p>
+      <p>生物 SAS 常用浓度系列外推：在多个浓度测量 $I(q)$，外推至零浓度得到「无限稀释」曲线，再分析 $P(q)$。Svergun 等（2003）建议对可疑相互作用体系至少测 3–4 个浓度点；若 $R_g$ 随浓度单调漂移 $>5\%$，不应直接报告单一浓度值。若只做单一高浓度，须谨慎宣称 $R_g$ 与分子量。</p>
+      <p>注意：晶体学中的「结构因子」指倒易点上的衍射振幅；SAS 中的 $S(q)$ 指<strong>粒子中心分布</strong>的傅里叶变换，概念同名、对象不同——读文献时勿混淆。</p>
+      <p><strong>硬球 $S(q)$ 算例：</strong> 胶体体积分数 $\phi=0.30$，有效半径 $R_{\text{eff}}=100$ nm。Percus–Yevick 理论给出第一相关峰约在 $q \approx 2\pi/(2R_{\text{eff}}) \approx 0.031$ nm$^{-1}$。若实验在 $\phi=0.05$ 未见峰、$\phi=0.30$ 出现峰，则低 $q$ 抬起来自 $S(q)$ 而非粒径变化。</p>
+      <table>
+        <thead>
+          <tr><th>浓度迹象</th><th>$S(q)$ 表现</th><th>处理</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>理想稀释</td><td>$S(q)\approx 1$，无相关峰</td><td>直接分析 $P(q)$</td></tr>
+          <tr><td>中等浓度</td><td>低 $q$ 压低或抬高</td><td>浓度系列外推至 $c\to 0$</td></tr>
+          <tr><td>浓溶液/凝胶</td><td>明显相关峰，$q_{\text{peak}}\sim 2\pi/d$</td><td>拟合 $S(q)$ 模型（硬球、Sticky 等）</td></tr>
+        </tbody>
+      </table>
+
+      <h2>$I(q)$ 曲线上的特征区段</h2>
+      <p>一条质量良好的稀释溶液 $I(q)$ 可粗分为三区（示意，边界依体系而异）：</p>
+      <figure class="figure">
+        <img src="../assets/figures/fig-05-guinier-porod.png" alt="<span data-term="guinier-porod-model">Guinier–Porod 模型</span>示意" width="900">
+        <figcaption>
+          图：<span data-term="guinier-porod-model">Guinier–Porod 模型</span>将 $I(q)$ 分为 Guinier 区、中间过渡区与 Porod 尾，用于无模型尺寸提取。
+          <span class="fig-source">配图：自制示意</span>
+        </figcaption>
+      </figure>
+      <ol>
+        <li><strong>Guinier 区</strong>（$qR_g \lesssim 1$）：$I(q) \approx I(0)\exp(-q^2 R_g^2/3)$。<span data-term="guinier-analysis">Guinier 分析</span>估 $R_g$ 与 $I(0)$（后者与分子量相关）。</li>
+        <li><strong>中间区</strong>：形状与内部结构信息；可结合模型或<span data-term="indirect-fourier-transform">IFT</span> 反演<span data-term="pair-distance-distribution">$p(r)$</span>。</li>
+        <li><strong>Porod 区</strong>（高 $q$，两相界面锐利）：<span data-term="porod-law">Porod 定律</span> $I(q) \propto q^{-4}$，与比表面积相关；须扣除背景与模糊效应。</li>
+      </ol>
+      <table>
+        <thead>
+          <tr><th>区段</th><th>适用条件</th><th>不适用时</th><th>提取量</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Guinier</td><td>$q R_g \lesssim 1.3$；单分散紧凑体</td><td>柔性链、空心球、$q_{\min}$ 太高</td><td>$R_g$、$I(0)$</td></tr>
+          <tr><td>中间区</td><td>有足够 SNR 与 $q$ 点</td><td>仅 5–10 个 $q$ 点</td><td>形状线索、IFT → $p(r)$</td></tr>
+          <tr><td>Porod</td><td>锐利两相界面；$q R_g \gg 1$</td><td>柔性聚合物、分形、未扣背景</td><td>比表面积、分形维</td></tr>
+        </tbody>
+      </table>
+      <p><strong>Guinier 拟合算例：</strong> 球体 $R_g=25$ Å，$I(0)=1.0$（归一化）。在 $q=0.01, 0.015, 0.02$ Å$^{-1}$（均满足 $qR_g < 0.5$），$I(q)=I(0)\exp(-q^2 R_g^2/3)$ 给出 $I \approx 0.998, 0.995, 0.991$。若在 $q=0.04$ Å$^{-1}$（$qR_g=1.0$）仍强行线性拟合 $\ln I$ vs $q^2$，外推 $R_g$ 将系统性偏低 ~5–15%。</p>
+      <p><strong>Porod 算例：</strong> 两相界面面积 $S/V$，Porod 常数 $K = 2\pi(\Delta\rho)^2 S/V$。高 $q$ 区 $\ln I$ vs $\ln q$ 斜率应为 $-4$；若测得 $-3.2$，常见原因是未扣溶剂背景或界面模糊（聚合物链、溶剂层）。</p>
+      <div class="keybox">
+        <strong>关键结论：</strong>Guinier 与 Porod 是「无模型」快速读谱的两端锚点。中间区信息密度最高但解释最依赖模型——优先用 IFT 得 $p(r)$ 再选形状模型。
+      </div>
+      <p>Jeffries 2021 Primer 强调：$I(0)$、$R_g$、<span data-term="maximum-dimension">$D_{\max}$</span> 与 $p(r)$ 是稀溶液各向同性体系的<strong>一级分析参数</strong>，往往先于复杂建模完成。</p>
+      <p>从 $I(q)$ 到 $p(r)$ 的桥梁是实空间傅里叶变换；直接变换对噪声极敏感，故采用正则化 <span data-term="indirect-fourier-transform">IFT</span>（第 07 章）。Boldon 等给出</p>
+      $$ \rho(r) = \frac{1}{2\pi^2 r}\int_0^\infty q\,P(q)\,\sin(qr)\,dq $$
+      <p>（$\rho(r)$ 与 $p(r)$ 在文献中符号并用；ATSAS 中 $p(r)$ 为距离分布函数。）这里只需记住：<strong>$p(r)$ 给出粒子内任意两点距离的概率</strong>，峰位可指示特征直径或链段长度；$p(r)=0$ 对 $r>D_{\max}$ 是硬约束，比 Guinier 更能暴露多分散与聚集体（多峰）。</p>
+
+      <h2>空心球与壳层：形式因子边界</h2>
+      <p>病毒衣壳、脂质体等常建模为空心球（内径 $R_1$、外径 $R_2$）。此时 $\Delta\rho$ 仅来自壳层，$P(q)$ 出现更多振荡；低 $q$ Guinier 的 $R_g$ 反映整体质量分布而非外径。若用实心球拟合空心壳数据，$R_g$ 可能「看似合理」但 $p(r)$ 形状完全错误——读谱时须先问「衬度来自哪一层」。</p>
+      <table>
+        <thead>
+          <tr><th>模型</th><th>$R_g$ 与几何参数关系（示意）</th><th>典型误判</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>实心球 $R$</td><td>$R_g=\sqrt{3/5}\,R$</td><td>把囊泡当实心球</td></tr>
+          <tr><td>薄壳 $R_2 \gg R_1$</td><td>$R_g \approx R_2$（近似）</td><td>忽略壳厚度导致 <span data-term="maximum-dimension">$D_{\max}$</span> 偏小</td></tr>
+          <tr><td>长圆柱 $L \gg R$</td><td>$R_g$ 介于 $R$ 与 $L/\sqrt{12}$ 之间</td><td>用球 $R_g$ 解释纤维</td></tr>
+        </tbody>
+      </table>
+
+      <h2>数值直觉：球状蛋白示例</h2>
+      <p>假设稀溶液中球状蛋白 $R = 30$ Å，$\Delta\rho = 0.3\times 10^{-6}$ Å$^{-2}$（示意），单粒子体积 $V \approx 1.1\times 10^5$ Å$^3$。则 $R_g = \sqrt{3/5}\,R \approx 23$ Å，Guinier 区大致满足 $q \lesssim 1/R_g \approx 0.043$ Å$^{-1}$。</p>
+      <p>若同步辐射 <span data-term="saxs">SAXS</span> 覆盖 $q = 0.01$–$0.5$ Å$^{-1}$，则：</p>
+      <ul>
+        <li>低 $q$ 端 3–4 个点落在 Guinier 区（$q < 0.043$ Å$^{-1}$）→ 可估 $R_g$；</li>
+        <li>$q \approx 0.05$–$0.15$ Å$^{-1}$：第一 $P(q)$ 振荡区（$qR \approx 1.5$–$4.5$），形状敏感；</li>
+        <li>$q > 0.3$ Å$^{-1}$：若 SNR 足够，可能见到 Porod 尾或水合层偏离 $q^{-4}$。</li>
+      </ul>
+      <p>若 $q_{\min} > 0.05$ Å$^{-1}$，Guinier 区完全缺失，则<strong>不能</strong>可靠外推 $R_g$——这是实验设计层面的硬约束。此时须 <span data-term="sec-saxs">SEC-SAXS</span> 降低 $q_{\min}$，或改用 $p(r)$ 上界估计 <span data-term="maximum-dimension">$D_{\max}$</span>。</p>
+      <p><strong>分子量粗估：</strong> 对球状蛋白，$M_w \approx I(0) / [c \cdot (\Delta\rho)^2 \cdot V^2]$（须绝对标定）。$R=30$ Å、$c=5$ mg/mL、$\Delta\rho=0.1$ e/Å$^3$ 时，$I(0)$ 量级约 $10^{-1}$–$10^0$ cm$^{-1}$（依仪器而定）——相对强度不足以定 MW，须<span data-term="glassy-carbon">玻璃碳</span>或水标定（第 05 章）。</p>
+
+      <h2>常见坑</h2>
+      <div class="note">
+        <strong>坑 1：在 $qR_g > 1.3$ 仍做 Guinier 拟合。</strong> 超出有效区间的外推会系统性低估或高估 $R_g$。
+      </div>
+      <table>
+        <thead>
+          <tr><th>症状</th><th>根因</th><th>修复</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>$\ln I$ vs $q^2$ 非线性（低 $q$）</td><td>$S(q)\neq 1$、聚集体、$q_{\min}$ 太高</td><td>稀释；浓度外推；延长 $q_{\min}$</td></tr>
+          <tr><td>$R_g$ 随浓度升高而增大</td><td>排斥/吸引导致 $S(q)$ 扭曲</td><td>外推 $c\to 0$；报告浓度系列</td></tr>
+          <tr><td>高 $q$ 斜率 $>-4$</td><td>未扣背景、界面模糊、柔性</td><td>重新扣背景；勿强行 Porod</td></tr>
+          <tr><td>拟合球模型 $\chi^2$ 差但 $R_g$ 合理</td><td>多分散、非球、水合层</td><td>加多分散度 $\sigma_R$；试圆柱/椭球</td></tr>
+          <tr><td>$I(0)$ 分子量与 SEC 差 2× 以上</td><td>绝对标定错误、$\Delta\rho$ 估错、寡聚</td><td>重标定；核对 $\Delta\rho$；查 $p(r)$ 多峰</td></tr>
+        </tbody>
+      </table>
+      <ul>
+        <li><strong>坑 2：忘记 $(\Delta\rho)^2$ 标度。</strong> 改变溶剂盐浓度或 pH 可能改变 $\Delta\rho$，曲线整体升降≠形状变化。</li>
+        <li><strong>坑 3：浓溶液直接当稀溶液。</strong> $S(q)$ 扭曲低 $q$，须浓度系列或理论 $S(q)$ 修正。</li>
+        <li><strong>坑 4：将 $d=2\pi/q$ 当粒径。</strong> 尤其对柔性或空心物体，$d$ 只是敏感尺度。</li>
+        <li><strong>坑 5：Porod 区未扣背景。</strong> 溶剂、仪器本底会使高 $q$ 偏离 $q^{-4}$，错误估比表面积。</li>
+        <li><strong>坑 6：单位混乱。</strong> $q$ 用 nm$^{-1}$ 而 $R_g$ 用 Å 是常见错误；拟合前统一单位。</li>
+      </ul>
+      <div class="keybox">
+        <strong>关键结论：</strong>排障顺序——(1) 单位与 $q$ 范围；(2) 背景与绝对强度；(3) 浓度/$S(q)$；(4) 模型选择。多数「拟合不收敛」是前两项未解决。
+      </div>
+
+      <h2>小结</h2>
+      <p>散射基础的核心方程 $I(q)=n(\Delta\rho)^2 V^2 P(q)S(q)$ 把实验曲线分解为衬度、单粒子形状与粒子间关联三部分。<span data-term="scattering-vector-q">$q$</span> 选择敏感尺度；<span data-term="contrast">$\Delta\rho$</span> 决定能否看见；$P(q)$ 与 $S(q)$ 分别回答「单个物体长什么样」与「它们如何扎堆」。低 $q$ 的 Guinier 区与高 $q$ 的 Porod 区是两条最常用的「快速读谱」规则。下一章转向：这些 $q$ 如何在仪器上被实现与测量。</p>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="scattering-vector-q">散射矢量 q</span></li>
+        <li><span data-term="scattering-length-density">散射长度密度</span></li>
+        <li><span data-term="contrast">衬度</span></li>
+        <li><span data-term="form-factor">形式因子 P(q)</span></li>
+        <li><span data-term="structure-factor">结构因子 S(q)</span></li>
+        <li><span data-term="radius-of-gyration">回转半径 Rg</span></li>
+        <li><span data-term="forward-scattering">前向散射</span></li>
+        <li><span data-term="guinier-analysis">Guinier 分析</span></li>
+        <li><span data-term="porod-law">Porod 定律</span></li>
+        <li><span data-term="pair-distance-distribution">距离分布 p(r)</span></li>
+        <li><span data-term="indirect-fourier-transform">间接傅里叶变换 IFT</span></li>
+        <li><span data-term="polydispersity">多分散度</span></li>
+        <li><span data-term="instrument-smearing">仪器模糊 smearing</span></li>
+      </ul>
+
+      <h2>延伸阅读</h2>
+      <ul>
+        <li><em>Small-angle X-ray and neutron scattering</em>. Cy M. Jeffries et al. (2021). DOI: <a href="https://doi.org/10.1038/s43586-021-00064-9" target="_blank" rel="noopener noreferrer">10.1038/s43586-021-00064-9</a></li>
+        <li><em>Review of the fundamental theories behind small angle X-ray scattering, molecular dynamics simulations, and relevant integrated application</em>. Lauren Boldon, Fallon Laliberte, Li Liu (2015). DOI: <a href="https://doi.org/10.3402/nano.v6.25661" target="_blank" rel="noopener noreferrer">10.3402/nano.v6.25661</a></li>
+        <li><em>Instrumentation for Small-Angle Scattering</em>. Jan Skov Pedersen (1995). DOI: <a href="https://doi.org/10.1007/978-94-015-8457-9_2" target="_blank" rel="noopener noreferrer">10.1007/978-94-015-8457-9_2</a></li>
+        <li><em>Small-angle scattering studies of biological macromolecules in solution</em>. Dmitri I. Svergun, Michel H. J. Koch (2003). DOI: <a href="https://doi.org/10.1088/0034-4885/66/10/R05" target="_blank" rel="noopener noreferrer">10.1088/0034-4885/66/10/R05</a></li>
+      </ul>
+
+      <nav class="pager">
+        <a href="01-what-is-sas.html">← 上一章：01 什么是 SAS</a>
+        <a href="03-instruments.html">下一章：03 仪器与几何 →</a>
+      </nav>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>玻璃碳标样 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>玻璃碳标样</h1>
+      <p class="subtitle-en">glassy carbon calibration standard</p>
+
+      <h2>定义</h2>
+      <p><strong>玻璃碳</strong>因散射截面平滑、稳定、易保存，被广泛用作二级绝对强度标准。将样品与标样在同一几何下比较，把相对 $I(q)$ 转到 $\mathrm{cm}^{-1}$。</p>
+
+      <h2>物理直觉</h2>
+      <p>注意批次差异、狭缝 smeared 曲线与针孔曲线不可混用标定因子；SRM 3600 提供认证 $Q$ 区截面。</p>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="absolute-intensity">绝对强度</span></li>
+        <li><span data-term="usaxs">超小角散射</span></li>
+        <li><span data-term="instrument-smearing">仪器模糊</span></li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../topics/calibration/index.html">专题 calibration</a></li>
+        <li><a href="../learn/05-absolute-calibration.html">学习路径 05-absolute-calibration</a></li>
+        <li><a href="../topics/usaxs/index.html">专题 usaxs</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

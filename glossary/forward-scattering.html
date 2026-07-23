@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>前向散射 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>前向散射</h1>
+      <p class="subtitle-en">forward scattering</p>
+
+      <h2>定义</h2>
+      <p><strong>前向散射</strong>指散射角接近 $0^\circ$（即 <span data-term="scattering-vector-q">散射矢量</span> $q \to 0$）的散射。在小角散射中，整个实验几何就是围绕前向方向采集数据；「低 $q$ 区」即前向散射中对应较大实空间尺度的部分。</p>
+      <p>前向散射强度 $I(0)$ 与样品在宏观上的散射能力、浓度、以及热力学涨落有关；对单分散稀溶液，$I(0) \propto N V^2 \Delta\rho^2$。</p>
+
+      <h2>物理直觉</h2>
+      <p>$q=0$ 对应「无限长波长」的密度起伏——即样品的总散射截面与整体对比。实际仪器无法测到 $q=0$，需从低 $q$ 数据外推 $I(0)$（如 <span data-term="guinier-analysis">Guinier 分析</span>、Zimm 图等）。</p>
+      <p>前向散射对以下现象特别敏感：</p>
+      <ul>
+        <li>大尺度不均匀（聚集、絮凝、相分离初期）</li>
+        <li>浓溶液中的渗透压缩性（$S(0)$ 增大）</li>
+        <li>绝对强度标定中的参考比对</li>
+      </ul>
+
+      <h2>实验注意</h2>
+      <ul>
+        <li>直射光束（direct beam）必须被挡住或减光，否则会淹没前向散射。</li>
+        <li>低 $q$ 极限受样品尺寸、光束 smearing、探测器边缘与分辨率影响。</li>
+        <li>背景扣除错误会在低 $q$ 造成巨大偏差，影响 $R_g$ 与 $I(0)$。</li>
+      </ul>
+
+      <h2>常见混淆</h2>
+      <ul>
+        <li>「前向散射」≠「透射光」：前者是偏离直射方向仍很小的散射；后者是未散射的直通束。</li>
+        <li>与广角/WAXS 对比：SAS 专门测前向小角区，不是全角度积分。</li>
+        <li>$I(0)$ 外推与 Guinier 截距：方法需一致，且应报告所用 $q$ 范围。</li>
+      </ul>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="scattering-vector-q">散射矢量</span> $q$</li>
+        <li><span data-term="guinier-analysis">Guinier 分析</span></li>
+        <li><span data-term="radius-of-gyration">回转半径</span> $R_g$</li>
+        <li><span data-term="structure-factor">结构因子</span> $S(0)$</li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../learn/02-scattering-basics.html">学习路径 02 · 散射基础</a></li>
+        <li><a href="../learn/06-guinier-porod.html">学习路径 06 · Guinier / Porod</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

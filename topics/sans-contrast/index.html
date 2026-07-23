@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <title><span data-term="sans">SANS</span> <span data-term="contrast-variation">衬度变化</span> / 匹配 · 专题手册 · SAS 知识站</title>
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+ <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+ <div id="site-header"></div>
+ <div class="layout">
+ <aside id="site-sidebar"></aside>
+ <main class="content">
+ <h1><span data-term="sans">SANS</span> <span data-term="contrast-variation">衬度变化</span>与<span data-term="contrast-matching">衬度匹配</span></h1>
+ <p class="subtitle-en">Contrast variation / matching — H/D, solvents, and selective deuteration</p>
+
+ <p>本导读以 Krueger（2017）生物溶液 <span data-term="sans">SANS</span> <span data-term="contrast-variation">衬度变化</span>实验设计章节为主线，结合 Jeffries 等（2021）<span data-term="saxs">SAXS</span>/<span data-term="sans">SANS</span> 方法学 Primer、Grillo（2008）软物质 <span data-term="sans">SANS</span> 仪器与数据处理、<span data-term="sans">SANS</span> Soft Matter 教材第 2 章中子散射基础，以及 Knoll 等（1981）脂质相图经典对比度实验，说明为何中子特别适合「调衬度」、如何用 H<sub>2</sub>O/D<sub>2</sub>O 匹配与选择性氘代拆解多组分体系，以及实践中如何选匹配点、处理<span data-term="incoherent-background">不相干本底</span>与可交换质子。磁散射仅作边界提示，详见 <a href="../magnetic-sans/index.html">磁 <span data-term="sans">SANS</span> 专题</a>。</p>
+
+ <h2>问题是什么</h2>
+ <p>小角散射看到的不是「绝对密度」，而是粒子与溶剂之间的<span data-term="contrast">衬度</span> $\Delta\rho=\rho-\rho_s$。单组分、均匀粒子时，稀溶液强度近似</p>
+ $$I(q)=n\,(\Delta\rho)^2\,V^2\,P(q)\,S(q),$$
+ <p>其中 $P(q)$ 为<span data-term="form-factor">形式因子</span>，$S(q)$ 为<span data-term="structure-factor">结构因子</span>（稀溶液常取 $\approx 1$）。衬度一旦为零，该组分对相干散射「隐形」——这就是<span data-term="contrast-matching">衬度匹配</span>（contrast matching）。</p>
+ <p><strong>X 射线（<span data-term="saxs">SAXS</span>）</strong>的衬度来自电子密度差，只能靠改溶剂电子密度（盐、甘油、蔗糖等）或换材料；对蛋白质/核酸/脂质这类以氢为主的生物分子，可调空间窄，且化学扰动大。<strong>中子（<span data-term="sans">SANS</span>）</strong>则利用氢（H）与氘（D）相干散射长度符号与量级的巨大差异：$b_{\mathrm{H}}$ 为负、$b_{\mathrm{D}}$ 为正，溶剂从纯 H<sub>2</sub>O 扫到纯 D<sub>2</sub>O 时水的<span data-term="scattering-length-density">散射长度密度（SLD）</span>可跨越约 $-0.56$ 到 $+6.4\times 10^{10}\,\mathrm{cm}^{-2}$（常用单位亦见 $\times 10^{-6}$ Å$^{-2}$），足以覆盖蛋白、核酸、脂质头基与碳氢链的典型 SLD（Krueger 2017；Grillo 2008）。中子还可探测磁结构（ Ch.2），但本专题聚焦<strong>核散射衬度</strong>，磁散射见专门专题。</p>
+ <p>因此核心问题是：何时值得做<span data-term="contrast-variation">衬度变化</span>系列（而非仅靠 <span data-term="saxs">SAXS</span>），如何设计 H<sub>2</sub>O/D<sub>2</sub>O 匹配点与氘代策略，以及如何避免「匹配了却看不见」的假阴性（本底、交换、样品质量）。</p>
+
+ <figure class="figure">
+ <img src="../../assets/figures/fig-16-sans-contrast-matching.png" alt="<span data-term="sans">SANS</span> <span data-term="contrast-matching">衬度匹配</span>示意" width="900">
+ <figcaption>H<sub>2</sub>O/D<sub>2</sub>O 调节溶剂 SLD：组分 A 在匹配点 $\Delta\rho_A=0$ 时对相干散射不可见，剩余信号主要来自未匹配组分 B；选择性氘代可拉开 A、B 的匹配点。<span class="fig-source">配图：自制示意</span></figcaption>
+ </figure>
+
+ <h2>文献主线</h2>
+ <h3>Krueger 2017：生物多组分组装的<span data-term="contrast-variation">衬度变化</span>实验设计</h3>
+ <p>该章是生物 <span data-term="sans">SANS</span> 衬度实验的<strong>操作手册</strong>：理论（$I=I_{\mathrm{coh}}+I_{\mathrm{inc}}$、$\Delta\rho$）、两组分复合物匹配点选择、$\sqrt{I(0)}$–%D<sub>2</sub>O 作图、数据拆解与 MONSA/SASREF 类建模衔接。核心实验设计步骤：</p>
+ <ol>
+ <li><strong>先算后测：</strong> 各组分 SLD 随 %D<sub>2</sub>O 变化（含可交换 H）；确认蛋白（$\sim 40\%$）、DNA/RNA（$>60\%$）、CH<sub>2</sub> 链（低 %）匹配点足够分离；</li>
+ <li><strong>样品 QC：</strong> 与 BioSAS 相同——单分散、浓度系列、各衬度点组分比恒定；</li>
+ <li><strong>缓冲系列：</strong> 至少 5–7 个 %D<sub>2</sub>O 点，覆盖两组分匹配点及两侧高衬度点；</li>
+ <li><strong>透析平衡：</strong> 至目标 %D<sub>2</sub>O，记录时间/温度；用密度计或透射率验证溶剂组成；</li>
+ <li><strong>本底与绝对强度：</strong> 每档 %D<sub>2</sub>O 精确匹配 blank；拟合 $I_{\mathrm{inc}}$；绝对标定便于 $\sqrt{I(0)}$ 分析；</li>
+ <li><strong>分析：</strong> 匹配点 $\Delta\rho\to 0$ 时相干信号极弱——须更长计数；用 Stuhrmann 表或 MULCh 等校核 SLD；多衬度数据联合拟合（如 ATSAS MONSA）。</li>
+ </ol>
+ <p>要点：（1）匹配点附近相干信号极弱，<span data-term="incoherent-background">不相干本底</span>相对放大；（2）蛋白约 40% D<sub>2</sub>O、DNA/RNA 更高、脂质碳氢链接近 0–10% D<sub>2</sub>O；（3）可交换质子使生物分子 SLD 随 %D<sub>2</sub>O 轻微上扬，匹配点预测必须计入交换（Krueger 2017）。</p>
+
+ <h3>Jeffries 等 2021：<span data-term="saxs">SAXS</span> 与 <span data-term="sans">SANS</span> 的方法学对照</h3>
+ <p>Nature Reviews Methods Primer 把 <span data-term="saxs">SAXS</span>/<span data-term="sans">SANS</span> 放在同一框架下：两者共享 $q$、$P(q)$、$S(q)$ 与绝对强度概念，但<strong>衬度机制不同</strong>。文中强调中子的 H/D 同位素对比是生物与软物质结构解析的独特杠杆——溶剂对比度扫描、部分氘代、与 <span data-term="saxs">SAXS</span> 互补（电子密度 vs 核 SLD）是设计实验时的第一决策树（Jeffries 2021）。</p>
+
+ <h3>Grillo 2008：<span data-term="sans">SANS</span> 仪器、绝对标定与<span data-term="contrast-variation">衬度变化</span></h3>
+ <p>软物质 <span data-term="sans">SANS</span> 经典章节涵盖：稳态（D22）与时飞（LOQ）仪器配置、透射率与<span data-term="multiple-scattering">多重散射</span>、从原始计数到绝对截面（$\mathrm{d}\sigma/\mathrm{d}\Omega$）的归一化流程，以及 5.2 节 SLD、<span data-term="contrast-matching">衬度匹配</span>、零平均衬度法（ZAC）与氘标记极限。对衬度实验尤其重要的是：（1）$\Delta\lambda/\lambda \sim 10$–15% 导致 smearing，建模须卷积仪器分辨率；（2）4.6 节<span data-term="incoherent-background">不相干本底</span>扣除——高 H<sub>2</sub>O 分数时 $I_{\mathrm{inc}}$ 抬高平台；（3）5.2.2 <span data-term="contrast-variation">衬度变化</span>技术——通过溶剂 SLD 扫描使某相「隐形」以突出另一相的 $P(q)$。</p>
+
+ <h3><span data-term="sans">SANS</span> Soft Matter 教材 Ch.2：中子散射基础</h3>
+ <p>第 2 章给出经典 <span data-term="sans">SANS</span> 仪器布局（引脚准直 + 二维探测器）、核散射与<strong>磁散射</strong>的区分：生物/软物质衬度实验主要用核相干散射长度 $b_j$，磁散射需极化束线与自旋分析（详见磁 <span data-term="sans">SANS</span> 专题， 仅作交叉引用）。章节强调绝对截面标定使 $I(0)\propto(\Delta\rho)^2$ 的定量解释成为可能，与 Krueger 实验设计中的 $\sqrt{I(0)}$ 作图一致。</p>
+
+ <h3>Knoll, Ibel &amp; Sackmann 1981：脂质相图的对比度法</h3>
+ <p>早期用<span data-term="contrast-variation">衬度变化</span>在脂质混合物中分离组分贡献、绘制相图，证明「调溶剂 SLD + 同位素标记」可在真实软物质体系中解析内部结构（Knoll 1981）——思路直接延续到今日膜蛋白、脂质体与纳米载体实验：匹配缓冲液脂质链以突出蛋白，或匹配蛋白以观察膜重组。</p>
+
+ <h3>聚合物与核–壳体系（补充）</h3>
+ <p>聚合物胶体、嵌段共聚物常用氘代单体/溶剂拉开各嵌段 SLD，逻辑与生物两组分匹配相同：匹配一相、观察另一相 $P(q)$，或结合 <span data-term="saxs">SAXS</span>（电子密度）与 <span data-term="sans">SANS</span>（核 SLD）互补约束。实验流程仍遵循 Krueger的「多衬度点 + 绝对强度 + 本底扣除」框架。</p>
+
+ <h2>仪器与测量：Grillo 2008要点</h2>
+ <table>
+ <thead>
+ <tr><th>环节</th><th>须测量/记录</th><th>衬度实验相关</th></tr>
+ </thead>
+ <tbody>
+ <tr><td>准直</td><td>针孔几何、$q_{\min}$</td><td>低 $q$ 覆盖 Guinier；束斑 $\sim 10$–100 mm 致 smearing</td></tr>
+ <tr><td>透射率</td><td>样品与缓冲各档</td><td>%D<sub>2</sub>O 系列须逐档测量；用于绝对标定</td></tr>
+ <tr><td>标准样</td><td>水、固态聚合物等</td><td>$\mathrm{d}\sigma/\mathrm{d}\Omega$ 绝对截面（ Ch.2）</td></tr>
+ <tr><td>本底</td><td>空池、电子学本底</td><td>高 H 缓冲本底高；匹配点信噪最差</td></tr>
+ <tr><td>计数时间</td><td>按 $(\Delta\rho)^2$ 调整</td><td>匹配点延长曝光；高衬度点可缩短</td></tr>
+ </tbody>
+ </table>
+
+ <h2>SLD 与衬度：数学直觉</h2>
+ <h3>散射长度密度</h3>
+ <p>体积 $V$ 内相干散射长度之和除以体积：</p>
+ $$\rho=\frac{1}{V}\sum_j b_j,$$
+ <p>$b_j$ 为核的束缚相干散射长度。中子的 $b$ 不随原子序号单调变化，且 H/D 差别极大——这是「化学几乎不变、散射剧烈改变」的物理根源。</p>
+
+ <h3>稀溶液强度与匹配</h3>
+ <p>均匀粒子：</p>
+ $$I(q)\propto n\,(\rho-\rho_s)^2\,V^2\,P(q).$$
+ <p>故 $\sqrt{I(0)}\propto|\Delta\rho|$（Krueger 2017）。对溶剂系列作 $\sqrt{I(0)}$（或 Stuhrmann 约定下的带符号 $\sqrt{I(0)}$）对 %D<sub>2</sub>O 的图，过零点即<strong>匹配点</strong>（contrast match point）。多组分时总振幅是各组分衬度加权贡献之和：</p>
+ $$I(q)=\sum_{i,j} n_i n_j \, \Delta\rho_i \Delta\rho_j \, F_i(q) F_j(q) + \text{交叉项}$$
+ <p>匹配一点只消掉一个组分的平均 $\Delta\rho$，不等于内部结构消失；组分内部 SLD 不均匀（疏水核、糖基化、结合离子）会导致「残余散射」（Krueger 2017；Grillo 2008 §5.2.4）。</p>
+
+ <h3>与 <span data-term="saxs">SAXS</span> 电子密度衬度的区别</h3>
+ <table>
+ <thead>
+ <tr><th></th><th><span data-term="saxs">SAXS</span></th><th><span data-term="sans">SANS</span></th></tr>
+ </thead>
+ <tbody>
+ <tr><td>对比度来源</td><td>电子密度 $\rho_e$</td><td>核散射长度密度 $\rho$</td></tr>
+ <tr><td>主要调参手段</td><td>溶剂电子密度（盐、糖等）；材料本身</td><td>H<sub>2</sub>O/D<sub>2</sub>O；选择性氘代</td></tr>
+ <tr><td>对氢</td><td>电子少，贡献弱</td><td>H 强且 $b$ 为负；D 可大幅抬高 SLD</td></tr>
+ <tr><td>典型用途</td><td>整体形状、$R_g$、快速筛选</td><td>拆组分、看氘代标签、匹配溶剂「隐形」一层</td></tr>
+ <tr><td>化学扰动</td><td>高浓度共溶剂可能改变构象/聚集</td><td>同位素替代通常生化扰动更小（仍须验证）</td></tr>
+ </tbody>
+ </table>
+ <p><strong>何时用<span data-term="contrast-variation">衬度变化</span>，而非只做 <span data-term="saxs">SAXS</span>：</strong> 需要分辨复合物中哪一部分在哪里（蛋白–核酸、蛋白–脂质、核–壳聚合物）；需要在接近生理缓冲下「关掉」某一组分；<span data-term="saxs">SAXS</span> 电子密度几乎相同、无法区分的两相。若只关心整体 $R_g$/形状且单组分足够，优先 <span data-term="saxs">SAXS</span>（通量高、源易得），再用一两档 <span data-term="sans">SANS</span> 衬度确认内部组织（Jeffries 2021）。</p>
+
+ <div class="keybox">
+ <strong>量级直觉（生物，约；Krueger 2017 / Grillo 2008）</strong>
+ <ul>
+ <li>水：0% D<sub>2</sub>O $\rho_s\approx -0.56\times 10^{10}\,\mathrm{cm}^{-2}$；100% D<sub>2</sub>O $\approx 6.4\times 10^{10}\,\mathrm{cm}^{-2}$（中间近似线性插值；须实验透射/密度计校正）。</li>
+ <li>典型蛋白匹配点 $\sim 40\%$–$43\%$ D<sub>2</sub>O；DNA/RNA 更高（常 $>60\%$）；脂肪链（CH<sub>2</sub>）接近 0–10% D<sub>2</sub>O；全氘代（perdeuterated）组分匹配点 $>100\%$ D<sub>2</sub>O，实践中靠溶剂匹配「显形」。</li>
+ <li>$I(0)\propto(\Delta\rho)^2$：离匹配点 10% D<sub>2</sub>O 与 20% 相比，信号可差约 4 倍——匹配点附近要更长计数或更高浓度（仍须保持稀溶液，$S(q)\approx 1$）。</li>
+ <li>${}^1$H 不相干截面远大于其他核 → 高 H<sub>2</sub>O 区本底高；匹配点常选在较高 %D<sub>2</sub>O 一侧若化学允许（Grillo §4.6）。</li>
+ </ul>
+ </div>
+
+ <h2>H<sub>2</sub>O/D<sub>2</sub>O 匹配</h2>
+ <h3>溶剂扫描</h3>
+ <p>固定样品化学组成，配制一系列缓冲液（Krueger 2017 建议至少覆盖 0%、20%、30%、40%、50%、70%、100% D<sub>2</sub>O 中的 5–7 点，实际依匹配点间距调整），测量 $I(q)$ 并外推/拟合 $I(0)$。匹配点由 $\Delta\rho=0$ 给出；也可用 MULCh、序列统计或 Stuhrmann 表预估 SLD 与溶剂线相交，再用实验 $\sqrt{I(0)}$–%D<sub>2</sub>O 微调（Krueger 2017）。</p>
+
+ <h3>Stuhrmann 作图与两组分拆解</h3>
+ <p>对蛋白–DNA 等天然两组分，匹配蛋白后剩余曲线主要反映 DNA 的 $P(q)$（及弱交叉项）。Stuhrmann（1970）形式将 $\sqrt{I(0)}$ 对溶剂 SLD 作线性外推，交点即匹配点。三组分以上须更多独立衬度条件（选择性氘代、<span data-term="saxs">SAXS</span>+<span data-term="sans">SANS</span>）才能唯一拆解——勿假设「两个匹配点 = 完全解卷积」（Krueger 2017）。</p>
+
+ <h3>选择匹配点的实践</h3>
+ <ul>
+ <li><strong>目标：</strong> 使组分 A 的有效 $\rho_A\approx\rho_s$，剩余 $I(q)$ 主要反映组分 B 的 $P_B(q)$（及 A–B 交叉项在完全匹配时的衰减）。</li>
+ <li><strong>预估：</strong> 用序列/组成算 SLD（计入可交换 H）；蛋白常用 $\sim 40\%$ D<sub>2</sub>O 作初值。</li>
+ <li><strong>验证：</strong> 匹配点附近 Guinier 仍应合理；$I(0)$ 对 %D<sub>2</sub>O 呈抛物线（$(\Delta\rho)^2$）；偏离预示聚集、相分离或交换未达平衡。</li>
+ <li><strong>勿只测匹配点：</strong> 至少一侧高衬度点用于整体参数与绝对强度 sanity check（见 <a href="../calibration/index.html">绝对标定</a>）。</li>
+ </ul>
+
+ <h3><span data-term="incoherent-background">不相干本底</span></h3>
+ <p>氢的不相干散射截面很大（Jacrot 1976；Grillo 2008 §4.6），故高 H<sub>2</sub>O 分数时 $I_{\mathrm{inc}}$ 抬高，平坦本底淹没弱相干信号。匹配点附近 $I_{\mathrm{coh}}$ 最小，本底问题最尖锐。实践：Trewhella 2017 建议用透析终液作 blank、封闭环境避免 ${}^1$H/${}^2$H 交换差异、透射率对纯 H<sub>2</sub>O/D<sub>2</sub>O 标定；高 $q$ 拟合平坦 $I_{\mathrm{inc}}$ 常数项，勿把平台误当作 Porod 尾（Krueger 2017）。<span data-term="sans">SANS</span> 还原中 ad hoc 加减常数强平高 $q$ 须在方法节说明。</p>
+
+ <h3>可交换质子</h3>
+ <p>连接在 N、O 上的氢会与溶剂 H/D 交换，使蛋白/核酸的有效 SLD 随 %D<sub>2</sub>O <strong>轻微上升</strong>（碳上的不可交换 H 不变）。后果：</p>
+ <ul>
+ <li>匹配点相对「无交换」计算值偏移；</li>
+ <li>透析/平衡时间不足 → 表观匹配点漂移；</li>
+ <li>完全氘代样品仍有可交换位点，须按缓冲 %D<sub>2</sub>O 校正。</li>
+ </ul>
+ <p>实验上应充分透析至目标缓冲，并在计算 SLD 时使用交换分数（常用经验值或序列统计；Krueger 2017）。</p>
+
+ <h2>多组分体系</h2>
+ <p>两组分（如蛋白 + DNA）复合物的散射可写成各组分自相关与交叉项。<span data-term="contrast-variation">衬度变化</span>的目标是：在一组 %D<sub>2</sub>O（及可选氘代标签）下，分别突出组分 1、组分 2，并约束二者相对位置。</p>
+ <table>
+ <thead>
+ <tr><th>策略</th><th>做法</th><th>得到什么</th><th>注意</th></tr>
+ </thead>
+ <tbody>
+ <tr><td>溶剂匹配组分 A</td><td>%D<sub>2</sub>O 调至 A 的匹配点</td><td>主要见 B 的形状</td><td>A 的内部非均匀性、水合层可使「不完全隐形」</td></tr>
+ <tr><td>溶剂匹配组分 B</td><td>调至 B 的匹配点</td><td>主要见 A</td><td>两匹配点须足够分离，否则无法独立</td></tr>
+ <tr><td>选择性氘代</td><td>氘代 A 或 B（或脂质链）</td><td>拉开匹配点；高衬度标签</td><td>表达/合成成本；验证结构未变</td></tr>
+ <tr><td><span data-term="saxs">SAXS</span> + <span data-term="sans">SANS</span></td><td>同一缓冲的电子密度 vs 核 SLD</td><td>互补约束</td><td>缓冲须同时适合两种束线</td></tr>
+ </tbody>
+ </table>
+ <p>天然蛋白与 DNA 的匹配点本已分离；蛋白–蛋白复合物则常需氘代其中一方。脂质体/膜蛋白常匹配脂质双层以突出蛋白，或匹配蛋白以看膜重组（Knoll 1981）。Krueger给出核糖体、病毒衣壳等案例：至少测量「匹配 A」「匹配 B」「高衬度对照」三档方可开始刚体/MONSA 建模。</p>
+
+ <h3>与 ATSAS 的衔接</h3>
+ <p>多衬度 <span data-term="sans">SANS</span> 数据可导入 PRIMUS，用 MONSA（多相 ab initio）或 SASREFCV（刚体 + 衬度联合）拟合。各衬度点须先单独通过 Guinier/$p(r)$ QC（见 <a href="../atsas/index.html">ATSAS 专题</a> 步骤 5c）。CRYSOL/CRYSON 计算理论曲线时须指定各组分 SLD 与 %D<sub>2</sub>O（MULCh/Contrast 模块）。</p>
+
+ <div class="keybox">
+ <strong><span data-term="contrast-variation">衬度变化</span>实验检查清单</strong>
+ <ol>
+ <li><strong>先算后测：</strong> 各组分 SLD、溶剂线、预估匹配点；确认两匹配点间距 $>15$% D<sub>2</sub>O（经验）；全氘代组分须单独规划。</li>
+ <li><strong>样品质量：</strong> 单分散、无聚集；各衬度点浓度与化学计量恒定；DLS/SEC/AUC 与 <span data-term="sans">SANS</span> 互证（Krueger 2017；Trewhella 2017）。</li>
+ <li><strong>交换平衡：</strong> 透析至目标 %D<sub>2</sub>O（常 48–72 h，视分子量）；记录温度；重复透析检验匹配点漂移。</li>
+ <li><strong>仪器与标定：</strong> 报告配置、$\Delta\lambda/\lambda$、透射率、绝对截面标准（水/聚合物标准）；Grillo 流程：通量 $\Phi_0$、立体角、<span data-term="multiple-scattering">多重散射</span>检查。</li>
+ <li><strong>本底：</strong> 每档 %D<sub>2</sub>O 精确匹配缓冲；高 H 区延长计数；拟合 $I_{\mathrm{inc}}$ 并报告。</li>
+ <li><strong>数据点：</strong> 勿只测匹配点——两侧高衬度点用于 $R_g$、$M$ 与 $\sqrt{I(0)}$ 曲线形状 sanity check。</li>
+ <li><strong>对照：</strong> 同条件 <span data-term="saxs">SAXS</span>（若可行）核对整体 $R_g$；氘代/活性对照验证同位素未改相互作用。</li>
+ <li><strong>建模：</strong> 多衬度联合拟合（MONSA/SASREFCV）；报告残余 $I(0)$ 与不完全匹配假设。</li>
+ </ol>
+ </div>
+
+ <h2>实践要点与坑</h2>
+ <ul>
+ <li><strong>匹配点「信号消失」≠ 样品没了：</strong> 相干项为零时仍有<span data-term="incoherent-background">不相干本底</span>与仪器背景；须与空池/缓冲比较，勿误判为沉淀。</li>
+ <li><strong>匹配不完全：</strong> 组分内部 SLD 不均匀（疏水核、糖基化、结合离子）→ 无单一完美匹配点；报告残余 $I(0)$ 与模型假设。</li>
+ <li><strong>交换未完成 → 如何判断：</strong> 重复透析后匹配点移动；$R_g$ 随时间变。延长平衡或升温（在样品稳定前提下）。</li>
+ <li><strong>高 H<sub>2</sub>O 不相干淹没：</strong> 匹配点落在低 %D<sub>2</sub>O 时统计极差 → 氘代另一组分把工作点移向高 D<sub>2</sub>O，或提高通量/浓度（仍稀释）。</li>
+ <li><strong>氘代改变相互作用：</strong> 少数体系同位素影响折叠或寡聚 → 用 <span data-term="saxs">SAXS</span>/SEC/活性对照验证。</li>
+ <li><strong>$S(q)$ 污染：</strong> 浓度过高时结构因子随<span data-term="contrast-variation">衬度变化</span>扭曲形状解释 → 稀释或显式建模 $P(q)S(q)$。</li>
+ <li><strong>把 <span data-term="saxs">SAXS</span> 形状直接当各组分形状：</strong> <span data-term="saxs">SAXS</span> 是电子密度加权整体；组分分解必须靠 <span data-term="sans">SANS</span> 衬度系列或氘代标签（Jeffries 2021）。</li>
+ <li><strong>仪器 smearing 未处理 → 如何判断：</strong> 宽 $\Delta\lambda/\lambda$ 或大盘探测器下 Bragg 峰或振荡被抹平。用 Grillo 流程评估分辨率，建模时卷积仪器函数（；）。</li>
+ <li><strong>与磁散射混淆 → 如何判断：</strong> 加磁场后 $I(q)$ 各向异性变化——属磁 <span data-term="sans">SANS</span>，非核<span data-term="contrast-matching">衬度匹配</span>；见 <a href="../magnetic-sans/index.html">磁 <span data-term="sans">SANS</span> 专题</a>。</li>
+ </ul>
+
+ <h2>相关词条</h2>
+ <p>
+ <span data-term="contrast">衬度</span>、
+ <span data-term="scattering-length-density">散射长度密度（SLD）</span>、
+ <span data-term="form-factor">形式因子 $P(q)$</span>、
+ <span data-term="structure-factor">结构因子 $S(q)$</span>、
+ <span data-term="forward-scattering">前向散射 $I(0)$</span>、
+ <span data-term="scattering-vector-q">散射矢量 $q$</span>
+ </p>
+
+ <h2>相关链接</h2>
+ <ul>
+ <li><a href="../../learn/02-scattering-basics.html">02 散射基础</a> — $q$、衬度、$P(q)$ 与 $S(q)$</li>
+ <li><a href="../biosas/index.html">BioSAS 专题</a> — 溶液生物大分子整体分析管线</li>
+ <li><a href="../calibration/index.html">绝对标定</a> — $I(0)$ 与 $(\Delta\rho)^2$ 定量解释的前提</li>
+ <li><a href="../atsas/index.html">ATSAS 工具链</a> — MONSA/SASREFCV 多衬度建模</li>
+ </ul>
+
+ <h2>文献列表</h2>
+ <ul>
+ <li><em>Designing and performing biological solution small-angle neutron scattering contrast variation experiments on multi-component assemblies</em>. Susan Krueger (2017). DOI: <a href="https://doi.org/10.1007/978-981-10-6038-0_5" target="_blank" rel="noopener noreferrer">10.1007/978-981-10-6038-0_5</a></li>
+ <li><em>Small-angle X-ray and neutron scattering</em>. Cy M. Jeffries et al. (2021). DOI: <a href="https://doi.org/10.1038/s43586-021-00064-9" target="_blank" rel="noopener noreferrer">10.1038/s43586-021-00064-9</a></li>
+ <li><em>Small-angle neutron scattering and applications in soft condensed matter</em>. I. Grillo (2008). DOI: <a href="https://doi.org/10.1007/978-1-4020-4465-6_13" target="_blank" rel="noopener noreferrer">10.1007/978-1-4020-4465-6_13</a></li>
+ <li><em>Small-angle neutron scattering study of lipid phase diagrams by the contrast variation method</em>. Wolfgang Knoll, Konrad Ibel, Erich Sackmann (1981). DOI: <a href="https://doi.org/10.1021/bi00525a015" target="_blank" rel="noopener noreferrer">10.1021/bi00525a015</a></li>
+ <li><em>2017 publication guidelines for structural modelling of small-angle scattering data from biomolecules in solution: an update</em>. Jill Trewhella et al. (2017). DOI: <a href="https://doi.org/10.1107/S2059798317011597" target="_blank" rel="noopener noreferrer">10.1107/S2059798317011597</a></li>
+ </ul>
+      <p><em>注：</em><span data-term="sans">SANS</span> Soft Matter 教材 Ch.2 为书籍章节，无独立文章 DOI；磁散射见 <a href="../magnetic-sans/index.html">磁 <span data-term="sans">SANS</span> 专题</a>。</p>
+ </main>
+ </div>
+ <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+ <script src="../../assets/nav.js"></script>
+ <script src="../../assets/glossary-data.js"></script>
+ <script src="../../assets/glossary.js"></script>
+ <script src="../../assets/figures-boot.js"></script>
+ <script>
+ document.addEventListener("DOMContentLoaded", function () {
+ if (window.renderMathInElement) {
+ renderMathInElement(document.querySelector("main.content"), {
+ delimiters: [
+ { left: "$$", right: "$$", display: true },
+ { left: "$", right: "$", display: false }
+ ]
+ });
+ }
+ if (window.SASNav) SASNav.init();
+ if (window.SASGlossary) SASGlossary.init();
+ });
+ </script>
+</body>
+</html>

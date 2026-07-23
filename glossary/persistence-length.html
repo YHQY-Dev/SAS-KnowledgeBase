@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>持续长度 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>持续长度</h1>
+      <p class="subtitle-en">persistence length</p>
+
+      <h2>定义</h2>
+      <p><strong>持续长度</strong> $l_p$ 刻画链方向相关性：$l_p$ 大则链更刚直。蠕虫状链模型的 $P(q)$ 在 $q\sim 1/l_p$ 附近呈现特征过渡。</p>
+
+      <h2>物理直觉</h2>
+      <p>与 $R_g$、轮廓长度 $L$ 一起约束链模型；溶剂品质与温度会改变有效 $l_p$。</p>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="form-factor">形式因子</span></li>
+        <li><span data-term="radius-of-gyration">回转半径</span></li>
+        <li><span data-term="block-copolymer">嵌段共聚物</span></li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../topics/polymers-bcp/index.html">专题 polymers-bcp</a></li>
+        <li><a href="../learn/08-models-polydispersity.html">学习路径 08-models-polydispersity</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

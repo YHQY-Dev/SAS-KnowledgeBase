@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>反常 <span data-term="saxs">SAXS</span>（<span data-term="asaxs">ASAXS</span>）· 专题手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>反常 <span data-term="saxs">SAXS</span>（<span data-term="asaxs">ASAXS</span>）</h1>
+      <p class="subtitle-en">Element-specific contrast by energy tuning near an absorption edge</p>
+
+      <p>本导读以 Goerigk 等（2003）材料科学 <span data-term="asaxs">ASAXS</span> 方法综述、<span data-term="asaxs">ASAXS</span> 专题章节（2007）与 Pabit 等（2010）DNA 离子计数实验为主线，结合 Bazin 等（1997）纳米金属簇多技术对照与 Jeffries 等（2021）<span data-term="saxs">SAXS</span>/<span data-term="sans">SANS</span> 方法学综述，说明如何在吸收边附近调能量获得元素分辨<span data-term="contrast">衬度</span>、如何构造差分曲线、以及材料与软物质中的典型用法与陷阱。</p>
+
+      <h2>问题是什么</h2>
+      <p>常规 <span data-term="saxs">SAXS</span> 的衬度来自电子密度差：所有原子按 $Z$（电子数）贡献，无法单独「关掉」某一元素。许多体系却正需要<strong>元素分辨</strong>——合金析出相中的某一金属、催化剂纳米粒子中的活性元素、DNA 周围的 Rb<sup>+</sup>/Sr<sup>2+</sup> 云、多层膜中相邻周期表元素等。<span data-term="sans">SANS</span> 可用 H/D 调衬度（见 <a href="../sans-contrast/index.html"><span data-term="sans">SANS</span> <span data-term="contrast-variation">衬度变化</span></a>），但对特定重金属/过渡金属并不总是可行。</p>
+      <p><span data-term="asaxs">反常 SAXS（ASAXS）</span>利用原子散射因子在吸收边附近的能量依赖：$f(E)=f_0+f'(E)+if''(E)$。当光子能量 $E$ 扫过目标元素的 $K$（或 $L$）边时，$f'(E)$ 急剧变负，该元素对有效<span data-term="scattering-length-density">散射长度密度</span>（电子密度类比）的贡献被选择性削弱。多能量测量后做差分，可把「只含该元素的结构贡献」从总 $I(q)$ 中拆出——Goerigk 等将其概括为对特定元素的「标记」（labelling）技术（Goerigk 2003）。</p>
+      <p><span data-term="asaxs">ASAXS</span> 并非常规 <span data-term="saxs">SAXS</span> 的廉价替代：需要同步辐射可调单色光、边附近严格能量校准、逐能量吸收与 $q$ 刻度，且差分对束流/单色器漂移极敏感。因此只在常规 <span data-term="saxs">SAXS</span> 无法给出关键信息时才值得投入（Goerigk 2003；Jeffries 2021）。</p>
+      <p>核心问题：如何选边与能量点、如何把差分曲线接到<span data-term="form-factor">形式因子</span> / 模型、如何与 XAS/AWAXS 交叉验证，以及如何避免荧光、吸收校正与能量漂移毁掉差分信号。</p>
+
+      <figure class="figure">
+        <img src="../../assets/figures/fig-17-asaxs-energy-scan.png" alt="<span data-term="asaxs">ASAXS</span> 吸收边能量扫描与差分" width="900">
+        <figcaption>在目标元素吸收边下方取若干能量 $E_1,E_2,\ldots$，测 $I(q,E)$；差分 $\Delta I(q)$ 强调该元素分布相关的结构项，远离边的参考能量给出「常规」衬度曲线。<span class="fig-source">配图：自制示意</span></figcaption>
+      </figure>
+
+      <h2>文献主线</h2>
+      <h3>Goerigk 等 2003：材料科学中的 <span data-term="asaxs">ASAXS</span> 三分法</h3>
+      <p>综述将 <span data-term="asaxs">ASAXS</span> 在材料科学中的机会归纳为三类（Goerigk, Haubold, Lyon &amp; Simon 2003）：</p>
+      <ol>
+        <li><strong>衬度增强与背景分离：</strong> 差分 <span data-term="asaxs">ASAXS</span> 突出含共振元素的散射体，能量无关的背景（孔隙、碳载体等）在差分中抵消。典型：多孔碳上 Pt 催化剂粒径分布——仅 88% 的 Pt 以平均半径 0.8 nm 的小粒子分散，约 60% 位于粒子表面、与反应物接触（Haubold et al., 引自 Goerigk 2003）。</li>
+        <li><strong>相组成与比体积：</strong> 两相强度 $d\sigma/d\Omega(q)=(\rho_\alpha(E)-\rho_\beta(E))^2 S_\phi(q)$；在边附近扫能量可定析出相化学组成或各相比体积。例：Al–Zn–Cu–Mg 时效析出相中 Cu 含量仅 7–8%，EXAFS 无法决断时 <span data-term="asaxs">ASAXS</span> 可定量（Goerigk 2003）。</li>
+        <li><strong>与 AWAXS / AXRD 联用：</strong> 小角给纳米畴尺寸与元素分布，宽角/衍射给局域配位与晶格，同一能量序列下拼接多尺度模型（Goerigk 2003）。</li>
+      </ol>
+      <p>实验上，欧洲 JUSIFA（Hamburg）、D2AM（Grenoble）、D22（Orsay）等束线针对 <span data-term="asaxs">ASAXS</span> 优化：固定出口双晶单色器利于能量扫描时保持对准；反常变化小，要求通量监测、探测器效率随 $E$ 的标定与长时间稳定性（Goerigk 2003）。</p>
+
+      <h3><span data-term="asaxs">ASAXS</span> 专题章节 2007：从合金到多层膜与离子聚物</h3>
+      <p>该章按应用谱系展示 <span data-term="asaxs">ASAXS</span> 如何打破「多模型同样拟合」的困境（<span data-term="asaxs">ASAXS</span> 2007）：</p>
+      <ul>
+        <li><strong>GP 区与析出：</strong> Al–Zn 合金在 Zn $K$ 边下强度随能量单调变化，而 Al–Ag 对照无反常；Al–Zn–Ag 三元合金中 $\sqrt{I(Q)}$ 对 $f_{\mathrm{Zn}}$ 作图得直线，斜率给出 $\Delta c_{\mathrm{Ag}}/\Delta c_{\mathrm{Zn}}$，可跟踪 GP 区→$\varepsilon'$ 相转变时元素分配（Lyon et al., 引自 <span data-term="asaxs">ASAXS</span> 2007）。</li>
+        <li><strong>非晶合金成分调制：</strong> Fe–Ge 膜在 Fe 边强度变、Ge 边不变 → 散射来自金属浓度涨落而非 Ge 均匀分布；峰位随金属含量移向低 $q$，关联长度 2–14 nm（Rice et al., 引自 <span data-term="asaxs">ASAXS</span> 2007）。</li>
+        <li><strong>多层膜差分峰形：</strong> Cu/Co 超晶格在 Co 边附近 $|f_{\mathrm{Cu}}-f_{\mathrm{Co}}|^2$ 剧烈变化；两能量差分可精确扣除高阶峰本底，傅里叶反演得浓度剖面与层厚（Kato et al., 引自 <span data-term="asaxs">ASAXS</span> 2007）。</li>
+        <li><strong>离子聚物：</strong> 磺化聚苯乙烯镍盐在 Ni 边差分后，低 $q$ 上翘与离子峰均保留 → 两者均与 Ni<sup>2+</sup> 相关（Roche et al., 引自 <span data-term="asaxs">ASAXS</span> 2007）。</li>
+        <li><strong>负载催化剂：</strong> 碳载 10 mass-% Pt 在 $L_{III}$ 边 <span data-term="asaxs">ASAXS</span> 拟合对数正态粒径分布，平均半径 $R_0=0.86$ nm（Varkamp et al., 引自 <span data-term="asaxs">ASAXS</span> 2007）。</li>
+      </ul>
+
+      <h3>Bazin 等 1997：纳米金属簇上的技术分工</h3>
+      <p>对纳米级单/多金属簇，Bazin 等用 ab initio 计算比较 XAS、AWAXS、<span data-term="asaxs">ASAXS</span> 与 DAFS（衍射反常精细结构）各自信息量（Bazin, Sayers &amp; Rehr 1997）：</p>
+      <ul>
+        <li><strong>XAS：</strong> 吸收边附近给局域配位与电子态，但对粒径多分散不敏感；$L_{III}$ 白线强度随团簇尺寸缓慢变化，勿简单等同电荷转移。</li>
+        <li><strong><span data-term="asaxs">ASAXS</span>：</strong> 在衍射峰 $(0,0,0)$ 附近（Debye 函数分析）可提取粒径分布、形态与簇内两金属分布——尺度恰在 <span data-term="asaxs">ASAXS</span> 窗口。</li>
+        <li><strong>AWAXS / DAFS：</strong> 宽角/衍射给晶格与长程有序；DAFS 结合衍射与吸收但受限于峰选择。</li>
+      </ul>
+      <p>方法论启示：<span data-term="asaxs">ASAXS</span> 应纳入多技术联用清单，而非单独宣称「元素成像」（Bazin 1997）。</p>
+
+      <h3>Pabit 等 2010：溶液离子计数与空间分布</h3>
+      <p>DNA/RNA 周围多数补偿离子形成扩散「云」，结晶或染料法难以给出空间分布。Pabit 等证明：在 Rb<sup>+</sup>、Sr<sup>2+</sup> 吸收边下，<span data-term="asaxs">ASAXS</span> 是唯一能同时给出离子<strong>数目与 $q$ 依赖分布</strong>的溶液技术之一（Pabit et al. 2010）。</p>
+      <p>实验要点：25 bp DNA 双链，0.2 mM，100 mM RbOAc 或 10 mM Sr(OAc)<sub>2</sub>；$I(q,E)$ 用水标样绝对标定至 $n_e^2$；$f'$ 用缓冲液荧光 + CHOOCH 提取（勿用金属箔 $f'$）。展开</p>
+      $$I(q,E)=a(q)f'^2+b(q)f'+c(q),$$
+      <p>DNA 散射远大于离子云时 $a$ 项可忽略，$I$ 对 $f'$ 线性拟合；外推 $b(0),c(0)$ 至 $q=0$（<span data-term="gnom">GNOM</span>）得 $N_{\mathrm{ions}}=b(0)/(2\sqrt{c(0)})$。25 bp DNA：Rb<sup>+</sup> $34\pm3$，Sr<sup>2+</sup> $19\pm2$，与 NLPB 预测（35.8 / 21.3）一致。快速两能量版：$N_{\mathrm{ions}}=(\sqrt{I(0,E_1)}-\sqrt{I(0,E_2)})/(f'(E_1)-f'(E_2))$（Pabit et al. 2010）。</p>
+
+      <h3>Jeffries 等 2021：方法学地图中的位置</h3>
+      <p>Nature Reviews Methods Primer 将 <span data-term="asaxs">ASAXS</span> 放在「调衬度」工具箱中：与溶剂对比度、<span data-term="sans">SANS</span> H/D、选择性标记并列；强调同步辐射可调能量、边附近 $f'$/$f''$ 标定与样品吸收厚度优化。原位电化学电池中 mm 级穿透使 Pt 氧化壳层随电位变化的 <span data-term="asaxs">ASAXS</span> 成为可能（Jeffries 2021；亦见 Goerigk 2003 原位甲醇氧化案例）。</p>
+
+      <h2>要点与公式</h2>
+      <h3>原子散射因子与有效衬度</h3>
+      <p>原子对 X 射线的相干散射振幅：</p>
+      $$f(E)=f_0+f'(E)+if''(E),$$
+      <p>其中 $f_0\approx Z$（远离边），$f'(E)$、$f''(E)$ 在吸收边附近剧烈变化且由色散关系联系。实用能量窗：相对边位移 $\Delta E/E$ 约在 $10^{-3}$–$5\times10^{-2}$；更接近边时需用吸收测量 + Kramers–Kronig（DIFFKK）或合金标样校正表值 $f'$/$f''$（Goerigk 2003）。</p>
+      <p>两相体系（析出相 $\alpha$ / 基体 $\beta$）小角强度：</p>
+      $$\frac{d\sigma}{d\Omega}(q,E)=\bigl[\rho_\alpha(E)-\rho_\beta(E)\bigr]^2 S_\phi(q),$$
+      <p>$\rho(E)=\sum_i n_i f_i(E)/\Omega_i$ 为相的电子密度；$S_\phi(q)$ 为几何结构因子（Patterson 型）。边扫描实质是只调某一元素的 $f_i(E)$，从而分离该元素对衬度的贡献（Goerigk 2003；<span data-term="asaxs">ASAXS</span> 2007）。</p>
+
+      <h3>差分曲线与线性组合</h3>
+      <p>两能量 $E_a$、$E_b$（均在边下、荧光可忽略区）的强度差：</p>
+      $$\Delta I(q)=I(q,E_a)-I(q,E_b)$$
+      <p>在稀溶液、单组分共振粒子近似下，$\Delta I$ 突出含共振元素的<span data-term="form-factor">形式因子</span>贡献；对多组分/核–壳，差分对应「共振元素加权」的部分结构因子。实践中常取 3–5 个能量点，用线性组合或正交化分离共振项，而非只做一次简单相减（Goerigk 2003）。</p>
+      <p>二元析出相（<span data-term="asaxs">ASAXS</span> 2007）：若 $I(q)\propto(\sum_{i,j}\Delta c_i\Delta c_j F_i F_j)^2 S_{\mathrm{PM}}(q)$，则 $\sqrt{I(q)}$ 对 $f_{\mathrm{res}}$ 作图应为直线，斜率比给出元素浓度差之比——无需假设完整 $P(q)$ 即可检验相成分。</p>
+      <p>生物离子体系（Pabit 2010）：相干振幅叠加 $I=|f_{\mathrm{NA}}F_{\mathrm{NA}}+f_{\mathrm{ion}}(E)N_{\mathrm{ions}}F_{\mathrm{ion}}|^2$，边下展开为 $af'^2+bf'+c$；$b(q)$ 携带离子–核酸空间关联，$c(q)$ 以核酸为主。</p>
+
+      <h3>$q$ 与能量几何</h3>
+      <p><span data-term="scattering-vector-q">散射矢量</span> $q=4\pi\sin\theta/\lambda$ 随能量（波长）变化：换能量时须同步重算 $q$ 刻度，并保证同一物理 $q$ 网格上再差分。忽略 $\lambda(E)$ 会导致假差分峰谷。<span data-term="asaxs">ASAXS</span> 束线常在每个能量独立几何标定后再插值到公共 $q$ 网格（Goerigk 2003）。</p>
+
+      <h3>材料 vs 软物质：两类典型问题</h3>
+      <table>
+        <thead>
+          <tr><th>场景</th><th>共振元素例子</th><th>差分回答的问题</th><th>文献线索</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>合金 / 析出 / GP 区</td><td>Zn、Cu、Ni、稀土 $L$ 边</td><td>元素是否富集？析出相化学比？时效阶段？</td><td><span data-term="asaxs">ASAXS</span> 2007；Goerigk 2003</td></tr>
+          <tr><td>催化剂 / 电极</td><td>Pt、Pd、Ni $L$ 边</td><td>金属粒径分布；氧化态壳层；活性面积</td><td>Goerigk 2003；<span data-term="asaxs">ASAXS</span> 2007</td></tr>
+          <tr><td>溶液 DNA / 聚电解质</td><td>Rb、Sr、Tl 等反离子</td><td>过量离子数；离子云 $b(q)$</td><td>Pabit 2010</td></tr>
+          <tr><td>多层膜 / 超晶格</td><td>相邻元素 Cu/Co、Nd/Fe</td><td>层厚、界面扩散、比体积</td><td><span data-term="asaxs">ASAXS</span> 2007</td></tr>
+          <tr><td>纳米金属簇</td><td>Pt、Au $L$ 边</td><td>粒径分布 + 簇内金属分配</td><td>Bazin 1997</td></tr>
+          <tr><td>核–壳胶体 / 杂化材料</td><td>壳层金属或掺杂原子</td><td>壳是否完整、元素径向分布</td><td>Goerigk 2003</td></tr>
+        </tbody>
+      </table>
+
+      <h3>与 XAS / AWAXS 的互补</h3>
+      <table>
+        <thead>
+          <tr><th>技术</th><th>敏感尺度</th><th><span data-term="asaxs">ASAXS</span> 相对优势</th><th><span data-term="asaxs">ASAXS</span> 局限</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>XAS (EXAFS/XANES)</td><td>局域配位（&lt;2 nm）</td><td><span data-term="asaxs">ASAXS</span> 给纳米畴尺寸/体积分数</td><td>XAS 不分辨多分散粒径分布</td></tr>
+          <tr><td>AWAXS</td><td>晶格 / 中程有序</td><td><span data-term="asaxs">ASAXS</span> 看更大不均匀体与背景分离</td><td>需同一能量序列拼接</td></tr>
+          <tr><td>常规 <span data-term="saxs">SAXS</span></td><td>1–100 nm 总电子密度</td><td><span data-term="asaxs">ASAXS</span> 元素标记破简并</td><td>信噪比低、实验慢</td></tr>
+        </tbody>
+      </table>
+
+      <h3>数据约化与拟合策略</h3>
+      <p>标准 <span data-term="saxs">SAXS</span> 约化（背景、空池、透射、束流归一）之后，<span data-term="asaxs">ASAXS</span> 额外步骤（Goerigk 2003；Pabit 2010）：</p>
+      <ol>
+        <li><strong>能量序列：</strong> 每个 $E$ 独立 $q$ 标定 → 插值到公共 $q$ 网格。</li>
+        <li><strong>$f'(E)$ 表：</strong> 远离边用 Cromer–Liberman；近边用荧光/吸收 + CHOOCH 或 DIFFKK。</li>
+        <li><strong>差分 / 回归：</strong> 简单 $\Delta I=I(E_1)-I(E_2)$；或多能量对 $f'$ 线性/二次回归（Pabit $af'^2+bf'+c$；合金 $\sqrt{I}$ vs $f$）。</li>
+        <li><strong>模型：</strong> 差分曲线拟合共振加权 $P(q)$、粒径分布或两相 $S_\phi(q)$；或与 AWAXS 联合约束相成分（Goerigk 2003）。</li>
+        <li><strong>不确定度：</strong> 差分传播 $f'$ 误差与几何误差；催化剂/合金案例显示系统误差可来自单色器漂移而非计数统计（Goerigk 2003）。</li>
+      </ol>
+
+      <h3>何时值得做 <span data-term="asaxs">ASAXS</span>（决策简图）</h3>
+      <ul>
+        <li>常规 <span data-term="saxs">SAXS</span> 有多套模型同样拟合，且答案依赖<strong>某一元素</strong>是否富集/分布不同 → <span data-term="asaxs">ASAXS</span>。</li>
+        <li>强孔隙/碳载体背景淹没金属纳米粒子信号 → 边附近差分（Goerigk 2003；<span data-term="asaxs">ASAXS</span> 2007）。</li>
+        <li>需定量反离子云或元素选择性配位环境，且 <span data-term="sans">SANS</span> H/D 不适用 → 选合适反离子吸收边（Pabit 2010）。</li>
+        <li>仅需整体 $R_g$/形状、无元素分辨需求 → 优先实验室 <span data-term="saxs">SAXS</span>，<span data-term="asaxs">ASAXS</span> 性价比低（Jeffries 2021）。</li>
+      </ul>
+
+      <div class="keybox">
+        <strong><span data-term="asaxs">ASAXS</span> 实践检查清单</strong>
+        <ol>
+          <li><strong>选边：</strong> 目标元素边可及（光束线能量范围）；优先边下（pre-edge）点，避开边后强荧光区。$K$ 边适合轻–中元素；$L$ 边适合 Pt、Au 等催化剂（Goerigk 2003）。</li>
+          <li><strong>能量点：</strong> 至少 2–3 个边下点 + 1 个远离边参考；$f'$ 差足够大才有差分信噪比。生物体系常需 4–6 个 $f'$ 点做 $I(f')$ 拟合（Pabit 2010）。</li>
+          <li><strong>$f'$ 标定：</strong> 溶液/缓冲液荧光 + CHOOCH，或 DIFFKK；勿直接套用金属箔表值（Pabit 2010）。</li>
+          <li><strong>$q$ 对齐：</strong> 每能量独立做几何/$q$ 标定后再插值到公共 $q$ 网格。</li>
+          <li><strong>吸收与厚度：</strong> 透射随 $E$ 变；厚度、窗口、溶剂吸收必须逐能量校正（见 <a href="../calibration/index.html">绝对标定</a>）。</li>
+          <li><strong>绝对强度：</strong> 催化剂粒径、离子计数、比体积定量需绝对标定（水、<span data-term="glassy-carbon">玻璃碳</span>等）；仅差分形状可相对单位（Goerigk 2003；Pabit 2010）。</li>
+          <li><strong>背景：</strong> 空池、溶剂、毛细管在相同能量序列下测量；差分前先扣各自背景。</li>
+          <li><strong>稳定性：</strong> 能量校准（边扫描/标样）、束流归一、样品<span data-term="radiation-damage">辐射损伤</span>与气泡——差分对漂移极敏感；Al 合金 <span data-term="asaxs">ASAXS</span> 精度可受单色器稳定性限制至 ~0.5%（Goerigk 2003）。</li>
+          <li><strong>解释：</strong> $\Delta I(q)$ 解释为「共振元素加权结构」，勿直接当成常规 $P(q)$ 而不声明模型假设；多相时需与 XAS/电镜交叉（Bazin 1997）。</li>
+        </ol>
+      </div>
+
+      <h2>原位与动态 <span data-term="asaxs">ASAXS</span></h2>
+      <p>贵金属 $L$ 边 X 射线可穿透 mm 级电化学池，使<strong>工作状态下</strong>的催化剂 <span data-term="asaxs">ASAXS</span> 可行（Goerigk 2003）：直接甲醇燃料电池 Pt/C 电极在电位扫描中，积分 <span data-term="saxs">SAXS</span> 在 ~600 mV 阳极扫时骤降；250 mV 时 Pt 粒径分布峰在 ~9 Å，1100 mV 移至 ~11 Å，对应表面氧化壳层；同步 XANES 白线证实 d 带占据变化。此类实验要求：同一能量序列下原位透射监测、荧光扣除、以及理解氧化态对 $f'$ 的影响。</p>
+
+      <h2>常见坑</h2>
+      <ul>
+        <li><strong>边后荧光进入探测器 → 如何判断：</strong> 高 $q$ 平坦本底随能量在边后陡增；差分出现非物理上翘。改测边下点或加荧光鉴别/能量窗。</li>
+        <li><strong>未按能量重算 $q$ → 如何判断：</strong> 差分在峰位出现左右「导数状」假结构。强制同一 $q$ 网格再减。</li>
+        <li><strong>吸收校正错误 → 如何判断：</strong> $\Delta I(0)$ 符号或量级与 $f'$ 预期不符；浓度系列不自洽。复查透射二极管与厚度。</li>
+        <li><strong>能量点太近、$f'$ 差太小 → 如何判断：</strong> $\Delta I$ 淹没在噪声里。拉大边下能量间隔或延长计数。</li>
+        <li><strong>用金属箔 $f'$ 标定生物缓冲液 → 如何判断：</strong> $I(f')$ 线性度差、$N_{\mathrm{ions}}$ 系统性偏离理论。必须用实验缓冲液荧光（Pabit 2010）。</li>
+        <li><strong>把 <span data-term="asaxs">ASAXS</span> 当「免费元素成像」→ 如何判断：</strong> 无模型时差分只给加权距离信息；多相、多分散时需显式建模或与成像/EXAFS 交叉验证（Goerigk 2003；Bazin 1997）。</li>
+        <li><strong>忽略非共振背景在差分中不完全抵消 → 如何判断：</strong> 孔隙/碳载体在边附近仍有残余；检查远离边参考能量或做多能量正交拟合（Goerigk 2003）。</li>
+        <li><strong>溶液样品<span data-term="radiation-damage">辐射损伤</span> → 如何判断：</strong> 同一能量重复曲线漂移；$R_g$ 随曝光增大。衰减束、流动样品、缩短单帧并平均。</li>
+      </ul>
+
+      <h2>相关词条</h2>
+      <p>
+        <span data-term="asaxs">反常 SAXS（ASAXS）</span>、
+        <span data-term="contrast">衬度</span>、
+        <span data-term="scattering-length-density">散射长度密度</span>、
+        <span data-term="scattering-vector-q">散射矢量 $q$</span>、
+        <span data-term="form-factor">形式因子</span>
+      </p>
+
+      <h2>相关学习章与专题</h2>
+      <ul>
+        <li><a href="../../learn/02-scattering-basics.html">02 散射基础</a> — $q$、衬度与 $P(q)$</li>
+        <li><a href="../../learn/03-instruments.html">03 仪器</a> — 同步辐射可调能量与几何</li>
+        <li><a href="../calibration/index.html">绝对标定</a> — 透射、厚度与绝对强度（<span data-term="asaxs">ASAXS</span> 定量必备）</li>
+        <li><a href="../sans-contrast/index.html"><span data-term="sans">SANS</span> <span data-term="contrast-variation">衬度变化</span></a> — 另一条「调衬度」路线（H/D）</li>
+        <li><a href="../data-reduction/index.html">数据约化</a> — 多能量序列的背景与 $q$ 对齐流程</li>
+      </ul>
+
+      <h2>文献列表</h2>
+      <ul>
+        <li><em>Anomalous small-angle X-ray scattering in materials science</em>. G. Goerigk, H. G. Haubold, O. Lyon, J.-P. Simon (2003). DOI: <a href="https://doi.org/10.1107/S0021889803000542" target="_blank" rel="noopener noreferrer">10.1107/S0021889803000542</a></li>
+        <li><em>Anomalous Small-Angle X-ray Scattering</em>（书章节）. <span data-term="asaxs">ASAXS</span> (2007).</li>
+        <li><em>Comparison between X-ray Absorption Spectroscopy, Anomalous Wide Angle X-ray Scattering, Anomalous Small Angle X-ray Scattering, and Diffraction Anomalous Fine Structure Techniques Applied to Nanometer-Scale Metallic Clusters</em>. D. C. Bazin, D. A. Sayers, J. J. Rehr (1997). DOI: <a href="https://doi.org/10.1021/jp9721311" target="_blank" rel="noopener noreferrer">10.1021/jp9721311</a></li>
+        <li><em>Counting ions around DNA with anomalous <span data-term="saxs">SAXS</span></em>. Suzette A. Pabit, Steve P. Meisburger, Li Li, Jessica S. Lamb, Xiaobing Zuo, Lois Pollack (2010). DOI: <a href="https://doi.org/10.1021/ja107259y" target="_blank" rel="noopener noreferrer">10.1021/ja107259y</a></li>
+        <li><em>Small-angle X-ray and neutron scattering</em>. Cy M. Jeffries et al. (2021). DOI: <a href="https://doi.org/10.1038/s43586-021-00064-9" target="_blank" rel="noopener noreferrer">10.1038/s43586-021-00064-9</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

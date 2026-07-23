@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>径向平均 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>径向平均</h1>
+      <p class="subtitle-en">radial averaging</p>
+
+      <h2>定义</h2>
+      <p><strong>径向（环向）平均</strong>把以束心为圆心的等 $q$ 像素环上的强度求平均，得到 $I(q)$。各向同性溶液是默认假设；剪切、拉伸、GISAXS 等须改用扇区或保留 2D。</p>
+
+      <h2>物理直觉</h2>
+      <p>bin 宽度、掩膜质量与几何标定直接决定曲线光滑度与误差棒。错误束心会使低 $q$ 出现假峰或劈裂。</p>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="scattering-vector-q">散射矢量 q</span></li>
+        <li><span data-term="instrument-smearing">仪器模糊</span></li>
+        <li><span data-term="gisaxs">掠入射小角 X 射线散射</span></li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../learn/04-data-reduction.html">学习路径 04-data-reduction</a></li>
+        <li><a href="../topics/data-reduction/index.html">专题 data-reduction</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

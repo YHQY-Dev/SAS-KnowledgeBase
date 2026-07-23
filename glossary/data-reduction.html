@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>数据还原 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>数据还原</h1>
+      <p class="subtitle-en">data reduction</p>
+
+      <h2>定义</h2>
+      <p><strong>数据还原</strong>是把探测器原始计数变成可用于科学解释的 $I(q)$（及误差）的全部步骤，通常包括暗电流、平场、掩膜、透射归一、本底扣除、几何到 $q$ 的映射与径向平均等。</p>
+
+      <h2>物理直觉</h2>
+      <p>顺序错误会产生隐蔽系统误差；绝对标定常作为还原链末步或独立 AU 步骤。</p>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="radial-average">径向平均</span></li>
+        <li><span data-term="transmission">透射率</span></li>
+        <li><span data-term="absolute-intensity">绝对强度</span></li>
+        <li><span data-term="beamstop">束阻</span></li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../learn/04-data-reduction.html">学习路径 04-data-reduction</a></li>
+        <li><a href="../topics/data-reduction/index.html">专题 data-reduction</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

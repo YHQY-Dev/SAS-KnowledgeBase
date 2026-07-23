@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>最大尺寸 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>最大尺寸</h1>
+      <p class="subtitle-en">maximum particle dimension</p>
+
+      <h2>定义</h2>
+      <p><strong>$D_{\max}$</strong> 是散射体（或复合物）内任意两点欧氏距离的最大值。在 <span data-term="indirect-fourier-transform">IFT</span> 中，$p(r)$ 被约束在 $0\le r\le D_{\max}$；选得过小会截断真实分布，过大则引入假振荡。</p>
+      $$ p(r)=0 \quad (r > D_{\max}) $$
+
+      <h2>物理直觉</h2>
+      <p>球状蛋白 $D_{\max}$ 约数倍 $R_g$；细长或空心颗粒 $D_{\max}/R_g$ 更大。浓度过高、聚集或缓冲不匹配会使表观 $D_{\max}$「假大」。</p>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="pair-distance-distribution">距离分布函数</span></li>
+        <li><span data-term="indirect-fourier-transform">间接傅里叶变换</span></li>
+        <li><span data-term="radius-of-gyration">回转半径</span></li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../learn/07-real-space-ift.html">学习路径 07-real-space-ift</a></li>
+        <li><a href="../topics/ift/index.html">专题 ift</a></li>
+        <li><a href="../topics/biosas/index.html">专题 biosas</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

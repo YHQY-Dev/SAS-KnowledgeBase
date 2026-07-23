@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>形式因子 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>形式因子</h1>
+      <p class="subtitle-en">form factor</p>
+
+      <h2>定义</h2>
+      <p><strong>形式因子</strong> $P(q)$ 描述<strong>单个</strong>散射体（粒子、孔洞、链段等）的形状与尺寸引起的散射强度随 $q$ 的变化。对均匀散射长度的球体，熟知</p>
+      $$ P(q) = \left[ \frac{3(\sin(qR) - qR\cos(qR))}{(qR)^3} \right]^2 $$
+      <p>其中 $R$ 为球半径。更一般地，$P(q)$ 是粒子散射振幅的模方，归一化常取 $P(0)=1$（或含体积平方因子，视强度定义而定）。</p>
+
+      <h2>物理直觉</h2>
+      <p>粒子越大，$P(q)$ 向低 $q$ 衰减得越慢；振荡节反映特征尺寸。$P(q)$ 只谈「一个物体长什么样」，不谈它们如何排列——后者由 <span data-term="structure-factor">结构因子</span> $S(q)$ 描述。</p>
+      <p>稀溶液中粒子相距很远时，$S(q)\approx 1$，测到的 $I(q)$ 主要由 $P(q)$ 决定，因此可从曲线拟合形状模型（球、圆柱、椭球、柔性链等）。</p>
+
+      <h2>多分散与取向</h2>
+      <ul>
+        <li><strong>尺寸多分散</strong>：实验 $P(q)$ 为不同尺寸 $P(q;R)$ 的分布平均，振荡被抹平。</li>
+        <li><strong>取向</strong>：各向异性粒子在流动或外场中取向时，$P(q)$ 依赖相对 $q$ 的方向（SAXS/SANS 纹理）。</li>
+      </ul>
+
+      <h2>常见混淆</h2>
+      <ul>
+        <li><strong>形式因子 vs 结构因子</strong>：$P(q)$ 是单粒子；$S(q)$ 是粒子间关联。浓溶液必须同时考虑二者。</li>
+        <li>把 <span data-term="guinier-analysis">Guinier 区</span> 的斜率直接当成「形式因子参数」而不检查浓度与 $S(q)$。</li>
+        <li>模型 $P(q)$ 含体积与衬度平方；拟合时强度标度与背景需与绝对单位一致。</li>
+      </ul>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="structure-factor">结构因子</span> $S(q)$</li>
+        <li><span data-term="radius-of-gyration">回转半径</span> $R_g$：低 $q$ 下与 $P(q)$ 相关的尺寸量</li>
+        <li><span data-term="scattering-vector-q">散射矢量</span> $q$</li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../learn/02-scattering-basics.html">学习路径 02 · 散射基础</a></li>
+        <li><a href="../learn/08-models-polydispersity.html">学习路径 08 · 模型与多分散</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

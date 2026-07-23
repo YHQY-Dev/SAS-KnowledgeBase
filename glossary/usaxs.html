@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>超小角散射 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>超小角散射</h1>
+      <p class="subtitle-en">ultra-small-angle scattering</p>
+
+      <h2>定义</h2>
+      <p><strong>超小角散射</strong>（USAXS / USANS）把可测 <span data-term="scattering-vector-q">$q$</span> 延伸到极低端（常至 $10^{-4}$ Å$^{-1}$ 量级或更低），对应实空间可达微米级的相分离域、大聚集体与多孔网络。经典配置是 Bonse–Hart 双晶分析器：用完美晶体的窄角接受度换取极小散射角分辨。</p>
+
+      <h2>要点</h2>
+      <ul>
+        <li>弥补针孔 SAXS 的 $q_{\min}$ 不足：当 Guinier 区被束阻截断时，USAXS 可提供真正的低 $q$ 数据。</li>
+        <li>常与 pinhole SAXS / SANS <strong>多尺度拼接</strong>；拼接前须统一 <span data-term="absolute-intensity">绝对强度</span> 尺度。</li>
+        <li>晶体光学带来额外通量损失与显著的狭缝/波长 <span data-term="instrument-smearing">smearing</span>，拟合时常对模型卷积而非盲目 desmear。</li>
+        <li>APS USAXS 等一级标定能力常用于认证玻璃碳等标样（见绝对标定专题）。</li>
+      </ul>
+
+      <h2>常见混淆</h2>
+      <ul>
+        <li>USAXS 不是「把样品–探测器距离拉得很长」的同义词：Bonse–Hart 与针孔加长几何在分辨率函数与通量上截然不同。</li>
+        <li>极低 $q$ 对多重散射、大尺度不均匀与寄生散射更敏感，空白扣除要求更高。</li>
+        <li>狭缝 smear 的 USAXS 曲线不能直接与针孔 $I(q)$ 叠图比较，除非已处理分辨率。</li>
+      </ul>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="scattering-vector-q">散射矢量</span> $q$</li>
+        <li><span data-term="instrument-smearing">仪器模糊</span></li>
+        <li><span data-term="absolute-intensity">绝对强度</span></li>
+        <li><span data-term="forward-scattering">前向散射</span> / $I(0)$</li>
+      </ul>
+
+            <h2>出现于</h2>
+      <ul>
+        <li><a href="../learn/03-instruments.html">学习路径 03 · 仪器与几何</a></li>
+        <li><a href="../learn/04-data-reduction.html">学习路径 04 · 数据还原</a></li>
+        <li><a href="../topics/calibration/index.html">专题 · 绝对标定</a></li>
+        <li><a href="../topics/usaxs/index.html">专题 · USAXS</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

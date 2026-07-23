@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kratky 图 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>Kratky 图</h1>
+      <p class="subtitle-en">Kratky plot</p>
+
+      <h2>定义</h2>
+      <p><strong>Kratky 图</strong>通常绘制 $q^2 I(q)$（或 $s^2 I(s)$）对 $q$。紧凑球状颗粒在中等 $q$ 出现钟形峰后下降；高斯链趋于平台；高度无序/IDP 可持续上升。</p>
+
+      <h2>物理直觉</h2>
+      <p>无量纲 Kratky（用 $R_g$、$I(0)$ 归一）便于不同样品比较。它是读谱辅助图，不能替代 Guinier/$p(r)$ 定量；聚集与多分散也会改变峰形。</p>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="guinier-analysis">Guinier 分析</span></li>
+        <li><span data-term="pair-distance-distribution">距离分布函数</span></li>
+        <li><span data-term="form-factor">形式因子</span></li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../learn/02-scattering-basics.html">学习路径 02-scattering-basics</a></li>
+        <li><a href="../topics/biosas/index.html">专题 biosas</a></li>
+        <li><a href="../learn/07-real-space-ift.html">学习路径 07-real-space-ift</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

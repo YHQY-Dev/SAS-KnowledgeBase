@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <title>超小角 X 射线散射（<span data-term="usaxs">USAXS</span>）· 专题手册 · SAS 知识站</title>
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+ <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+ <div id="site-header"></div>
+ <div class="layout">
+ <aside id="site-sidebar"></aside>
+ <main class="content">
+ <h1>超小角 X 射线散射（<span data-term="usaxs">USAXS</span>）</h1>
+ <p class="subtitle-en">Ultra-small-angle X-ray scattering — very low $q$, micrometre-scale structure</p>
+
+      <p>本导读说明为何需要进入极低 <span data-term="scattering-vector-q">$q$</span>、<span data-term="bonse-hart">Bonse–Hart</span> 与针孔几何的差异、狭缝 <span data-term="instrument-smearing">smearing</span> 的处理，以及如何把 <span data-term="usaxs">USAXS</span> 与 <span data-term="saxs">SAXS</span> 拼接并对接到<span data-term="glassy-carbon">玻璃碳</span> / NIST SRM 3600 <span data-term="absolute-intensity">绝对标定</span>。核心文献：Peyronel &amp; Pink（2018）<span data-term="usaxs">USAXS</span> 专章；辅以 Pedersen（1995）仪器与 smearing、Zhang 等（2010）<span data-term="glassy-carbon">玻璃碳</span>标样、Allen 等（2017）SRM 3600、Jeffries 等（2021）方法学导论。</p>
+
+ <h2>问题是什么</h2>
+ <p>常规 pinhole <span data-term="saxs">SAXS</span> 的最低 $q$ 往往落在 $\sim 10^{-2}\,\mathrm{\AA}^{-1}$ 量级，对应实空间尺度 $L=2\pi/q$ 约数十纳米。若样品含微米级畴、大孔、聚集体、层次结构或分形网络，低 $q$ 的 <span data-term="guinier-analysis">Guinier</span> 区与<span data-term="forward-scattering">前向散射</span> $I(0)$ 会落在仪器盲区之外——曲线在「尚未变平」处就被截断，无法可靠求 $R_g$、体积分数、分形维数或层次结构的大尺度相关。</p>
+ <p><strong><span data-term="usaxs">USAXS</span>（ultra-small-angle X-ray scattering）</strong> 把可达 $q$ 延伸到约 $10^{-4}$–$10^{-3}\,\mathrm{\AA}^{-1}$（Si 220 晶体对 $\Delta q\sim 10^{-4}\,\mathrm{\AA}^{-1}$；Si 440 可达 $\sim 3\times 10^{-5}\,\mathrm{\AA}^{-1}$），对应数百纳米到数微米（Peyronel 2018）。它回答的典型问题是：</p>
+ <ul>
+ <li>大尺度结构是否存在、是否进入 Guinier 平台？特征长度是否在 $0.1$–$20\,\mu\mathrm{m}$？</li>
+ <li><span data-term="usaxs">USAXS</span> 与 <span data-term="saxs">SAXS</span>（乃至 <span data-term="waxs">WAXS</span>）能否拼成一条跨 4+ 数量级的 $I(q)$？</li>
+ <li>低 $q$ 幂律斜率是否反映分形维数或层次「结构级」（structural level）？</li>
+ <li>在绝对强度尺度上，低 $q$ 抬升来自真实结构还是<span data-term="multiple-scattering">多重散射</span> / 仪器散射 / 未 <span data-term="desmearing">desmear</span>？</li>
+ </ul>
+ <p>代价是：多数经典 <span data-term="usaxs">USAXS</span> 为<strong>狭缝准直</strong>（<span data-term="bonse-hart">Bonse–Hart</span>），测得曲线是 smeared 的一维剖面；与针孔 <span data-term="saxs">SAXS</span> 比较或拟合模型前，必须显式处理 smearing，或对模型做 smeared 卷积（Pedersen 1995；Peyronel 2018）。</p>
+
+ <h3>尺度窗口：<span data-term="usaxs">USAXS</span> 在 SAS 谱中的位置</h3>
+      <p>Peyronel &amp; Pink（2018）将弹性 X 射线散射按 $L=2\pi/q$ 划分为：</p>
+ <table>
+ <thead>
+ <tr><th>技术</th><th>结构尺度</th><th>典型 $q$（$\mathrm{\AA}^{-1}$）</th><th>典型应用</th></tr>
+ </thead>
+ <tbody>
+ <tr><td><span data-term="waxs">WAXS</span> / 衍射</td><td>原子（$\sim 1$–$10\,\mathrm{\AA}$）</td><td>$\sim 0.6$–$6$</td><td>晶胞、链堆积</td></tr>
+ <tr><td><span data-term="saxs">SAXS</span></td><td>分子/纳米（$\sim 10$–$100\,\mathrm{nm}$）</td><td>$\sim 0.06$–$0.6$</td><td>胶束、片层、形式因子</td></tr>
+ <tr><td><span data-term="saxs">SAXS</span> / <span data-term="usaxs">USAXS</span> 过渡</td><td>纳米–亚微米（$\sim 100$–$500\,\mathrm{nm}$）</td><td>$\sim 0.007$–$0.06$</td><td>大胶束、小聚集体</td></tr>
+ <tr><td><span data-term="usaxs">USAXS</span></td><td>微米（$\sim 0.1$–$20\,\mu\mathrm{m}$）</td><td>$\sim 3\times 10^{-5}$–$6\times 10^{-4}$</td><td>孔洞、晶粒、网络、层次聚集</td></tr>
+ </tbody>
+ </table>
+ <p>同一软物质样品常同时在纳米（<span data-term="saxs">SAXS</span>）与微米（<span data-term="usaxs">USAXS</span>）有信号——例如结晶纳米片（CNP）聚集网络（Peyronel 2013–2017 系列）。仅测 <span data-term="saxs">SAXS</span> 会漏掉大尺度 Guinier 或 Porod 尾；仅测 <span data-term="usaxs">USAXS</span> 则无法解析分子/纳米级 Bragg 或形式因子。</p>
+
+ <figure class="figure">
+ <img src="../../assets/figures/fig-20-usaxs-q-range.png" alt="示意图：USAXS–SAXS–WAXS 的 q 覆盖与 Bonse–Hart / 针孔对照" width="900">
+ <figcaption><span data-term="usaxs">USAXS</span> 延伸极低 $q$（大尺度）→ <span data-term="saxs">SAXS</span> 中等 $q$ → <span data-term="waxs">WAXS</span> 高 $q$；<span data-term="bonse-hart">Bonse–Hart</span> 狭缝几何带来 smearing，与 pinhole 数据拼接前须 <span data-term="desmearing">desmear</span> 或 smeared 模型拟合。<span class="fig-source">配图：自制示意</span></figcaption>
+ </figure>
+
+ <h2>文献主线</h2>
+ <h3>Peyronel &amp; Pink 2018：<span data-term="usaxs">USAXS</span> 原理、仪器与层次解读</h3>
+ <p>专章（DOI: <a href="https://doi.org/10.1016/B978-0-12-814041-3.00009-5" target="_blank" rel="noopener noreferrer">10.1016/B978-0-12-814041-3.00009-5</a>）从 $q=k_s-k_i$、$q=4\pi\sin\theta/\lambda$ 与 $L=2\pi/q$ 出发，系统说明 <span data-term="usaxs">USAXS</span> 为何需要专用光学：</p>
+ <ul>
+ <li><strong><span data-term="bonse-hart">Bonse–Hart</span> 双晶：</strong> 入射与分析各一对 Si 晶体，靠摇摆曲线定义极窄角分辨率；APS 9ID 仪器无传统 beamstop，用光电二极管动态范围 $>10^8$ 同时测主束与弱散射，实现<strong>一级绝对标定</strong>（Ilavsky 2009, 2012）。</li>
+ <li><strong>一维几何与 <span data-term="desmearing">desmear</span>：</strong> 垂直方向高分辨率、水平方向积分 → 须 Lake 算法 <span data-term="desmearing">desmear</span> 或 smeared 模型；空白样扣除仪器散射，束形每 2 h 或换样重录。</li>
+ <li><strong>多探测器串联：</strong> 同一样品位自动切换 <span data-term="usaxs">USAXS</span> / pinhole <span data-term="saxs">SAXS</span> / <span data-term="waxs">WAXS</span>，覆盖 $q\sim 10^{-4}$–$\sim 7\,\mathrm{\AA}^{-1}$（Peyronel 2014c）。</li>
+ <li><strong>层次拟合：</strong> <span data-term="beaucage-unified">Unified Fit</span>（Beaucage）与 <span data-term="guinier-porod-model">Guinier–Porod 模型</span>在 log–log 图上分段识别 structural level；幂律指数 $|P|$ 联系分形维数（$|P|=4$ 光滑表面；$1\le |P|<3$ 质量分形）。模拟 $S(q)$ 与实验 $I(q)$ 对照可验证聚集机制。</li>
+ </ul>
+ <p>虽以食用脂肪中 CNP 网络为例，方法可推广至孔材料、合金析出、聚合物分形聚集等任何需微米尺度的体系。</p>
+
+ <h3>Pedersen 1995：<span data-term="bonse-hart">Bonse–Hart</span>、针孔与 smearing</h3>
+ <p>Pedersen 仪器章系统比较长狭缝（Kratky）、<span data-term="bonse-hart">Bonse–Hart</span> 晶体准直与 pinhole 相机。<span data-term="bonse-hart">Bonse–Hart</span> 用两块（或多块）完美晶体做入射与分析准直，靠晶体摇摆曲线定义极窄角分辨率，从而在紧凑几何下到达极低 $q$；测得的是沿狭缝高度方向积分后的强度。狭缝 smearing 使尖峰变钝、低 $q$ 抬高、表观 $R_g$ 偏大——若不校正，会系统性误读结构（Pedersen 1995）。</p>
+
+ <h3>Zhang 2010 → Allen 2017：<span data-term="usaxs">USAXS</span> 一级标定与 SRM 3600</h3>
+ <p>APS <span data-term="usaxs">USAXS</span> 可用光电二极管同时覆盖主束与弱散射，具备<strong>一级绝对标定</strong>能力。Zhang 等以此验证<span data-term="glassy-carbon">玻璃碳</span>作为二级强度标样的均匀性与稳定性；Allen 等进一步发布 NIST SRM 3600，把认证的 $\mathrm{d}\Sigma/\mathrm{d}\Omega(Q)$ 曲线（约 $0.008$–$0.25\,\mathrm{\AA}^{-1}$）提供给全球透射几何 <span data-term="saxs">SAXS</span> 作日常标定（详见 <a href="../calibration/index.html">绝对标定专题</a>）。</p>
+
+      <h3>Jeffries 2021 与现代 <span data-term="usaxs">USAXS</span>/<span data-term="saxs">SAXS</span>/<span data-term="waxs">WAXS</span> 管线</h3>
+ <p>Jeffries 等 Primer 指出：同步辐射台站常把 <span data-term="usaxs">USAXS</span>、中等 $q$ 的 pinhole <span data-term="saxs">SAXS</span> 与 <span data-term="waxs">WAXS</span> 串联，在同一样品几何下快速扫完多个数量级的 $q$。<span data-term="bonse-hart">Bonse–Hart</span> 后置晶体可省去部分几何去卷积；高亮度使弱 <span data-term="usaxs">USAXS</span> 信号仍可达统计。材料科学应用包括：合金析出跨尺度演化、岩石/页岩孔隙连通性、相分离动力学（<span data-term="usaxs">USAXS</span>+VSANS）等——与生物稀溶液的 reporting 框架不同，但绝对标定与 smearing 处理原则相同。</p>
+
+ <h2>关键概念与结论</h2>
+ <h3>何时必须用 <span data-term="usaxs">USAXS</span></h3>
+ <ul>
+ <li><span data-term="saxs">SAXS</span> 最低 $q$ 处 $I(q)$ 仍陡升，Guinier 未平台化；目标特征长度 $\gtrsim 100\,\mathrm{nm}$。</li>
+ <li>需要绝对 $\mathrm{d}\Sigma/\mathrm{d}\Omega$ 追溯至主束强度（一级法），或为二级标样（<span data-term="glassy-carbon">玻璃碳</span>）提供权威曲线。</li>
+ <li>层次材料需在 log–log 图上识别多个 knee / 幂律段（<span data-term="beaucage-unified">Unified Fit</span> 多 level）。</li>
+ </ul>
+
+ <h3><span data-term="bonse-hart">Bonse–Hart</span> vs pinhole</h3>
+ <table>
+ <thead>
+ <tr><th>方面</th><th><span data-term="bonse-hart">Bonse–Hart</span> <span data-term="usaxs">USAXS</span></th><th>Pinhole <span data-term="saxs">SAXS</span> / <span data-term="usaxs">USAXS</span></th></tr>
+ </thead>
+ <tbody>
+ <tr><td>最低 $q$</td><td>极低（$\sim 10^{-4}\,\mathrm{\AA}^{-1}$ 量级可行）</td><td>受准直、相机长度与束斑限制；「超小角」针孔需长光路或聚焦光学</td></tr>
+ <tr><td>数据形态</td><td>一维摇摆曲线；狭缝 smear</td><td>2D 图样 → 径向积分；几何 smear 通常较弱</td></tr>
+ <tr><td>分辨率</td><td>由晶体摇摆曲线决定角分辨率</td><td>由针孔、束散度与像素立体角决定</td></tr>
+ <tr><td>绝对标定</td><td>可直测 $I_0$ 与 $I_S$，适合一级标定（Zhang / Allen）</td><td>常用<span data-term="glassy-carbon">玻璃碳</span> / SRM 3600 等二级标样</td></tr>
+ <tr><td>适用</td><td>大尺度结构、绝对截面溯源、与 <span data-term="saxs">SAXS</span> 拼接</td><td>常规纳米结构、各向异性 2D、高通量筛样</td></tr>
+ </tbody>
+ </table>
+
+ <h3>狭缝 smearing 为何重要</h3>
+ <p>狭缝几何下测得强度可写为理想 $I(q)$ 与分辨率函数 $R$ 的卷积（Pedersen 1995）：</p>
+ $$I_{\mathrm{sm}}(q)=\int R(q,q')\,I(q')\,\mathrm{d}q'.$$
+ <p>后果包括：Guinier 斜率变缓、Porod 尾变钝、尖锐 Bragg / 相关峰被抹平。实践二选一：</p>
+ <ul>
+ <li><strong><span data-term="desmearing">Desmear</span>：</strong> 用 Lake 等迭代算法从 $I_{\mathrm{sm}}$ 反演近似 $I(q)$，再与针孔数据拼接或拟合；</li>
+ <li><strong>Smeared 模型：</strong> 对理论 $I(q)$ 施加同一核 $R$ 再拟合，避免 <span data-term="desmearing">desmear</span> 放大噪声。</li>
+ </ul>
+ <p>未处理 smearing 时，低 $q$ 抬高、$I(0)$ 与 $R_g$ 偏大，与 pinhole 曲线在重叠区无法重合。</p>
+
+ <h3><span data-term="usaxs">USAXS</span> + <span data-term="saxs">SAXS</span> 拼接</h3>
+ <p>完整层次结构常需跨 $q$ 拼接。推荐顺序：</p>
+ <ol>
+ <li>各自完成背景扣除、$q$ 刻度与透射/厚度校正（见 <a href="../data-reduction/index.html">数据还原专题</a>）；</li>
+ <li><span data-term="usaxs">USAXS</span> 侧处理 smearing；两端数据置于同一绝对强度尺度；</li>
+ <li>在重叠 $q$ 窗检查斜率与强度是否一致（常 $\pm$ 数百分比内）；</li>
+ <li>用加权平均或分段衔接生成连续 $I(q)$，再进入 Guinier / <span data-term="porod-law">Porod</span> / 模型拟合。</li>
+ </ol>
+ <p>重叠区系统偏差通常指向：smearing 未一致处理、绝对标定因子不一致、或样品在两次测量间状态变化（变温结晶样品尤甚）。Peyronel 2018 建议：变温实验用 Linkam 等温控台，记录冷却速率（如 $1\,^\circ\mathrm{C}/\mathrm{min}$ vs $30\,^\circ\mathrm{C}/\mathrm{min}$），因微观结构对热史敏感。</p>
+
+ <h3>解读：层次结构与分形</h3>
+ <p><span data-term="usaxs">USAXS</span> 区常无 Bragg 峰，而以 Guinier knee + 幂律尾为主。Peyronel 用 Monte Carlo 模拟 CNP 聚集，预测 $\log S(q)\propto -D\log q$ 的分形区，与实验 $\log I(q)$ 斜率对照。<span data-term="beaucage-unified">Unified Fit</span> 允许多个 linked structural level：Level 1 对应基本散射单元，Level 2/3 对应逐级聚集。拟合时 $\chi^2$ 最小不足以定论——须在宽 $q$ 窗内斜率稳定且与独立显微证据一致。Irena（APS）是常用分析软件。</p>
+
+ <div class="keybox">
+ <strong><span data-term="usaxs">USAXS</span> 操作检查清单</strong>
+ <ol>
+ <li><strong>是否需要 <span data-term="usaxs">USAXS</span>：</strong> 常规 <span data-term="saxs">SAXS</span> 最低 $q$ 处 $I(q)$ 仍陡升、Guinier 未出现，或目标尺度 $\gtrsim 100\,\mathrm{nm}$。</li>
+ <li><strong>几何与 smear：</strong> 记录狭缝高度/宽度或晶体摇摆参数；计划 <span data-term="desmearing">desmear</span> 或 smeared 拟合，勿直接与 pinhole 曲线叠图定论。</li>
+ <li><strong>绝对强度：</strong> 优先<span data-term="glassy-carbon">玻璃碳</span>或 SRM 3600；跨仪器拼接前确认标定因子一致（<a href="../calibration/index.html">绝对标定</a>）。</li>
+ <li><strong>拼接：</strong> 重叠区强度与斜率自洽；记录衔接 $q$ 与缩放（理想情况缩放因子 $\equiv 1$）。</li>
+ <li><strong>解读：</strong> 低 $q$ 抬升先排除<span data-term="multiple-scattering">多重散射</span>、表面散射与背景；再用 Guinier / 模型解释大尺度。</li>
+ </ol>
+ </div>
+
+ <h2>实践要点与坑</h2>
+ <ul>
+ <li><strong>把 smeared 曲线当 pinhole $I(q)$ → 如何判断：</strong> 与针孔数据在重叠区对不上；表观 $R_g$ 偏大、低 $q$ 抬高。必须 <span data-term="desmearing">desmear</span> 或 smeared 模型（Pedersen 1995）。</li>
+ <li><strong>拼接只靠任意缩放 → 如何判断：</strong> 重叠窗斜率本不一致却强行乘常数。先统一绝对标定与 smearing，再拼接。</li>
+ <li><strong>忽略仪器散射 → 如何判断：</strong> 空白样未测或束形漂移；低 $q$ 抬升不随样品厚度变化。定期录 beam profile。</li>
+ <li><strong>忽略<span data-term="multiple-scattering">多重散射</span> → 如何判断：</strong> 厚样品 / 强散射体低 $q$ 异常抬高；改变厚度后曲线形状变。减薄样品或检查透射率。</li>
+ <li><strong>Guinier 仍不够低 $q$ → 如何判断：</strong> <span data-term="usaxs">USAXS</span> 末端仍无平台。报告可达 $q_{\min}$ 与下限 $R_g$，勿外推虚假 $I(0)$。</li>
+ <li><strong>标定批次混用 → 如何判断：</strong> 不同<span data-term="glassy-carbon">玻璃碳</span>批次截面可差 $>10\%$。固定 SRM 3600 或同批标样并记录证书。</li>
+ <li><strong>分形斜率过度解读 → 如何判断：</strong> <span data-term="beaucage-unified">Unified Fit</span> 的 $|P|$ 仅在足够宽 $q$ 窗且信噪比足够时才有物理意义；多 level 耦合时斜率非唯一。</li>
+ <li><strong>样品取向/压缩 → 如何判断：</strong> 半固体装样时剪切或压制会在 <span data-term="usaxs">USAXS</span> 引入各向异性；Peyronel 强调装样勿压缩（AOCS 2016）。</li>
+ </ul>
+
+ <h2>相关词条</h2>
+ <p>
+ <span data-term="usaxs">USAXS</span>、
+ <span data-term="instrument-smearing">仪器 smearing</span>、
+ <span data-term="absolute-intensity">绝对强度</span>、
+ <span data-term="scattering-vector-q">散射矢量 $q$</span>、
+ <span data-term="guinier-analysis">Guinier 分析</span>、
+ <span data-term="porod-law">Porod 定律</span>、
+ <span data-term="forward-scattering">前向散射 $I(0)$</span>
+ </p>
+
+ <h2>相关学习章与专题</h2>
+ <ul>
+ <li><a href="../../learn/03-instruments.html">03 仪器与几何</a> — 针孔 / 狭缝准直与 $q$ 覆盖</li>
+ <li><a href="../../learn/04-data-reduction.html">04 数据还原</a> — 背景、透射、$2\mathrm{D}\to I(q)$</li>
+ <li><a href="../../learn/05-absolute-calibration.html">05 绝对标定</a> — <span data-term="glassy-carbon">玻璃碳</span>与强度尺度</li>
+ <li><a href="../calibration/index.html">绝对标定专题</a> — SRM 3600 与 <span data-term="usaxs">USAXS</span> 一级法</li>
+ <li><a href="../data-reduction/index.html">数据还原专题</a> — 拼接前的还原管线</li>
+ </ul>
+
+ <h2>文献列表</h2>
+ <ul>
+ <li><em>Ultra-small angle X-ray scattering</em>. Fernanda Peyronel, David A. Pink (2018). DOI: <a href="https://doi.org/10.1016/B978-0-12-814041-3.00009-5" target="_blank" rel="noopener noreferrer">10.1016/B978-0-12-814041-3.00009-5</a></li>
+ <li><em>Small-angle X-ray and neutron scattering</em>. Cy M. Jeffries et al. (2021). DOI: <a href="https://doi.org/10.1038/s43586-021-00064-9" target="_blank" rel="noopener noreferrer">10.1038/s43586-021-00064-9</a></li>
+ <li><em>Glassy Carbon as an Absolute Intensity Calibration Standard for Small-Angle Scattering</em>. Fan Zhang et al. (2010). DOI: <a href="https://doi.org/10.1007/s11661-009-9950-x" target="_blank" rel="noopener noreferrer">10.1007/s11661-009-9950-x</a></li>
+ <li><em>NIST Standard Reference Material 3600: Absolute Intensity Calibration Standard for Small-Angle X-ray Scattering</em>. Andrew J. Allen et al. (2017). DOI: <a href="https://doi.org/10.1107/S1600576717001972" target="_blank" rel="noopener noreferrer">10.1107/S1600576717001972</a></li>
+ <li><em>Instrumentation for small-angle scattering</em>. Jan Skov Pedersen (1995). DOI: <a href="https://doi.org/10.1007/978-94-015-8457-9_2" target="_blank" rel="noopener noreferrer">10.1007/978-94-015-8457-9_2</a></li>
+ </ul>
+ </main>
+ </div>
+ <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+ <script src="../../assets/nav.js"></script>
+ <script src="../../assets/glossary-data.js"></script>
+ <script src="../../assets/glossary.js"></script>
+ <script src="../../assets/figures-boot.js"></script>
+ <script>
+ document.addEventListener("DOMContentLoaded", function () {
+ if (window.renderMathInElement) {
+ renderMathInElement(document.querySelector("main.content"), {
+ delimiters: [
+ { left: "$$", right: "$$", display: true },
+ { left: "$", right: "$", display: false }
+ ]
+ });
+ }
+ if (window.SASNav) SASNav.init();
+ if (window.SASGlossary) SASGlossary.init();
+ });
+ </script>
+</body>
+</html>

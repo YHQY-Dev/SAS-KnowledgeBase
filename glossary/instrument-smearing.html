@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>仪器模糊 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>仪器模糊</h1>
+      <p class="subtitle-en">instrumental smearing</p>
+
+      <h2>定义</h2>
+      <p><strong>仪器模糊</strong>（smearing）指测得的散射强度不是理想的微分截面，而是真实 $I(q)$ 与仪器分辨率权重函数 $R(q,q')$ 的卷积：</p>
+      $$ I_\mathrm{meas}(q) = \int R(q,q')\, I_\mathrm{true}(q')\,\mathrm{d}q' $$
+      <p>主要来源包括：准直发散与狭缝长度、波长带宽 $\Delta\lambda/\lambda$、束斑尺寸、样品厚度投影，以及探测器点扩展函数（PSF）。</p>
+
+      <h2>要点</h2>
+      <ul>
+        <li>针孔几何 smearing 通常近似对称、较窄；长狭缝（Kratky）与 Bonse–Hart <span data-term="usaxs">USAXS</span> 常呈非对称、显著 smearing。</li>
+        <li>实践推荐：<strong>对模型做 smearing 卷积后拟合</strong>，而不是对噪声数据强行 desmear（desmear 放大噪声、易造假峰）。</li>
+        <li>smearing 会抹平 <span data-term="form-factor">形式因子</span> 振荡、抬高表观低 $q$，使拟合 $R_g$ 偏大、多分散度被高估。</li>
+        <li>拟合软件须输入几何/$\Delta\lambda$ 等分辨率参数；无记录时勿假装「理想针孔」。</li>
+      </ul>
+
+      <h2>常见混淆</h2>
+      <ul>
+        <li>把 smearing 当成样品 <span data-term="polydispersity">多分散</span>：两者都抹平振荡，须用针孔对照或已知分辨率函数区分。</li>
+        <li>「已经环向平均了所以没有 smearing」：平均消除的是方位角依赖，不是 $q$ 分辨率卷积。</li>
+        <li>多重散射是另一类效应（厚/强散射样品），勿与分辨率 smearing 混为一谈。</li>
+      </ul>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="scattering-vector-q">散射矢量</span> $q$</li>
+        <li><span data-term="usaxs">超小角散射</span></li>
+        <li><span data-term="polydispersity">多分散性</span></li>
+        <li><span data-term="guinier-analysis">Guinier 分析</span></li>
+      </ul>
+
+            <h2>出现于</h2>
+      <ul>
+        <li><a href="../learn/03-instruments.html">学习路径 03 · 仪器与几何</a></li>
+        <li><a href="../learn/04-data-reduction.html">学习路径 04 · 数据还原</a></li>
+        <li><a href="../topics/data-reduction/index.html">专题 · 数据还原</a></li>
+        <li><a href="../topics/usaxs/index.html">专题 · USAXS</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

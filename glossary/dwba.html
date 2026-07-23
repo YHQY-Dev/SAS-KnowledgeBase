@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>畸变波玻恩近似 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>畸变波玻恩近似</h1>
+      <p class="subtitle-en">distorted-wave Born approximation</p>
+
+      <h2>定义</h2>
+      <p><strong>畸变波玻恩近似</strong>（DWBA）是 <span data-term="gisaxs">GISAXS</span> / GISANS 的标准理论框架：先把光滑多层膜上的动力学反射/折射场（「畸变波」）作为参考解，再对侧向纳米结构（岛、畴、粗糙起伏）做一阶玻恩微扰散射。测得强度是入射与反射通道多种散射路径的相干叠加，而非简单的透射 $P(q)S(q)$。</p>
+
+      <h2>要点</h2>
+      <ul>
+        <li>当入射角 $\alpha_i$ 或出射角 $\alpha_f$ 接近临界角时，Born 近似通常失效，必须用 DWBA。</li>
+        <li>DWBA 自然产生 <span data-term="yoneda">Yoneda 峰</span>、镜面峰与随 $\alpha_i$ 移动的条纹强度——这些是动力学折射特征。</li>
+        <li>软件如 IsGISAXS、BornAgain 提供 BA / DWBA 切换与解耦近似（DA）、局域单分散近似（LMA）等简化。</li>
+        <li>极高 $\alpha_i$（$\gg \alpha_c$）且远离 Yoneda 时，可近似退回运动学 Born 图像。</li>
+      </ul>
+
+      <h2>常见混淆</h2>
+      <ul>
+        <li>把 GISAXS 2D 图当透射 SAXS 环向平均后套 Guinier：忽略 DWBA 与 $\alpha_i$ 依赖。</li>
+        <li>DWBA ≠ 「任意复杂多层严格解」：它仍是对侧向扰动的微扰；极强粗糙或厚岛可能需更高阶或数值方法。</li>
+        <li>条纹随 $\alpha_i$ 移动是 DWBA 特征，不是 $P(q)$ 单独决定的「粒径峰漂移」。</li>
+      </ul>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="gisaxs">GISAXS</span></li>
+        <li><span data-term="yoneda">Yoneda 峰</span></li>
+        <li><span data-term="form-factor">形式因子</span>与 <span data-term="structure-factor">结构因子</span>（透射对照）</li>
+        <li><span data-term="block-copolymer">嵌段共聚物</span>（常见 GISAXS 样品）</li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../topics/gisaxs/index.html">专题 · GISAXS</a></li>
+        <li><a href="../learn/03-instruments.html">学习路径 03 · 仪器与几何</a></li>
+        <li><a href="../learn/09-application-paths.html">学习路径 09 · 应用岔路</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

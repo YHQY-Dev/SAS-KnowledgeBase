@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>体积分数 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>体积分数</h1>
+      <p class="subtitle-en">volume fraction</p>
+
+      <h2>定义</h2>
+      <p><strong>体积分数</strong> $\phi$ 是感兴趣相在样品中所占体积比。稀溶液数密度 $n$ 与单粒子体积 $V$ 满足 $\phi\approx nV$。</p>
+
+      <h2>物理直觉</h2>
+      <p>未绝对标定只能谈相对 $\phi$；浓体系还须考虑 $S(q)$ 与可能的多重散射。</p>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="absolute-intensity">绝对强度</span></li>
+        <li><span data-term="forward-scattering">前向散射</span></li>
+        <li><span data-term="porod-invariant">Porod 不变量</span></li>
+        <li><span data-term="structure-factor">结构因子</span></li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../learn/02-scattering-basics.html">学习路径 02-scattering-basics</a></li>
+        <li><a href="../learn/05-absolute-calibration.html">学习路径 05-absolute-calibration</a></li>
+        <li><a href="../topics/calibration/index.html">专题 calibration</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

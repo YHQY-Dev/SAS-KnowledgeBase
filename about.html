@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base=".">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>关于 · SAS 知识站</title>
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>关于本站</h1>
+      <p class="subtitle-en">About this site</p>
+
+      <h2>定位</h2>
+      <p>本站是面向小角散射（SAXS / SANS / GISAXS 等）的<strong>中文教程知识站</strong>：专业名词保留英文，并提供中英双语词条。学习路径侧重综合改写，专题页侧重文献导读，目标是能当作自学教材使用，而不只是提纲目录。</p>
+
+      <h2>内容结构</h2>
+      <ul>
+        <li><strong>学习路径：</strong>从基础概念到数据还原、标定、Guinier / IFT、模型与应用岔路，适合顺序阅读。</li>
+        <li><strong>专题手册：</strong>按实验问题深入（绝对标定、BioSAS、GISAXS、衬度变化等），适合带着问题查阅。</li>
+        <li><strong>术语表：</strong>独立词条；正文虚线术语可悬停看英文全称与短释义，点击进入详解。</li>
+        <li><strong>文献目录：</strong>本站依据的核心文献题录（题名、作者、年份、DOI / ISBN）；DOI 跳转至出版商页面。本站只提供题录，不提供论文全文。</li>
+      </ul>
+
+      <h2>术语交互</h2>
+      <ul>
+        <li>词条页：中文主标题 + 英文全称副标题</li>
+        <li>悬停：先显示英文全称，再显示 1–2 句中文短释义</li>
+        <li>点击：进入独立词条页</li>
+      </ul>
+
+      <h2>版权与引用</h2>
+      <p>教程正文为学习向改写与导读。涉及具体结论时请回查原文并按学术规范引用。示意图以自绘 / 重述为主。</p>
+    </main>
+  </div>
+  <script src="assets/nav.js"></script>
+  <script src="assets/glossary-data.js"></script>
+  <script src="assets/glossary.js"></script>
+  <script src="assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

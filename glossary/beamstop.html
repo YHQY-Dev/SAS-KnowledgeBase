@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>束阻 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>束阻</h1>
+      <p class="subtitle-en">beamstop</p>
+
+      <h2>定义</h2>
+      <p><strong>束阻</strong>置于探测器前（或飞行管末端）遮挡极强直射束。被遮挡区域对应最低 $q$ 的盲区；$q_{\min}$ 往往由束阻边缘而非理论几何决定。</p>
+
+      <h2>物理直觉</h2>
+      <p>掩膜须覆盖束阻阴影与半影；束阻过大使 Guinier 区丢失，过小则直射漏光烧毁像素。主动束阻可兼测透射。</p>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="scattering-vector-q">散射矢量 q</span></li>
+        <li><span data-term="forward-scattering">前向散射</span></li>
+        <li><span data-term="transmission">透射率</span></li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../learn/03-instruments.html">学习路径 03-instruments</a></li>
+        <li><a href="../learn/04-data-reduction.html">学习路径 04-data-reduction</a></li>
+        <li><a href="../topics/data-reduction/index.html">专题 data-reduction</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

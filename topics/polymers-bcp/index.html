@@ -1,0 +1,193 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <title>聚合物与嵌段共聚物 · 专题手册 · SAS 知识站</title>
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+ <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+ <div id="site-header"></div>
+ <div class="layout">
+ <aside id="site-sidebar"></aside>
+ <main class="content">
+ <h1>聚合物与嵌段共聚物（SAS）</h1>
+ <p class="subtitle-en">Chain conformation, microphase peaks, and soft-matter vs BioSAS mindset</p>
+
+      <p>本导读以 Hamley &amp; Castelletto（2004）<em>Small-angle scattering of block copolymers</em>（DOI: <a href="https://doi.org/10.1016/j.progpolymsci.2004.06.001" target="_blank" rel="noopener noreferrer">10.1016/j.progpolymsci.2004.06.001</a>）为骨架，结合 Trask, Hernandez &amp; Cochran（2017）Oxford 手册章、Hall（1989）结晶聚合物 <span data-term="saxs">SAXS</span> 章，以及 Müller-Buschbaum（2016）BCP 薄膜 <span data-term="gisaxs">GISAXS</span> 综述，说明聚合物链构象（$R_g$、无规线团形式因子）、嵌段共聚物<span data-term="microphase-separation">微相分离</span>峰（$d$-spacing）、胶束/液晶相与半结晶畴如何读，以及软物质思维与 BioSAS 稀溶液范式的分野。薄膜几何请转入 <a href="../gisaxs/index.html"><span data-term="gisaxs">GISAXS</span> 专题</a>。</p>
+
+ <h2>问题是什么</h2>
+ <p>聚合物与<span data-term="block-copolymer">嵌段共聚物</span>（block copolymer, BCP）的 SAS 问题通常分三层（Hamley 2004；Trask 2017）：</p>
+ <ol>
+ <li><strong>单链 / 稀溶液构象：</strong> 均聚物或未<span data-term="microphase-separation">微相分离</span>的无规线团，主信号来自<span data-term="form-factor">形式因子</span> $P(q)$；关心回转半径 $R_g$、Flory 指数 $\nu$、溶剂品质（$\Theta$ / 良溶剂）。浓溶液进入半稀释区时 $S(q)$ 不再可忽略。</li>
+ <li><strong><span data-term="microphase-separation">微相分离</span>与有序介观相：</strong> 嵌段因 Flory–Huggins 参数 $\chi$ 与聚合度 $N$（组合为 $\chi N$）驱动而局域相分离，却因共价键无法宏观分相；透射 <span data-term="saxs">SAXS</span>/<span data-term="sans">SANS</span> 出现 Bragg / 相关峰，峰位给出畴间距 $d$，峰列给出对称性（lamellae、hex、bcc、gyroid 等）。无序相（disordered, DIS）在 $q^*$ 附近仍有宽相关峰（correlation hole），与有序 Bragg 峰的解读不同。</li>
+ <li><strong>溶液自组装与结晶：</strong> 选择性溶剂中 BCP 形成球/柱胶束、溶致液晶相（lyotropic LC）；半结晶嵌段在 <span data-term="saxs">SAXS</span> 出现片层长周期峰，常需联用 <span data-term="waxs">WAXS</span> 读晶胞（Hamley 2004 §6；Hall 1989）。凝胶网络中的非均匀涨落则属另一分支（可选：Shibayama 2008）。</li>
+ </ol>
+ <p>与 BioSAS 的关键差异：生物稀溶液默认 $S(q)\approx 1$、追求单一 $p(r)$ / 寡聚态；聚合物熔体、浓溶液、有序 BCP 几乎总是「形式因子 × 结构因子」问题，且<span data-term="polydispersity">多分散</span>、<span data-term="contrast-matching">衬度匹配</span>、剪切取向、热历史是常态。把 BCP 相关峰误当成「大分子 Guinier 上翘」、把浓溶液 $S(q)$ 压制当聚集、或把结晶片层峰当微相 Bragg 峰，是最常见的岔路错误（见 <a href="../../learn/09-application-paths.html">09 应用岔路</a>）。</p>
+
+ <figure class="figure">
+ <img src="../../assets/figures/fig-18-polymer-bcp-iq.png" alt="示意图：线团 P(q) 与 BCP 微相峰 I(q)" width="900">
+ <figcaption>稀溶液无规线团：平滑 Debye 衰减；有序 BCP：主峰 $q^*$ 及高次峰列，间距 $d=2\pi/q^*$。<span class="fig-source">配图：自制示意</span></figcaption>
+ </figure>
+
+ <h2>文献主线</h2>
+ <h3>Hamley &amp; Castelletto 2004：BCP 的 SAS 总图</h3>
+ <p>该综述按「熔体微相 → 球/柱胶束溶液 → 溶致液晶相 → 半结晶嵌段」组织，强调 <span data-term="saxs">SAXS</span> 主用于形貌判定，<span data-term="sans">SANS</span> 靠氘标定链构象与选择性「点亮」嵌段。核心要点：</p>
+ <ul>
+ <li><strong>熔体 Leibler RPA：</strong> 无序相<span data-term="structure-factor">结构因子</span> $S(q)=N/[F(x)-2\chi N]$，$x=q^2R_g^2$；$\chi N$ 趋近 spinodal 时 $S(q^*)$ 发散，对应 <span data-term="order-disorder-transition">ODT</span> 附近宽峰。强分凝样品可见完整 Bragg 列，弱分凝仅低阶峰，需 TEM 或剪切取向补证。</li>
+ <li><strong>峰列定相：</strong> lamellae $1{:}2{:}3\ldots$；hex $1{:}\sqrt{3}{:}2\ldots$；bcc $1{:}\sqrt{2}{:}\sqrt{3}\ldots$；gyroid 等网络相峰更密、更弱。偶数峰可因对称性消光或形式因子极小值而缺失——勿单凭缺失判「无序」。</li>
+ <li><strong>非平衡与动力学：</strong> HPL、HML 等 perforated lamellar 可为 gyroid 前驱；相变路径依赖退火史与剪切（LAOS 取向可增强峰信息）。同步辐射时间分辨可追踪 <span data-term="order-disorder-transition">ODT</span>、结晶与胶束化动力学。</li>
+ <li><strong>溶液胶束：</strong> 稀溶液 $I\propto n P(q)S(q)$（$n$ 为数密度）；浓胶束/液晶相再次出现 Bragg 峰，须区分胶束间 $S(q)$ 与单胶束 $P(q)$。</li>
+ <li><span data-term="saxs">SAXS</span> 与 <span data-term="sans">SANS</span> 互补：X 射线靠电子密度差；中子靠氘化嵌段 / 溶剂<span data-term="contrast">衬度</span>匹配拆分配方（见 <a href="../sans-contrast/index.html"><span data-term="sans">SANS</span> 衬度专题</a>）。</li>
+ </ul>
+
+ <h3>Trask, Hernandez &amp; Cochran 2017：热力学—动力学—散射</h3>
+ <p>Oxford Soft Condensed Matter 手册章（DOI: <a href="https://doi.org/10.1093/oxfordhb/9780199667925.013.7" target="_blank" rel="noopener noreferrer">10.1093/oxfordhb/9780199667925.013.7</a>）把 Flory–Huggins $\chi_{AB}$、$N$、体积分数 $f$ 与散射放在同一框架：</p>
+ <ul>
+ <li><strong>分凝区：</strong> 弱分凝（$\chi N\sim 10$–20，<span data-term="order-disorder-transition">ODT</span> 附近）用 Leibler 弱分凝理论；强分凝（$\chi N\sim 100$）界面趋锐、畴间距标度 $\sim N^{2/3}$；中间区需自洽场（SCFT）等。</li>
+ <li><strong>相图与散射：</strong> 对称 diblock 在 $\chi N\approx 10.5$、$f=0.5$ 附近有 Landau 临界点；非对称组成 <span data-term="order-disorder-transition">ODT</span> 常为弱一级相变（disorder → bcc 等）。变温 <span data-term="saxs">SAXS</span> 可绘相边界，峰宽反映缺陷与关联长度。</li>
+ <li><strong>动力学与加工：</strong> 扩散、黏弹性、剪切加工与自组装动力学决定「能否看到平衡峰」。快速淬火可捕获亚稳相；流变–<span data-term="saxs">SAXS</span> 联用可读取向与应变响应。</li>
+ </ul>
+ <p>适合作为「为何出现这些峰」的热力学入口，再回到 Hamley 的实验峰列读图。</p>
+
+ <h3>Hall 1989：结晶聚合物的片层 <span data-term="saxs">SAXS</span></h3>
+ <p>半结晶聚合物（含结晶性嵌段）的 <span data-term="saxs">SAXS</span> 与 BCP 微相峰不同：信号来自晶区（$\rho_c$）与非晶区（$\rho_a$）交替的片层堆叠，取向纤维上常见 meridional 长周期峰（two-point / four-point 图样）。Hall 综述的两相模型给出：</p>
+ <ul>
+ <li><strong><span data-term="porod-invariant">Porod 不变量</span> $Q$：</strong> $Q=\int s^2 I(s)\,\mathrm{d}s \propto (\rho_c-\rho_a)^2\omega_c\omega_a$，联系晶相体积分数与密度差；需额外输入才能单独解 $\omega_c$。</li>
+ <li><strong>一维相关函数 $\gamma(r)$：</strong> 由 $I(s)$ Fourier 变换得到，峰位给出片层/非晶层厚度分布；对界面过渡区、相内密度涨落敏感。</li>
+ <li><strong>准晶（paracrystalline）模型：</strong> 片层厚度与周期存在分布时，高阶峰变宽、甚至只剩单宽峰——与 BCP 多分散抹峰机制类似，但物理图像不同。</li>
+ </ul>
+ <p>半结晶 BCP 须同时看 <span data-term="saxs">SAXS</span> 长周期与 <span data-term="waxs">WAXS</span> 晶胞峰（Hamley 2004 §6），勿把片层 $d$ 与微相 $d$ 混为一谈。</p>
+
+ <h3>Müller-Buschbaum 2016：薄膜 BCP → <span data-term="gisaxs">GISAXS</span></h3>
+ <p>体相透射 <span data-term="saxs">SAXS</span> 给出粉末平均峰列；衬底上的 BCP 薄膜常有面内/面外取向、埋藏界面与厚度约束，须用掠入射几何。综述 <em><span data-term="gisaxs">GISAXS</span> and GISANS as metrology…</em>（DOI: <a href="https://doi.org/10.1016/j.eurpolymj.2016.04.007" target="_blank" rel="noopener noreferrer">10.1016/j.eurpolymj.2016.04.007</a>）说明如何从 2D 图样读面内周期、厚度与三维形貌——站内细节见 <a href="../gisaxs/index.html"><span data-term="gisaxs">GISAXS</span></a>（<span data-term="dwba">DWBA</span>、<span data-term="yoneda">Yoneda</span> 带）。</p>
+
+ <h2>关键公式与结论</h2>
+ <h3>无规线团形式因子与 $R_g$</h3>
+ <p>理想高斯链（Debye）形式因子：</p>
+ $$P_{\mathrm{Debye}}(q)=\frac{2}{u^2}\bigl(e^{-u}-1+u\bigr),\quad u=q^2 R_g^2.$$
+ <p>低 $q$ 极限与一般粒子相同：$P(q)\approx 1 - q^2 R_g^2/3$，故<span data-term="guinier-analysis">Guinier 分析</span>仍给出<span data-term="radius-of-gyration">$R_g$</span>。中间 $q$ 区理想链 $\sim q^{-2}$；排除体积（良溶剂）更接近 $\sim q^{-1/\nu}$（$\nu\approx 0.588$）。高分子量、多分散时常用 Hammouda Guinier–Porod 或 Beaucage 统一函数连接 Guinier 平台与幂律衰减（DOI: <a href="https://doi.org/10.1107/S0021889810015773" target="_blank" rel="noopener noreferrer">10.1107/S0021889810015773</a>；见 <a href="../../learn/06-guinier-porod.html">06 Guinier / Porod</a>）。</p>
+
+ <h3>微相峰与 $d$-spacing</h3>
+ <p>有序介观相主峰位置 $q^*$ 与特征间距：</p>
+ $$d = \frac{2\pi}{q^*}.$$
+ <p>高次峰相对位置 $q/q^*$ 用于判别对称性（Hamley 2004；Trask 2017）：</p>
+ <table>
+ <thead>
+ <tr><th>形貌</th><th>典型 $q/q^*$ 列</th><th>备注</th></tr>
+ </thead>
+ <tbody>
+ <tr><td>层状（lamellae）</td><td>$1 : 2 : 3 : 4\ldots$</td><td>一维周期；取向样品强度高度各向异性</td></tr>
+ <tr><td>六方柱（HEX）</td><td>$1 : \sqrt{3} : 2 : \sqrt{7}\ldots$</td><td>$d_{10}=2\pi/q^*$；柱间距 $a=2d_{10}/\sqrt{3}$</td></tr>
+ <tr><td>体心立方球（BCC）</td><td>$1 : \sqrt{2} : \sqrt{3} : 2\ldots$</td><td>弱峰易被多分散/缺陷抹平</td></tr>
+ <tr><td>Gyroid 等网络</td><td>特征比更密、峰弱</td><td>常需与 TEM/流变联判；勿单靠两峰定相</td></tr>
+ </tbody>
+ </table>
+ <p>峰宽反映关联长度与缺陷密度；升温过 <span data-term="order-disorder-transition">ODT</span>（order–disorder transition）时主峰塌为宽相关峰（correlation hole），$S(q)$ 仍可能在 $q^*$ 附近有宽极大——勿与有序 Bragg 峰混淆。Trask 2017 指出：<span data-term="order-disorder-transition">ODT</span> 附近峰形对组成波动敏感，变温扫描比单点测量更能约束相界。</p>
+
+ <h3>胶束溶液与溶致相：$P(q)$ 与 $S(q)$ 再分离</h3>
+ <p>选择性溶剂中 AB 嵌段形成核–壳胶束（Hamley 2004 §3–4）。稀溶液：</p>
+ $$I(q)=n\,(\Delta\rho)^2\,P_{\mathrm{mic}}(q)\,S_{\mathrm{inter}}(q),$$
+ <p>$P_{\mathrm{mic}}(q)$ 描述单胶束核/冠形状；$S_{\mathrm{inter}}(q)$ 描述胶束间距（浓溶液出现 $q^*$ 峰）。柱胶束、囊泡与 hex/cubic 液晶相的峰列规则与熔体类似，但溶剂分数与曲率使相界偏移。溶致相在剪切下高度各向异性（§5.3），须扇区积分或取向样品，勿全环平均。</p>
+
+ <h3>$P(q)$ 与 $S(q)$：软物质默认分解</h3>
+ <p>体相 / 浓体系常用</p>
+ $$I(q) \propto (\Delta\rho)^2\,P(q)\,S(q),$$
+ <p>其中 $P(q)$ 描述畴/链的形状与尺寸，$S(q)$（<span data-term="structure-factor">结构因子</span>）携带间距与有序。稀溶液线团：$S(q)\to 1$；有序 BCP：峰列主导 $S(q)$。界面锐度进入高 $q$ 的<span data-term="porod-law">Porod</span> 区（理想光滑界面 $\sim q^{-4}$；漫界面衰减更快）。多分散与模型可辨识性见 <a href="../../learn/08-models-polydispersity.html">08 模型与多分散</a>。</p>
+
+ <h3>软物质 vs BioSAS 心态对照</h3>
+ <table>
+ <thead>
+ <tr><th>维度</th><th>BioSAS（稀溶液蛋白等）</th><th>聚合物 / BCP（软物质）</th></tr>
+ </thead>
+ <tbody>
+ <tr><td>主问题</td><td>$M_w$、$R_g$、$p(r)$、寡聚态</td><td>$R_g$/构象；$q^*$、$d$；相图；取向</td></tr>
+ <tr><td>默认 $S(q)$</td><td>$\approx 1$（须浓度系列验证）</td><td>常显式；$S(q)$ 峰即数据核心</td></tr>
+ <tr><td>衬度</td><td>缓冲匹配；绝对 $I(0)$</td><td>氘化 / 溶剂匹配拆嵌段；<span data-term="saxs">SAXS</span>↔<span data-term="sans">SANS</span></td></tr>
+ <tr><td>多分散</td><td>尽量单分散或 <span data-term="sec-saxs">SEC-SAS</span></td><td>分子量分布常态；表观 $R_g$ 大端加权</td></tr>
+ <tr><td>失效信号</td><td>低 $q$ 上翘、缓冲错配</td><td>把相关峰当 Guinier；忽略取向/薄膜几何</td></tr>
+ <tr><td>下一站</td><td>IFT、ATSAS、绝对标定</td><td>本页；薄膜 → <a href="../gisaxs/index.html"><span data-term="gisaxs">GISAXS</span></a></td></tr>
+ </tbody>
+ </table>
+
+ <div class="keybox">
+ <strong>聚合物 / BCP SAS 操作检查清单</strong>
+ <ol>
+ <li><strong>先定性曲线类型：</strong> 平滑 Debye/幂律 → 构象问题；尖锐峰列 → 微相 / 有序问题。两类勿混用同一套「生物 $p(r)$」流程。</li>
+ <li><strong>构象路径：</strong> Guinier 得 $R_g$；中间 $q$ 幂律指数；对照 Debye / Guinier–Porod；报告多分散或 $M_w/M_n$。</li>
+ <li><strong>微相路径：</strong> 标定 $q^*$ → $d=2\pi/q^*$；量高次峰比定形貌；记录温度/退火史（<span data-term="order-disorder-transition">ODT</span> 附近峰形剧变）。变温实验优于单点快照。</li>
+ <li><strong>结晶路径：</strong> <span data-term="saxs">SAXS</span> 长周期 + <span data-term="waxs">WAXS</span> 晶胞；用 $Q$ 或 $\gamma(r)$ 约束晶相分数；勿与微相 $d$ 混淆。</li>
+ <li><strong>衬度：</strong> <span data-term="saxs">SAXS</span> 电子密度差不足时考虑 <span data-term="sans">SANS</span> + 氘化嵌段或溶剂匹配；薄膜/取向 → <a href="../gisaxs/index.html"><span data-term="gisaxs">GISAXS</span></a>。</li>
+ <li><strong>相互作用：</strong> 溶液体系做稀释或盐浓度系列，确认低 $q$ 上翘/压制来自 $S(q)$ 而非杂质聚集。</li>
+ <li><strong>时间分辨：</strong> 同步辐射追踪 <span data-term="order-disorder-transition">ODT</span>、结晶或胶束化时，记录升降温速率与剪切条件（环境设计）。</li>
+ </ol>
+ </div>
+
+ <h2>实践要点与坑</h2>
+ <ul>
+ <li><strong>把 $q^*$ 相关峰当成 Guinier 区 → 如何判断：</strong> 有序/近有序样品低 $q$「鼓包」实为 $S(q)$；强行拟合 $R_g$ 会假大。先看是否存在高次峰或温度敏感峰；DIS 相宽峰在 <span data-term="order-disorder-transition">ODT</span> 两侧行为不同。</li>
+ <li><strong>峰比不定相 → 如何判断：</strong> 仅见一峰无法区分 lamellae 与 HEX；缺峰可能因取向、形式因子消光或多分散。补 TEM/AFM、剪切取向 <span data-term="saxs">SAXS</span>，或 <span data-term="sans">SANS</span> 衬度扫（薄膜则转 <span data-term="gisaxs">GISAXS</span>）。</li>
+ <li><strong>多分散抹平振荡 → 如何判断：</strong> 形式因子极小值消失、峰变宽；$R_g$ 被高分子量尾主导。报告 $M_w/M_n$ 或分布假设（<a href="../../learn/08-models-polydispersity.html">08 多分散</a>）。</li>
+ <li><strong>忽略衬度 → 如何判断：</strong> 两嵌段电子密度接近时 <span data-term="saxs">SAXS</span> 峰极弱，<span data-term="sans">SANS</span> 氘化后峰清晰 → 不是「无序」，是衬度问题。ABC 三嵌段若两嵌段 $\rho$ 相近，表观峰位/形貌可误导。</li>
+        <li><strong>结晶峰 vs 微相峰 → 如何判断：</strong> 半结晶样品 <span data-term="waxs">WAXS</span> 有晶胞峰、<span data-term="saxs">SAXS</span> 长周期沿纤维轴；微相 Bragg 峰随 $\chi N$ / 溶剂而变，与熔融结晶动力学不同（Hall 1989；Hamley 2004 §6）。</li>
+ <li><strong>胶束浓溶液误用稀溶液公式 → 如何判断：</strong> 低 $q$ 上翘且随浓度移动 → $S_{\mathrm{inter}}(q)$；须稀释系列或模型 $P(q)S(q)$ 联拟。</li>
+ <li><strong>薄膜仍用透射心态 → 如何判断：</strong> 2D 图样有 Yoneda/镜面、条纹随 $\alpha_i$ 变 → 必须 <span data-term="gisaxs">GISAXS</span>/DWBA。</li>
+ <li><strong>Porod 区误读界面 → 如何判断：</strong> 背景未扣、狭缝 smearing、或漫界面会使表观指数偏离 $-4$；结晶片层还需扣除相内涨落。</li>
+ <li><strong>亚稳相当平衡相 → 如何判断：</strong> HPL 等中间相随退火时间演化；记录热史与退火时间，必要时时间分辨 <span data-term="saxs">SAXS</span>。</li>
+ </ul>
+
+ <h2>相关词条</h2>
+ <p>
+ <span data-term="block-copolymer">嵌段共聚物</span>、
+ <span data-term="polydispersity">多分散性</span>、
+ <span data-term="form-factor">形式因子</span>、
+ <span data-term="structure-factor">结构因子</span>、
+ <span data-term="radius-of-gyration">回转半径 $R_g$</span>、
+ <span data-term="guinier-analysis">Guinier 分析</span>、
+ <span data-term="contrast">衬度</span>、
+ <span data-term="gisaxs">GISAXS</span>、
+ <span data-term="porod-law">Porod 定律</span>
+ </p>
+
+ <h2>相关学习章</h2>
+ <ul>
+ <li><a href="../../learn/06-guinier-porod.html">06 Guinier / Porod</a> — $R_g$、幂律区与 Guinier–Porod 统一模型</li>
+ <li><a href="../../learn/08-models-polydispersity.html">08 模型与多分散</a> — $P(q)S(q)$ 可辨识性与尺寸分布</li>
+ <li><a href="../../learn/09-application-paths.html">09 应用岔路</a> — Soft matter 与 <span data-term="gisaxs">GISAXS</span> 分支导流</li>
+ <li><a href="../gisaxs/index.html"><span data-term="gisaxs">GISAXS</span> 专题</a> — BCP 薄膜、面内周期与 DWBA</li>
+ </ul>
+
+ <h2>文献列表</h2>
+ <ul>
+ <li><em>Small-angle scattering of block copolymers</em>. Ian W. Hamley, Valeria Castelletto (2004). DOI: <a href="https://doi.org/10.1016/j.progpolymsci.2004.06.001" target="_blank" rel="noopener noreferrer">10.1016/j.progpolymsci.2004.06.001</a></li>
+ <li><em>Block copolymers: thermodynamics, dynamics, and small-angle scattering</em>. Lee M. Trask, Nacu Hernandez, Eric W. Cochran (2017). DOI: <a href="https://doi.org/10.1093/oxfordhb/9780199667925.013.7" target="_blank" rel="noopener noreferrer">10.1093/oxfordhb/9780199667925.013.7</a></li>
+ <li><em>Small-angle X-ray scattering from crystalline polymers</em>. Ivan H. Hall (1989). DOI: <a href="https://doi.org/10.1016/B978-0-08-096701-1.00030-6" target="_blank" rel="noopener noreferrer">10.1016/B978-0-08-096701-1.00030-6</a></li>
+ <li><em><span data-term="gisaxs">GISAXS</span> and GISANS as metrology technique for understanding the 3D morphology of block copolymer thin films</em>. Peter Müller-Buschbaum (2016). DOI: <a href="https://doi.org/10.1016/j.eurpolymj.2016.04.007" target="_blank" rel="noopener noreferrer">10.1016/j.eurpolymj.2016.04.007</a></li>
+ <li><em>A new Guinier–Porod model</em>. Boualem Hammouda (2010). DOI: <a href="https://doi.org/10.1107/S0021889810015773" target="_blank" rel="noopener noreferrer">10.1107/S0021889810015773</a></li>
+ <li><em>Small-angle X-ray and neutron scattering</em>. Cy M. Jeffries et al. (2021). DOI: <a href="https://doi.org/10.1038/s43586-021-00064-9" target="_blank" rel="noopener noreferrer">10.1038/s43586-021-00064-9</a></li>
+ </ul>
+ </main>
+ </div>
+ <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+ <script src="../../assets/nav.js"></script>
+ <script src="../../assets/glossary-data.js"></script>
+ <script src="../../assets/glossary.js"></script>
+ <script src="../../assets/figures-boot.js"></script>
+ <script>
+ document.addEventListener("DOMContentLoaded", function () {
+ if (window.renderMathInElement) {
+ renderMathInElement(document.querySelector("main.content"), {
+ delimiters: [
+ { left: "$$", right: "$$", display: true },
+ { left: "$", right: "$", display: false }
+ ]
+ });
+ }
+ if (window.SASNav) SASNav.init();
+ if (window.SASGlossary) SASGlossary.init();
+ });
+ </script>
+</body>
+</html>

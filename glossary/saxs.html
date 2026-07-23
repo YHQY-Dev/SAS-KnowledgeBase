@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>小角 X 射线散射 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>小角 X 射线散射</h1>
+      <p class="subtitle-en">small-angle X-ray scattering</p>
+
+      <h2>定义</h2>
+      <p><strong>SAXS</strong>（small-angle X-ray scattering）是以 X 射线为探针的小角散射实验：在较小散射角（通常对应 $q\lesssim 1\,\mathrm{\AA}^{-1}$）记录弹性相干散射强度 $I(q)$，从而统计表征样品内电子密度的纳米级不均匀性。</p>
+      <p>与晶体学衍射不同，溶液、胶体、聚合物熔体等体系往往没有尖锐 Bragg 峰，而是连续的小角曲线；分析框架与 <span data-term="sans">SANS</span> 共享，但衬度机制是电子密度差。</p>
+
+      <h2>物理直觉</h2>
+      <p>X 射线与电子相互作用强，实验室源与同步辐射都可做 SAXS。重元素、金属纳米颗粒、高电子密度畴通常信号强；含水生物样品信号弱、易辐射损伤，常需流动进样或 <span data-term="sec-saxs">SEC-SAXS</span>。</p>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="sans">小角中子散射</span></li>
+        <li><span data-term="scattering-vector-q">散射矢量 q</span></li>
+        <li><span data-term="contrast">衬度</span></li>
+        <li><span data-term="absolute-intensity">绝对强度</span></li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../learn/01-what-is-sas.html">学习路径 01-what-is-sas</a></li>
+        <li><a href="../learn/03-instruments.html">学习路径 03-instruments</a></li>
+        <li><a href="../topics/biosas/index.html">专题 biosas</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

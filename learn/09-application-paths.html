@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>09 应用岔路 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>09 · 应用岔路</h1>
+      <p class="subtitle-en">Application forks — bioSAS, soft matter, <span data-term="gisaxs">GISAXS</span></p>
+
+      <h2>导语：基础读完，按样品几何分叉</h2>
+      <p>第 01–08 章建立的是<strong>共用底座</strong>：什么是 SAS、$q$ 与衬度、仪器与 smearing、还原与绝对标定、Guinier/Porod、实空间 IFT、以及模型与多分散的可辨识性。到这里为止，你已能把一张校正后的 $I(q)$ 读成「尺寸—界面—形状」的粗粒度叙事。下一步不再是「再学一章通识」，而是<strong>按样品几何选岔路</strong>：</p>
+      <ul>
+        <li><strong>溶液中的生物大分子</strong>（蛋白、核酸、复合物）→ 岔路 A · BioSAS</li>
+        <li><strong>体相软物质</strong>（聚合物溶液/熔体、胶束、胶体、凝胶、两相体系）→ 岔路 B · Soft matter</li>
+        <li><strong>薄膜 / 界面 / 有序纳米结构表面</strong>→ 岔路 C · <span data-term="gisaxs">GISAXS</span></li>
+      </ul>
+      <p>三条路共享同一套散射物理，但<strong>第一批要回答的问题、默认假设、必做对照实验</strong>完全不同。选错岔路，最常见的代价不是「公式不会用」，而是把聚集当成柔性、把 $S(q)$ 当成 $P(q)$、或把掠入射干涉条纹当成透射形式因子振荡。本章是导流图：每条岔路给出<strong>何时走、先读哪几个专题、典型科学问题与下一跳链接</strong>；最后用决策表与常见坑帮你自检。</p>
+
+      <h2>岔路信号：三条「报警灯」</h2>
+      <p>在翻专题手册之前，用三个快问定位岔路（Jeffries 2021；Grillo 2008；Müller-Buschbaum 2009）：</p>
+      <ul>
+        <li><strong>样品是各向同性稀溶液、问单分子/单粒子？</strong> → 先看 BioSAS 或软物质稀溶液叙事；几何为透射，$S(q)\approx 1$ 是默认待证假设。</li>
+        <li><strong>体相浓度高、需操控 H/D 衬度或读 $S(q)$ 峰？</strong> → 软物质岔路；<span data-term="sans">SANS</span> 对比变分几乎是标配，聚合物/胶体/胶束走此路。</li>
+        <li><strong>样品是薄膜/涂层/衬底上的纳米结构、需要面内周期或埋藏界面？</strong> → <span data-term="gisaxs">GISAXS</span>；透射 Guinier 公式<strong>不适用</strong>，必须进入 <span data-term="dwba">DWBA</span> 与二维 $q$ 分解。</li>
+      </ul>
+
+      <h2>三条岔路对照</h2>
+      <table>
+        <thead>
+          <tr><th>维度</th><th>A · BioSAS</th><th>B · Soft matter</th><th>C · <span data-term="gisaxs">GISAXS</span></th></tr>
+        </thead>
+        <tbody>
+          <tr><td>样品几何</td><td>稀/半稀溶液，各向同性平均</td><td>溶液、熔体、分散体、两相体相</td><td>薄膜 / 表面，掠入射</td></tr>
+          <tr><td>主问题</td><td>$M_w$、$R_g$、寡聚态、柔性</td><td>衬度、$S(q)$、多分散、层级结构</td><td>面内周期、形貌、埋藏界面</td></tr>
+          <tr><td>默认假设</td><td>稀溶液 $S(q)\!\approx\!1$；缓冲匹配</td><td>常需显式 $S(q)$ 或稀释系列</td><td>DWBA；入射角敏感</td></tr>
+          <tr><td>第一批检查</td><td>浓度系列、Guinier、$I(0)/c$</td><td><span data-term="contrast-matching">衬度匹配</span>、低 $q$ 相互作用</td><td>反射/Yoneda、面内切线</td></tr>
+          <tr><td>站内入口</td><td><a href="../topics/biosas/index.html">BioSAS</a>、<a href="../topics/ift/index.html">IFT</a>、<a href="../topics/atsas/index.html">ATSAS</a></td><td><a href="../topics/sans-contrast/index.html"><span data-term="sans">SANS</span> 衬度</a>、<a href="../topics/polymers-bcp/index.html">聚合物/BCP</a>、<a href="../topics/data-reduction/index.html">还原</a></td><td><a href="../topics/gisaxs/index.html"><span data-term="gisaxs">GISAXS</span></a>、第 03 章掠入射几何</td></tr>
+        </tbody>
+      </table>
+
+      <h2>岔路 A · BioSAS（溶液生物分子）</h2>
+      <h3>何时走这条岔路</h3>
+      <p>样品是<strong>可纯化的生物大分子稀溶液</strong>（蛋白、核酸、复合物、部分膜蛋白–去垢剂复合物），科学问题围绕寡聚态、整体尺寸、柔性/结构域、配体结合引起的构象变化。Trewhella 等（2017）强调：结构建模级 BioSAS 的前提是<strong>可证明的单分散稀溶液形式因子</strong>——任何聚集、缓冲不匹配或 SEC 峰不纯都会直接否定 $p(r)$ 与 $M_w$ 解释。</p>
+      <h3>典型问题 → 工具映射</h3>
+      <ol>
+        <li><strong>分子量 / 寡聚态：</strong> <span data-term="absolute-intensity">绝对标定</span> 后 <span data-term="forward-scattering">$I(0)$</span> 是否与序列 $M_w$、已知寡聚体一致？浓度升高是否聚集？</li>
+        <li><strong>整体尺寸：</strong> <span data-term="guinier-analysis">Guinier</span> <span data-term="radius-of-gyration">$R_g$</span> 是否稳定？与 <span data-term="pair-distance-distribution">$p(r)$</span> 给出的 $R_g$、<span data-term="maximum-dimension">$D_{\max}$</span> 是否交叉一致？</li>
+        <li><strong>形状与柔性：</strong> $p(r)$ 是球状单峰、细长双峰，还是柔性链特征？<span data-term="kratky-plot">Kratky 图</span>是否提示无序？</li>
+        <li><strong>复合物与构象变化：</strong> 配体结合、突变、缓冲条件是否改变 $R_g$/<span data-term="maximum-dimension">$D_{\max}$</span>，而非仅改变本底？</li>
+        <li><strong>高阶建模：</strong> 刚性体/系综拟合（Svergun &amp; Koch 2003）——仅在上述验证通过后进入。</li>
+      </ol>
+      <h3>先读专题（推荐顺序）</h3>
+      <ol>
+        <li><a href="../topics/calibration/index.html">绝对标定</a> + 第 05 章 —— $I(0)/c$ 与 $M_w$ 的基石</li>
+        <li><a href="../topics/biosas/index.html">BioSAS</a> —— 缓冲匹配、浓度系列、Kratky/Invariant 验证</li>
+        <li><a href="../topics/ift/index.html">IFT / $p(r)$</a> —— <span data-term="maximum-dimension">$D_{\max}$</span>、形状直觉（第 07 章实操）</li>
+        <li><a href="../topics/atsas/index.html">ATSAS</a> —— <span data-term="gnom">GNOM</span>、CRYSOL、刚性体/系综管线</li>
+      </ol>
+      <h3>下一跳：何时离开 BioSAS 岔路</h3>
+      <ul>
+        <li>样品实为胶束/高浓度胶体 → 岔路 B（$S(q)$、多分散）</li>
+        <li>IDP/大柔性系综 → 系综方法，勿把宽 $p(r)$ 当刚性包络</li>
+        <li>膜蛋白 SEC 峰含空胶束 → <span data-term="sec-saxs">SEC-SAS</span> 分帧；见 BioSAS 专题</li>
+      </ul>
+      <figure class="figure">
+        <img src="../assets/figures/fig-09-biosas-info-layers.png" alt="BioSAS 信息层次" width="900">
+        <figcaption>BioSAS 信息层次示意：从 $I(0)$/$R_g$ 的整体参数，到 $p(r)$ 形状，再到模型/系综解释——每一层都依赖上一层的数据质量与缓冲匹配。<span class="fig-source">配图：自制示意</span></figcaption>
+      </figure>
+      <div class="keybox">
+        <strong>BioSAS 上路清单</strong>
+        <ol>
+          <li>完成浓度系列（至少 3 点）并外推至无限稀释或确认 $S(q)$ 可忽略。</li>
+          <li>缓冲精确匹配；检查低 $q$ 上翘（聚集/气泡）与高 $q$ 本底。</li>
+          <li>报告 Guinier $R_g$、$I(0)$，并与 IFT $p(r)$ 交叉（见第 06–07 章）。</li>
+          <li>有绝对标定时，用 $I(0)/c$ 核对 $M_w$；无标定时只谈相对比较。</li>
+          <li>进入专题：<a href="../topics/biosas/index.html">BioSAS</a>、<a href="../topics/ift/index.html">IFT / $p(r)$</a>、<a href="../topics/calibration/index.html">绝对标定</a>。</li>
+        </ol>
+      </div>
+      <p>BioSAS 把第 05–07 章用到极致：没有可靠的绝对尺度与缓冲扣除，后面的寡聚态与柔性讨论会建在沙子上。Trewhella 2017 要求报告样品来源、序列/FASTA、缓冲组成、浓度测定方法、$q$ 范围与 Guinier/$p(r)$ 交叉结果——学习路径上把这些当作发表级自检表。若你的样品其实是胶束、聚合物或高浓度胶体，请改走岔路 B，不要硬套生物发表流程。</p>
+
+      <h2>岔路 B · Soft matter / 聚合物 / 胶体</h2>
+      <h3>何时走这条岔路</h3>
+      <p>样品为<strong>聚合物溶液/熔体、胶束、纳米粒子分散体、凝胶、嵌段共聚物体相或浓溶液</strong>，核心科学问题常是：哪一相在散射、相互作用多强、尺寸分布多宽、是否存在层级结构（初级粒子 → 聚集体 → 网络）。Grillo（2008）指出软物质 <span data-term="sans">SANS</span> 的「主战场」是<span data-term="contrast">衬度</span>操控与<span data-term="structure-factor">$S(q)$</span>，而非单一分子的 <span data-term="maximum-dimension">$D_{\max}$</span>。Hamley（2004）与 Trask（2017）的嵌段共聚物综述进一步说明：熔体微相、溶液胶束与结晶态需不同 $P(q)$/$S(q)$ 叙事——体相 BCP 常需 RPA 结构因子，溶液胶束则球/柱 $P(q)$ + 胶束间 $S(q)$。</p>
+      <h3>典型问题 → 工具映射</h3>
+      <ul>
+        <li><span data-term="contrast">衬度</span>从何而来？溶剂、氘化、组分匹配能否分离某一相？</li>
+        <li><span data-term="form-factor">形式因子</span> $P(q)$ 描述单粒子/单链，还是已被<span data-term="structure-factor">结构因子</span> $S(q)$ 调制？稀溶液近似是否成立？</li>
+        <li>多分散（尺寸、形状、电荷）是否淹没振荡？表观 $R_g$ 是否被大端加权？</li>
+        <li>是否存在层级结构（初级粒子 → 聚集体 → 网络）需要 Beaucage / Guinier–Porod 类粗粒度描述？</li>
+      </ul>
+      <h3>先读专题（推荐顺序）</h3>
+      <ol>
+        <li>第 08 章 + <a href="../topics/sans-contrast/index.html"><span data-term="sans">SANS</span> 衬度与对比变分</a> —— 写清 $\Delta\rho$、匹配点、背景</li>
+        <li><a href="../topics/data-reduction/index.html">数据还原</a>、<a href="../topics/calibration/index.html">绝对标定</a> —— 体相/浓样仍须绝对强度</li>
+        <li><a href="../topics/polymers-bcp/index.html">聚合物与嵌段共聚物</a> —— 熔体微相、胶束、BCP 溶液</li>
+        <li>第 06 章 Guinier/Porod + 第 08 章 Beaucage PDI —— 宽 $q$ 粗读与多分散指数</li>
+      </ol>
+      <h3>下一跳：何时升级到 <span data-term="gisaxs">GISAXS</span> 或 BioSAS</h3>
+      <ul>
+        <li><span data-term="block-copolymer">嵌段共聚物</span> 薄膜、定向自组装涂层 → 岔路 C（面内周期、<span data-term="yoneda">Yoneda</span> 峰）</li>
+        <li>稀溶液中单一胶束/复合物问「化学计量寡聚」→ 若可纯化且 $S(q)\approx 1$，可借 BioSAS 验证流程</li>
+        <li>带电胶体 $S(q)$ 强 → 第 08 章 <span data-term="gift">GIFT</span>/SQ-IFT 思路或盐/$\phi$ 系列（第 07 章电荷干扰节）</li>
+      </ul>
+      <p>在透射几何下，稀体系近似写为</p>
+      $$I(q) \propto n\,V^2\,(\Delta\rho)^2\,P(q)\,S(q),$$
+      <p>其中 $S(q)\to 1$ 仅在相互作用可忽略时成立。聚合物溶液、带电胶体、浓缩胶束常常必须显式处理 $S(q)$，或用稀释/盐浓度系列把相互作用「关掉」。</p>
+      <div class="keybox">
+        <strong>Soft matter 上路清单</strong>
+        <ol>
+          <li>先写清：你测的是哪一相的衬度？预期 $\Delta\rho$ 数量级是否合理？</li>
+          <li>做浓度（或体积分数）系列：低 $q$ 随浓度系统性压低/抬高 → 优先怀疑 $S(q)$。</li>
+          <li>多分散宽时，少报「精确几何半径」，多报分布矩与模型假设。</li>
+          <li>还原与绝对尺度仍是前提：见 <a href="../topics/data-reduction/index.html">数据还原</a>、<a href="../topics/calibration/index.html">绝对标定</a>；Guinier/Porod 粗读见第 06 章。</li>
+          <li>还原与绝对尺度仍是前提：见 <a href="../topics/data-reduction/index.html">数据还原</a>、<a href="../topics/calibration/index.html">绝对标定</a>；Guinier/Porod 粗读见第 06 章。</li>
+          <li>嵌段共聚物、胶束形状：深入 <a href="../topics/polymers-bcp/index.html">聚合物/BCP 专题</a>；<span data-term="sans">SANS</span> 实验细节对照 Grillo（2008）软物质教程。</li>
+        </ol>
+      </div>
+
+      <h2>岔路 C · <span data-term="gisaxs">GISAXS</span> / 表面与薄膜</h2>
+      <h3>何时走这条岔路</h3>
+      <p>科学问题需要<strong>面内纳米周期、薄膜厚度/粗糙度、埋藏界面或衬底上自组装结构</strong>，且样品为衬底支撑的薄膜（嵌段共聚物薄膜、纳米点阵、LB 膜、涂层等）。Müller-Buschbaum（2009）与 Hexemer &amp; Müller-Buschbaum（2015）强调：<span data-term="gisaxs">GISAXS</span> 的价值在于统计平均、可探测埋藏结构、可用 $\alpha_i$ 调穿透深度——这些透射 SAS 无法替代。</p>
+      <h3>典型问题 → 工具映射</h3>
+      <ul>
+        <li><strong>面内周期 $d$：</strong> 侧向 Bragg 峰位 $q_y \approx 2\pi/d$；勿与 $P(q)$ 振荡极小混淆</li>
+        <li><strong>形貌与高度相关：</strong> 镜面杆、Yoneda 翼、条纹间距 —— 需 <span data-term="dwba">DWBA</span> 模拟</li>
+        <li><strong>深度分辨：</strong> $\alpha_i$ 接近 $\alpha_c$ 增强表面；增大 $\alpha_i$ 探埋藏界面（Hexemer 2015）</li>
+        <li><strong>动力学：</strong> 退火、溶剂退火、原位加热 —— 多 $\alpha_i$ 时间序列</li>
+      </ul>
+      <p><span data-term="gisaxs">GISAXS</span> 不是「把样品换成薄膜后的普通 <span data-term="saxs">SAXS</span>」。掠入射下，X 射线在表面发生反射与折射，散射振幅是<strong>入射场 + 反射场</strong>与样品起伏/埋藏结构耦合的结果；常用语言是 <span data-term="dwba">DWBA</span>：把动力学反射作为参考波，对侧向结构做微扰散射。实践直觉：</p>
+      <p>若你的样品是溶液蛋白或体相胶体，却只因为「想看表面」就改 <span data-term="gisaxs">GISAXS</span> 而不改问题定义，通常会得到难以解释的干涉条纹。正确入口是专题 <a href="../topics/gisaxs/index.html"><span data-term="gisaxs">GISAXS</span></a>，并回顾第 03 章的掠入射几何。</p>
+      <h3>先读专题（推荐顺序）</h3>
+      <ol>
+        <li>第 03 章仪器 + <a href="../topics/gisaxs/index.html"><span data-term="gisaxs">GISAXS</span> 专题</a> —— $q_x,q_y,q_z$、<span data-term="critical-angle">临界角</span>、二维图识读</li>
+        <li><span data-term="dwba">DWBA</span> 与 <span data-term="yoneda">Yoneda</span> 峰 —— 先认特征再拟周期</li>
+        <li>软物质薄膜应用：Hexemer &amp; Müller-Buschbaum（2015）；BCP 薄膜见 <a href="../topics/polymers-bcp/index.html">聚合物/BCP</a></li>
+      </ol>
+      <h3>下一跳：与透射 SAS 的衔接</h3>
+      <ul>
+        <li>同一 <span data-term="block-copolymer">BCP</span> 样品：体相稀溶液透射 → 岔路 B；旋涂薄膜 → 岔路 C</li>
+        <li>纳米粒子<strong>溶液</strong>问粒径 → 岔路 B；同一粒子<strong>自组装单层</strong> → 岔路 C</li>
+      </ul>
+      <div class="keybox">
+        <strong><span data-term="gisaxs">GISAXS</span> 上路清单</strong>
+        <ol>
+          <li>确认科学问题真的需要面内/深度分辨信息，而不是透射体相平均。</li>
+          <li>记录并报告 $\alpha_i$、样品对准、<span data-term="critical-angle">临界角</span>估计；同一结构至少测 2–3 个入射角。</li>
+          <li>先识别 Yoneda / 镜面特征，再谈侧向周期拟合。</li>
+          <li>不要把 <span data-term="gisaxs">GISAXS</span> 强度直接套用透射 Guinier 公式报「溶液 $R_g$」。</li>
+          <li>深入阅读：<a href="../topics/gisaxs/index.html"><span data-term="gisaxs">GISAXS</span> 专题</a>。</li>
+        </ol>
+      </div>
+
+      <h2>决策表：样品类型 → 下一读 → 第一批测量</h2>
+      <table>
+        <thead>
+          <tr><th>你的样品更像…</th><th>推荐章节 / 专题</th><th>第一批测量与检查</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>纯化蛋白 / 核酸溶液，问寡聚与形状</td>
+            <td>06–07；<a href="../topics/biosas/index.html">BioSAS</a>、<a href="../topics/ift/index.html">IFT</a>、<a href="../topics/calibration/index.html">标定</a></td>
+            <td>浓度系列；Guinier；$I(0)/c$ vs $M_w$；缓冲空白</td>
+          </tr>
+          <tr>
+            <td>胶束、纳米粒子、聚合物溶液/熔体</td>
+            <td>02、06、08；<a href="../topics/sans-contrast/index.html"><span data-term="sans">SANS</span> 衬度</a>、<a href="../topics/polymers-bcp/index.html">聚合物/BCP</a></td>
+            <td>衬度估计；浓度/盐系列看 $S(q)$；Beaucage PDI；多分散敏感性</td>
+          </tr>
+          <tr>
+            <td>嵌段共聚物熔体微相（体相）</td>
+            <td>08；<a href="../topics/polymers-bcp/index.html">聚合物/BCP</a>；<a href="../topics/sans-contrast/index.html"><span data-term="sans">SANS</span> 衬度</a></td>
+            <td>峰位 $q^*$ 与微相类型；对比变分选相；温度系列</td>
+          </tr>
+          <tr>
+            <td>两相固体、多孔、凝胶网络</td>
+            <td>06（Porod/不变量）；标定；视需求模型章</td>
+            <td>绝对强度；高 $q$ 幂律；低 $q$ 是否受大尺度截止</td>
+          </tr>
+          <tr>
+            <td>嵌段共聚物薄膜、纳米点阵、涂层</td>
+            <td>03；<a href="../topics/gisaxs/index.html"><span data-term="gisaxs">GISAXS</span></a></td>
+            <td>多入射角；二维图特征识别；面内切线</td>
+          </tr>
+          <tr>
+            <td>带电胶体 / 浓胶束（CTAB 等）</td>
+            <td>07 <span data-term="gift">GIFT</span> 节；08 $P\times S$；<a href="../topics/sans-contrast/index.html"><span data-term="sans">SANS</span> 衬度</a></td>
+            <td>盐浓度系列；稀释验证；勿浓样单粒子 $p(r)$</td>
+          </tr>
+          <tr>
+            <td>「又像溶液又像膜」或未知</td>
+            <td>先 01–04 确认几何；再回本表</td>
+            <td>先弄清：透射还是掠入射？体相还是表面主导？</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>Trask（2017）嵌段共聚物 SAS 综述补充：熔体微相峰位遵循 RPA 预言，溶液胶束则看 $P(q)$ 形状（球/柱）与 $S(q)$ 峰——同一 BCP 化学，体相走岔路 B、薄膜走岔路 C，勿混用分析脚本。</p>
+
+      <h2>跨岔路仍必须保留的技能</h2>
+      <p>分叉不等于抛弃基础。无论走 A/B/C，下列能力仍然是「可发表」的门槛（Jeffries 2021；Trewhella 2017）：</p>
+      <ul>
+        <li><strong>数据还原：</strong> 掩膜、归一化、背景、误差条诚实（第 04 章 / <a href="../topics/data-reduction/index.html">还原专题</a>）。</li>
+        <li><strong>绝对尺度（能做就做）：</strong> 跨样品、跨束线比较与 $M_w$/体积分数都依赖它（第 05 章 / <a href="../topics/calibration/index.html">标定专题</a>）。</li>
+        <li><strong>Guinier 理智检查：</strong> 即使最终用复杂模型，低 $q$ 的 $R_g$ 与 $I(0)$ 仍是最快的异常警报（第 06 章 / <span data-term="guinier-analysis">Guinier 分析</span>）。</li>
+        <li><strong>假设显式化：</strong> 写清 $S(q)\!\approx\!1$、单分散、锐利界面、透射几何等——哪一条不成立，就要改模型或改实验。</li>
+        <li><strong>误差与 $q$ 范围诚实：</strong> 三条岔路均须报告 $q_{\min},q_{\max}$ 及误差来源；<span data-term="gisaxs">GISAXS</span> 另须 $\alpha_i$ 与曝光条件。</li>
+      </ul>
+
+      <h2>混合样品：何时需要两条岔路</h2>
+      <p>真实课题常跨岔路。常见组合：</p>
+      <table>
+        <thead>
+          <tr><th>课题形态</th><th>主岔路</th><th>辅岔路 / 专题</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>膜蛋白–去垢剂复合物稀溶液</td><td>A · BioSAS</td><td>B · 胶束 <span data-term="form-factor">$P(q)$</span> 背景；<a href="../topics/sans-contrast/index.html"><span data-term="sans">SANS</span> 衬度</a> 选相</td></tr>
+          <tr><td>嵌段共聚物溶液 vs 旋涂薄膜</td><td>B 溶液 / C 薄膜</td><td><a href="../topics/polymers-bcp/index.html">聚合物/BCP</a>；同一化学不同几何</td></tr>
+          <tr><td>纳米粒子水分散 + 自组装单层</td><td>B 溶液粒径</td><td>C <span data-term="gisaxs">GISAXS</span> 面内有序；勿混用 Guinier 公式</td></tr>
+          <tr><td>蛋白在胶体基质中</td><td>先拆组分</td><td><span data-term="sec-saxs">SEC-SAS</span> 或对比变分；勿单条 $p(r)$ 解释混合物</td></tr>
+        </tbody>
+      </table>
+
+      <h2>常见坑：选错岔路时会发生什么</h2>
+      <ul>
+        <li><strong>坑 1：几何假设错误 → 如何判断：</strong> 把薄膜 <span data-term="gisaxs">GISAXS</span> 数据当透射溶液 SAS 方位平均；或把 Kratky 狭缝数据当针孔数据做 Guinier。先核对第 03 章几何与 smearing。</li>
+        <li><strong>坑 2：忽略相互作用 → 如何判断：</strong> 高浓度蛋白/胶体低 $q$ 被压低，表观 $R_g$、$I(0)$ 偏小，却报告「分子变紧凑」。做稀释系列；显式引入 $S(q)$。</li>
+        <li><strong>坑 3：BioSAS 流程硬套胶束/聚合物 → 如何判断：</strong> $p(r)$ 不稳定、<span data-term="maximum-dimension">$D_{\max}$</span> 随正则化乱跳、分子量对不上。改走衬度 + 多分散 + $S(q)$ 叙事。</li>
+        <li><strong>坑 4：把 <span data-term="gisaxs">GISAXS</span> 当透射 SAS → 如何判断：</strong> 用透射 Guinier 公式从 $q_y$ 切线「报 $R_g$」；忽略 Yoneda 与 $\alpha_i$ 依赖。回到 DWBA 框架与 <a href="../topics/gisaxs/index.html"><span data-term="gisaxs">GISAXS</span> 专题</a>。</li>
+        <li><strong>坑 5：衬度叙事缺失 → 如何判断：</strong> 多组分体系拟合出「漂亮尺寸」，却说不清散射来自哪一相。先算/测 $\Delta\rho$，再谈模型。</li>
+        <li><strong>坑 6：跳过还原与标定直冲高级拟合 → 如何判断：</strong> 参数随本底、掩膜、绝对因子剧烈漂移。回到第 04–05 章把地基浇实。</li>
+        <li><strong>坑 7：用错「下一章」 → 如何判断：</strong> 需要面内周期却去钻溶液 IFT；需要寡聚态却去拟合薄膜 DWBA。用上表重选岔路。</li>
+      </ul>
+
+      <h2>小结</h2>
+      <p>学习路径正文到此收束：01–08 是共用工具箱，09 是应用导流图。按样品几何选择 BioSAS、软物质或 <span data-term="gisaxs">GISAXS</span>——用本章「岔路信号」三问与决策表锁定下一读与第一批实验。BioSAS 依赖绝对标定与单分散验证（Trewhella 2017）；软物质依赖衬度与 $S(q)$ 拆解（Grillo 2008；Hamley 2004）；<span data-term="gisaxs">GISAXS</span> 依赖 DWBA 与多 $\alpha_i$ 二维识读（Müller-Buschbaum 2009）。始终保留还原、绝对尺度与 Guinier 自检。后续深入请进入<a href="../topics/index.html">专题手册</a>按题阅读，术语与符号以<a href="../glossary/index.html">词条库</a>为准；需要总览时返回<a href="index.html">学习路径总览</a>。</p>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="gisaxs">GISAXS</span></li>
+        <li><span data-term="contrast">衬度</span></li>
+        <li><span data-term="form-factor">形式因子</span></li>
+        <li><span data-term="structure-factor">结构因子</span></li>
+        <li><span data-term="guinier-analysis">Guinier 分析</span></li>
+        <li><span data-term="pair-distance-distribution">距离分布 $p(r)$</span></li>
+      </ul>
+
+      <h2>延伸阅读</h2>
+      <ul>
+        <li><em>Small-angle X-ray and neutron scattering</em>. Cy M. Jeffries et al. (2021). DOI: <a href="https://doi.org/10.1038/s43586-021-00064-9" target="_blank" rel="noopener noreferrer">10.1038/s43586-021-00064-9</a></li>
+        <li><em>2017 publication guidelines for structural modelling of small-angle scattering data from biomolecules in solution</em>. Jill Trewhella et al. (2017). DOI: <a href="https://doi.org/10.1107/S2059798317011597" target="_blank" rel="noopener noreferrer">10.1107/S2059798317011597</a></li>
+        <li><em>Small-angle scattering studies of biological macromolecules in solution</em>. Dmitri I. Svergun, Michel H. J. Koch (2003). DOI: <a href="https://doi.org/10.1088/0034-4885/66/10/R05" target="_blank" rel="noopener noreferrer">10.1088/0034-4885/66/10/R05</a></li>
+        <li><em>Small-Angle Neutron Scattering and Applications in Soft Condensed Matter</em>. I. Grillo (2008). DOI: <a href="https://doi.org/10.1002/9783527627980.ch13" target="_blank" rel="noopener noreferrer">10.1002/9783527627980.ch13</a></li>
+        <li><em>Small-angle scattering of block copolymers in the melt, solution and crystal states</em>. Ian W. Hamley, Valeria Castelletto (2004). DOI: <a href="https://doi.org/10.1016/j.progpolymsci.2004.06.002" target="_blank" rel="noopener noreferrer">10.1016/j.progpolymsci.2004.06.002</a></li>
+        <li><em>A Basic Introduction to Grazing Incidence Small-Angle X-Ray Scattering</em>. P. Müller-Buschbaum (2009). DOI: <a href="https://doi.org/10.1007/978-3-540-09588-0_3" target="_blank" rel="noopener noreferrer">10.1007/978-3-540-09588-0_3</a></li>
+        <li><em>Advanced grazing-incidence techniques for modern soft-matter materials analysis</em>. Alexander Hexemer, Peter Müller-Buschbaum (2015). DOI: <a href="https://doi.org/10.1107/S2052252514024178" target="_blank" rel="noopener noreferrer">10.1107/S2052252514024178</a></li>
+        <li>站内专题：<a href="../topics/biosas/index.html">BioSAS</a> · <a href="../topics/ift/index.html">IFT</a> · <a href="../topics/sans-contrast/index.html"><span data-term="sans">SANS</span> 衬度</a> · <a href="../topics/polymers-bcp/index.html">聚合物/BCP</a> · <a href="../topics/calibration/index.html">绝对标定</a> · <a href="../topics/gisaxs/index.html"><span data-term="gisaxs">GISAXS</span></a> · <a href="../topics/index.html">专题总览</a></li>
+      </ul>
+
+      <nav class="pager">
+        <a href="08-models-polydispersity.html">← 上一章：08 模型与多分散</a>
+        <a href="index.html">返回学习路径总览 →</a>
+      </nav>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>结构因子 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>结构因子</h1>
+      <p class="subtitle-en">structure factor</p>
+
+      <h2>定义</h2>
+      <p><strong>结构因子</strong> $S(q)$ 描述散射体之间的空间排列与相互作用引起的散射调制。对 $N$ 个粒子的系综，</p>
+      $$ I(q) \propto \frac{1}{N} \left| \sum_{j=1}^{N} f_j(\mathbf{q})\, e^{i\mathbf{q}\cdot\mathbf{r}_j} \right|^2 $$
+      <p>在均匀各向同性液体中，$S(q)$ 只依赖 $q$ 的模长。理想稀溶液中粒子互不相关，$S(q)=1$（归一化约定下）。</p>
+
+      <h2>物理直觉</h2>
+      <p>$S(q)$ 是「粒子放在哪里」的信息：峰位反映典型间距（如胶体晶体 Bragg 峰），峰形反映关联长度与有序度。聚合物浓溶液、嵌段共聚物微相分离、蛋白质结晶前簇等，都会在特定 $q$ 出现 $S(q)$ 特征。</p>
+      <p>总强度常分解为</p>
+      $$ I(q) \propto N V^2 \Delta\rho^2\, P(q)\, S(q) $$
+      <p>（稀溶液近似；浓溶液需更仔细处理热力学因子与 $Z(q)$ 等。）</p>
+
+      <h2>典型情形</h2>
+      <ul>
+        <li><strong>稀溶液</strong>：$S(q)\approx 1$，曲线形状由 <span data-term="form-factor">形式因子</span> 主导。</li>
+        <li><strong>硬球流体</strong>：$S(q)$ 可用 Percus–Yevick 等理论，出现相关峰。</li>
+        <li><strong>微相分离</strong>：$q^*$ 处峰对应畴尺寸 $d \sim 2\pi/q^*$。</li>
+        <li><strong>吸引相互作用</strong>：低 $q$ 增强或团簇导致 $I(0)$ 发散趋势（需外推处理）。</li>
+      </ul>
+
+      <h2>常见混淆</h2>
+      <ul>
+        <li>把 $S(q)$ 与 $P(q)$ 混用：浓溶液拟合只套 $P(q)$ 会系统偏差。</li>
+        <li>晶体学「结构因子 $F_{hkl}$」与 SAS 的 $S(q)$ 名称相近，物理对象不同。</li>
+        <li>$S(0)$ 与渗透压缩性相关；低 $q$ 外推需区分聚集、电荷排斥与仪器极限。</li>
+      </ul>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="form-factor">形式因子</span> $P(q)$</li>
+        <li><span data-term="scattering-vector-q">散射矢量</span> $q$</li>
+        <li><span data-term="contrast">衬度</span></li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../learn/02-scattering-basics.html">学习路径 02 · 散射基础</a></li>
+        <li><a href="../learn/08-models-polydispersity.html">学习路径 08 · 模型与多分散</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

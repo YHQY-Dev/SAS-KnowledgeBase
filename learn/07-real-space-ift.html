@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>07 实空间与 IFT · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>07 · 实空间与 IFT</h1>
+      <p class="subtitle-en">Real space &amp; IFT — from $I(q)$ to $p(r)$, <span data-term="maximum-dimension">$D_{\max}$</span>, and shape intuition</p>
+
+      <h2>导语：Guinier 之后，为何还要进实空间</h2>
+      <p>第 06 章从低 $q$ 得到 $R_g$ 与 $I(0)$，从高 $q$ 读界面渐近——两端锚点已立。但 Guinier 把整条可用曲线压成两个数；许多形貌（细长、多结构域、中空）在中等 $q$ 才显出特征，而单一 $R_g$ 无法区分「稍扁的球」与「略短的棒」。实空间的距离分布函数 <span data-term="pair-distance-distribution">$p(r)$</span> 把全曲线信息重排为「粒子内部任意两点间距的加权直方图」，直接给出最大尺寸 <span data-term="maximum-dimension">$D_{\max}$</span> 与形状直觉。</p>
+      <p>Svergun &amp; Koch（2003）在生物大分子 SAS 综述中把 $p(r)$ 列为「超越整体参数」的关键一步：它利用全 $q$ 窗的信息，在 Guinier 窗偏窄或数据略噪时往往比单独 Guinier 更稳地给出 $R_g$ 与 <span data-term="maximum-dimension">$D_{\max}$</span>，并为 ab initio 形状重建提供约束。但 $p(r)$ 的物理含义严格限于<strong>单粒子形式因子</strong> $P(q)$ 的实空间表述——一旦 $S(q)\neq 1$，必须先拆相互作用（见下文 <span data-term="gift">GIFT</span>/SQ-IFT 节）。</p>
+      <p>本章是学习路径上的合成讲解：先弄清 $p(r)$ 与 $I(q)$ 的关系、为何不能直接傅里叶逆变换、如何走 <span data-term="gnom">GNOM</span> / IFT 工作流、如何读 $p(r)$ 形状并与 Guinier 交叉验证，以及何时应放弃「单粒子 $p(r)$」叙事。正则化参数 $\alpha$、感知准则与文献细节见 <a href="../topics/ift/index.html">IFT 专题</a>；本章侧重「做完 Guinier 后下一步怎么做、结果怎么读」。</p>
+
+      <figure class="figure">
+        <img src="../assets/figures/fig-14-ift-pr-workflow.png" alt="IFT / p(r) 反演工作流" width="900">
+        <figcaption>$I(q)$ → 选定 <span data-term="maximum-dimension">$D_{\max}$</span> → <span data-term="gnom">GNOM</span>/IFT（正则化）→ 检查 $p(r)\ge 0$、拟合残差、与 Guinier $R_g$ 交叉 → 进入形状解读或下游建模。<span class="fig-source">配图：自制示意</span></figcaption>
+      </figure>
+
+      <h2>$p(r)$ 是什么：配对距离分布</h2>
+      <p>在稀溶液、各向同性、单分散（或可近似为单一平均粒子）条件下，散射强度与实空间分布通过球对称傅里叶变换相联系：</p>
+      $$I(q) = 4\pi\int_0^{D_{\max}} p(r)\,\frac{\sin(qr)}{qr}\,\mathrm{d}r$$
+      <p>（记号随文献略有出入；$q$ 与生物文献的 $s$ 同义。）$p(r)$ 称为<span data-term="pair-distance-distribution">配对距离分布函数</span>（pair-distance distribution function, PDDF）：$p(r)\,\mathrm{d}r$ 正比于粒子内距离落在 $[r,r+\mathrm{d}r]$ 的点对数目，并按衬度加权。在 <span data-term="gnom">GNOM</span> 约定下，$p(r)$ 与 $P(q)$ 通过球对称傅里叶变换相联，且 $p(0)=0$、$p(r\ge D_{\max})=0$ 为硬边界。直观上：</p>
+      <ul>
+        <li>$p(r)=0$ 当 $r=0$ 与 $r\ge D_{\max}$（边界条件）；中间有一个或多个峰。</li>
+        <li><strong><span data-term="maximum-dimension">$D_{\max}$</span>：</strong> 粒子内最大两点间距——$p(r)$ 支撑的上界。它是实空间最重要的「尺寸」之一，比 $R_g$ 更直接对应几何延伸。</li>
+        <li>$p(r)$ 的峰位、不对称性、是否多峰，编码形状与结构域分隔，而不仅是整体大小。</li>
+      </ul>
+      <div class="keybox">
+        <strong>$p(r)$ 与 $I(q)$ 的信息分工</strong>
+        <ul>
+          <li><strong>$I(q)$：</strong> 实验直接量；低 $q$ 敏感整体尺寸与相互作用，高 $q$ 敏感界面与细部。</li>
+          <li><strong>$p(r)$：</strong> 实空间重表述；把「振荡的形式因子」变成「可目视的距离直方图」——便于与分子模型、晶体结构投影比较。</li>
+          <li><strong>二者等价（理想数据下）：</strong> 知道完整无噪声 $I(q)$ 可唯一确定 $p(r)$；实践中 $q$ 有限、有噪声，反演必须正则化。</li>
+        </ul>
+      </div>
+      <p>物理上，$p(r)$ 与粒子内散射长度密度涨落 $\Delta\rho(\mathbf{r})$ 的空间自相关有关：它统计的是「相距 $r$ 的两点同时落在高衬度区域」的加权概率，而非原子坐标本身。因此 $p(r)$ 对整体延伸、域间距离、中空/壳层等<strong>全局几何</strong>敏感，但对原子级细节不分辨——这与 Shannon 采样极限一致：可用 $q$ 窗越宽，$p(r)$ 上可辨的结构越多，但仍受 <span data-term="maximum-dimension">$D_{\max}$</span> 与信噪比封顶。</p>
+      <p>归一化约定因软件而异：ATSAS/<span data-term="gnom">GNOM</span> 族常使 $p(r)$ 与 $I(0)$、$R_g$ 通过下节积分式自洽；阅读文献时务必核对「$p(r)$ 是否已按体积/电子数归一」。学习路径上只需记住：<strong>同一套数据、同一程序内</strong>比较 $p(r)$ 形状与 Guinier 参数即可，跨软件对比要查文档。</p>
+
+      <h2>为何直接傅里叶变换失败：病态与 IFT</h2>
+      <p>形式上，$p(r)$ 可由 $I(q)$ 的逆变换写出。对有限、带噪声的实验数据直接数值求逆，会得到剧烈振荡甚至大片负值的「解」——这是经典的<strong>病态（ill-posed）</strong>积分方程：核平滑、高频分量被压扁，噪声在实空间被放大（Glatter 1977）。</p>
+      <p><span data-term="indirect-fourier-transform">间接傅里叶变换（IFT）</span> 的策略是：不直接逆变换，而是把 $p(r)$ 参数化为基函数展开（或分段表示），求解带 Tikhonov 正则化的最小化问题</p>
+      $$T_\alpha[p] = \|I_{\mathrm{obs}}-I_{\mathrm{calc}}[p]\|^2 + \alpha\,\Omega[p],$$
+      <p>其中第一项要求拟合 $I(q)$，第二项 $\Omega$ 惩罚粗糙（常取导数平方积分），$\alpha$ 为正则化强度：</p>
+      <ul>
+        <li>$\alpha$ 过小 → 过拟合噪声，$p(r)$ 振荡、负值多。</li>
+        <li>$\alpha$ 过大 → 过光滑，丢失多峰与肩部，$I(q)$ 拟合变差。</li>
+      </ul>
+      <p><span data-term="gnom">GNOM</span>（Svergun 等）在 ATSAS 管线中广泛使用：扫描 $\alpha$，用感知准则（光滑度、非负性、残差、稳定性等）自动选折中解。Svergun（1992）把人工「挑最好看的 $p(r)$」形式化为可计算的<strong>感知准则（perceptual criteria）</strong>，并最大化综合评分选 $\alpha$——这是 <span data-term="gnom">GNOM</span> 自动选参的理论基础。</p>
+      <table>
+        <thead>
+          <tr><th>准则</th><th>含义（直觉）</th><th>合格区间（量级）</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>OSCILL</td><td>$p(r)$ 光滑度；导数范数相对主峰</td><td>$\lesssim 3$（单峰球 $\approx 1.1$）</td></tr>
+          <tr><td>POSITV</td><td>非负性；负瓣积分占比</td><td>$\to 1$（允许末端微小噪声）</td></tr>
+          <tr><td>SYSDEV</td><td>倒易空间残差符号交替；系统偏差</td><td>$\approx 1$（过低 → 欠拟合趋势）</td></tr>
+          <tr><td>DISCRP</td><td>残差与实验误差是否匹配</td><td>$\sim 0.7$–$0.95$</td></tr>
+          <tr><td>STABIL</td><td>$\alpha$ 微扰下 $p(r)$ 稳定性</td><td>在合理解附近应较小</td></tr>
+          <tr><td>VALCEN</td><td>主峰区（$D_{\min}+\Delta D/4$ 至 $D_{\max}-\Delta D/4$）能量占比</td><td>$\gtrsim 0.5$（球 $\approx 0.95$）</td></tr>
+        </tbody>
+      </table>
+      <p>学习路径上记住一句即可：<strong>IFT =「在拟合数据与光滑 $p(r)$ 之间找可辩护的折中」</strong>；$\alpha$ 过小对应 OSCILL 飙升、POSITV 下降；$\alpha$ 过大则 SYSDEV 偏离、主峰被抹平。细节与失效判据见 <a href="../topics/ift/index.html">IFT 专题</a>。</p>
+
+      <h3>过拟合与欠光滑：如何自检</h3>
+      <p>过拟合的典型信号不是「$\chi^2$ 很小」，而是<strong>解对 $\alpha$ 与数据裁切高度敏感</strong>：去掉最高 $q$ 的 10% 噪声点后，$p(r)$ 上突然出现大量细振荡；或 OSCILL $\gg 3$、POSITV 明显低于 1。欠光滑（$\alpha$ 过大）则相反：$I(q)$ 残差呈系统性弯曲（SYSDEV 偏低），$R_g^{\mathrm{IFT}}$ 与 Guinier 一致但 <span data-term="maximum-dimension">$D_{\max}$</span> 区内肩部被抹掉。合格报告应附带「$\alpha$ 扫描或相邻 $\alpha$ 两支 $p(r)$ 叠加图」，证明主峰稳定、细振荡未进入结论。</p>
+
+      <h2>实践工作流：从 <span data-term="maximum-dimension">$D_{\max}$</span> 到可报告的 $p(r)$</h2>
+      <ol>
+        <li><strong>前置检查：</strong> 背景已扣、$q$ 刻度可靠；最好已有 Guinier $R_g$、$I(0)$（第 06 章）。低 $q$ 至少若干点落在 Guinier 窗内，否则 <span data-term="maximum-dimension">$D_{\max}$</span> 难稳。</li>
+        <li><strong>初选 <span data-term="maximum-dimension">$D_{\max}$</span>：</strong> 从 $\sim 2.5$–$3\,R_g$（紧凑球常更接近 $D_{\max}\approx 2\sqrt{5/3}\,R_g$）试起；目标是使 $p(r)$ 在末端平滑衰减至零，而非在边界被「砍断」或拖出长噪声尾。</li>
+        <li><strong>运行 <span data-term="gnom">GNOM</span> / IFT：</strong> 输入 $I(q)$（及误差）；狭缝几何须纳入 smearing 核或先 <span data-term="desmearing">desmear</span>（针孔生物 <span data-term="saxs">SAXS</span> 常可忽略）。</li>
+        <li><strong>目视与数值验收：</strong>
+          <ul>
+            <li>$p(r)\ge 0$（允许末端微小数值噪声，但大片负值不可接受）；</li>
+            <li>倒易空间拟合曲线穿过数据、残差无系统趋势；</li>
+            <li>IFT 导出的 $R_g$ 与 Guinier 偏差通常应 $\lesssim 5\%$–$10\%$。</li>
+          </ul>
+        </li>
+        <li><strong>扫描 <span data-term="maximum-dimension">$D_{\max}$</span>：</strong> 略大、略小各试若干值；合格区间内 $p(r)$ 主峰形状应稳定，$R_g$ 变化小。选「末端自然归零且 OSCILL/负值最少」的一支。Svergun（1992）VALCEN 准则专门检查主峰是否落在 <span data-term="maximum-dimension">$D_{\max}$</span> 区间中部——边界截断会使 VALCEN 骤降。</li>
+        <li><strong>报告：</strong> <span data-term="maximum-dimension">$D_{\max}$</span>、$R_g$（IFT）、$I(0)$（若绝对尺度）、所用 $q$ 范围与软件/$\alpha$ 选取方式；生物发表另遵循 Trewhella 2017 推荐信息清单。</li>
+      </ol>
+      <p>生物 <span data-term="sec-saxs">SEC-SAXS</span> 分帧后，每一帧的 $p(r)$ 应单独验证 Guinier 与 <span data-term="maximum-dimension">$D_{\max}$</span>：Trewhella 2017 指出 SEC 峰展宽可能导致 UV 与 SAS 帧不对齐，浓度估计偏差会直接传递到 $I(0)/M_w$。学习路径上，SEC 数据仍走同一 IFT 流程，但<strong>只对主峰帧采信 $p(r)$</strong>。</p>
+      <div class="keybox">
+        <strong>算例：从 Guinier $R_g$ 估 <span data-term="maximum-dimension">$D_{\max}$</span> 初值</strong>
+        <p>某蛋白稀溶液 Guinier 得 $R_g=3.2\,\mathrm{nm}$。先试 $D_{\max}=2.5\,R_g\approx 8\,\mathrm{nm}$；若 $p(r)$ 在 $r\approx 7$–$8\,\mathrm{nm}$ 被截成陡崖，增至 $D_{\max}=10$–$11\,\mathrm{nm}$ 直至末端平滑归零。均匀实心球应有 $D_{\max}\approx 2\sqrt{5/3}\,R_g\approx 8.3\,\mathrm{nm}$——与扫描结果主峰在 $D_{\max}/2$ 附近、IFT 与 Guinier $R_g$ 偏差 $\lesssim 5\%$ 自洽时，可采信该 <span data-term="maximum-dimension">$D_{\max}$</span>。若无论怎么调 <span data-term="maximum-dimension">$D_{\max}$</span>，$R_g^{\mathrm{IFT}}$ 始终比 Guinier 低 $>10\%$，优先查缓冲液扣除与低 $q$ 质量，而非继续增大 <span data-term="maximum-dimension">$D_{\max}$</span>。</p>
+      </div>
+      <div class="keybox">
+        <strong>验收清单（学习路径版）</strong>
+        <ol>
+          <li>$p(r)$ 在 $r\to D_{\max}$ 平滑 → 0，无强制截断尖角。</li>
+          <li>主峰区非负；若需强制非负约束，注明并与无约束解比较。</li>
+          <li>拟合 $I(q)$ 在低–中 $q$ 无系统欠/过拟合；高 $q$ 噪声区勿强追 $\chi^2\to 0$。</li>
+          <li>$R_g^{\mathrm{IFT}}$ vs $R_g^{\mathrm{Guinier}}$：偏差 $>10\%$ → 先查本底、$q_{\min}$、<span data-term="maximum-dimension">$D_{\max}$</span>，勿直接采信。</li>
+          <li>浓度系列：稀溶液极限下 $p(r)$ 形状应重叠；$I(0)/c$ 近似恒定。</li>
+        </ol>
+      </div>
+
+      <h2>读 $p(r)$ 形状：从球到中空</h2>
+      <p>$p(r)$ 不是「真实原子坐标」，而是与数据相容的距离统计。下表给出稀溶液单分散情形下的典型目视印象（理想化；真实曲线常带多分散与噪声）：</p>
+      <table>
+        <thead>
+          <tr><th>形貌直觉</th><th>$p(r)$ 典型特征</th><th><span data-term="maximum-dimension">$D_{\max}$</span> / $R_g$ 关系（量级）</th><th>注意</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>球状 / 紧凑球状</td><td>单峰、近似对称；峰近 $D_{\max}/2$</td><td>$D_{\max}\approx 2\sqrt{5/3}\,R_g$（均匀球）</td><td>最常见「教科书」形态</td></tr>
+          <tr><td>细长 / 椭球拉长</td><td>峰偏左、右侧长拖尾</td><td><span data-term="maximum-dimension">$D_{\max}$</span> 远大于 $2 R_g$</td><td>勿用球体公式反推半径</td></tr>
+          <tr><td>多结构域 / 哑铃</td><td>主峰 + 肩或清晰双峰</td><td>第二特征对应域间距离</td><td>双峰也可能是双组分混合物</td></tr>
+          <tr><td>中空壳 / 空心球</td><td>峰位偏大 $r$；近零区上升较陡</td><td>依赖内外径</td><td>与实心球 $I(q)$ 可部分简并，须结合模型</td></tr>
+          <tr><td>扁平盘状</td><td>峰后较快下降，拖尾短于细长棒</td><td>介于球与棒之间</td><td>与椭球扁扁情形需对照建模</td></tr>
+        </tbody>
+      </table>
+      <p>读图纪律：先问「是否满足单粒子稀溶液假设」，再谈形貌。宽化单峰 + 不稳的 <span data-term="maximum-dimension">$D_{\max}$</span> 更常提示多分散，而非「奇怪的形状」。Svergun &amp; Koch（2003）强调：$p(r)$ 双峰在生物体系中既可能是结构域分隔，也可能是寡聚混合物——必须结合 SEC、Native PAGE 或浓度系列排除组分不纯，再解读峰位。</p>
+
+      <h2>电荷体系与 $S(q)$ 干扰：何时 IFT 需「拆 $P$ 与 $S$」</h2>
+      <p>标准 IFT 假设 $I(q)\propto P(q)$（或等价的单粒子 $p(r)$）。当<span data-term="structure-factor">$S(q)$</span> $\neq 1$ 时，测得强度实为 $I(q)\propto P(q)S(q)$，直接 IFT 得到的「$p(r)$」是<strong>被相互作用扭曲的平均核</strong>，低 $q$ 常被压低，稀溶液下才恢复的 $p(r)$ 形状才是单粒子 PDDF。</p>
+      <p>两条文献路线可处理浓相互作用体系，学习路径上知道分工即可：</p>
+      <ul>
+        <li><strong><span data-term="gift">GIFT</span>（generalized IFT）：</strong> Fritz 等（2000）在 Glatter 族 IFT 上同时拟合模型无关 $p(r)$ 与带电胶体 <span data-term="structure-factor">$S(q)$</span>（RMSA / HNC / RY 等闭包）。可在体积分数 $\lesssim 0.3$ 的带电胶体中分离粒内与粒间效应，但电荷、离子强度、半径、$\phi$ 存在简并——文献指出电荷与离子强度<strong>不能同时唯一确定</strong>，固定半径或独立电泳约束可破退化。</li>
+        <li><strong>SQ-IFT：</strong> Fukasawa &amp; Sato（2011）对 $S(q)$ 本身做 IFT，得到对关联函数 $g(r)$，可模型无关地读蛋白溶液中的有效结构因子与簇集行为；与 <span data-term="gift">GIFT</span>「先假设 $S(q)$ 模型」互补。</li>
+      </ul>
+      <p>生物缓冲液中的蛋白在 $>5$–$10\,\mathrm{mg\,ml^{-1}}$ 常出现可测 $S(q)$；带电胶体（CTAB 胶束等）即使 1% 浓度也可能强相互作用。判断口诀：<strong>稀释后低 $q$ 抬升、$p(r)$ 形状变、$I(0)/c$ 非线性</strong> → 先走浓度外推或 <span data-term="gift">GIFT</span>/SQ-IFT，勿把 $S(q)$ 压低当成「分子变紧凑」。第 08 章将显式拟合 $P(q)S(q)$；BioSAS 默认仍优先无限稀释。</p>
+
+      <h2>由 $p(r)$ 得到 $I(0)$、$R_g$；绝对尺度提醒</h2>
+      <p>在正确归一约定下，</p>
+      $$I(0) = 4\pi\int_0^{D_{\max}} p(r)\,\mathrm{d}r,$$
+      $$R_g^2 = \frac{\displaystyle\int_0^{D_{\max}} r^2 p(r)\,\mathrm{d}r}{\displaystyle 2\int_0^{D_{\max}} p(r)\,\mathrm{d}r}.$$
+      <p>（具体前因子随软件对 $p(r)$ 的定义略有差异；以所用程序文档为准。）要点：</p>
+      <ul>
+        <li><strong>$R_g$ 来自 $p(r)$：</strong> 利用全曲线，对 Guinier 窗略窄或略噪时往往更稳；仍须与第 06 章 Guinier 交叉。</li>
+        <li><strong>$I(0)$ 与分子量：</strong> 仅当 $I(q)$ 已绝对标定（第 05 章）且浓度、衬度可靠时，$I(0)$ 才可换成 $M$。相对单位下，IFT 的 $I(0)$ 仍可用于同系列比较，但不可报化学分子量。</li>
+        <li><strong>Porod 体积等衍生量：</strong> 生物 <span data-term="saxs">SAXS</span> 常由 $p(r)$ / 不变量估体积；同样依赖绝对尺度与高 $q$ 质量。</li>
+      </ul>
+      <div class="keybox">
+        <strong>与 Guinier 交叉的最低标准</strong>
+        <ul>
+          <li>报告时同时给出 $R_g$（Guinier）与 $R_g$（$p(r)$）及各自不确定度。</li>
+          <li>二者一致 → 增强对 <span data-term="maximum-dimension">$D_{\max}$</span> 与本底的信心；不一致 → 优先怀疑低 $q$ 质量、<span data-term="maximum-dimension">$D_{\max}$</span>、聚集，而非「换一个更好看的 $\alpha$」。</li>
+          <li><span data-term="forward-scattering">前向散射</span> $I(0)$：Guinier 外推与 $\int p(r)$ 应同量级一致。</li>
+        </ul>
+      </div>
+
+      <h2>何时 IFT「失败」：别硬做单粒子 $p(r)$</h2>
+      <table>
+        <thead>
+          <tr><th>情形</th><th>问题本质</th><th>典型症状</th><th>学习路径上的出路</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>多分散 / 混合物</td><td>$p(r)$ 是平均核，非单一粒子 PDDF</td><td>峰宽、<span data-term="maximum-dimension">$D_{\max}$</span> 敏感、与预期几何不符</td><td>第 08 章尺寸分布 / 多组分模型；或分离样品</td></tr>
+          <tr><td>强结构因子 $S(q)$</td><td>测得的是 $P(q)S(q)$，不是单粒子 $P(q)$</td><td>低 $q$ 压低或出现峰；浓度系列 $p(r)$ 变</td><td>稀释；或显式 $P(q)S(q)$ 拟合</td></tr>
+          <tr><td>本底 / 缓冲液错误</td><td>虚假长程相关进入核</td><td>$p(r)$ 长尾不归零；$R_g$ 虚高</td><td>重做还原与空白；<span data-term="sec-saxs">SEC-SAS</span></td></tr>
+          <tr><td><span data-term="maximum-dimension">$D_{\max}$</span> 严重错设</td><td>支撑区间与真实尺度不匹配</td><td>边界截断或尾部狂振；与 Guinier 冲突</td><td>扫描 <span data-term="maximum-dimension">$D_{\max}$</span>；回到 Guinier 估尺度</td></tr>
+          <tr><td>$q$ 窗过窄 / 信噪差</td><td>病态加剧，$\alpha$ 任意</td><td>解随 $\alpha$ 剧烈跳变；处处负值</td><td>改善数据；必要时只报 Guinier</td></tr>
+          <tr><td>柔性大系综（IDP 等）</td><td>无单一静态 $p(r)$</td><td>$p(r)$ 过宽、不稳定</td><td>系综方法；勿当刚性包络</td></tr>
+          <tr><td>电荷 / 浓缓冲液 $S(q)$</td><td>IFT 核含 $P(q)S(q)$ 混合</td><td>稀释后 $p(r)$ 变窄；盐浓度影响低 $q$</td><td><span data-term="gift">GIFT</span> / SQ-IFT；无限稀释外推</td></tr>
+        </tbody>
+      </table>
+      <p>Jeffries 等（2021）Primer 提醒：稀释极限 $S(q)\sim 1$ 是生物与许多胶体分析的默认前提，但<strong>必须用量纲一致的浓度系列验证</strong>，而非仅引用文献离子强度。Fukasawa（2011）在 lysozyme 与 HSA 体系显示，有效 $g(r)$ 可揭示静电簇集——这类情形下「单粒子 $p(r)$」叙事在浓样下失效，稀样或分离 $S(q)$ 后才可恢复 PDDF 解释。</p>
+      <p>一句话：IFT 假设「存在一个有限支撑的、光滑的、代表（平均）粒子的 $p(r)$」。假设崩塌时，继续调 $\alpha$ 只会得到更漂亮的假图——应换模型层级（第 08 章）或改实验。</p>
+
+      <h2>常见坑</h2>
+      <ul>
+        <li><strong>坑 1：<span data-term="maximum-dimension">$D_{\max}$</span> 设太大 → 如何判断：</strong> $p(r)$ 末端长时间贴地振荡或出现负瓣；略减小 <span data-term="maximum-dimension">$D_{\max}$</span> 后主峰几乎不变而尾部变干净。逐级减小至末端自然归零。</li>
+        <li><strong>坑 2：<span data-term="maximum-dimension">$D_{\max}$</span> 设太小 → 如何判断：</strong> $p(r)$ 在右边界被砍成陡崖；拟合 $I(q)$ 低 $q$ 系统性偏差；$R_g^{\mathrm{IFT}}$ 偏小。加大 <span data-term="maximum-dimension">$D_{\max}$</span> 直至末端平滑。</li>
+        <li><strong>坑 3：把振荡 $p(r)$ 当「高分辨率结构」→ 如何判断：</strong> 略改 $\alpha$ 或裁掉高 $q$ 噪声后峰谷大变。那些细结构多半是噪声放大，不可写进结论。</li>
+        <li><strong>坑 4：忽视与 Guinier 的冲突 → 如何判断：</strong> $|R_g^{\mathrm{IFT}}-R_g^{\mathrm{Guinier}}|/R_g &gt; 10\%$ 仍只贴 IFT 图。先查本底、聚集、$q_{\min}$ 与 <span data-term="maximum-dimension">$D_{\max}$</span>。</li>
+        <li><strong>坑 5：浓溶液硬做单粒子 IFT → 如何判断：</strong> 稀释后 $p(r)$ 形状明显变；$I(0)/c$ 随 $c$ 降。先稀释或改用带 $S(q)$ 的模型（第 08 章）。</li>
+        <li><strong>坑 6：相对强度曲线谈「绝对」$I(0)$ / $M$ → 如何判断：</strong> 未做第 05 章标定却报分子量。相对单位只比较趋势；定量 $M$ 须绝对尺度 + 可靠浓度。</li>
+        <li><strong>坑 7：多分散混合物读成「多结构域」→ 如何判断：</strong> 双峰 $p(r)$ 在纯化/SEC 前后消失或峰比大变。先排除组分不纯，再谈结构域分隔。</li>
+        <li><strong>坑 8：狭缝 smearing 未入核 → 如何判断：</strong> Kratky/实验室狭缝数据上 $R_g$ 偏大、残差系统化。使用 smeared IFT 或先 <span data-term="desmearing">desmear</span>（第 03–04 章）。</li>
+        <li><strong>坑 9：浓盐缓冲液蛋白硬做 IFT → 如何判断：</strong> 蛋白–蛋白静电排斥使 $S(0)<1$，$p(r)$ 随浓度变、与晶体结构投影不符。Fukasawa（2011）在 HSA 体系显示离子强度改变有效 $g(r)$——先做盐/浓度系列或 SQ-IFT 读 $S(q)$，再谈单粒子 $p(r)$。</li>
+        <li><strong>坑 10：只报一张 $p(r)$ 无 $\alpha$ 信息 → 如何判断：</strong> Trewhella 2017 要求报告 $q$ 范围、<span data-term="maximum-dimension">$D_{\max}$</span> 选取、正则化方式及与 Guinier 交叉结果。缺任一即无法复现与评审。</li>
+      </ul>
+
+      <h2>小结</h2>
+      <p>$p(r)$ 把 $I(q)$ 译成实空间距离语言：<span data-term="maximum-dimension">$D_{\max}$</span>、形状直觉，以及与 Guinier 可比的 $R_g$、$I(0)$。直接逆变换病态，故用 IFT / <span data-term="gnom">GNOM</span> 以正则化参数 $\alpha$ 在拟合与光滑之间折中；Svergun（1992）感知准则（OSCILL、POSITV、SYSDEV 等）为自动选 $\alpha$ 提供可辩护标准。合格 $p(r)$ 的标志是非负、末端归零、拟合无系统残差、与 Guinier 一致。多分散、强 $S(q)$（含带电胶体与浓蛋白液）、坏本底或错误 <span data-term="maximum-dimension">$D_{\max}$</span> 时，单粒子 IFT 叙事失效——浓相互作用体系用 <span data-term="gift">GIFT</span> 拆 $P$ 与 $S$，或 SQ-IFT 读 $g(r)$；下一章进入显式<span data-term="form-factor">形式因子</span>模型与多分散，把「一种 $p(r)$」升级为可辨识的形状与尺寸分布假设。</p>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="pair-distance-distribution">距离分布 $p(r)$</span></li>
+        <li><span data-term="indirect-fourier-transform">间接傅里叶变换</span></li>
+        <li><span data-term="radius-of-gyration">回转半径 $R_g$</span></li>
+        <li><span data-term="guinier-analysis">Guinier 分析</span></li>
+        <li><span data-term="forward-scattering">前向散射 $I(0)$</span></li>
+        <li><span data-term="form-factor">形式因子</span></li>
+        <li><span data-term="structure-factor">结构因子 $S(q)$</span></li>
+      </ul>
+
+      <div class="keybox">
+        <strong>发表级 $p(r)$ 报告最低字段（对齐 Trewhella 2017）</strong>
+        <ul>
+          <li>仪器/束线、$q$ 范围（$q_{\min}$–$q_{\max}$）、是否 smeared 拟合</li>
+          <li><span data-term="maximum-dimension">$D_{\max}$</span> 选取依据（扫描图或 Guinier 估尺）</li>
+          <li>正则化：<span data-term="gnom">GNOM</span> 自动 $\alpha$ 或手动扫描；附 OSCILL/POSITV 或相邻 $\alpha$ 叠加</li>
+          <li>$R_g$（Guinier）与 $R_g$（$p(r)$）、$I(0)$（若绝对标定）</li>
+          <li>浓度系列或稀释验证 $S(q)\approx 1$ 的说明</li>
+        </ul>
+      </div>
+
+      <h2>延伸阅读</h2>
+      <ul>
+        <li><em>Determination of the regularization parameter in indirect-transform methods using perceptual criteria</em>. Dmitri I. Svergun (1992). DOI: <a href="https://doi.org/10.1107/S0021889892001663" target="_blank" rel="noopener noreferrer">10.1107/S0021889892001663</a></li>
+        <li><em>Evaluation of small-angle scattering data of charged particles using the generalized indirect Fourier transformation technique</em>. G. Fritz, A. Bergmann, O. Glatter (2000). DOI: <a href="https://doi.org/10.1063/1.1321770" target="_blank" rel="noopener noreferrer">10.1063/1.1321770</a></li>
+        <li><em>Versatile application of indirect Fourier transformation to structure factor analysis</em>. Toshiko Fukasawa, Takaaki Sato (2011). DOI: <a href="https://doi.org/10.1039/c0cp01679a" target="_blank" rel="noopener noreferrer">10.1039/c0cp01679a</a></li>
+        <li><em>Small-angle scattering studies of biological macromolecules in solution</em>. Dmitri I. Svergun, Michel H. J. Koch (2003). DOI: <a href="https://doi.org/10.1088/0034-4885/66/10/R05" target="_blank" rel="noopener noreferrer">10.1088/0034-4885/66/10/R05</a></li>
+        <li><em>Small-angle X-ray and neutron scattering</em>. Cy M. Jeffries et al. (2021). DOI: <a href="https://doi.org/10.1038/s43586-021-00064-9" target="_blank" rel="noopener noreferrer">10.1038/s43586-021-00064-9</a></li>
+        <li><em>2017 publication guidelines for structural modelling of small-angle scattering data from biomolecules in solution</em>. Jill Trewhella et al. (2017). DOI: <a href="https://doi.org/10.1107/S2059798317011597" target="_blank" rel="noopener noreferrer">10.1107/S2059798317011597</a></li>
+        <li>站内专题：<a href="../topics/ift/index.html">IFT / $p(r)$</a>（感知准则、<span data-term="gnom">GNOM</span> 细节与失效表）</li>
+      </ul>
+
+      <nav class="pager">
+        <a href="06-guinier-porod.html">← 上一章：06 Guinier / Porod</a>
+        <a href="08-models-polydispersity.html">下一章：08 模型与多分散 →</a>
+      </nav>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

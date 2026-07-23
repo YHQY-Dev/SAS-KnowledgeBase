@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>透射率 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>透射率</h1>
+      <p class="subtitle-en">sample transmission</p>
+
+      <h2>定义</h2>
+      <p><strong>透射率</strong> $T_r$（或 $T$）是样品存在时直射束强度相对空束（或空池）的比值。还原链中本底扣除与绝对化常以 $I/T_r$ 形式出现。</p>
+
+      <h2>物理直觉</h2>
+      <p>测量可用离子室、半透束阻或衰减器。气泡、厚度不均、温控改变路径都会使 $T_r$ 跳变——时间分辨实验须逐帧监测透射。</p>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="absolute-intensity">绝对强度</span></li>
+        <li><span data-term="beamstop">束阻</span></li>
+        <li><span data-term="data-reduction">数据还原</span></li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../learn/04-data-reduction.html">学习路径 04-data-reduction</a></li>
+        <li><a href="../topics/data-reduction/index.html">专题 data-reduction</a></li>
+        <li><a href="../topics/calibration/index.html">专题 calibration</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

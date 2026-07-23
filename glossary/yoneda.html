@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Yoneda 峰 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>Yoneda 峰</h1>
+      <p class="subtitle-en">Yoneda peak</p>
+
+      <h2>定义</h2>
+      <p><strong>Yoneda 峰</strong>是掠入射散射（<span data-term="gisaxs">GISAXS</span> / 反射几何）中，当出射角 $\alpha_f$ 接近材料临界角 $\alpha_c$ 时出现的强度增强带。它来自界面附近电场的折射增强，是 <span data-term="dwba">DWBA</span> 动力学效应的标志之一，而非透射 SAXS 意义上的 Bragg「结构峰」。</p>
+
+      <h2>要点</h2>
+      <ul>
+        <li>峰位近似满足 $q_{z,Y} \approx 2 k_0 \alpha_c$，可用于估计薄膜或衬底的平均电子密度 / $\alpha_c$。</li>
+        <li>薄膜与衬底各有 $\alpha_c$ 时，可出现双 Yoneda；不同入射角 regime 下相对强度变化很大。</li>
+        <li>读 2D 图时须与镜面峰（$\alpha_f=\alpha_i$）、off-specular 面内条纹区分：Yoneda 多为沿 $q_z$ 的竖直增强。</li>
+        <li>实验上至少做 2–3 个 $\alpha_i$ 扫描，检查 Yoneda 与条纹是否可用同一 DWBA 模型解释。</li>
+      </ul>
+
+      <h2>常见混淆</h2>
+      <ul>
+        <li>把 Yoneda 当成面内周期对应的 Bragg 峰——后者沿 $q_y$（或 $q_\parallel$）定位，Yoneda 由 $\alpha_f\sim\alpha_c$ 决定。</li>
+        <li>Born 近似常严重低估 Yoneda 强度；近临界角数据必须用 DWBA。</li>
+        <li>Yoneda 缺失不一定「没结构」：$\alpha_i$ 过低（倏逝波区）或表面过光滑都可能抑制可见增强。</li>
+      </ul>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="gisaxs">GISAXS</span></li>
+        <li><span data-term="dwba">畸变波玻恩近似</span></li>
+        <li><span data-term="scattering-vector-q">散射矢量</span> $q_z$</li>
+        <li><span data-term="block-copolymer">嵌段共聚物</span>薄膜</li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../topics/gisaxs/index.html">专题 · GISAXS</a></li>
+        <li><a href="../learn/03-instruments.html">学习路径 03 · 仪器与几何</a></li>
+        <li><a href="../learn/09-application-paths.html">学习路径 09 · 应用岔路</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

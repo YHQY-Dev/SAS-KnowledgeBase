@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>小角中子散射 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>小角中子散射</h1>
+      <p class="subtitle-en">small-angle neutron scattering</p>
+
+      <h2>定义</h2>
+      <p><strong>SANS</strong>（small-angle neutron scattering）以热/冷中子为探针做小角散射。散射强度由核<span data-term="scattering-length-density">散射长度密度</span>起伏决定；氢与氘散射长度符号相反，使 <span data-term="contrast-matching">衬度匹配</span> 与 <span data-term="contrast-variation">衬度变化</span> 成为生物与软物质的核心手段。</p>
+
+      <h2>物理直觉</h2>
+      <p>中子穿透深、对轻元素敏感，适合厚样品与复杂样品环境；通量低于同步辐射 SAXS，统计与仪器 <span data-term="instrument-smearing">smearing</span> 更需关注。磁矩与磁化耦合时进入 <span data-term="magnetic-sans">磁性 SANS</span>。</p>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="saxs">小角 X 射线散射</span></li>
+        <li><span data-term="contrast-matching">衬度匹配</span></li>
+        <li><span data-term="contrast-variation">衬度变化</span></li>
+        <li><span data-term="magnetic-sans">磁性小角中子散射</span></li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../learn/01-what-is-sas.html">学习路径 01-what-is-sas</a></li>
+        <li><a href="../topics/sans-contrast/index.html">专题 sans-contrast</a></li>
+        <li><a href="../topics/magnetic-sans/index.html">专题 magnetic-sans</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

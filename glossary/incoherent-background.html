@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>不相干本底 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>不相干本底</h1>
+      <p class="subtitle-en">incoherent background</p>
+
+      <h2>定义</h2>
+      <p><strong>不相干本底</strong>来自不形成干涉的散射过程（及部分非弹性贡献在仪器上的投影）。它近似不依赖 $q$（或缓慢变化），会抬高高 $q$ 尾并污染 Porod/模型拟合。</p>
+
+      <h2>物理直觉</h2>
+      <p>SANS 高氢样品本底大；常用溶剂空白、已知标准或模型平坦项扣除。勿把未扣本底的「假 Porod」当真。</p>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="coherent-scattering">相干散射</span></li>
+        <li><span data-term="porod-law">Porod 定律</span></li>
+        <li><span data-term="sans">小角中子散射</span></li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../topics/sans-contrast/index.html">专题 sans-contrast</a></li>
+        <li><a href="../learn/04-data-reduction.html">学习路径 04-data-reduction</a></li>
+        <li><a href="../topics/data-reduction/index.html">专题 data-reduction</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

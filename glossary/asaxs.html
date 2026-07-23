@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>反常小角散射 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>反常小角散射</h1>
+      <p class="subtitle-en">anomalous small-angle X-ray scattering</p>
+
+      <h2>定义</h2>
+      <p><strong>反常小角散射</strong>（ASAXS）在某一元素的吸收边附近改变入射 X 射线能量，利用原子散射因子的反常色散项 $f'(E)+if''(E)$，使该元素对 <span data-term="scattering-length-density">电子密度 / 散射因子</span> 的贡献可调，从而分离或增强特定元素相关的纳米结构信号。</p>
+
+      <h2>要点</h2>
+      <ul>
+        <li>需要<strong>可调能量</strong>的同步辐射束线；实验室固定靶（Cu/Mo）通常无法做 ASAXS。</li>
+        <li>在边下、边上、边后多能量测量同一 $q$ 曲线，差分可突出目标元素周围的 <span data-term="contrast">衬度</span>变化。</li>
+        <li>适用于含金属、稀土、卤素等重原子的催化剂、电解质、纳米粒子与聚合物盐体系。</li>
+        <li>能量扫描须兼顾吸收（透射下降）与荧光背景；近边数据还原比固定能量 SAXS 更敏感。</li>
+      </ul>
+
+      <h2>常见混淆</h2>
+      <ul>
+        <li>ASAXS ≠ 普通「换能量优化通量」：核心是边附近 $f'$ 变化带来的元素特异衬度，而非单纯提高计数率。</li>
+        <li>与 SANS 氘化衬度不同：ASAXS 是元素特异的电子密度调制，不依赖同位素替换。</li>
+        <li>边附近荧光与吸收校正若处理不当，差分曲线会出现假峰或负强度。</li>
+      </ul>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="contrast">衬度</span></li>
+        <li><span data-term="scattering-length-density">散射长度密度</span> / 电子密度</li>
+        <li><span data-term="form-factor">形式因子</span> $P(q)$</li>
+      </ul>
+
+            <h2>出现于</h2>
+      <ul>
+        <li><a href="../learn/03-instruments.html">学习路径 03 · 仪器与几何</a></li>
+        <li><a href="../topics/asaxs/index.html">专题 · ASAXS</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

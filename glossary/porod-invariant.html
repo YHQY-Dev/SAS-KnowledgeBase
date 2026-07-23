@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Porod 不变量 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>Porod 不变量</h1>
+      <p class="subtitle-en">Porod invariant</p>
+
+      <h2>定义</h2>
+      <p><strong>Porod 不变量</strong>（常记 $Q$ 或 $Q_p$）定义为</p>
+      $$ Q = \int_0^\infty q^2 I(q)\,\mathrm{d}q $$
+      <p>对两相体系，$Q \propto (\Delta\rho)^2 \phi(1-\phi)$（绝对强度与单位约定下）。它把整条曲线的「总散射能力」收成一个标量。</p>
+
+      <h2>物理直觉</h2>
+      <p>实际积分须外推低 $q$ 与高 $q$ 尾；未绝对标定或 $q$ 窗不足会使 $Q$ 系统偏差。常与 $I(0)$、Porod 体积交叉验证分子量/体积。</p>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="porod-law">Porod 定律</span></li>
+        <li><span data-term="absolute-intensity">绝对强度</span></li>
+        <li><span data-term="contrast">衬度</span></li>
+        <li><span data-term="volume-fraction">体积分数</span></li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../learn/02-scattering-basics.html">学习路径 02-scattering-basics</a></li>
+        <li><a href="../learn/05-absolute-calibration.html">学习路径 05-absolute-calibration</a></li>
+        <li><a href="../topics/polymers-bcp/index.html">专题 polymers-bcp</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

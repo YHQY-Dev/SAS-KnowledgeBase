@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>从头形状重建 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>从头形状重建</h1>
+      <p class="subtitle-en">ab initio shape reconstruction</p>
+
+      <h2>定义</h2>
+      <p><strong>从头（ab initio）形状重建</strong>在不依赖高分辨原子坐标的前提下，用哑原子/珠粒模型拟合溶液散射，得到低分辨包络。ATSAS 中经典程序为 DAMMIN/DAMMIF 等。</p>
+
+      <h2>物理直觉</h2>
+      <p>前提是样品尽量单分散、数据已做严格 QC。多轮独立运行与聚类评估歧义性；柔性体系应改用系综方法而非单一形状。</p>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="indirect-fourier-transform">间接傅里叶变换</span></li>
+        <li><span data-term="ensemble-optimization">系综优化方法</span></li>
+        <li><span data-term="pair-distance-distribution">距离分布函数</span></li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../topics/atsas/index.html">专题 atsas</a></li>
+        <li><a href="../topics/biosas/index.html">专题 biosas</a></li>
+        <li><a href="../learn/09-application-paths.html">学习路径 09-application-paths</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

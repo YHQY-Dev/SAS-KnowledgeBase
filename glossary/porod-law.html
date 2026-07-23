@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Porod 定律 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>Porod 定律</h1>
+      <p class="subtitle-en">Porod's law</p>
+
+      <h2>定义</h2>
+      <p><strong>Porod 定律</strong>描述两相界面清晰、无显著梯度界面时，高 $q$ 区散射强度渐近行为：</p>
+      $$ I(q) \propto q^{-4} \quad (\text{Porod 区}) $$
+      <p>更完整的形式含界面面积 $S$、两相 <span data-term="contrast">衬度</span> $\Delta\rho$ 与 Porod 常数 $K$：</p>
+      $$ I(q) = \frac{2\pi (\Delta\rho)^2 S}{q^4} + \text{background} $$
+      <p>（常数因子依强度定义与单位约定略有不同。）</p>
+
+      <h2>物理直觉</h2>
+      <p>高 $q$ 探测的是界面上的尖锐密度跳变。界面面积越大、衬度越高，$q^{-4}$ 尾越强。因此 Porod 分析常用于估计比表面积、检验两相模型是否合理，或与 <span data-term="guinier-analysis">Guinier 区</span> 的 $R_g$ 一起勾勒「大尺度 + 界面」信息。</p>
+
+      <h2>使用要点</h2>
+      <ul>
+        <li>在 $\ln I$ 对 $\ln q$ 图上，Porod 区斜率应接近 $-4$。</li>
+        <li>必须先扣除平坦或缓慢变化的背景；未扣背景会压低有效斜率。</li>
+        <li>柔性聚合物链、扩散界面、孔洞分形等可能偏离 $q^{-4}$（广义 Porod 指数）。</li>
+        <li>与 <span data-term="form-factor">形式因子</span> 振荡区重叠时，需选取纯渐近尾。</li>
+      </ul>
+
+      <h2>常见混淆</h2>
+      <ul>
+        <li>把任意高 $q$ 下降都称为 Porod：需验证 $q^{-4}$ 标度与界面模型。</li>
+        <li>忽略仪器分辨率 smearing：高 $q$ 尾会被抹平，斜率偏小。</li>
+        <li>与热噪声、荧光背景混淆：背景模型错误会导致虚假 Porod 常数。</li>
+        <li>「Porod 区」与「Porod 定律」：前者指数据区间，后者指理论标度关系。</li>
+      </ul>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="guinier-analysis">Guinier 分析</span>（低 $q$ 互补）</li>
+        <li><span data-term="scattering-vector-q">散射矢量</span> $q$</li>
+        <li><span data-term="contrast">衬度</span> $\Delta\rho$</li>
+        <li><span data-term="pair-distance-distribution">距离分布函数</span> $p(r)$（实空间另一路线）</li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../learn/06-guinier-porod.html">学习路径 06 · Guinier / Porod</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

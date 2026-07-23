@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>多重散射 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>多重散射</h1>
+      <p class="subtitle-en">multiple scattering</p>
+
+      <h2>定义</h2>
+      <p><strong>多重散射</strong>指一次测量中发生两次及以上散射事件。单次散射近似下 $I(q)$ 直接对应结构因子；多重散射使曲线变形，低 $q$ 常被压平或抬高，视几何而定。</p>
+
+      <h2>物理直觉</h2>
+      <p>判据：减小厚度后曲线形状应不变；透射过低（如 $\ll e^{-1}$）时风险升高。USAXS/强衬度硬材料尤须警惕。</p>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="transmission">透射率</span></li>
+        <li><span data-term="absolute-intensity">绝对强度</span></li>
+        <li><span data-term="usaxs">超小角散射</span></li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../learn/01-what-is-sas.html">学习路径 01-what-is-sas</a></li>
+        <li><a href="../learn/03-instruments.html">学习路径 03-instruments</a></li>
+        <li><a href="../topics/usaxs/index.html">专题 usaxs</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

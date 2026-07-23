@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>间接傅里叶变换（IFT）· 专题手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>间接傅里叶变换（IFT）与 <span data-term="gnom">GNOM</span></h1>
+      <p class="subtitle-en">From $I(q)$ to $p(r)$ — regularization and perceptual criteria</p>
+
+      <p>本导读以 Svergun（1992）<em>Determination of the regularization parameter in indirect-transform methods using perceptual criteria</em>（DOI: <a href="https://doi.org/10.1107/S0021889892001663" target="_blank" rel="noopener noreferrer">10.1107/S0021889892001663</a>）为核心，结合 <span data-term="gnom">GNOM</span> 程序（Svergun, Semenyuk &amp; Feigin 1988）与 Feigin &amp; Svergun（1987）教科书框架，并延伸至 <span data-term="gift">GIFT</span>（Fritz 等 2000；Weyerich 等 1999）对相互作用体系的分解，以及 Fukasawa &amp; Sato（2011）对结构因子 $S(q)$ 的 SQ-IFT。说明如何从 $I(q)$ 稳定反演<span data-term="pair-distance-distribution">距离分布函数 $p(r)$</span>、如何选取正则化参数 $\alpha$ 与 <span data-term="maximum-dimension">$D_{\max}$</span>，以及 IFT 何时失效、何时须改用 <span data-term="gift">GIFT</span> 或显式 $P(q)S(q)$ 模型。</p>
+
+      <h2>问题是什么</h2>
+      <p>稀溶液、各向同性、单分散粒子时，散射强度与实空间分布通过傅里叶变换相联系：</p>
+      $$I(s) = \int_0^\infty p(r)\,\Phi(s,r)\,\mathrm{d}r,$$
+      <p>（生物文献常记 $s = 4\pi\sin\theta/\lambda$，与本站 <span data-term="scattering-vector-q">$q$</span> 同义；$\Phi$ 含球对称核与仪器 smearing。）$p(r)$ 是任意两点间距离 $r$ 的概率分布，携带颗粒最大尺寸 <span data-term="maximum-dimension">$D_{\max}$</span>、形状不对称性等信息——比 Guinier 的单一 $R_g$ 更丰富。</p>
+      <p>直接对噪声数据做数值傅里叶逆变换会得到<strong>病态（ill-posed）</strong>解：$I(s)$ 微小误差导致 $p(r)$ 剧烈振荡（Glatter 1977）。<span data-term="indirect-fourier-transform">间接傅里叶变换（IFT）</span> 通过 Tikhonov 正则化在「拟合数据」与「解的光滑性」之间折中，是生物 <span data-term="saxs">SAXS</span>、胶体与软物质中从 $I(q)$ 进入实空间的标准入口。</p>
+      <p>与 Guinier 的关系：Guinier 只用到极低 $s$ 的二次近似；IFT 使用更广 $s$ 范围，对中等 $s$ 的形状敏感，并给出 <span data-term="maximum-dimension">$D_{\max}$</span>。但 IFT 引入 <span data-term="maximum-dimension">$D_{\max}$</span>、$\alpha$ 等人为参数，<strong>信息增益伴随假设成本</strong>——Trewhella 2017 要求报告 <span data-term="maximum-dimension">$D_{\max}$</span> 扫描与 Guinier $R_g$ 一致性。</p>
+      <p>核心难题：除 $p(r)$ 外还须指定辅助参数——尤其是支撑区间 $[D_{\min}, D_{\max}]$ 与正则化参数 $\alpha$（Lagrange 乘子）。$\alpha$ 过小 → $p(r)$ 振荡、负值；过大 → 过度光滑、丢失细节。Svergun 1992 将「肉眼选解」形式化为可优化的感知准则，并实现在 <span data-term="gnom">GNOM</span> 中。</p>
+      <p>IFT 给出的是与数据及正则化假设相容的<strong>一类</strong> $p(r)$，不是唯一「真实结构」。中空壳层与实心球可有相似 $I(q)$；柔性蛋白的 $p(r)$ 是构象系综的平均。因此 IFT 应视为<strong>整体形状与尺寸的诊断工具</strong>，须与 Guinier、浓度系列、独立技术（NMR、EM）及下游建模（DAMMIF）交叉验证（Petoukhov &amp; Svergun 2013；Trewhella 2017）。</p>
+
+      <figure class="figure">
+        <img src="../../assets/figures/fig-14-ift-pr-workflow.png" alt="IFT / p(r) 反演工作流" width="900">
+        <figcaption>$I(q)$ → <span data-term="gnom">GNOM</span>/IFT：设定 <span data-term="maximum-dimension">$D_{\max}$</span> → 扫描 $\alpha$ → 感知准则选最优 $p(r)$ → 导出 $R_g$、$I(0)$、<span data-term="maximum-dimension">$D_{\max}$</span> 供建模。<span class="fig-source">配图：自制示意</span></figcaption>
+      </figure>
+
+      <h2>文献主线</h2>
+      <h3>Glatter 1977 → 正则化 IFT</h3>
+      <p>Glatter 提出间接变换：将 $p(r)$ 展开为基函数，把积分方程化为矩阵方程 $\mathbf{J} = \mathbf{K}\mathbf{p}$。因病态性，须最小化</p>
+      $$T_\alpha[\mathbf{p}] = \|\mathbf{J}-\mathbf{K}\mathbf{p}\|_{\mathbf{J}}^2 + \alpha\,\Omega[\mathbf{p}],$$
+      <p>其中 $\|\mathbf{J}-\mathbf{K}\mathbf{p}\|_{\mathbf{J}}$ 为倒易空间加权残差范数，$\Omega[\mathbf{p}]$ 为稳定器（常取 $\Omega = \int [p'(r)]^2\mathrm{d}r$ 要求光滑），$\alpha$ 为正则化参数。Glatter 的 IFT 程序族（IPP）与 <span data-term="gnom">GNOM</span> 并行发展；ATSAS 生态以 <span data-term="gnom">GNOM</span> 为主，软物质/胶体文献中亦常见 Glatter/Otto Glatter 工具链。</p>
+
+      <h3>Svergun, Semenyuk &amp; Feigin 1988：<span data-term="gnom">GNOM</span> 程序</h3>
+      <p><span data-term="gnom">GNOM</span> 将 $p(r)$ 分段常数或线性表示，自动处理 <span data-term="instrument-smearing">smearing</span> 卷积；输出 $p(r)$、拟合 $I(s)$、$R_g$、$I(0)$ 与 <span data-term="maximum-dimension">$D_{\max}$</span>。成为 ATSAS 包中 PRIMUS → <span data-term="gnom">GNOM</span> 管线的核心（Konarev 2003）。技术要点：</p>
+      <ul>
+        <li>核矩阵 $\mathbf{K}$ 含球对称 Bessel 型核与仪器 smearing 矩阵的乘积；</li>
+        <li>用户输入 <span data-term="maximum-dimension">$D_{\max}$</span>、可选 $D_{\min}$、数据点权重 $\sigma_i^{-1}$；</li>
+        <li>自动 $\alpha$ 扫描 + 感知准则（Svergun 1992）为默认推荐路径。</li>
+      </ul>
+      <p>Feigin &amp; Svergun（1987）在教科书层面把 IFT 与直接变换、约束正则化统一叙述，是理解 <span data-term="gnom">GNOM</span> 数学背景的入口。</p>
+
+      <h3>Svergun 1992：感知准则自动选 $\alpha$</h3>
+      <p>既有 $\alpha$ 选取法各有缺陷：</p>
+      <ul>
+        <li><strong>$\chi^2 \simeq 1$ 准则：</strong> 需可靠 $\sigma_i$；常导致过光滑（Hofmann 1986）。</li>
+        <li><strong>拐点 / 准最优准则：</strong> 假设最优解对 $\alpha$ 最稳定；但 $\alpha\to 0$ 与 $\alpha\to\infty$ 的解也「稳定」。</li>
+      </ul>
+      <p>Svergun 1992 将专家目视判断写成六个无量纲准则，构造总估计 $E_\alpha$ 并最大化。各准则的物理含义简述：</p>
+      <ul>
+        <li><strong>OSCILL：</strong> $p(r)$ 相对光滑参考的振荡程度；病态解 OSCILL $\gg 1$。</li>
+        <li><strong>POSITV：</strong> $p(r)\ge 0$ 的份额；物理上 PDDF 非负，负值区提示 $\alpha$ 过小或背景错。</li>
+        <li><strong>VALCEN：</strong> 质量是否集中在 <span data-term="maximum-dimension">$D_{\max}$</span> 中心区间；边界截断或 <span data-term="maximum-dimension">$D_{\max}$</span> 错误时 VALCEN 低。</li>
+        <li><strong>DISCRP：</strong> 倒易空间广义离散度；$\ll 1$ 过拟合噪声，$\gg 1$ 欠拟合。</li>
+        <li><strong>SYSDEV：</strong> 残差符号交替；系统趋势（如低 $s$ 全正残差）使 SYSDEV $\ll 1$。</li>
+        <li><strong>STABIL：</strong> 解对 $\alpha$ 微扰的稳定性；正确 $\alpha$ 邻域 STABIL 达局部极值。</li>
+      </ul>
+      <p>感知准则的设计哲学是：在 $\sigma_i$ 不可靠时（生物 SASS 常见），仍能用<strong>解的形态学</strong>选 $\alpha$，而非机械 $\chi^2 \approx 1$。但若背景或 $q$ 刻度有系统错，任何 $\alpha$ 的准则都会异常——须先修数据（<a href="../data-reduction/index.html">还原专题</a>）。</p>
+
+      <h3>Weyerich 等 1999 / Fritz 等 2000：<span data-term="gift">GIFT</span> 与相互作用体系</h3>
+      <p>稀溶液极限下 $I(q) \approx N P(q)$，标准 IFT/<span data-term="gnom">GNOM</span> 反演 $p(r)$ 即 <span data-term="form-factor">形式因子</span> 的实空间表示。浓度升高时 $I(q) = N P(q) S(q)$，<span data-term="structure-factor">$S(q)$</span> 调制低 $q$——直接 IFT 得到的是 $i(r)$（总相关），振荡、难解释（Weyerich 1999）。</p>
+      <p><strong>广义间接傅里叶变换（<span data-term="gift">GIFT</span>）</strong> 同时拟合：</p>
+      <ul>
+        <li><strong>$p(r)$（模型无关）：</strong> B 样条展开，经 Fourier + smearing 得 $P(q)$；</li>
+        <li><strong>$S(q)$（须模型）：</strong> 硬球 Percus–Yevick、多分散有效 $S^{\mathrm{eff}}(q)$、带电胶体 RMSA/HNC/RY 等（Fritz 2000）。</li>
+      </ul>
+      <p>Weyerich 1999 比较多分散硬球的有效结构因子与「平均结构因子」近似：先用简单 $S(q)$ 恢复 $P(q)$，再换更物理的模型——两阶段策略避免一次陷入高维非线性。Fritz 2000 对 CTAB 胶束演示：带电体系在体积分数 $\phi \lesssim 0.3$ 仍可分离 $P$ 与 $S$，但<strong>电荷与离子强度不可同时无约束确定</strong>，存在参数简并，须外加渗透压或稀释系列。</p>
+
+      <h3>Fukasawa &amp; Sato 2011：SQ-IFT 与 $g(r)$</h3>
+      <p>当目标不是单粒子 $p(r)$ 而是粒子间<strong>对关联函数</strong> $g(r)$ 时，Fukasawa 提出结构因子 IFT（SQ-IFT）：对 $S(q)-1$（或实验有效 $S^{\mathrm{exp}}$）做正则化 Fourier 反演，得到 $g(r)$，无需预设 OZ 闭合形式。应用包括：</p>
+      <ul>
+        <li>分子液体径向分布（与液体衍射统一框架）；</li>
+        <li>蛋白溶液中静电排斥 + 短程吸引导致的<strong>平衡团簇</strong>（溶菌酶 <span data-term="sans">SANS</span>）；</li>
+        <li>HSA <span data-term="saxs">SAXS</span> 浓度与离子强度系列——实空间看聚集与相互作用势。</li>
+      </ul>
+      <p>与 <span data-term="gift">GIFT</span> 的区别：SQ-IFT 侧重 $g(r)$；<span data-term="gift">GIFT</span> 侧重在已知 $S(q)$ 模型下恢复 $P(q)$/$p(r)$。浓溶液若只跑 <span data-term="gnom">GNOM</span>，应预期失败；应显式 $P(q)S(q)$ 拟合、<span data-term="gift">GIFT</span> 或 SQ-IFT。</p>
+      <p>Fukasawa 对 HSA 的 <span data-term="saxs">SAXS</span> 显示：离子强度与浓度改变 $S(q)$ 低 $q$ 行为，SQ-IFT 给出的 $g(r)$ 可直观看到短程吸引与长程排斥共存时的<strong>平衡团簇</strong>图像——这是单粒子 $p(r)$ 无法提供的。方法假设各向同性、径向相关；各向异性相互作用须更复杂模型。</p>
+
+      <h2>关键公式与结论</h2>
+      <h3>积分方程与范数</h3>
+      $$J(s)=\int_{D_{\min}}^{D_{\max}} K(s,r)\,p(r)\,\mathrm{d}r,$$
+      $$\|\mathbf{J}-\mathbf{K}\mathbf{p}\|_{\mathbf{J}} = \left\{(N-1)^{-1}\sum_{i=1}^{N}\sigma_i^{-2}\left[J(s_i)-\int K(s_i,r)p(r)\mathrm{d}r\right]^2\right\}^{1/2}.$$
+      <p>稳定器常用 $\Omega[\mathbf{p}] = \int [p'(r)]^2\mathrm{d}r$（光滑惩罚）；Glatter 1977 亦用二阶差分。$\sigma_i$ 须来自还原链传播（Pauw 2013），勿仅用计数统计。</p>
+
+      <h3>球对称核与 $R_g$、$I(0)$</h3>
+      $$P(q)=4\pi\int_0^{D_{\max}} p(r)\frac{\sin(qr)}{qr}\,\mathrm{d}r.$$
+      <p>$$R_g^2 = \frac{\int_0^{D_{\max}} r^2 p(r)\,\mathrm{d}r}{2\int_0^{D_{\max}} p(r)\,\mathrm{d}r}, \qquad I(0) \propto \int_0^{D_{\max}} p(r)\,\mathrm{d}r$$</p>
+      <p>（$I(0)$ 与分子量的比例关系须 <span data-term="absolute-intensity">绝对标定</span>，见标定专题。）</p>
+
+      <h3><span data-term="gnom">GNOM</span> vs <span data-term="gift">GIFT</span> vs SQ-IFT</h3>
+      <table>
+        <thead>
+          <tr><th>方法</th><th>输入</th><th>输出</th><th>$S(q)$ 处理</th><th>典型适用</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><span data-term="gnom">GNOM</span> / IFT</td><td>$I(q)$，$\sigma_i$</td><td>$p(r)$，$R_g$，$I(0)$</td><td>忽略（要求稀溶液）</td><td>生物单分散蛋白、稀释胶体</td></tr>
+          <tr><td><span data-term="gift">GIFT</span></td><td>$I(q)$</td><td>$p(r)$ + 拟合 $S(q)$ 参数</td><td>硬球/带电/多分散模型</td><td>浓胶体、胶束，$\phi \lesssim 0.3$</td></tr>
+          <tr><td>SQ-IFT</td><td>$S(q)$ 或 $I/P$</td><td>$g(r)$</td><td>反演 $S(q)-1$，模型无关</td><td>蛋白团簇、液体结构</td></tr>
+          <tr><td>显式拟合</td><td>$I(q)$</td><td>$P(q)$、$S(q)$ 参数</td><td>用户指定模型</td><td>已知形状 + 相互作用理论</td></tr>
+        </tbody>
+      </table>
+
+      <h3>六个感知准则（Svergun 1992）</h3>
+      <table>
+        <thead>
+          <tr><th>代号</th><th>含义</th><th>理想范围 / 解释</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>OSCILL</strong></td><td>$p(r)$ 光滑度 $\|p'\|/\|p\|$ 相对参考</td><td>$\simeq 1$ 单峰光滑；$>3$ 振荡病态；实心球 $\approx 1.1$</td></tr>
+          <tr><td><strong>POSITV</strong></td><td>非负性 $\|p^+\|/\|p\|$</td><td>$=1$ 完全非负；$<1$ 含负值区域</td></tr>
+          <tr><td><strong>VALCEN</strong></td><td>中心区间 $[D_{\min}+\Delta D/4,\,D_{\max}-\Delta D/4]$ 质量</td><td>$>0.5$ 合理；$<0.3$ 提示 <span data-term="maximum-dimension">$D_{\max}$</span> 设错</td></tr>
+          <tr><td><strong>DISCRP</strong></td><td>广义离散度（倒易空间）</td><td>$0.7$–$0.95$ 为佳；$\gg 1$ 拟合差；$\ll 1$ 过拟合噪声</td></tr>
+          <tr><td><strong>SYSDEV</strong></td><td>残差符号交替（系统偏差）</td><td>$\simeq 1$ 无系统偏差；$\ll 1$ 存在趋势性残差</td></tr>
+          <tr><td><strong>STABIL</strong></td><td>解对 $\alpha$ 变化的稳定性</td><td>正确 $\alpha$ 附近最小；$\simeq 10^{-2}$ 表示 $\alpha$ 加倍时解变约 0.7%</td></tr>
+        </tbody>
+      </table>
+      <p>总估计 $E_\alpha$ 由各准则的归一化贡献构成；<span data-term="gnom">GNOM</span> 扫描 $\alpha$ 取 $E_\alpha$ 最大。典型行为：低 $\alpha$ → OSCILL 高、POSITV 低；高 $\alpha$ → DISCRP $\gg 1$、$p(r)$ 塌缩为常数；最优 $\alpha$ 在中间「峡谷」。</p>
+      <div class="keybox">
+        <strong>感知准则速判</strong>
+        <ul>
+          <li>OSCILL $\gg 1$ 且 POSITV $< 0.9$ → $\alpha$ 过小，增大 $\alpha$ 或检查噪声/背景。</li>
+          <li>DISCRP $\gg 1$ 且 SYSDEV $\ll 1$ → 系统残差（背景、$q$ 刻度、smearing）；勿仅靠调 $\alpha$。</li>
+          <li>VALCEN $< 0.3$ → <span data-term="maximum-dimension">$D_{\max}$</span> 过小或过大；扫描 $D_{\max} \pm 10\%$。</li>
+          <li>STABIL 在 $\alpha$ 扫描中呈尖锐峰 → 解对 $\alpha$ 敏感，报告扫描曲线。</li>
+        </ul>
+      </div>
+
+      <h3><span data-term="maximum-dimension">$D_{\max}$</span> 与 $p(r)$ 解读</h3>
+      <ul>
+        <li><strong><span data-term="maximum-dimension">$D_{\max}$</span>：</strong> $p(r)$ 支撑上界；应略大于真实最大内部距离（生物大分子常取 $D_{\max} \approx 2 R_g$ 试探后调整）。设太小 → VALCEN 低、$p(r)$ 截断；太大 → 尾部噪声放大。</li>
+        <li><strong>$p(r)$ 形状：</strong> 紧凑球 → 单峰对称；棒状 → 非对称拖尾；双峰 → 结构域或双分散；中空壳层 → 峰位反映内外径。</li>
+        <li><strong>导出量：</strong> $R_g^2 = \int r^2 p(r)\mathrm{d}r / (2\int p(r)\mathrm{d}r)$；$I(0) \propto \int p(r)\mathrm{d}r$（须绝对标定才得 $M$）。</li>
+      </ul>
+
+      <h3>与 Guinier 的关系</h3>
+      <p>低 $s$ 区 $I(s) \approx I(0)\exp(-R_g^2 s^2/3)$。IFT 给出的 $R_g$、$I(0)$ 应与 <span data-term="guinier-analysis">Guinier 分析</span> 一致（$\pm 5\%$）；偏差提示背景、$q$ 范围或 <span data-term="maximum-dimension">$D_{\max}$</span> 问题。IFT 优势：利用全 $q$ 范围、对中等 $q$ 形状敏感、给出 <span data-term="maximum-dimension">$D_{\max}$</span>。</p>
+      <table>
+        <thead>
+          <tr><th>判据</th><th>推荐</th><th>违反时</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><span data-term="gnom">GNOM</span> $R_g$ vs Guinier $R_g$</td><td>$<5\%$</td><td>$>10\%$：查 $q_{\min}$、背景、<span data-term="maximum-dimension">$D_{\max}$</span></td></tr>
+          <tr><td>$p(r)$ 在 <span data-term="maximum-dimension">$D_{\max}$</span> 处</td><td>自然趋零</td><td>截断或振荡：调 <span data-term="maximum-dimension">$D_{\max}$</span>/$\alpha$</td></tr>
+          <tr><td>浓度系列 $p(r)$</td><td>重叠（稀溶液）</td><td>随 $c$ 变：$S(q)$ 或聚集</td></tr>
+          <tr><td>拟合 $I(s)$ 残差</td><td>随机、SYSDEV $\simeq 1$</td><td>系统趋势：smearing/背景</td></tr>
+        </tbody>
+      </table>
+
+      <h3>典型 $p(r)$ 形状速查</h3>
+      <table>
+        <thead>
+          <tr><th>形态</th><th>$p(r)$ 特征</th><th>注意</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>紧凑球</td><td>单峰、近似对称</td><td>空心球亦可单峰——须结合 $I(q)$ 振荡</td></tr>
+          <tr><td>棒 / 椭球</td><td>非对称、拖尾</td><td>与柔性链区分需 Kratky</td></tr>
+          <tr><td>哑铃 / 双结构域</td><td>双峰或肩峰</td><td>多分散可洗成宽单峰</td></tr>
+          <tr><td>空心壳层</td><td>峰位反映壁厚</td><td>与实心球 $I(q)$ 可相近</td></tr>
+          <tr><td>无规卷曲</td><td>宽、多 $\alpha$ 敏感</td><td>宜用系综方法（<span data-term="ensemble-optimization">EOM</span>）</td></tr>
+        </tbody>
+      </table>
+
+      <div class="keybox">
+        <strong><span data-term="gnom">GNOM</span> / IFT 操作检查清单</strong>
+        <ol>
+          <li><strong>输入质量：</strong> 背景已扣、$q$ 刻度可靠；低 $q$ 至少 5–8 点且 $s_{\max} R_g \lesssim 1.3$ 在 Guinier 区内。</li>
+          <li><strong>初始 <span data-term="maximum-dimension">$D_{\max}$</span>：</strong> 从 $2.5 R_g$ 或 Guinier $R_g$ 估计；使 $p(r)$ 在 <span data-term="maximum-dimension">$D_{\max}$</span> 处自然衰减至零。</li>
+          <li><strong>smearing：</strong> 输入仪器 smearing 参数或先 <span data-term="desmearing">desmear</span>（生物 pinhole 常可忽略）；Kratky 须 smeared 核。</li>
+          <li><strong>选解：</strong> 优先自动 $\alpha$（感知准则）；目视检查 OSCILL、POSITV、残差分布。</li>
+          <li><strong>验证：</strong> $R_g$、$I(0)$ 与 Guinier 一致；拟合 $I(s)$ 无系统残差；浓度系列 $p(r)$ 重叠。</li>
+          <li><strong>下游：</strong> 合格 $p(r)$ 方可进入 DAMMIF / BODIES 等 ab initio 建模（<a href="../biosas/index.html">BioSAS 专题</a>）。</li>
+        </ol>
+      </div>
+
+      <h2>IFT 何时失效</h2>
+      <p>下列情形中，<span data-term="gnom">GNOM</span> 输出的 $p(r)$ 不应作为单粒子结构解释；须改用稀释、<span data-term="gift">GIFT</span>、SQ-IFT 或显式模型拟合。</p>
+      <table>
+        <thead>
+          <tr><th>条件</th><th>机理</th><th>如何判断</th><th>替代策略</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>浓溶液 / 强 $S(q)$</td><td>$\mathbf{K}$ 含结构因子；$p(r)$ 非单粒子分布</td><td>浓度系列 $p(r)$ 随 $c$ 变；$I(0)/c$ 非恒定</td><td>稀释；显式 $P(q)S(q)$ 模型拟合</td></tr>
+          <tr><td>多分散 / 混合物</td><td>$p(r)$ 为平均核，非真实 PDDF</td><td>宽化单峰、<span data-term="maximum-dimension">$D_{\max}$</span> 不稳；EM 显示尺寸分布</td><td>尺寸分布拟合（ML、CONTIN）；分离组分</td></tr>
+          <tr><td>柔性 / IDP 系综</td><td>无单一 $p(r)$；时间/构象平均</td><td>$p(r)$ 随 $\alpha$ 剧烈变；Kratky 平台高</td><td>ENSEMBLE、<span data-term="ensemble-optimization">EOM</span>；报告 $R_g$ 与 $p(r)$ 系综</td></tr>
+          <tr><td>低信噪 / $q$ 范围窄</td><td>病态加剧；$\alpha$ 选择不确定</td><td>DISCRP 全范围异常；POSITV $\ll 1$ 任何 $\alpha$</td><td>延长曝光；<span data-term="usaxs">USAXS</span> 延伸低 $q$；仅 Guinier</td></tr>
+          <tr><td>背景错误</td><td>虚假低 $q$ 信号进入核</td><td>$p(r)$ 长尾非零；$R_g$ 远大于预期</td><td>重测缓冲液；<span data-term="sec-saxs">SEC-SAS</span></td></tr>
+          <tr><td>各向异性 / 取向</td><td>球对称假设破缺</td><td>2D 图样非圆对称；$p(r)$ 物理不合理</td><td>2D 分析；取向平均或 <span data-term="gisaxs">GISAXS</span></td></tr>
+          <tr><td><span data-term="maximum-dimension">$D_{\max}$</span> 严重错误</td><td>支撑区间不匹配</td><td>VALCEN $<0.3$；$p(r)$ 在边界突变</td><td>扫描 <span data-term="maximum-dimension">$D_{\max}$</span>；用 $2 R_g$–$3 R_g$ 试探</td></tr>
+          <tr><td>强 smearing 未处理</td><td>$\mathbf{K}$ 错误</td><td>拟合残差系统性；$R_g$ 偏大</td><td>smeared IFT 或 smeared 模型</td></tr>
+        </tbody>
+      </table>
+
+      <h2>实践要点与坑</h2>
+      <h3>工作流：从 PRIMUS 到 <span data-term="gnom">GNOM</span></h3>
+      <ol>
+        <li><strong>PRIMUS 预处理：</strong> 合并子曝光、减背景、检查浓度系列；CORMAP 比较曲线是否统计一致。</li>
+        <li><strong>AUTORG / Guinier：</strong> 得 $R_g$、$I(0)$ 初值与拟合区间；作为 <span data-term="gnom">GNOM</span> 的独立基准。</li>
+        <li><strong><span data-term="gnom">GNOM</span>：</strong> 输入 <span data-term="maximum-dimension">$D_{\max}$</span>（常从 $2$–$2.5\,R_g$ 起试）、自动 $\alpha$；检查感知准则与 $p(r)$ 尾部。</li>
+        <li><strong>验证环：</strong> $R_g$、$I(0)$、<span data-term="maximum-dimension">$D_{\max}$</span> 与 Guinier、绝对 $M$（若有）、浓度系列互证。</li>
+        <li><strong>下游：</strong> 合格 $p(r)$ → DAMMIF；柔性体系改 <span data-term="ensemble-optimization">EOM</span>（<a href="../atsas/index.html">ATSAS 专题</a>）。</li>
+      </ol>
+      <p>Petoukhov &amp; Svergun（2013）强调：ab initio 建模对 $p(r)$ 质量敏感；前步 Guinier 不合格时，<span data-term="gnom">GNOM</span> 的「漂亮」$p(r)$ 常为假阳性。</p>
+
+      <h3>浓度系列与 <span data-term="sec-saxs">SEC-SAS</span> 中的 IFT</h3>
+      <p>稀溶液极限下，不同浓度 $c$ 还原后的 $p(r)$ 应<strong>形状重叠</strong>（允许 $I(0)/c$ 缩放）。若低 $c$ 与高 $c$ 的 $p(r)$ 或 $R_g$ 系统性不同，说明 $S(q)\neq 1$ 或聚集，而非 IFT 参数问题。正确流程：先做浓度外推或 SEC 分峰，再在「无限稀释」等效曲线上跑 <span data-term="gnom">GNOM</span>（Mertens &amp; Svergun 2010；Trewhella 2017）。</p>
+      <p><span data-term="sec-saxs">SEC-SAXS</span> 峰宽使有效 $q$ 范围内信噪变化；峰前/峰后子曲线 $p(r)$ 不一致提示未充分稀释或柱上变化。与 DLS、AUC 联用是 BioSAS 标准 QC，IFT 不能替代样品单分散验证。</p>
+
+      <h3>报告与可重复性（Trewhella 2017）</h3>
+      <p>发表须报告：<span data-term="gnom">GNOM</span> 版本、<span data-term="maximum-dimension">$D_{\max}$</span> 及稳定性扫描、$\alpha$ 选取方式（自动感知准则或手动）、Guinier 拟合区间、$R_g$/$I(0)$ 与 Guinier 一致性、$p(r)$ 图与拟合 $I(s)$ 残差。存入 SASBDB 时附 $\sigma(s)$ 定义（是否含 1% 下限）。审稿人常问「为何选此 <span data-term="maximum-dimension">$D_{\max}$</span>」——须展示 $D_{\max}\pm 10\%$ 时 $p(r)$ 与 $R_g$ 变化 $<5\%$。</p>
+      <ul>
+        <li><strong>$\alpha$ 手动调参 → 如何判断：</strong> 不同 $\alpha$ 的 $p(r)$ 形状定性不同 → 须用感知准则或固定自动模式；发表时报告 $\alpha$ 选取方式。</li>
+        <li><strong><span data-term="maximum-dimension">$D_{\max}$</span> 过大 → 如何判断：</strong> $p(r)$ 尾部振荡、负值；VALCEN 低。逐步减小至尾部平滑归零。</li>
+        <li><strong>过拟合噪声 → 如何判断：</strong> DISCRP $<0.7$、OSCILL $>3$、拟合曲线穿过误差棒内每个点。增大 $\alpha$ 或截断高 $q$ 噪声区。</li>
+        <li><strong>与 Guinier $R_g$ 矛盾 → 如何判断：</strong> 差异 $>10\%$ → 查背景、$q$ 下限、绝对标定；勿强行采信单一 $p(r)$。</li>
+        <li><strong>把 $p(r)$ 当「真实结构」→ 如何判断：</strong> IFT 给出的是与数据相容的分布之一；中空壳层与实心球可有相似 $I(q)$。须结合建模与独立技术（NMR、EM）。</li>
+        <li><strong>误差棒不可信 → 如何判断：</strong> 若 $\sigma_i$ 仅为计数统计、未含系统误差，$\chi^2$ 准则误导 $\alpha$。用 Pauw 2013 SEM 传播；感知准则对 $\sigma$ 误设较稳健。</li>
+        <li><strong>浓溶液仍跑 <span data-term="gnom">GNOM</span> → 如何判断：</strong> 低 $q$ 隆起、$p(r)$ 多峰、浓度系列 $p(r)$ 不重叠。改稀释、<span data-term="gift">GIFT</span> 或 $P(q)S(q)$ 拟合（Weyerich 1999）。</li>
+        <li><strong>多分散体系 → 如何判断：</strong> $p(r)$ 宽化单峰、<span data-term="maximum-dimension">$D_{\max}$</span> 随 $\alpha$ 漂移。用 CONTIN/尺寸分布拟合，或分离组分（<span data-term="sec-saxs">SEC-SAS</span>）。</li>
+        <li><strong>发表报告 → 如何判断：</strong> 须写 <span data-term="maximum-dimension">$D_{\max}$</span>、$\alpha$ 选取方式、Guinier 区间、$R_g$ 与 $p(r)$ 一致性；Trewhella 2017 要求展示 $p(r)$ 与 <span data-term="maximum-dimension">$D_{\max}$</span> 稳定性扫描。</li>
+      </ul>
+
+      <h2>相关词条</h2>
+      <p>
+        <span data-term="indirect-fourier-transform">间接傅里叶变换（IFT）</span>、
+        <span data-term="pair-distance-distribution">距离分布函数 $p(r)$</span>、
+        <span data-term="radius-of-gyration">回转半径 $R_g$</span>、
+        <span data-term="guinier-analysis">Guinier 分析</span>、
+        <span data-term="forward-scattering">前向散射 $I(0)$</span>、
+        <span data-term="scattering-vector-q">散射矢量 $q$</span>、
+        <span data-term="form-factor">形式因子</span>、
+        <span data-term="structure-factor">结构因子</span>、
+        <span data-term="polydispersity">多分散</span>、
+        <span data-term="instrument-smearing">仪器 smearing</span>、
+        <span data-term="absolute-intensity">绝对强度</span>
+      </p>
+
+      <h2>相关学习章</h2>
+      <ul>
+        <li><a href="../../learn/02-scattering-basics.html">02 散射基础</a> — $q$、$P(q)$ 与 $p(r)$ 的傅里叶关系</li>
+        <li><a href="../../learn/06-guinier-porod.html">06 Guinier / Porod</a> — 低 $q$ 与 $R_g$；IFT 验证基准</li>
+        <li><a href="../../learn/07-real-space-ift.html">07 实空间与 IFT</a> — 学习路径中的 <span data-term="gnom">GNOM</span> 系统讲解</li>
+        <li><a href="../data-reduction/index.html">专题：数据还原</a> — $\sigma(q)$ 与背景对 IFT 的影响</li>
+        <li><a href="../calibration/index.html">专题：绝对标定</a> — $I(0)$ 与分子量</li>
+        <li><a href="../atsas/index.html">ATSAS 工具链</a> — PRIMUS → <span data-term="gnom">GNOM</span> 管线</li>
+        <li><a href="../biosas/index.html">BioSAS 专题</a> — $p(r)$ 在分析管线中的位置</li>
+      </ul>
+
+      <h2>文献列表</h2>
+      <ul>
+        <li><em>Determination of the regularization parameter in indirect-transform methods using perceptual criteria</em>. Dmitri I. Svergun (1992). DOI: <a href="https://doi.org/10.1107/S0021889892001663" target="_blank" rel="noopener noreferrer">10.1107/S0021889892001663</a></li>
+        <li><em>Small-angle scattering of interacting particles. II. Generalized indirect Fourier transformation under consideration of the effective structure factor for polydisperse systems</em>. B. Weyerich, J. Brunner-Popela, O. Glatter (1999). DOI: <a href="https://doi.org/10.1107/S0021889898011790" target="_blank" rel="noopener noreferrer">10.1107/S0021889898011790</a></li>
+        <li><em>Evaluation of small-angle scattering data of charged particles using the generalized indirect Fourier transformation technique</em>. G. Fritz, A. Bergmann, O. Glatter (2000). DOI: <a href="https://doi.org/10.1063/1.1321770" target="_blank" rel="noopener noreferrer">10.1063/1.1321770</a></li>
+        <li><em>Versatile application of indirect Fourier transformation to structure factor analysis: from X-ray diffraction of molecular liquids to small angle scattering of protein solutions</em>. Toshiko Fukasawa, Takaaki Sato (2011). DOI: <a href="https://doi.org/10.1039/c0cp01679a" target="_blank" rel="noopener noreferrer">10.1039/c0cp01679a</a></li>
+        <li><em>Applications of small-angle X-ray scattering to biomacromolecular solutions</em>. Maxim V. Petoukhov, Dmitri I. Svergun (2013). DOI: <a href="https://doi.org/10.1016/j.biocel.2012.10.017" target="_blank" rel="noopener noreferrer">10.1016/j.biocel.2012.10.017</a></li>
+        <li><em>Small-angle X-ray and neutron scattering</em>. Cy M. Jeffries et al. (2021). DOI: <a href="https://doi.org/10.1038/s43586-021-00064-9" target="_blank" rel="noopener noreferrer">10.1038/s43586-021-00064-9</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

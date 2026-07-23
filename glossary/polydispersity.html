@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>多分散性 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>多分散性</h1>
+      <p class="subtitle-en">polydispersity</p>
+
+      <h2>定义</h2>
+      <p><strong>多分散性</strong>指散射体在尺寸（有时也包括形状、壳厚、电荷）上的分布宽度。实验观测的 <span data-term="form-factor">形式因子</span> 是对各尺寸 $P(q;R)$ 按强度权重的平均；常用标量多分散度 $\mathrm{PD}=\sigma_R/\langle R\rangle$，或 Schulz–Zimm / 对数正态等分布参数。</p>
+
+      <h2>要点</h2>
+      <ul>
+        <li>$\sigma_R/\langle R\rangle \gtrsim 10\%$–$15\%$ 即可显著抹平球形式因子振荡——「没有极小」不能否定球状模型。</li>
+        <li><span data-term="guinier-analysis">Guinier</span> 得到的 $R_g$ 是强度（$z$）加权平均，偏向大粒子；与数均、TEM 统计对照时须声明矩定义。</li>
+        <li>拟合时应报告所用分布类型与 $\langle R\rangle$ 的矩；仪器 <span data-term="instrument-smearing">smearing</span> 未卷积时会把分辨率当成「假多分散」。</li>
+        <li>形状多分散与尺寸多分散可退化：窄 $q$ 窗口下难以同时辨识两者。</li>
+      </ul>
+
+      <h2>常见混淆</h2>
+      <ul>
+        <li>把多分散抹平误判为「必须换成椭球/柱」——先试 Schulz 球再加形状自由度。</li>
+        <li>聚合物分子量分散度（Đ = $M_w/M_n$）与胶体粒径 PD 定义不同，勿直接互换数值。</li>
+        <li>混合物（双峰）≠ 单峰宽分布：可用 <span data-term="pair-distance-distribution">$p(r)$</span> 或多组分模型检验。</li>
+      </ul>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="form-factor">形式因子</span> $P(q)$</li>
+        <li><span data-term="radius-of-gyration">回转半径</span> $R_g$</li>
+        <li><span data-term="instrument-smearing">仪器模糊</span></li>
+        <li><span data-term="structure-factor">结构因子</span> $S(q)$</li>
+      </ul>
+
+            <h2>出现于</h2>
+      <ul>
+        <li><a href="../learn/08-models-polydispersity.html">学习路径 08 · 模型与多分散</a></li>
+        <li><a href="../topics/polymers-bcp/index.html">专题 · 聚合物 / BCP</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Guinier 分析 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>Guinier 分析</h1>
+      <p class="subtitle-en">Guinier analysis</p>
+
+      <h2>定义</h2>
+      <p><strong>Guinier 分析</strong>利用低 $q$ 区散射强度的近似关系估计 <span data-term="radius-of-gyration">回转半径</span> $R_g$ 与 <span data-term="forward-scattering">前向散射</span> 强度 $I(0)$：</p>
+      $$ I(q) \approx I(0)\, \exp\!\left(-\frac{q^2 R_g^2}{3}\right), \quad q R_g \lesssim 1 $$
+      <p>对 $\ln I(q)$ 关于 $q^2$ 作图（Guinier plot），线性区斜率为 $-R_g^2/3$，截距为 $\ln I(0)$。</p>
+
+      <h2>适用条件</h2>
+      <ul>
+        <li>单散射体或稀溶液中 <span data-term="structure-factor">结构因子</span> $S(q)\approx 1$</li>
+        <li>仅使用满足 $q R_g \lesssim 1$（常取 $\leq 1.3$）的数据点</li>
+        <li>颗粒形状在 Guinier 区不必已知——这是该方法的主要优点</li>
+        <li>无明显低 $q$ 聚集、电荷长程排斥导致的向上弯曲</li>
+      </ul>
+
+      <h2>操作步骤（简要）</h2>
+      <ol>
+        <li>对还原后的 $I(q)$ 扣除合理背景（尤其高 $q$ 平背景外推至低 $q$ 时要谨慎）。</li>
+        <li>选取线性 Guinier 区：逐步缩小/扩大 $q$ 范围，检查 $\ln I$ vs $q^2$ 线性度。</li>
+        <li>线性拟合得 $R_g = \sqrt{-3\times\mathrm{slope}}$，$I(0)=\exp(\mathrm{intercept})$。</li>
+        <li>报告所用 $q$ 范围、拟合优度，并检查是否与样品化学认知一致。</li>
+      </ol>
+
+      <h2>常见混淆</h2>
+      <ul>
+        <li>把 Guinier 区拉得太宽：超出 $q R_g \lesssim 1$ 后曲线弯曲，$R_g$ 系统性偏大或偏小。</li>
+        <li>浓溶液未处理 $S(q)$：Guinier 仍可用但需 Zimm 等处理，不能直接套稀溶液公式。</li>
+        <li>将 $R_g$ 直接当作球半径：需对照形状模型换算。</li>
+        <li>与 <span data-term="porod-law">Porod 区</span> 混淆：Guinier 是低 $q$，Porod 是高 $q$ 尾。</li>
+      </ul>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="radius-of-gyration">回转半径</span> $R_g$</li>
+        <li><span data-term="forward-scattering">前向散射</span> / $I(0)$</li>
+        <li><span data-term="porod-law">Porod 定律</span>（高 $q$ 互补分析）</li>
+        <li><span data-term="form-factor">形式因子</span> $P(q)$</li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../learn/06-guinier-porod.html">学习路径 06 · Guinier / Porod</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

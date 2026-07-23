@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>数据还原 · 专题手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>数据还原与校正（Data reduction）</h1>
+      <p class="subtitle-en">From 2D detector image to corrected $I(q)$ — Pauw 2013 guided reading</p>
+
+      <p>本导读以 Pauw（2013）<em>Everything <span data-term="saxs">SAXS</span>: small-angle scattering pattern collection and correction</em>（DOI: <a href="https://doi.org/10.1088/0953-8984/25/38/383201" target="_blank" rel="noopener noreferrer">10.1088/0953-8984/25/38/383201</a>）为主线，系统梳理从原始探测器图像到可分析 $I(q)$ 的全部校正步骤、误差传播与顺序；并以 Benecke 等（2014）DPDAK 包为例说明大型设施上的批处理还原实践。Pauw 的核心论断：<strong>分析质量的上限由数据质量决定</strong>——再精巧的拟合也无法挽救未校正或误校正的原始图样。</p>
+      <p>还原（reduction）与绝对标定（AU）的关系：前者把探测器计数变成<strong>物理一致的相对 $I(q)$</strong>（已扣背景、归一透射/时间/厚度、正确 $q$ 轴与误差）；后者再乘标定因子得到 $\mathrm{d}\Sigma/\mathrm{d}\Omega$（见 <a href="../calibration/index.html">绝对标定专题</a>）。许多「拟合发散」「$R_g$ 不对」的根因其实在还原链前段——背景、$q$ 刻度、bin 不确定度——而非模型本身。</p>
+
+      <h2>问题是什么</h2>
+      <p>小角散射实验测得的是探测器上的<strong>计数或强度分布</strong>，而非样品的微分截面 $\mathrm{d}\Sigma/\mathrm{d}\Omega$。从像素到 $I(q)$ 须经过一系列几何、探测器、样品与仪器效应的校正。若跳过或顺序错误：</p>
+      <p>还原错误在分析阶段的表现往往是「隐蔽的」：$R_g$ 可能仍能从弯曲的 Guinier「拟合」出来，但 $I(0)$、Porod 尾、条纹位置会系统性偏移。Jeffries 2021 强调现代 SAS 应从<strong>可重复还原</strong>起步；Pauw 2013 附录 A 给出测量前/后检查清单，适合作为 beamtime 标准操作程序（SOP）。</p>
+      <ul>
+        <li>$q$ 刻度偏差 → $R_g$、条纹位置系统性错误；</li>
+        <li>背景未扣或扣错 → 低 $q$ 抬高、Porod 尾失真；</li>
+        <li>透射/厚度未归一 → 不同样品强度不可比；</li>
+        <li>环向积分 bin 误差低估 → 拟合 $\chi^2$ 虚假偏小（Pauw 2014 勘误强调须用<strong>均值标准误</strong>而非 bin 内样本标准差）；</li>
+        <li>球面角/偏振忽略 → 高 $q$ 或宽角区系统偏差（通常 $<2\%$，同步辐射偏振显著时须校正）。</li>
+      </ul>
+      <p>Pauw 将 SAS 实验分为三步：<strong>采集 → 校正还原 → 分析</strong>。本章聚焦第二步；绝对标定（AU）见 <a href="../calibration/index.html">绝对标定专题</a> 与 <a href="../../learn/05-absolute-calibration.html">学习章 05</a>。</p>
+      <p>还原链的「顺序敏感」常被低估：背景应在相同样品归一化之后扣除，还是之前？透射校正是否已含在 $I_0$ 监测比中？不同软件默认不同，混用可导致 5–10% 系统差（Pauw §3.5）。发表与归档时应记录：软件名、版本、校正列表与顺序——Trewhella 2017 与 NeXus 类元数据格式的要求与此一致。</p>
+      <figure class="figure">
+        <img src="../../assets/figures/fig-12-data-reduction-pipeline.png" alt="SAS 数据还原管线" width="900">
+        <figcaption>Pauw 2013 标准样品校正顺序示意：探测器校正 → 几何/$q$ 映射 → 透射/厚度/时间 → 背景扣除 → 球面角/自吸收 → 环向积分 →（可选）绝对标定。<span class="fig-source">配图：自制示意</span></figcaption>
+      </figure>
+
+      <h2>文献主线</h2>
+      <h3>Pauw 2013：「Everything <span data-term="saxs">SAXS</span>」的结构</h3>
+      <p>全文 24 页，按以下逻辑展开（§3 为核心）：</p>
+      <ol>
+        <li><strong>§1 引言：</strong> SAS 的相位问题、形状/多分散/堆积三选二困境；仪器亮度从 $10^3$–$10^4$ ph/s（1930s）增至 $10^{11}$–$10^{14}$ ph/s（现代同步辐射）；探测器从胶片 → 成像板 → 气体线阵 → CCD → 光子计数 PAD（Pilatus/Eiger/Medipix）。</li>
+        <li><strong>§2 采集：</strong> 针孔 / 狭缝 / <span data-term="bonse-hart">Bonse–Hart</span> 三类仪器；真空样品室 vs 空气路径对弱散射样品的影响；半透射束阻或 PIN 二极管监测 $I_0$ flux。</li>
+        <li><strong>§3 还原与校正：</strong> 逐条列出校正代号（MK、PO、TR、FL、TI、TH、AU、BG、SP、SA、MS、SM、BIN 等），给出公式与不确定度传播；§3.5 给出标准样品校正顺序；附录为测量检查清单。</li>
+        <li><strong>§4–5：</strong> 校正后数据如何支撑拟合；强调 <span data-term="desmearing">desmearing</span> 数据不如 smearing 模型（与 Pedersen 1995 一致）。</li>
+      </ol>
+      <p>Pauw 的「代号语言」价值在于跨软件、跨台站沟通：方法节写「TR、FL、BG、BIN，按 §3.5 顺序」比只写软件按钮名更可审稿。§3.4 对每一步给出像素级 $\sigma$ 如何传播到 $I(q)$ 的方差——这是 Pauw 2014 勘误的上下文：bin 阶段若误用样本标准差，会连锁导致 Guinier、IFT 权重错误。</p>
+      <h3>Pauw 对三类仪器的还原差异</h3>
+      <table>
+        <thead>
+          <tr><th>几何</th><th>主导 smearing 源</th><th>还原重点</th><th>常见坑</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>针孔 + 单色</td><td>束斑、发散、样品厚度</td><td>$q$ 标定、TR/FL、BIN</td><td>寄生散射；真空路径</td></tr>
+          <tr><td>狭缝（Kratky）</td><td>狭缝积分 smear</td><td>SM：拟合 smeared 模型</td><td><span data-term="desmearing">desmear</span> 噪声放大</td></tr>
+          <tr><td><span data-term="bonse-hart">Bonse–Hart</span> <span data-term="usaxs">USAXS</span></td><td>$\Delta\lambda/\lambda$、晶体分辨</td><td>能量分辨、狭缝 <span data-term="desmearing">desmear</span></td><td>与 pinhole 拼接须处理 smear 差</td></tr>
+        </tbody>
+      </table>
+      <p>生物溶液 <span data-term="saxs">SAXS</span> 以针孔 + PAD 为主：还原链相对「短」，但背景（BG）与 bin 不确定度（BIN）往往是质量瓶颈，而非探测器非线性。</p>
+      <h3>Pauw 2014 勘误：bin 不确定度</h3>
+      <p>原文 §3.4.10 式 (35) 误用 bin 内<strong>样本标准差</strong>作为均值不确定度；正确做法取传播不确定度与<strong>均值标准误</strong>（SEM）的较大者，并可设相对不确定度下限 1%（即使校正再严也难以更准）。这对生物 <span data-term="saxs">SAXS</span> 低 $q$ 区 Guinier 拟合权重至关重要。</p>
+
+      <h3>Pauw 校正代号速查（§3.3–3.4）</h3>
+      <p>Pauw 用两字母代号标记每一步，便于在论文方法节与软件日志中对照：</p>
+      <table>
+        <thead>
+          <tr><th>代号</th><th>含义</th><th>典型触发条件</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>OF</td><td>偏移 / 暗电流</td><td>所有探测器；关光测或快门关闭帧</td></tr>
+          <tr><td>NL</td><td>非线性</td><td>CCD、成像板；计数型 PAD 通常忽略</td></tr>
+          <tr><td>MK</td><td>坏点掩膜</td><td>宇宙线、热像素、坏列</td></tr>
+          <tr><td>GD</td><td>几何畸变</td><td>大角探测器、光纤锥</td></tr>
+          <tr><td>PSF</td><td>点扩散函数</td><td>模糊环纹、峰展宽</td></tr>
+          <tr><td>TR</td><td>透射</td><td>所有透射几何；离子室或束阻法</td></tr>
+          <tr><td>FL</td><td>入射通量 $I_0$</td><td>束阻、PIN、离子室监测</td></tr>
+          <tr><td>TI / TH</td><td>时间 / 厚度</td><td>多曝光合并、不同光程</td></tr>
+          <tr><td>BG</td><td>背景</td><td>溶剂、空池、空样品架</td></tr>
+          <tr><td>PO</td><td>偏振</td><td>同步辐射 $P_i > 0.9$；宽 $q$ 区</td></tr>
+          <tr><td>SP</td><td>球面角 / 立体角</td><td>$2\theta > 5°$ 或 <span data-term="waxs">WAXS</span> 拼接</td></tr>
+          <tr><td>SA</td><td>样品自吸收</td><td>高 $\mu d$ 金属、浓悬液</td></tr>
+          <tr><td>SM</td><td>仪器 smearing</td><td>狭缝、束斑、$\Delta\lambda$；拟合时 smear 模型</td></tr>
+          <tr><td>MS</td><td><span data-term="multiple-scattering">多重散射</span></td><td>$T < 1/e$ 且强散射体</td></tr>
+          <tr><td>BIN</td><td>环向积分</td><td>各向同性 → $I(q)$；各向异性保留 2D</td></tr>
+          <tr><td>AU</td><td>绝对标定</td><td>见标定专题</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Benecke 2014（DPDAK）：设施级批处理还原</h3>
+      <p>DESY 开发的 DPDAK 面向<strong>海量 2D 图</strong>（<span data-term="saxs">SAXS</span>、<span data-term="gisaxs">GISAXS</span>、时间分辨），把 Pauw 类校正封装为可定制流水线：坏点掩膜、几何标定、通量/透射归一、背景扣除、1D 积分与可选 <span data-term="gisaxs">GISAXS</span> 专用路径。与交互式 FIT2D / Nika 相比，DPDAK 强调：</p>
+      <ul>
+        <li><strong>可重复脚本化：</strong> 同一 beamtime 数百帧用同一校正链，避免「手点」不一致；</li>
+        <li><strong>与设施几何绑定：</strong> 像素尺寸、$L$、束心一次标定、批量应用；</li>
+        <li><strong>局限：</strong> 不替代用户对背景匹配、各向异性是否该积分、smearing 策略的判断——输出仍须 QC（Guinier 线性、overlap 区 merge 等）。</li>
+      </ul>
+      <p>选用 DPDAK 或台站自研软件时，应把 Pauw 代号列表当作<strong>配置检查表</strong>，确认未跳过 TR/FL/BG 等关键步。</p>
+
+      <h3>径向积分 vs 扇区积分</h3>
+      <figure class="figure">
+        <img src="../../assets/figures/fig-13-radial-vs-sector-integration.png" alt="径向积分与扇区积分" width="900">
+        <figcaption>各向同性样品：全环平均得 $I(q)$。取向或 <span data-term="gisaxs">GISAXS</span> 条纹：须扇区积分或保留 2D，勿把取向信号环向抹平。<span class="fig-source">配图：自制示意</span></figcaption>
+      </figure>
+      <h3>多距离 / 多曝光拼接（Cookson 2006；Pauw §3.4）</h3>
+      <p>现代 <span data-term="saxs">SAXS</span> 常在多个样品–探测器距离 $L$ 或多曝光时间上拼接 $q$ 范围。还原要点：</p>
+      <ul>
+        <li>每个 $L$ 独立 $q$ 标定与束心；overlap 区强度应平滑至 $<5\%$；</li>
+        <li>CCD 动态范围有限时，短曝光补高 $q$、长曝光补低 $q$（或分区 mask 拼接）；</li>
+        <li>merge 时须统一 TR、FL、TI 归一化后再拼接，勿对未归一计数直接 splice；</li>
+        <li>变能量（<span data-term="asaxs">ASAXS</span>）时 $I_0$/$I_t$ 响应可能变，须二级环状标样逐能量归一（Cookson 2006）。</li>
+      </ul>
+
+      <h3>还原软件与设施实践对照</h3>
+      <table>
+        <thead>
+          <tr><th>工具</th><th>定位</th><th>与 Pauw 关系</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>FIT2D</td><td>经典 2D 积分、$q$ 标定</td><td>实现 BIN、部分几何校正</td></tr>
+          <tr><td>Nika / Irena (IGOR)</td><td>生物/软物质交互分析</td><td>还原 + 拟合一站式</td></tr>
+          <tr><td>DPDAK</td><td>DESY 大批量还原</td><td>可配置 Pauw 类流水线</td></tr>
+          <tr><td>台站自研（如 Saxs15id）</td><td>与硬件深度集成</td><td>实时归一化、自动 $L$ 切换</td></tr>
+          <tr><td>DAWN / pyFAI 等</td><td>通用 2D 积分框架</td><td>几何标定 + 环向积分</td></tr>
+        </tbody>
+      </table>
+      <p>软件选择次要于<strong>是否执行完整校正链并记录</strong>。同一数据用两种软件还原，若差 $>5\%$，先查 TR/BG/BIN 顺序与 $\sigma(q)$ 定义，而非争论「哪个软件更准」。</p>
+
+      <h2>关键公式与结论</h2>
+      <h3>探测器校正（§3.3）</h3>
+      <p>依探测器类型不同，可能包括：暗电流/偏移（OF）、增益/非线性（NL）、坏点掩膜（MK）、几何畸变（GD）、点扩散函数（PSF）。光子计数 PAD（Pilatus/Eiger/Medipix）通常仅需暗电流与坏点；CCD 须额外非线性与荧光校正。掩膜不改变不确定度；非线性校正会改变 $\sigma_{r,j}$。</p>
+      <p><strong>计数统计：</strong> Poisson 区 $\sigma \approx \sqrt{N}$；经除法归一（TR、FL）后须误差传播。Pauw 给出逐像素 $\sigma_{r,j}$ 经整条校正链的传播公式（§3.4）——拟合权重应基于传播后的 $\sigma(q)$，而非原始计数。</p>
+
+      <h3>$q$ 刻度与几何（MK 之后、BIN 之前）</h3>
+      <p>散射矢量（本站 <span data-term="scattering-vector-q">$q$</span>）：</p>
+      $$q = \frac{4\pi\sin\theta}{\lambda}.$$
+      <p>银二十二酸、硬脂酸或光栅峰定 $L$ 与束心；改 $L$、$\lambda$、探测器倾斜后必须重标。Cookson 2006 用内置二氧化硅环自动拟合束心；多 $L$ merge 时 overlap 区应平滑至 $<5\%$ 台阶，否则 $q$ 或归一有误。</p>
+
+      <h3>透射与通量（TR、FL）</h3>
+      <p>透射因子（离子室法，同步辐射常见）：</p>
+      $$T_{\mathrm{r}}=\frac{I_{\mathrm{d},1}I_{\mathrm{u},0}}{I_{\mathrm{u},1}I_{\mathrm{d},0}}.$$
+      <p>台式机常用半透射束阻或下游强散射体间接测 $T_r = I_1/I_0$。校正：</p>
+      $$I_{j,\mathrm{cor}}=\frac{I_j}{T_{\mathrm{r}} f_{\mathrm{s}}}.$$
+      <p>薄样品 $T_r = \exp(-\mu d)$；$T$ 误差直接进强度误差预算。</p>
+
+      <h3>时间与厚度（TI、TH）</h3>
+      $$I_{j,\mathrm{cor}}=\frac{I_j}{t_{\mathrm{s}} d_{\mathrm{s}}}.$$
+      <p>使不同曝光与光程的测量可比；不确定度须传播 $\sigma(t_s)$、$\sigma(d_s)$。</p>
+
+      <h3>样品自吸收（SA）</h3>
+      <p>厚样品或高 $\mu$ 材料：散射路径上的吸收使高角强度偏低。Pauw 给出校正因子（取决于几何与 $\mu$）；金属、颗粒悬浊液、未对比匹配的中子样品须检查。判断：变厚度后高 $q$ 形状是否一致。</p>
+
+      <h3>背景扣除（BG）</h3>
+      $$I_{j,\mathrm{cor}}=I_j-I_{j,\mathrm{b}}, \quad \sigma_{\mathrm{r},j,\mathrm{cor}}=\sqrt{\sigma_{\mathrm{r},j}^{2}+\sigma_{\mathrm{r},j,\mathrm{b}}^{2}}.$$
+      <p>背景测量须与样品测量在池型、位置、曝光、校正链上尽可能一致（Brület 等，Pauw 引文）。样品/背景信噪比大时，可适当缩短背景曝光以优化总统计（Pauw §3.4.5）。</p>
+
+      <h3>球面角校正（SP）</h3>
+      <p>平面探测器像素对应立体角不等；归一化校正（Pauw 式 27）：</p>
+      $$I_{j,\mathrm{cor}}=I_j\frac{L_{\mathrm{P}}^{3}}{L_{0}^{3}}.$$
+      <p>$2\theta < 5°$ 时通常 $<1\%$；宽角 <span data-term="waxs">WAXS</span> 拼接时不可忽略。</p>
+
+      <h3>偏振（PO）</h3>
+      <p>同步辐射 $P_i \approx 0.95$ 时，$2\theta \approx 5°$ 处校正约 1%。未偏振光取 $P_i=0.5$。公式见 Pauw 式 (18)–(19)（Hura 等）。</p>
+
+      <h3>环向积分 / binning（BIN）</h3>
+      <p>各向同性样品：按 $q$ 分 bin，计算 $\overline{q}$ 与 $I_{\mathrm{qbin}}(\overline{q})$。不确定度（Pauw 2014 勘误后）：</p>
+      $$\sigma_{r,q\mathrm{bin}}=\max\left\{\frac{1}{N_{q\mathrm{bin}}}\sqrt{\sum_{q\in[q_n,q_{n+1}]}\sigma_{r,j}^{2}},\;\frac{1}{\sqrt{N_{q\mathrm{bin}}}}\sqrt{\frac{1}{N_{q\mathrm{bin}}-1}\sum_{q\in[q_n,q_{n+1}]}(I_j-I_{q\mathrm{bin}})^{2}}\right\}.$$
+      <p>bin 间距可选均匀、对数或自适应（Ilavsky 2012；Cervellino 2006）。低 $q$ 建议对数 bin 以保留 Guinier 区点数。</p>
+      <table>
+        <thead>
+          <tr><th>bin 方案</th><th>优点</th><th>缺点</th><th>适用</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>线性 $q$</td><td>高 $q$ 分辨均匀</td><td>低 $q$ 点稀疏</td><td>Porod 尾、宽 $q$ 模型拟合</td></tr>
+          <tr><td>对数 $q$</td><td>低 $q$ 点多</td><td>高 $q$ 点疏</td><td>生物 Guinier、<span data-term="gnom">GNOM</span> 输入</td></tr>
+          <tr><td>自适应</td><td>信噪加权</td><td>实现复杂</td><td>弱散射、宽动态范围</td></tr>
+        </tbody>
+      </table>
+
+      <h3>误差传播与拟合权重（Pauw 2014）</h3>
+      <p>还原后每点 $\sigma(q)$ 应综合：计数统计、背景扣除、透射/厚度不确定度、bin 内 SEM。若仅用 $\sqrt{N}$ 而忽略系统项，$\chi^2 \ll 1$ 导致过拟合。Pauw 建议相对不确定度<strong>下限 1%</strong>，反映未建模的系统误差（狭缝 smearing、池壁散射等）。</p>
+
+      <h3>仪器 smearing（SM）与<span data-term="multiple-scattering">多重散射</span>（MS）</h3>
+      <p>贡献来源：$\Delta\lambda/\lambda$、束发散、束斑尺寸、样品厚度、探测器 PSF。针孔 + 晶体单色通常 $\Delta\lambda/\lambda < 10^{-3}$，<span data-term="instrument-smearing">smearing</span> 由准直主导；<span data-term="bonse-hart">Bonse–Hart</span> 须显式处理波长展宽。Pauw 强烈建议：<strong>拟合时对模型做 smearing，而非对数据 <span data-term="desmearing">desmear</span></strong>——<span data-term="desmearing">desmear</span> 放大噪声甚至引入伪特征（与 Pedersen 1995 一致）。Kratky 狭缝数据若已 <span data-term="desmearing">desmear</span>，须报告算法与 $q$ 范围；生物 pinhole 数据 smearing 常可忽略，但 <span data-term="usaxs">USAXS</span>–<span data-term="saxs">SAXS</span> 拼接仍须注意。</p>
+
+      <h3>标准样品校正顺序（§3.5 摘要）</h3>
+      <table>
+        <thead>
+          <tr><th>阶段</th><th>校正项</th><th>说明</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>探测器</td><td>OF, NL, MK, GD, PSF</td><td>依硬件；PAD 通常最简</td></tr>
+          <tr><td>几何</td><td>$q$ 标定、束心、样品–探测器距离 $L$</td><td>银二十二酸或光栅；改 $L$/$\lambda$ 须重标</td></tr>
+          <tr><td>样品归一</td><td>TR, FL, TI, TH</td><td>透射、入射通量、时间、厚度</td></tr>
+          <tr><td>物理效应</td><td>PO, SP, SA</td><td>偏振、球面角、样品自吸收（高 $\mu d$ 时）</td></tr>
+          <tr><td>信号分离</td><td>BG</td><td>溶剂/空池/空样品架</td></tr>
+          <tr><td>降维</td><td>BIN（+ SM 处理策略）</td><td>2D → $I(q)$；各向异性保留 $(q,\psi)$</td></tr>
+          <tr><td>定量</td><td>AU</td><td>绝对标定 → $\mathrm{d}\Sigma/\mathrm{d}\Omega$</td></tr>
+        </tbody>
+      </table>
+
+      <div class="keybox">
+        <strong>数据还原检查清单（改编自 Pauw 附录 A.1）</strong>
+        <ol>
+          <li>记录波长 $\lambda$、$L$、束心、探测器倾斜、曝光时间、样品厚度与 $T$。</li>
+          <li>测暗电流/偏移；生成坏点掩膜；确认 $I_0$ 监测（束阻/PIN/离子室）。</li>
+          <li>$q$ 标定标准样（银二十二酸等）与样品同几何。</li>
+          <li>样品 + 匹配背景（溶剂/空池）+ 空样品架；背景走同一校正链。</li>
+          <li>环向积分：报告 bin 方案；不确定度用 SEM 与传播值较大者。</li>
+          <li>输出：$I(q)$、$\sigma(q)$、$q$ 轴、元数据（软件版本、校正列表）。</li>
+          <li>分析前：Guinier 区线性？高 $q$ 信噪？重叠区与多距离 merge 是否平滑？</li>
+        </ol>
+      </div>
+
+      <h3>生物 <span data-term="saxs">SAXS</span> 还原要点（Jeffries 2021；Trewhella 2017）</h3>
+      <p>生物样品还原的「特殊之处」不在公式，而在<strong>背景与样品 QC</strong>：</p>
+      <ul>
+        <li><strong>缓冲液匹配：</strong> 样品+缓冲液与纯缓冲液须同池型、同光路、同曝光策略；透析液作 blank 是常用最佳实践。</li>
+        <li><strong>浓度系列：</strong> 还原后先检查 $I(q)/c$ 在低 $q$ 是否重合，再进入 Guinier/IFT——还原错误与聚集在此一并暴露。</li>
+        <li><strong><span data-term="sec-saxs">SEC-SAXS</span>：</strong> 峰内积分相当于在线稀释；须对齐 UV 与 <span data-term="saxs">SAXS</span> 时间轴，否则 $c$ 与 $I(0)$ 不对应。</li>
+        <li><strong><span data-term="radiation-damage">辐射损伤</span>：</strong> 多子曝光或流动池；对比帧间 $I(0)$ 漂移 $>3\%$ 须丢弃或降通量。</li>
+      </ul>
+      <p>绝对标定（AU）对生物 $M$ 验证是还原链的延伸，见 <a href="../calibration/index.html">标定专题</a>；但即使不做 AU，相对还原仍须严格，否则 $R_g$、Kratky 形态亦不可信。</p>
+
+      <h3>各向异性与 2D 数据保留</h3>
+      <p>还原不一定是「2D → 1D」。纤维、剪切、液晶、<span data-term="gisaxs">GISAXS</span> 等应保留 $(q,\psi)$ 或 sector 曲线（Pauw §3.4.9）。全环平均前的自检：2D 图是否圆对称？azimuthal 剖面是否平坦？若否，勿强行 BIN 成单一 $I(q)$。</p>
+
+      <h2>实践要点与坑</h2>
+      <ul>
+        <li><strong>背景不匹配 → 如何判断：</strong> 样品+缓冲液与纯缓冲液 $I(q)$ 在低 $q$ 不能相减至近零；$R_g$ 偏大、$p(r)$ 尾部抬高。检查池型、 meniscus 位置、是否同一光路。</li>
+        <li><strong>$q$ 标定漂移 → 如何判断：</strong> 标准样峰位随时间移动；多距离 merge 在 overlap 区台阶 $>5\%$。每次改 $L$ 或能量后重标。</li>
+        <li><strong>bin 不确定度低估 → 如何判断：</strong> $\chi^2 \ll 1$ 且残差无结构；Guinier 拟合权重失真。用 Pauw 2014 勘误公式；设 1% 相对下限。</li>
+        <li><strong>透射未测 → 如何判断：</strong> 厚样品高 $q$ 相对强度系统性偏低；不同厚度同一样品曲线不能归一重合。$T$ 应独立测量，勿从散射反推。</li>
+        <li><strong>先扣背景还是先除 $T$ → 如何判断：</strong> 软件顺序须与文献/台站一致；混用会导致 5–10% 系统差。记录软件默认顺序（Pauw §3.5 给出推荐序）。</li>
+        <li><strong>对 Kratky 数据 <span data-term="desmearing">desmear</span> → 如何判断：</strong> 低 $q$ 出现非物理振荡；$R_g$ 偏大 10–30%。改 smeared 模型拟合或针孔重测。</li>
+        <li><strong>宇宙线/坏点未掩 → 如何判断：</strong> $I(q)$ 上孤立尖峰；环向平均后仍残留 zingers。还原前掩膜或中值滤波。</li>
+        <li><strong><span data-term="multiple-scattering">多重散射</span> → 如何判断：</strong> $T < 0.37$ 且浓溶液；变厚度或 $\lambda$ 后 $I(q)$ 形状变。稀释样品或理论/蒙特卡罗校正。</li>
+        <li><strong>2D 取向被平均掉 → 如何判断：</strong> 2D 图有明显扇区差异但 1D 曲线「过于光滑」；纤维样品 $R_g$ 与显微镜不符。改扇区积分或 <a href="../gisaxs/index.html"><span data-term="gisaxs">GISAXS</span> 专题</a>。</li>
+        <li><strong>多 $L$ / 多能量 merge → 如何判断：</strong> overlap 台阶、束心不一致、$I_0$ 归一未随能量更新（Cookson 2006）。每段独立 $q$ 标定后 merge，或固定二级环强度曲线。</li>
+        <li><strong>元数据缺失 → 如何判断：</strong> 无法复现还原即无法审稿；须存档 $\lambda$、$L$、曝光、池型、软件版本、校正列表（Jeffries 2021）。</li>
+        <li><strong>还原后直接建模 → 如何判断：</strong> 跳过 Guinier/$p(r)$ QC 时，建模 $\chi^2$ 无诊断价值。先验证低 $q$ 线性、$M$（若绝对标定）、浓度系列。</li>
+      </ul>
+
+      <h2>相关词条</h2>
+      <p>
+        <span data-term="scattering-vector-q">散射矢量 $q$</span>、
+        <span data-term="forward-scattering">前向散射</span>、
+        <span data-term="scattering-length-density">散射长度密度</span>、
+        <span data-term="contrast">衬度</span>、
+        <span data-term="guinier-analysis">Guinier 分析</span>、
+        <span data-term="instrument-smearing">仪器 smearing</span>、
+        <span data-term="absolute-intensity">绝对强度</span>
+      </p>
+
+      <h2>相关学习章</h2>
+      <ul>
+        <li><a href="../../learn/04-data-reduction.html">04 数据还原</a> — 学习路径中的系统讲解</li>
+        <li><a href="../../learn/03-instruments.html">03 仪器与几何</a> — 针孔/狭缝、$q$ 分辨率与 smearing 来源</li>
+        <li><a href="../../learn/05-absolute-calibration.html">05 绝对标定</a> — 还原链末端的 AU 校正</li>
+        <li><a href="../ift/index.html">专题：IFT</a> — 还原质量对 $p(r)$ 的影响</li>
+        <li><a href="../biosas/index.html">BioSAS 专题</a> — 缓冲液背景与 QC</li>
+        <li><a href="../calibration/index.html">专题：绝对标定</a> — CF 与标样选择</li>
+      </ul>
+
+      <h2>文献列表</h2>
+      <ul>
+        <li><em>Everything <span data-term="saxs">SAXS</span>: small-angle scattering pattern collection and correction</em>. Brian R. Pauw (2013). DOI: <a href="https://doi.org/10.1088/0953-8984/25/38/383201" target="_blank" rel="noopener noreferrer">10.1088/0953-8984/25/38/383201</a></li>
+        <li><em>A customizable software for fast reduction and analysis of large X-ray scattering data sets: applications of the new DPDAK package to small-angle X-ray scattering and grazing-incidence small-angle X-ray scattering</em>. Gunthard Benecke et al. (2014). DOI: <a href="https://doi.org/10.1107/S1600576714019773" target="_blank" rel="noopener noreferrer">10.1107/S1600576714019773</a></li>
+        <li><em>Strategies for data collection and calibration with a pinhole-geometry <span data-term="saxs">SAXS</span> instrument on a synchrotron beamline</em>. David Cookson et al. (2006). DOI: <a href="https://doi.org/10.1107/S0909049506030184" target="_blank" rel="noopener noreferrer">10.1107/S0909049506030184</a></li>
+        <li><em>Instrumentation for Small-Angle Scattering</em>. Jan Skov Pedersen (1995). DOI: <a href="https://doi.org/10.1007/978-94-015-8457-9_2" target="_blank" rel="noopener noreferrer">10.1007/978-94-015-8457-9_2</a></li>
+        <li><em>Small-angle X-ray and neutron scattering</em>. Cy M. Jeffries et al. (2021). DOI: <a href="https://doi.org/10.1038/s43586-021-00064-9" target="_blank" rel="noopener noreferrer">10.1038/s43586-021-00064-9</a></li>
+        <li><em>On the absolute calibration of bench-top small-angle X-ray scattering instruments: a comparison of different standard methods</em>. Cécile A. Dreiss, Kevin S. Jack, Andrew P. Parker (2006). DOI: <a href="https://doi.org/10.1107/S0021889805033091" target="_blank" rel="noopener noreferrer">10.1107/S0021889805033091</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>磁性小角中子散射 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>磁性小角中子散射</h1>
+      <p class="subtitle-en">magnetic small-angle neutron scattering</p>
+
+      <h2>定义</h2>
+      <p><strong>磁性小角中子散射</strong>（magnetic SANS）利用中子自旋与样品磁矩的相互作用，在核散射之外增加<strong>磁散射</strong>通道。通过外加磁场与偏振分析，可分离核 <span data-term="scattering-length-density">散射长度密度</span> 起伏与磁化密度起伏对 $I(q)$ 的贡献，从而研究磁畴、纳米颗粒磁结构、涡旋与界面磁化等。</p>
+
+      <h2>要点</h2>
+      <ul>
+        <li>核散射与磁散射的 <span data-term="contrast">衬度</span> 机制不同：前者由同位素/核 $b$ 决定，后者由磁化矢量与偏振几何决定。</li>
+        <li>饱和磁场下，磁散射常呈各向异性（如平行/垂直场方向强度比），可用于分解核项与磁项。</li>
+        <li>偏振中子（SANSPOL、XYZ 偏振分析）可进一步分离自旋非弹性/非相干与磁干涉项。</li>
+        <li>与核衬度匹配（H/D）结合时，可「关掉」某一化学相，只看其磁结构。</li>
+      </ul>
+
+      <h2>常见混淆</h2>
+      <ul>
+        <li>磁性 SANS ≠ 「样品带磁性就能看见」：无磁矩起伏或磁化均匀时，磁散射贡献可忽略。</li>
+        <li>不要把 2D 各向异性一律当成磁信号——机械取向、剪切织构也会产生各向异性核散射。</li>
+        <li>磁场下样品架与窗体的寄生散射、涡流加热须单独检查空白。</li>
+      </ul>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="contrast">衬度</span></li>
+        <li><span data-term="scattering-length-density">散射长度密度</span></li>
+        <li><span data-term="form-factor">形式因子</span>与 <span data-term="structure-factor">结构因子</span></li>
+      </ul>
+
+            <h2>出现于</h2>
+      <ul>
+        <li><a href="../learn/02-scattering-basics.html">学习路径 02 · 散射基础</a></li>
+        <li><a href="../topics/sans-contrast/index.html">专题 · SANS 衬度</a></li>
+        <li><a href="../topics/magnetic-sans/index.html">专题 · 磁性 SANS</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

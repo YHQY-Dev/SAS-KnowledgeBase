@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>相干散射 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>相干散射</h1>
+      <p class="subtitle-en">coherent scattering</p>
+
+      <h2>定义</h2>
+      <p><strong>相干散射</strong>指散射波之间可保持相位关系并发生干涉的过程；其截面依赖原子位置关联，因而是结构信息的载体。SAS 中的 $I(q)\propto|\Delta\rho(\mathbf{q})|^2$ 图像建立在相干弹性散射之上。</p>
+
+      <h2>物理直觉</h2>
+      <p>与 <span data-term="incoherent-background">不相干散射</span>相对：后者不形成干涉图样，常表现为近似平坦本底（SANS 中氢尤其显著）。</p>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="incoherent-background">不相干本底</span></li>
+        <li><span data-term="scattering-length-density">散射长度密度</span></li>
+        <li><span data-term="form-factor">形式因子</span></li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../learn/01-what-is-sas.html">学习路径 01-what-is-sas</a></li>
+        <li><a href="../learn/02-scattering-basics.html">学习路径 02-scattering-basics</a></li>
+        <li><a href="../topics/sans-contrast/index.html">专题 sans-contrast</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>
