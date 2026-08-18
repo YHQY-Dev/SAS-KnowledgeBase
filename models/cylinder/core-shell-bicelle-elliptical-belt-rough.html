@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>粗糙腰带椭圆双层盘 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>粗糙腰带椭圆双层盘</h1>
+      <p class="subtitle-en">elliptical core-shell bicelle with rough belt</p>
+      <h2>适用场景</h2>
+      <p>在椭圆核壳 bicelle 上，边缘腰带与溶剂的界面不是锐跳变，而是有限宽度的粗糙或成分渐变。适用于去垢剂腰带溶剂化严重、边缘波动的纳米盘，以及高 $q$ 比锐界面核壳盘衰减更快、但厚度振荡仍在的数据。</p>
+      <p>若粗糙发生在上下面而不是腰带，应把模糊加在面帽，而不是本页的腰带 $\sigma_{\mathrm{belt}}$。</p>
+      <h2>物理图像</h2>
+      <p>锐界面腰带振幅乘以高斯界面因子 $\mathrm{e}^{-q^2\sigma_{\mathrm{belt}}^2/2}$（振幅）或强度上的 $\mathrm{e}^{-q^2\sigma_{\mathrm{belt}}^2}$，等效于边缘 SLD 的误差函数过渡。椭圆盘面平均与上一篇相同；粗糙主要阻尼径向高 $q$，对双层厚度 $\mathrm{sinc}$ 影响较弱。</p>
+      <p>$\sigma_{\mathrm{belt}}$ 与腰带厚度 $t_{\mathrm{belt}}$ 相关：过度模糊的“厚带”可用较小 $t$ 加大 $\sigma$ 近似，须用对比或独立化学计量约束。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/cylinder/core-shell-bicelle-elliptical-belt-rough-geometry.png" alt="椭圆双层盘粗糙腰带" width="900">
+        <figcaption>椭圆盘边缘的粗糙腰带，宽度 $\sigma_{\mathrm{belt}}$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="../../assets/figures/models/cylinder/core-shell-bicelle-elliptical-belt-rough-iq.png" alt="粗糙腰带椭圆双层盘 I(q) 示意" width="900">
+        <figcaption>腰带模糊使高 $q$ 比锐界面更快下降。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>在椭圆核壳振幅上把腰带项乘以界面因子</p>
+      $$A_{\mathrm{belt}}\to A_{\mathrm{belt}}\,\mathrm{e}^{-q^2\sigma_{\mathrm{belt}}^2/2},$$
+      $$P(q)\propto\bigl\langle\bigl|A_{\mathrm{core}}+A_{\mathrm{face}}+A_{\mathrm{belt}}\bigr|^2\bigr\rangle_{\alpha,\psi}.$$
+      <p>强度若把模糊写在 $|A|^2$ 外，须声明约定，避免与振幅形式差一倍指数。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>半轴</td><td>$a$, $b$</td><td>椭圆盘面</td><td>Å</td><td>同椭圆 bicelle</td></tr>
+          <tr><td>腰带粗糙度</td><td>$\sigma_{\mathrm{belt}}$</td><td>边缘界面高斯宽度</td><td>Å</td><td>2–30 Å</td></tr>
+          <tr><td>腰带厚</td><td>$t_{\mathrm{belt}}$</td><td>锐界面极限下的带厚</td><td>Å</td><td>与 $\sigma$ 相关</td></tr>
+          <tr><td>各区 SLD</td><td>$\rho_k$</td><td>核、面、带、溶剂</td><td>Å$^{-2}$</td><td>对比约束</td></tr>
+          <tr><td>取向角</td><td>$\theta,\phi$</td><td>二维取向</td><td>度</td><td>粉末或场取向</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>$\sigma_{\mathrm{belt}}$、$t_{\mathrm{belt}}$ 与腰带 $\rho$ 三联简并。没有高 $q$ 与对比点时不要同时放开。半径多分散与粗糙都钝化振荡，优先用一种机制并在报告中写明。</p>
+      <p>取向与磁性同椭圆 bicelle。粗糙本身不是磁性效应；若磁死层只在边缘，磁通道的 $\sigma$ 可以与核通道不同。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="core-shell-bicelle-elliptical.html">椭圆核壳双层盘</a> — $\sigma_{\mathrm{belt}}\to 0$ 的锐腰带极限。</li>
+        <li><a href="core-shell-bicelle.html">核壳双层盘</a> — 圆盘锐界面，无腰带粗糙。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Luchette, P. A.; et al. Morphology of fast-tumbling bicelles: a small angle neutron scattering and NMR study. <em>Biochim. Biophys. Acta</em> 2001, 1513, 83–94. DOI: <a href="https://doi.org/10.1016/S0005-2736(01)00358-3" target="_blank" rel="noopener noreferrer">10.1016/S0005-2736(01)00358-3</a></li>
+        <li>Pedersen, J. S. Analysis of small-angle scattering data from colloids and polymer solutions: modeling and least-squares fitting. <em>J. Appl. Cryst.</em> 1997, 30, 339–354. DOI: <a href="https://doi.org/10.1107/S0021889897002532" target="_blank" rel="noopener noreferrer">10.1107/S0021889897002532</a></li>
+      </ul>
+      <nav class="pager">
+        <a href="core-shell-bicelle-elliptical.html">← 椭圆核壳双层盘</a>
+        <a href="elliptical-cylinder.html">椭圆截面圆柱 →</a>
+      </nav>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

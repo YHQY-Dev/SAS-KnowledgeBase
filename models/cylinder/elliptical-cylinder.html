@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>椭圆截面圆柱 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>椭圆截面圆柱</h1>
+      <p class="subtitle-en">elliptical cylinder</p>
+      <h2>适用场景</h2>
+      <p>截面为椭圆（半轴 $a$、$b$）、沿轴长度为 $L$ 的直柱。适用于压扁的纳米棒、带状胶束、以及圆截面圆柱无法同时拟合 Bessel 极小位置与深度的刚性长颗粒。</p>
+      <p>细长时中间区仍是 $q^{-1}$；轴比偏离 1 会抹平截面振荡。若颗粒还会弯曲，应改用椭圆截面柔性圆柱。</p>
+      <h2>物理图像</h2>
+      <p>Fournet 圆柱振幅中的 $qR\sin\alpha$ 换成 $q R_{\mathrm{eff}}(\psi)\sin\alpha$，再对截面方位 $\psi$ 与极角 $\alpha$ 平均。体积 $V=\pi a b L$。回转半径 $R_g^2=(a^2+b^2)/4+L^2/12$。</p>
+      <p>二维图案中，截面长轴与短轴给出不同的赤道弧调制；粉末平均只留下轴比阻尼。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/cylinder/elliptical-cylinder-geometry.png" alt="椭圆截面圆柱几何" width="900">
+        <figcaption>截面半轴 $a$、$b$ 与长度 $L$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="../../assets/figures/models/cylinder/elliptical-cylinder-iq.png" alt="椭圆截面圆柱 I(q) 示意" width="900">
+        <figcaption>轴比使截面振荡相对圆圆柱更浅。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      $$R_{\mathrm{eff}}(\psi)=\sqrt{a^2\cos^2\psi+b^2\sin^2\psi},$$
+      $$F(q,\alpha,\psi)=V\cdot\frac{2J_1(q R_{\mathrm{eff}}\sin\alpha)}{q R_{\mathrm{eff}}\sin\alpha}\cdot\frac{\sin(qL\cos\alpha/2)}{qL\cos\alpha/2}.$$
+      <p>粉末平均对 $\alpha$ 与 $\psi$ 积分 $|F|^2$。$a=b=R$ 时回到均匀圆柱。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>截面半轴</td><td>$a$, $b$</td><td>椭圆截面长、短半轴</td><td>Å 或 nm</td><td>5–400 Å，$a\ge b$</td></tr>
+          <tr><td>长度</td><td>$L$</td><td>轴向长度</td><td>Å 或 nm</td><td>20–5000 Å</td></tr>
+          <tr><td>取向角</td><td>$\theta,\phi$</td><td>轴及截面长轴方位（二维）</td><td>度</td><td>由取向分布约束</td></tr>
+          <tr><td>衬度</td><td>$\Delta\rho$</td><td>相对溶剂 SLD 差</td><td>Å$^{-2}$</td><td>均匀柱</td></tr>
+          <tr><td>标度 / 本底</td><td>$\mathrm{scale}$, $B$</td><td>前置因子与本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>轴比与半径多分散都钝化高 $q$ 振荡。一维数据上两者几乎不可分；有二维弧或电镜截面时再放开 $a/b$。</p>
+      <p>长度多分散改 $q^{-1}$ 区，与截面轴比正交，通常可以同时放一个长度宽度和一个截面参数。取向 $\theta,\phi$：二维还需要截面滚转角。</p>
+      <p>磁性：椭圆截面的磁退磁因子各向异性，磁 SLD 与核 SLD 仍须分通道；不要把磁各向异性误读成几何轴比。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="cylinder.html">圆柱</a> — 圆截面 $a=b$。</li>
+        <li><a href="flexible-cylinder-elliptical.html">椭圆截面柔性圆柱</a> — 同一截面，但轴可弯曲。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Guinier, A.; Fournet, G. <em>Small-Angle Scattering of X-rays</em>. Wiley: New York, 1955.</li>
+        <li>Pedersen, J. S. Analysis of small-angle scattering data from colloids and polymer solutions: modeling and least-squares fitting. <em>J. Appl. Cryst.</em> 1997, 30, 339–354. DOI: <a href="https://doi.org/10.1107/S0021889897002532" target="_blank" rel="noopener noreferrer">10.1107/S0021889897002532</a></li>
+      </ul>
+      <nav class="pager">
+        <a href="core-shell-bicelle-elliptical-belt-rough.html">← 粗糙腰带椭圆双层盘</a>
+        <a href="flexible-cylinder.html">柔性圆柱 →</a>
+      </nav>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>珍珠项链 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>珍珠项链</h1>
+      <p class="subtitle-en">pearl necklace</p>
+      <h2>适用场景</h2>
+      <p>珍珠项链由 $N$ 个半径 $R$ 的球珠用长度为 $\ell$ 的细杆（或无衬度间隔）连接，杆与杆之间无键角限制（可弯曲）。适用于聚电解质塌缩中间态、串珠状胶束、以及直线珍珠串无法解释低 $q$ 线圈特征的样品。</p>
+      <p>高 $q$ 看到单珠的 Rayleigh 振荡；中等 $q$ 由珠心距 $A=2R+\ell$ 的干涉决定；低 $q$ 由整链 $R_g$ 决定。杆若有显著衬度，须计入杆的振幅，不能只把珠当点。</p>
+      <h2>物理图像</h2>
+      <p>Schweins 与 Huber 推导了自由连接珠–杆链的粒子散射因子：珠–珠、杆–杆与珠–杆三项。相对直线串珠，取向不再锁在一条轴上，低 $q$ 更接近无规行走。</p>
+      <p>与球类「直线珍珠串」的差别就是连接的柔性：直线模型是刚性一维格子，本页允许键自由旋转。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/cylinder/pearl-necklace-geometry.png" alt="珍珠项链：珠与连接杆" width="900">
+        <figcaption>珠半径 $R$ 与杆长 $\ell$（珠心距 $A=2R+\ell$）。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="../../assets/figures/models/cylinder/pearl-necklace-iq.png" alt="珍珠项链 I(q) 示意" width="900">
+        <figcaption>可弯曲珠链的 $I(q)$：单珠振荡叠加链干涉。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>珠的归一化振幅 $\psi(q)=\Phi(qR)$。自由连接下珠–珠干涉含 $\mathrm{sinc}(qA)$ 的几何级数（Schweins &amp; Huber）。示意上</p>
+      $$P(q)\propto S_{\mathrm{ss}}(q)+S_{\mathrm{rr}}(q)+S_{\mathrm{sr}}(q),$$
+      <p>其中 $S_{\mathrm{ss}}$ 由 $N$、$\psi$ 与 $\sin(qA)/(qA)$ 构成，$S_{\mathrm{rr}}$、$S_{\mathrm{sr}}$ 含杆的 $\mathrm{Si}$ 积分。$N=1$ 回到均匀球；$\ell\to 0$ 且刚性排列回到直线串珠。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>珠数</td><td>$N$</td><td>球珠个数</td><td>—</td><td>3–50</td></tr>
+          <tr><td>珠半径</td><td>$R$</td><td>均匀球珠半径</td><td>Å</td><td>5–80 Å</td></tr>
+          <tr><td>杆长</td><td>$\ell$</td><td>相邻珠表面间距</td><td>Å</td><td>0–200 Å</td></tr>
+          <tr><td>珠 / 杆 SLD</td><td>$\rho_{\mathrm{s}},\rho_{\mathrm{r}}$</td><td>珠与连接段衬度</td><td>Å$^{-2}$</td><td>杆常接近溶剂</td></tr>
+          <tr><td>标度 / 本底</td><td>$\mathrm{scale}$, $B$</td><td>前置因子与本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>$N$、$A$ 与 $R$ 在中等 $q$ 相关。珠半径由高 $q$ 第一极小约束；链尺寸由低 $q$ $R_g$ 约束。不要用 $N$ 去拟合截面振荡。</p>
+      <p>多分散：珠半径分布抹平 Rayleigh 极小；珠数或杆长分布抹平链干涉。取向：自由连接模型已是各向同性粉末；若项链被拉伸成直线，应改用直线珍珠串。</p>
+      <p>磁性：磁珠加非磁杆时，磁通道几乎只有 $S_{\mathrm{ss}}$，与核通道（含杆）不同，须分开放磁 SLD。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="../sphere/linear-pearls.html">直线珍珠串</a> — 珠排在一条刚性直线上。</li>
+        <li><a href="flexible-cylinder.html">柔性圆柱</a> — 连续截面的蠕虫链，而不是分立珠。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Schweins, R.; Huber, K. Particle scattering factor of pearl necklace chains. <em>Macromol. Symp.</em> 2004, 211, 25–42. DOI: <a href="https://doi.org/10.1002/masy.200450702" target="_blank" rel="noopener noreferrer">10.1002/masy.200450702</a></li>
+      </ul>
+      <nav class="pager">
+        <a href="flexible-cylinder-elliptical.html">← 椭圆截面柔性圆柱</a>
+        <a href="pringle.html">马鞍形圆盘 →</a>
+      </nav>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

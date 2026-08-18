@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>椭圆截面柔性圆柱 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>椭圆截面柔性圆柱</h1>
+      <p class="subtitle-en">flexible elliptical cylinder</p>
+      <h2>适用场景</h2>
+      <p>蠕虫链的截面是椭圆而不是圆：在 $L$、$b$ 之外再加半轴 $a$、$b_{\mathrm{cs}}$。适用于带状胶束、压扁的半柔性纤维，以及圆截面柔性圆柱在高 $q$ 振荡深度拟合不好的数据。</p>
+      <p>链统计（线圈 / 棒转折）仍由 $L$ 与 Kuhn 长度决定；轴比只改截面因子。轴比接近 1 时退回柔性圆柱。</p>
+      <h2>物理图像</h2>
+      <p>解耦：$P(q)\simeq P_{\mathrm{wp}}(q;L,b)\,P_{\mathrm{cs}}^{\mathrm{(ell)}}(q)$。截面因子是椭圆盘（或无限长椭圆柱）径向振幅对截面方位的平均，与刚性椭圆圆柱的径向部分相同，但不含有限直轴的 $\mathrm{sinc}$（弯曲已在 $P_{\mathrm{wp}}$ 里）。</p>
+      <p>若持久长度短到与截面尺寸相当，解耦失败，需要更精细的短链数值模型。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/cylinder/flexible-cylinder-elliptical-geometry.png" alt="椭圆截面蠕虫链" width="900">
+        <figcaption>蠕虫链加上椭圆截面 $a$、$b_{\mathrm{cs}}$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="../../assets/figures/models/cylinder/flexible-cylinder-elliptical-iq.png" alt="椭圆截面柔性圆柱 I(q) 示意" width="900">
+        <figcaption>相对圆截面，高 $q$ 截面振荡更钝。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      $$P(q)\simeq P_{\mathrm{wp}}(q;L,b)\left\langle\left[\frac{2J_1(q R_{\mathrm{eff}}(\psi))}{q R_{\mathrm{eff}}(\psi)}\right]^2\right\rangle_{\psi},$$
+      $$R_{\mathrm{eff}}(\psi)=\sqrt{a^2\cos^2\psi+b_{\mathrm{cs}}^2\sin^2\psi}.$$
+      <p>$P_{\mathrm{wp}}$ 与柔性圆柱相同。注意 $b$ 是 Kuhn 长度，$b_{\mathrm{cs}}$ 是截面短半轴，符号不要混用。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>轮廓 / Kuhn 长</td><td>$L$, $b$</td><td>链统计参数</td><td>Å</td><td>同柔性圆柱</td></tr>
+          <tr><td>截面半轴</td><td>$a$, $b_{\mathrm{cs}}$</td><td>椭圆横截面</td><td>Å</td><td>5–80 Å</td></tr>
+          <tr><td>排除体积</td><td>—</td><td>链自避</td><td>—</td><td>视分子量与浓度</td></tr>
+          <tr><td>标度 / 本底</td><td>$\mathrm{scale}$, $B$</td><td>前置因子与本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>截面轴比与半径多分散同样钝化高 $q$。没有带状形貌的独立证据时，优先圆截面。$L$、$b$ 的可辨识性与柔性圆柱相同，不因椭圆截面改善。</p>
+      <p>取向：溶液中构象平均已在 $P_{\mathrm{wp}}$ 内。剪切取向的带状胶束会出现二维各向异性，须加 $\theta,\phi$，不能只用粉末蠕虫链。</p>
+      <p>磁性同柔性圆柱：磁信号来自缀合颗粒或磁各向异性截面时，磁 SLD 与核通道分开。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="flexible-cylinder.html">柔性圆柱</a> — 圆截面极限。</li>
+        <li><a href="elliptical-cylinder.html">椭圆截面圆柱</a> — 刚性直柱，同一椭圆截面。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Pedersen, J. S.; Schurtenberger, P. Scattering functions of semiflexible polymers with and without excluded volume effects. <em>Macromolecules</em> 1996, 29, 7602–7612. DOI: <a href="https://doi.org/10.1021/ma9607630" target="_blank" rel="noopener noreferrer">10.1021/ma9607630</a></li>
+      </ul>
+      <nav class="pager">
+        <a href="flexible-cylinder.html">← 柔性圆柱</a>
+        <a href="pearl-necklace.html">珍珠项链 →</a>
+      </nav>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>圆柱 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>圆柱</h1>
+      <p class="subtitle-en">cylinder</p>
+      <h2>适用场景</h2>
+      <p>当粒子可视为均匀<span data-term="scattering-length-density">散射长度密度</span>的有限长直圆柱时，取向平均圆柱<span data-term="form-factor">形式因子</span>是棒状与盘状物体的基线模型。典型对象包括：刚性棒状胶束、短纤维与纳米棒、近似圆柱的病毒衣壳片段，以及长径比中等、截面接近圆形的胶体。</p>
+      <p>曲线判据：细长棒（$L\gg 2R$）在中间 $q$ 出现 $\sim q^{-1}$ 区，随后由半径给出的 Bessel 振荡与 Porod $q^{-4}$；扁平盘（$L\ll 2R$）中间区接近 $q^{-2}$。低 $q$ 的 Guinier 区由整体<span data-term="radius-of-gyration">回转半径</span>控制。截面明显椭圆、空心或径向核壳时，应改用相应变体，而不是给均匀圆柱强加额外参数。</p>
+      <p>稀溶液、相互作用可忽略时只拟合 $P(q)$。二维各向异性图案需要取向分布，而不是只用一维粉末平均。</p>
+      <h2>物理图像</h2>
+      <p>有限圆柱的散射振幅是沿轴的 $\mathrm{sinc}$ 因子与径向圆柱 Bessel 因子 $2J_1(x)/x$ 的乘积。Fournet 给出对圆柱轴与 $\mathbf{q}$ 夹角 $\alpha$ 的取向平均：$P(q)=\int_0^{\pi/2}|F(q,\alpha)|^2\sin\alpha\,\mathrm{d}\alpha$。约定 $P(0)=1$ 时，强度还含数密度、体积平方与衬度平方，拟合中常收进标度因子。</p>
+      <p>长度主导低–中 $q$（棒的 $q^{-1}$ 或盘的 $q^{-2}$），半径主导高 $q$ 振荡。粉末平均会抹掉二维弧上的取向信息；磁场或剪切下的二维数据必须保留 $\theta,\phi$。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/cylinder/cylinder-geometry.png" alt="均匀圆柱几何：半径 R 与长度 L" width="900">
+        <figcaption>均匀有限圆柱，半径 $R$ 与长度 $L$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="../../assets/figures/models/cylinder/cylinder-iq.png" alt="取向平均圆柱形式因子 I(q) 示意" width="900">
+        <figcaption>细长圆柱粉末平均 $I(q)/I(0)$：Guinier、中间 $q^{-1}$ 与截面振荡。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>取向为 $\alpha$ 的均匀圆柱振幅（$V=\pi R^2 L$）</p>
+      $$F(q,\alpha)=V\cdot\frac{2J_1(qR\sin\alpha)}{qR\sin\alpha}\cdot\frac{\sin(qL\cos\alpha/2)}{qL\cos\alpha/2}.$$
+      <p>一维粉末平均形式因子</p>
+      $$P(q)=\frac{\displaystyle\int_0^{\pi/2}|F(q,\alpha)|^2\sin\alpha\,\mathrm{d}\alpha}{\displaystyle\int_0^{\pi/2}|F(0,\alpha)|^2\sin\alpha\,\mathrm{d}\alpha}.$$
+      <p>回转半径 $R_g^2=R^2/2+L^2/12$。细长极限中间区 $I(q)\propto q^{-1}$；稀释观测强度常写 $I(q)=\mathrm{scale}\cdot P(q)+B$。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>半径</td><td>$R$</td><td>圆柱截面半径</td><td>Å 或 nm</td><td>5–500 Å</td></tr>
+          <tr><td>长度</td><td>$L$</td><td>圆柱高度（沿轴）</td><td>Å 或 nm</td><td>20–5000 Å</td></tr>
+          <tr><td>极角 / 方位角</td><td>$\theta,\phi$</td><td>轴相对光束的取向（二维）</td><td>度</td><td>由取向分布约束</td></tr>
+          <tr><td>标度</td><td>$\mathrm{scale}$</td><td>数密度、体积平方与衬度平方</td><td>与强度单位一致</td><td>由绝对标定或自由拟合</td></tr>
+          <tr><td>本底</td><td>$B$</td><td>常数本底</td><td>与强度单位一致</td><td>仪器与溶剂相关</td></tr>
+          <tr><td>衬度</td><td>$\Delta\rho$</td><td>粒子与溶剂的散射长度密度差</td><td>Å$^{-2}$</td><td>由组成计算或对比实验</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>取向：一维数据默认粉末平均，不能单独分辨 $\theta$ 与 $\phi$。二维各向异性（磁场、剪切、拉伸）须拟合取向分布宽度；把弧向调制误读成长径比，是常见错误。</p>
+      <p><span data-term="polydispersity">多分散</span>：半径 Schulz/logN 分布主要抹平高 $q$ 的 Bessel 极小；长度多分散改变 $q^{-1}$ 区的跨度与 Guinier $R_g$，两者不可互换。报告均值时须声明加权方式。</p>
+      <p>磁性：核磁 SLD 与核（核散射）SLD 是不同通道。均匀磁化圆柱的磁形式因子仍是同一几何 $F(q,\alpha)$，但磁半径、死层与核半径不必相同；磁场下二维图案还含磁矩相对 $\mathbf{q}$ 的取向因子，勿与核衬度混用。</p>
+      <p>可辨识性：仅有低 $q$ 时 $R$、$L$ 与多分散强相关。要分开半径与长度，需要看到中间斜率（$q^{-1}$ 或 $q^{-2}$）以及至少一组截面振荡，或有电镜长径比。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="elliptical-cylinder.html">椭圆截面圆柱</a> — 截面不再是圆，多一个轴比。</li>
+        <li><a href="hollow-cylinder.html">空心圆柱</a> — 管内充满溶剂或低衬度介质。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Fournet, G. Influence of the size and shape of particles on the interpretation of the X-ray diffuse diagrams. <em>Discuss. Faraday Soc.</em> 1951, 11, 121–125. DOI: <a href="https://doi.org/10.1039/DF9511100121" target="_blank" rel="noopener noreferrer">10.1039/DF9511100121</a></li>
+        <li>Guinier, A.; Fournet, G. <em>Small-Angle Scattering of X-rays</em>. Wiley: New York, 1955.</li>
+        <li>Pedersen, J. S. Analysis of small-angle scattering data from colloids and polymer solutions: modeling and least-squares fitting. <em>J. Appl. Cryst.</em> 1997, 30, 339–354. DOI: <a href="https://doi.org/10.1107/S0021889897002532" target="_blank" rel="noopener noreferrer">10.1107/S0021889897002532</a></li>
+      </ul>
+      <nav class="pager">
+        <a href="index.html">← 圆柱类总览</a>
+        <a href="core-shell-cylinder.html">核壳圆柱 →</a>
+      </nav>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

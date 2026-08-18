@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>椭圆环壳 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>椭圆环壳</h1>
+      <p class="subtitle-en">elliptical torus shell</p>
+      <h2>适用场景</h2>
+      <p>椭圆环壳是主半径 $R$ 的圆环，管截面为椭圆半轴 $a$、$b$ 的壳层（可退化到实心椭圆截面环）。适用于纳米环、环形胶束、以及空心管被弯成闭合环的样品。</p>
+      <p>低 $q$ 的 $R_g$ 由环的主半径主导；中等 $q$ 出现与 $R$ 相关的环状振荡；高 $q$ 由管截面 $a$、$b$ 决定。开口直管应使用空心圆柱，不要把缺口环硬拟合成闭合环面。</p>
+      <h2>物理图像</h2>
+      <p>Kawaguchi 在柱坐标下给出圆环及其变体（椭圆截面、管状环、堆叠环）的回转半径与散射函数，曲线由对截面与环方位的数值积分得到。壳层意味着截面是空心椭圆环，内壁衬度接近溶剂。</p>
+      <p>相对空心直圆柱，闭合拓扑把轴向 $\mathrm{sinc}$ 换成环的 $J_0(qR\sin\alpha)$ 类因子，低 $q$ 不再是细长棒的 $q^{-1}$。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/cylinder/torus-elliptical-shell-geometry.png" alt="椭圆截面环壳几何" width="900">
+        <figcaption>主半径 $R$ 与椭圆管截面 $a$、$b$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="../../assets/figures/models/cylinder/torus-elliptical-shell-iq.png" alt="椭圆环壳 I(q) 示意" width="900">
+        <figcaption>环的低频振荡叠加截面衰减。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>均匀圆截面环的示意振幅含 $J_0(q R\sin\alpha)$ 与截面 $2J_1(qr)/(qr)$。椭圆截面把 $r$ 换成 $R_{\mathrm{eff}}(\psi)$；壳层再对外内截面振幅相减：</p>
+      $$A(q,\alpha,\psi)\propto J_0(q R\sin\alpha)\bigl[V_{\mathrm{out}}\Phi_{\mathrm{cs}}(q,a_{\mathrm{out}},b_{\mathrm{out}},\psi)-V_{\mathrm{in}}\Phi_{\mathrm{cs}}(q,a_{\mathrm{in}},b_{\mathrm{in}},\psi)\bigr],$$
+      $$P(q)=\bigl\langle|A|^2\bigr\rangle_{\alpha,\psi}.$$
+      <p>回转半径（圆截面实心环）$R_g^2=R^2+5r^2/4$；椭圆与壳层须按 Kawaguchi 的对应式修正。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>主半径</td><td>$R$</td><td>环中心线半径</td><td>Å</td><td>50–2000 Å</td></tr>
+          <tr><td>截面半轴</td><td>$a$, $b$</td><td>管截面外轮廓</td><td>Å</td><td>5–80 Å</td></tr>
+          <tr><td>壳厚</td><td>$t$</td><td>管壁厚度（壳层）</td><td>Å</td><td>小于 $\min(a,b)$</td></tr>
+          <tr><td>取向角</td><td>$\theta,\phi$</td><td>环法向（二维）</td><td>度</td><td>粉末或基底平躺</td></tr>
+          <tr><td>衬度</td><td>$\Delta\rho$</td><td>壁相对溶剂 SLD 差</td><td>Å$^{-2}$</td><td>由组成计算</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>$R$ 与截面尺寸在只有 Guinier 时相关。要分开它们需要看到环振荡与截面 Porod。壳厚与壁衬度简并，同空心圆柱。</p>
+      <p>多分散：主半径分布强烈抹平环振荡；截面多分散抹平高 $q$。取向：平躺在基底上的环给出二维各向异性；溶液中粉末平均。不要把环的 $J_0$ 峰当成堆叠层间距。</p>
+      <p>磁性：磁环的磁矩可沿环（涡流）或沿法向，磁形式因子与核通道几何相同但取向因子不同，须单独磁 SLD。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="hollow-cylinder.html">空心圆柱</a> — 未闭合的直管。</li>
+        <li><a href="../sphere/vesicle.html">囊泡</a> — 球壳拓扑，不是环面。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Kawaguchi, T. Radii of gyration and scattering functions of a torus and its derivatives. <em>J. Appl. Cryst.</em> 2001, 34, 580–584. DOI: <a href="https://doi.org/10.1107/S0021889801009517" target="_blank" rel="noopener noreferrer">10.1107/S0021889801009517</a></li>
+      </ul>
+      <nav class="pager">
+        <a href="tetrapod.html">← 四足体</a>
+        <a href="index.html">圆柱类总览 →</a>
+      </nav>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

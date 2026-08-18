@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>堆叠圆盘 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>堆叠圆盘</h1>
+      <p class="subtitle-en">stacked disks</p>
+      <h2>适用场景</h2>
+      <p>沿共同法向堆叠 $N$ 片圆盘（或核壳盘），层间距 $d$。适用于黏土 tactoid、未剥离的层状纳米片、以及 bicelle 发生一维絮凝的样品。中间区仍接近单盘的 $q^{-2}$，并在 $q\simeq 2\pi/d$ 出现层状干涉峰。</p>
+      <p>若堆叠无序到只剩一层，退回单盘；若横向无限大，应改用层状准晶堆叠，而不是有限半径的堆叠盘。</p>
+      <h2>物理图像</h2>
+      <p>强度是单盘形式因子乘以一维格子（或准晶）干涉函数。Kratky 与 Porod 把相邻间距写成高斯涨落 $\sigma_d$ 的一维堆叠：粉末平均时把 $q\cos\alpha$ 投影到法向。Guinier 给出单盘的 $F_{\mathrm{disk}}$。</p>
+      <p>峰宽由 $N$ 与 $\sigma_d$ 共同决定：少层宽峰，间距无序则高阶峰迅速消失。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/cylinder/stacked-disks-geometry.png" alt="沿法向堆叠的圆盘" width="900">
+        <figcaption>$N$ 片圆盘，层间距 $d$、半径 $R$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="../../assets/figures/models/cylinder/stacked-disks-iq.png" alt="堆叠圆盘 I(q) 示意" width="900">
+        <figcaption>单盘包络上叠加一维层状干涉。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>取向 $\alpha$ 下</p>
+      $$I(q,\alpha)\propto |F_{\mathrm{disk}}(q,\alpha)|^2\,S_{1\mathrm{D}}(q\cos\alpha),$$
+      $$S_{1\mathrm{D}}(q_\parallel)=1+\frac{2}{N}\sum_{k=1}^{N-1}(N-k)\cos(k d q_\parallel)\,\mathrm{e}^{-k(q_\parallel\sigma_d)^2/2}.$$
+      <p>一维数据再对 $\sin\alpha\,\mathrm{d}\alpha$ 平均。$F_{\mathrm{disk}}$ 可以是均匀短圆柱，也可以是核壳盘。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>盘半径</td><td>$R$</td><td>单片半径</td><td>Å</td><td>50–1000 Å</td></tr>
+          <tr><td>单片厚度</td><td>$H$</td><td>核（加壳）厚度</td><td>Å</td><td>10–80 Å</td></tr>
+          <tr><td>层间距</td><td>$d$</td><td>相邻盘中心距</td><td>Å</td><td>略大于 $H$</td></tr>
+          <tr><td>层数</td><td>$N$</td><td>堆叠片数</td><td>—</td><td>2–50</td></tr>
+          <tr><td>间距无序</td><td>$\sigma_d$</td><td>一维准晶涨落</td><td>Å</td><td>$0$–$0.2d$</td></tr>
+          <tr><td>取向角</td><td>$\theta,\phi$</td><td>堆叠轴（二维）</td><td>度</td><td>剪切可取向</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>$N$ 与 $\sigma_d$ 都加宽干涉峰。优先用峰位定 $d$，用高阶峰是否存在约束无序，再用峰宽估 $N$。不要把结构峰当成单盘半径。</p>
+      <p>半径多分散钝化盘的 Bessel 振荡，对层状峰影响较小；厚度多分散则同时影响 $F_{\mathrm{disk}}$ 与有效 $d$。取向：粉末平均把层状峰抹成较宽的肩；二维弧向收窄才说明堆叠轴取向。</p>
+      <p>磁性：若只有核层带磁矩，磁通道的 $S_{1\mathrm{D}}$ 仍在，但 $F_{\mathrm{disk}}$ 用磁厚度与磁 SLD，不必与核通道相同。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="../lamellae/lamellar-stack-paracrystal.html">准晶层状堆叠</a> — 横向视为无限大的层状格子。</li>
+        <li><a href="core-shell-bicelle.html">核壳双层盘</a> — 单片、无层状干涉峰。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Kratky, O.; Porod, G. Diffuse small-angle scattering of X-rays in colloid systems. <em>J. Colloid Sci.</em> 1949, 4, 35–54. DOI: <a href="https://doi.org/10.1016/0095-8522(49)90032-X" target="_blank" rel="noopener noreferrer">10.1016/0095-8522(49)90032-X</a></li>
+        <li>Guinier, A.; Fournet, G. <em>Small-Angle Scattering of X-rays</em>. Wiley: New York, 1955.</li>
+      </ul>
+      <nav class="pager">
+        <a href="pringle.html">← 马鞍形圆盘</a>
+        <a href="tetrapod.html">四足体 →</a>
+      </nav>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

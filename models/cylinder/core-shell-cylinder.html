@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>核壳圆柱 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>核壳圆柱</h1>
+      <p class="subtitle-en">core-shell cylinder</p>
+      <h2>适用场景</h2>
+      <p>核壳圆柱描述径向两段均匀<span data-term="scattering-length-density">散射长度密度</span>的有限圆柱：核半径 $R_c$、壳外半径 $R_s$，以及核、壳、溶剂三套 $\rho$。适用于管状胶束、核壳纳米棒、带溶剂化壳的刚性纤维，以及对比变分后仍需两段径向剖面的棒状体系。</p>
+      <p>与均匀圆柱相比，第一组截面振荡由有效衬度半径决定，壳干涉可在中等 $q$ 产生肩峰。壳很薄且壳衬度接近溶剂时退化为均匀圆柱；核衬度匹配溶剂时接近空心管。</p>
+      <p>壳厚、核半径与两段衬度高度相关。有中子 H/D 或 ASAXS 对比点时，简并可显著减弱。</p>
+      <h2>物理图像</h2>
+      <p>Livsey 把同心圆柱的振幅写成两层圆柱振幅之差：内层用核相对壳的衬度，外层用壳相对溶剂的衬度。取向 $\alpha$ 上仍是 $\mathrm{sinc}$ 与 $J_1$ 因子；粉末平均对 $|A(q,\alpha)|^2$ 积分。轴向长度对核与壳通常取同一 $L$（端面无额外帽时）。</p>
+      <p>径向信息出现在中–高 $q$：壳改变极小深度与相位。高 $q$ 由最锐的密度跳变控制；界面模糊应另加粗糙度，而不是继续加层。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/cylinder/core-shell-cylinder-geometry.png" alt="核壳圆柱几何：核半径与壳外半径" width="900">
+        <figcaption>核半径 $R_c$ 与壳外半径 $R_s$；壳厚 $t=R_s-R_c$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="../../assets/figures/models/cylinder/core-shell-cylinder-iq.png" alt="核壳圆柱 I(q) 示意" width="900">
+        <figcaption>径向核壳振幅相加后的粉末平均 $I(q)$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>令 $F(q,R,L,\alpha)$ 为半径 $R$、长度 $L$ 的均匀圆柱振幅。核壳振幅</p>
+      $$A(q,\alpha)=(\rho_c-\rho_s)F(q,R_c,L,\alpha)+(\rho_s-\rho_{\mathrm{solv}})F(q,R_s,L,\alpha),$$
+      $$P(q)\propto\int_0^{\pi/2}|A(q,\alpha)|^2\sin\alpha\,\mathrm{d}\alpha.$$
+      <p>$\rho_c,\rho_s,\rho_{\mathrm{solv}}$ 分别为核、壳与溶剂的散射长度密度。稀溶液 $I(q)=n\langle|A|^2\rangle+B$。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>核半径</td><td>$R_c$</td><td>均匀核的外半径</td><td>Å 或 nm</td><td>5–300 Å</td></tr>
+          <tr><td>壳外半径</td><td>$R_s$</td><td>壳层外表面半径，$R_s>R_c$</td><td>Å 或 nm</td><td>比核大约一个壳厚</td></tr>
+          <tr><td>长度</td><td>$L$</td><td>核与壳的共同轴向长度</td><td>Å 或 nm</td><td>20–5000 Å</td></tr>
+          <tr><td>核 / 壳 / 溶剂 SLD</td><td>$\rho_c,\rho_s,\rho_{\mathrm{solv}}$</td><td>三段散射长度密度</td><td>Å$^{-2}$</td><td>由组成或对比实验</td></tr>
+          <tr><td>取向角</td><td>$\theta,\phi$</td><td>轴相对光束（二维）</td><td>度</td><td>由取向分布约束</td></tr>
+          <tr><td>标度 / 本底</td><td>$n$, $B$</td><td>数密度与常数本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>衬度比与壳厚是主简并。优先固定由化学计量得到的 $\rho$，只放几何；或固定壳厚、拟合衬度。半径多分散抹平截面振荡；长度多分散主要改中间斜率，不要用一个宽度同时代表两者。</p>
+      <p>取向：粉末平均无法分开径向壳与轴向帽。二维数据用 $\theta,\phi$ 与取向宽度；把壳厚当成“等效半径”会偏大。</p>
+      <p>磁性：磁核加非磁壳（或磁死层）时，核磁 SLD 与壳磁 SLD 须单独给出，几何半径也不必与核通道相同。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="cylinder.html">圆柱</a> — 壳衬度消失或壳厚趋于零的极限。</li>
+        <li><a href="core-shell-bicelle.html">核壳双层盘</a> — 短轴盘面，带端面帽与腰带，而非单纯径向壳。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Livsey, I. Neutron scattering from concentric cylinders. Intraparticle interference function and radius of gyration. <em>J. Chem. Soc., Faraday Trans. 2</em> 1987, 83, 1445–1452. DOI: <a href="https://doi.org/10.1039/F29878301445" target="_blank" rel="noopener noreferrer">10.1039/F29878301445</a></li>
+        <li>Pedersen, J. S. Analysis of small-angle scattering data from colloids and polymer solutions: modeling and least-squares fitting. <em>J. Appl. Cryst.</em> 1997, 30, 339–354. DOI: <a href="https://doi.org/10.1107/S0021889897002532" target="_blank" rel="noopener noreferrer">10.1107/S0021889897002532</a></li>
+      </ul>
+      <nav class="pager">
+        <a href="cylinder.html">← 圆柱</a>
+        <a href="hollow-cylinder.html">空心圆柱 →</a>
+      </nav>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

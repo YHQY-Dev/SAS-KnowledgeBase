@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>端帽圆柱 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>端帽圆柱</h1>
+      <p class="subtitle-en">capped cylinder</p>
+      <h2>适用场景</h2>
+      <p>端帽圆柱（胶囊、spherocylinder）是半径 $R$ 的有限圆柱两端各加一个半球。适用于蠕虫状胶束的刚性短段、两端圆化的纳米棒、以及平端圆柱在电镜上明显“收圆”的样品。</p>
+      <p>相对平端圆柱，高 $q$ 的端面 $q^{-4}$ 特征减弱，因为半球帽去掉了锐利的圆盘端面。总长度 $L+2R$ 进入 $R_g$，不要把 $L$ 理解成尖端到尖端的全长（本页 $L$ 仅指圆柱中段）。</p>
+      <h2>物理图像</h2>
+      <p>Kaya 与 de Souza 指出，圆柱加球形端帽的振幅式在 $R_{\mathrm{bell}}=R$ 时就是半球帽圆柱。取向平均仍对 $\alpha$ 积分。半球体积各为 $2\pi R^3/3$，中段体积 $\pi R^2 L$。</p>
+      <p>若端帽半径小于圆柱半径，几何变为“小帽/透镜”极限，已超出本页的半球帽约定，应回到 Kaya 的一般端帽式并检查是否物理。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/cylinder/capped-cylinder-geometry.png" alt="端帽圆柱几何：半球帽" width="900">
+        <figcaption>圆柱中段长度 $L$、半径 $R$，两端为半球。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="../../assets/figures/models/cylinder/capped-cylinder-iq.png" alt="端帽圆柱 I(q) 示意" width="900">
+        <figcaption>半球帽圆柱粉末平均 $I(q)$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>半球帽是哑铃式在 $R_{\mathrm{bell}}=R$、$h=0$ 的特例。总振幅</p>
+      $$A(q,\alpha)=A_{\mathrm{cyl}}(q,R,L,\alpha)+A_{\mathrm{hemi}}(q,R,\alpha),$$
+      $$R_g^2=\frac{(L+2R)^2}{12}+\frac{R^2}{5}\cdot\frac{3L+8R}{3L+4R}.$$
+      <p>第二式为均匀胶囊的回转半径（常用于核对 Guinier）。粉末平均同圆柱。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>半径</td><td>$R$</td><td>圆柱与半球的共同半径</td><td>Å 或 nm</td><td>5–300 Å</td></tr>
+          <tr><td>中段长度</td><td>$L$</td><td>不含半球的圆柱长度</td><td>Å 或 nm</td><td>10–2000 Å</td></tr>
+          <tr><td>取向角</td><td>$\theta,\phi$</td><td>轴相对光束（二维）</td><td>度</td><td>由取向分布约束</td></tr>
+          <tr><td>衬度</td><td>$\Delta\rho$</td><td>相对溶剂的 SLD 差</td><td>Å$^{-2}$</td><td>均匀物体</td></tr>
+          <tr><td>标度 / 本底</td><td>$\mathrm{scale}$, $B$</td><td>前置因子与本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>与平端圆柱的差别主要在高 $q$ 与 $R_g$ 标定。数据截断在中间区时，端帽与平端几乎不可分辨，应固定几何或改用更简单的圆柱。</p>
+      <p>多分散：半径分布同时放大帽与中段；长度分布只改中段。取向 $\theta,\phi$ 同圆柱。磁性均匀磁化时磁形式因子与核通道同几何，磁死层出现在端面或侧面时须分开磁半径。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="barbell.html">哑铃</a> — 端帽半径大于中段的一般情形。</li>
+        <li><a href="cylinder.html">圆柱</a> — 无端帽的平端极限。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Kaya, H. Scattering from cylinders with globular end-caps. <em>J. Appl. Cryst.</em> 2004, 37, 223–230. DOI: <a href="https://doi.org/10.1107/S0021889804000020" target="_blank" rel="noopener noreferrer">10.1107/S0021889804000020</a></li>
+        <li>Kaya, H.; de Souza, N.-R. Scattering from capped cylinders. Addendum. <em>J. Appl. Cryst.</em> 2004, 37, 508–509. DOI: <a href="https://doi.org/10.1107/S0021889804005709" target="_blank" rel="noopener noreferrer">10.1107/S0021889804005709</a></li>
+      </ul>
+      <nav class="pager">
+        <a href="barbell.html">← 哑铃</a>
+        <a href="core-shell-bicelle.html">核壳双层盘 →</a>
+      </nav>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

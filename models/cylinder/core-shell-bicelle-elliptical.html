@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>椭圆核壳双层盘 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>椭圆核壳双层盘</h1>
+      <p class="subtitle-en">elliptical core-shell bicelle</p>
+      <h2>适用场景</h2>
+      <p>当双层盘的盘面不是圆而是椭圆（半轴 $a\gt b$）时，用椭圆核壳 bicelle。适用于剪切或磁场下被拉长的纳米盘、椭圆脂双层盘，以及圆盘模型系统偏高 $q$ 的截面振荡对不上的样品。</p>
+      <p>相对圆盘，粉末平均会额外抹平径向振荡，中间 $q^{-2}$ 区仍然在。轴比 $a/b$ 接近 1 时应退回圆盘，避免多余参数。</p>
+      <h2>物理图像</h2>
+      <p>在圆盘核壳振幅上，把径向波数换成有效半径 $R_{\mathrm{eff}}(\psi)=\sqrt{(a\cos\psi)^2+(b\sin\psi)^2}$，再对盘面方位角 $\psi$ 与法向极角 $\alpha$ 双重平均。面帽与腰带厚度仍沿法向与边缘法向度量。</p>
+      <p>二维各向异性图案中，长轴方向的条纹间距更密；粉末平均则只剩下轴比导致的阻尼。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/cylinder/core-shell-bicelle-elliptical-geometry.png" alt="椭圆核壳双层盘盘面" width="900">
+        <figcaption>椭圆盘面半轴 $a$、$b$，核壳分层沿厚度与边缘。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="../../assets/figures/models/cylinder/core-shell-bicelle-elliptical-iq.png" alt="椭圆核壳双层盘 I(q) 示意" width="900">
+        <figcaption>椭圆盘面使截面振荡相对圆盘更钝。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>径向因子中的有效半径</p>
+      $$R_{\mathrm{eff}}(\psi)=\sqrt{a^2\cos^2\psi+b^2\sin^2\psi},$$
+      $$P(q)\propto\int_0^{\pi/2}\mathrm{d}\alpha\sin\alpha\int_0^{\pi}\mathrm{d}\psi\,\bigl|A\bigl(q,\alpha,R_{\mathrm{eff}}(\psi)\bigr)\bigr|^2.$$
+      <p>$A$ 与圆盘核壳 bicelle 相同，只是把 $R$ 换成 $R_{\mathrm{eff}}$。厚度方向的 $\mathrm{sinc}$ 不依赖 $\psi$。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>长半轴 / 短半轴</td><td>$a$, $b$</td><td>椭圆盘面半轴</td><td>Å 或 nm</td><td>20–500 Å，$a\ge b$</td></tr>
+          <tr><td>核厚度</td><td>$L$</td><td>疏水核厚度</td><td>Å</td><td>20–50 Å</td></tr>
+          <tr><td>面帽 / 腰带</td><td>$t_{\mathrm{face}},t_{\mathrm{belt}}$</td><td>头基与边缘带</td><td>Å</td><td>5–20 Å</td></tr>
+          <tr><td>各区 SLD</td><td>$\rho_{\mathrm{core}},\rho_{\mathrm{face}},\rho_{\mathrm{belt}}$</td><td>核、面、带衬度</td><td>Å$^{-2}$</td><td>对比实验约束</td></tr>
+          <tr><td>取向角</td><td>$\theta,\phi$</td><td>法向及盘面长轴方位（二维）</td><td>度</td><td>剪切/磁场</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>轴比 $a/b$ 与半径多分散在粉末平均中几乎同为振荡变钝。没有二维各向异性或电镜轴比时，不要同时放开两者。</p>
+      <p>取向：二维需要盘法向 $\theta$ 与长轴 $\phi$；一维只报等效半径。磁性同圆盘 bicelle：通常无磁衬度；磁场取向时磁矩常沿法向，须单独磁 SLD。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="core-shell-bicelle.html">核壳双层盘</a> — 圆盘面 $a=b$ 的极限。</li>
+        <li><a href="elliptical-cylinder.html">椭圆截面圆柱</a> — 椭圆截面的长柱，而非薄盘。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Luchette, P. A.; et al. Morphology of fast-tumbling bicelles: a small angle neutron scattering and NMR study. <em>Biochim. Biophys. Acta</em> 2001, 1513, 83–94. DOI: <a href="https://doi.org/10.1016/S0005-2736(01)00358-3" target="_blank" rel="noopener noreferrer">10.1016/S0005-2736(01)00358-3</a></li>
+        <li>Pedersen, J. S. Analysis of small-angle scattering data from colloids and polymer solutions: modeling and least-squares fitting. <em>J. Appl. Cryst.</em> 1997, 30, 339–354. DOI: <a href="https://doi.org/10.1107/S0021889897002532" target="_blank" rel="noopener noreferrer">10.1107/S0021889897002532</a></li>
+      </ul>
+      <nav class="pager">
+        <a href="core-shell-bicelle.html">← 核壳双层盘</a>
+        <a href="core-shell-bicelle-elliptical-belt-rough.html">粗糙腰带椭圆双层盘 →</a>
+      </nav>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

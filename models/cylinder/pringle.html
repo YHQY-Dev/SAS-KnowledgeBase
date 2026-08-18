@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>马鞍形圆盘 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>马鞍形圆盘</h1>
+      <p class="subtitle-en">pringle</p>
+      <h2>适用场景</h2>
+      <p>马鞍形（普林格尔）盘是半径 $R$、厚度 $H$ 的薄盘被弯成双曲抛物面（高斯曲率为负）。适用于翘曲的纳米盘、马鞍形蛋白质组装、以及平盘模型在中等 $q$ 过冲、需要额外曲率阻尼的片状颗粒。</p>
+      <p>相对平盘，中间 $q^{-2}$ 区仍在，但厚度振荡与盘半径极小被曲率抹圆。曲率很小时应退回平盘或核壳双层盘，不要额外放鞍参数。</p>
+      <h2>物理图像</h2>
+      <p>中面近似为 $z\propto x^2-y^2$（或等价的鞍面参数）。散射振幅是弯曲薄片上的相位积分，粉末平均后等效于平盘形式因子乘以随 $q$ 增加的阻尼。特征长度是鞍的均方起伏 $\sigma_{\mathrm{saddle}}$，而不是又一个半径。</p>
+      <p>与堆叠圆盘的差别：这里是单片弯曲，不出现层间距 Bragg 峰。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/cylinder/pringle-geometry.png" alt="马鞍形圆盘几何" width="900">
+        <figcaption>薄盘中面呈马鞍（双曲抛物面）。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="../../assets/figures/models/cylinder/pringle-iq.png" alt="马鞍形圆盘 I(q) 示意" width="900">
+        <figcaption>相对平盘，曲率阻尼高 $q$ 振荡。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>平盘振幅 $F_{\mathrm{disk}}(q,\alpha)$ 乘鞍面相位因子后取向平均。示意上常用</p>
+      $$P(q)\simeq P_{\mathrm{disk}}(q;R,H)\,\mathrm{e}^{-q^2\sigma_{\mathrm{saddle}}^2/(1+c\,q^2 R^2)},$$
+      <p>其中 $P_{\mathrm{disk}}$ 即短圆柱（Fournet）粉末平均。精确鞍面振幅需对盘面做数值傅里叶变换；上式只用于标明曲率如何压振荡。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>盘半径</td><td>$R$</td><td>盘面半径</td><td>Å</td><td>50–800 Å</td></tr>
+          <tr><td>厚度</td><td>$H$</td><td>盘的法向厚度</td><td>Å</td><td>10–80 Å</td></tr>
+          <tr><td>鞍起伏</td><td>$\sigma_{\mathrm{saddle}}$</td><td>中面均方根偏离</td><td>Å</td><td>小于 $R$</td></tr>
+          <tr><td>取向角</td><td>$\theta,\phi$</td><td>盘法向（二维）</td><td>度</td><td>粉末或场取向</td></tr>
+          <tr><td>衬度</td><td>$\Delta\rho$</td><td>相对溶剂 SLD 差</td><td>Å$^{-2}$</td><td>均匀盘</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>$\sigma_{\mathrm{saddle}}$ 与半径多分散、厚度多分散都钝化振荡。没有实空间（电镜）翘曲证据时，优先平盘加一种多分散。曲率不是结构因子：低 $q$ 不应出现堆叠峰。</p>
+      <p>取向：粉末平均会进一步掩盖鞍的方位。二维若有四次对称调制，才支持鞍面取向，而不是简单的单轴盘取向。</p>
+      <p>磁性：薄盘磁矩常垂直盘面；弯曲使局部法向散开，磁形式因子比核通道更钝，须单独磁 SLD 与可能更小的磁 $\sigma$。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="stacked-disks.html">堆叠圆盘</a> — 多片平盘沿法向相关，有层间距。</li>
+        <li><a href="core-shell-bicelle.html">核壳双层盘</a> — 平坦的单片核壳盘。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Guinier, A.; Fournet, G. <em>Small-Angle Scattering of X-rays</em>. Wiley: New York, 1955.</li>
+        <li>Pedersen, J. S. Analysis of small-angle scattering data from colloids and polymer solutions: modeling and least-squares fitting. <em>J. Appl. Cryst.</em> 1997, 30, 339–354. DOI: <a href="https://doi.org/10.1107/S0021889897002532" target="_blank" rel="noopener noreferrer">10.1107/S0021889897002532</a></li>
+      </ul>
+      <nav class="pager">
+        <a href="pearl-necklace.html">← 珍珠项链</a>
+        <a href="stacked-disks.html">堆叠圆盘 →</a>
+      </nav>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

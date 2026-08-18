@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>核壳双层盘 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>核壳双层盘</h1>
+      <p class="subtitle-en">core-shell bicelle</p>
+      <h2>适用场景</h2>
+      <p>核壳双层盘（bicelle）描述圆盘状双层：疏水核芯、上下亲水面（帽）以及边缘腰带。适用于磷脂/去垢剂双层盘、纳米盘，以及短轴比 $L\ll 2R$、径向与轴向衬度都分段的盘状聚集体。</p>
+      <p>中间 $q$ 接近薄盘的 $q^{-2}$；高 $q$ 出现双层厚度振荡。腰带与面帽衬度不同时，不能退化成单一核壳圆柱。</p>
+      <p>若盘面堆叠成柱，应改用堆叠圆盘或层状堆叠，而不是给单盘加结构峰。</p>
+      <h2>物理图像</h2>
+      <p>几何是短圆柱的核壳推广：核半径 $R$、核厚度 $L$，面帽厚度 $t_{\mathrm{face}}$，腰带厚度 $t_{\mathrm{belt}}$。振幅为核、面与腰带三块均匀区圆柱振幅的衬度加权和，再对盘法向与 $\mathbf{q}$ 的夹角取向平均。</p>
+      <p>Luchette 等用小角中子散射把快翻滚 bicelle 定成盘状而非长蠕虫；核壳盘是把该图像写成可拟合的 $P(q)$。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/cylinder/core-shell-bicelle-geometry.png" alt="核壳双层盘：核芯、面帽与腰带" width="900">
+        <figcaption>圆盘核芯、上下面帽与边缘腰带。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="../../assets/figures/models/cylinder/core-shell-bicelle-iq.png" alt="核壳双层盘 I(q) 示意" width="900">
+        <figcaption>短轴核壳盘的粉末平均 $I(q)$，中间区接近 $q^{-2}$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>取向 $\alpha$ 下振幅（核、面、带三区）</p>
+      $$A(q,\alpha)=\sum_{k\in\{\mathrm{core},\,\mathrm{face},\,\mathrm{belt}\}}(\rho_k-\rho_{\mathrm{solv}})F_k(q,R_k,L_k,\alpha),$$
+      $$P(q)\propto\int_0^{\pi/2}|A(q,\alpha)|^2\sin\alpha\,\mathrm{d}\alpha.$$
+      <p>$F_k$ 为相应外接圆柱振幅之差（分层）。面帽主要改沿法向的 $\mathrm{sinc}$；腰带改径向 $J_1$。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>盘半径</td><td>$R$</td><td>疏水核的径向半径</td><td>Å 或 nm</td><td>20–500 Å</td></tr>
+          <tr><td>核厚度</td><td>$L$</td><td>疏水核沿法向的厚度</td><td>Å 或 nm</td><td>20–50 Å（脂双层）</td></tr>
+          <tr><td>面帽 / 腰带厚</td><td>$t_{\mathrm{face}},t_{\mathrm{belt}}$</td><td>头基层与边缘带厚度</td><td>Å</td><td>5–20 Å</td></tr>
+          <tr><td>各区 SLD</td><td>$\rho_{\mathrm{core}},\rho_{\mathrm{face}},\rho_{\mathrm{belt}}$</td><td>核、面、带的散射长度密度</td><td>Å$^{-2}$</td><td>由脂质组成 / 氘代</td></tr>
+          <tr><td>取向角</td><td>$\theta,\phi$</td><td>盘法向相对光束（二维）</td><td>度</td><td>磁场可取向</td></tr>
+          <tr><td>标度 / 本底</td><td>$\mathrm{scale}$, $B$</td><td>前置因子与本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>半径与腰带厚、三套 $\rho$ 严重简并。中子对比（氘代链 / 头基 / 溶剂）是解开剖面的正途；单对比 SAXS 往往只能约束厚度与一个有效半径。</p>
+      <p>取向：快翻滚 bicelle 在溶液中接近粉末平均；磁场取向的向列相必须拟合 $\theta$ 分布，否则会把取向峰误认为堆叠。</p>
+      <p>多分散主要在盘半径；厚度多分散抹平双层 Bragg 样振荡。磁性：磷脂盘通常无磁衬度；掺镧系离子或磁颗粒时须单独给磁 SLD，且磁取向轴常沿盘法向。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="stacked-disks.html">堆叠圆盘</a> — 多片沿法向相关，出现层间距峰。</li>
+        <li><a href="../lamellae/lamellar.html">层状</a> — 无限大双层，没有有限盘半径。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Luchette, P. A.; Vetman, T. N.; Prosser, R. S.; Hancock, R. E. W.; Nieh, M.-P.; Glinka, C. J.; Krueger, S.; Katsaras, J. Morphology of fast-tumbling bicelles: a small angle neutron scattering and NMR study. <em>Biochim. Biophys. Acta</em> 2001, 1513, 83–94. DOI: <a href="https://doi.org/10.1016/S0005-2736(01)00358-3" target="_blank" rel="noopener noreferrer">10.1016/S0005-2736(01)00358-3</a></li>
+        <li>Pedersen, J. S. Analysis of small-angle scattering data from colloids and polymer solutions: modeling and least-squares fitting. <em>J. Appl. Cryst.</em> 1997, 30, 339–354. DOI: <a href="https://doi.org/10.1107/S0021889897002532" target="_blank" rel="noopener noreferrer">10.1107/S0021889897002532</a></li>
+      </ul>
+      <nav class="pager">
+        <a href="capped-cylinder.html">← 端帽圆柱</a>
+        <a href="core-shell-bicelle-elliptical.html">椭圆核壳双层盘 →</a>
+      </nav>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

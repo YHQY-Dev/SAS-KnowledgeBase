@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>四足体 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>四足体</h1>
+      <p class="subtitle-en">tetrapod</p>
+      <h2>适用场景</h2>
+      <p>四足体由一个中心核向四面体方向伸出四根圆柱臂。适用于 CdSe/CdTe 等胶体半导体四足纳米晶、四臂星形胶束的粗描述，以及电镜已确认四面体对称的分枝颗粒。</p>
+      <p>低 $q$ 的 $R_g$ 由臂长 $L_{\mathrm{arm}}$ 主导；中间区混合了棒的 $q^{-1}$ 与臂间干涉；高 $q$ 由臂半径决定。不要用单根圆柱去拟合整条曲线的 Guinier。</p>
+      <h2>物理图像</h2>
+      <p>振幅是四根取向固定（相对粒子）的圆柱振幅之和，再对粒子整体取向粉末平均。臂间夹角为四面体角 $\arccos(-1/3)$。核若体积不可忽略，再加一个中心球或短柱。</p>
+      <p>Manna 等从合成上确立了这种分枝形貌；散射上它仍是 Fournet 圆柱的相干叠加，而不是新的基本几何。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/cylinder/tetrapod-geometry.png" alt="四足体：四臂圆柱" width="900">
+        <figcaption>四面体取向的四臂，臂长 $L_{\mathrm{arm}}$、半径 $R$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="../../assets/figures/models/cylinder/tetrapod-iq.png" alt="四足体 I(q) 示意" width="900">
+        <figcaption>四臂干涉叠加在圆柱包络上的 $I(q)$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      $$A(\mathbf{q})=\sum_{j=1}^{4}F_{\mathrm{cyl}}(\mathbf{q};\hat{\mathbf{u}}_j,R,L_{\mathrm{arm}})+F_{\mathrm{core}}(\mathbf{q}),$$
+      $$P(q)=\bigl\langle|A(\mathbf{q})|^2\bigr\rangle_{\hat{\mathbf{q}}}.$$
+      <p>$\hat{\mathbf{u}}_j$ 为四面体臂方向。稀释强度 $I(q)=n P(q)+B$。臂长相等是默认可辨识假设；放开四根独立 $L$ 通常过度参数化。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>臂半径</td><td>$R$</td><td>圆柱臂截面半径</td><td>Å</td><td>5–80 Å</td></tr>
+          <tr><td>臂长</td><td>$L_{\mathrm{arm}}$</td><td>单臂长度</td><td>Å</td><td>50–2000 Å</td></tr>
+          <tr><td>核半径</td><td>$R_{\mathrm{core}}$</td><td>中心核（可忽略）</td><td>Å</td><td>0–$3R$</td></tr>
+          <tr><td>取向角</td><td>$\theta,\phi$</td><td>整体取向（二维）</td><td>度</td><td>溶液中通常粉末</td></tr>
+          <tr><td>衬度</td><td>$\Delta\rho$</td><td>相对溶剂 SLD 差</td><td>Å$^{-2}$</td><td>核/臂可不同</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>臂长多分散强烈改变 $R_g$ 与干涉条纹；臂半径多分散抹平高 $q$。两者正交，应分开报告。不要用等效球半径概括四足体。</p>
+      <p>取向：溶液四足体几乎各向同性。二维各向异性少见；若样品被拉伸，四面体对称会给出比单轴圆柱更复杂的方位调制。</p>
+      <p>磁性：磁性四足体的磁矩可沿臂或沿核，磁振幅的相干叠加与核通道几何相同但衬度不同；死层常见于臂表面，磁半径小于核半径。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="cylinder.html">圆柱</a> — 单臂极限，或长径比很大时的粗描述。</li>
+        <li><a href="capped-cylinder.html">端帽圆柱</a> — 单根圆化短棒，无分枝。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Manna, L.; Milliron, D. J.; Meisel, A.; Scher, E. C.; Alivisatos, A. P. Controlled growth of tetrapod-branched inorganic nanocrystals. <em>Nat. Mater.</em> 2003, 2, 382–385. DOI: <a href="https://doi.org/10.1038/nmat902" target="_blank" rel="noopener noreferrer">10.1038/nmat902</a></li>
+        <li>Guinier, A.; Fournet, G. <em>Small-Angle Scattering of X-rays</em>. Wiley: New York, 1955.</li>
+      </ul>
+      <nav class="pager">
+        <a href="stacked-disks.html">← 堆叠圆盘</a>
+        <a href="torus-elliptical-shell.html">椭圆环壳 →</a>
+      </nav>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>
