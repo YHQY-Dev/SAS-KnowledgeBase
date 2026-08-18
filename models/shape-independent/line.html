@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>线性 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>线性</h1>
+      <p class="subtitle-en">line</p>
+      <h2>适用场景</h2>
+      <p>本页选定线性本底 <strong>$I(q)=A+B q$</strong>。它<strong>不是</strong>粒子形状模型，也不给出半径、厚度或分形维数。用途只是：吸收未扣净的残差斜率、弱的多重散射/漏光随 $q$ 的缓变，或在极窄窗口里做经验基线。</p>
+      <p>文献里也有人写 $A+B q^2$（与某些探测器或密度涨落展开有关）。本手册不采用平方项：页内公式、配图与参数表一律是 $A+Bq$。若数据其实是 Porod 尾、幂律或 Guinier，应改用那些模型，而不是把形状信息塞进 $B$。</p>
+      <p>把 $B$ 解释成尺寸、把 $A+Bq$ 当成形式因子，都是误用。</p>
+      <h2>物理图像</h2>
+      <p>$A$ 是与 $q$ 无关的本底（溶剂、<span data-term="incoherent-background">非相干本底</span>、暗电流）。$B q$ 是人为加上的线性项，没有唯一的微观推导；它只在强度随 $q$ 近似直线时成立。</p>
+      <p>对形状的取向平均、磁性形式因子、多分散 $P(q)$ 都不属于本页。若核与磁通道本底不同，应分别给 $A$，不要共用一个 $B$ 去“解释”磁 $R_g$。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/shape-independent/line-iq.png" alt="线性本底 A+Bq 的 I(q) 示意" width="900">
+        <figcaption>选定 $I=A+Bq$（线性坐标）。这不是形状。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>本页选定的线性式（不是 $A+B q^2$）</p>
+      $$I(q)=A+B q.$$
+      <p>$A$ 为常数本底，$B$ 为斜率。二者都与粒子外形无关。不要把 $B$ 换成 $R$、$R_g$ 或 $m$。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>常数项</td><td>$A$</td><td>与 $q$ 无关的本底</td><td>与强度单位一致</td><td>溶剂与仪器相关</td></tr>
+          <tr><td>斜率</td><td>$B$</td><td>线性项系数</td><td>强度单位 / 波矢单位</td><td>可正可负；无形状含义</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>取向、多分散、磁性形式因子：本页都不描述。若这些效应表现为缓变残差，先回到真正的 $P(q)$ 或 $S(q)$，而不是加大 $|B|$。</p>
+      <p>可辨识性：$A$、$B$ 与任何缓变幂律在短窗口内无法分辨。拟合形状模型时，$A+Bq$ 只应作为附加本底，并且优先尝试把 $B$ 固定为 $0$。出现明显曲率就应停用本页。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="guinier.html">Guinier</a> — 低 $q$ 曲率来自 $R_g$，不是线性斜率。</li>
+        <li><a href="porod.html">Porod</a> — 高 $q$ 应是 $q^{-4}$ 界面尾，不是 $A+Bq$。</li>
+        <li><a href="power-law.html">幂律</a> — 需要指数 $m$ 时用幂律，而不是线性项。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Guinier, A.; Fournet, G. <em>Small-Angle Scattering of X-rays</em>. Wiley: New York, 1955.</li>
+      </ul>
+      <nav class="pager">
+        <a href="rpa.html">← 无规相近似</a>
+        <a href="index.html">形状无关总览 →</a>
+      </nav>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>表面分形 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>表面分形</h1>
+      <p class="subtitle-en">surface fractal</p>
+      <h2>适用场景</h2>
+      <p>界面在一定尺度上粗糙、面积随码尺变化时，Bale–Schmidt 给出 $I\sim q^{D_s-6}$。光滑面 $D_s=2$ 回到 Porod $q^{-4}$；极粗糙面 $D_s\to 3$ 接近 $q^{-3}$。</p>
+      <p>中间指数若小于 $3$，更像质量分形而不是表面。只想谈面积时用 Porod。</p>
+      <h2>物理图像</h2>
+      <p>表面分形把“面积”变成随观测尺度变化的量。Fourier 变换把 $D_s$ 送进 Porod 指数：$6-D_s$。建造块内部若均匀，高 $q$ 仍可能再变陡。</p>
+      <p>磁性粗糙界面（死层、畴壁褶皱）可以有与核不同的 $D_s$。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/shape-independent/surface-fractal-iq.png" alt="表面分形 I(q) 示意" width="900">
+        <figcaption>$I\sim q^{D_s-6}$（图中 $D_s=2.5$）。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>Bale–Schmidt 表面分形</p>
+      $$I(q)\simeq A\,q^{D_s-6}+B,\qquad 2\le D_s\le 3.$$
+      <p>$D_s=2$ 即 Porod。$A$ 含衬度与粗糙界面的广义面积。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>表面维数</td><td>$D_s$</td><td>表面分形维数</td><td>无量纲</td><td>$2$–$3$</td></tr>
+          <tr><td>幅度</td><td>$A$</td><td>广义 Porod 前置</td><td>与强度单位一致</td><td>需绝对标定才谈面积</td></tr>
+          <tr><td>标度 / 本底</td><td>$\mathrm{scale}$, $B$</td><td>前置因子与常数本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>取向：高度取向的粗糙膜应使用二维表面分形，指数不同。粉末 $D_s$ 是平均。</p>
+      <p>多分散孔径改变到达表面区的 $q$，但不把 $D_s$ 改成质量维数。磁性 Porod 用磁衬度。</p>
+      <p>可辨识性：把质量分形的 $D_m\approx 2.5$ 误读成 $D_s=3.5$ 会超出 $[2,3]$。先根据样品是“团簇”还是“界面”选择模型。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="porod.html">Porod</a> — $D_s=2$ 的光滑界面极限。</li>
+        <li><a href="fractal.html">分形</a> — 质量聚集体加建造块。</li>
+        <li><a href="mass-fractal.html">质量分形</a> — 指数通常小于 $3$。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Bale, H. D.; Schmidt, P. W. Small-angle X-ray-scattering investigation of submicroscopic porosity with fractal properties. <em>Phys. Rev. Lett.</em> 1984, 53, 596–599. DOI: <a href="https://doi.org/10.1103/PhysRevLett.53.596" target="_blank" rel="noopener noreferrer">10.1103/PhysRevLett.53.596</a></li>
+        <li>Teixeira, J. <em>J. Appl. Cryst.</em> 1988, 21, 781–785. DOI: <a href="https://doi.org/10.1107/S0021889888001990" target="_blank" rel="noopener noreferrer">10.1107/S0021889888001990</a></li>
+      </ul>
+      <nav class="pager">
+        <a href="mass-fractal.html">← 质量分形</a>
+        <a href="mass-surface-fractal.html">质量–表面分形 →</a>
+      </nav>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

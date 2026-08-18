@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>多分散高斯链 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>多分散高斯链</h1>
+      <p class="subtitle-en">polydisperse Gaussian coil</p>
+      <h2>适用场景</h2>
+      <p>工业高分子或未分级样品的 $M_w/M_n$ 明显大于 $1$ 时，对 Debye 函数做 Schulz–Zimm 平均。低 $q$ 的 $R_g$ 接近 $z$ 均，前向散射仍由 $M_w$ 主导。</p>
+      <p>分布很窄时回到单分散 Debye。排除体积与多分散会混在高 $q$ 尾上，不要两个都自由拟合。</p>
+      <h2>物理图像</h2>
+      <p>Zimm 把不同链长的 Debye 函数按 Schulz 分布积分。多分散参数 $U=M_w/M_n-1$，$z=1/U$。结果仍是闭合式，高 $q$ 仍 $\sim q^{-2}$，但低 $q$ 曲率变缓。</p>
+      <p>这是分子量多分散，不是空间取向分布。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/shape-independent/poly-gauss-coil-iq.png" alt="多分散 Debye 链 I(q) 示意" width="900">
+        <figcaption>Schulz–Zimm 平均后的 Debye 曲线。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>Schulz–Zimm 多分散 Debye（$U=M_w/M_n-1$，$z=1/U$，$u=q^2 R_g^2/(z+1)$）</p>
+      $$P(q)=\frac{2}{z(z+1)u^2}\bigl[(1+zu)^{-z}+zu(z+1)-1\bigr].$$
+      <p>$U\to 0$ 回到单分散 Debye。$R_g$ 须声明是哪一种平均。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>回转半径</td><td>$R_g$</td><td>分布平均后的回转半径</td><td>Å</td><td>须声明加权</td></tr>
+          <tr><td>多分散</td><td>$U$</td><td>$M_w/M_n-1$</td><td>无量纲</td><td>窄分布 $<0.2$，宽可 $>1$</td></tr>
+          <tr><td>前向散射</td><td>$I(0)$</td><td>由 $M_w$ 主导</td><td>与强度单位一致</td><td>绝对标定</td></tr>
+          <tr><td>标度 / 本底</td><td>$\mathrm{scale}$, $B$</td><td>前置因子与常数本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>取向：同单分散链。流动取向不是 $U$ 能吸收的。</p>
+      <p>多分散正是本模型的主题：须与仪器 smearing 分开。磁性标记若与分子量相关，磁 $U$ 可以不同于核 $U$。</p>
+      <p>可辨识性：$U$ 与 $R_g$ 在只有 Guinier 时完全简并。需要中间 $q$ 的 Debye 弯曲。排除体积不要用 $U$ 去冒充。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="mono-gauss-coil.html">单分散高斯链</a> — $U\to 0$ 的极限。</li>
+        <li><a href="polymer-excl-volume.html">聚合物排除体积</a> — 改变的是 Flory 指数，不是 $M_w/M_n$。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Zimm, B. H. The scattering of light and the radial distribution function of high polymer solutions. <em>J. Chem. Phys.</em> 1948, 16, 1093–1099. DOI: <a href="https://doi.org/10.1063/1.1746738" target="_blank" rel="noopener noreferrer">10.1063/1.1746738</a></li>
+        <li>Debye, P. <em>J. Phys. Colloid Chem.</em> 1947, 51, 18–32. DOI: <a href="https://doi.org/10.1021/j150451a002" target="_blank" rel="noopener noreferrer">10.1021/j150451a002</a></li>
+      </ul>
+      <nav class="pager">
+        <a href="mono-gauss-coil.html">← 单分散高斯链</a>
+        <a href="polymer-excl-volume.html">聚合物排除体积 →</a>
+      </nav>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>旋节分解 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>旋节分解</h1>
+      <p class="subtitle-en">spinodal</p>
+      <h2>适用场景</h2>
+      <p>旋节分解早期，Cahn–Hilliard 给出一个随时间指数增长、峰位几乎固定的 $q_m$。静态测量上常把瞬时结构写成 $I\sim 1/[B+(q^2-q_c^2)^2]$。</p>
+      <p>后期粗化、峰位按 $t^{-1/3}$ 移动时，本页的早期式不够，应改用更完整的动力学或 Teubner–Strey 型宽峰。聚合物共混的热力学用 RPA 讨论 $S(q)$，再谈动力学。</p>
+      <h2>物理图像</h2>
+      <p>Cahn 的放大因子 $R(q)=-M q^2(\kappa q^2+f'')$ 在 $q_m=\sqrt{-f''/(2\kappa)}$ 最大。早期 $I(q,t)=I(q,0)\exp[2R(q)t]$。冻结某一时刻，曲线仍是环绕 $q_c$ 的峰。</p>
+      <p>取向：各向同性分解给出粉末环；外场可选择方向。磁性旋节（磁化分解）的 $q_m$ 由磁 Landau 系数决定。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/shape-independent/spinodal-iq.png" alt="旋节分解 I(q) 示意" width="900">
+        <figcaption>Cahn 型峰：$I\sim 1/[B+(q^2-q_c^2)^2]$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>早期静态示意（峰位 $q_c$）</p>
+      $$I(q)=\frac{A}{p+(q^2-q_c^2)^2}+B.$$
+      <p>动力学原式 $I(q,t)=I(q,0)\exp[2R(q)t]$，$R(q)=-Mq^2(\kappa q^2+f'')$，$q_m=\sqrt{-f''/(2\kappa)}$。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>峰位</td><td>$q_c$</td><td>Cahn 最大增长波矢</td><td>Å$^{-1}$</td><td>由热力学与界面系数决定</td></tr>
+          <tr><td>宽度参数</td><td>$p$</td><td>峰宽</td><td>Å$^{-4}$</td><td>随时间早期可变窄</td></tr>
+          <tr><td>幅度</td><td>$A$</td><td>与时间、迁移率有关</td><td>与强度单位一致</td><td>早期指数增长</td></tr>
+          <tr><td>标度 / 本底</td><td>$\mathrm{scale}$, $B$</td><td>前置因子与常数本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>取向：外场或衬底可使 $q_c$ 各向异性。粉末拟合只给环半径。</p>
+      <p>多分散初始涨落进入 $I(q,0)$，不改变 $q_m$。磁性与核旋节可以有不同 $q_c$。</p>
+      <p>可辨识性：单帧数据与 TS 宽峰几乎无法区分。必须有时间序列（峰高指数增长、峰位固定）才能声称早期旋节。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="teubner-strey.html">Teubner–Strey</a> — 平衡或晚期双连续涨落。</li>
+        <li><a href="rpa.html">无规相近似</a> — 聚合物共混的平衡 $S(q)$，旋节对应 $S(0)$ 发散。</li>
+        <li><a href="dab.html">Debye–Anderson–Brumberger</a> — 晚期无规两相，通常无峰。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Cahn, J. W. Phase separation by spinodal decomposition in isotropic systems. <em>J. Chem. Phys.</em> 1965, 42, 93–99. DOI: <a href="https://doi.org/10.1063/1.1695731" target="_blank" rel="noopener noreferrer">10.1063/1.1695731</a></li>
+        <li>Teubner, M.; Strey, R. <em>J. Chem. Phys.</em> 1987, 87, 3195–3200. DOI: <a href="https://doi.org/10.1063/1.453006" target="_blank" rel="noopener noreferrer">10.1063/1.453006</a></li>
+      </ul>
+      <nav class="pager">
+        <a href="teubner-strey.html">← Teubner–Strey</a>
+        <a href="rpa.html">无规相近似 →</a>
+      </nav>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

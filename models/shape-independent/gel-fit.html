@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>凝胶拟合 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>凝胶拟合</h1>
+      <p class="subtitle-en">gel fit</p>
+      <h2>适用场景</h2>
+      <p>凝胶或玻璃态网络的经验拟合：在 Gauss–Lorentz 之外再允许一段幂律，用来吸收簇、挂链或逾渗网络的中间斜率。它<strong>不是</strong>唯一的凝胶理论，只是常用的少参数包络。</p>
+      <p>能用 Gauss–Lorentz 说清时不要加幂律。明确分形凝胶应改用质量分形。</p>
+      <h2>物理图像</h2>
+      <p>三项分别对应：整体/固态不均质的 Guinier 或高斯、网络的 $q^{-n}$、热涨落洛伦兹。参数多，物理解释必须靠样品制备，而不是靠拟合本身。</p>
+      <p>取向与磁性同凝胶页：拉伸改变所有长度；磁通道可能只有其中一项。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/shape-independent/gel-fit-iq.png" alt="凝胶经验拟合 I(q) 示意" width="900">
+        <figcaption>Guinier/高斯、幂律与洛伦兹三项包络。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>凝胶经验式（示意）</p>
+      $$I(q)=G\exp(-q^2 R_g^2/3)+A q^{-n}+\frac{C}{1+q^2\xi^2}+B.$$
+      <p>$n$ 为网络有效指数。不要默认 $n=D_m$，除非另有分形证据。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>回转半径</td><td>$R_g$</td><td>固态/整体不均质</td><td>Å</td><td>低 $q$ 窗口决定</td></tr>
+          <tr><td>网络指数</td><td>$n$</td><td>中间幂律</td><td>无量纲</td><td>通常 $1$–$3$</td></tr>
+          <tr><td>热关联长度</td><td>$\xi$</td><td>洛伦兹分量</td><td>Å</td><td>网格尺度</td></tr>
+          <tr><td>标度 / 本底</td><td>$\mathrm{scale}$, $B$</td><td>前置因子与常数本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>取向：各项在拉伸后都会变；粉末 $n$ 是平均。</p>
+      <p>多分散簇与 $n$、$R_g$ 简并。磁性颗粒填充的凝胶：先减去颗粒形式因子，再谈网络项。</p>
+      <p>可辨识性：三项加本底几乎总能拟合。必须用溶胀系列、对比或流变约束哪些项存在。不要把本页当作形状鉴定。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="gauss-lorentz-gel.html">高斯–洛伦兹凝胶</a> — 少一项幂律，参数更稳。</li>
+        <li><a href="fractal.html">分形</a> — 网络若是标度不变团簇，用 $D$ 而不是自由 $n$。</li>
+        <li><a href="mass-fractal.html">质量分形</a> — 把 $n$ 解释成 $D_m$ 的特款。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Shibayama, M. <em>Macromol. Chem. Phys.</em> 1998, 199, 1–30. DOI: <a href="https://doi.org/10.1002/macp.1998.021990101" target="_blank" rel="noopener noreferrer">10.1002/macp.1998.021990101</a></li>
+        <li>Guinier, A.; Fournet, G. <em>Small-Angle Scattering of X-rays</em>. Wiley: New York, 1955.</li>
+      </ul>
+      <nav class="pager">
+        <a href="gauss-lorentz-gel.html">← 高斯–洛伦兹凝胶</a>
+        <a href="teubner-strey.html">Teubner–Strey →</a>
+      </nav>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

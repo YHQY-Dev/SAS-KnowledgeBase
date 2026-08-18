@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>高斯–洛伦兹凝胶 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>高斯–洛伦兹凝胶</h1>
+      <p class="subtitle-en">Gauss–Lorentz gel</p>
+      <h2>适用场景</h2>
+      <p>化学凝胶同时有冻结的固态不均质与液体般的热涨落。Shibayama 把前者写成高斯（尺寸 $\Xi$），后者写成洛伦兹（关联长度 $\xi$）。</p>
+      <p>两个分量都是洛伦兹时用双洛伦兹。需要额外幂律网络尾时用凝胶拟合经验式。</p>
+      <h2>物理图像</h2>
+      <p>高斯项来自交联引入的静态浓度不均质，相当于实空间高斯相关，低 $q$ 不发散。洛伦兹项是网格的热涨落，高 $q$ 为 $q^{-2}$。</p>
+      <p>取向：拉伸凝胶使 $\Xi$ 与 $\xi$ 各向异性。磁性凝胶的磁不均质往往只进入高斯项。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/shape-independent/gauss-lorentz-gel-iq.png" alt="高斯-洛伦兹凝胶 I(q) 示意" width="900">
+        <figcaption>静态高斯不均质叠加热洛伦兹涨落。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>Gauss–Lorentz 凝胶</p>
+      $$I(q)=I_G\exp(-q^2\Xi^2/2)+\frac{I_L}{1+q^2\xi^2}+B.$$
+      <p>$\Xi$ 为固态不均质尺寸，$\xi$ 为热涨落关联长度。通常 $\Xi>\xi$。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>固态尺寸</td><td>$\Xi$</td><td>冻结不均质</td><td>Å</td><td>大于网格 $\xi$</td></tr>
+          <tr><td>热关联长度</td><td>$\xi$</td><td>液体般涨落</td><td>Å</td><td>网格尺度</td></tr>
+          <tr><td>幅度</td><td>$I_G,I_L$</td><td>两分量强度</td><td>与强度单位一致</td><td>交联与溶胀相关</td></tr>
+          <tr><td>标度 / 本底</td><td>$\mathrm{scale}$, $B$</td><td>前置因子与常数本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>取向：单轴拉伸后应分方向拟合两套长度，不要用一个 $\Xi$ 吸收各向异性。</p>
+      <p>多分散交联把高斯变宽，与 $I_G$ 相关。磁性：磁化颗粒若嵌在凝胶里，高斯项可能其实是颗粒 Guinier，须用对比区分。</p>
+      <p>可辨识性：$\Xi$ 靠近 $q_{\min}^{-1}$ 时高斯与本底无法分开。先在高 $q$ 约束 $\xi$，再放开固态项。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="gel-fit.html">凝胶拟合</a> — 再加幂律网络尾的经验式。</li>
+        <li><a href="lorentz.html">洛伦兹</a> — 只有热涨落。</li>
+        <li><a href="two-lorentzian.html">双洛伦兹</a> — 固态项也用洛伦兹而不是高斯。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Shibayama, M. Spatial inhomogeneity and dynamic fluctuations of polymer gels. <em>Macromol. Chem. Phys.</em> 1998, 199, 1–30. DOI: <a href="https://doi.org/10.1002/macp.1998.021990101" target="_blank" rel="noopener noreferrer">10.1002/macp.1998.021990101</a></li>
+        <li>Horkay, F.; Hecht, A.-M.; Mallam, S.; Geissler, E.; Rennie, A. R. Macroscopic and microscopic thermodynamic observations in swollen poly(vinyl acetate) networks. <em>Macromolecules</em> 1991, 24, 2896–2902. DOI: <a href="https://doi.org/10.1021/ma00010a043" target="_blank" rel="noopener noreferrer">10.1021/ma00010a043</a></li>
+      </ul>
+      <nav class="pager">
+        <a href="be-polyelectrolyte.html">← 聚电解质</a>
+        <a href="gel-fit.html">凝胶拟合 →</a>
+      </nav>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>洛伦兹峰 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>洛伦兹峰</h1>
+      <p class="subtitle-en">peak Lorentz</p>
+      <h2>适用场景</h2>
+      <p>相关峰带明显洛伦兹尾（指数关联的畴或寿命）时，用洛伦兹峰。比高斯更“瘦顶宽尾”。适合液体峰、短程有序的无定形相关峰。</p>
+      <p>非常宽、峰位可移到 $q=0$ 附近时，宽峰或 Teubner–Strey 更合适。层状高阶峰应改用堆叠模型。</p>
+      <h2>物理图像</h2>
+      <p>洛伦兹线形对应指数衰减的相干：$I\sim [1+((q-q_0)/\Gamma)^2]^{-1}$。半高宽由 $\Gamma$ 决定，峰位仍给 $d=2\pi/q_0$。</p>
+      <p>粉末平均把三维峰变成 $q$ 上的线；取向样品应看弧向宽度，不要把 Lorentz 尾当成额外本底。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/shape-independent/peak-lorentz-iq.png" alt="洛伦兹峰 I(q) 示意" width="900">
+        <figcaption>洛伦兹型相关峰，尾比重比高斯大。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>洛伦兹峰</p>
+      $$I(q)=\frac{A}{1+[(q-q_0)/\Gamma]^2}+B.$$
+      <p>$\Gamma$ 为半高半宽（HWHM）。$d=2\pi/q_0$。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>峰位</td><td>$q_0$</td><td>峰中心</td><td>Å$^{-1}$</td><td>由重复距离决定</td></tr>
+          <tr><td>半宽</td><td>$\Gamma$</td><td>HWHM</td><td>Å$^{-1}$</td><td>含关联长度与分辨率</td></tr>
+          <tr><td>幅度</td><td>$A$</td><td>峰高</td><td>与强度单位一致</td><td>与有序程度相关</td></tr>
+          <tr><td>标度 / 本底</td><td>$\mathrm{scale}$, $B$</td><td>前置因子与常数本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>取向：粉末 Lorentz 峰不给出 $\theta,\phi$。弧向若也是洛伦兹，那是取向分布，不是本页的径向 $\Gamma$。</p>
+      <p>多分散间距与分辨率都加宽 $\Gamma$，与畴大小简并。磁性峰的 $\Gamma$ 反映磁关联长度。</p>
+      <p>可辨识性：洛伦兹尾与本底 $B$ 强相关，须有足够宽的 $q$ 翼。高斯与洛伦兹在只覆盖半高宽时几乎无法分辨。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="gaussian-peak.html">高斯峰</a> — 更对称、尾更轻的另一种线形。</li>
+        <li><a href="broad-peak.html">宽峰</a> — 指数可调，覆盖更宽的无序峰。</li>
+        <li><a href="lorentz.html">洛伦兹</a> — 峰位固定在 $q=0$ 的 Ornstein–Zernike 极限。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Guinier, A.; Fournet, G. <em>Small-Angle Scattering of X-rays</em>. Wiley: New York, 1955.</li>
+        <li>Warren, B. E. <em>X-ray Diffraction</em>. Addison-Wesley: Reading, 1969.</li>
+      </ul>
+      <nav class="pager">
+        <a href="gaussian-peak.html">← 高斯峰</a>
+        <a href="broad-peak.html">宽峰 →</a>
+      </nav>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

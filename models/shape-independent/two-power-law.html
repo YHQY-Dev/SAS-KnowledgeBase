@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>双幂律 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>双幂律</h1>
+      <p class="subtitle-en">two power law</p>
+      <h2>适用场景</h2>
+      <p>曲线在双对数上明显折成两段斜率、又不想引入 $R_g$ 时，用两段幂律加一个转折波矢。常见于质量分形转到表面 Porod、或棒的 $q^{-1}$ 转到截面 Guinier/Porod。</p>
+      <p>若低 $q$ 其实是 Guinier 坪，应改用 Guinier–Porod，而不是把坪误当成很缓的幂律。</p>
+      <h2>物理图像</h2>
+      <p>实空间若存在两个标度区，Fourier 变换在 $q_c$ 两侧给出不同指数。转折 $q_c\sim 2\pi/\xi$ 对应那个中间长度。</p>
+      <p>平滑写法用一个交叉因子，避免分段函数在 $q_c$ 处不可导。这仍不是形状模型。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/shape-independent/two-power-law-iq.png" alt="双幂律 I(q) 示意" width="900">
+        <figcaption>两段幂律在 $q_c$ 处转折。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>平滑双幂律</p>
+      $$I(q)=\frac{A}{q^{m_1}}\frac{1}{1+(q/q_c)^{m_2-m_1}}+B.$$
+      <p>$q\ll q_c$ 时指数 $m_1$，$q\gg q_c$ 时指数 $m_2$。符号当场约定：$q_c$ 为转折波矢。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>低 $q$ 指数</td><td>$m_1$</td><td>转折前有效幂律</td><td>无量纲</td><td>通常 $0$–$3$</td></tr>
+          <tr><td>高 $q$ 指数</td><td>$m_2$</td><td>转折后有效幂律</td><td>无量纲</td><td>通常 $2$–$4$</td></tr>
+          <tr><td>转折波矢</td><td>$q_c$</td><td>两段交叉</td><td>Å$^{-1}$</td><td>$0.01$–$0.2$ Å$^{-1}$</td></tr>
+          <tr><td>幅度</td><td>$A$</td><td>前置因子</td><td>与强度单位一致</td><td>与窗口相关</td></tr>
+          <tr><td>标度 / 本底</td><td>$\mathrm{scale}$, $B$</td><td>前置因子与常数本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>取向：粉末棒/片的两段指数有经典值，但有限尺寸会移动 $q_c$。二维数据应分方向看斜率。</p>
+      <p>多分散把折点抹圆，使 $m_1,m_2$ 随窗口漂。磁性通道可以在不同 $q_c$ 转折。</p>
+      <p>可辨识性：四个形状参数加本底，窄窗口会退化。先用两段局部斜率估计 $m_1,m_2$，再放开 $q_c$。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="power-law.html">幂律</a> — 只有一段斜率时不必引入 $q_c$。</li>
+        <li><a href="guinier-porod.html">Guinier–Porod</a> — 低 $q$ 其实是 Guinier 而不是缓幂律。</li>
+        <li><a href="mass-surface-fractal.html">质量–表面分形</a> — 把两段指数解释成 $D_m$ 与 $D_s$。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Schmidt, P. W. Small-angle scattering studies of disordered, porous and fractal systems. <em>J. Appl. Cryst.</em> 1991, 24, 414–435. DOI: <a href="https://doi.org/10.1107/S0021889891003400" target="_blank" rel="noopener noreferrer">10.1107/S0021889891003400</a></li>
+        <li>Guinier, A.; Fournet, G. <em>Small-Angle Scattering of X-rays</em>. Wiley: New York, 1955.</li>
+      </ul>
+      <nav class="pager">
+        <a href="unified-power-rg.html">← 统一幂律–Rg</a>
+        <a href="lorentz.html">洛伦兹 →</a>
+      </nav>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

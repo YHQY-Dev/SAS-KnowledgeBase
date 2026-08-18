@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>关联长度 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>关联长度</h1>
+      <p class="subtitle-en">correlation length</p>
+      <h2>适用场景</h2>
+      <p>只需要一个<span data-term="correlation-length">关联长度</span>、又希望高 $q$ 指数可调时，用广义洛伦兹 $1/(1+(q\xi)^m)$。它覆盖 OZ（$m=2$）到接近 DAB/Porod（$m=4$）的中间情形。</p>
+      <p>有峰则加 $q_0$ 变成宽峰。明确两相光滑界面时优先 DAB，以便把 $\xi$ 连到面积。</p>
+      <h2>物理图像</h2>
+      <p>把 OZ 分母的 $q^2$ 换成 $(q\xi)^m$，就在不引入峰位的前提下改变尾的陡度。$\xi$ 仍是使 $q\xi\sim 1$ 的特征长度，但与 Debye $\xi$ 的定量关系随 $m$ 而变。</p>
+      <p>这是经验式。磁性涨落可以有不同的 $m$ 与 $\xi$。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/shape-independent/correlation-length-iq.png" alt="关联长度经验式 I(q) 示意" width="900">
+        <figcaption>广义洛伦兹 $1/(1+(q\xi)^m)$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>关联长度经验式</p>
+      $$I(q)=\frac{A}{1+(q\xi)^m}+B.$$
+      <p>$m=2$ 为 Ornstein–Zernike；$m=4$ 的尾接近 DAB，但前置因子不再等于 $8\pi\phi(1-\phi)(\Delta\rho)^2\xi^3$。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>关联长度</td><td>$\xi$</td><td>使 $q\xi\sim 1$ 的特征长度</td><td>Å</td><td>10–1000 Å</td></tr>
+          <tr><td>指数</td><td>$m$</td><td>尾的陡度</td><td>无量纲</td><td>通常 $2$–$4$</td></tr>
+          <tr><td>幅度</td><td>$A$</td><td>低 $q$ 幅度</td><td>与强度单位一致</td><td>与涨落强度相关</td></tr>
+          <tr><td>标度 / 本底</td><td>$\mathrm{scale}$, $B$</td><td>前置因子与常数本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>取向：各向同性假定。拉伸网络应使用椭球状 $\xi$ 或回到几何模型。</p>
+      <p>多分散把有效 $m$ 拉向中间值，并与本底简并。磁性：$m$ 偏离 $4$ 可以来自磁界面粗糙，而不是核孔。</p>
+      <p>可辨识性：$m$、$\xi$、$B$ 三者相关。先在双对数上读斜率再放开 $m$。不要把本模型的 $\xi$ 直接代入 DAB 的 $S/V$ 公式。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="lorentz.html">洛伦兹</a> — $m=2$ 的物理 OZ 极限。</li>
+        <li><a href="dab.html">Debye–Anderson–Brumberger</a> — $m=4$ 且幅度有两相公式。</li>
+        <li><a href="broad-peak.html">宽峰</a> — 同一经验式加上峰位 $q_0$。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Debye, P.; Anderson, H. R., Jr.; Brumberger, H. <em>J. Appl. Phys.</em> 1957, 28, 679–683. DOI: <a href="https://doi.org/10.1063/1.1722748" target="_blank" rel="noopener noreferrer">10.1063/1.1722748</a></li>
+        <li>Ornstein, L. S.; Zernike, F. <em>Proc. Acad. Sci. Amsterdam</em> 1914, 17, 793–806.</li>
+      </ul>
+      <nav class="pager">
+        <a href="dab.html">← Debye–Anderson–Brumberger</a>
+        <a href="fractal.html">分形 →</a>
+      </nav>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>幂律 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>幂律</h1>
+      <p class="subtitle-en">power law</p>
+      <h2>适用场景</h2>
+      <p>当一段 $q$ 窗口里 $I(q)$ 接近纯幂律、又不想引入 Guinier 转折或界面面积时，用 $I\sim q^{-m}$ 作经验描述。常见于分形区的局部拟合、背景斜率，或只关心有效指数的筛选。</p>
+      <p>它<strong>不是</strong>粒子形状：同一指数可来自质量分形、棒/片的中间区、粗糙表面或未扣净的本底。看到直线就写“球形/柱形”是误读。</p>
+      <p>窗口两端若出现 Guinier 坪或 Porod 平台，应改用 Guinier–Porod、统一模型或分形模型，让转折显式出现。</p>
+      <h2>物理图像</h2>
+      <p>幂律来自实空间相关函数的标度：若 $\gamma(r)\sim r^{D-3}$（有限区间），则 $I(q)\sim q^{-D}$。$m$ 只是这段标度的指数，没有唯一几何解释。</p>
+      <p>取向平均的薄棒中间区约 $q^{-1}$，薄片约 $q^{-2}$，光滑面约 $q^{-4}$。这些是渐近，不是在全 $q$ 上的纯幂律。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/shape-independent/power-law-iq.png" alt="纯幂律 I(q) 示意" width="900">
+        <figcaption>经验曲线 $I\sim q^{-m}$（图中 $m=3$）。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>纯幂律加本底</p>
+      $$I(q)=A\,q^{-m}+B.$$
+      <p>$A$ 吸收衬度与前置因子，$m$ 为有效指数。本模型不引入特征长度。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>幅度</td><td>$A$</td><td>幂律前置因子</td><td>与强度单位一致</td><td>由窗口与绝对标定</td></tr>
+          <tr><td>指数</td><td>$m$</td><td>有效幂律指数</td><td>无量纲</td><td>通常 $1$–$4$</td></tr>
+          <tr><td>标度 / 本底</td><td>$\mathrm{scale}$, $B$</td><td>前置因子与常数本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>取向：粉末棒/片的经典指数只在“无限长/无限宽”中间区成立；有限尺寸会在两端离开纯幂律。</p>
+      <p>多分散把转折抹圆，使有效 $m$ 随窗口漂移。磁性通道可以有不同的有效指数，若磁化分布更光滑或更粗糙。</p>
+      <p>可辨识性：$m$ 与 $B$、窗口选择强相关。不要用全 $q$ 一段直线去概括 Guinier+Porod；那是 Guinier–Porod 或统一模型的工作。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="porod.html">Porod</a> — 把 $m=4$ 解释成光滑界面面积。</li>
+        <li><a href="two-power-law.html">双幂律</a> — 两段指数加一个转折。</li>
+        <li><a href="fractal.html">分形</a> — 给幂律加上建造块与关联截断。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Guinier, A.; Fournet, G. <em>Small-Angle Scattering of X-rays</em>. Wiley: New York, 1955.</li>
+        <li>Schmidt, P. W. Small-angle scattering studies of disordered, porous and fractal systems. <em>J. Appl. Cryst.</em> 1991, 24, 414–435. DOI: <a href="https://doi.org/10.1107/S0021889891003400" target="_blank" rel="noopener noreferrer">10.1107/S0021889891003400</a></li>
+      </ul>
+      <nav class="pager">
+        <a href="porod.html">← Porod</a>
+        <a href="guinier-porod.html">Guinier–Porod →</a>
+      </nav>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

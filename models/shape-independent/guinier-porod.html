@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Guinier–Porod · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>Guinier–Porod</h1>
+      <p class="subtitle-en">Guinier–Porod</p>
+      <h2>适用场景</h2>
+      <p>需要同时描述低 $q$ 的 $R_g$ 与高 $q$ 幂律、又不想引入完整几何振荡时，用 Hammouda 的 Guinier–Porod。<span data-term="guinier-porod-model">该衔接</span>在交叉点强制连续，适合高分子、聚集体与多孔体系的两段曲线。</p>
+      <p>维数参数 $s$ 区分类球（$s=0$）、类棒（$s=1$）与类片（$s=2$）的 Guinier 前因子。若曲线有多层结构（两套 $R_g$），应改用统一幂律–Rg 或多级 Guinier–Porod，而不是把一个 $R_g$ 拉得过宽。</p>
+      <h2>物理图像</h2>
+      <p>低 $q$ 写成 $G q^{-s}\exp[-q^2 R_g^2/(3-s)]$，高 $q$ 写成 $D/q^m$。交叉波矢 $q_1$ 由两段在函数值与斜率上相接确定，因此 $D$ 不是独立参数。</p>
+      <p>这仍是形状无关的包络：它不产生球的振荡极小。磁性与核通道可以有不同的 $R_g$、$s$、$m$。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/shape-independent/guinier-porod-iq.png" alt="Guinier-Porod I(q) 示意" width="900">
+        <figcaption>Hammouda 衔接：Guinier 区接到 $q^{-m}$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>Hammouda Guinier–Porod（$q\le q_1$ / $q\ge q_1$）</p>
+      $$I(q)=\frac{G}{q^s}\exp\!\left[-\frac{q^2 R_g^2}{3-s}\right],\qquad I(q)=\frac{D}{q^m},$$
+      $$q_1=\frac{1}{R_g}\sqrt{\frac{(m-s)(3-s)}{2}},\qquad D=G\exp\!\left[-\frac{q_1^2 R_g^2}{3-s}\right]q_1^{m-s}.$$
+      <p>$s=0,1,2$ 分别对应类球、类棒、类片 Guinier。观测强度再加本底 $B$。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>回转半径</td><td>$R_g$</td><td>Guinier 区尺寸</td><td>Å</td><td>10–1000 Å</td></tr>
+          <tr><td>维数</td><td>$s$</td><td>Guinier 前因子维数</td><td>无量纲</td><td>$0$（球）、$1$（棒）、$2$（片）</td></tr>
+          <tr><td>Porod 指数</td><td>$m$</td><td>高 $q$ 幂律</td><td>无量纲</td><td>1–4</td></tr>
+          <tr><td>Guinier 幅度</td><td>$G$</td><td>低 $q$ 前置因子</td><td>与强度单位一致</td><td>与 $I(0)$ 相关</td></tr>
+          <tr><td>标度 / 本底</td><td>$\mathrm{scale}$, $B$</td><td>前置因子与常数本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>取向：粉末数据里 $s$ 是有效维数，不是欧拉角。高度取向的棒/片应分方向拟合，或改用圆柱/层状形式因子。</p>
+      <p>多分散抹圆 $q_1$，使表观 $m$ 变缓。磁性：$s$ 与 $m$ 可以与核通道不同，若磁化沿长轴或界面分布。</p>
+      <p>可辨识性：$G$、$R_g$、$m$ 在窄窗口内相关。没有跨越 $q_1$ 的数据时，本模型退化为纯 Guinier 或纯幂律。不要与统一模型的 $P$、$B$ 同时自由拟合同一段。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="guinier.html">Guinier</a> — 只有低 $q$ 时不必引入 $m$。</li>
+        <li><a href="unified-power-rg.html">统一幂律–Rg</a> — 用误差函数平滑同一层级的 Guinier 与幂律。</li>
+        <li><a href="porod.html">Porod</a> — $s=0$、$m=4$ 时高 $q$ 回到界面尾。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Hammouda, B. A new Guinier–Porod model. <em>J. Appl. Cryst.</em> 2010, 43, 716–719. DOI: <a href="https://doi.org/10.1107/S0021889810015773" target="_blank" rel="noopener noreferrer">10.1107/S0021889810015773</a></li>
+      </ul>
+      <nav class="pager">
+        <a href="power-law.html">← 幂律</a>
+        <a href="unified-power-rg.html">统一幂律–Rg →</a>
+      </nav>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

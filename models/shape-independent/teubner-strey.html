@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Teubner–Strey · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>Teubner–Strey</h1>
+      <p class="subtitle-en">Teubner–Strey</p>
+      <h2>适用场景</h2>
+      <p>双连续微乳、弱有序的两相流体常用 Teubner–Strey：强度是 $a+c q^2+d q^4$ 的倒数。峰位给出畴间距，宽度给出关联长度 $\xi$。</p>
+      <p>层状有高阶峰时改用层状堆叠。旋节早期可用 Cahn 型，但 TS 也能拟合宽峰。</p>
+      <h2>物理图像</h2>
+      <p>对两相涨落的 Landau 展开保留到 $q^4$，得到 $I\sim 1/(a+c q^2+d q^4)$。$c\lt 0$ 时出现峰。由 $a,c,d$ 可定义畴间距 $d_{\mathrm{TS}}$ 与 $\xi$。</p>
+      <p>取向：剪切微乳可使峰各向异性。磁性两相的 $d_{\mathrm{TS}}$ 用磁衬度，不必等于核间距。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/shape-independent/teubner-strey-iq.png" alt="Teubner-Strey I(q) 示意" width="900">
+        <figcaption>微乳峰：$I\sim 1/(a+c q^2+d q^4)$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>Teubner–Strey</p>
+      $$I(q)=\frac{8\pi/\xi}{a+c q^2+d q^4}+B,\qquad d_{\mathrm{TS}}=2\pi\left[\tfrac12\sqrt{a/d}-c/(4d)\right]^{-1/2},$$
+      $$\xi=\left[\tfrac12\sqrt{a/d}+c/(4d)\right]^{-1/2}.$$
+      <p>前置因子的写法随文献略有不同；拟合时常用无量纲标度吸收。符号当场约定：$d\gt 0$，$c$ 可为负。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>TS 系数</td><td>$a,c,d$</td><td>Landau 展开系数</td><td>由 $q$ 单位决定</td><td>$d\gt 0$；$c\lt 0$ 才有峰</td></tr>
+          <tr><td>畴间距</td><td>$d_{\mathrm{TS}}$</td><td>由 $a,c,d$ 导出</td><td>Å</td><td>微乳典型数十至数百 Å</td></tr>
+          <tr><td>关联长度</td><td>$\xi$</td><td>峰宽对应的衰减长度</td><td>Å</td><td>与 $d_{\mathrm{TS}}$ 同量级或更短</td></tr>
+          <tr><td>标度 / 本底</td><td>$\mathrm{scale}$, $B$</td><td>前置因子与常数本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>取向：粉末 TS 假定各向同性双连续。层状微乳应改用层状页，不要用 TS 硬撑高阶峰。</p>
+      <p>多分散畴间距加宽峰，表现为更短的 $\xi$。磁性衬度只进入幅度，不进入 $d_{\mathrm{TS}}$ 的几何，除非磁畴与核畴不同。</p>
+      <p>可辨识性：$a,c,d$ 与标度、本底相关。应报告导出的 $d_{\mathrm{TS}}$、$\xi$ 而不是三个裸系数。宽而靠近 $q=0$ 的峰与旋节式难以分辨。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="spinodal.html">旋节分解</a> — Cahn–Hilliard 早期峰，时间演化不同。</li>
+        <li><a href="broad-peak.html">宽峰</a> — 经验峰，不导出 $\xi$ 与 $d_{\mathrm{TS}}$ 的 TS 关系。</li>
+        <li><a href="../lamellae/lamellar.html">层状</a> — 有厚度振荡或高阶布拉格时离开 TS。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Teubner, M.; Strey, R. Origin of the scattering peak in microemulsions. <em>J. Chem. Phys.</em> 1987, 87, 3195–3200. DOI: <a href="https://doi.org/10.1063/1.453006" target="_blank" rel="noopener noreferrer">10.1063/1.453006</a></li>
+      </ul>
+      <nav class="pager">
+        <a href="gel-fit.html">← 凝胶拟合</a>
+        <a href="spinodal.html">旋节分解 →</a>
+      </nav>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

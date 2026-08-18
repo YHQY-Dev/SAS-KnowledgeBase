@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>聚电解质 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>聚电解质</h1>
+      <p class="subtitle-en">polyelectrolyte</p>
+      <h2>适用场景</h2>
+      <p>半柔性带电链在半稀释区常出现静电相关峰，并在更低 $q$ 有关联长度。Borue–Erukhimovich（BE）型分母把屏蔽 $\kappa$ 与峰位 $q_*$ 写进同一个有理式；物理图像来自 Barrat–Joanny 的静电持久长度与 Dobrynin 的标度。</p>
+      <p>中性链回到排除体积或 Debye。峰非常宽且像微乳时，Teubner–Strey 也可能拟合，但参数解释不同。</p>
+      <h2>物理图像</h2>
+      <p>静电把单体关联变成带峰的结构因子。BE 形式 $I\propto (q^2+\kappa^2)/[(q^2+\kappa^2)^2+q_*^4]$ 给出 $q\sim q_*$ 的峰，高盐（$\kappa$ 大）时峰被抹掉，回到洛伦兹型。</p>
+      <p>链本身仍是半柔性：高 $q$ 可再接到 $q^{-1}$ 或排除体积尾。取向在剪切聚电解质中常见，粉末峰只给各向同性 $q_*$。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/shape-independent/be-polyelectrolyte-iq.png" alt="聚电解质 BE 型 I(q) 示意" width="900">
+        <figcaption>静电相关峰：$I\propto(q^2+\kappa^2)/[(q^2+\kappa^2)^2+q_*^4]$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>Borue–Erukhimovich 型聚电解质强度</p>
+      $$I(q)=\frac{C(q^2+\kappa^2)}{(q^2+\kappa^2)^2+q_*^4}+B.$$
+      <p>$\kappa$ 为 Debye 屏蔽波矢，$q_*$ 控制峰位。无盐、半稀释时 $q_*$ 随浓度升高。高 $q$ 链统计需另接形式因子。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>峰位参数</td><td>$q_*$</td><td>静电相关峰</td><td>Å$^{-1}$</td><td>随浓度、离子强度变</td></tr>
+          <tr><td>屏蔽</td><td>$\kappa$</td><td>Debye 屏蔽波矢</td><td>Å$^{-1}$</td><td>加盐增大</td></tr>
+          <tr><td>幅度</td><td>$C$</td><td>涨落幅度</td><td>与强度单位一致</td><td>与衬度、浓度相关</td></tr>
+          <tr><td>标度 / 本底</td><td>$\mathrm{scale}$, $B$</td><td>前置因子与常数本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>取向：剪切或电场下 $q_*$ 可变成各向异性。一维粉末拟合会低估取向。</p>
+      <p>多分散链长主要改低 $q$，峰位更受浓度控制。磁性标记的带电链：磁通道通常没有同一静电峰。</p>
+      <p>可辨识性：$\kappa$ 与 $q_*$ 在宽峰时相关。先根据加盐是否消峰判断是不是静电峰，再放开参数。不要把 $2\pi/q_*$ 读成硬球半径。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="polymer-excl-volume.html">聚合物排除体积</a> — 中性良溶剂链，无静电峰。</li>
+        <li><a href="broad-peak.html">宽峰</a> — 经验峰位，不引入屏蔽 $\kappa$。</li>
+        <li><a href="teubner-strey.html">Teubner–Strey</a> — 同样可出现峰，但是微乳 $q^4$ 展开。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Borue, V. Yu.; Erukhimovich, I. Ya. A statistical theory of weakly charged polyelectrolytes: fluctuations, equation of state, and microphase separation. <em>Macromolecules</em> 1988, 21, 3240–3249. DOI: <a href="https://doi.org/10.1021/ma00189a019" target="_blank" rel="noopener noreferrer">10.1021/ma00189a019</a></li>
+        <li>Dobrynin, A. V.; Colby, R. H.; Rubinstein, M. Scaling theory of polyelectrolyte solutions. <em>Macromolecules</em> 1995, 28, 1859–1871. DOI: <a href="https://doi.org/10.1021/ma00110a021" target="_blank" rel="noopener noreferrer">10.1021/ma00110a021</a></li>
+      </ul>
+      <nav class="pager">
+        <a href="star-polymer.html">← 星形聚合物</a>
+        <a href="gauss-lorentz-gel.html">高斯–洛伦兹凝胶 →</a>
+      </nav>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

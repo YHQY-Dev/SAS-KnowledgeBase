@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>质量–表面分形 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>质量–表面分形</h1>
+      <p class="subtitle-en">mass-surface fractal</p>
+      <h2>适用场景</h2>
+      <p>聚集体在中间 $q$ 按质量分形生长，高 $q$ 看见一次颗粒的粗糙或光滑表面时，把 $q^{-D_m}$ 接到 $q^{D_s-6}$。转折给出一次颗粒尺度。</p>
+      <p>只有一段斜率时不要用本模型。需要建造块振荡时回到完整分形页。</p>
+      <h2>物理图像</h2>
+      <p>两个标度区共用一个交叉 $q_c\sim 1/r_0$。低 $q$ 仍可由整体 $\xi$ 截断。这是双幂律在分形语言下的特款。</p>
+      <p>磁性若只存在于表面层，可能只看见表面段。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/shape-independent/mass-surface-fractal-iq.png" alt="质量-表面分形 I(q) 示意" width="900">
+        <figcaption>先 $q^{-D_m}$ 再接到表面尾。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>质量–表面两段（平滑交叉）</p>
+      $$I(q)=\frac{A}{q^{D_m}}\frac{1}{1+(q/q_c)^{6-D_s-D_m}}+B.$$
+      <p>$q\ll q_c$ 指数 $D_m$，$q\gg q_c$ 指数 $6-D_s$。光滑一次颗粒取 $D_s=2$。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>质量维数</td><td>$D_m$</td><td>中间区质量分形</td><td>无量纲</td><td>$1$–$3$</td></tr>
+          <tr><td>表面维数</td><td>$D_s$</td><td>高 $q$ 表面分形</td><td>无量纲</td><td>$2$–$3$</td></tr>
+          <tr><td>交叉波矢</td><td>$q_c$</td><td>一次颗粒尺度</td><td>Å$^{-1}$</td><td>$\sim 1/r_0$</td></tr>
+          <tr><td>标度 / 本底</td><td>$\mathrm{scale}$, $B$</td><td>前置因子与常数本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>取向：各向同性平均。片状一次颗粒会使表面段接近 $q^{-2}$ 而不是 $q^{-4}$，应改用几何片层。</p>
+      <p>多分散 $r_0$ 抹圆 $q_c$。磁性表面段的 $D_s$ 可与核不同。</p>
+      <p>可辨识性：$D_m$、$D_s$、$q_c$ 需要两段都看得见。窗口只覆盖一段时退化为单幂律。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="mass-fractal.html">质量分形</a> — 只有中间区。</li>
+        <li><a href="surface-fractal.html">表面分形</a> — 只有界面尾。</li>
+        <li><a href="fractal.html">分形</a> — 建造块 $P(q)$ 显式出现。</li>
+        <li><a href="two-power-law.html">双幂律</a> — 同一折线，不解释成 $D_m$、$D_s$。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Teixeira, J. <em>J. Appl. Cryst.</em> 1988, 21, 781–785. DOI: <a href="https://doi.org/10.1107/S0021889888001990" target="_blank" rel="noopener noreferrer">10.1107/S0021889888001990</a></li>
+        <li>Bale, H. D.; Schmidt, P. W. <em>Phys. Rev. Lett.</em> 1984, 53, 596–599. DOI: <a href="https://doi.org/10.1103/PhysRevLett.53.596" target="_blank" rel="noopener noreferrer">10.1103/PhysRevLett.53.596</a></li>
+      </ul>
+      <nav class="pager">
+        <a href="surface-fractal.html">← 表面分形</a>
+        <a href="fractal-core-shell.html">核壳分形 →</a>
+      </nav>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

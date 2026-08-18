@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>洛伦兹 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>洛伦兹</h1>
+      <p class="subtitle-en">Lorentz</p>
+      <h2>适用场景</h2>
+      <p>临界涨落、半稀释溶液或凝胶的热涨落常用 Ornstein–Zernike / 洛伦兹型：$I\sim 1/(1+\xi^2 q^2)$。典型对象：近临界二元混合物、聚合物溶液的浓度涨落、以及只需要一个<span data-term="correlation-length">关联长度</span>的筛选拟合。</p>
+      <p>若高 $q$ 掉得比 $q^{-2}$ 更快，应改用 DAB（$q^{-4}$ 尾）或带指数 $m$ 的关联长度模型。出现相关峰时改用宽峰或 Teubner–Strey。</p>
+      <h2>物理图像</h2>
+      <p>指数衰减关联 $\gamma(r)\sim e^{-r/\xi}/r$ 的三维 Fourier 变换是洛伦兹函数。$\xi$ 是涨落的关联长度，$I(0)$ 随 $\xi$ 增大（趋近临界点）。</p>
+      <p>这不是粒子形式因子：没有固定外形。取向平均已经包含在各向同性 OZ 里。磁性临界涨落可以有自己的 $\xi$。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/shape-independent/lorentz-iq.png" alt="Ornstein-Zernike 洛伦兹 I(q) 示意" width="900">
+        <figcaption>$I\sim 1/(1+\xi^2 q^2)$ 的缓慢衰减。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>Ornstein–Zernike / 洛伦兹</p>
+      $$I(q)=\frac{I(0)}{1+\xi^2 q^2}+B.$$
+      <p>有时把 $I(0)$ 写成与 $\xi$ 相关的临界幅度。高 $q$ 渐近 $q^{-2}$。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>关联长度</td><td>$\xi$</td><td>指数关联的衰减长度</td><td>Å</td><td>10–1000 Å</td></tr>
+          <tr><td>前向幅度</td><td>$I(0)$</td><td>涨落强度</td><td>与强度单位一致</td><td>近临界时增大</td></tr>
+          <tr><td>标度 / 本底</td><td>$\mathrm{scale}$, $B$</td><td>前置因子与常数本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>取向：各向同性 OZ 假定涨落无优方向。剪切或液晶中应使用各向异性 $\xi_\parallel,\xi_\perp$。</p>
+      <p>多分散：这里的“多分散”表现为 $\xi$ 的分布，会把洛伦兹尾变陡或变缓。磁性临界散射的 $\xi$ 与核浓度涨落不必相同。</p>
+      <p>可辨识性：$I(0)$、$\xi$ 与 $B$ 在窄 $q$ 相关。高 $q$ 若已是 $q^{-4}$，不要用洛伦兹硬撑；那是 DAB 或 Porod。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="dab.html">Debye–Anderson–Brumberger</a> — 关联 $\exp(-r/\xi)$，尾为 $q^{-4}$。</li>
+        <li><a href="correlation-length.html">关联长度</a> — 把指数改成可调 $m$ 的经验式。</li>
+        <li><a href="two-lorentzian.html">双洛伦兹</a> — 两个关联长度叠加。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Ornstein, L. S.; Zernike, F. Accidental deviations of density and opalescence at the critical point of a single substance. <em>Proc. Acad. Sci. Amsterdam</em> 1914, 17, 793–806.</li>
+        <li>Guinier, A.; Fournet, G. <em>Small-Angle Scattering of X-rays</em>. Wiley: New York, 1955.</li>
+      </ul>
+      <nav class="pager">
+        <a href="two-power-law.html">← 双幂律</a>
+        <a href="two-lorentzian.html">双洛伦兹 →</a>
+      </nav>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>宽峰 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>宽峰</h1>
+      <p class="subtitle-en">broad peak</p>
+      <h2>适用场景</h2>
+      <p>液体、微乳、聚电解质或凝胶常出现又宽又不一定对称的相关峰。宽峰经验式用 $q_0$、关联长度 $\xi$ 与指数 $m$ 抓住峰位和宽度，不引入晶格。</p>
+      <p>峰变得又尖又有高阶时，应改用层状堆叠。双连续微乳且可用 $q^2,q^4$ 展开时，Teubner–Strey 更有物理内容。</p>
+      <h2>物理图像</h2>
+      <p>把 Ornstein–Zernike 的极点从 $q=0$ 移到 $q_0$，再把分母指数改成 $m$，就得到常用宽峰。$\xi$ 控制宽度，$m$ 控制尾的陡度。</p>
+      <p>这是经验相关峰，不是布拉格晶格。取向样品中 $q_0$ 可以只出现在特定方向。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/shape-independent/broad-peak-iq.png" alt="宽峰经验式 I(q) 示意" width="900">
+        <figcaption>峰位可移的宽相关峰。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>宽峰经验式</p>
+      $$I(q)=\frac{A}{1+(|q-q_0|\xi)^m}+B.$$
+      <p>$q_0=0$、$m=2$ 回到洛伦兹。特征间距仍可粗读为 $2\pi/q_0$。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>峰位</td><td>$q_0$</td><td>相关峰中心</td><td>Å$^{-1}$</td><td>液体峰常见 $0.05$–$0.2$ Å$^{-1}$</td></tr>
+          <tr><td>关联长度</td><td>$\xi$</td><td>控制峰宽</td><td>Å</td><td>10–500 Å</td></tr>
+          <tr><td>指数</td><td>$m$</td><td>尾的陡度</td><td>无量纲</td><td>通常 $2$–$4$</td></tr>
+          <tr><td>幅度</td><td>$A$</td><td>峰高</td><td>与强度单位一致</td><td>与衬度、有序程度相关</td></tr>
+          <tr><td>标度 / 本底</td><td>$\mathrm{scale}$, $B$</td><td>前置因子与常数本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>取向：粉末平均把弧向信息丢掉。剪切后的各向异性峰应分方向拟合 $q_0$。</p>
+      <p>多分散的重复距离加宽峰，并与 $\xi$、$m$ 简并。磁性相关峰可以有不同的 $q_0$。</p>
+      <p>可辨识性：$q_0$、$\xi$、$m$、$B$ 四者相关。没有两侧翼的数据时，先固定 $m=2$ 或 $4$。不要把宽峰的 $q_0$ 解释成晶体点阵常数。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="peak-lorentz.html">洛伦兹峰</a> — $m=2$ 且峰较窄时的特例。</li>
+        <li><a href="teubner-strey.html">Teubner–Strey</a> — 微乳双连续相的 $a+cq^2+dq^4$ 展开。</li>
+        <li><a href="correlation-length.html">关联长度</a> — 无峰位、$q_0=0$ 的经验关联。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Teubner, M.; Strey, R. Origin of the scattering peak in microemulsions. <em>J. Chem. Phys.</em> 1987, 87, 3195–3200. DOI: <a href="https://doi.org/10.1063/1.453006" target="_blank" rel="noopener noreferrer">10.1063/1.453006</a></li>
+        <li>Guinier, A.; Fournet, G. <em>Small-Angle Scattering of X-rays</em>. Wiley: New York, 1955.</li>
+      </ul>
+      <nav class="pager">
+        <a href="peak-lorentz.html">← 洛伦兹峰</a>
+        <a href="dab.html">Debye–Anderson–Brumberger →</a>
+      </nav>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

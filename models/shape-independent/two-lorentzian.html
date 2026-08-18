@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>双洛伦兹 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>双洛伦兹</h1>
+      <p class="subtitle-en">two Lorentzian</p>
+      <h2>适用场景</h2>
+      <p>凝胶、半稀释溶液或微相分离体系常常同时有大尺度静态不均与小尺度热涨落。两个洛伦兹分量用两个 $\xi$ 描述，而不引入峰位。</p>
+      <p>若其中一个分量其实是高斯型固态不均质，应改用高斯–洛伦兹凝胶。出现峰则改用宽峰或 Teubner–Strey。</p>
+      <h2>物理图像</h2>
+      <p>强度是两个 OZ 项之和。长 $\xi$ 控制低 $q$ 发散的快慢，短 $\xi$ 控制高 $q$ 的 $q^{-2}$ 尾。两者在实空间对应两套指数关联。</p>
+      <p>没有取向几何；各向异性时应给每套关联两个方向的 $\xi$。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/shape-independent/two-lorentzian-iq.png" alt="双洛伦兹 I(q) 示意" width="900">
+        <figcaption>长、短两个关联长度的洛伦兹叠加。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>双洛伦兹</p>
+      $$I(q)=\frac{A_1}{1+\xi_1^2 q^2}+\frac{A_2}{1+\xi_2^2 q^2}+B.$$
+      <p>约定 $\xi_1>\xi_2$。两套幅度 $A_i$ 吸收衬度与涨落强度。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>长关联长度</td><td>$\xi_1$</td><td>大尺度涨落</td><td>Å</td><td>50–2000 Å</td></tr>
+          <tr><td>短关联长度</td><td>$\xi_2$</td><td>小尺度涨落</td><td>Å</td><td>5–100 Å</td></tr>
+          <tr><td>幅度</td><td>$A_1,A_2$</td><td>两个洛伦兹前置</td><td>与强度单位一致</td><td>相对权重由数据约束</td></tr>
+          <tr><td>标度 / 本底</td><td>$\mathrm{scale}$, $B$</td><td>前置因子与常数本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>取向：粉末各向同性假定。若只有一个方向被拉伸，两个 $\xi$ 都会变成张量，本模型不够。</p>
+      <p>多分散与两套 $\xi$ 的分布会混在一起，表现为有效指数偏离 $-2$。磁性：磁不均质往往只有一套较长的 $\xi$。</p>
+      <p>可辨识性：四个参数加本底很容易交换。应先固定短 $\xi$ 的高 $q$ 窗口，再放开长分量。$\xi_1\approx\xi_2$ 时退化为单洛伦兹。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="lorentz.html">洛伦兹</a> — 只需一个关联长度。</li>
+        <li><a href="gauss-lorentz-gel.html">高斯–洛伦兹凝胶</a> — 大尺度用高斯而不是第二个洛伦兹。</li>
+        <li><a href="dab.html">Debye–Anderson–Brumberger</a> — 单长度但 $q^{-4}$ 尾。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Shibayama, M. Spatial inhomogeneity and dynamic fluctuations of polymer gels. <em>Macromol. Chem. Phys.</em> 1998, 199, 1–30. DOI: <a href="https://doi.org/10.1002/macp.1998.021990101" target="_blank" rel="noopener noreferrer">10.1002/macp.1998.021990101</a></li>
+        <li>Ornstein, L. S.; Zernike, F. <em>Proc. Acad. Sci. Amsterdam</em> 1914, 17, 793–806.</li>
+      </ul>
+      <nav class="pager">
+        <a href="lorentz.html">← 洛伦兹</a>
+        <a href="gaussian-peak.html">高斯峰 →</a>
+      </nav>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>星形聚合物 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>星形聚合物</h1>
+      <p class="subtitle-en">star polymer</p>
+      <h2>适用场景</h2>
+      <p>多条高斯臂从同一中心长出、核可忽略时，用 Benoit 星形因子。臂数 $f$ 增大使中间 $q$ 比线形链更“密实”，但仍不是硬球振荡。</p>
+      <p>有明显致密核时用聚合物胶束。臂有排除体积或静电时，本页的高斯臂假定失效。</p>
+      <h2>物理图像</h2>
+      <p>Benoit 对 $f$ 条高斯臂做构象平均。令 $v=q^2 R_{g,\mathrm{arm}}^2$，形式因子含单臂 Debye 与臂间交叉项。整星 $R_g$ 随 $f$ 增加而小于同分子量线形链。</p>
+      <p>取向平均已包含。磁性若只标记核，曲线接近小球而不是星。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/shape-independent/star-polymer-iq.png" alt="星形聚合物 I(q) 示意" width="900">
+        <figcaption>Benoit 星：比线形链更早偏离 Debye。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>Benoit 高斯星（$v=q^2 R_{g,\mathrm{arm}}^2$，$f$ 为臂数）</p>
+      $$P(q)=\frac{2}{f v^2}\left[v-1+e^{-v}+\frac{f-1}{2}(1-e^{-v})^2\right].$$
+      <p>$f=1,2$ 回到线形 Debye。整星 $R_g^2=((3f-2)/f)\,R_{g,\mathrm{arm}}^2$。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>臂回转半径</td><td>$R_{g,\mathrm{arm}}$</td><td>单臂 $R_g$</td><td>Å</td><td>10–200 Å</td></tr>
+          <tr><td>臂数</td><td>$f$</td><td>从中心长出的臂</td><td>无量纲</td><td>通常 $3$–$64$</td></tr>
+          <tr><td>前向散射</td><td>$I(0)$</td><td>与数密度、总分子量有关</td><td>与强度单位一致</td><td>绝对标定</td></tr>
+          <tr><td>标度 / 本底</td><td>$\mathrm{scale}$, $B$</td><td>前置因子与常数本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>取向：溶液中各向同性。剪切可能拉直臂，表观 $f$ 会错。</p>
+      <p>臂长多分散相当于把 $v$ 平均，与 $f$ 相关。磁性核与臂衬度不同时，应回到胶束模型。</p>
+      <p>可辨识性：大 $f$ 的星在有限 $q$ 窗口里像模糊球。没有高分子量极限的 $q^{-2}$ 臂尾时，不要声称 $f$。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="mono-gauss-coil.html">单分散高斯链</a> — $f=1$ 或 $2$ 的线形极限。</li>
+        <li><a href="../sphere/polymer-micelle.html">聚合物胶束</a> — 有致密核的冠状链，不是无核星。</li>
+        <li><a href="fractal-core-shell.html">核壳分形</a> — 冠状用分形而不是高斯臂。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Benoit, H. On the effect of branching and polydispersity on the angular distribution of the light scattered by Gaussian coils. <em>J. Polym. Sci.</em> 1953, 11, 507–510. DOI: <a href="https://doi.org/10.1002/pol.1953.120110512" target="_blank" rel="noopener noreferrer">10.1002/pol.1953.120110512</a></li>
+        <li>Dozier, W. D.; Huang, J. S.; Fetters, L. J. Colloidal nature of star polymer dilute and semidilute solutions. <em>Macromolecules</em> 1991, 24, 2810–2814. DOI: <a href="https://doi.org/10.1021/ma00010a026" target="_blank" rel="noopener noreferrer">10.1021/ma00010a026</a></li>
+      </ul>
+      <nav class="pager">
+        <a href="polymer-excl-volume.html">← 聚合物排除体积</a>
+        <a href="be-polyelectrolyte.html">聚电解质 →</a>
+      </nav>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

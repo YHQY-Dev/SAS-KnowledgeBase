@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>无规相近似 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>无规相近似</h1>
+      <p class="subtitle-en">RPA</p>
+      <h2>适用场景</h2>
+      <p>聚合物共混或熔体的浓度涨落在平均场下用 de Gennes 无规相近似（RPA）。$S(q)$ 由 Debye 函数与 Flory–Huggins <span data-term="flory-huggins-chi">$\chi$</span> 构成；趋近旋节时 $S(0)$ 发散。</p>
+      <p>嵌段共聚物有 Leibler 峰，本页只写共混均聚物的 de Gennes 式。已经相分离成畴时改用 TS、层状或几何模型。</p>
+      <h2>物理图像</h2>
+      <p>RPA 把理想链的 Debye 响应加上平均场相互作用：$\chi$ 越大，长波涨落越强。$S^{-1}(q)=[\phi N g_D]^{-1}+[(1-\phi)N g_D]^{-1}-2\chi$。</p>
+      <p>这是结构因子语言，不是粒子外形。取向在各向同性熔体中平凡；外场取向的链要用各向异性 Debye。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/shape-independent/rpa-iq.png" alt="聚合物共混 RPA I(q) 示意" width="900">
+        <figcaption>de Gennes RPA：$S(q)$ 由 Debye 与 $\chi$ 决定。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>de Gennes 二元均聚物 RPA（对称度 $N$，体积分数 $\phi$）</p>
+      $$\frac{1}{S(q)}=\frac{1}{\phi N g_D(q R_g)}+\frac{1}{(1-\phi) N g_D(q R_g)}-2\chi,$$
+      <p>其中 $g_D$ 为归一化 Debye 函数 $P(q)$。观测 $I(q)\propto (\Delta\rho)^2 S(q)+B$。旋节 $\chi_s$ 使 $S(0)\to\infty$。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>回转半径</td><td>$R_g$</td><td>链的 Debye $R_g$</td><td>Å</td><td>熔体链尺寸</td></tr>
+          <tr><td>聚合度</td><td>$N$</td><td>有效段数</td><td>无量纲</td><td>与 $R_g$ 相关</td></tr>
+          <tr><td>体积分数</td><td>$\phi$</td><td>其中一组份</td><td>无量纲</td><td>$0.1$–$0.9$</td></tr>
+          <tr><td>相互作用</td><td>$\chi$</td><td>Flory–Huggins 参数</td><td>无量纲</td><td>近旋节时接近 $\chi_s$</td></tr>
+          <tr><td>标度 / 本底</td><td>$\mathrm{scale}$, $B$</td><td>前置因子与常数本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>取向：各向同性 RPA 不含量纲取向角。流动会使 $g_D$ 各向异性。</p>
+      <p>多分散 $N$ 改变 $S(0)$ 与旋节位置，须声明是何种平均。磁性标记共混：磁 $\Delta\rho$ 只进入幅度，除非两组份磁化率不同。</p>
+      <p>可辨识性：$\chi$ 与 $N$、本底、绝对标定强相关。没有绝对强度时只能谈 $S(q)/S(0)$ 的形状。已经出现畴峰时不要继续用均聚物 RPA。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="spinodal.html">旋节分解</a> — RPA 的 $S(0)$ 发散之后的动力学。</li>
+        <li><a href="mono-gauss-coil.html">单分散高斯链</a> — $\chi=0$ 时 $S(q)$ 回到 Debye。</li>
+        <li><a href="teubner-strey.html">Teubner–Strey</a> — 已经相分离的双连续畴。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>de Gennes, P.-G. <em>Scaling Concepts in Polymer Physics</em>. Cornell University Press: Ithaca, 1979.</li>
+        <li>de Gennes, P.-G. Theory of X-ray scattering by liquid macromolecules with heavy atom labels. <em>J. Phys. (Paris)</em> 1970, 31, 235–238. DOI: <a href="https://doi.org/10.1051/jphys:01970003102-3023500" target="_blank" rel="noopener noreferrer">10.1051/jphys:01970003102-3023500</a></li>
+      </ul>
+      <nav class="pager">
+        <a href="spinodal.html">← 旋节分解</a>
+        <a href="line.html">线性 →</a>
+      </nav>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

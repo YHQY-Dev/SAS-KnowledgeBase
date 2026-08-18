@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>单分散高斯链 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>单分散高斯链</h1>
+      <p class="subtitle-en">monodisperse Gaussian coil</p>
+      <h2>适用场景</h2>
+      <p>理想链、$\theta$ 溶剂中的线形高分子，且分子量分布很窄时，用 Debye 单分散高斯链。低 $q$ 给出 $R_g$，高 $q$ 趋近 $q^{-2}$。</p>
+      <p>明显多分散用 Zimm 多分散 Debye。良溶剂排除体积使高 $q$ 接近 $q^{-1/\nu}$（$\nu\approx 0.588$），应改用排除体积链。半柔性棒段明显时用柔性圆柱。</p>
+      <h2>物理图像</h2>
+      <p>高斯链的成对距离是高斯分布。对链段对积分得到 Debye 函数。记 $x=q^2 R_g^2$，内层 $D(x)=(e^{-x}-1+x)/x^2$，归一化形式因子 $P(x)=2D(x)$，从而 $P(0)=1$。</p>
+      <p>取向已在各向同性链构象平均里。磁性标记若只在链的一段上，有效 $R_g$ 不是整链的 $R_g$。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/shape-independent/mono-gauss-coil-iq.png" alt="单分散 Debye 高斯链 I(q) 示意" width="900">
+        <figcaption>Debye 函数：Guinier 转到 $q^{-2}$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>Debye 单分散高斯链（$x=q^2 R_g^2$）</p>
+      $$D(x)=\frac{e^{-x}-1+x}{x^2},\qquad P(q)=2D(x),\qquad P(0)=1.$$
+      <p>观测 $I(q)=I(0)\,P(q)+B$。Kratky 图 $q^2 I(q)$ 在高 $q$ 趋向平台。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>回转半径</td><td>$R_g$</td><td>整链回转半径</td><td>Å</td><td>20–500 Å</td></tr>
+          <tr><td>前向散射</td><td>$I(0)$</td><td>与数密度、分子量、衬度有关</td><td>与强度单位一致</td><td>绝对标定可给 $M_w$</td></tr>
+          <tr><td>标度 / 本底</td><td>$\mathrm{scale}$, $B$</td><td>前置因子与常数本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>取向：各向同性溶液不必引入取向角。流动取向的链应改用各向异性 $R_g$ 或弹性网络模型。</p>
+      <p>多分散把 Kratky 平台抬高并改变低 $q$ 曲率，应改用多分散页。磁性标记链的对比匹配会改变有效 $R_g$。</p>
+      <p>可辨识性：只看到 Guinier 时 Debye 与球无法分辨。需要看到 $q^{-2}$ 区。本底会伪装成排除体积（更陡的尾）。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="poly-gauss-coil.html">多分散高斯链</a> — 同一 Debye 核，对分子量分布平均。</li>
+        <li><a href="polymer-excl-volume.html">聚合物排除体积</a> — 良溶剂，高 $q$ 不是 $q^{-2}$。</li>
+        <li><a href="star-polymer.html">星形聚合物</a> — 多臂从同一中心长出。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Debye, P. Molecular-weight determination by light scattering. <em>J. Phys. Colloid Chem.</em> 1947, 51, 18–32. DOI: <a href="https://doi.org/10.1021/j150451a002" target="_blank" rel="noopener noreferrer">10.1021/j150451a002</a></li>
+        <li>Guinier, A.; Fournet, G. <em>Small-Angle Scattering of X-rays</em>. Wiley: New York, 1955.</li>
+      </ul>
+      <nav class="pager">
+        <a href="fractal-core-shell.html">← 核壳分形</a>
+        <a href="poly-gauss-coil.html">多分散高斯链 →</a>
+      </nav>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

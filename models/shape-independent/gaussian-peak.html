@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>高斯峰 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>高斯峰</h1>
+      <p class="subtitle-en">Gaussian peak</p>
+      <h2>适用场景</h2>
+      <p>弱有序或仪器分辨率主导的相关峰接近高斯时，用高斯峰作经验描述。典型对象：宽而对称的层状/立方弱峰、分辨率卷积后的布拉格残峰，以及只需要峰位与宽度的筛选。</p>
+      <p>峰明显不对称或有 Lorentz 尾时改用洛伦兹峰或宽峰。有明确晶格或层状堆叠时应改用层状 / 准晶形式因子，而不是一个孤立高斯。</p>
+      <h2>物理图像</h2>
+      <p>高斯对应实空间的高斯衰减调制，或只是分辨率函数本身。峰位 $q_0$ 给出重复距离 $2\pi/q_0$，宽度 $\sigma$ 含畴大小与仪器 smearing。</p>
+      <p>取向：粉末峰是环平均；$q_0$ 不是欧拉角。磁性超结构峰的 $q_0$ 可以与核峰不同。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/shape-independent/gaussian-peak-iq.png" alt="高斯峰 I(q) 示意" width="900">
+        <figcaption>对称高斯相关峰。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>高斯峰加本底</p>
+      $$I(q)=A\exp\left[-\frac{(q-q_0)^2}{2\sigma^2}\right]+B.$$
+      <p>重复距离 $d=2\pi/q_0$。$\sigma$ 是 $q$ 空间标准差，不是实空间 $\sigma_d$。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>峰位</td><td>$q_0$</td><td>相关峰中心</td><td>Å$^{-1}$</td><td>由重复距离决定</td></tr>
+          <tr><td>宽度</td><td>$\sigma$</td><td>高斯标准差</td><td>Å$^{-1}$</td><td>含畴大小与分辨率</td></tr>
+          <tr><td>幅度</td><td>$A$</td><td>峰高</td><td>与强度单位一致</td><td>与有序程度、衬度相关</td></tr>
+          <tr><td>标度 / 本底</td><td>$\mathrm{scale}$, $B$</td><td>前置因子与常数本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>取向：二维弧向收窄说明择优取向，粉末一维高斯不能给出取向分布。片层法向角 $\theta,\phi$ 属于层状页。</p>
+      <p>多分散的层间距把峰加宽，与仪器 smearing 同向，须用分辨率函数分开。磁性峰宽反映磁畴，不必等于核畴。</p>
+      <p>可辨识性：本底与宽峰强相关。$q_0$ 靠近 $q_{\min}$ 时峰被截断，位置不可靠。洛伦兹尾被误当成高斯时，$d$ 仍可对，但积分强度会错。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="peak-lorentz.html">洛伦兹峰</a> — 同样峰位，但有更重的尾。</li>
+        <li><a href="broad-peak.html">宽峰</a> — 用关联长度与可调指数描述更宽的相关峰。</li>
+        <li><a href="../lamellae/lamellar-stack-caille.html">Caille 层状堆叠</a> — 层状峰应回到热起伏堆叠，而不是孤立高斯。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Guinier, A.; Fournet, G. <em>Small-Angle Scattering of X-rays</em>. Wiley: New York, 1955.</li>
+        <li>Warren, B. E. <em>X-ray Diffraction</em>. Addison-Wesley: Reading, 1969.</li>
+      </ul>
+      <nav class="pager">
+        <a href="two-lorentzian.html">← 双洛伦兹</a>
+        <a href="peak-lorentz.html">洛伦兹峰 →</a>
+      </nav>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>
