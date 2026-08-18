@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>硬球结构因子 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>硬球结构因子</h1>
+      <p class="subtitle-en">hard sphere</p>
+      <h2>适用场景</h2>
+      <p>中性或短程排斥的球形胶体，相互作用可近似为不可穿透硬核时，用 Percus–Yevick（PY）硬球<span data-term="structure-factor">结构因子</span>。典型对象：浓胶乳、微乳液滴、蛋白质在高盐下的有效硬球，以及只需要一个体积分数来解释低 $q$ 压低与第一相关峰的体系。</p>
+      <p>稀溶液 $S(q)\approx 1$，不必加本页。出现长程静电排斥（低盐带电胶体）应改用 Hayter–MSA；短程黏性吸引用黏性硬球或方阱。两种半径的混合物用二元硬球，而不是把一元 PY 硬球平均两次。</p>
+      <h2>物理图像</h2>
+      <p>Ornstein–Zernike 方程在 PY 闭包下对硬球有 Wertheim–Thiele 解析解。直接相关函数在直径 $\sigma=2R$ 内是三次多项式、核外为零。Ashcroft 与 Lekner 把它写成 $S(q)=[1-n\hat{c}(q)]^{-1}$ 的闭式，供液体与胶体散射使用。</p>
+      <p>$S(0)=(1-\eta)^4/(1+2\eta)^2$ 随体积分数 $\eta$ 迅速下降，这就是渗透压缩率被硬核压低。第一峰约在 $q\sigma\sim 2\pi$，随 $\eta$ 增高而变锐。取向对球无影响；磁性通道若只有核衬度变化，仍乘同一 $S(q)$。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/structure-factor/hard-sphere-sq.png" alt="Percus–Yevick 硬球结构因子 S(q) 示意" width="900">
+        <figcaption>PY 硬球 $S(q)$：低 $q$ 压低，第一相关峰随后振荡回到 $1$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>令 $\eta$ 为硬球体积分数，$x=q\sigma$，$\sigma=2R$。PY 直接相关在核内</p>
+      $$c(r)=-\alpha-\beta(r/\sigma)-\gamma(r/\sigma)^3\quad(r\lt\sigma),\qquad c(r)=0\ (r\gt\sigma),$$
+      $$\alpha=\frac{(1+2\eta)^2}{(1-\eta)^4},\quad
+        \beta=\frac{-6\eta(1+\eta/2)^2}{(1-\eta)^4},\quad
+        \gamma=\frac{\eta}{2}\alpha.$$
+      <p>结构因子 $S(q)=[1-n\hat{c}(q)]^{-1}$，$n=6\eta/(\pi\sigma^3)$。$\hat{c}$ 的闭式见 Ashcroft &amp; Lekner。前向值 $S(0)=(1-\eta)^4/(1+2\eta)^2$。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>硬球半径</td><td>$R$</td><td>硬核半径，$\sigma=2R$</td><td>Å</td><td>与形式因子半径可比</td></tr>
+          <tr><td>体积分数</td><td>$\eta$</td><td>硬球占据的体积分数</td><td>无量纲</td><td>$0.02$–$0.45$（PY 在更高密度变差）</td></tr>
+          <tr><td>标度 / 本底</td><td>$\mathrm{scale}$, $B$</td><td>若写成 $I=P\,S+B$ 的前置与本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>可辨识性：$S(q)$ 的半径（或直径）与形式因子半径、<span data-term="volume-fraction">体积分数</span>与标度在同时自由拟合时高度退化。先在稀溶液固定 $P(q)$，再用浓度系列的低 $q$ 变化约束 $S(q)$；不要把 $P(q)$ 与 $S(q)$ 的全部参数一起放开。 硬球 $R$ 应与 $P(q)$ 的几何半径一致，或明确它是有效相互作用半径（溶剂化层）。</p>
+      <p>取向对球无关。尺寸<span data-term="polydispersity">多分散</span>会抹浅 $S(q)$ 的峰；严格来说一元 PY 假定单分散直径。磁性：磁 $P(q)$ 仍乘同一核 $S(q)$，不要给磁通道另造一套 $\eta$。</p>
+      <p>PY 在 $\eta\gtrsim 0.45$ 或需要热力学自洽时变差。相关峰很锐且峰位比接近立方格子时，应改用准晶而不是把 $\eta$ 推向结晶。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="sticky-hard-sphere.html">黏性硬球结构因子</a> — 硬核上再加零程黏性吸引。</li>
+        <li><a href="square-well.html">方阱结构因子</a> — 有限宽度的吸引方阱。</li>
+        <li><a href="hayter-msa.html">Hayter–MSA 结构因子</a> — 带电胶体的屏蔽库仑排斥。</li>
+        <li><a href="two-yukawa.html">双 Yukawa 结构因子</a> — 同时需要吸引与排斥尾。</li>
+        <li><a href="../sphere/binary-hard-sphere.html">二元硬球</a> — 两种直径的 PY 混合物 $S_{ij}$。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Percus, J. K.; Yevick, G. J. Analysis of classical statistical mechanics by means of collective coordinates. <em>Phys. Rev.</em> 1958, 110, 1–13. DOI: <a href="https://doi.org/10.1103/PhysRev.110.1" target="_blank" rel="noopener noreferrer">10.1103/PhysRev.110.1</a></li>
+        <li>Ashcroft, N. W.; Lekner, J. Structure and resistivity of liquid metals. <em>Phys. Rev.</em> 1966, 145, 83–90. DOI: <a href="https://doi.org/10.1103/PhysRev.145.83" target="_blank" rel="noopener noreferrer">10.1103/PhysRev.145.83</a></li>
+        <li>Wertheim, M. S. Exact solution of the Percus–Yevick integral equation for hard spheres. <em>Phys. Rev. Lett.</em> 1963, 10, 321–323. DOI: <a href="https://doi.org/10.1103/PhysRevLett.10.321" target="_blank" rel="noopener noreferrer">10.1103/PhysRevLett.10.321</a></li>
+      </ul>
+      <nav class="pager">
+        <a href="index.html">← 结构因子总览</a>
+        <a href="sticky-hard-sphere.html">黏性硬球结构因子 →</a>
+      </nav>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>黏性硬球结构因子 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>黏性硬球结构因子</h1>
+      <p class="subtitle-en">sticky hard sphere</p>
+      <h2>适用场景</h2>
+      <p>硬核之外还有极短程吸引（表面黏性、耗尽、疏水接触）时，用 Baxter 黏性硬球 $S(q)$。典型对象：弱絮凝胶体、黏性蛋白质溶液、以及低 $q$ 明显抬升但相关峰仍像硬球的体系。</p>
+      <p>阱宽可与直径相比时用方阱。长程静电用 Hayter 或双 Yukawa。$\tau$ 很大（弱黏）时退回普通硬球。</p>
+      <h2>物理图像</h2>
+      <p>Baxter 取方阱深度 $\to\infty$、宽度 $\to 0$ 的极限，使二阶维里系数保持有限，得到黏性参数 $\tau$（越小越黏）。PY 闭包对该势仍有解析解：接触处的 $g(\sigma^+)$ 含一个由立方方程决定的 $\lambda(\eta,\tau)$。</p>
+      <p>$S(0)$ 随黏性增大而升高（压缩率变大，趋近相分离）。第一峰位置仍大致由硬核直径决定。$\tau$ 过小会进入两相区，解析 $S(q)$ 失去物理意义。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/structure-factor/sticky-hard-sphere-sq.png" alt="Baxter 黏性硬球结构因子 S(q) 示意" width="900">
+        <figcaption>黏性硬球 $S(q)$：相对纯硬球，低 $q$ 抬升。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>Baxter 黏性参数 $\tau$ 与阱的极限满足 $12\tau\approx \lim(\mathrm{e}^{u/kT}\Delta/\sigma)$（$\Delta$ 为阱宽）。$\lambda$ 取物理小根，使接触值有限。结构因子仍写成</p>
+      $$S(q)=\bigl[1-n\hat{c}(q;\eta,\lambda)\bigr]^{-1},$$
+      <p>其中 $\hat{c}$ 在硬球 PY 多项式上增加与 $\lambda$ 成正比的接触项。$\tau\to\infty$ 时 $\lambda\to 0$，回到 Percus–Yevick 硬球。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>硬球半径</td><td>$R$</td><td>硬核半径，$\sigma=2R$</td><td>Å</td><td>与 $P(q)$ 半径可比</td></tr>
+          <tr><td>体积分数</td><td>$\eta$</td><td>硬球体积分数</td><td>无量纲</td><td>$0.02$–$0.3$</td></tr>
+          <tr><td>黏性参数</td><td>$\tau$</td><td>Baxter 黏性；越小越吸引</td><td>无量纲</td><td>通常 $\tau\gtrsim 0.1$（更小易分相）</td></tr>
+          <tr><td>标度 / 本底</td><td>$\mathrm{scale}$, $B$</td><td>$I=P\,S+B$ 的前置与本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>可辨识性：$S(q)$ 的半径（或直径）与形式因子半径、<span data-term="volume-fraction">体积分数</span>与标度在同时自由拟合时高度退化。先在稀溶液固定 $P(q)$，再用浓度系列的低 $q$ 变化约束 $S(q)$；不要把 $P(q)$ 与 $S(q)$ 的全部参数一起放开。 $\tau$ 与 $\eta$ 都抬升或压低 $S(0)$：浓度系列比单条曲线更有约束力。$\tau$ 太小会落到 Baxter 相变线以下，应改报“有效吸引过强”而不是一个无物理的 $\tau$。</p>
+      <p>取向对球无关。多分散直径削弱黏性模型的前提（接触势针对单一 $\sigma$）。磁性通道共用同一 $S(q)$。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="hard-sphere.html">硬球结构因子</a> — $\tau\to\infty$ 的极限。</li>
+        <li><a href="square-well.html">方阱结构因子</a> — 有限阱宽，不是零程黏性。</li>
+        <li><a href="hayter-msa.html">Hayter–MSA 结构因子</a> — 长程排斥而非短程吸引。</li>
+        <li><a href="two-yukawa.html">双 Yukawa 结构因子</a> — 短程吸引加长程排斥。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Baxter, R. J. Percus–Yevick equation for hard spheres with surface adhesion. <em>J. Chem. Phys.</em> 1968, 49, 2770–2777. DOI: <a href="https://doi.org/10.1063/1.1670482" target="_blank" rel="noopener noreferrer">10.1063/1.1670482</a></li>
+        <li>Menon, S. V. G.; Manohar, C.; Rao, K. S. A new interpretation of the sticky hard sphere model. <em>J. Chem. Phys.</em> 1991, 95, 9186–9190. DOI: <a href="https://doi.org/10.1063/1.461199" target="_blank" rel="noopener noreferrer">10.1063/1.461199</a></li>
+      </ul>
+      <nav class="pager">
+        <a href="hard-sphere.html">← 硬球结构因子</a>
+        <a href="square-well.html">方阱结构因子 →</a>
+      </nav>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

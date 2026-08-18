@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>双 Yukawa 结构因子 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>双 Yukawa 结构因子</h1>
+      <p class="subtitle-en">two Yukawa</p>
+      <h2>适用场景</h2>
+      <p>有效势需要两段 Yukawa（通常短程吸引加长程排斥，或短程排斥肩加较长吸引）时，用双 Yukawa $S(q)$。典型对象：带电蛋白质的簇集（低 $q$ 额外峰或零角抬升）、胶束同时有空间位阻与静电、以及单 Yukawa / 纯硬球无法同时拟合相关峰与低 $q$ 的体系。</p>
+      <p>只有排斥用 Hayter；只有极短程吸引用黏性硬球。参数比单 Yukawa 多一倍，必须有浓度或盐系列。</p>
+      <h2>物理图像</h2>
+      <p>硬核外交互 $u(r)=K_1\mathrm{e}^{-z_1(r/\sigma-1)}/r+K_2\mathrm{e}^{-z_2(r/\sigma-1)}/r$。MSA 下 Ornstein–Zernike 仍有解析途径（Høye–Blum；Liu、Chen 与 Chen 给出便于计算 $S(q)$ 的求根实现）。短吸长斥时，$S(q)$ 可在普通相关峰之外再出现低 $q$ 簇峰或 $S(0)$ 抬升，对应于平衡簇。</p>
+      <p>两套 $(K_i,z_i)$ 与 $\eta$ 强烈耦合。符号相反的两段才能同时产生“低 $q$ 结构 + 中 $q$ 相关峰”；两段同号则只是改写单 Yukawa 的有效电荷与筛选。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/structure-factor/two-yukawa-sq.png" alt="双 Yukawa 结构因子 S(q) 示意" width="900">
+        <figcaption>双 Yukawa $S(q)$：相关峰之外可出现低 $q$ 簇集特征。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>双 Yukawa 势（$r&gt;\sigma$）</p>
+      $$\beta u(r)=\frac{K_1}{r/\sigma}\,\mathrm{e}^{-z_1(r/\sigma-1)}+\frac{K_2}{r/\sigma}\,\mathrm{e}^{-z_2(r/\sigma-1)}.$$
+      <p>$S(q)=[1-n\hat{c}(q)]^{-1}$，其中 $\hat{c}$ 由 MSA 闭包对两段 Yukawa 的解析解给出。$z_1\gg z_2$ 且 $K_1$ 与 $K_2$ 异号时，短程与长程竞争，低 $q$ 可出现额外结构。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>硬球半径</td><td>$R$</td><td>硬核半径，$\sigma=2R$</td><td>Å</td><td>与 $P(q)$ 半径可比</td></tr>
+          <tr><td>体积分数</td><td>$\eta$</td><td>硬球体积分数</td><td>无量纲</td><td>由浓度约束</td></tr>
+          <tr><td>强度 1 / 2</td><td>$K_1,K_2$</td><td>两段 Yukawa 的接触强度（含符号）</td><td>无量纲</td><td>异号才能同时吸/斥</td></tr>
+          <tr><td>衰减 1 / 2</td><td>$z_1,z_2$</td><td>以 $\sigma$ 度量的筛选，$z$ 大则更短程</td><td>无量纲</td><td>$z\sim 1$–$20$</td></tr>
+          <tr><td>标度 / 本底</td><td>$\mathrm{scale}$, $B$</td><td>$I=P\,S+B$ 的前置与本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>可辨识性：$S(q)$ 的半径（或直径）与形式因子半径、<span data-term="volume-fraction">体积分数</span>与标度在同时自由拟合时高度退化。先在稀溶液固定 $P(q)$，再用浓度系列的低 $q$ 变化约束 $S(q)$；不要把 $P(q)$ 与 $S(q)$ 的全部参数一起放开。 五六个势参数极易过拟合。先用 Hayter 或硬球看相关峰能否单独说明，再只在低 $q$ 残差明确时打开第二段 Yukawa。盐或 pH 系列应主要改变长程段。</p>
+      <p>取向对球无关。多分散使簇峰与相关峰都变钝。磁性通道共用核 $S(q)$。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="hayter-msa.html">Hayter–MSA 结构因子</a> — 只有一段排斥 Yukawa。</li>
+        <li><a href="hard-sphere.html">硬球结构因子</a> — 两段强度都趋于零。</li>
+        <li><a href="sticky-hard-sphere.html">黏性硬球结构因子</a> — 零程吸引，没有长程排斥尾。</li>
+        <li><a href="square-well.html">方阱结构因子</a> — 方阱吸引，不是指数尾。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Liu, Y.; Chen, W.-R.; Chen, S.-H. Cluster formation in two-Yukawa fluids. <em>J. Chem. Phys.</em> 2005, 122, 044507. DOI: <a href="https://doi.org/10.1063/1.1830433" target="_blank" rel="noopener noreferrer">10.1063/1.1830433</a></li>
+        <li>Chen, S.-H.; Broccio, M.; Liu, Y.; Fratini, E.; Baglioni, P. The two-Yukawa model and its applications: the cases of charged proteins and copolymer micellar solutions. <em>J. Appl. Cryst.</em> 2007, 40, s321–s326. DOI: <a href="https://doi.org/10.1107/S0021889807006723" target="_blank" rel="noopener noreferrer">10.1107/S0021889807006723</a></li>
+        <li>Hayter, J. B.; Penfold, J. An analytic structure factor for macroion solutions. <em>Mol. Phys.</em> 1981, 42, 109–118. DOI: <a href="https://doi.org/10.1080/00268978100100091" target="_blank" rel="noopener noreferrer">10.1080/00268978100100091</a></li>
+      </ul>
+      <nav class="pager">
+        <a href="hayter-msa.html">← Hayter–MSA 结构因子</a>
+        <a href="index.html">结构因子总览 →</a>
+      </nav>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

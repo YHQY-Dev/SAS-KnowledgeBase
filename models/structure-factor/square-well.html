@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>方阱结构因子 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>方阱结构因子</h1>
+      <p class="subtitle-en">square well</p>
+      <h2>适用场景</h2>
+      <p>硬核之外有一段宽度有限的吸引方阱（$u=-\varepsilon$ 于 $\sigma&lt;r&lt;\lambda\sigma$）时，用方阱闭包下的 $S(q)$。典型对象：中等程耗尽吸引、弱吸附层造成的有限宽度吸引，以及阱宽 $\lambda$ 可从化学上估计的胶体。</p>
+      <p>零程极限用黏性硬球。需要平滑的 Yukawa 尾或同时有排斥时用双 Yukawa。Sharma–Sharma 所用 MSA 对深阱、高密度并不特别合适，浅阱低 $\eta$ 更稳妥。</p>
+      <h2>物理图像</h2>
+      <p>平均球近似把核外直接相关取成 $-\beta u(r)$。方阱因此在 $\sigma$ 到 $\lambda\sigma$ 之间给 $\hat{c}(q)$ 一段解析的球壳傅里叶变换，再叠加硬球 PY 核内项。吸引使 $S(0)$ 升高，第一峰仍由硬核尺度主导。</p>
+      <p>阱宽 $\lambda$ 与阱深 $\varepsilon/kT$ 在单条 $S(q)$ 上高度相关：宽而浅与窄而深可给出相近低 $q$。能从聚合物回转半径或吸附层厚度固定 $\lambda$ 时，再拟合 $\varepsilon$。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/structure-factor/square-well-sq.png" alt="方阱结构因子 S(q) 示意" width="900">
+        <figcaption>方阱 $S(q)$：相对硬球，吸引使低 $q$ 抬升。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>方阱势 $u(r)=\infty$（$r&lt;\sigma$），$u=-\varepsilon$（$\sigma&lt;r&lt;\lambda\sigma$），核外为零。MSA 闭包</p>
+      $$\hat{c}(q)=\hat{c}_{\mathrm{HS}}(q)+\hat{c}_{\mathrm{well}}(q),\qquad
+        S(q)=\bigl[1-n\hat{c}(q)\bigr]^{-1}.$$
+      <p>阱的傅里叶项正比于 $\varepsilon$ 与球壳积分 $[\sin(\lambda x)-\lambda x\cos(\lambda x)-\sin x+x\cos x]/x^3$，$x=q\sigma$。本页采用 Sharma 与 Sharma 对硬球结构因子的方阱推广。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>硬球半径</td><td>$R$</td><td>硬核半径，$\sigma=2R$</td><td>Å</td><td>与 $P(q)$ 半径可比</td></tr>
+          <tr><td>体积分数</td><td>$\eta$</td><td>硬球体积分数</td><td>无量纲</td><td>MSA 经验上宜 $\lesssim 0.1$–$0.2$</td></tr>
+          <tr><td>阱宽比</td><td>$\lambda$</td><td>阱外缘 $/\,\sigma$，须 $>1$</td><td>无量纲</td><td>$1.05$–$1.8$</td></tr>
+          <tr><td>阱深</td><td>$\varepsilon/kT$</td><td>吸引深度（热单位）</td><td>无量纲</td><td>浅阱 $\lesssim 1.5$</td></tr>
+          <tr><td>标度 / 本底</td><td>$\mathrm{scale}$, $B$</td><td>$I=P\,S+B$ 的前置与本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>可辨识性：$S(q)$ 的半径（或直径）与形式因子半径、<span data-term="volume-fraction">体积分数</span>与标度在同时自由拟合时高度退化。先在稀溶液固定 $P(q)$，再用浓度系列的低 $q$ 变化约束 $S(q)$；不要把 $P(q)$ 与 $S(q)$ 的全部参数一起放开。 $\lambda$ 与 $\varepsilon$ 共线：有独立尺度就固定阱宽。深阱高密度时 MSA 相对模拟偏差大，不要把拟合残差解释成第二种势。</p>
+      <p>取向对球无关。多分散会模糊阱与硬核的边界。磁性通道共用 $S(q)$。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="hard-sphere.html">硬球结构因子</a> — $\varepsilon=0$ 的极限。</li>
+        <li><a href="sticky-hard-sphere.html">黏性硬球结构因子</a> — $\lambda\to 1$、$\varepsilon\to\infty$ 的 Baxter 极限。</li>
+        <li><a href="hayter-msa.html">Hayter–MSA 结构因子</a> — 排斥 Yukawa，不是吸引方阱。</li>
+        <li><a href="two-yukawa.html">双 Yukawa 结构因子</a> — 平滑的两段指数势。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Sharma, R. V.; Sharma, K. C. The structure factor and the transport properties of dense fluids having molecules with square well potential, a possible generalization. <em>Physica A</em> 1977, 89, 213–218. DOI: <a href="https://doi.org/10.1016/0378-4371(77)90151-0" target="_blank" rel="noopener noreferrer">10.1016/0378-4371(77)90151-0</a></li>
+        <li>Ashcroft, N. W.; Lekner, J. Structure and resistivity of liquid metals. <em>Phys. Rev.</em> 1966, 145, 83–90. DOI: <a href="https://doi.org/10.1103/PhysRev.145.83" target="_blank" rel="noopener noreferrer">10.1103/PhysRev.145.83</a></li>
+      </ul>
+      <nav class="pager">
+        <a href="sticky-hard-sphere.html">← 黏性硬球结构因子</a>
+        <a href="hayter-msa.html">Hayter–MSA 结构因子 →</a>
+      </nav>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>
