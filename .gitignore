@@ -2,3 +2,6 @@
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Local figure/page generators — do not commit
+tools/model-figures/

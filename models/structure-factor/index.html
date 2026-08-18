@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>结构因子 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>结构因子</h1>
+      <p class="subtitle-en">Structure factors S(q)</p>
+
+      <p>结构因子 $S(q)$ 描述粒子间相互作用对散射的调制：稀溶液 $S(q)\approx 1$，浓溶液或强排斥/吸引时在低–中 $q$ 出现峰或抑制。通常与形式因子相乘使用，本类只收录常见解析 $S(q)$。</p>
+      <p class="muted">模型条目将按手册页陆续列出；下列卡片链到各模型页。</p>
+
+      <h2>模型条目</h2>
+      <div class="card-grid">
+        <a class="card" href="hard-sphere.html">
+          <strong>硬球结构因子</strong>
+          hard sphere — Percus–Yevick 硬球 $S(q)$
+        </a>
+        <a class="card" href="sticky-hard-sphere.html">
+          <strong>黏性硬球结构因子</strong>
+          sticky hard sphere — 短程黏性吸引硬球
+        </a>
+        <a class="card" href="square-well.html">
+          <strong>方阱结构因子</strong>
+          square well — 方阱势相互作用
+        </a>
+        <a class="card" href="hayter-msa.html">
+          <strong>Hayter–MSA 结构因子</strong>
+          Hayter MSA — 带电胶体的 MSA 近似
+        </a>
+        <a class="card" href="two-yukawa.html">
+          <strong>双 Yukawa 结构因子</strong>
+          two Yukawa — 双 Yukawa 势相互作用
+        </a>
+      </div>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

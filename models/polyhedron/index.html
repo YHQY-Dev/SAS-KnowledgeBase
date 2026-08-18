@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>多面体 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>多面体</h1>
+      <p class="subtitle-en">Polyhedron form factors</p>
+
+      <p>多面体类覆盖棱柱与截角多面体等离散面几何。相对球/椭球，高 $q$ 振荡与面/棱相关的特征更明显，常用于胶体晶构筑单元或特殊合成纳米晶。</p>
+      <p class="muted">模型条目将按手册页陆续列出；下列卡片链到各模型页。</p>
+
+      <h2>模型条目</h2>
+      <div class="card-grid">
+        <a class="card" href="prism.html">
+          <strong>三棱柱</strong>
+          prism — 均匀三棱柱形式因子
+        </a>
+        <a class="card" href="tetrahedron.html">
+          <strong>四面体</strong>
+          tetrahedron — 正四面体粒子
+        </a>
+        <a class="card" href="truncated-tetrahedron.html">
+          <strong>截角四面体</strong>
+          truncated tetrahedron — 截角后的四面体
+        </a>
+        <a class="card" href="truncated-octahedron.html">
+          <strong>截角八面体</strong>
+          truncated octahedron — 截角八面体纳米晶
+        </a>
+      </div>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

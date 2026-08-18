@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>球 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>球</h1>
+      <p class="subtitle-en">Sphere form factors</p>
+
+      <p>球类形式因子描述等轴或近似等轴粒子：$I(q)$ 在低 $q$ 由回转半径主导，高 $q$ 出现与半径相关的振荡或平滑衰减。核壳、囊泡与径向分层等变体用额外衬度壳层解释中间 $q$ 特征。</p>
+      <p class="muted">模型条目将按手册页陆续列出；下列卡片链到各模型页。</p>
+
+      <h2>模型条目</h2>
+      <div class="card-grid">
+        <a class="card" href="sphere.html">
+          <strong>均匀球</strong>
+          sphere — 单分散均匀球体的基础形式因子
+        </a>
+        <a class="card" href="core-shell-sphere.html">
+          <strong>核壳球</strong>
+          core-shell sphere — 核与壳衬度不同的球状胶束/纳米粒子
+        </a>
+        <a class="card" href="vesicle.html">
+          <strong>囊泡</strong>
+          vesicle — 薄壳球壳，适合单层囊泡
+        </a>
+        <a class="card" href="multilayer-vesicle.html">
+          <strong>多层囊泡</strong>
+          multilayer vesicle — 多层同心壳的囊泡堆叠
+        </a>
+        <a class="card" href="fuzzy-sphere.html">
+          <strong>模糊球</strong>
+          fuzzy sphere — 表面密度渐变的“模糊”界面球
+        </a>
+        <a class="card" href="raspberry.html">
+          <strong>树莓</strong>
+          raspberry — 大核表面附着小球的复合粒子
+        </a>
+        <a class="card" href="polymer-micelle.html">
+          <strong>聚合物胶束</strong>
+          polymer micelle — 球形核–冠状聚合物胶束
+        </a>
+        <a class="card" href="adsorbed-layer.html">
+          <strong>吸附层</strong>
+          adsorbed layer — 球核表面吸附聚合物层
+        </a>
+        <a class="card" href="binary-hard-sphere.html">
+          <strong>二元硬球</strong>
+          binary hard sphere — 两种尺寸硬球混合物的散射
+        </a>
+        <a class="card" href="core-multi-shell.html">
+          <strong>核–多层壳</strong>
+          core multi-shell — 核加多层同心壳的径向剖面
+        </a>
+        <a class="card" href="linear-pearls.html">
+          <strong>直线珍珠串</strong>
+          linear pearls — 沿直线排列的球串
+        </a>
+        <a class="card" href="onion.html">
+          <strong>洋葱球</strong>
+          onion — 多层洋葱状壳层结构
+        </a>
+        <a class="card" href="spherical-sld.html">
+          <strong>径向 SLD 球</strong>
+          spherical SLD — 任意径向散射长度密度剖面
+        </a>
+        <a class="card" href="superball.html">
+          <strong>超球</strong>
+          superball — 介于球与立方之间的超二次曲面
+        </a>
+        <a class="card" href="micromagnetic-ff-3d.html">
+          <strong>三维微磁形式因子</strong>
+          micromagnetic form factor 3D — 三维微磁结构的磁形式因子
+        </a>
+      </div>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

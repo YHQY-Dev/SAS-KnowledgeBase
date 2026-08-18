@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>平行六面体 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>平行六面体</h1>
+      <p class="subtitle-en">Parallelepiped form factors</p>
+
+      <p>平行六面体与矩形棱柱描述砖块状、片状或空心棱柱粒子。三个边长分别在不同 $q$ 区留下特征，空心与薄壁变体强调壳层厚度与内腔。</p>
+      <p class="muted">模型条目将按手册页陆续列出；下列卡片链到各模型页。</p>
+
+      <h2>模型条目</h2>
+      <div class="card-grid">
+        <a class="card" href="parallelepiped.html">
+          <strong>平行六面体</strong>
+          parallelepiped — 均匀砖块状平行六面体
+        </a>
+        <a class="card" href="core-shell-parallelepiped.html">
+          <strong>核壳平行六面体</strong>
+          core-shell parallelepiped — 核壳砖块/涂层立方体
+        </a>
+        <a class="card" href="rectangular-prism.html">
+          <strong>矩形棱柱</strong>
+          rectangular prism — 矩形截面棱柱
+        </a>
+        <a class="card" href="hollow-rectangular-prism.html">
+          <strong>空心矩形棱柱</strong>
+          hollow rectangular prism — 空心矩形壳棱柱
+        </a>
+        <a class="card" href="hollow-rectangular-prism-thin-walls.html">
+          <strong>薄壁空心矩形棱柱</strong>
+          hollow rectangular prism (thin walls) — 薄壁极限下的空心矩形棱柱
+        </a>
+      </div>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

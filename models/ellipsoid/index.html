@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>椭球 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>椭球</h1>
+      <p class="subtitle-en">Ellipsoid form factors</p>
+
+      <p>椭球类用两个或三个半轴描述略扁或略长的旋转体与三轴体，是球与极端棒/盘之间的连续过渡。取向平均后，$I(q)$ 振荡被平滑，但仍由特征半轴尺度决定拐折位置。</p>
+      <p class="muted">模型条目将按手册页陆续列出；下列卡片链到各模型页。</p>
+
+      <h2>模型条目</h2>
+      <div class="card-grid">
+        <a class="card" href="ellipsoid.html">
+          <strong>椭球</strong>
+          ellipsoid — 均匀旋转椭球形式因子
+        </a>
+        <a class="card" href="core-shell-ellipsoid.html">
+          <strong>核壳椭球</strong>
+          core-shell ellipsoid — 核壳旋转椭球
+        </a>
+        <a class="card" href="triaxial-ellipsoid.html">
+          <strong>三轴椭球</strong>
+          triaxial ellipsoid — 三个不等半轴的均匀椭球
+        </a>
+      </div>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

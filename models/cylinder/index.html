@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>圆柱 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>圆柱</h1>
+      <p class="subtitle-en">Cylinder form factors</p>
+
+      <p>圆柱类覆盖棒、管、盘与柔性链状物体：截面与长度（或厚度）分别主导不同 $q$ 区的斜率与振荡。取向平均后常见 $q^{-1}$（细长棒）或 $q^{-2}$（薄盘）中间区。</p>
+      <p class="muted">模型条目将按手册页陆续列出；下列卡片链到各模型页。</p>
+
+      <h2>模型条目</h2>
+      <div class="card-grid">
+        <a class="card" href="cylinder.html">
+          <strong>圆柱</strong>
+          cylinder — 均匀有限长圆柱的基础形式因子
+        </a>
+        <a class="card" href="core-shell-cylinder.html">
+          <strong>核壳圆柱</strong>
+          core-shell cylinder — 径向核壳圆柱/管状胶束
+        </a>
+        <a class="card" href="hollow-cylinder.html">
+          <strong>空心圆柱</strong>
+          hollow cylinder — 空心管状圆柱
+        </a>
+        <a class="card" href="barbell.html">
+          <strong>哑铃</strong>
+          barbell — 两端球帽的哑铃状粒子
+        </a>
+        <a class="card" href="capped-cylinder.html">
+          <strong>端帽圆柱</strong>
+          capped cylinder — 圆柱加半球端帽
+        </a>
+        <a class="card" href="core-shell-bicelle.html">
+          <strong>核壳双层盘</strong>
+          core-shell bicelle — 圆盘状核壳双层盘（bicelle）
+        </a>
+        <a class="card" href="core-shell-bicelle-elliptical.html">
+          <strong>椭圆核壳双层盘</strong>
+          elliptical core-shell bicelle — 椭圆截面的核壳双层盘
+        </a>
+        <a class="card" href="core-shell-bicelle-elliptical-belt-rough.html">
+          <strong>粗糙腰带椭圆双层盘</strong>
+          elliptical core-shell bicelle with rough belt — 带粗糙腰带的椭圆双层盘
+        </a>
+        <a class="card" href="elliptical-cylinder.html">
+          <strong>椭圆截面圆柱</strong>
+          elliptical cylinder — 椭圆截面的有限长圆柱
+        </a>
+        <a class="card" href="flexible-cylinder.html">
+          <strong>柔性圆柱</strong>
+          flexible cylinder — 半柔性蠕虫状链
+        </a>
+        <a class="card" href="flexible-cylinder-elliptical.html">
+          <strong>椭圆截面柔性圆柱</strong>
+          flexible elliptical cylinder — 椭圆截面的半柔性链
+        </a>
+        <a class="card" href="pearl-necklace.html">
+          <strong>珍珠项链</strong>
+          pearl necklace — 球珠由细杆连接的项链模型
+        </a>
+        <a class="card" href="pringle.html">
+          <strong>马鞍形圆盘</strong>
+          pringle — 弯曲/马鞍形薄盘
+        </a>
+        <a class="card" href="stacked-disks.html">
+          <strong>堆叠圆盘</strong>
+          stacked disks — 沿法向堆叠的圆盘柱
+        </a>
+        <a class="card" href="tetrapod.html">
+          <strong>四足体</strong>
+          tetrapod — 四臂伸出的四足体几何
+        </a>
+        <a class="card" href="torus-elliptical-shell.html">
+          <strong>椭圆环壳</strong>
+          elliptical torus shell — 椭圆截面的环形壳
+        </a>
+      </div>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

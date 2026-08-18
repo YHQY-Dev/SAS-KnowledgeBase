@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>形状无关 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>形状无关</h1>
+      <p class="subtitle-en">Shape-independent functions</p>
+
+      <p>形状无关函数不假定具体粒子外形，而用 Guinier、Porod、幂律、分形、聚合物链与峰函数等描述 $I(q)$ 的局部斜率与特征尺度。适合初步定标、多尺度拼接或缺乏明确几何时的经验拟合。</p>
+      <p class="muted">模型条目将按手册页陆续列出；下列卡片链到各模型页。</p>
+
+      <h2>模型条目</h2>
+      <div class="card-grid">
+        <a class="card" href="guinier.html">
+          <strong>Guinier</strong>
+          Guinier — 低 $q$ 回转半径近似
+        </a>
+        <a class="card" href="porod.html">
+          <strong>Porod</strong>
+          Porod — 高 $q$ 界面散射与比表面积
+        </a>
+        <a class="card" href="power-law.html">
+          <strong>幂律</strong>
+          power law — 纯幂律衰减经验曲线
+        </a>
+        <a class="card" href="guinier-porod.html">
+          <strong>Guinier–Porod</strong>
+          Guinier–Porod — Guinier 与幂律平滑衔接
+        </a>
+        <a class="card" href="unified-power-rg.html">
+          <strong>统一幂律–Rg</strong>
+          unified power Rg — 多层级统一指数模型
+        </a>
+        <a class="card" href="two-power-law.html">
+          <strong>双幂律</strong>
+          two power law — 两段幂律转折
+        </a>
+        <a class="card" href="lorentz.html">
+          <strong>洛伦兹</strong>
+          Lorentz — Ornstein–Zernike / 洛伦兹型
+        </a>
+        <a class="card" href="two-lorentzian.html">
+          <strong>双洛伦兹</strong>
+          two Lorentzian — 两个洛伦兹分量叠加
+        </a>
+        <a class="card" href="gaussian-peak.html">
+          <strong>高斯峰</strong>
+          Gaussian peak — 高斯型布拉格/相关峰
+        </a>
+        <a class="card" href="peak-lorentz.html">
+          <strong>洛伦兹峰</strong>
+          peak Lorentz — 洛伦兹型峰
+        </a>
+        <a class="card" href="broad-peak.html">
+          <strong>宽峰</strong>
+          broad peak — 宽相关峰经验函数
+        </a>
+        <a class="card" href="dab.html">
+          <strong>Debye–Anderson–Brumberger</strong>
+          DAB — 两相随机介质 DAB 模型
+        </a>
+        <a class="card" href="correlation-length.html">
+          <strong>关联长度</strong>
+          correlation length — 指数衰减关联长度模型
+        </a>
+        <a class="card" href="fractal.html">
+          <strong>分形</strong>
+          fractal — 通用分形散射
+        </a>
+        <a class="card" href="mass-fractal.html">
+          <strong>质量分形</strong>
+          mass fractal — 质量分形聚集体
+        </a>
+        <a class="card" href="surface-fractal.html">
+          <strong>表面分形</strong>
+          surface fractal — 粗糙表面分形
+        </a>
+        <a class="card" href="mass-surface-fractal.html">
+          <strong>质量–表面分形</strong>
+          mass-surface fractal — 质量与表面分形组合
+        </a>
+        <a class="card" href="fractal-core-shell.html">
+          <strong>核壳分形</strong>
+          fractal core-shell — 核壳几何上的分形壳
+        </a>
+        <a class="card" href="mono-gauss-coil.html">
+          <strong>单分散高斯链</strong>
+          monodisperse Gaussian coil — 单分散理想高斯链
+        </a>
+        <a class="card" href="poly-gauss-coil.html">
+          <strong>多分散高斯链</strong>
+          polydisperse Gaussian coil — 多分散高斯链
+        </a>
+        <a class="card" href="polymer-excl-volume.html">
+          <strong>聚合物排除体积</strong>
+          polymer excluded volume — 排除体积链构象
+        </a>
+        <a class="card" href="star-polymer.html">
+          <strong>星形聚合物</strong>
+          star polymer — 星形支化聚合物
+        </a>
+        <a class="card" href="be-polyelectrolyte.html">
+          <strong>聚电解质</strong>
+          polyelectrolyte — 带电聚合物链经验模型
+        </a>
+        <a class="card" href="gauss-lorentz-gel.html">
+          <strong>高斯–洛伦兹凝胶</strong>
+          Gauss–Lorentz gel — 凝胶的高斯与洛伦兹组合
+        </a>
+        <a class="card" href="gel-fit.html">
+          <strong>凝胶拟合</strong>
+          gel fit — 凝胶网络经验拟合
+        </a>
+        <a class="card" href="teubner-strey.html">
+          <strong>Teubner–Strey</strong>
+          Teubner–Strey — 微乳液双连续相
+        </a>
+        <a class="card" href="spinodal.html">
+          <strong>旋节分解</strong>
+          spinodal — 旋节分解早期结构
+        </a>
+        <a class="card" href="rpa.html">
+          <strong>无规相近似</strong>
+          RPA — 聚合物共混 RPA
+        </a>
+        <a class="card" href="line.html">
+          <strong>线性</strong>
+          line — 线性背景/斜率项
+        </a>
+      </div>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

@@ -19,21 +19,22 @@
 
   function currentHrefTail() {
     var path = window.location.pathname.replace(/\\/g, "/");
-    var marker = "/SAS-web/";
-    var idx = path.lastIndexOf(marker);
-    if (idx >= 0) return path.slice(idx + marker.length);
-    // file:// or odd hosts: best-effort from last segments
     var parts = path.split("/").filter(Boolean);
-    var i = parts.lastIndexOf("SAS-web");
-    if (i >= 0) return parts.slice(i + 1).join("/");
-    return parts.slice(-2).join("/");
+    var markers = ["learn", "topics", "glossary", "catalog", "models"];
+    for (var i = 0; i < parts.length; i++) {
+      if (markers.indexOf(parts[i]) >= 0) {
+        return parts.slice(i).join("/");
+      }
+    }
+    return parts.length ? parts[parts.length - 1] : "index.html";
   }
 
   var NAV = [
     { href: "learn/index.html", label: "学习路径" },
     { href: "topics/index.html", label: "专题手册" },
     { href: "glossary/index.html", label: "术语表" },
-    { href: "catalog/index.html", label: "文献目录" }
+    { href: "catalog/index.html", label: "文献目录" },
+    { href: "models/index.html", label: "模型手册" }
   ];
 
   var SIDEBARS = {
@@ -70,6 +71,21 @@
         { href: "topics/sample-env/index.html", label: "样品环境" }
       ]
     },
+    models: {
+      title: "模型手册",
+      links: [
+        { href: "models/index.html", label: "总览" },
+        { href: "models/sphere/index.html", label: "球" },
+        { href: "models/cylinder/index.html", label: "圆柱" },
+        { href: "models/ellipsoid/index.html", label: "椭球" },
+        { href: "models/parallelepiped/index.html", label: "平行六面体" },
+        { href: "models/polyhedron/index.html", label: "多面体" },
+        { href: "models/lamellae/index.html", label: "层状" },
+        { href: "models/shape-independent/index.html", label: "形状无关" },
+        { href: "models/paracrystal/index.html", label: "准晶" },
+        { href: "models/structure-factor/index.html", label: "结构因子" }
+      ]
+    },
     glossary: {
       title: "术语表",
       links: null // filled at runtime from SAS_GLOSSARY_DATA
@@ -86,7 +102,8 @@
         { href: "index.html", label: "首页" },
         { href: "about.html", label: "关于本站" },
         { href: "learn/index.html", label: "学习路径" },
-        { href: "topics/index.html", label: "专题手册" }
+        { href: "topics/index.html", label: "专题手册" },
+        { href: "models/index.html", label: "模型手册" }
       ]
     }
   };
@@ -97,6 +114,7 @@
     if (t === "topics" || t.indexOf("topics/") === 0) return "topics";
     if (t === "glossary" || t.indexOf("glossary/") === 0) return "glossary";
     if (t === "catalog" || t.indexOf("catalog/") === 0) return "catalog";
+    if (t === "models" || t.indexOf("models/") === 0) return "models";
     return "home";
   }
 

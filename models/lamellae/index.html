@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>层状 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>层状</h1>
+      <p class="subtitle-en">Lamellar form factors</p>
+
+      <p>层状模型描述膜、双层与层状堆叠：单层给出厚度方向的形式因子，堆叠模型叠加层间关联（Caille 涨落或准晶无序），在 $I(q)$ 上表现为布拉格峰与漫散射背景。</p>
+      <p class="muted">模型条目将按手册页陆续列出；下列卡片链到各模型页。</p>
+
+      <h2>模型条目</h2>
+      <div class="card-grid">
+        <a class="card" href="lamellar.html">
+          <strong>层状</strong>
+          lamellar — 单层均匀板/双层形式因子
+        </a>
+        <a class="card" href="lamellar-hg.html">
+          <strong>头基–尾链层状</strong>
+          lamellar headgroup — 头基与尾链分层的层状剖面
+        </a>
+        <a class="card" href="lamellar-stack-caille.html">
+          <strong>Caille 层状堆叠</strong>
+          lamellar stack Caille — 含 Caille 涨落的层状堆叠
+        </a>
+        <a class="card" href="lamellar-hg-stack-caille.html">
+          <strong>头基–尾链 Caille 堆叠</strong>
+          lamellar HG stack Caille — 头基–尾链剖面加 Caille 堆叠
+        </a>
+        <a class="card" href="lamellar-stack-paracrystal.html">
+          <strong>准晶层状堆叠</strong>
+          lamellar stack paracrystal — 一维准晶无序的层状堆叠
+        </a>
+      </div>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>
