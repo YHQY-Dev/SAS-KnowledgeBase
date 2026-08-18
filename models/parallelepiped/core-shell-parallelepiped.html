@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>核壳平行六面体 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>核壳平行六面体</h1>
+      <p class="subtitle-en">core-shell parallelepiped</p>
+      <h2>适用场景</h2>
+      <p>核是边长 $A_c,B_c,C_c$ 的均匀砖块，外包厚度 $t$ 的均匀壳（外壳边长 $A_c+2t$ 等）。适用于表面配体/氧化物层的立方纳米晶、核壳钙钛矿砖块、以及对比变分后仍需两段矩形剖面的胶体。</p>
+      <p>核衬度匹配溶剂时接近空心矩形棱柱；壳衬度匹配溶剂时回到均匀平行六面体。薄壳且 $t$ 远小于最短边时，可再与薄壁空心极限对照。</p>
+      <p>壳厚、核边长与两段衬度高度相关。面选择性包覆（只盖一部分晶面）不是本模型。</p>
+      <h2>物理图像</h2>
+      <p>振幅是两块同心砖块形式因子的衬度加权差：外壳相对溶剂，加上核相对壳。取向平均与均匀平行六面体相同。中等 $q$ 的干涉来自核–壳界面。</p>
+      <p>本页用各边外扩 $t$ 的相似壳（不是共焦椭球那种 $R^2+t^2$）。若实验上壳沿法向等厚，在棱处外壳并不是严格平行六面体，这是几何近似。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/parallelepiped/core-shell-parallelepiped-geometry.png" alt="核壳平行六面体截面" width="900">
+        <figcaption>核砖块外包厚度 $t$ 的壳。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="../../assets/figures/models/parallelepiped/core-shell-parallelepiped-iq.png" alt="核壳平行六面体 I(q) 示意" width="900">
+        <figcaption>核壳 $\mathrm{sinc}$ 振幅相加后的粉末平均 $I(q)$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>令 $F(A,B,C;\mathbf{q})$ 为均匀砖块归一化振幅。体积 $V=ABC$。核壳振幅</p>
+      $$A(\mathbf{q})=(\rho_c-\rho_s)V_c F_c+(\rho_s-\rho_{\mathrm{solv}})V_s F_s,$$
+      <p>其中外壳边长 $A_s=A_c+2t$ 等。粉末平均 $P(q)\propto\langle|A|^2\rangle$。$\rho_c,\rho_s,\rho_{\mathrm{solv}}$ 为核、壳、溶剂 SLD。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>核边长</td><td>$A_c,B_c,C_c$</td><td>均匀核三棱全长</td><td>Å 或 nm</td><td>10–800 Å</td></tr>
+          <tr><td>壳厚</td><td>$t$</td><td>各面外扩厚度</td><td>Å 或 nm</td><td>2–60 Å</td></tr>
+          <tr><td>核 / 壳 / 溶剂 SLD</td><td>$\rho_c,\rho_s,\rho_{\mathrm{solv}}$</td><td>三段散射长度密度</td><td>Å$^{-2}$</td><td>组成与对比决定</td></tr>
+          <tr><td>取向角</td><td>$\theta,\phi$</td><td>棱取向（二维）</td><td>度</td><td>由取向分布约束</td></tr>
+          <tr><td>标度 / 本底</td><td>$n$, $B$</td><td>数密度与本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>衬度比与 $t$ 是主简并。优先固定 $\rho$，只放几何；核边长多分散与壳厚竞争。空心极限把 $\rho_c$ 设为溶剂，不要再放核尺寸。</p>
+      <p>取向与磁性同均匀砖块：二维需 $\theta,\phi$；磁壳/死层与核 SLD 分通道。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="parallelepiped.html">平行六面体</a> — 壳衬度等于核，或 $t\to 0$。</li>
+        <li><a href="hollow-rectangular-prism.html">空心矩形棱柱</a> — 核被溶剂填充。</li>
+        <li><a href="../ellipsoid/core-shell-ellipsoid.html">核壳椭球</a> — 光滑共焦核壳，无棱角。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Mittelbach, P.; Porod, G. Zur Röntgenkleinwinkelstreuung verdünnter kolloider Systeme. VII. <em>Acta Phys. Austriaca</em> 1961, 14, 185–211.</li>
+        <li>Pedersen, J. S. Analysis of small-angle scattering data from colloids and polymer solutions: modeling and least-squares fitting. <em>J. Appl. Cryst.</em> 1997, 30, 339–354. DOI: <a href="https://doi.org/10.1107/S0021889897002532" target="_blank" rel="noopener noreferrer">10.1107/S0021889897002532</a></li>
+      </ul>
+      <nav class="pager">
+        <a href="parallelepiped.html">← 平行六面体</a>
+        <a href="rectangular-prism.html">矩形棱柱 →</a>
+      </nav>
+
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

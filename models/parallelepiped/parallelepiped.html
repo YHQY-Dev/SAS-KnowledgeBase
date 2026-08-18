@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>平行六面体 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>平行六面体</h1>
+      <p class="subtitle-en">parallelepiped</p>
+      <h2>适用场景</h2>
+      <p>均匀<span data-term="scattering-length-density">散射长度密度</span>的直角砖块，三条棱 $A,B,C$ 完全对等，没有预先指定的“柱轴”。适用于纳米立方/长方体、片状晶体、MOF 与卤化物钙钛矿等棱角分明的胶体。</p>
+      <p>三个边长分别在不同 $q$ 区留下特征：最长边主导 Guinier 与中间斜率，最短边主导高 $q$ 振荡。圆角立方应优先考虑超球（$p$ 有限）；光滑三轴体用椭球。立方极限 $A=B=C$ 仍比球振荡浅，因为面与棱贡献不同的相位。</p>
+      <p>本页约定：边长为全长（不是半长），夹角为直角。斜平行六面体（非正交）不在此列。</p>
+      <h2>物理图像</h2>
+      <p>固定取向下振幅是三个方向 $\mathrm{sinc}$ 的乘积。Mittelbach 与 Porod（1961）对欧拉角粉末平均。回转半径 $R_g^2=(A^2+B^2+C^2)/12$。</p>
+      <p>超球指数 $p\to\infty$ 时形状趋近边长 $2R$ 的立方，与 $A=B=C=2R$ 的本模型同一几何，但本页用闭式 $\mathrm{sinc}$ 积而不是超二次曲面数值积分。一轴很长时接近矩形棱柱/圆柱。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/parallelepiped/parallelepiped-geometry.png" alt="平行六面体几何：边长 A, B, C" width="900">
+        <figcaption>直角砖块，边长 $A,B,C$ 对等进入取向平均。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="../../assets/figures/models/parallelepiped/parallelepiped-iq.png" alt="平行六面体 I(q) 示意" width="900">
+        <figcaption>取向平均 $I(q)/I(0)$：三边长使振荡比球更浅、相位更密。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>令 $\mathrm{sinc}\,x=\sin x/x$。取向 $\mathbf{q}=(q_x,q_y,q_z)$ 下</p>
+      $$F(\mathbf{q})=ABC\cdot\mathrm{sinc}\!\left(\frac{q_x A}{2}\right)\mathrm{sinc}\!\left(\frac{q_y B}{2}\right)\mathrm{sinc}\!\left(\frac{q_z C}{2}\right).$$
+      <p>一维粉末平均（第一卦限，权重 $\sin\theta$）</p>
+      $$P(q)=\frac{\langle |F|^2\rangle_{\theta,\phi}}{|F(0)|^2}.$$
+      <p>稀释 $I(q)=\mathrm{scale}\cdot P(q)+B$。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>边长</td><td>$A,B,C$</td><td>三棱全长，直角相交</td><td>Å 或 nm</td><td>10–2000 Å</td></tr>
+          <tr><td>欧拉角</td><td>$\theta,\phi,\psi$</td><td>棱相对光束的取向（二维）</td><td>度</td><td>由取向分布约束</td></tr>
+          <tr><td>衬度</td><td>$\Delta\rho$</td><td>均匀砖块相对溶剂 SLD 差</td><td>Å$^{-2}$</td><td>组成决定</td></tr>
+          <tr><td>标度 / 本底</td><td>$\mathrm{scale}$, $B$</td><td>前置因子与本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>取向：一维只能粉末平均。二维各向异性（磁场、剪切、衬底）须拟合 $\theta,\phi$；棱的择优取向会给出十字形或弧向调制，勿误读成边长比。</p>
+      <p>多分散：三边都加分布会迅速抹平振荡。通常只对最长或最短边放宽度，或用单一相对宽度作用于体积等效尺度。</p>
+      <p>磁性：均匀磁化砖块的磁形式因子与核几何相同，但磁死层常沿晶面，等效磁边长可小于核边长。核磁 SLD 与核 SLD 分通道。</p>
+      <p>可辨识性：$A,B,C$ 置换不改变粉末 $I(q)$，须用约定 $A\le B\le C$ 消歧。仅 Guinier 区只能约束 $R_g$，不能分开三边。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="rectangular-prism.html">矩形棱柱</a> — 同一 $\mathrm{sinc}$ 积，但指定 $C$ 为棱柱轴。</li>
+        <li><a href="core-shell-parallelepiped.html">核壳平行六面体</a> — 核砖块外包一层。</li>
+        <li><a href="../sphere/superball.html">超球</a> — $p\to\infty$ 的立方极限，圆角用有限 $p$。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Mittelbach, P.; Porod, G. Zur Röntgenkleinwinkelstreuung verdünnter kolloider Systeme. VII. Die Berechnung der Streukurven von Parallelepipeden. <em>Acta Phys. Austriaca</em> 1961, 14, 185–211.</li>
+        <li>Guinier, A.; Fournet, G. <em>Small-Angle Scattering of X-rays</em>. Wiley: New York, 1955.</li>
+      </ul>
+      <nav class="pager">
+        <a href="index.html">← 平行六面体类总览</a>
+        <a href="core-shell-parallelepiped.html">核壳平行六面体 →</a>
+      </nav>
+
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

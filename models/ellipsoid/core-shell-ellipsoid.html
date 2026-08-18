@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>核壳椭球 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>核壳椭球</h1>
+      <p class="subtitle-en">core-shell ellipsoid</p>
+      <h2>适用场景</h2>
+      <p>核与壳都是旋转椭球、且共焦点的两段均匀<span data-term="scattering-length-density">散射长度密度</span>剖面。适用于略扁/略长的核–冠状胶束、带溶剂化壳的椭球胶体，以及对比变分后仍需两段椭球剖面的体系。</p>
+      <p>共焦约定使壳厚沿法向不均匀：长轴端更“薄”、赤道更“厚”，或反过来取决于半轴。若壳只是均匀外扩（相似放大），几何不同，拟合时不要混用两种厚度定义。轴比接近 1 时退化为核壳球；核衬度匹配溶剂时接近空心椭球壳。</p>
+      <p>壳厚、核半轴与两段衬度高度相关。有中子 H/D 或 ASAXS 对比点时，简并可显著减弱。</p>
+      <h2>物理图像</h2>
+      <p>共焦核壳：外壳半轴满足 $R_{\perp,\mathrm{s}}^2=R_{\perp,\mathrm{c}}^2+t^2$、$R_{\parallel,\mathrm{s}}^2=R_{\parallel,\mathrm{c}}^2+t^2$，从而与核共用焦点。每一取向的振幅是核、壳两个有效球振幅的衬度加权和，再对 $\alpha$ 粉末平均（Chen 胶束图像；Pedersen 综述写法）。</p>
+      <p>中等 $q$ 的肩峰或极小位移来自核–壳干涉。高 $q$ 仍由最锐的密度跳变控制。取向平均会进一步抹浅振荡。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/ellipsoid/core-shell-ellipsoid-geometry.png" alt="共焦核壳椭球几何" width="900">
+        <figcaption>共焦核（内）与壳（外）；$t$ 是共焦壳参数而非均匀厚度。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="../../assets/figures/models/ellipsoid/core-shell-ellipsoid-iq.png" alt="核壳椭球 I(q) 示意" width="900">
+        <figcaption>核壳振幅相加后的粉末平均 $I(q)$：极小相对均匀椭球移动。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>取向 $\alpha$ 上核、壳有效半径 $R_{\mathrm{c,eff}}(\alpha)$、$R_{\mathrm{s,eff}}(\alpha)$ 同均匀椭球。体积 $V(R_\perp,R_\parallel)=\frac{4}{3}\pi R_\perp^2 R_\parallel$。振幅</p>
+      $$A(q,\alpha)=(\rho_c-\rho_s)V_c\Phi(q R_{\mathrm{c,eff}})+(\rho_s-\rho_{\mathrm{solv}})V_s\Phi(q R_{\mathrm{s,eff}}),$$
+      $$P(q)\propto\int_0^{\pi/2}|A(q,\alpha)|^2\sin\alpha\,\mathrm{d}\alpha.$$
+      <p>$\rho_c,\rho_s,\rho_{\mathrm{solv}}$ 分别为核、壳与溶剂 SLD。稀溶液 $I(q)=n\langle|A|^2\rangle+B$。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>核赤道 / 极半径</td><td>$R_{\perp,\mathrm{c}}$, $R_{\parallel,\mathrm{c}}$</td><td>均匀核的两半轴</td><td>Å 或 nm</td><td>10–400 Å</td></tr>
+          <tr><td>共焦参数</td><td>$t$</td><td>使外壳与核共焦的长度，$R_{\mathrm{s}}^2=R_{\mathrm{c}}^2+t^2$</td><td>Å 或 nm</td><td>5–80 Å</td></tr>
+          <tr><td>核 / 壳 / 溶剂 SLD</td><td>$\rho_c,\rho_s,\rho_{\mathrm{solv}}$</td><td>三段散射长度密度</td><td>Å$^{-2}$</td><td>组成与对比决定</td></tr>
+          <tr><td>取向角</td><td>$\theta,\phi$</td><td>对称轴取向（二维）</td><td>度</td><td>由取向分布约束</td></tr>
+          <tr><td>标度 / 本底</td><td>$n$, $B$</td><td>数密度与本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>衬度比、壳参数 $t$ 与核半轴是主简并。优先固定由化学计量或对比实验得到的 $\rho$，只放几何；或固定 $t$、拟合衬度。不要把共焦 $t$ 当成沿法向的均匀壳厚。</p>
+      <p>多分散通常加在核尺寸或 $t$ 上，同样抹平振荡。一维数据上轴比与多分散几乎不可分。</p>
+      <p>磁性：磁核加非磁壳（或磁死层）时，磁 SLD 剖面与核 SLD 剖面独立；须分通道，而不是只用一套 $\Delta\rho$。二维取向 $\theta,\phi$ 对核与壳相同，但磁矩方向另有因子。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="ellipsoid.html">椭球</a> — 核壳衬度相同，退化为均匀椭球。</li>
+        <li><a href="../sphere/core-shell-sphere.html">核壳球</a> — 轴比 $\to 1$ 的共焦极限。</li>
+        <li><a href="../cylinder/core-shell-cylinder.html">核壳圆柱</a> — 长径比很大时的柱状核壳极限。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Chen, S.-H. Small-angle neutron scattering studies of the structure and interaction in micellar and microemulsion systems. <em>Annu. Rev. Phys. Chem.</em> 1986, 37, 351–399. DOI: <a href="https://doi.org/10.1146/annurev.pc.37.100186.002031" target="_blank" rel="noopener noreferrer">10.1146/annurev.pc.37.100186.002031</a></li>
+        <li>Pedersen, J. S. Analysis of small-angle scattering data from colloids and polymer solutions: modeling and least-squares fitting. <em>J. Appl. Cryst.</em> 1997, 30, 339–354. DOI: <a href="https://doi.org/10.1107/S0021889897002532" target="_blank" rel="noopener noreferrer">10.1107/S0021889897002532</a></li>
+      </ul>
+      <nav class="pager">
+        <a href="ellipsoid.html">← 椭球</a>
+        <a href="triaxial-ellipsoid.html">三轴椭球 →</a>
+      </nav>
+
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

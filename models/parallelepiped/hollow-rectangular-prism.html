@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>空心矩形棱柱 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>空心矩形棱柱</h1>
+      <p class="subtitle-en">hollow rectangular prism</p>
+      <h2>适用场景</h2>
+      <p>外壁为矩形棱柱、内腔充满溶剂（或与溶剂衬度相同的介质），壁厚 $t$ 有限。适用于空心纳米框、管状矩形截面粒子、以及核被溶剂化掏空的砖块。</p>
+      <p>壁很厚、内腔很小时接近实心矩形棱柱；壁很薄时改用薄壁极限，避免 $t$ 与衬度强相关。圆管应改用空心圆柱。</p>
+      <h2>物理图像</h2>
+      <p>振幅是外砖块减去内砖块（内边长 $A-2t$ 等）。取向平均与矩形棱柱相同。空腔引入额外干涉，中间 $q$ 可出现相对实心柱移动的极小；高 $q$ 由壁的厚度与棱角共同决定。</p>
+      <p>若内外壁衬度不同（涂层管），回到核壳平行六面体并把核 SLD 设为溶剂以外的值。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/parallelepiped/hollow-rectangular-prism-geometry.png" alt="空心矩形棱柱截面与壁厚" width="900">
+        <figcaption>外轮廓 $A,B$（及未画出的 $C$）与壁厚 $t$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="../../assets/figures/models/parallelepiped/hollow-rectangular-prism-iq.png" alt="空心矩形棱柱 I(q) 示意" width="900">
+        <figcaption>外减内砖块后的粉末平均 $I(q)$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      $$A(\mathbf{q})=\Delta\rho\bigl[V_{\mathrm{out}}F(A,B,C;\mathbf{q})-V_{\mathrm{in}}F(A-2t,B-2t,C-2t;\mathbf{q})\bigr],$$
+      <p>$t$ 须满足 $A,B,C>2t$。粉末平均 $P(q)\propto\langle|A|^2\rangle$。体积差 $V_{\mathrm{out}}-V_{\mathrm{in}}$ 是壁的实体积。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>外边长</td><td>$A,B,C$</td><td>外轮廓三棱全长</td><td>Å 或 nm</td><td>20–1500 Å</td></tr>
+          <tr><td>壁厚</td><td>$t$</td><td>各面内缩的均匀厚度</td><td>Å 或 nm</td><td>3–80 Å</td></tr>
+          <tr><td>衬度</td><td>$\Delta\rho$</td><td>壁相对溶剂（内腔）SLD 差</td><td>Å$^{-2}$</td><td>组成决定</td></tr>
+          <tr><td>取向角</td><td>$\theta,\phi$</td><td>棱柱轴与截面方位（二维）</td><td>度</td><td>由取向分布约束</td></tr>
+          <tr><td>标度 / 本底</td><td>$\mathrm{scale}$, $B$</td><td>前置因子与本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>$t$ 与 $\Delta\rho$ 在薄壁时几乎不可分：绝对强度标定或已知组成才能放开两者。多分散优先放在外边长；壁厚分布会进一步抹平中 $q$ 干涉。</p>
+      <p>取向同矩形棱柱。磁性：若只有壁磁化，磁形式因子接近空心几何；核（空腔）无核磁 SLD。可辨识性：未见中 $q$ 干涉时，空心与“更小的实心柱 + 本底”易混淆。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="hollow-rectangular-prism-thin-walls.html">薄壁空心矩形棱柱</a> — $t$ 趋于零的面散射极限。</li>
+        <li><a href="rectangular-prism.html">矩形棱柱</a> — 实心极限 $t\to A/2$ 或内腔消失。</li>
+        <li><a href="../cylinder/hollow-cylinder.html">空心圆柱</a> — 圆管截面。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Nayuk, R.; Huber, K. Formfactors of hollow and massive parallelepipeds and their application to SAXS. <em>Z. Phys. Chem.</em> 2012, 226, 837–854.</li>
+        <li>Mittelbach, P.; Porod, G. Zur Röntgenkleinwinkelstreuung verdünnter kolloider Systeme. VII. <em>Acta Phys. Austriaca</em> 1961, 14, 185–211.</li>
+      </ul>
+      <nav class="pager">
+        <a href="rectangular-prism.html">← 矩形棱柱</a>
+        <a href="hollow-rectangular-prism-thin-walls.html">薄壁空心矩形棱柱 →</a>
+      </nav>
+
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

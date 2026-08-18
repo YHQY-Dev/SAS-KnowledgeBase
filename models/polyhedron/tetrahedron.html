@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>四面体 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>四面体</h1>
+      <p class="subtitle-en">tetrahedron</p>
+      <h2>适用场景</h2>
+      <p>正四面体均匀粒子：四张等边三角形面、六条等边。适用于四面体量子点、部分 II–VI 纳米晶，以及胶体晶的四面体构筑单元。</p>
+      <p>相对球，同样 $R_g$ 下高 $q$ 振荡更浅，面法向与棱给出不同的渐近。圆角或截去顶点时应改用截角四面体；若只是略扁的等轴体，旋转椭球参数更少、更稳。</p>
+      <h2>物理图像</h2>
+      <p>任意多面体的振幅可由顶点坐标与面拓扑的闭式给出（Croset；Wuttke），再对取向平均。正四面体体积 $V=a^3\sqrt{2}/12$，回转半径 $R_g^2=3a^2/40$。</p>
+      <p>示意图 $I(q)$ 用体内均匀抽样的各向同性 Debye 求和，等价于粉末平均的 $|F|^2$。截去顶点会把尖锐的面/棱特征变钝，并改变体积标度。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/polyhedron/tetrahedron-geometry.png" alt="正四面体几何：边长 a" width="900">
+        <figcaption>正四面体，边长 $a$ 是唯一几何参数。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="../../assets/figures/models/polyhedron/tetrahedron-iq.png" alt="正四面体 I(q) 示意" width="900">
+        <figcaption>正四面体粉末平均 $I(q)/I(0)$（体内 Debye 求和）。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      $$F(\mathbf{q})=\Delta\rho\int_V e^{-i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3 r,\qquad P(q)=\langle |F|^2\rangle_{\Omega}/|F(0)|^2.$$
+      <p>闭式可将体积分化为面上的多边形形式因子之和。边长 $a$ 的体积 $V=a^3\sqrt{2}/12$。稀释 $I(q)=\mathrm{scale}\cdot P(q)+B$。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>边长</td><td>$a$</td><td>正四面体棱长</td><td>Å 或 nm</td><td>15–800 Å</td></tr>
+          <tr><td>欧拉角</td><td>$\theta,\phi,\psi$</td><td>面/棱相对光束的取向（二维）</td><td>度</td><td>由取向分布约束</td></tr>
+          <tr><td>衬度</td><td>$\Delta\rho$</td><td>均匀体相对溶剂 SLD 差</td><td>Å$^{-2}$</td><td>组成决定</td></tr>
+          <tr><td>标度 / 本底</td><td>$\mathrm{scale}$, $B$</td><td>前置因子与本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>边长多分散强烈抹平高 $q$ 振荡，且与“等效球 + 高多分散”在一维上易混淆。有电镜确认四面体形貌后再放开 $a$ 的分布宽度。</p>
+      <p>取向：溶液中粉末平均；衬底或磁场下四面体会以面或棱择优，二维出现三重/四重特征，不能用球的平凡取向。磁性：磁死层常沿 {111} 面，磁有效边长可小于核边长；核磁 SLD 分通道。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="truncated-tetrahedron.html">截角四面体</a> — 切去四个顶点后的 Archimedean 体。</li>
+        <li><a href="prism.html">三棱柱</a> — 同样有三角形面，但是挤出柱。</li>
+        <li><a href="../sphere/sphere.html">均匀球</a> — 等轴光滑极限；仅 Guinier 区二者不可分。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Croset, B. Form factor of any polyhedron: a general compact formula and its singularities. <em>J. Appl. Cryst.</em> 2017, 50, 1245–1255. DOI: <a href="https://doi.org/10.1107/S1600576717010147" target="_blank" rel="noopener noreferrer">10.1107/S1600576717010147</a></li>
+        <li>Wuttke, J. Numerically stable form factor of any polygon and polyhedron. <em>J. Appl. Cryst.</em> 2021, 54, 580–587. DOI: <a href="https://doi.org/10.1107/S1600576721001710" target="_blank" rel="noopener noreferrer">10.1107/S1600576721001710</a></li>
+      </ul>
+      <nav class="pager">
+        <a href="prism.html">← 三棱柱</a>
+        <a href="truncated-tetrahedron.html">截角四面体 →</a>
+      </nav>
+
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

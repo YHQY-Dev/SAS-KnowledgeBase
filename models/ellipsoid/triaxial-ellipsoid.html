@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>三轴椭球 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>三轴椭球</h1>
+      <p class="subtitle-en">triaxial ellipsoid</p>
+      <h2>适用场景</h2>
+      <p>三个半轴 $R_a,R_b,R_c$ 均不等的均匀椭球。适用于既不是旋转对称、也尚未尖角化成砖块的粒子：压扁又拉长的胶束、不规则纳米晶的光滑近似，以及电镜给出三个特征尺寸的胶体。</p>
+      <p>若其中两轴相等，应改用旋转椭球（少一个自由参数）。若棱角分明，应改用平行六面体。轴比都接近 1 时与球无法分辨。</p>
+      <p>一维粉末平均把三个半轴的信息叠进同一条 $I(q)$，可辨识性弱于旋转椭球；没有电镜或二维数据时不要同时放开三个半轴与多分散。</p>
+      <h2>物理图像</h2>
+      <p>每一取向的振幅仍是有效半径 $R_{\mathrm{eff}}(\theta,\phi)$ 上的 Rayleigh 球振幅。Mittelbach 与 Porod 给出对球面角的二重平均。回转半径 $R_g^2=(R_a^2+R_b^2+R_c^2)/5$。</p>
+      <p>一轴显著长于另两轴时，中间区接近椭圆截面圆柱；三轴都中等时，振荡被双重取向平均抹得很浅。二维图案需要三个欧拉角，而不是单个极角。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/ellipsoid/triaxial-ellipsoid-geometry.png" alt="三轴椭球几何：三个半轴" width="900">
+        <figcaption>三不等半轴 $R_a,R_b,R_c$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="../../assets/figures/models/ellipsoid/triaxial-ellipsoid-iq.png" alt="三轴椭球 I(q) 示意" width="900">
+        <figcaption>二重取向平均后振荡比旋转椭球更浅。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      $$R_{\mathrm{eff}}(\theta,\phi)=\sqrt{R_a^2\sin^2\theta\cos^2\phi+R_b^2\sin^2\theta\sin^2\phi+R_c^2\cos^2\theta},$$
+      $$P(q)=\frac{2}{\pi}\int_0^{\pi/2}\int_0^{\pi/2}\Phi^2\bigl(q R_{\mathrm{eff}}\bigr)\sin\theta\,\mathrm{d}\theta\,\mathrm{d}\phi.$$
+      <p>体积 $V=\frac{4}{3}\pi R_a R_b R_c$。任两轴相等时回到旋转椭球。稀释 $I(q)=\mathrm{scale}\cdot P(q)+B$。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>半轴</td><td>$R_a,R_b,R_c$</td><td>三个主轴半长，约定 $R_a\le R_b\le R_c$</td><td>Å 或 nm</td><td>10–1500 Å</td></tr>
+          <tr><td>欧拉角</td><td>$\theta,\phi,\psi$</td><td>主轴相对光束的取向（二维）</td><td>度</td><td>由取向分布约束</td></tr>
+          <tr><td>衬度</td><td>$\Delta\rho$</td><td>均匀体相对溶剂 SLD 差</td><td>Å$^{-2}$</td><td>组成决定</td></tr>
+          <tr><td>标度 / 本底</td><td>$\mathrm{scale}$, $B$</td><td>前置因子与本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>三个半轴在一维 $I(q)$ 上强烈相关。实用策略：固定最小轴或轴比来自电镜，只拟合一个尺度；或先用旋转椭球看残差是否系统。</p>
+      <p>多分散与三轴偏离都会浅化极小。取向：粉末平均积掉 $\theta,\phi$；剪切/磁场下三个欧拉角都可能需要，比旋转椭球更重。</p>
+      <p>磁性：三轴退磁因子不同，磁 SLD 各向异性不能用单一 $\Delta\rho$ 代替。磁半径与核半径仍可不同。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="ellipsoid.html">椭球</a> — 两轴相等的旋转极限。</li>
+        <li><a href="../cylinder/elliptical-cylinder.html">椭圆截面圆柱</a> — 一轴很长、另两轴为椭圆截面。</li>
+        <li><a href="../parallelepiped/parallelepiped.html">平行六面体</a> — 同样三不等尺度，但棱角分明。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Mittelbach, P.; Porod, G. Zur Röntgenkleinwinkelstreuung verdünnter kolloider Systeme. VIII. Die Berechnung der Streukurven von dreiachsigen Ellipsoiden. <em>Acta Phys. Austriaca</em> 1962, 15, 122–147.</li>
+        <li>Guinier, A.; Fournet, G. <em>Small-Angle Scattering of X-rays</em>. Wiley: New York, 1955.</li>
+      </ul>
+      <nav class="pager">
+        <a href="core-shell-ellipsoid.html">← 核壳椭球</a>
+        <a href="index.html">椭球类总览 →</a>
+      </nav>
+
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

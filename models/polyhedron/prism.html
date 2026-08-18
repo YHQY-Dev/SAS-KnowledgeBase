@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>三棱柱 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>三棱柱</h1>
+      <p class="subtitle-en">prism</p>
+      <h2>适用场景</h2>
+      <p>底面为等边三角形、高度 $H$ 的均匀直棱柱。适用于三角纳米柱、部分金/银纳米棱镜（有限厚度）、以及截面接近正三角形的晶须。</p>
+      <p>细长（$H\gg a$）时中间区接近圆柱的 $q^{-1}$；扁平（$H\ll a$）时接近三角薄片的 $q^{-2}$。圆截面用圆柱；矩形截面用矩形棱柱。无限薄的正三角片不是本模型。</p>
+      <h2>物理图像</h2>
+      <p>直棱柱振幅分解为沿轴的 $\mathrm{sinc}(q_\parallel H/2)$ 与底面多边形的二维形式因子（Wuttke；Nayuk–Huber 系列对棱柱取向的处理）。粉末平均对极角与滚转角积分。回转半径由三角形 $R_{g,2\mathrm{D}}^2=a^2/24$ 与高度 $H^2/12$ 相加。</p>
+      <p>高 $q$ 振荡携带边长 $a$ 与棱的信息，比圆柱的 Bessel 极小更浅、相位不同。示意图 $I(q)$ 由体内均匀点的各向同性 Debye 求和给出，对应同一几何的粉末平均。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/polyhedron/prism-geometry.png" alt="等边三棱柱几何" width="900">
+        <figcaption>等边三角形边长 $a$ 与高度 $H$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="../../assets/figures/models/polyhedron/prism-iq.png" alt="三棱柱 I(q) 示意" width="900">
+        <figcaption>等边三棱柱粉末平均 $I(q)/I(0)$（体内 Debye 求和）。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      $$F(\mathbf{q})=H\cdot\mathrm{sinc}\!\left(\frac{q_\parallel H}{2}\right)F_\triangle(q_\perp,\psi),$$
+      <p>$F_\triangle$ 是边长 $a$ 的等边三角形二维形式因子，$\psi$ 为截面方位。粉末</p>
+      $$P(q)=\langle |F|^2\rangle_{\theta,\psi}/|F(0)|^2.$$
+      <p>体积 $V=\sqrt{3}\,a^2 H/4$。$R_g^2=a^2/24+H^2/12$。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>边长</td><td>$a$</td><td>等边三角形边长</td><td>Å 或 nm</td><td>10–800 Å</td></tr>
+          <tr><td>高度</td><td>$H$</td><td>沿棱柱轴的全长</td><td>Å 或 nm</td><td>10–4000 Å</td></tr>
+          <tr><td>取向角</td><td>$\theta,\phi$</td><td>轴及截面方位（二维）</td><td>度</td><td>由取向分布约束</td></tr>
+          <tr><td>衬度</td><td>$\Delta\rho$</td><td>均匀体相对溶剂 SLD 差</td><td>Å$^{-2}$</td><td>组成决定</td></tr>
+          <tr><td>标度 / 本底</td><td>$\mathrm{scale}$, $B$</td><td>前置因子与本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>高度多分散改中间斜率跨度；边长多分散抹高 $q$ 振荡，对应圆柱的长度 vs 半径，不可互换。一维数据上三角截面与“略扁的圆柱”易混淆，需电镜截面。</p>
+      <p>取向：粉末平均积掉轴与滚转；二维可出现三重对称，勿用圆柱的轴对称取向分布去套。磁性：三角截面退磁各向异性，磁 SLD 分通道。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="../cylinder/cylinder.html">圆柱</a> — 圆截面；细长极限中间区斜率可相近。</li>
+        <li><a href="../parallelepiped/rectangular-prism.html">矩形棱柱</a> — 四边截面的直棱柱。</li>
+        <li><a href="tetrahedron.html">四面体</a> — 三角形面，但不是挤出棱柱。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Nayuk, R.; Huber, K. Formfactors of hollow and massive parallelepipeds and their application to SAXS. <em>Z. Phys. Chem.</em> 2012, 226, 837–854.</li>
+        <li>Wuttke, J. Numerically stable form factor of any polygon and polyhedron. <em>J. Appl. Cryst.</em> 2021, 54, 580–587. DOI: <a href="https://doi.org/10.1107/S1600576721001710" target="_blank" rel="noopener noreferrer">10.1107/S1600576721001710</a></li>
+      </ul>
+      <nav class="pager">
+        <a href="index.html">← 多面体类总览</a>
+        <a href="tetrahedron.html">四面体 →</a>
+      </nav>
+
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

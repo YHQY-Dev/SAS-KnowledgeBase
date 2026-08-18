@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>椭球 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>椭球</h1>
+      <p class="subtitle-en">ellipsoid</p>
+      <h2>适用场景</h2>
+      <p>当粒子可视为均匀<span data-term="scattering-length-density">散射长度密度</span>的旋转椭球（两个半轴相等、第三个不同）时，取向平均椭球<span data-term="form-factor">形式因子</span>是球与棒/盘之间的连续过渡。典型对象包括：略扁或略长的胶束、变形乳液滴、以及电镜显示轴比有限的无机纳米颗粒。</p>
+      <p>曲线判据：轴比 $\varepsilon=R_\parallel/R_\perp$ 接近 1 时接近均匀球的振荡；$\varepsilon\gg 1$（长球）中间区趋近 $q^{-1}$；$\varepsilon\ll 1$（扁球）趋近 $q^{-2}$。粉末平均会抹浅球的极小。明显三轴不等、核壳分层或截面呈椭圆柱时，应改用相应变体。</p>
+      <p>稀溶液只拟合 $P(q)$。二维各向异性图案需要取向分布，而不是只用一维粉末平均。</p>
+      <h2>物理图像</h2>
+      <p>旋转椭球沿某一取向的振幅等于半径为 $R_{\mathrm{eff}}(\alpha)$ 的均匀球振幅，其中 $\alpha$ 是对称轴与 $\mathbf{q}$ 的夹角。Guinier 给出对 $\alpha$ 的取向平均；$P(0)=1$。回转半径 $R_g^2=(2R_\perp^2+R_\parallel^2)/5$。</p>
+      <p>长径比很大时，取向平均后的中间斜率接近有限圆柱；压扁时接近薄盘。轴比 $\to 1$ 回到 Rayleigh 球。磁场或剪切下须保留 $\theta,\phi$，粉末平均会丢掉弧向信息。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/ellipsoid/ellipsoid-geometry.png" alt="旋转椭球几何：赤道半径与极半径" width="900">
+        <figcaption>旋转椭球截面，赤道半轴 $R_\perp$ 与极半轴 $R_\parallel$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="../../assets/figures/models/ellipsoid/ellipsoid-iq.png" alt="取向平均旋转椭球形式因子 I(q) 示意" width="900">
+        <figcaption>长球粉末平均 $I(q)/I(0)$：相对球，振荡被轴比抹浅。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>令 $\Phi(x)=3(\sin x-x\cos x)/x^3$。有效半径</p>
+      $$R_{\mathrm{eff}}(\alpha)=\sqrt{R_\perp^2\sin^2\alpha+R_\parallel^2\cos^2\alpha}.$$
+      <p>一维粉末平均</p>
+      $$P(q)=\int_0^{\pi/2}\Phi^2\bigl(q R_{\mathrm{eff}}(\alpha)\bigr)\sin\alpha\,\mathrm{d}\alpha.$$
+      <p>体积 $V=\frac{4}{3}\pi R_\perp^2 R_\parallel$。稀释观测强度常写 $I(q)=\mathrm{scale}\cdot P(q)+B$。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>赤道半径</td><td>$R_\perp$</td><td>垂直于旋转轴的半轴</td><td>Å 或 nm</td><td>10–500 Å</td></tr>
+          <tr><td>极半径</td><td>$R_\parallel$</td><td>沿旋转轴的半轴</td><td>Å 或 nm</td><td>10–2000 Å</td></tr>
+          <tr><td>轴比</td><td>$\varepsilon$</td><td>$R_\parallel/R_\perp$；$>1$ 长球，$&lt;1$ 扁球</td><td>无量纲</td><td>0.2–8</td></tr>
+          <tr><td>极角 / 方位角</td><td>$\theta,\phi$</td><td>对称轴相对光束的取向（二维）</td><td>度</td><td>由取向分布约束</td></tr>
+          <tr><td>标度 / 本底</td><td>$\mathrm{scale}$, $B$</td><td>前置因子与常数本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
+          <tr><td>衬度</td><td>$\Delta\rho$</td><td>均匀椭球相对溶剂的 SLD 差</td><td>Å$^{-2}$</td><td>由组成计算</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>取向：一维数据默认粉末平均，不能单独分辨 $\theta$ 与 $\phi$。二维各向异性须拟合取向分布宽度；把弧向调制误读成轴比，是常见错误。</p>
+      <p><span data-term="polydispersity">多分散</span>：尺寸分布与轴比都会抹浅振荡。一维曲线上两者高度相关；有电镜轴比或二维数据时再放开 $\varepsilon$。报告均值须声明加权方式。</p>
+      <p>磁性：核磁 SLD 与核（核散射）SLD 是不同通道。均匀磁化椭球的磁形式因子仍是同一几何，但磁半轴、死层不必与核半轴相同；勿把磁各向异性误读成几何轴比。</p>
+      <p>可辨识性：仅有低 $q$ Guinier 时，$R_\perp$、$R_\parallel$ 与多分散强相关。要分开两半轴，需要看到中间斜率以及至少一组振荡，或有独立形貌信息。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="core-shell-ellipsoid.html">核壳椭球</a> — 共焦核与壳，两套衬度。</li>
+        <li><a href="triaxial-ellipsoid.html">三轴椭球</a> — 三个半轴均不等。</li>
+        <li><a href="../cylinder/cylinder.html">圆柱</a> — 长径比很大（长球）或压得很扁（盘）时的极限。</li>
+        <li><a href="../sphere/sphere.html">均匀球</a> — 轴比 $\varepsilon\to 1$。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Guinier, A.; Fournet, G. <em>Small-Angle Scattering of X-rays</em>. Wiley: New York, 1955.</li>
+        <li>Feigin, L. A.; Svergun, D. I. <em>Structure Analysis by Small-Angle X-ray and Neutron Scattering</em>. Plenum: New York, 1987.</li>
+      </ul>
+      <nav class="pager">
+        <a href="index.html">← 椭球类总览</a>
+        <a href="core-shell-ellipsoid.html">核壳椭球 →</a>
+      </nav>
+
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

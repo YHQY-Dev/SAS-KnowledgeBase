@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>薄壁空心矩形棱柱 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>薄壁空心矩形棱柱</h1>
+      <p class="subtitle-en">hollow rectangular prism (thin walls)</p>
+      <h2>适用场景</h2>
+      <p>空心矩形棱柱在壁厚 $t$ 远小于三边时的极限：散射由六个面（及棱）贡献，体积近似为表面积乘 $t$。适用于极薄纳米框、金属有机框架空壳、以及 $t$ 已小于分辨率所能分开的空心砖块。</p>
+      <p>若数据的 $q_{\max}$ 已能分辨壁厚振荡，应回到有限 $t$ 的空心矩形棱柱，而不是把薄壁模型硬拟合出虚假的 $t$。</p>
+      <h2>物理图像</h2>
+      <p>有限壁空心振幅对 $t$ 做一阶展开，得到六个矩形面的面积振幅之和（Nayuk 与 Huber 的薄壁写法）。$I(0)$ 正比于 $(\Delta\rho\, t\, S)^2$，其中 $S=2(AB+AC+BC)$ 是外表面积。高 $q$ 比实心砖块更接近面散射，Porod 区可更早出现。</p>
+      <p>本页示意图的 $I(q)$ 用很小的有限 $t$ 代入空心公式求值，以接近该极限，而不是另写一套与上节无关的定性曲线。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/parallelepiped/hollow-rectangular-prism-thin-walls-geometry.png" alt="薄壁矩形框几何" width="900">
+        <figcaption>只保留外轮廓，$t\to 0$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="../../assets/figures/models/parallelepiped/hollow-rectangular-prism-thin-walls-iq.png" alt="薄壁空心矩形棱柱 I(q) 示意" width="900">
+        <figcaption>空心公式在很小 $t$ 下的粉末平均 $I(q)$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>有限壁空心振幅 $A(t)$ 在 $t\to 0$ 时</p>
+      $$A(\mathbf{q})\simeq\Delta\rho\, t\sum_{\mathrm{faces}}S_f\,\mathrm{sinc}(\mathbf{q}\cdot\mathbf{a}_f/2)\,\mathrm{sinc}(\mathbf{q}\cdot\mathbf{b}_f/2)\,e^{i\mathbf{q}\cdot\mathbf{r}_f},$$
+      <p>其中 $S_f$ 是第 $f$ 个矩形面的面积。粉末平均后 $P(0)=1$。实际拟合中 $t$ 与 $\Delta\rho$ 只以乘积出现，须固定其一。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>外边长</td><td>$A,B,C$</td><td>薄壁框的外轮廓</td><td>Å 或 nm</td><td>20–1500 Å</td></tr>
+          <tr><td>壁厚乘衬度</td><td>$\Delta\rho\, t$</td><td>薄壁极限下不可分的乘积</td><td>Å$^{-1}$ 量级（视单位）</td><td>由绝对强度约束</td></tr>
+          <tr><td>取向角</td><td>$\theta,\phi$</td><td>框取向（二维）</td><td>度</td><td>由取向分布约束</td></tr>
+          <tr><td>标度 / 本底</td><td>$\mathrm{scale}$, $B$</td><td>前置因子与本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>不要同时放开 $t$ 与 $\Delta\rho$。边长多分散会抹掉面干涉。若残差在高 $q$ 系统偏离，说明 $t$ 并非可忽略，应回到有限壁模型。</p>
+      <p>取向与磁性：薄磁壁的磁形式因子接近面散射；与核（空）通道完全不同。二维 $\theta,\phi$ 仍需要。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="hollow-rectangular-prism.html">空心矩形棱柱</a> — 有限壁厚，可分辨 $t$。</li>
+        <li><a href="../cylinder/hollow-cylinder.html">空心圆柱</a> — 薄壁圆管极限。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Nayuk, R.; Huber, K. Formfactors of hollow and massive parallelepipeds and their application to SAXS. <em>Z. Phys. Chem.</em> 2012, 226, 837–854.</li>
+      </ul>
+      <nav class="pager">
+        <a href="hollow-rectangular-prism.html">← 空心矩形棱柱</a>
+        <a href="index.html">平行六面体类总览 →</a>
+      </nav>
+
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

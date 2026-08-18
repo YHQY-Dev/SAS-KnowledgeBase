@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>矩形棱柱 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>矩形棱柱</h1>
+      <p class="subtitle-en">rectangular prism</p>
+      <h2>适用场景</h2>
+      <p>几何仍是直角砖块，但明确指定 $C$ 为棱柱（挤出）轴、$A\times B$ 为矩形截面。适用于纳米棒/带（截面近似矩形）、挤压生长的晶须，以及需要与圆柱对照的方形截面柱。</p>
+      <p>与平行六面体的差别是<strong>约定与取向角定义</strong>，不是另一套振幅：粉末 $I(q)$ 在相同 $A,B,C$ 下应一致。本页把 $\theta$ 取为 $\mathbf{q}$ 与 $C$ 轴夹角，便于和圆柱的 $\alpha$ 对照。$A=B$ 且与圆柱半径可比时，中间 $q^{-1}$ 相似，高 $q$ 因棱角而不同。</p>
+      <p>截面明显圆形用圆柱；空心用空心矩形棱柱。</p>
+      <h2>物理图像</h2>
+      <p>振幅仍是三个 $\mathrm{sinc}$ 之积。Nayuk 与 Huber 把角度定义成棱柱轴相对 $\mathbf{q}$ 的极角，再对截面方位平均。细长时（$C\gg A,B$）中间区 $\sim q^{-1}$，截面边长决定高 $q$ 振荡；扁平时（$C\ll A,B$）中间区 $\sim q^{-2}$。</p>
+      <p>回转半径 $R_g^2=(A^2+B^2+C^2)/12$，与平行六面体相同。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/parallelepiped/rectangular-prism-geometry.png" alt="矩形棱柱几何：截面 A,B 与轴 C" width="900">
+        <figcaption>矩形截面 $A\times B$，沿 $C$ 挤出。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="../../assets/figures/models/parallelepiped/rectangular-prism-iq.png" alt="矩形棱柱 I(q) 示意" width="900">
+        <figcaption>细长方形截面柱的粉末平均：中间 $q^{-1}$ 与截面振荡。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      $$F(q,\theta,\phi)=\mathrm{sinc}\!\left(\frac{qC\cos\theta}{2}\right)\mathrm{sinc}\!\left(\frac{qA\sin\theta\cos\phi}{2}\right)\mathrm{sinc}\!\left(\frac{qB\sin\theta\sin\phi}{2}\right),$$
+      $$P(q)=\frac{2}{\pi}\int_0^{\pi/2}\int_0^{\pi/2}|F|^2\sin\theta\,\mathrm{d}\theta\,\mathrm{d}\phi.$$
+      <p>$\theta$ 是 $C$ 轴与 $\mathbf{q}$ 的夹角。$A=B=C$ 时与立方平行六面体相同。体积 $V=ABC$。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>截面边</td><td>$A$, $B$</td><td>矩形截面两边全长</td><td>Å 或 nm</td><td>8–400 Å</td></tr>
+          <tr><td>棱柱长</td><td>$C$</td><td>沿挤出轴的全长</td><td>Å 或 nm</td><td>20–5000 Å</td></tr>
+          <tr><td>极角 / 方位角</td><td>$\theta,\phi$</td><td>轴及截面方位（二维）</td><td>度</td><td>由取向分布约束</td></tr>
+          <tr><td>衬度</td><td>$\Delta\rho$</td><td>相对溶剂 SLD 差</td><td>Å$^{-2}$</td><td>均匀柱</td></tr>
+          <tr><td>标度 / 本底</td><td>$\mathrm{scale}$, $B$</td><td>前置因子与本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>长度多分散改 $q^{-1}$ 区跨度；截面边长多分散抹高 $q$ 振荡。两者与圆柱的“长度 vs 半径”多分散对应，不可互换。</p>
+      <p>取向：一维粉末平均；二维还要截面滚转角。勿把方形截面的弧向四重对称误读成圆柱。</p>
+      <p>磁性：截面各向异性退磁，磁 SLD 与核 SLD 分通道。可辨识性：仅低 $q$ 时 $A,B,C$ 相关；看到中间斜率与截面振荡后才能分开。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="parallelepiped.html">平行六面体</a> — 三边对等，不预设柱轴；粉末曲线在相同边长下应重合。</li>
+        <li><a href="../cylinder/cylinder.html">圆柱</a> — 圆截面极限；中间区斜率可相近，高 $q$ 相位不同。</li>
+        <li><a href="hollow-rectangular-prism.html">空心矩形棱柱</a> — 溶剂填充的内腔。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Mittelbach, P.; Porod, G. Zur Röntgenkleinwinkelstreuung verdünnter kolloider Systeme. VII. <em>Acta Phys. Austriaca</em> 1961, 14, 185–211.</li>
+        <li>Nayuk, R.; Huber, K. Formfactors of hollow and massive parallelepipeds and their application to SAXS. <em>Z. Phys. Chem.</em> 2012, 226, 837–854.</li>
+      </ul>
+      <nav class="pager">
+        <a href="core-shell-parallelepiped.html">← 核壳平行六面体</a>
+        <a href="hollow-rectangular-prism.html">空心矩形棱柱 →</a>
+      </nav>
+
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>
