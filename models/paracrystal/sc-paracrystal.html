@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>简单立方准晶 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>简单立方准晶</h1>
+      <p class="subtitle-en">simple cubic paracrystal</p>
+      <h2>适用场景</h2>
+      <p>球形颗粒占据简单立方（SC）点阵、近程有序而远程逐渐失序时，用 Hosemann 三维准晶格子因子乘以球<span data-term="form-factor">形式因子</span>。典型对象：轻度有序的胶乳或二氧化硅胶体晶体、嵌段共聚物球形微区的简单立方排列，以及峰位比接近 $1:\sqrt{2}:\sqrt{3}$ 的粉末谱。</p>
+      <p>液体样硬球<span data-term="structure-factor">结构因子</span>只有宽而少的相关峰；准晶在若干 $q_{hkl}$ 给出可分辨的布拉格峰，且高阶峰随畸变因子 $g$ 迅速变弱。层状一维堆叠用层状准晶，不要套三维立方格子。</p>
+      <h2>物理图像</h2>
+      <p>Hosemann 把三个正交晶格矢量写成独立的高斯间距涨落。一维格子因子 $Z_1(q_x)$ 的高阶峰按 $\mathrm{e}^{-k q^2\sigma_a^2/2}$ 阻尼；三维理想准晶是三个 $Z_1$ 的乘积，再对取向作粉末平均。Matsuoka 等把该图像推广到 SC / BCC / FCC，并用 1990 年短文修正了 BCC、FCC 的晶胞因子。</p>
+      <p>SC 每个惯例晶胞一个格点，全部 $hkl$ 都允许。最近邻 $d_{\mathrm{nn}}=a$，第一峰为 $(100)$，$q_1=2\pi/a$。球半径 $R$ 只进入 $P(q)$：它调制峰的包络，不移动 $q_{hkl}$。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/paracrystal/sc-paracrystal-geometry.png" alt="简单立方准晶格子：晶格常数 a 与畸变 g" width="900">
+        <figcaption>SC 惯例晶胞边长 $a$；橙色位移示意 Hosemann 畸变 $g$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="../../assets/figures/models/paracrystal/sc-paracrystal-iq.png" alt="简单立方准晶 I(q) 示意" width="900">
+        <figcaption>粉末平均 SC 准晶 $I(q)$：$(100)$ 等峰随 $g$ 展宽、高阶衰减。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>有限 $N$ 的一维 Hosemann 因子（$g=\sigma_a/a$）</p>
+      $$Z_1(q_x)=1+\frac{2}{N}\sum_{k=1}^{N-1}(N-k)\cos(k q_x a)\,\mathrm{e}^{-k q_x^2 (g a)^2/2}.$$
+      <p>SC 三维格子因子为 $Z(q)=Z_1(q_x)Z_1(q_y)Z_1(q_z)$，粉末强度 $I(q)\propto P_{\mathrm{sph}}(q)\,\langle Z(\mathbf{q})\rangle_{\hat{q}}+B$。球形式因子 $P_{\mathrm{sph}}$ 取 Rayleigh 函数。反射位置 $q_{hkl}=(2\pi/a)\sqrt{h^2+k^2+l^2}$。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>晶格常数</td><td>$a$</td><td>立方惯例晶胞边长</td><td>Å</td><td>由一级峰位反推</td></tr>
+          <tr><td>畸变因子</td><td>$g$</td><td>Hosemann 相对涨落 $\sigma_a/a$</td><td>无量纲</td><td>$0.03$–$0.25$</td></tr>
+          <tr><td>相干晶胞数</td><td>$N$</td><td>有限畴沿一轴的重复数</td><td>—</td><td>4–40</td></tr>
+          <tr><td>球半径</td><td>$R$</td><td>占据格点的均匀球半径</td><td>Å</td><td>$2R$ 小于最近邻</td></tr>
+          <tr><td>衬度</td><td>$\Delta\rho$</td><td>粒子与溶剂的 SLD 差</td><td>Å$^{-2}$</td><td>组成或对比实验</td></tr>
+          <tr><td>标度 / 本底</td><td>$\mathrm{scale}$, $B$</td><td>前置因子与常数本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>取向：粉末平均把三维倒易点涂成 Debye–Scherrer 环，一维曲线上只剩 $q_{hkl}$。纤维或剪切取向的胶体晶体应保留极角，不要用各向同性粉末公式去拟合弧向收窄的二维峰。</p>
+      <p>$g$ 与有限畴 $N$、仪器分辨率都加宽峰：优先用峰位定 $a$，用高阶峰是否存在、相对强度约束 $g$，再用一级峰宽估 $N$。未卷积分辨率时会把 smearing 读成更大的 $g$。尺寸<span data-term="polydispersity">多分散</span>主要抹平球形式因子振荡，与格子 $g$ 正交，二者不要互换。</p>
+      <p>磁性：核磁 SLD 只改格点上的磁形式因子，格子 $a,g,N$ 与核通道共用。可辨识性：只有一个宽峰时，无法同时独立确定格子类型、$g$ 与 $N$，应先由峰位比（$q_{hkl}/q_1$）判断 SC / BCC / FCC，再放开畸变。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="bcc-paracrystal.html">体心立方准晶</a> — 体心格点，消光规则 $h+k+l$ 为偶数。</li>
+        <li><a href="fcc-paracrystal.html">面心立方准晶</a> — 面心格点，未混指数消光。</li>
+        <li><a href="../lamellae/lamellar-stack-paracrystal.html">准晶层状堆叠</a> — 同一 Hosemann 图像的一维层状版本。</li>
+        <li><a href="../structure-factor/hard-sphere.html">硬球结构因子</a> — 液体样相关峰，不是布拉格格子。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Hosemann, R.; Bagchi, S. N. <em>Direct Analysis of Diffraction by Matter</em>. North-Holland: Amsterdam, 1962.</li>
+        <li>Matsuoka, H.; Tanaka, H.; Hashimoto, T.; Ise, N. Elastic scattering from cubic lattice systems with paracrystalline distortion. <em>Phys. Rev. B</em> 1987, 36, 1754–1765. DOI: <a href="https://doi.org/10.1103/PhysRevB.36.1754" target="_blank" rel="noopener noreferrer">10.1103/PhysRevB.36.1754</a></li>
+        <li>Matsuoka, H.; Tanaka, H.; Iizuka, N.; Hashimoto, T.; Ise, N. Elastic scattering from cubic lattice systems with paracrystalline distortion. II. <em>Phys. Rev. B</em> 1990, 41, 3854–3856. DOI: <a href="https://doi.org/10.1103/PhysRevB.41.3854" target="_blank" rel="noopener noreferrer">10.1103/PhysRevB.41.3854</a></li>
+        <li>Guinier, A.; Fournet, G. <em>Small-Angle Scattering of X-rays</em>. Wiley: New York, 1955.</li>
+      </ul>
+      <nav class="pager">
+        <a href="index.html">← 准晶总览</a>
+        <a href="bcc-paracrystal.html">体心立方准晶 →</a>
+      </nav>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>
