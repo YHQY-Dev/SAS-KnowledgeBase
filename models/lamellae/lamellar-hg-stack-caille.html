@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>头基–尾链 Caille 堆叠 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>头基–尾链 Caille 堆叠</h1>
+      <p class="subtitle-en">lamellar HG stack Caille</p>
+      <h2>适用场景</h2>
+      <p>多层双层既需要头基–尾链两段衬度，又需要 Caille 热起伏堆叠时，把头–尾–头形式因子与 Caille $S(q)$ 相乘。这是溶致层状相与多层脂质体最常用的组合：低 $q$ 峰形反映弹性起伏，高 $q$ 漫散射与峰强度比反映双层剖面。</p>
+      <p>若只要平均厚度、对比不足，退回均匀 Caille 堆叠。无层状峰时退回头基–尾链孤立片。多层同心囊泡有曲率与闭合几何，应改多层囊泡，而不是无限平面堆叠。</p>
+      <h2>物理图像</h2>
+      <p>Nallet 的要点是形式与结构可分离：粉末强度 $\propto |F_{\mathrm{HG}}(q)|^2 S_{\mathrm{Caille}}(q)/q^2$。$F_{\mathrm{HG}}$ 与头基–尾链页相同；$S_{\mathrm{Caille}}$ 与 Caille 堆叠页相同。布拉格峰强度被 $|F|$ 调制，节点附近整级峰可以消失，并不等于 $\eta$ 极大。</p>
+      <p>对比变化改 $F$ 而不应改 $d,\eta,N$（同一套弹性与畴）。若对比一变峰位也动，多半是溶胀或相变，不是单纯衬度。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/lamellae/lamellar-hg-stack-caille-geometry.png" alt="头基–尾链 Caille 堆叠几何" width="900">
+        <figcaption>起伏堆叠的头–尾–头双层，间距 $d$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="../../assets/figures/models/lamellae/lamellar-hg-stack-caille-iq.png" alt="头基–尾链 Caille 堆叠 I(q) 示意" width="900">
+        <figcaption>Caille 峰被双层形式因子调制；节点处峰被压低。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>$F(q)$ 取头基–尾链页的对称双层振幅，$S(q)$ 取 Caille 堆叠页的 Nallet 求和。粉末强度</p>
+      $$I(q)=\frac{2\pi}{d q^2}\,|F(q)|^2\,S(q)+B.$$
+      <p>第 $n$ 级峰的有效 Caille 指数仍为 $\eta_n=n^2\eta$。总双层厚度 $t_{\mathrm{bil}}=t_{\mathrm{t}}+2t_{\mathrm{h}}$ 应小于 $d$（水层或溶剂间隙为 $d-t_{\mathrm{bil}}$）。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>层间距</td><td>$d$</td><td>重复周期</td><td>Å</td><td>大于 $t_{\mathrm{bil}}$</td></tr>
+          <tr><td>畴内层数</td><td>$N$</td><td>相干堆叠片数</td><td>—</td><td>5–100</td></tr>
+          <tr><td>Caille 参数</td><td>$\eta$</td><td>热起伏强度</td><td>无量纲</td><td>$0.01$–$0.4$</td></tr>
+          <tr><td>尾链 / 头基厚度</td><td>$t_{\mathrm{t}},t_{\mathrm{h}}$</td><td>双层两段厚度</td><td>Å</td><td>同头基–尾链页</td></tr>
+          <tr><td>两段 SLD</td><td>$\rho_{\mathrm{t}},\rho_{\mathrm{h}},\rho_{\mathrm{s}}$</td><td>尾链、头基、溶剂</td><td>Å$^{-2}$</td><td>对比实验约束</td></tr>
+          <tr><td>极角 / 方位角</td><td>$\theta,\phi$</td><td>层法向（二维）</td><td>度</td><td>取向样品才独立</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>取向、畴大小与 $\eta$ 的分工与 Caille 堆叠页相同。Caille $\eta$ 与仪器分辨率强相关：卷积不足时，幂律尾被当成更大的 $\eta$，同时高 $q$ 形式因子节点被填浅，头基厚度会被高估。先固定分辨率，再放 $\eta$，最后才放两段厚度。</p>
+      <p>多分散：厚度分布主要改 $|F|^2$（峰强度比）；不要用 $\eta$ 去拟合形式因子节点。间距若有静态高斯无序，应改准晶堆叠或与 Caille 明确分工，二者不要同时自由拟合。</p>
+      <p>磁性：磁 $F(q)$ 按磁剖面；同一套 $d,\eta,N$ 描述层间关联。可辨识性：一级峰只能定 $d$；剖面需要高 $q$ 或对比；$\eta$ 需要分辨尾与高阶峰。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="lamellar-hg.html">头基–尾链层状</a> — 无堆叠，$S=1$。</li>
+        <li><a href="lamellar-stack-caille.html">Caille 层状堆叠</a> — 均匀单层剖面。</li>
+        <li><a href="../sphere/multilayer-vesicle.html">多层囊泡</a> — 同心闭合膜，不是平面堆叠。</li>
+        <li><a href="../cylinder/stacked-disks.html">堆叠圆盘</a> — 有限半径盘的一维堆叠。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Nallet, F.; Laversanne, R.; Roux, D. Modelling X-ray or neutron scattering spectra of lyotropic lamellar phases: interplay between form and structure factors. <em>J. Phys. II France</em> 1993, 3, 487–502. DOI: <a href="https://doi.org/10.1051/jp2:1993146" target="_blank" rel="noopener noreferrer">10.1051/jp2:1993146</a></li>
+        <li>Caillé, A. Remarques sur la diffusion des rayons X dans les smectiques. <em>C. R. Acad. Sci. Paris, Sér. B</em> 1972, 274, 891–893.</li>
+        <li>Zhang, R.; Tristram-Nagle, S.; Sun, W.; Headrick, R. L.; Irving, T. C.; Suter, R. M.; Nagle, J. F. Small-angle x-ray scattering from lipid bilayers is well described by modified Caillé theory but not by paracrystalline theory. <em>Biophys. J.</em> 1996, 70, 349–357. DOI: <a href="https://doi.org/10.1016/S0006-3495(96)79576-0" target="_blank" rel="noopener noreferrer">10.1016/S0006-3495(96)79576-0</a></li>
+      </ul>
+      <nav class="pager">
+        <a href="lamellar-stack-caille.html">← Caille 层状堆叠</a>
+        <a href="lamellar-stack-paracrystal.html">准晶层状堆叠 →</a>
+      </nav>
+
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

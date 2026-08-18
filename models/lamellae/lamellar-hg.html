@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>头基–尾链层状 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>头基–尾链层状</h1>
+      <p class="subtitle-en">lamellar headgroup</p>
+      <h2>适用场景</h2>
+      <p>当无限片层沿法向可分成头基与尾链两段不同<span data-term="scattering-length-density">散射长度密度</span>时，用对称的头–尾–头剖面代替单矩形。典型对象是脂质或表面活性剂双层：疏水尾链夹在两层极性头基之间，溶剂在外侧。</p>
+      <p>相对均匀层状：高 $q$ 的节点位置与深度随 $\rho_{\mathrm{h}}/\rho_{\mathrm{t}}$ 移动，对比变化（H/D 或 SAXS/SANS）能分开两段厚度。若层间出现布拉格峰，应改头基–尾链 Caille 堆叠。弯曲闭合膜用囊泡；有限半径双层盘用核壳双层盘。</p>
+      <h2>物理图像</h2>
+      <p>振幅是三段矩形剖面的一维傅里叶变换：中央尾链厚度 $t_{\mathrm{t}}$、两侧头基各 $t_{\mathrm{h}}$。头基项带相位 $\cos\bigl(q(t_{\mathrm{t}}+t_{\mathrm{h}})/2\bigr)$，因此头、尾衬度可以相消，形式因子在均匀层看不到的 $q$ 处出现额外节点。</p>
+      <p>粉末平均仍给出 $2\pi/q^2$。总几何厚度 $t_{\mathrm{t}}+2t_{\mathrm{h}}$ 决定振荡总尺度；衬度比决定节点如何分配。Nallet 用该剖面解释溶致层状相的高 $q$ 漫散射。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/lamellae/lamellar-hg-geometry.png" alt="头基–尾链层状截面：头基与尾链厚度" width="900">
+        <figcaption>对称双层：尾链 $t_{\mathrm{t}},\rho_{\mathrm{t}}$ 与两侧头基 $t_{\mathrm{h}},\rho_{\mathrm{h}}$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="../../assets/figures/models/lamellae/lamellar-hg-iq.png" alt="头基–尾链层状 I(q) 示意" width="900">
+        <figcaption>两段衬度调制后的粉末平均 $I(q)$：节点相对均匀层移动。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>令 $\Delta\rho_{\mathrm{t}}=\rho_{\mathrm{t}}-\rho_{\mathrm{s}}$，$\Delta\rho_{\mathrm{h}}=\rho_{\mathrm{h}}-\rho_{\mathrm{s}}$，$\mathrm{sinc}\,x=\sin x/x$。对称双层振幅</p>
+      $$F(q)=\Delta\rho_{\mathrm{t}} t_{\mathrm{t}}\,\mathrm{sinc}\!\left(\frac{q t_{\mathrm{t}}}{2}\right)+2\Delta\rho_{\mathrm{h}} t_{\mathrm{h}}\,\mathrm{sinc}\!\left(\frac{q t_{\mathrm{h}}}{2}\right)\cos\!\left(\frac{q(t_{\mathrm{t}}+t_{\mathrm{h}})}{2}\right).$$
+      <p>粉末平均（孤立片，$S=1$）</p>
+      $$I(q)=\frac{2\pi\phi}{q^2 t_{\mathrm{bil}}}|F(q)|^2+B,\qquad t_{\mathrm{bil}}=t_{\mathrm{t}}+2t_{\mathrm{h}}.$$
+      <p>$\phi$ 按双层体积计。对比匹配使 $\Delta\rho_{\mathrm{t}}\to 0$ 时，$F$ 退化为两头基的干涉。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>尾链厚度</td><td>$t_{\mathrm{t}}$</td><td>疏水核法向厚度</td><td>Å</td><td>20–40 Å</td></tr>
+          <tr><td>头基厚度</td><td>$t_{\mathrm{h}}$</td><td>单侧头基厚度</td><td>Å</td><td>5–15 Å</td></tr>
+          <tr><td>尾链 / 头基 SLD</td><td>$\rho_{\mathrm{t}},\rho_{\mathrm{h}}$</td><td>两段散射长度密度</td><td>Å$^{-2}$</td><td>组成与氘代决定</td></tr>
+          <tr><td>溶剂 SLD</td><td>$\rho_{\mathrm{s}}$</td><td>外侧溶剂</td><td>Å$^{-2}$</td><td>H/D 可调</td></tr>
+          <tr><td>极角 / 方位角</td><td>$\theta,\phi$</td><td>双层法向（二维）</td><td>度</td><td>取向样品才独立</td></tr>
+          <tr><td>标度 / 本底</td><td>$\mathrm{scale}$, $B$</td><td>前置因子与常数本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>取向与均匀层状相同：一维是粉末平均；二维才拟合 $\theta,\phi$。剪切取向的膜，弧向宽度与畴大小相关，不要用厚度去吸收。</p>
+      <p>多分散：头基与尾链厚度分布高度相关，一维曲线上常只能约束 $t_{\mathrm{bil}}$ 与一个衬度比。对比系列或独立面积/组成是解开 $t_{\mathrm{h}}$ 与 $t_{\mathrm{t}}$ 的关键。</p>
+      <p>磁性：脂质头基通常无磁矩；若膜镶嵌磁性片，磁通道只用磁 SLD 剖面，不必与核通道的 $t_{\mathrm{h}},t_{\mathrm{t}}$ 相同。<span data-term="instrument-smearing">仪器 smearing</span> 填浅高 $q$ 节点，易被误读成头基变厚。</p>
+      <p>可辨识性：没有对比变化时，两段 SLD 与两段厚度强相关。出现层状峰时改堆叠模型，不要在孤立片上加假周期。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="lamellar.html">层状</a> — 单矩形剖面，节点只由总厚度决定。</li>
+        <li><a href="lamellar-hg-stack-caille.html">头基–尾链 Caille 堆叠</a> — 同一剖面加上层间热起伏。</li>
+        <li><a href="../sphere/vesicle.html">囊泡</a> — 弯曲闭合双层，不是无限平面。</li>
+        <li><a href="../cylinder/core-shell-bicelle.html">核壳双层盘</a> — 有限半径的双层盘，带边缘。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Nallet, F.; Laversanne, R.; Roux, D. Modelling X-ray or neutron scattering spectra of lyotropic lamellar phases: interplay between form and structure factors. <em>J. Phys. II France</em> 1993, 3, 487–502. DOI: <a href="https://doi.org/10.1051/jp2:1993146" target="_blank" rel="noopener noreferrer">10.1051/jp2:1993146</a></li>
+        <li>Guinier, A.; Fournet, G. <em>Small-Angle Scattering of X-rays</em>. Wiley: New York, 1955.</li>
+      </ul>
+      <nav class="pager">
+        <a href="lamellar.html">← 层状</a>
+        <a href="lamellar-stack-caille.html">Caille 层状堆叠 →</a>
+      </nav>
+
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

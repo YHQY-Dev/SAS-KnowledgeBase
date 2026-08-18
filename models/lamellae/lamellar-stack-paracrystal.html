@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>准晶层状堆叠 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>准晶层状堆叠</h1>
+      <p class="subtitle-en">lamellar stack paracrystal</p>
+      <h2>适用场景</h2>
+      <p>层状堆叠的无序主要是相邻间距的累积涨落（Hosemann 一维准晶），而不是膜的长波弯曲时，用准晶格子因子乘以无限片形式因子。典型对象：较刚性的多层、聚合物片晶堆叠、以及间距无序明显、峰形接近高斯加宽而非幂律尾的体系。</p>
+      <p>柔性溶致膜、脂质 $L_\alpha$ 相的高分辨峰尾通常更符合 Caille，而不是本模型。横向有限的盘堆叠用堆叠圆盘。三维立方/六方准晶格子不在本页。</p>
+      <h2>物理图像</h2>
+      <p>Hosemann 把层心写成一维准晶：相邻间距独立高斯涨落 $\sigma_d$，第 $k$ 邻的相位方差按 $k$ 累积。干涉函数的高阶峰按 $\exp(-k q^2\sigma_d^2/2)$ 衰减，峰形近 Lorentz / 高斯混合，没有 Caille 的 $|q-q_n|^{\eta-2}$ 尾。</p>
+      <p>粉末平均仍乘 $2\pi/(q^2 d)$。单层可用矩形厚度剖面。$d$ 由峰位定，$\sigma_d$ 由高阶峰消失的速度定，$N$ 由一级峰宽定。Zhang 等指出，脂质双层的高分辨 SAXS 更支持修正 Caille 而非准晶。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/lamellae/lamellar-stack-paracrystal-geometry.png" alt="准晶层状堆叠：不规则间距" width="900">
+        <figcaption>平均周期 $d$ 与间距涨落 $\sigma_d$ 的一维准晶堆叠。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="../../assets/figures/models/lamellae/lamellar-stack-paracrystal-iq.png" alt="准晶层状堆叠 I(q) 示意" width="900">
+        <figcaption>一维准晶干涉：高阶峰随 $\sigma_d$ 迅速消失。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>有限 $N$ 层、高斯间距涨落 $\sigma_d$ 的格子因子</p>
+      $$S(q)=1+\frac{2}{N}\sum_{k=1}^{N-1}(N-k)\cos(kqd)\,\mathrm{e}^{-k q^2\sigma_d^2/2}.$$
+      <p>无限堆叠极限可写成 $g=\mathrm{e}^{-q^2\sigma_d^2/2}$ 的闭式 $(1-g^2)/(1-2g\cos(qd)+g^2)$。粉末强度</p>
+      $$I(q)=\frac{2\pi}{d q^2}\,P_{\mathrm{t}}(q)\,S(q)+B,$$
+      <p>其中 $P_{\mathrm{t}}$ 与层状页相同。相对无序 $\sigma_d/d$ 通常只有百分之几到十几。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>层间距</td><td>$d$</td><td>平均重复周期</td><td>Å</td><td>大于单层厚度</td></tr>
+          <tr><td>间距涨落</td><td>$\sigma_d$</td><td>相邻间距的高斯宽度</td><td>Å</td><td>$0$–$0.2d$</td></tr>
+          <tr><td>畴内层数</td><td>$N$</td><td>相干堆叠片数</td><td>—</td><td>3–80</td></tr>
+          <tr><td>片层厚度</td><td>$t$</td><td>单层矩形剖面</td><td>Å</td><td>10–80 Å</td></tr>
+          <tr><td>极角 / 方位角</td><td>$\theta,\phi$</td><td>层法向（二维）</td><td>度</td><td>取向样品才独立</td></tr>
+          <tr><td>标度 / 本底</td><td>$\mathrm{scale}$, $B$</td><td>前置因子与常数本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>取向：粉末平均加宽层状峰；二维弧向收窄说明堆叠轴取向。畴大小 $N$ 与 $\sigma_d$ 都加宽一级峰：优先用峰位定 $d$，用高阶峰是否存在约束 $\sigma_d$，再用峰宽估 $N$。</p>
+      <p>$\sigma_d$ 与仪器分辨率强相关，方式类似 Caille $\eta$：低分辨会把 smearing 当成更大的间距无序。不要在未卷积分辨率时解释 $\sigma_d$。柔性膜的幂律尾用准晶拟合会系统低估高阶 $|F|$（Zhang 等）。</p>
+      <p>多分散：厚度分布改 $P_{\mathrm{t}}$；与 $\sigma_d$ 正交。磁性：磁通道共用 $d,\sigma_d,N$，剖面用磁厚度。可辨识性：只有一级宽峰时，$N$、$\sigma_d$ 与分辨率共线，应改报 $d$ 与一个有效峰宽，而不是三个独立数。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="lamellar-stack-caille.html">Caille 层状堆叠</a> — 热弯曲起伏与幂律峰尾。</li>
+        <li><a href="lamellar.html">层状</a> — 无层间干涉。</li>
+        <li><a href="../cylinder/stacked-disks.html">堆叠圆盘</a> — 有限半径，同样可用一维准晶干涉。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Hosemann, R.; Bagchi, S. N. <em>Direct Analysis of Diffraction by Matter</em>. North-Holland: Amsterdam, 1962.</li>
+        <li>Zhang, R.; Tristram-Nagle, S.; Sun, W.; Headrick, R. L.; Irving, T. C.; Suter, R. M.; Nagle, J. F. Small-angle x-ray scattering from lipid bilayers is well described by modified Caillé theory but not by paracrystalline theory. <em>Biophys. J.</em> 1996, 70, 349–357. DOI: <a href="https://doi.org/10.1016/S0006-3495(96)79576-0" target="_blank" rel="noopener noreferrer">10.1016/S0006-3495(96)79576-0</a></li>
+        <li>Guinier, A.; Fournet, G. <em>Small-Angle Scattering of X-rays</em>. Wiley: New York, 1955.</li>
+      </ul>
+      <nav class="pager">
+        <a href="lamellar-hg-stack-caille.html">← 头基–尾链 Caille 堆叠</a>
+        <a href="index.html">层状总览 →</a>
+      </nav>
+
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

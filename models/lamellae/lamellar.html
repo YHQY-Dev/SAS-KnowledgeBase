@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>层状 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>层状</h1>
+      <p class="subtitle-en">lamellar</p>
+      <h2>适用场景</h2>
+      <p>当散射体可视为横向远大于仪器窗口、沿法向只有一层（或彼此无关联的多层）均匀板时，无限片层<span data-term="form-factor">形式因子</span>是最直接的描述。典型对象包括：稀释的溶致层状相单层、剥离后的黏土或氧化石墨烯片、以及横向尺寸已超出 $q_{\min}$ 所能分辨的脂质双层粗描述。</p>
+      <p>曲线判据：中间区接近 $I\sim q^{-2}$，并在 $q\sim 2\pi/t$ 出现厚度决定的振荡或拐点。若在 $q\simeq 2\pi/d$ 出现布拉格峰，说明层间有关联，应改用 Caille 或准晶堆叠，而不是给单层强加周期。横向有限（盘、tactoid）应改用堆叠圆盘或扁圆柱。</p>
+      <p>稀溶液、片层互不相关时只拟合 $P(q)$（含粉末 Lorentz 因子）。体积分数升高并出现层状峰时，把峰误读成厚度变化是常见错误。</p>
+      <h2>物理图像</h2>
+      <p>无限大平板的粉末平均把取向积分收成 $2\pi/q^2$：只有法向几乎平行 $\mathbf{q}$ 的片层才贡献。厚度方向若取矩形<span data-term="scattering-length-density">散射长度密度</span>剖面，振幅正比 $\mathrm{sinc}(qt/2)$，强度再乘该因子的平方。Nallet 把这一厚度形式因子与层间结构因子分开：孤立片相当于 $S(q)=1$。</p>
+      <p>低 $q$ 的 $q^{-2}$ 来自二维扩展，不是 Porod $q^{-4}$。厚度振荡的第一零点约在 $qt=2\pi$。绝对强度还含面积浓度与衬度平方；拟合中常收进标度因子。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/lamellae/lamellar-geometry.png" alt="无限片层截面：厚度 t" width="900">
+        <figcaption>横向无限的均匀板，唯一几何参数是厚度 $t$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="../../assets/figures/models/lamellae/lamellar-iq.png" alt="无限片层形式因子 I(q) 示意" width="900">
+        <figcaption>粉末平均 $I(q)$：$q^{-2}$ 包络与厚度 $\mathrm{sinc}$ 振荡。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>令 $\mathrm{sinc}\,x=\sin x/x$。矩形剖面的厚度形式因子</p>
+      $$P_{\mathrm{t}}(q)=\left[\mathrm{sinc}\!\left(\frac{qt}{2}\right)\right]^2.$$
+      <p>粉末平均无限片（体积分数 $\phi$，衬度 $\Delta\rho$）</p>
+      $$I(q)=\frac{2\pi\phi t}{q^2}(\Delta\rho)^2 P_{\mathrm{t}}(q)+B.$$
+      <p>二维取向数据应回到 $I(q,\alpha)\propto |F(q\cos\alpha)|^2$，不要先做粉末平均。符号当场约定：$t$ 为板厚，$B$ 为常数本底。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>厚度</td><td>$t$</td><td>均匀片层的法向厚度</td><td>Å</td><td>10–80 Å（双层量级）</td></tr>
+          <tr><td>体积分数</td><td>$\phi$</td><td>片层所占体积分数</td><td>无量纲</td><td>$10^{-4}$–$0.3$</td></tr>
+          <tr><td>衬度</td><td>$\Delta\rho$</td><td>片层与溶剂的 SLD 差</td><td>Å$^{-2}$</td><td>由组成或对比实验</td></tr>
+          <tr><td>极角 / 方位角</td><td>$\theta,\phi$</td><td>片层法向（二维）</td><td>度</td><td>剪切或磁场可取向</td></tr>
+          <tr><td>标度 / 本底</td><td>$\mathrm{scale}$, $B$</td><td>前置因子与常数本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>取向：一维数据默认粉末平均，法向角 $\theta,\phi$ 不可单独分辨。二维弧向收窄才说明片层取向；把粉末 $q^{-2}$ 误读成已取向，会低估畴的各向异性。</p>
+      <p><span data-term="polydispersity">多分散</span>：厚度分布抹平 $\mathrm{sinc}$ 零点并改变振荡相位。横向尺寸若并非无限，低 $q$ 会偏离 $q^{-2}$ 并出现整体 Guinier，应离开本模型。</p>
+      <p>磁性：核磁 SLD 与核（核散射）SLD 是不同通道。若只有部分厚度带磁矩，磁形式因子仍是 $\mathrm{sinc}$，但磁厚度不必等于核厚度。仪器 smearing 会填浅零点，与厚度多分散同向，须用分辨率函数区分。</p>
+      <p>可辨识性：仅有中间区斜率时，$t$ 与标度、本底强相关。要约束 $t$，需要看到厚度振荡或独立的组成/面积信息。出现层状峰时不要用本模型硬撑；畴大小与 Caille $\eta$ 属于堆叠页。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="lamellar-hg.html">头基–尾链层状</a> — 头基与尾链两段衬度，高 $q$ 节点移动。</li>
+        <li><a href="lamellar-stack-caille.html">Caille 层状堆叠</a> — 层间热起伏，出现布拉格峰。</li>
+        <li><a href="../cylinder/stacked-disks.html">堆叠圆盘</a> — 横向有限半径，而不是无限片。</li>
+        <li><a href="../sphere/vesicle.html">囊泡</a> — 弯曲闭合双层，低 $q$ 有整体尺寸 Guinier。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Guinier, A.; Fournet, G. <em>Small-Angle Scattering of X-rays</em>. Wiley: New York, 1955.</li>
+        <li>Nallet, F.; Laversanne, R.; Roux, D. Modelling X-ray or neutron scattering spectra of lyotropic lamellar phases: interplay between form and structure factors. <em>J. Phys. II France</em> 1993, 3, 487–502. DOI: <a href="https://doi.org/10.1051/jp2:1993146" target="_blank" rel="noopener noreferrer">10.1051/jp2:1993146</a></li>
+      </ul>
+      <nav class="pager">
+        <a href="index.html">← 层状总览</a>
+        <a href="lamellar-hg.html">头基–尾链层状 →</a>
+      </nav>
+
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>
