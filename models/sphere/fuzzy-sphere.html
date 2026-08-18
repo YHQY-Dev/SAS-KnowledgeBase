@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>模糊球 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>模糊球</h1>
+      <p class="subtitle-en">fuzzy sphere</p>
+      <h2>适用场景</h2>
+      <p>模糊球把均匀球的尖锐界面换成径向密度渐变的“绒毛”表面。经典对象是温敏微凝胶：交联密度由核向外降低，溶胀态外壳高度水化（Stieger 等，2004）。也适用于表面接枝聚合物刷、凝胶颗粒以及任何“电镜看像球、但 Porod 尾明显软于 $q^{-4}$”的胶体。</p>
+      <p>塌缩态微凝胶可接近均匀硬球；溶胀态必须引入模糊宽度 $\sigma$，否则高 $q$ 拟合会系统偏离并虚报多分散。</p>
+      <h2>物理图像</h2>
+      <p>实空间剖面常取误差函数或高斯卷积的球：$ho(r)\propto \tfrac{1}{2}\mathrm{erfc}[(r-R)/(\sqrt{2}\sigma)]$。倒易空间等价于球振幅乘以高斯因子 $\mathrm{e}^{-q^2\sigma^2/2}$（约定因傅里叶对而略有系数差别）。模糊主要抑制高 $q$ 振荡并加快衰减，低 $q$ 的 $R_g$ 仍由整体尺寸主导。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/sphere/fuzzy-sphere-geometry.png" alt="模糊球：核半径与界面宽度" width="900">
+        <figcaption>实线为有效核半径 $R$，虚线示意高斯模糊宽度 $\sigma$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="../../assets/figures/models/sphere/fuzzy-sphere-iq.png" alt="模糊球 I(q) 示意" width="900">
+        <figcaption>相对均匀球，高 $q$ 振荡被界面模糊因子压低。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>Stieger 等采用的示意形式（球 × 高斯界面因子）</p>
+      $$P(q)=\left[\frac{3(\sin x-x\cos x)}{x^3}\right]^2 \mathrm{e}^{-q^2\sigma^2},\qquad x=qR.$$
+      <p>$\sigma$ 为界面均方宽度。完整微凝胶模型还可叠加链涨落的 Lorentz 项以描述网络内部相关，本页只保留几何模糊核。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>半径</td><td>$R$</td><td>密度剖面半高处的有效半径</td><td>Å 或 nm</td><td>50–5000 Å</td></tr>
+          <tr><td>模糊宽度</td><td>$\sigma$</td><td>径向界面高斯宽度</td><td>Å</td><td>0.05$R$–0.3$R$（溶胀态可更大）</td></tr>
+          <tr><td>标度 / 本底</td><td>$\mathrm{scale},B$</td><td>前置因子与常数本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>$\sigma$ 与 Schulz 多分散都能抹平振荡：前者主要改高 $q$ 包络，后者改极小深度并轻度移动表观半径。应先看电镜/水力学半径是否窄分布，再决定把宽度放在 $\sigma$ 还是尺寸分布上。</p>
+      <p>取向无关。若颗粒带磁性填料，磁 SLD 剖面一般比核密度更锐或更钝（磁死层），需独立的磁模糊宽度，不能套用核 $\sigma$。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="sphere.html">均匀球</a> — $\sigma\to 0$ 的硬界面极限。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Stieger, M.; Richtering, W.; Pedersen, J. S.; Lindner, P. Small-angle neutron scattering study of structural changes in temperature sensitive microgel colloids. <em>J. Chem. Phys.</em> 2004, 120, 6197–6206. DOI: <a href="https://doi.org/10.1063/1.1665752" target="_blank" rel="noopener noreferrer">10.1063/1.1665752</a></li>
+      </ul>
+      <nav class="pager">
+        <a href="multilayer-vesicle.html">← 多层囊泡</a>
+        <a href="raspberry.html">树莓 →</a>
+      </nav>
+
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

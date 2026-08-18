@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>洋葱球 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>洋葱球</h1>
+      <p class="subtitle-en">onion</p>
+      <h2>适用场景</h2>
+      <p>洋葱球描述径向多层、近似球对称的“洋葱”剖面：交替的高/低 SLD 壳，层数可以比寡层囊泡更多，且不一定对应脂质双层。适用于多层聚合物胶囊、交替沉积电解质壳、某些多层氧化物颗粒，以及想用同一套同心壳框架覆盖“看起来像洋葱”的样品。</p>
+      <p>若层是脂质膜–水交替且层数不多，多层囊泡更贴切；若剖面连续光滑，径向 SLD 球更合适。</p>
+      <h2>物理图像</h2>
+      <p>物理上就是多层同心球：每一径向区间一段常数 $\rho(r)$，振幅为各界面 Rayleigh 项之和。层数多时，$I(q)$ 在 $q\sim 2\pi/d$ 出现更锐的径向布拉格样峰，但因为是有限半径的闭合壳，峰宽仍受整体尺寸调制。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/sphere/onion-geometry.png" alt="洋葱状径向多层" width="900">
+        <figcaption>交替 SLD 的同心壳，径向剖面 $\rho(r)$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="../../assets/figures/models/sphere/onion-iq.png" alt="洋葱球 I(q) 示意" width="900">
+        <figcaption>多层径向剖面产生的 $I(q)$ 振荡与层间峰。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      $$A(q)=4\pi\int_0^{R_{\max}} r^2\,\bigl[\rho(r)-\rho_{\mathrm{solv}}\bigr]\,\frac{\sin(qr)}{qr}\,\mathrm{d}r,$$
+      <p>分段常数 $\rho(r)$ 时退化为与核–多层壳相同的求和。重复间距 $d$ 的周期性剖面在 $q_k=2\pi k/d$ 附近增强。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>外半径</td><td>$R_{\max}$</td><td>最外层外半径</td><td>Å 或 nm</td><td>50–2000 Å</td></tr>
+          <tr><td>层间距</td><td>$d$</td><td>径向重复单元厚度</td><td>Å</td><td>20–200 Å</td></tr>
+          <tr><td>层数</td><td>$n$</td><td>径向重复次数</td><td>无量纲</td><td>3–30</td></tr>
+          <tr><td>各层 SLD</td><td>$\rho_k$</td><td>第 $k$ 种壳的散射长度密度</td><td>Å$^{-2}$</td><td>交替高/低</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>周期性越强，峰越锐，但尺寸多分散与层间距涨落同样抹峰。不要把层状粉末衍射的峰宽公式直接套到有限洋葱上。层数与外半径通过 $R_{\max}\approx n d$ 耦合。</p>
+      <p>取向无关。若只有部分壳层有磁性（例如夹磁纳米片），磁 SLD 剖面与核 $\rho(r)$ 不同，必须分开建模。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="core-multi-shell.html">核–多层壳</a> — 有限 $N$ 层的同一振幅求和。</li>
+        <li><a href="spherical-sld.html">径向 SLD 球</a> — 任意 $\rho(r)$，不限于分段常数。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Pedersen, J. S. <em>J. Appl. Cryst.</em> 1997, 30, 339–354. DOI: <a href="https://doi.org/10.1107/S0021889897002532" target="_blank" rel="noopener noreferrer">10.1107/S0021889897002532</a></li>
+        <li>Guinier, A.; Fournet, G. <em>Small-Angle Scattering of X-rays</em>. Wiley: New York, 1955.（球对称径向傅里叶变换）</li>
+      </ul>
+      <nav class="pager">
+        <a href="linear-pearls.html">← 直线珍珠串</a>
+        <a href="spherical-sld.html">径向 SLD 球 →</a>
+      </nav>
+
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

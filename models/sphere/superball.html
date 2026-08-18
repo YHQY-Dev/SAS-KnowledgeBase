@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>超球 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>超球</h1>
+      <p class="subtitle-en">superball</p>
+      <h2>适用场景</h2>
+      <p>超球是一族由指数 $p$ 控制的超二次曲面，在球（$p=1$）与立方体（$p\to\infty$）之间连续变形，也可取 $p&lt;1$ 偏向八面体。适用于圆角立方纳米颗粒、超球胶体、以及“既不像完美球也不像尖角立方”的等轴粒子（Baus &amp; Colot 的超二次体；Jiao 等的超球堆积）。</p>
+      <p>若粒子明显是矩形棱柱或平行六面体，应直接用平行六面体类，而不是把 $p$ 推到极大。$p$ 接近 1 时与均匀球在有限 $q$ 上几乎无法分辨。</p>
+      <h2>物理图像</h2>
+      <p>形状方程 $|x|^{2p}+|y|^{2p}+|z|^{2p}=R^{2p}$。$p=1$ 为球；$p\to\infty$ 为边长 $2R$ 的立方。形式因子一般无简单闭式，需取向平均的三维傅里叶变换或级数/数值积分。$p$ 增大时，高 $q$ 振荡相位向立方体的面法向特征移动，且因棱角出现，$I(q)$ 的极小不如球深。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/sphere/superball-geometry.png" alt="超球二维截面（p=2.5）" width="900">
+        <figcaption>超二次曲线 $|x|^{2p}+|y|^{2p}=R^{2p}$ 的截面，$p=2.5$ 介于圆与正方形之间。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="../../assets/figures/models/sphere/superball-iq.png" alt="超球 I(q) 示意" width="900">
+        <figcaption>$p&gt;1$ 时相对球形式因子，振荡被形状偏离所调制。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      $$\lvert x\rvert^{2p}+\lvert y\rvert^{2p}+\lvert z\rvert^{2p}=R^{2p}.$$
+      <p>散射振幅 $F(\mathbf{q})=\Delta\rho\int_{V(p,R)} e^{-i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3 r$，粉末样品再对取向平均 $P(q)=\langle |F|^2\rangle_{\Omega}/|F(0)|^2$。$p=1$ 时回到 Rayleigh 球。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>尺度半径</td><td>$R$</td><td>超球方程中的尺度（$p=1$ 时即球半径）</td><td>Å 或 nm</td><td>10–1000 Å</td></tr>
+          <tr><td>形状指数</td><td>$p$</td><td>$p=1$ 球；$p\to\infty$ 立方；$p=0.5$ 八面体极限附近</td><td>无量纲</td><td>0.5–8 常用</td></tr>
+          <tr><td>衬度</td><td>$\Delta\rho$</td><td>均匀超球相对溶剂的 SLD 差</td><td>Å$^{-2}$</td><td>组成决定</td></tr>
+          <tr><td>取向</td><td>$\\Omega$</td><td>粉末取向平均；单晶需欧拉角</td><td>—</td><td>溶液中各向同性</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>$p$ 与尺寸多分散竞争：二者都浅化极小。电镜若显示圆角立方，应优先让 $p$ 自由并尽量窄分布；若电镜是球，不要用 $p$ 去吸收 smearing。</p>
+      <p>$p$ 显著偏离 1 时取向不再平凡：溶液中仍可取向平均，但剪切或磁场下超球会择优取向，须显式欧拉角。磁性超球的磁 SLD 若均匀，磁形式因子与核形式因子同形，仅衬度不同；表面磁各向异性则不是简单超球。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="sphere.html">均匀球</a> — $p=1$。</li>
+        <li><a href="../parallelepiped/parallelepiped.html">平行六面体</a> — 直角棱柱极限，适合尖角立方/长方体。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Baus, M.; Colot, J. L. Thermodynamics and structure of a fluid of hard rods, disks, spheres, or hyperspheres from rescaled virial expansions. <em>Phys. Rev. A</em> 1987, 36, 3912–3925. DOI: <a href="https://doi.org/10.1103/PhysRevA.36.3912" target="_blank" rel="noopener noreferrer">10.1103/PhysRevA.36.3912</a></li>
+        <li>Jiao, Y.; Stillinger, F. H.; Torquato, S. Optimal packings of superballs. <em>Phys. Rev. E</em> 2009, 79, 041309. DOI: <a href="https://doi.org/10.1103/PhysRevE.79.041309" target="_blank" rel="noopener noreferrer">10.1103/PhysRevE.79.041309</a></li>
+      </ul>
+      <nav class="pager">
+        <a href="spherical-sld.html">← 径向 SLD 球</a>
+        <a href="micromagnetic-ff-3d.html">三维微磁形式因子 →</a>
+      </nav>
+
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

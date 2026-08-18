@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>直线珍珠串 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>直线珍珠串</h1>
+      <p class="subtitle-en">linear pearls</p>
+      <h2>适用场景</h2>
+      <p>直线珍珠串把若干相同（或相近）的球沿一条直线排列，球心距 $d\ge 2R$。适用于刚性连接的球状蛋白质重复单元、短的胶束串、以及尚未弯曲成珍珠项链（可有持久长度）的寡聚体。若链可弯、有键角涨落，应改用圆柱类中的珍珠项链。</p>
+      <p>相对单个球，低 $q$ 的 $R_g$ 增大，并在 $q\sim 2\pi/d$ 出现串内干涉调制。球数 $N$ 很少时调制宽而弱。</p>
+      <h2>物理图像</h2>
+      <p>取向平均后，相同珠粒的形式因子是单球 $P_1(q)$ 乘以 Debye 型干涉因子 $\frac{1}{N^2}\sum_{i,j}\frac{\sin(qd_{ij})}{qd_{ij}}$。这是珠粒链形式因子在键角为 $180^\circ$、无柔性时的极限。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/sphere/linear-pearls-geometry.png" alt="直线排列的串珠" width="900">
+        <figcaption>半径 $R$ 的球沿直线以间距 $d$ 排列。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="../../assets/figures/models/sphere/linear-pearls-iq.png" alt="直线珍珠串 I(q) 示意" width="900">
+        <figcaption>单球形式因子乘以直线干涉因子后的 $I(q)$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      $$P(q)=P_{\mathrm{sphere}}(q;R)\cdot \frac{1}{N^2}\sum_{i=1}^{N}\sum_{j=1}^{N}\frac{\sin(q d_{ij})}{q d_{ij}},\qquad d_{ij}=|i-j|\,d.$$
+      <p>$P_{\mathrm{sphere}}$ 为 Rayleigh 球形式因子。若珠粒衬度或半径不同，应以振幅 $F_i$ 取代，干涉项变为 $F_i F_j \mathrm{sinc}(qd_{ij})$。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>珠半径</td><td>$R$</td><td>单个球的半径</td><td>Å</td><td>10–100 Å</td></tr>
+          <tr><td>球心距</td><td>$d$</td><td>相邻珠中心距，$d\ge 2R$</td><td>Å</td><td>2$R$–数个 $R$</td></tr>
+          <tr><td>珠数</td><td>$N$</td><td>直线上的球数目</td><td>无量纲</td><td>2–20</td></tr>
+          <tr><td>衬度</td><td>$\Delta\rho$</td><td>珠相对溶剂的 SLD 差</td><td>Å$^{-2}$</td><td>组成决定</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>$N$ 与 $d$ 共同决定整体 $R_g$：$R_g^2\approx R^2\cdot 3/5 + d^2(N^2-1)/12$。低 $q$ 只能给出一个组合，需要中 $q$ 干涉或独立的 $N$（色谱、电镜）。</p>
+      <p>取向：溶液中直线串各向同性取向平均已包含在 sinc 项中；若样品剪切取向，干涉变为柱对称，本页公式不够。磁性珠串的磁偶极相互作用可能改变间距，磁 SLD 仍按单珠 Rayleigh 进入 $F_{\mathrm{mag}}$。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="../cylinder/pearl-necklace.html">珍珠项链</a> — 允许弯曲与持久长度的珠粒链。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Pedersen, J. S. Analysis of small-angle scattering data from colloids and polymer solutions: modeling and least-squares fitting. <em>J. Appl. Cryst.</em> 1997, 30, 339–354. DOI: <a href="https://doi.org/10.1107/S0021889897002532" target="_blank" rel="noopener noreferrer">10.1107/S0021889897002532</a></li>
+        <li>Guinier, A.; Fournet, G. <em>Small-Angle Scattering of X-rays</em>. Wiley: New York, 1955.（干涉因子 $\sin(qr)/qr$ 的取向平均）</li>
+      </ul>
+      <nav class="pager">
+        <a href="core-multi-shell.html">← 核–多层壳</a>
+        <a href="onion.html">洋葱球 →</a>
+      </nav>
+
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

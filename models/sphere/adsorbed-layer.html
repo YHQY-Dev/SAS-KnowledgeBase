@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>吸附层 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>吸附层</h1>
+      <p class="subtitle-en">adsorbed layer</p>
+      <h2>适用场景</h2>
+      <p>吸附层模型描述固体或胶乳球核表面吸附的聚合物、表面活性剂或蛋白质层。核本身可以是已知半径的胶体，未知量主要是层厚、层平均密度与是否溶剂渗透。适用于稳定剂层、刷状吸附、蛋白质冠（protein corona）的粗描述。</p>
+      <p>与核壳球的差别在于物理图像：层往往稀疏、浓度沿径向下降，而不是均匀壳。若层很密、边界锐，核壳球足够；若层是高斯链冠状，聚合物胶束更合适。本页取“球核 + 有限厚度吸附层”这一中间描述，公式上仍落在 Pedersen 综述的同心壳框架内。</p>
+      <h2>物理图像</h2>
+      <p>核提供已知（或强约束）的 Rayleigh 振幅；吸附层贡献外球与核球振幅之差，衬度是层平均 SLD 相对溶剂。层溶剂化使 $\rho_{\mathrm{layer}}$ 靠近溶剂，$I(q)$ 对层的敏感度下降——这正是吸附量低时 SAS 难测层厚的原因。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/sphere/adsorbed-layer-geometry.png" alt="球核表面吸附层" width="900">
+        <figcaption>核半径 $R$，虚线为吸附层外边界。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="../../assets/figures/models/sphere/adsorbed-layer-iq.png" alt="吸附层 I(q) 示意" width="900">
+        <figcaption>相对裸核，吸附层改变极小位置与中 $q$ 强度。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>均匀层近似（与核壳同构，$\rho_c$ 为核）</p>
+      $$A(q)=(\rho_c-\rho_L)V(R)\Phi(qR)+(\rho_L-\rho_{\mathrm{solv}})V(R+\delta)\Phi\bigl(q(R+\delta)\bigr),$$
+      <p>$\delta$ 为层厚，$\rho_L$ 为层平均 SLD。稀疏层可把 $\rho_L$ 写成 $\phi_{\mathrm{pol}}\rho_{\mathrm{pol}}+(1-\phi_{\mathrm{pol}})\rho_{\mathrm{solv}}$，用聚合物体积分数 $\phi_{\mathrm{pol}}$ 代替独立 SLD。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>核半径</td><td>$R$</td><td>裸核半径</td><td>Å 或 nm</td><td>50–2000 Å</td></tr>
+          <tr><td>层厚</td><td>$\delta$</td><td>吸附层径向厚度</td><td>Å</td><td>10–200 Å</td></tr>
+          <tr><td>层平均 SLD</td><td>$\rho_L$</td><td>层内聚合物+溶剂平均</td><td>Å$^{-2}$</td><td>介于纯聚合物与溶剂之间</td></tr>
+          <tr><td>核 SLD</td><td>$\rho_c$</td><td>核散射长度密度</td><td>Å$^{-2}$</td><td>常由组成固定</td></tr>
+          <tr><td>聚合物体积分数</td><td>$\phi_{\mathrm{pol}}$</td><td>层内聚合物占有率</td><td>无量纲</td><td>0.01–0.5</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>$\delta$ 与 $\phi_{\mathrm{pol}}$（或 $\rho_L$）几乎完全简并：稀厚层与密薄层在有限 $q$ 上难以分辨。需要吸附量（mg m$^{-2}$）或对比变分才能拆开。核半径应尽量用裸核数据或电镜固定。</p>
+      <p>取向无关。若核为磁性颗粒、吸附层非磁，磁通道看到的半径小于核通道——这是确认“有机层在核通道里”的独立证据，须分别给出核磁 SLD 与核 SLD。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="core-shell-sphere.html">核壳球</a> — 均匀密壳的同一振幅结构。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Pedersen, J. S. Analysis of small-angle scattering data from colloids and polymer solutions: modeling and least-squares fitting. <em>J. Appl. Cryst.</em> 1997, 30, 339–354. DOI: <a href="https://doi.org/10.1107/S0021889897002532" target="_blank" rel="noopener noreferrer">10.1107/S0021889897002532</a></li>
+        <li>Auvray, L.; Cotton, J. P. Self-similar structure of an adsorbed polymer layer: comparison between theory and scattering experiments. <em>Macromolecules</em> 1987, 20, 202–207. DOI: <a href="https://doi.org/10.1021/ma00167a030" target="_blank" rel="noopener noreferrer">10.1021/ma00167a030</a></li>
+      </ul>
+      <nav class="pager">
+        <a href="polymer-micelle.html">← 聚合物胶束</a>
+        <a href="binary-hard-sphere.html">二元硬球 →</a>
+      </nav>
+
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

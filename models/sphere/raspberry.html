@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>树莓 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>树莓</h1>
+      <p class="subtitle-en">raspberry</p>
+      <h2>适用场景</h2>
+      <p>树莓粒子由较大核球与吸附或化学锚定在表面的许多小球组成，形如覆盆子。对象包括 Pickering 乳液表面的纳米颗粒层、核表面装饰的金/硅球簇，以及“大胶体 + 小卫星”的层级组装（Larson-Smith 与 Pozzo 及相关散射模型）。</p>
+      <p>曲线上常同时看到核半径决定的低 $q$ 振荡与卫星半径决定的高 $q$ 特征；卫星之间的表面相关会在中间 $q$ 给出额外调制。若卫星已熔成连续壳，应改核壳球。</p>
+      <h2>物理图像</h2>
+      <p>总振幅 ≈ 核振幅 + 各卫星振幅乘以相位因子 $\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}_j}$。取向与卫星位置平均后，交叉项含 $\mathrm{sinc}(qL)$，$L=R_{\mathrm{core}}+R_{\mathrm{sat}}$，卫星–卫星项含 $[\mathrm{sinc}(qL)]^2$ 或表面液体样结构因子。强度因此不是两种球 $P(q)$ 的简单相加。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/sphere/raspberry-geometry.png" alt="树莓粒子：大核与表面卫星球" width="900">
+        <figcaption>核半径 $R_{\mathrm{core}}$，卫星半径 $R_{\mathrm{sat}}$，卫星中心约在 $R_{\mathrm{core}}+R_{\mathrm{sat}}$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="../../assets/figures/models/sphere/raspberry-iq.png" alt="树莓粒子 I(q) 示意" width="900">
+        <figcaption>核形式因子与卫星及交叉项叠加后的 $I(q)$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>示意（各向同性平均、卫星无表面相关）</p>
+      $$I(q)\propto \bigl|F_c\bigr|^2 + N\bigl|F_s\bigr|^2 + 2N F_c F_s\,\frac{\sin(qL)}{qL} + N(N-1)\bigl|F_s\bigr|^2\left[\frac{\sin(qL)}{qL}\right]^2,$$
+      <p>其中 $F_c=V_c\Delta\rho_c\Phi(qR_c)$，$F_s=V_s\Delta\rho_s\Phi(qR_s)$，$L=R_c+R_s$，$N$ 为卫星数。表面拥挤时应以二维液体 $S_{\mathrm{sat}}(q)$ 取代简单 sinc 项。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>核半径</td><td>$R_c$</td><td>大核几何半径</td><td>Å 或 nm</td><td>50–2000 Å</td></tr>
+          <tr><td>卫星半径</td><td>$R_s$</td><td>表面小球半径</td><td>Å</td><td>10–200 Å</td></tr>
+          <tr><td>卫星数</td><td>$N$</td><td>每个核上的小球数目</td><td>无量纲</td><td>数个至数十</td></tr>
+          <tr><td>核 / 卫星衬度</td><td>$\Delta\rho_c,\Delta\rho_s$</td><td>相对溶剂的 SLD 差</td><td>Å$^{-2}$</td><td>组成决定</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>$N$ 与 $\Delta\rho_s$ 强相关，覆盖率与卫星半径亦相关。电镜给出 $N$ 与 $R_s$ 的先验极有价值。核多分散会抹低 $q$ 振荡，卫星多分散影响高 $q$。</p>
+      <p>取向：若卫星随机布满球面，整体仍近各向同性。磁性卫星或磁核会引入磁–核交叉项，须用磁 SLD 而不是把 $N$ 当成磁矩个数。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="sphere.html">均匀球</a> — 无卫星时的核极限；卫星很小时高 $q$ 才偏离。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Larson-Smith, K.; Pozzo, D. C. Scalable synthesis of self-assembling nanoparticle clusters based on controlled steric interactions. <em>Soft Matter</em> 2011, 7, 5339–5347. DOI: <a href="https://doi.org/10.1039/c0sm01497d" target="_blank" rel="noopener noreferrer">10.1039/c0sm01497d</a></li>
+        <li>Larson-Smith, K.; Jackson, A.; Pozzo, D. C. Small angle scattering model for Pickering emulsions and raspberry particles. <em>J. Colloid Interface Sci.</em> 2010, 343, 36–41. DOI: <a href="https://doi.org/10.1016/j.jcis.2009.11.033" target="_blank" rel="noopener noreferrer">10.1016/j.jcis.2009.11.033</a></li>
+      </ul>
+      <nav class="pager">
+        <a href="fuzzy-sphere.html">← 模糊球</a>
+        <a href="polymer-micelle.html">聚合物胶束 →</a>
+      </nav>
+
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>径向 SLD 球 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>径向 SLD 球</h1>
+      <p class="subtitle-en">spherical SLD</p>
+      <h2>适用场景</h2>
+      <p>当球对称粒子的<span data-term="scattering-length-density">散射长度密度</span>沿半径连续变化、不能用两三层常数壳概括时，用任意 $\rho(r)$ 的径向傅里叶变换。对象包括扩散界面、溶胀微凝胶的平滑剖面、合金颗粒的径向梯度、以及由对比变分重建的 $\rho(r)$。</p>
+      <p>实践中 $\rho(r)$ 仍要参数化（分段线性、样条、tanh 界面、多层离散）。“任意”指模型不再预设核壳跳变，而不是完全非参数反演——后者更接近 IFT，需正则化。</p>
+      <h2>物理图像</h2>
+      <p>球对称下，散射振幅就是 $\rho(r)-\rho_{\mathrm{solv}}$ 的正弦变换。把 $\rho(r)$ 切成许多薄壳，就回到多层求和，层足够薄时逼近连续积分。高 $q$ 敏感剖面的锐度：光滑界面使衰减快于 $q^{-4}$。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/sphere/spherical-sld-geometry.png" alt="任意径向 SLD 剖面" width="900">
+        <figcaption>颜色深浅示意 $\rho(r)$ 沿半径变化。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="../../assets/figures/models/sphere/spherical-sld-iq.png" alt="径向 SLD 球 I(q) 示意" width="900">
+        <figcaption>平滑径向剖面对应的 $I(q)$，高 $q$ 振荡弱于硬球。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      $$A(q)=4\pi\int_0^{\infty} r^2\bigl[\rho(r)-\rho_{\mathrm{solv}}\bigr]\frac{\sin(qr)}{qr}\,\mathrm{d}r,\qquad I(q)=n|A(q)|^2+B.$$
+      <p>数值上取 $r\le R_{\max}$，$\rho(r)=\rho_{\mathrm{solv}}$ 之外。离散 $M$ 层时用核–多层壳求和，并令层厚 $\Delta r\ll 2\pi/q_{\max}$。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>支撑半径</td><td>$R_{\max}$</td><td>$\rho(r)$ 回到溶剂的半径</td><td>Å 或 nm</td><td>须覆盖整个粒子</td></tr>
+          <tr><td>剖面参数</td><td>$\rho(r)$</td><td>径向 SLD 的参数化</td><td>Å$^{-2}$</td><td>tanh、线性、样条等</td></tr>
+          <tr><td>离散层数</td><td>$M$</td><td>数值积分的壳层数</td><td>无量纲</td><td>十余至数十</td></tr>
+          <tr><td>溶剂 SLD</td><td>$\rho_{\mathrm{solv}}$</td><td>介质散射长度密度</td><td>Å$^{-2}$</td><td>对比实验已知</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>无约束的 $\rho(r)$ 反演病态，与 IFT 同类。必须限制节点数或光滑罚。对比变分（多种溶剂 SLD）把同一几何下的 $\rho(r)$ 线性组合，是提高可辨识性的正道。</p>
+      <p>取向无关。磁剖面 $\rho_{\mathrm{mag}}(r)$ 与核剖面独立；三维微磁若不可再径向平均，应改用微磁形式因子页。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="onion.html">洋葱球</a> — 分段常数多层这一常用特款。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Guinier, A.; Fournet, G. <em>Small-Angle Scattering of X-rays</em>. Wiley: New York, 1955.</li>
+        <li>Feigin, L. A.; Svergun, D. I. <em>Structure Analysis by Small-Angle X-ray and Neutron Scattering</em>. Plenum: New York, 1987.</li>
+      </ul>
+      <nav class="pager">
+        <a href="onion.html">← 洋葱球</a>
+        <a href="superball.html">超球 →</a>
+      </nav>
+
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

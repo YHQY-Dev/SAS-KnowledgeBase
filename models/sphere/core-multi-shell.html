@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>核–多层壳 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>核–多层壳</h1>
+      <p class="subtitle-en">core multi-shell</p>
+      <h2>适用场景</h2>
+      <p>核–多层壳把径向剖面离散成核加 $N$ 层同心均匀壳，每层有自己的厚度与 SLD。适用于量子点的多层配体/无机壳、层层组装胶囊、以及已知化学分层但层数固定的纳米颗粒。与洋葱球的差别主要是叙述方式：本页强调“核 + $N$ 层”的有限分层，洋葱强调连续或周期性径向剖面。</p>
+      <p>层数过多时参数迅速超过数据信息量。两层以上通常需要对比变分或固定若干 SLD。</p>
+      <h2>物理图像</h2>
+      <p>Pedersen（1997）把球对称粒子写成界面处 Rayleigh 振幅的线性组合：每增加一个半径处的密度跳变，就加一项 $(\rho_i-\rho_{i-1})V(R_i)\Phi(qR_i)$。这比在实空间逐壳积分更稳定，且 $N=1$ 时精确回到核壳球。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/sphere/core-multi-shell-geometry.png" alt="核加多层同心壳" width="900">
+        <figcaption>核与 $N$ 层壳的径向分层。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="../../assets/figures/models/sphere/core-multi-shell-iq.png" alt="核–多层壳 I(q) 示意" width="900">
+        <figcaption>多层振幅求和后的 $I(q)$，振荡结构比单壳更丰富。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      $$A(q)=\sum_{i=1}^{M}(\rho_i-\rho_{i-1})V(R_i)\Phi(qR_i),\qquad \rho_0=\rho_{\mathrm{solv}},\; R_1&lt;R_2&lt;\cdots&lt;R_M.$$
+      <p>$i=1$ 为核，$i\ge 2$ 为各壳外半径。$I(q)=n|A(q)|^2+B$。$M=N+1$（核 + $N$ 壳）。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>各层外半径</td><td>$R_i$</td><td>第 $i$ 区的外半径</td><td>Å</td><td>递增，核约 10–200 Å</td></tr>
+          <tr><td>各层 SLD</td><td>$\rho_i$</td><td>第 $i$ 区散射长度密度</td><td>Å$^{-2}$</td><td>由组成或对比</td></tr>
+          <tr><td>壳层数</td><td>$N$</td><td>核以外的均匀壳数目</td><td>无量纲</td><td>1–6（再多宜改径向剖面）</td></tr>
+          <tr><td>溶剂 SLD</td><td>$\rho_{\mathrm{solv}}$</td><td>最外层以外的介质</td><td>Å$^{-2}$</td><td>可调</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>相邻层的 $\rho_i$ 与 $R_i$ 强相关。把若干 $\rho_i$ 固定为化学计量值，只拟合厚度，是更稳的做法。多分散通常加在最外半径或核半径上。</p>
+      <p>取向无关。磁性多层（磁核、非磁壳、磁帽层）必须给每层磁 SLD，核通道与磁通道的 $R_i$ 可以不同（死层）。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="onion.html">洋葱球</a> — 更强调径向多层剖面的整体图像。</li>
+        <li><a href="core-shell-sphere.html">核壳球</a> — $N=1$ 的特例。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Pedersen, J. S. Analysis of small-angle scattering data from colloids and polymer solutions: modeling and least-squares fitting. <em>J. Appl. Cryst.</em> 1997, 30, 339–354. DOI: <a href="https://doi.org/10.1107/S0021889897002532" target="_blank" rel="noopener noreferrer">10.1107/S0021889897002532</a></li>
+      </ul>
+      <nav class="pager">
+        <a href="binary-hard-sphere.html">← 二元硬球</a>
+        <a href="linear-pearls.html">直线珍珠串 →</a>
+      </nav>
+
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

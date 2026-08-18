@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>聚合物胶束 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>聚合物胶束</h1>
+      <p class="subtitle-en">polymer micelle</p>
+      <h2>适用场景</h2>
+      <p>球形聚合物胶束由不溶核与溶于溶剂的冠状链组成。Pedersen 与 Gerstenberg（1996）把核当作均匀球，把冠状当作接在核表面的高斯链，并包含核–链与链–链干涉。适用于嵌段共聚物胶束、星形胶束以及“核壳球拟合在中高 $q$ 留下链状残差”的样品。</p>
+      <p>若冠状很浓、排除体积使链拉伸，均匀壳可能是更好的第一近似；若臂数很少、链稀疏，则更接近星形聚合物。本页对应稀溶液、非贯穿的 Pedersen–Gerstenberg 图像。</p>
+      <h2>物理图像</h2>
+      <p>$I(q)$ 四项：核自相关（球 $P_c$）、单链自相关（Debye 函数）、核–链交叉项、不同链之间的交叉项。低 $q$ 由整体胶束 $R_g$ 主导；中 $q$ 核振荡；高 $q$ 转入冠状链的 $q^{-2}$ 特征（高斯链）。聚集数 $N_{\mathrm{agg}}$ 同时放大核体积与冠状交叉项。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/sphere/polymer-micelle-geometry.png" alt="聚合物胶束：球形核与冠状链" width="900">
+        <figcaption>核半径 $R_c$，冠状链回转半径 $R_{g,\mathrm{chain}}$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="../../assets/figures/models/sphere/polymer-micelle-iq.png" alt="聚合物胶束 I(q) 示意" width="900">
+        <figcaption>核球振荡叠加冠状 Debye 链贡献后的 $I(q)$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>示意分解（Pedersen &amp; Gerstenberg）</p>
+      $$I(q)\propto N_{\mathrm{agg}}^2\beta_c^2 P_c(q)+N_{\mathrm{agg}}\beta_s^2 P_{\mathrm{chain}}(q)+2N_{\mathrm{agg}}^2\beta_c\beta_s S_{cs}(q)+N_{\mathrm{agg}}(N_{\mathrm{agg}}-1)\beta_s^2 S_{ss}(q).$$
+      <p>$P_c$ 为核球形式因子；$P_{\mathrm{chain}}=2(e^{-x}-1+x)/x^2$、$x=q^2 R_g^2$ 为 Debye 函数；$S_{cs},S_{ss}$ 含 $\Phi(qR_c)$ 与链形状振幅 $\psi=(1-e^{-q^2 R_g^2})/(q^2 R_g^2)$ 及相位因子 $\mathrm{sinc}[q(R_c+d)]$。$\beta_c,\beta_s$ 为核与单链的超额散射长度。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>核半径</td><td>$R_c$</td><td>不溶核的等效球半径</td><td>Å</td><td>20–200 Å</td></tr>
+          <tr><td>链 Rg</td><td>$R_g$</td><td>单根冠状链的回转半径</td><td>Å</td><td>10–80 Å</td></tr>
+          <tr><td>聚集数</td><td>$N_{\mathrm{agg}}$</td><td>每个胶束的嵌段数目</td><td>无量纲</td><td>10–200</td></tr>
+          <tr><td>核 / 链衬度</td><td>$\beta_c,\beta_s$</td><td>超额散射长度</td><td>cm</td><td>由 SLD 与体积</td></tr>
+          <tr><td>接枝位移</td><td>$d$</td><td>链质心相对核表面的位移</td><td>Å</td><td>约 $R_g$ 量级</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>$N_{\mathrm{agg}}$、$R_c$ 与核衬度通过核体积耦合；冠状 $R_g$ 与 $\beta_s$ 在高 $q$ 相关。优先用 NMR/浓度估计聚集数或用对比匹配核/冠状之一。排除体积与非高斯链会改变高 $q$ 指数，勿把 $R_g$ 解释成真实链尺寸而不声明高斯假设。</p>
+      <p>取向无关（球核 + 各向同性冠状）。磁性若只存在于核，磁形式因子接近核球，冠状对磁通道不可见——这是分离核尺寸的有用约束。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="../shape-independent/star-polymer.html">星形聚合物</a> — 无致密核、臂从中心长出。</li>
+        <li><a href="core-shell-sphere.html">核壳球</a> — 把冠状粗成均匀壳，参数更少。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Pedersen, J. S.; Gerstenberg, M. C. Scattering form factor of block copolymer micelles. <em>Macromolecules</em> 1996, 29, 1363–1365. DOI: <a href="https://doi.org/10.1021/ma951646z" target="_blank" rel="noopener noreferrer">10.1021/ma951646z</a></li>
+      </ul>
+      <nav class="pager">
+        <a href="raspberry.html">← 树莓</a>
+        <a href="adsorbed-layer.html">吸附层 →</a>
+      </nav>
+
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

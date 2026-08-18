@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>三维微磁形式因子 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>三维微磁形式因子</h1>
+      <p class="subtitle-en">micromagnetic form factor 3D</p>
+      <h2>适用场景</h2>
+      <p>当纳米颗粒或微结构内部的磁化 $\mathbf{M}(\mathbf{r})$ 不是均匀块、不能用单个磁 Rayleigh 球概括时，需要三维微磁形式因子：由微磁学给出的 $\mathbf{M}(\mathbf{r})$ 做傅里叶变换，再按偶极选择规则投影到 $\mathbf{q}$ 垂直分量（Mühlbauer 等，2019）。适用于涡旋、花态、畴壁、skyrmion 袋，以及核–壳磁性颗粒中的自旋错向晕。</p>
+      <p>均匀饱和磁化的球体在严格意义上不产生小角<strong>磁</strong>散射涨落（均匀 $\mathbf{M}$ 只贡献 $q=0$ 的宏观磁化）；小角信号来自空间不均匀。若只关心“磁核半径 vs 核半径”，先用均匀磁球；本页针对三维微磁纹理。</p>
+      <h2>物理图像</h2>
+      <p>核散射由核 SLD $\rho_n(\mathbf{r})$ 决定；磁散射由 Halpern–Johnson 矢量 $\mathbf{Q}=\hat{\mathbf{q}}\times[\hat{\mathbf{q}}\times\widetilde{\mathbf{M}}(\mathbf{q})]$ 决定，只敏感 $\mathbf{M}_\perp$。未极化强度含核项、磁项与核–磁交叉项；极化通道（SANSPOL / 自旋分析）可把它们拆开。三维微磁形式因子即 $\widetilde{\mathbf{M}}(\mathbf{q})$ 在给定外场与边界条件下的数值或半解析结果。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/sphere/micromagnetic-ff-3d-geometry.png" alt="球内三维磁化纹理示意" width="900">
+        <figcaption>球核内磁化矢量场 $\mathbf{M}(\mathbf{r})$ 的示意箭头；不均匀磁化产生小角磁散射。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="../../assets/figures/models/sphere/micromagnetic-ff-3d-iq.png" alt="核加磁贡献的 I(q) 示意" width="900">
+        <figcaption>核球形式因子叠加磁晕（较长关联长度）后的 $I(q)$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      $$\frac{\mathrm{d}\Sigma_{\mathrm{mag}}}{\mathrm{d}\Omega}\propto \bigl\lvert \widetilde{\mathbf{M}}_\perp(\mathbf{q})\bigr\rvert^2,\qquad \widetilde{\mathbf{M}}(\mathbf{q})=\int \mathbf{M}(\mathbf{r})\,e^{-i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3 r.$$
+      <p>核通道仍可用球或核壳振幅。稀溶液未极化示意：$I(q)=n\bigl(|F_n|^2+|F_m|^2\bigr)+B$，其中 $F_m$ 来自 $\rho_{\mathrm{mag}}\propto M$ 的磁散射长度密度。微磁学在交换长度 $l_H$ 上给出自旋错向晕，常在低 $q$ 叠加 Lorentz 样因子 $1/(1+q^2 l_H^2)$。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>核半径</td><td>$R_n$</td><td>核散射看到的几何半径</td><td>Å 或 nm</td><td>50–2000 Å</td></tr>
+          <tr><td>磁半径</td><td>$R_m$</td><td>磁化核的有效半径（可小于 $R_n$，死层）</td><td>Å 或 nm</td><td>与 $R_n$ 相近或略小</td></tr>
+          <tr><td>核 SLD</td><td>$\rho_n$</td><td>核散射长度密度</td><td>Å$^{-2}$</td><td>组成决定</td></tr>
+          <tr><td>磁 SLD</td><td>$\rho_m$</td><td>磁散射长度密度，$\propto M$</td><td>Å$^{-2}$</td><td>由饱和磁化估计</td></tr>
+          <tr><td>交换 / 晕长度</td><td>$l_H$</td><td>自旋错向关联长度</td><td>Å</td><td>数十至数百 Å</td></tr>
+          <tr><td>场与极化</td><td>$\\mathbf{H},P$</td><td>外场方向与中子极化</td><td>T，无量纲</td><td>实验几何</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>必须把磁性 SLD 与核 SLD 分开：前者随磁化强度、温度与场变化，后者几乎不变。死层表现为 $R_m&lt;R_n$。未极化数据无法唯一拆开 $|F_n|^2$ 与 $|F_m|^2$，优先做极化差分或场开关。</p>
+      <p>取向不再平凡：微磁纹理相对外场有择优方向，粉末平均会抹去 2D 各向异性指纹（三叶草、扇形）。拟合三维微磁 $P(q)$ 前应确认探测器图样是否各向异性。多分散同样抹振荡，但不会产生磁场依赖——场依赖是磁性起源的判据。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="sphere.html">均匀球</a> — 核通道或均匀磁化球的基线形式因子。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Mühlbauer, S.; et al. Magnetic small-angle neutron scattering. <em>Rev. Mod. Phys.</em> 2019, 91, 015004. DOI: <a href="https://doi.org/10.1103/RevModPhys.91.015004" target="_blank" rel="noopener noreferrer">10.1103/RevModPhys.91.015004</a></li>
+      </ul>
+      <nav class="pager">
+        <a href="superball.html">← 超球</a>
+        <a href="index.html">球类总览 →</a>
+      </nav>
+
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

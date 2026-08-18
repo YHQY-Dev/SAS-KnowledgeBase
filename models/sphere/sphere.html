@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>均匀球 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>均匀球</h1>
+      <p class="subtitle-en">sphere</p>
+      <h2>适用场景</h2>
+      <p>当粒子可视为各向同性、内部<span data-term="scattering-length-density">散射长度密度</span>近似均匀的球体时，均匀球<span data-term="form-factor">形式因子</span>是最直接的解析模型。典型对象包括：稀释胶乳与无机纳米颗粒、近似球形的乳液滴、胶束疏水核的粗描述，以及许多可用等效球半径概括的胶体。</p>
+      <p>适用的经验判据：$p(r)$ 单峰且较对称；低 $q$ 的 Guinier 区给出与几何半径自洽的<span data-term="radius-of-gyration">回转半径</span>；$\log I$–$\log q$ 上可见与半径相关的振荡极小，高 $q$ 趋近 Porod $q^{-4}$。明显长径比、空心壳层或径向分层时，应改用核壳、囊泡或模糊球，而不是给均匀球强加额外参数。</p>
+      <p>稀溶液、相互作用可忽略时只拟合 $P(q)$。体积分数升高、低 $q$ 被压低或出现相关峰时，应另加<span data-term="structure-factor">结构因子</span>，不要把 $S(q)$ 误读成半径变化。</p>
+      <h2>物理图像</h2>
+      <p>均匀球的散射振幅是球体积内平面波相位的积分。Rayleigh 给出归一化振幅 $\Phi(x)=3(\sin x-x\cos x)/x^3$，强度 $P(q)=|\Phi(qR)|^2$，并约定 $P(0)=1$。第一极小约在 $qR\approx 4.49$；低 $q$ 回到 Guinier，$R_g=R\sqrt{3/5}$。</p>
+      <p>绝对强度还含数密度、衬度平方与体积平方。拟合中常把它们收进无量纲标度因子，本底吸收溶剂与仪器的常数项。球的取向平均是平凡的：取向对 $I(q)$ 无影响。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/sphere/sphere-geometry.png" alt="均匀球几何示意：半径 R" width="900">
+        <figcaption>均匀球体截面，半径 $R$ 是唯一几何参数。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="../../assets/figures/models/sphere/sphere-iq.png" alt="均匀球形式因子 I(q) 示意" width="900">
+        <figcaption>单分散均匀球 $I(q)/I(0)$：Guinier 坪、振荡极小与 Porod 尾。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>Rayleigh 均匀球形式因子（$x=qR$）</p>
+      $$P(q)=\left[\frac{3(\sin x-x\cos x)}{x^3}\right]^2,\qquad x=qR.$$
+      <p>回转半径与 Guinier 展开</p>
+      $$R_g=R\sqrt{\frac{3}{5}},\qquad I(q)\simeq I(0)\,\mathrm{e}^{-q^2 R_g^2/3}\quad (qR_g\lesssim 1).$$
+      <p>稀释极限下观测强度常写为 $I(q)=\mathrm{scale}\cdot P(q)+B$。第一极小位置给出半径的粗估计 $R\approx 4.49/q_1$。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>半径</td><td>$R$</td><td>球体几何半径</td><td>Å 或 nm</td><td>10–1000 Å</td></tr>
+          <tr><td>标度</td><td>$\mathrm{scale}$</td><td>数密度、体积平方与衬度平方的前置因子</td><td>与强度单位一致</td><td>由绝对标定或自由拟合</td></tr>
+          <tr><td>本底</td><td>$B$</td><td>常数本底</td><td>与强度单位一致</td><td>仪器与溶剂相关</td></tr>
+          <tr><td>衬度</td><td>$\Delta\rho$</td><td>粒子与溶剂的散射长度密度差</td><td>Å$^{-2}$ 或 cm$^{-2}$</td><td>由组成计算或对比实验</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p><span data-term="polydispersity">多分散</span>是均匀球最常见的“看起来不像球”的原因。Schulz–Zimm 或对数正态（logN）尺寸分布会把第一极小抹平，并改变振荡相位；相对宽度 $\sigma_R/\langle R\rangle\gtrsim 10\%$ 时极小即可显著变钝。报告均值时须声明是数均、体积加权还是强度加权。</p>
+      <p>取向对球无关：不必引入取向角。仪器 smearing 与多分散在数据上同为振荡变钝，须用分辨率函数或针孔/狭缝几何信息区分。磁性测量时，核磁<span data-term="scattering-length-density">散射长度密度</span>与核（核散射）SLD 是不同通道：均匀磁化球的磁形式因子仍是 Rayleigh 函数，但磁半径、死层与核半径不必相同；核/壳磁 SLD 应单独给出，勿与核衬度混用。</p>
+      <p>可辨识性：仅有低 $q$ Guinier 时，$R$ 与多分散、本底强相关。要约束 $R$，需要看到至少一个形式因子极小，或有独立的电镜/水力学半径。浓体系低 $q$ 压低应归因于 $S(q)$，而不是把 $R$ 拟合得偏小。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="core-shell-sphere.html">核壳球</a> — 核与壳衬度不同，极小位置随壳厚移动。</li>
+        <li><a href="fuzzy-sphere.html">模糊球</a> — 表面密度渐变，高 $q$ 比硬球更快衰减。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Lord Rayleigh. On the scattering of light by small particles. <em>Philosophical Magazine</em>, 1911.</li>
+        <li>Guinier, A.; Fournet, G. <em>Small-Angle Scattering of X-rays</em>. Wiley: New York, 1955.</li>
+      </ul>
+      <nav class="pager">
+        <a href="index.html">← 球类总览</a>
+        <a href="core-shell-sphere.html">核壳球 →</a>
+      </nav>
+
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

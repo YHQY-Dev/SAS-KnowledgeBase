@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>二元硬球 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>二元硬球</h1>
+      <p class="subtitle-en">binary hard sphere</p>
+      <h2>适用场景</h2>
+      <p>二元硬球描述两种半径 $R_1,R_2$ 的硬球混合物。本页的形式因子部分给出两种颗粒的 $P_i(q)$ 与交叉振幅；浓度升高后，Ashcroft–Langreth 偏结构因子 $S_{ij}(q)$（或 Vrij 对硬球混合物的处理）进入强度。适用于双峰胶体、大小胶乳混合物、以及“单一 Schulz 球无法同时拟合两个振荡周期”的样品。</p>
+      <p>若两种粒子只是稀溶液混合物、无相互作用，强度是两条 $P(q)$ 的加权和。一旦体积分数不可忽略，交叉项 $S_{12}$ 会在低 $q$ 产生非平凡干涉，必须与一元硬球结构因子区分。</p>
+      <h2>物理图像</h2>
+      <p>部分相干散射写成 $\sum_{i,j}\sqrt{n_i n_j}F_i(q)F_j(q)S_{ij}(q)$。$F_i$ 为第 $i$ 种球的散射振幅（含体积与衬度）。Ashcroft 与 Langreth 给出 Percus–Yevick 闭包下二元硬球的 $S_{ij}$；Vrij 讨论了有限 $q$ 的光/X 射线散射表达。本页示意图以两种 $P(q)$ 加权及交叉振幅为主，结构因子细节见结构因子分类中的硬球页。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/sphere/binary-hard-sphere-geometry.png" alt="两种半径的硬球" width="900">
+        <figcaption>半径 $R_1$ 与 $R_2$ 的两种球体。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="../../assets/figures/models/sphere/binary-hard-sphere-iq.png" alt="二元硬球混合物 I(q) 示意" width="900">
+        <figcaption>两种球形式因子加权及交叉项后的 $I(q)$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>各向同性体系</p>
+      $$I(q)\propto \sum_{i=1}^{2}\sum_{j=1}^{2}\sqrt{n_i n_j}\,F_i(q)F_j(q)\,S_{ij}(q),$$
+      $$F_i(q)=V_i\Delta\rho_i\Phi(qR_i).$$
+      <p>无限稀释 $S_{ij}=\delta_{ij}$，于是 $I(q)\propto n_1 F_1^2+n_2 F_2^2$。有限浓度下 $S_{11},S_{22},S_{12}$ 由直径 $\sigma_i=2R_i$ 与偏体积分数决定。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>半径 1 / 2</td><td>$R_1,R_2$</td><td>两种硬球半径</td><td>Å 或 nm</td><td>10–1000 Å</td></tr>
+          <tr><td>数密度</td><td>$n_1,n_2$</td><td>两种粒子的数密度</td><td>cm$^{-3}$</td><td>由浓度与体积换算</td></tr>
+          <tr><td>衬度</td><td>$\Delta\rho_1,\Delta\rho_2$</td><td>相对溶剂的 SLD 差</td><td>Å$^{-2}$</td><td>组成决定</td></tr>
+          <tr><td>体积分数</td><td>$\phi_1,\phi_2$</td><td>进入 $S_{ij}$ 的偏体积分数</td><td>无量纲</td><td>稀溶液 $\ll 0.1$</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>两套半径、两套衬度与三套 $S_{ij}$ 参数极易过拟合。先在极稀极限确定两种 $P(q)$，再把浓度系列的低 $q$ 变化交给 $S_{ij}$。不要把双峰尺寸分布（同一化学物种）与真二元混合物（两种物种）混为一谈。</p>
+      <p>取向无关。磁性若只一种粒子带磁矩，磁通道可把该组分的 $F_{\mathrm{mag}}$ 单独提出，从而解开核通道里的交叉项。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="../structure-factor/hard-sphere.html">硬球结构因子</a> — 一元 Percus–Yevick $S(q)$，二元是它的混合物推广。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Ashcroft, N. W.; Langreth, D. C. Structure of binary liquid mixtures. I. <em>Phys. Rev.</em> 1967, 156, 685–692. DOI: <a href="https://doi.org/10.1103/PhysRev.156.685" target="_blank" rel="noopener noreferrer">10.1103/PhysRev.156.685</a></li>
+        <li>Vrij, A. Mixtures of hard spheres in the Percus–Yevick approximation. Light scattering at finite angles. <em>J. Chem. Phys.</em> 1978, 69, 1742–1747. DOI: <a href="https://doi.org/10.1063/1.436750" target="_blank" rel="noopener noreferrer">10.1063/1.436750</a></li>
+      </ul>
+      <nav class="pager">
+        <a href="adsorbed-layer.html">← 吸附层</a>
+        <a href="core-multi-shell.html">核–多层壳 →</a>
+      </nav>
+
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

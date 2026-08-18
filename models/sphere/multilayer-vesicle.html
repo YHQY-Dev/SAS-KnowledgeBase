@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>多层囊泡 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>多层囊泡</h1>
+      <p class="subtitle-en">multilayer vesicle</p>
+      <h2>适用场景</h2>
+      <p>多层囊泡（MLV、寡层脂质体）由若干同心双层与水层交替构成。中间 $q$ 可出现与膜间距 $d$ 相关的宽峰或次级振荡，层数 $n$ 不大时峰较宽。适用于阴阳离子表面活性剂混合物形成的寡层囊泡、未充分挤压的脂质体，以及“单壳囊泡拟合残差在膜峰处系统化”的样品。</p>
+      <p>层数趋于很大、侧向尺寸远大于膜间距时，更接近层状堆叠而非封闭球壳；此时应对照层状分类，而不是无限增加球壳层数。</p>
+      <h2>物理图像</h2>
+      <p>每一层膜是一个薄球壳，水层是相邻壳之间的溶剂间隙。总振幅为各壳振幅之和（Bergström 等对囊泡/片层的 SANS 分析；Pedersen 1997 的同心壳框架）。有限 $n$ 给出有限相干的层间干涉，峰宽约 $\sim 2\pi/(n d)$ 量级。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/sphere/multilayer-vesicle-geometry.png" alt="多层囊泡同心壳示意" width="900">
+        <figcaption>若干同心膜与水层交替；$n$ 为壳层数。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="../../assets/figures/models/sphere/multilayer-vesicle-iq.png" alt="多层囊泡 I(q) 示意" width="900">
+        <figcaption>多层干涉在中间 $q$ 产生宽峰，并叠加整体囊泡形式因子。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>第 $k$ 层膜内外半径 $R_{k,{\mathrm{in}}},R_{k,{\mathrm{out}}}$，总振幅</p>
+      $$A(q)=\sum_{k=1}^{n}(\rho_m-\rho_w)\bigl[V(R_{k,{\mathrm{out}}})\Phi(qR_{k,{\mathrm{out}}})-V(R_{k,{\mathrm{in}}})\Phi(qR_{k,{\mathrm{in}}})\bigr].$$
+      <p>等间距简化：$R_{k,{\mathrm{in}}}=R_0+(k-1)d$，$t$ 为单层膜厚，$d$ 为重复间距，$\rho_w$ 为水层 SLD。$I(q)=n_{\mathrm{ves}}|A(q)|^2+B$。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>最内半径</td><td>$R_0$</td><td>最内水核半径</td><td>Å 或 nm</td><td>50–2000 Å</td></tr>
+          <tr><td>膜厚</td><td>$t$</td><td>单层双层厚度</td><td>Å</td><td>20–50 Å</td></tr>
+          <tr><td>重复间距</td><td>$d$</td><td>相邻膜中心距</td><td>Å</td><td>50–200 Å</td></tr>
+          <tr><td>层数</td><td>$n$</td><td>同心膜的数目</td><td>无量纲</td><td>2–20（寡层）</td></tr>
+          <tr><td>膜 / 水 SLD</td><td>$\rho_m,\rho_w$</td><td>双层与水层散射长度密度</td><td>Å$^{-2}$</td><td>氘代可调</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>$n$ 与峰值锐度相关，但与尺寸多分散、间距涨落（准晶无序）竞争：三者都能把峰抹宽。优先用独立的层间距估计（例如宽角层状峰）固定 $d$，再拟合 $n$ 或无序度。</p>
+      <p>球对称假设要求囊泡近似等轴。巨大多层脂质体若成堆叠片，应改层状模型。磁性脂质体少见；若膜含磁性颗粒，磁 SLD 只存在于颗粒壳，而不是整层均匀磁化。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="vesicle.html">囊泡</a> — $n=1$ 的单层极限。</li>
+        <li><a href="onion.html">洋葱球</a> — 任意径向多层 SLD，不一定是膜–水交替。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Bergström, M.; Pedersen, J. S.; Schurtenberger, P.; Egelhaaf, S. U. Small-angle neutron scattering (SANS) study of vesicles and lamellar sheets formed from mixtures of an anionic and a cationic surfactant. <em>J. Phys. Chem. B</em> 1999, 103, 9888–9897. DOI: <a href="https://doi.org/10.1021/jp991846w" target="_blank" rel="noopener noreferrer">10.1021/jp991846w</a></li>
+        <li>Pedersen, J. S. <em>J. Appl. Cryst.</em> 1997, 30, 339–354. DOI: <a href="https://doi.org/10.1107/S0021889897002532" target="_blank" rel="noopener noreferrer">10.1107/S0021889897002532</a></li>
+      </ul>
+      <nav class="pager">
+        <a href="vesicle.html">← 囊泡</a>
+        <a href="fuzzy-sphere.html">模糊球 →</a>
+      </nav>
+
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

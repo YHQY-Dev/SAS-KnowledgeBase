@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="../..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>囊泡 · 模型手册 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>囊泡</h1>
+      <p class="subtitle-en">vesicle</p>
+      <h2>适用场景</h2>
+      <p>囊泡（单层脂质体、表面活性剂囊泡）是溶剂填充的球形双层：内外半径 $R_{\mathrm{in}},R_{\mathrm{out}}$，膜厚 $t=R_{\mathrm{out}}-R_{\mathrm{in}}$，膜的 SLD 与内外溶剂（常相同）形成壳衬度。适用于稀释的单层囊泡、聚合物囊泡，以及核壳模型中核衬度被溶剂匹配的极限。</p>
+      <p>与实心核壳的区别：内部是溶剂而非高衬度核，低 $q$ 的有效体积由膜体积而非整个外球体积主导；$I(0)$ 对膜厚与膜衬度敏感。多层洋葱状囊泡应改用多层囊泡或洋葱球。</p>
+      <h2>物理图像</h2>
+      <p>薄球壳的振幅是外球与内球均匀球振幅之差。膜很薄时，$P(q)$ 在中间 $q$ 可接近 $q^{-2}$ 的片状特征，同时仍保留整体尺寸决定的 Guinier 区。极小位置主要敏感外半径，振荡调制敏感膜厚。</p>
+      <p>若内外溶剂不同（包载溶质、未平衡的氘代），则回到一般核壳三衬度，而不是“空心壳”简化。</p>
+      <h2>示意图</h2>
+      <figure class="figure">
+        <img src="../../assets/figures/models/sphere/vesicle-geometry.png" alt="囊泡截面：内外半径" width="900">
+        <figcaption>溶剂填充的球壳，内外半径 $R_{\mathrm{in}}$、$R_{\mathrm{out}}$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="../../assets/figures/models/sphere/vesicle-iq.png" alt="囊泡 I(q) 示意" width="900">
+        <figcaption>薄壳形式因子：低 $q$ Guinier 与壳干涉振荡。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+      </figure>
+      <h2>核心公式</h2>
+      <p>内外溶剂 SLD 相同、膜 SLD 为 $\rho_m$ 时，</p>
+      $$A(q)=(\rho_m-\rho_{\mathrm{solv}})\bigl[V(R_{\mathrm{out}})\Phi(qR_{\mathrm{out}})-V(R_{\mathrm{in}})\Phi(qR_{\mathrm{in}})\bigr],$$
+      $$I(q)=n|A(q)|^2+B.$$
+      <p>薄壳极限 $t\ll R$ 下，$A(q)\propto 4\pi R^2 t\,\Delta\rho\,j_0(qR)$，其中 $j_0(\sin x/x)$。符号与核壳页相同，$\Phi$ 为 Rayleigh 振幅。</p>
+      <h2>参数表</h2>
+      <table>
+        <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
+        <tbody>
+          <tr><td>内半径</td><td>$R_{\mathrm{in}}$</td><td>溶剂核的半径</td><td>Å 或 nm</td><td>50–2000 Å</td></tr>
+          <tr><td>外半径</td><td>$R_{\mathrm{out}}$</td><td>膜外表面半径</td><td>Å 或 nm</td><td>内半径加膜厚</td></tr>
+          <tr><td>膜厚</td><td>$t$</td><td>$R_{\mathrm{out}}-R_{\mathrm{in}}$</td><td>Å</td><td>20–50 Å（脂质双层量级）</td></tr>
+          <tr><td>膜 SLD</td><td>$\rho_m$</td><td>双层平均散射长度密度</td><td>Å$^{-2}$</td><td>头基/尾链可再分层</td></tr>
+          <tr><td>溶剂 SLD</td><td>$\rho_{\mathrm{solv}}$</td><td>囊内囊外溶剂（简化相同）</td><td>Å$^{-2}$</td><td>H/D 可调</td></tr>
+        </tbody>
+      </table>
+      <h2>拟合注意</h2>
+      <p>$R$ 与 $t$ 在有限 $q$ 窗上相关；膜厚最好用高 $q$ 或独立的膜面积/组成约束。尺寸多分散强烈抹平囊泡振荡，且大囊泡的第一极小常落在 $q_{\min}$ 之外，此时只能约束 $R_g$ 量级。</p>
+      <p>取向平均对球囊泡仍平凡。若囊泡扁化或成管，应离开球类。多层重复间距出现衍射样峰时，改多层囊泡，不要用单壳硬撑。</p>
+      <h2>相近模型</h2>
+      <ul>
+        <li><a href="multilayer-vesicle.html">多层囊泡</a> — 多层同心膜的求和。</li>
+        <li><a href="core-shell-sphere.html">核壳球</a> — 核可不为溶剂的一般情形。</li>
+      </ul>
+      <h2>参考文献</h2>
+      <ul>
+        <li>Pedersen, J. S. Analysis of small-angle scattering data from colloids and polymer solutions: modeling and least-squares fitting. <em>J. Appl. Cryst.</em> 1997, 30, 339–354. DOI: <a href="https://doi.org/10.1107/S0021889897002532" target="_blank" rel="noopener noreferrer">10.1107/S0021889897002532</a></li>
+      </ul>
+      <nav class="pager">
+        <a href="core-shell-sphere.html">← 核壳球</a>
+        <a href="multilayer-vesicle.html">多层囊泡 →</a>
+      </nav>
+
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../../assets/nav.js"></script>
+  <script src="../../assets/glossary-data.js"></script>
+  <script src="../../assets/glossary.js"></script>
+  <script src="../../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>
