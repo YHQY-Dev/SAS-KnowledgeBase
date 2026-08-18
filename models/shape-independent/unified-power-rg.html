@@ -18,7 +18,7 @@
       <p>层级结构（聚集体上还有聚集体、链段上还有整链）需要一套以上 $R_g$ 与幂律时，用 Beaucage <span data-term="beaucage-unified">统一指数/幂律</span>。每一层是 Guinier 加上用误差函数截断的幂律，多层直接相加。</p>
       <p>适合气凝胶、支化高分子、炭黑与多尺度孔。若只有一层 Guinier+一段幂律，Guinier–Porod 通常更省参数。出现几何振荡极小时，应回到具体形式因子。</p>
       <h2>物理图像</h2>
-      <p>一层写成 $G\exp(-q^2 R_g^2/3)$ 加上 $B[\mathrm{erf}(q R_g/\sqrt{6})]^3/q^P$。误差函数保证幂律在 $qR_g\ll 1$ 被关掉，从而不破坏 Guinier 坪。多层把下一层的 Guinier 再叠上去。</p>
+      <p>一层写成 $G\exp(-q^2 R_g^2/3)$ 加上 $B[(\mathrm{erf}(q R_g/\sqrt{6}))^3/q]^P$。误差函数保证幂律在 $qR_g\ll 1$ 被关掉，从而不破坏 Guinier 坪。多层把下一层的 Guinier 再叠上去。</p>
       <p>这是包络描述，不编码外形振荡。磁性通道可以有自己的 $\{G,R_g,P\}$。</p>
       <h2>示意图</h2>
       <figure class="figure">
@@ -27,7 +27,7 @@
       </figure>
       <h2>核心公式</h2>
       <p>Beaucage 单层统一函数</p>
-      $$I(q)=G\exp(-q^2 R_g^2/3)+B\left[\frac{\mathrm{erf}(q R_g/\sqrt{6})}{q}\right]^P+B_{\mathrm{kg}}.$$
+      $$I(q)=G\exp(-q^2 R_g^2/3)+B\left[\frac{(\mathrm{erf}(q R_g/\sqrt{6}))^3}{q}\right]^P+B_{\mathrm{kg}}.$$
       <p>多层对 $i=1,2,\ldots$ 求和。$P$ 为该层幂律指数（Porod 为 $4$，质量分形为 $D_m$）。</p>
       <h2>参数表</h2>
       <table>
@@ -36,7 +36,7 @@
           <tr><td>回转半径</td><td>$R_g$</td><td>该层 Guinier 尺寸</td><td>Å</td><td>10–1000 Å</td></tr>
           <tr><td>Guinier 幅度</td><td>$G$</td><td>该层前向幅度</td><td>与强度单位一致</td><td>与数密度、衬度相关</td></tr>
           <tr><td>幂律幅度 / 指数</td><td>$B$, $P$</td><td>截断幂律的前置与指数</td><td>与强度单位 / 无量纲</td><td>$P$ 通常 $1$–$4$</td></tr>
-          <tr><td>标度 / 本底</td><td>$\mathrm{scale}$, $B$</td><td>前置因子与常数本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
+          <tr><td>本底</td><td>$B_{\mathrm{kg}}$</td><td>常数本底</td><td>与强度单位一致</td><td>仪器与溶剂相关</td></tr>
         </tbody>
       </table>
       <h2>拟合注意</h2>
