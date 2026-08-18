@@ -20,7 +20,7 @@
       <p>若盘面堆叠成柱，应改用堆叠圆盘或层状堆叠，而不是给单盘加结构峰。</p>
       <h2>物理图像</h2>
       <p>几何是短圆柱的核壳推广：核半径 $R$、核厚度 $L$，面帽厚度 $t_{\mathrm{face}}$，腰带厚度 $t_{\mathrm{belt}}$。振幅为核、面与腰带三块均匀区圆柱振幅的衬度加权和，再对盘法向与 $\mathbf{q}$ 的夹角取向平均。</p>
-      <p>Luchette 等用小角中子散射把快翻滚 bicelle 定成盘状而非长蠕虫；核壳盘是把该图像写成可拟合的 $P(q)$。</p>
+      <p>核、面、带三区的振幅相加，是 Pedersen 综述里核壳圆柱/盘构造在短轴极限下的用法：径向用 $J_1$，法向用 $\mathrm{sinc}$，再对取向平均。</p>
       <h2>示意图</h2>
       <figure class="figure">
         <img src="../../assets/figures/models/cylinder/core-shell-bicelle-geometry.png" alt="核壳双层盘：核芯、面帽与腰带" width="900">
@@ -28,7 +28,7 @@
       </figure>
       <figure class="figure">
         <img src="../../assets/figures/models/cylinder/core-shell-bicelle-iq.png" alt="核壳双层盘 I(q) 示意" width="900">
-        <figcaption>短轴核壳盘的粉末平均 $I(q)$，中间区接近 $q^{-2}$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+        <figcaption>定性示意，不是上节三区振幅式的数值求值；中间区接近盘的 $q^{-2}$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
       <p>取向 $\alpha$ 下振幅（核、面、带三区）</p>
@@ -54,11 +54,11 @@
       <h2>相近模型</h2>
       <ul>
         <li><a href="stacked-disks.html">堆叠圆盘</a> — 多片沿法向相关，出现层间距峰。</li>
-        <li><a href="../lamellae/lamellar.html">层状</a> — 无限大双层，没有有限盘半径。</li>
+        <li><a href="cylinder.html">圆柱</a> — 细长棒极限，中间区 $q^{-1}$ 而非盘的 $q^{-2}$。</li>
       </ul>
       <h2>参考文献</h2>
       <ul>
-        <li>Luchette, P. A.; Vetman, T. N.; Prosser, R. S.; Hancock, R. E. W.; Nieh, M.-P.; Glinka, C. J.; Krueger, S.; Katsaras, J. Morphology of fast-tumbling bicelles: a small angle neutron scattering and NMR study. <em>Biochim. Biophys. Acta</em> 2001, 1513, 83–94. DOI: <a href="https://doi.org/10.1016/S0005-2736(01)00358-3" target="_blank" rel="noopener noreferrer">10.1016/S0005-2736(01)00358-3</a></li>
+        <li>Guinier, A.; Fournet, G. <em>Small-Angle Scattering of X-rays</em>. Wiley: New York, 1955.</li>
         <li>Pedersen, J. S. Analysis of small-angle scattering data from colloids and polymer solutions: modeling and least-squares fitting. <em>J. Appl. Cryst.</em> 1997, 30, 339–354. DOI: <a href="https://doi.org/10.1107/S0021889897002532" target="_blank" rel="noopener noreferrer">10.1107/S0021889897002532</a></li>
       </ul>
       <nav class="pager">
