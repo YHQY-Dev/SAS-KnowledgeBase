@@ -18,6 +18,7 @@
       <h2>导语：何时从「读曲线」升级到「拟合模型」</h2>
       <p>第 06 章用 Guinier / Porod 锚定两端；第 07 章用 <span data-term="indirect-fourier-transform">IFT</span> 得到模型无关的 <span data-term="pair-distance-distribution">$p(r)$</span> 与 <span data-term="maximum-dimension">$D_{\max}$</span>。到这一步，你通常已经知道：整体尺寸、是否紧凑/细长、界面是否尖锐、有没有聚集迹象。若问题仍停在「大概多大、大概什么形貌」，不必急着上显式形状模型。</p>
       <p>显式模型拟合在下列情形才真正划算：需要报告几何参数（半径、长度、壳厚）、需要尺寸分布宽度、需要把相互作用与形状分开、或需要用同一模型比较一批样品。本章给出 <span data-term="form-factor">形式因子</span> $P(q)$、<span data-term="structure-factor">结构因子</span> $S(q)$、多分散如何抹平振荡与加权 $R_g$，以及 Beaucage / Guinier–Porod 粗模型与详细形状模型的分工；重点是<strong>可辨识性</strong>——参数多并不等于信息多。</p>
+      <p>各解析模型的适用场景、公式与参数表见 <a href="../models/index.html">模型手册</a>（按球、圆柱、层状、结构因子等分类查阅）。</p>
 
       <h2>从模型无关结果到显式拟合</h2>
       <p>稀溶液、近似各向同性取向平均后，常写</p>
@@ -68,10 +69,10 @@
           <tr><th>模型</th><th>主要参数</th><th>曲线直觉</th><th>何时优先选用</th></tr>
         </thead>
         <tbody>
-          <tr><td>均匀球</td><td>$R$（或 $R_g$）</td><td>振荡极小；高 $q\sim q^{-4}$</td><td>等轴、单峰 $p(r)$、无明显长径比</td></tr>
-          <tr><td>圆柱 / 椭圆棒</td><td>$L$, $R$（±多分散）</td><td>中区 $\sim q^{-1}$；截面振荡较弱</td><td>$p(r)$ 拖尾长、Kratky/斜率暗示棒状</td></tr>
+          <tr><td><a href="../models/sphere/sphere.html">均匀球</a></td><td>$R$（或 $R_g$）</td><td>振荡极小；高 $q\sim q^{-4}$</td><td>等轴、单峰 $p(r)$、无明显长径比</td></tr>
+          <tr><td><a href="../models/cylinder/cylinder.html">圆柱</a> / <a href="../models/cylinder/elliptical-cylinder.html">椭圆棒</a></td><td>$L$, $R$（±多分散）</td><td>中区 $\sim q^{-1}$；截面振荡较弱</td><td>$p(r)$ 拖尾长、Kratky/斜率暗示棒状</td></tr>
           <tr><td>薄圆盘 / 片</td><td>半径、厚度</td><td>中区 $\sim q^{-2}$</td><td>膜片、盘状胶束、二维聚集体</td></tr>
-          <tr><td>核–壳球</td><td>$R_{\mathrm{c}}$, $R_{\mathrm{s}}$, $\rho$ 比</td><td>极小位置移动；可能出现「肩」</td><td>已知有壳层化学结构；有对比数据更佳</td></tr>
+          <tr><td><a href="../models/sphere/core-shell-sphere.html">核–壳球</a></td><td>$R_{\mathrm{c}}$, $R_{\mathrm{s}}$, $\rho$ 比</td><td>极小位置移动；可能出现「肩」</td><td>已知有壳层化学结构；有对比数据更佳</td></tr>
           <tr><td>多分散球（Schulz 等）</td><td>$\langle R\rangle$, $\sigma$ 或 $z$</td><td>振荡抹平；表观 Guinier 偏大端</td><td>单分散球残差系统化、TEM 已知宽分布</td></tr>
         </tbody>
       </table>

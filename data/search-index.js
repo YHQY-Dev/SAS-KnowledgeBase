@@ -1423,5 +1423,1551 @@ window.SAS_SEARCH_INDEX = [
       "文献列表"
     ],
     "text": "超小角 X 射线散射（ USAXS ） Ultra-small-angle X-ray scattering — very low , micrometre-scale structure 本导读说明为何需要进入极低 、 Bonse–Hart 与针孔几何的差异、狭缝 smearing 的处理，以及如何把 USAXS 与 SAXS 拼接并对接到 玻璃碳 / NIST SRM 3600 绝对标定 。核心文献：Peyronel & Pink（2018） USAXS 专章；辅以 Pedersen（1995）仪器与 smearing、Zhang 等（2010） 玻璃碳 标样、Allen 等（2017）SRM 3600、Jeffries 等（2021）方法学导论。 问题是什么 常规 pinhole SAXS 的最低 往往落在 量级，对应实空间尺度 约数十纳米。若样品含微米级畴、大孔、聚集体、层次结构或分形网络，低 的 Guinier 区与 前向散射 会落在仪器盲区之外——曲线在「尚未变平」处就被截断，无法可靠求 、体积分数、分形维数或层次结构的大尺度相关。 USAXS （ultra-small-angle X-ray scattering） 把可达 延伸到约 – （Si 220 晶体对 ；Si 440 可达 ），对应数百纳米到数微米（Peyronel 2018）。它回答的典型问题是： 大尺度结构是否存在、是否进入 Guinier 平台？特征长度是否在 – ？ USAXS 与 SAXS （乃至 WAXS ）能否拼成一条跨 4+ 数量级的 ？ 低 幂律斜率是否反映分形维数或层次「结构级」（structural level）？ 在绝对强度尺度上，低 抬升来自真实结构还是 多重散射 / 仪器散射 / 未 desmear ？ 代价是：多数经典 USAXS 为 狭缝准直 （ Bonse–Hart ），测得曲线是 smeared 的一维剖面；与针孔 SAXS 比较或拟合模型前，必须显式处理 smearing，或对模型做 smeared 卷积（Pedersen 1995；Peyronel 2018）。 尺度窗口： USAXS 在 SAS 谱中的位置 Peyronel & Pink（2018）将弹性 X 射线散射按 划分为： 技术 结构尺度 典型 （ ） 典型应用 WAXS / 衍射 原子（ – ） – 晶胞、链堆积 SAXS 分子/纳米（ – ） – 胶束、片层、形式因子 SAXS / USAXS 过渡 纳米–亚微米（ – ） – 大胶束、小聚集体 USAXS 微米（ – ） – 孔洞、晶粒、网络、层次聚集 同一软物质样品常同时在纳米（ SAXS ）与微米（ USAXS ）有信号——例如结晶纳米片（CNP）聚集网络（Peyronel 2013–2017 系列）。仅测 SAXS 会漏掉大尺度 Guinier 或 Porod 尾；仅测 USAXS 则无法解析分子/纳米级 Bragg 或形式因子。 USAXS 延伸极低 （大尺度）→ SAXS 中等 → WAXS 高 ； Bonse–Hart 狭缝几何带来 smearing，与 pinhole 数据拼接前须 desmear 或 smeared 模型拟合。 配图：自制示意 文献主线 Peyronel & Pink 2018： USAXS 原理、仪器与层次解读 专章（DOI: 10.1016/B978-0-12-814041-3.00009-5 ）从 、 与 出发，系统说明 USAXS 为何需要专用光学： Bonse–Hart 双晶： 入射与分析各一对 Si 晶体，靠摇摆曲线定义极窄角分辨率；APS 9ID 仪器无传统 beamstop，用光电二极管动态范围 同时测主束与弱散射，实现 一级绝对标定 （Ilavsky 2009, 2012）。 一维几何与 desmear ： 垂直方向高分辨率、水平方向积分 → 须 Lake 算法 desmear 或 smeared 模型；空白样扣除仪器散射，束形每 2 h 或换样重录。 多探测器串联： 同一样品位自动切换 USAXS / pinhole SAXS / WAXS ，覆盖 – （Peyronel 2014c）。 层次拟合： Unified Fit （Beaucage）与 Guinier–Porod 模型 在 log–log 图上分段识别 structural level；幂律指数 联系分形维数（ 光滑表面； q q R_g \\mathrm{d}\\Sigma/\\mathrm{d}\\Omega(Q) 0.008 0.25\\,\\mathrm{\\AA}^{-1} q q q I(q) \\gtrsim 100\\,\\mathrm{nm} \\mathrm{d}\\Sigma/\\mathrm{d}\\Omega q \\sim 10^{-4}\\,\\mathrm{\\AA}^{-1} I_0 I_S I(q) R I_{\\mathrm{sm}} I(q) I(q) R q I(0) R_g q q q \\pm I(q) 1\\,^\\circ\\mathrm{C}/\\mathrm{min} 30\\,^\\circ\\mathrm{C}/\\mathrm{min} \\log S(q)\\propto -D\\log q \\log I(q) \\chi^2 q q I(q) \\gtrsim 100\\,\\mathrm{nm} q \\equiv 1 q I(q) R_g q q q q q_{\\min} R_g I(0) >10\\% |P| q q I(0) q 2\\mathrm{D}\\to I(q)$ 05 绝对标定 — 玻璃碳 与强度尺度 绝对标定专题 — SRM 3600 与 USAXS 一级法 数据还原专题 — 拼接前的还原管线 文献列表 Ultra-small angle X-ray scattering . Fernanda Peyronel, David A. Pink (2018). DOI: 10.1016/B978-0-12-814041-3.00009-5 Small-angle X-ray and neutron scattering . Cy M. Jeffries et al. (2021). DOI: 10.1038/s43586-021-00064-9 Glassy Carbon as an Absolute Intensity Calibration Standard for Small-Angle Scattering . Fan Zhang et al. (2010). DOI: 10.1007/s11661-009-9950-x NIST Standard Reference Material 3600: Absolute Intensity Calibration Standard for Small-Angle X-ray Scattering . Andrew J. Allen et al. (2017). DOI: 10.1107/S1600576717001972 Instrumentation for small-angle scattering . Jan Skov Pedersen (1995). DOI: 10.1007/978-94-015-8457-9_2"
+  },
+  {
+    "id": "models/cylinder/barbell",
+    "title": "哑铃",
+    "url": "models/cylinder/barbell.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "哑铃 barbell 哑铃（barbell）是圆柱中段加上两端半径更大的球状端帽：$R_{\\mathrm{bell}}\\ge R$。适用于棒状胶束末端膨胀、哑铃状纳米颗粒、以及两端比中段更“圆”的短棒。当端帽半径等于圆柱半径且球心落在端面内时，退化为端帽圆柱（半球帽）。 相对平端圆柱，低 $q$ 的有效 $R_g$ 更大，中等 $q$ 出现端帽与中段的干涉调制。两端球心在圆柱外时，几何是真正的哑铃而不是胶囊。"
+  },
+  {
+    "id": "models/cylinder/capped-cylinder",
+    "title": "端帽圆柱",
+    "url": "models/cylinder/capped-cylinder.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "端帽圆柱 capped cylinder 端帽圆柱（胶囊、spherocylinder）是半径 $R$ 的有限圆柱两端各加一个半球。适用于蠕虫状胶束的刚性短段、两端圆化的纳米棒、以及平端圆柱在电镜上明显“收圆”的样品。 相对平端圆柱，高 $q$ 的端面 $q^{-4}$ 特征减弱，因为半球帽去掉了锐利的圆盘端面。总长度 $L+2R$ 进入 $R_g$，不要把 $L$ 理解成尖端到尖端的全长（本页 $L$ 仅指圆柱中段）。"
+  },
+  {
+    "id": "models/cylinder/core-shell-bicelle-elliptical-belt-rough",
+    "title": "粗糙腰带椭圆双层盘",
+    "url": "models/cylinder/core-shell-bicelle-elliptical-belt-rough.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "粗糙腰带椭圆双层盘 elliptical core-shell bicelle with rough belt 在椭圆核壳 bicelle 上，边缘腰带与溶剂的界面不是锐跳变，而是有限宽度的粗糙或成分渐变。适用于去垢剂腰带溶剂化严重、边缘波动的纳米盘，以及高 $q$ 比锐界面核壳盘衰减更快、但厚度振荡仍在的数据。 若粗糙发生在上下面而不是腰带，应把模糊加在面帽，而不是本页的腰带 $\\sigma_{\\mathrm{belt}}$。"
+  },
+  {
+    "id": "models/cylinder/core-shell-bicelle-elliptical",
+    "title": "椭圆核壳双层盘",
+    "url": "models/cylinder/core-shell-bicelle-elliptical.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "椭圆核壳双层盘 elliptical core-shell bicelle 当双层盘的盘面不是圆而是椭圆（半轴 $a\\gt b$）时，用椭圆核壳 bicelle。适用于剪切或磁场下被拉长的纳米盘、椭圆脂双层盘，以及圆盘模型系统偏高 $q$ 的截面振荡对不上的样品。 相对圆盘，粉末平均会额外抹平径向振荡，中间 $q^{-2}$ 区仍然在。轴比 $a/b$ 接近 1 时应退回圆盘，避免多余参数。"
+  },
+  {
+    "id": "models/cylinder/core-shell-bicelle",
+    "title": "核壳双层盘",
+    "url": "models/cylinder/core-shell-bicelle.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "核壳双层盘 core-shell bicelle 核壳双层盘（bicelle）描述圆盘状双层：疏水核芯、上下亲水面（帽）以及边缘腰带。适用于磷脂/去垢剂双层盘、纳米盘，以及短轴比 $L\\ll 2R$、径向与轴向衬度都分段的盘状聚集体。 中间 $q$ 接近薄盘的 $q^{-2}$；高 $q$ 出现双层厚度振荡。腰带与面帽衬度不同时，不能退化成单一核壳圆柱。"
+  },
+  {
+    "id": "models/cylinder/core-shell-cylinder",
+    "title": "核壳圆柱",
+    "url": "models/cylinder/core-shell-cylinder.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "核壳圆柱 core-shell cylinder 核壳圆柱描述径向两段均匀散射长度密度的有限圆柱：核半径 $R_c$、壳外半径 $R_s$，以及核、壳、溶剂三套 $\\rho$。适用于管状胶束、核壳纳米棒、带溶剂化壳的刚性纤维，以及对比变分后仍需两段径向剖面的棒状体系。 与均匀圆柱相比，第一组截面振荡由有效衬度半径决定，壳干涉可在中等 $q$ 产生肩峰。壳很薄且壳衬度接近溶剂时退化为均匀圆柱；核衬度匹配溶剂时接近空心管。"
+  },
+  {
+    "id": "models/cylinder/cylinder",
+    "title": "圆柱",
+    "url": "models/cylinder/cylinder.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "圆柱 cylinder 当粒子可视为均匀散射长度密度的有限长直圆柱时，取向平均圆柱形式因子是棒状与盘状物体的基线模型。典型对象包括：刚性棒状胶束、短纤维与纳米棒、近似圆柱的病毒衣壳片段，以及长径比中等、截面接近圆形的胶体。 曲线判据：细长棒（$L\\gg 2R$）在中间 $q$ 出现 $\\sim q^{-1}$ 区，随后由半径给出的 Bessel 振荡与 Porod $q^{-4}$；扁平盘（$L\\ll 2R$）中间区接近 $q^{-2}$。低 $q$ 的 Guinier 区由整体回转半径控制。截面明显椭圆、空心或径向核壳时，应改用相应变体，而不是给均匀圆柱强加额外参数。 cylinder rod Rg"
+  },
+  {
+    "id": "models/cylinder/elliptical-cylinder",
+    "title": "椭圆截面圆柱",
+    "url": "models/cylinder/elliptical-cylinder.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "椭圆截面圆柱 elliptical cylinder 截面为椭圆（半轴 $a$、$b$）、沿轴长度为 $L$ 的直柱。适用于压扁的纳米棒、带状胶束、以及圆截面圆柱无法同时拟合 Bessel 极小位置与深度的刚性长颗粒。 细长时中间区仍是 $q^{-1}$；轴比偏离 1 会抹平截面振荡。若颗粒还会弯曲，应改用椭圆截面柔性圆柱。"
+  },
+  {
+    "id": "models/cylinder/flexible-cylinder-elliptical",
+    "title": "椭圆截面柔性圆柱",
+    "url": "models/cylinder/flexible-cylinder-elliptical.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "椭圆截面柔性圆柱 flexible elliptical cylinder 蠕虫链的截面是椭圆而不是圆：在 $L$、$b$ 之外再加半轴 $a$、$b_{\\mathrm{cs}}$。适用于带状胶束、压扁的半柔性纤维，以及圆截面柔性圆柱在高 $q$ 振荡深度拟合不好的数据。 链统计（线圈 / 棒转折）仍由 $L$ 与 Kuhn 长度决定；轴比只改截面因子。轴比接近 1 时退回柔性圆柱。"
+  },
+  {
+    "id": "models/cylinder/flexible-cylinder",
+    "title": "柔性圆柱",
+    "url": "models/cylinder/flexible-cylinder.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "柔性圆柱 flexible cylinder 半柔性蠕虫状链：轮廓长度 $L$、Kuhn 长度 $b$（或持久长度 $\\ell_p=b/2$）、圆形截面半径 $R$。适用于蠕虫状胶束、半刚性聚电解质、以及既有 $q^{-1}$ 棒区又有低 $q$ 线圈 Guinier 的聚合物。 $L/b\\gg 1$ 时低 $q$ 像高斯链，$q\\ell_p\\sim 1$ 附近过渡到棒的 $q^{-1}$，更高 $q$ 由截面 $J_1$ 控制。完全刚性（$b\\to L$）回到直圆柱；完全柔性且忽略截面时接近排除体积链。"
+  },
+  {
+    "id": "models/cylinder/hollow-cylinder",
+    "title": "空心圆柱",
+    "url": "models/cylinder/hollow-cylinder.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "空心圆柱 hollow cylinder 空心圆柱（管）描述内外半径满足 $R_{\\mathrm{in}}\\lt R_{\\mathrm{out}}$、管壁衬度相对溶剂均匀的有限长管。适用于中空纳米管、溶剂填充的管状胶束、以及核衬度被匹配掉的核壳圆柱极限。 相对实心棒，中间 $q$ 仍可出现 $q^{-1}$（细长管）或更接近壳的调制；截面振荡由内外半径共同决定，壁很薄时高 $q$ 更接近空心壳而非实心 Porod。"
+  },
+  {
+    "id": "models/cylinder",
+    "title": "圆柱",
+    "url": "models/cylinder/index.html",
+    "section": "模型手册",
+    "headings": [
+      "模型条目"
+    ],
+    "text": "圆柱 Cylinder form factors 圆柱类覆盖棒、管、盘与柔性链状物体：截面与长度（或厚度）分别主导不同 $q$ 区的斜率与振荡。取向平均后常见 $q^{-1}$（细长棒）或 $q^{-2}$（薄盘）中间区。 cylinder rod disk Rg"
+  },
+  {
+    "id": "models/cylinder/pearl-necklace",
+    "title": "珍珠项链",
+    "url": "models/cylinder/pearl-necklace.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "珍珠项链 pearl necklace 珍珠项链由 $N$ 个半径 $R$ 的球珠用长度为 $\\ell$ 的细杆（或无衬度间隔）连接，杆与杆之间无键角限制（可弯曲）。适用于聚电解质塌缩中间态、串珠状胶束、以及直线珍珠串无法解释低 $q$ 线圈特征的样品。 高 $q$ 看到单珠的 Rayleigh 振荡；中等 $q$ 由珠心距 $A=2R+\\ell$ 的干涉决定；低 $q$ 由整链 $R_g$ 决定。杆若有显著衬度，须计入杆的振幅，不能只把珠当点。"
+  },
+  {
+    "id": "models/cylinder/pringle",
+    "title": "马鞍形圆盘",
+    "url": "models/cylinder/pringle.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "马鞍形圆盘 pringle 马鞍形（普林格尔）盘是半径 $R$、厚度 $H$ 的薄盘被弯成双曲抛物面（高斯曲率为负）。适用于翘曲的纳米盘、马鞍形蛋白质组装、以及平盘模型在中等 $q$ 过冲、需要额外曲率阻尼的片状颗粒。 相对平盘，中间 $q^{-2}$ 区仍在，但厚度振荡与盘半径极小被曲率抹圆。曲率很小时应退回平盘或核壳双层盘，不要额外放鞍参数。"
+  },
+  {
+    "id": "models/cylinder/stacked-disks",
+    "title": "堆叠圆盘",
+    "url": "models/cylinder/stacked-disks.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "堆叠圆盘 stacked disks 沿共同法向堆叠 $N$ 片圆盘（或核壳盘），层间距 $d$。适用于黏土 tactoid、未剥离的层状纳米片、以及 bicelle 发生一维絮凝的样品。中间区仍接近单盘的 $q^{-2}$，并在 $q\\simeq 2\\pi/d$ 出现层状干涉峰。 若堆叠无序到只剩一层，退回单盘；若横向无限大，应改用层状准晶堆叠，而不是有限半径的堆叠盘。"
+  },
+  {
+    "id": "models/cylinder/tetrapod",
+    "title": "四足体",
+    "url": "models/cylinder/tetrapod.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "四足体 tetrapod 四足体由一个中心核向四面体方向伸出四根圆柱臂。适用于 CdSe/CdTe 等胶体半导体四足纳米晶、四臂星形胶束的粗描述，以及电镜已确认四面体对称的分枝颗粒。 低 $q$ 的 $R_g$ 由臂长 $L_{\\mathrm{arm}}$ 主导；中间区混合了棒的 $q^{-1}$ 与臂间干涉；高 $q$ 由臂半径决定。不要用单根圆柱去拟合整条曲线的 Guinier。"
+  },
+  {
+    "id": "models/cylinder/torus-elliptical-shell",
+    "title": "椭圆环壳",
+    "url": "models/cylinder/torus-elliptical-shell.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "椭圆环壳 elliptical torus shell 椭圆环壳是主半径 $R$ 的圆环，管截面为椭圆半轴 $a$、$b$ 的壳层（可退化到实心椭圆截面环）。适用于纳米环、环形胶束、以及空心管被弯成闭合环的样品。 低 $q$ 的 $R_g$ 由环的主半径主导；中等 $q$ 出现与 $R$ 相关的环状振荡；高 $q$ 由管截面 $a$、$b$ 决定。开口直管应使用空心圆柱，不要把缺口环硬拟合成闭合环面。"
+  },
+  {
+    "id": "models/ellipsoid/core-shell-ellipsoid",
+    "title": "核壳椭球",
+    "url": "models/ellipsoid/core-shell-ellipsoid.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "核壳椭球 core-shell ellipsoid 核与壳都是旋转椭球、且共焦点的两段均匀散射长度密度剖面。适用于略扁/略长的核–冠状胶束、带溶剂化壳的椭球胶体，以及对比变分后仍需两段椭球剖面的体系。 共焦约定使壳厚沿法向不均匀：长轴端更“薄”、赤道更“厚”，或反过来取决于半轴。若壳只是均匀外扩（相似放大），几何不同，拟合时不要混用两种厚度定义。轴比接近 1 时退化为核壳球；核衬度匹配溶剂时接近空心椭球壳。"
+  },
+  {
+    "id": "models/ellipsoid/ellipsoid",
+    "title": "椭球",
+    "url": "models/ellipsoid/ellipsoid.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "椭球 ellipsoid 当粒子可视为均匀散射长度密度的旋转椭球（两个半轴相等、第三个不同）时，取向平均椭球形式因子是球与棒/盘之间的连续过渡。典型对象包括：略扁或略长的胶束、变形乳液滴、以及电镜显示轴比有限的无机纳米颗粒。 曲线判据：轴比 $\\varepsilon=R_\\parallel/R_\\perp$ 接近 1 时接近均匀球的振荡；$\\varepsilon\\gg 1$（长球）中间区趋近 $q^{-1}$；$\\varepsilon\\ll 1$（扁球）趋近 $q^{-2}$。粉末平均会抹浅球的极小。明显三轴不等、核壳分层或截面呈椭圆柱时，应改用相应变体。 ellipsoid Rg"
+  },
+  {
+    "id": "models/ellipsoid",
+    "title": "椭球",
+    "url": "models/ellipsoid/index.html",
+    "section": "模型手册",
+    "headings": [
+      "模型条目"
+    ],
+    "text": "椭球 Ellipsoid form factors 椭球类用两个或三个半轴描述略扁或略长的旋转体与三轴体，是球与极端棒/盘之间的连续过渡。取向平均后，$I(q)$ 振荡被平滑，但仍由特征半轴尺度决定拐折位置。 ellipsoid Rg"
+  },
+  {
+    "id": "models/ellipsoid/triaxial-ellipsoid",
+    "title": "三轴椭球",
+    "url": "models/ellipsoid/triaxial-ellipsoid.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "三轴椭球 triaxial ellipsoid 三个半轴 $R_a,R_b,R_c$ 均不等的均匀椭球。适用于既不是旋转对称、也尚未尖角化成砖块的粒子：压扁又拉长的胶束、不规则纳米晶的光滑近似，以及电镜给出三个特征尺寸的胶体。 若其中两轴相等，应改用旋转椭球（少一个自由参数）。若棱角分明，应改用平行六面体。轴比都接近 1 时与球无法分辨。"
+  },
+  {
+    "id": "models",
+    "title": "模型手册",
+    "url": "models/index.html",
+    "section": "模型手册",
+    "headings": [
+      "分类",
+      "怎么选模型"
+    ],
+    "text": "模型手册 Model handbook — form factors, empirical functions, structure factors 本栏目按几何与函数类型查阅常见解析小角散射模型：形式因子、经验函数与结构因子。每篇说明适用场景、核心公式、参数含义与拟合注意，并给出原始文献入口。若你还不熟悉 $P(q)$、$S(q)$ 与多分散，可先读 学习路径 08：模型与多分散。 更系统的选型思路见 学习路径 08。 form factor structure factor P(q) S(q) Rg"
+  },
+  {
+    "id": "models/lamellae",
+    "title": "层状",
+    "url": "models/lamellae/index.html",
+    "section": "模型手册",
+    "headings": [
+      "模型条目"
+    ],
+    "text": "层状 Lamellar form factors 层状模型描述膜、双层与层状堆叠：单层给出厚度方向的形式因子，堆叠模型叠加层间关联（Caille 涨落或准晶无序），在 $I(q)$ 上表现为布拉格峰与漫散射背景。 lamellar Caille"
+  },
+  {
+    "id": "models/lamellae/lamellar-hg-stack-caille",
+    "title": "头基–尾链 Caille 堆叠",
+    "url": "models/lamellae/lamellar-hg-stack-caille.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "头基–尾链 Caille 堆叠 lamellar HG stack Caille 多层双层既需要头基–尾链两段衬度，又需要 Caille 热起伏堆叠时，把头–尾–头形式因子与 Caille $S(q)$ 相乘。这是溶致层状相与多层脂质体最常用的组合：低 $q$ 峰形反映弹性起伏，高 $q$ 漫散射与峰强度比反映双层剖面。 若只要平均厚度、对比不足，退回均匀 Caille 堆叠。无层状峰时退回头基–尾链孤立片。多层同心囊泡有曲率与闭合几何，应改多层囊泡，而不是无限平面堆叠。 Caille Caillé headgroup stack"
+  },
+  {
+    "id": "models/lamellae/lamellar-hg",
+    "title": "头基–尾链层状",
+    "url": "models/lamellae/lamellar-hg.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "头基–尾链层状 lamellar headgroup 当无限片层沿法向可分成头基与尾链两段不同散射长度密度时，用对称的头–尾–头剖面代替单矩形。典型对象是脂质或表面活性剂双层：疏水尾链夹在两层极性头基之间，溶剂在外侧。 相对均匀层状：高 $q$ 的节点位置与深度随 $\\rho_{\\mathrm{h}}/\\rho_{\\mathrm{t}}$ 移动，对比变化（H/D 或 SAXS/SANS）能分开两段厚度。若层间出现布拉格峰，应改头基–尾链 Caille 堆叠。弯曲闭合膜用囊泡；有限半径双层盘用核壳双层盘。"
+  },
+  {
+    "id": "models/lamellae/lamellar-stack-caille",
+    "title": "Caille 层状堆叠",
+    "url": "models/lamellae/lamellar-stack-caille.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "Caille 层状堆叠 lamellar stack Caille 多层膜沿法向以平均间距 $d$ 堆叠，且层间无序主要来自热弯曲起伏（smectic A / 溶致层状）时，用 Caille 结构因子乘以单层厚度形式因子。典型对象：溶致层状相、多层脂质体、柔性表面活性剂膜的粉末谱。 $I(q)$ 在 $q_n=2\\pi n/d$ 出现布拉格峰，峰有幂律尾而不是高斯；高阶峰按 $n^2\\eta$ 迅速变宽。刚性层、间距无关联涨落更接近准晶堆叠。横向有限的 tactoid 用堆叠圆盘。 Caille Caillé lamellar stack"
+  },
+  {
+    "id": "models/lamellae/lamellar-stack-paracrystal",
+    "title": "准晶层状堆叠",
+    "url": "models/lamellae/lamellar-stack-paracrystal.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "准晶层状堆叠 lamellar stack paracrystal 层状堆叠的无序主要是相邻间距的累积涨落（Hosemann 一维准晶），而不是膜的长波弯曲时，用准晶格子因子乘以无限片形式因子。典型对象：较刚性的多层、聚合物片晶堆叠、以及间距无序明显、峰形接近高斯加宽而非幂律尾的体系。 柔性溶致膜、脂质 $L_\\alpha$ 相的高分辨峰尾通常更符合 Caille，而不是本模型。横向有限的盘堆叠用堆叠圆盘。三维立方/六方准晶格子不在本页。 paracrystal lamellar"
+  },
+  {
+    "id": "models/lamellae/lamellar",
+    "title": "层状",
+    "url": "models/lamellae/lamellar.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "层状 lamellar 当散射体可视为横向远大于仪器窗口、沿法向只有一层（或彼此无关联的多层）均匀板时，无限片层形式因子是最直接的描述。典型对象包括：稀释的溶致层状相单层、剥离后的黏土或氧化石墨烯片、以及横向尺寸已超出 $q_{\\min}$ 所能分辨的脂质双层粗描述。 曲线判据：中间区接近 $I\\sim q^{-2}$，并在 $q\\sim 2\\pi/t$ 出现厚度决定的振荡或拐点。若在 $q\\simeq 2\\pi/d$ 出现布拉格峰，说明层间有关联，应改用 Caille 或准晶堆叠，而不是给单层强加周期。横向有限（盘、tactoid）应改用堆叠圆盘或扁圆柱。"
+  },
+  {
+    "id": "models/paracrystal/bcc-paracrystal",
+    "title": "体心立方准晶",
+    "url": "models/paracrystal/bcc-paracrystal.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "体心立方准晶 BCC paracrystal 球形颗粒占据体心立方（BCC）点阵、并带 Hosemann 准晶畸变时用本页。带电胶体在中等体积分数下常取 BCC；嵌段共聚物球形微区在一定 χN 窗口也稳定为 BCC。粉末峰位比接近 $\\sqrt{2}:\\sqrt{4}:\\sqrt{6}$（即 $(110),(200),(211)$）是选用本格子的主要判据。 不要仅凭“看起来有三个峰”就指定 BCC：SC 与 FCC 的允许反射不同。液体样 $S(q)$ 的相关峰更宽、缺少立方消光规则。"
+  },
+  {
+    "id": "models/paracrystal/fcc-paracrystal",
+    "title": "面心立方准晶",
+    "url": "models/paracrystal/fcc-paracrystal.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "面心立方准晶 FCC paracrystal 球形颗粒占据面心立方（FCC）点阵、近程有序而远程失序时用本页。硬球或短程排斥胶体在较高体积分数下倾向 FCC / HCP；嵌段共聚物球形微区也可出现 FCC。粉末峰位比接近 $\\sqrt{3}:\\sqrt{4}:\\sqrt{8}:\\sqrt{11}$（$(111),(200),(220),(311)$）支持本格子。 密堆六方（HCP）在一维曲线上与 FCC 容易混淆；若只有少数宽峰，不要坚持指定 FCC。液体样结构因子没有未混指数消光。"
+  },
+  {
+    "id": "models/paracrystal",
+    "title": "准晶",
+    "url": "models/paracrystal/index.html",
+    "section": "模型手册",
+    "headings": [
+      "模型条目"
+    ],
+    "text": "准晶 Paracrystal structures 准晶（paracrystal）模型描述具有近程有序、远程逐渐失序的点阵：在 $I(q)$ 上表现为展宽的布拉格峰与衰减的高阶峰。本类给出简单立方、体心立方与面心立方三种常见格子。 paracrystal FCC BCC SC"
+  },
+  {
+    "id": "models/paracrystal/sc-paracrystal",
+    "title": "简单立方准晶",
+    "url": "models/paracrystal/sc-paracrystal.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "简单立方准晶 simple cubic paracrystal 球形颗粒占据简单立方（SC）点阵、近程有序而远程逐渐失序时，用 Hosemann 三维准晶格子因子乘以球形式因子。典型对象：轻度有序的胶乳或二氧化硅胶体晶体、嵌段共聚物球形微区的简单立方排列，以及峰位比接近 $1:\\sqrt{2}:\\sqrt{3}$ 的粉末谱。 液体样硬球结构因子只有宽而少的相关峰；准晶在若干 $q_{hkl}$ 给出可分辨的布拉格峰，且高阶峰随畸变因子 $g$ 迅速变弱。层状一维堆叠用层状准晶，不要套三维立方格子。"
+  },
+  {
+    "id": "models/parallelepiped/core-shell-parallelepiped",
+    "title": "核壳平行六面体",
+    "url": "models/parallelepiped/core-shell-parallelepiped.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "核壳平行六面体 core-shell parallelepiped 核是边长 $A_c,B_c,C_c$ 的均匀砖块，外包厚度 $t$ 的均匀壳（外壳边长 $A_c+2t$ 等）。适用于表面配体/氧化物层的立方纳米晶、核壳钙钛矿砖块、以及对比变分后仍需两段矩形剖面的胶体。 核衬度匹配溶剂时接近空心矩形棱柱；壳衬度匹配溶剂时回到均匀平行六面体。薄壳且 $t$ 远小于最短边时，可再与薄壁空心极限对照。"
+  },
+  {
+    "id": "models/parallelepiped/hollow-rectangular-prism-thin-walls",
+    "title": "薄壁空心矩形棱柱",
+    "url": "models/parallelepiped/hollow-rectangular-prism-thin-walls.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "薄壁空心矩形棱柱 hollow rectangular prism (thin walls) 空心矩形棱柱在壁厚 $t$ 远小于三边时的极限：散射由六个面（及棱）贡献，体积近似为表面积乘 $t$。适用于极薄纳米框、金属有机框架空壳、以及 $t$ 已小于分辨率所能分开的空心砖块。 若数据的 $q_{\\max}$ 已能分辨壁厚振荡，应回到有限 $t$ 的空心矩形棱柱，而不是把薄壁模型硬拟合出虚假的 $t$。"
+  },
+  {
+    "id": "models/parallelepiped/hollow-rectangular-prism",
+    "title": "空心矩形棱柱",
+    "url": "models/parallelepiped/hollow-rectangular-prism.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "空心矩形棱柱 hollow rectangular prism 外壁为矩形棱柱、内腔充满溶剂（或与溶剂衬度相同的介质），壁厚 $t$ 有限。适用于空心纳米框、管状矩形截面粒子、以及核被溶剂化掏空的砖块。 壁很厚、内腔很小时接近实心矩形棱柱；壁很薄时改用薄壁极限，避免 $t$ 与衬度强相关。圆管应改用空心圆柱。"
+  },
+  {
+    "id": "models/parallelepiped",
+    "title": "平行六面体",
+    "url": "models/parallelepiped/index.html",
+    "section": "模型手册",
+    "headings": [
+      "模型条目"
+    ],
+    "text": "平行六面体 Parallelepiped form factors 平行六面体与矩形棱柱描述砖块状、片状或空心棱柱粒子。三个边长分别在不同 $q$ 区留下特征，空心与薄壁变体强调壳层厚度与内腔。"
+  },
+  {
+    "id": "models/parallelepiped/parallelepiped",
+    "title": "平行六面体",
+    "url": "models/parallelepiped/parallelepiped.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "平行六面体 parallelepiped 均匀散射长度密度的直角砖块，三条棱 $A,B,C$ 完全对等，没有预先指定的“柱轴”。适用于纳米立方/长方体、片状晶体、MOF 与卤化物钙钛矿等棱角分明的胶体。 三个边长分别在不同 $q$ 区留下特征：最长边主导 Guinier 与中间斜率，最短边主导高 $q$ 振荡。圆角立方应优先考虑超球（$p$ 有限）；光滑三轴体用椭球。立方极限 $A=B=C$ 仍比球振荡浅，因为面与棱贡献不同的相位。"
+  },
+  {
+    "id": "models/parallelepiped/rectangular-prism",
+    "title": "矩形棱柱",
+    "url": "models/parallelepiped/rectangular-prism.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "矩形棱柱 rectangular prism 几何仍是直角砖块，但明确指定 $C$ 为棱柱（挤出）轴、$A\\times B$ 为矩形截面。适用于纳米棒/带（截面近似矩形）、挤压生长的晶须，以及需要与圆柱对照的方形截面柱。 与平行六面体的差别是约定与取向角定义，不是另一套振幅：粉末 $I(q)$ 在相同 $A,B,C$ 下应一致。本页把 $\\theta$ 取为 $\\mathbf{q}$ 与 $C$ 轴夹角，便于和圆柱的 $\\alpha$ 对照。$A=B$ 且与圆柱半径可比时，中间 $q^{-1}$ 相似，高 $q$ 因棱角而不同。"
+  },
+  {
+    "id": "models/polyhedron",
+    "title": "多面体",
+    "url": "models/polyhedron/index.html",
+    "section": "模型手册",
+    "headings": [
+      "模型条目"
+    ],
+    "text": "多面体 Polyhedron form factors 多面体类覆盖棱柱与截角多面体等离散面几何。相对球/椭球，高 $q$ 振荡与面/棱相关的特征更明显，常用于胶体晶构筑单元或特殊合成纳米晶。"
+  },
+  {
+    "id": "models/polyhedron/prism",
+    "title": "三棱柱",
+    "url": "models/polyhedron/prism.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "三棱柱 prism 底面为等边三角形、高度 $H$ 的均匀直棱柱。适用于三角纳米柱、部分金/银纳米棱镜（有限厚度）、以及截面接近正三角形的晶须。 细长（$H\\gg a$）时中间区接近圆柱的 $q^{-1}$；扁平（$H\\ll a$）时接近三角薄片的 $q^{-2}$。圆截面用圆柱；矩形截面用矩形棱柱。无限薄的正三角片不是本模型。"
+  },
+  {
+    "id": "models/polyhedron/tetrahedron",
+    "title": "四面体",
+    "url": "models/polyhedron/tetrahedron.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "四面体 tetrahedron 正四面体均匀粒子：四张等边三角形面、六条等边。适用于四面体量子点、部分 II–VI 纳米晶，以及胶体晶的四面体构筑单元。 相对球，同样 $R_g$ 下高 $q$ 振荡更浅，面法向与棱给出不同的渐近。圆角或截去顶点时应改用截角四面体；若只是略扁的等轴体，旋转椭球参数更少、更稳。"
+  },
+  {
+    "id": "models/polyhedron/truncated-octahedron",
+    "title": "截角八面体",
+    "url": "models/polyhedron/truncated-octahedron.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "截角八面体 truncated octahedron Archimedean 截角八面体：6 个正方形面与 8 个正六边形面，是 FCC 金属纳米晶常见的 Wulff 外形。适用于金、银、铜及部分氧化物的截角八面体胶体。 未截角的正八面体接近超球 $p=1/2$ 极限；完全截角后更接近球，振荡加深、相位移动。若粒子已是圆角立方，用超球（$p&gt;1$）或平行六面体更直接。"
+  },
+  {
+    "id": "models/polyhedron/truncated-tetrahedron",
+    "title": "截角四面体",
+    "url": "models/polyhedron/truncated-tetrahedron.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "截角四面体 truncated tetrahedron 正四面体切去四个顶点后的 Archimedean 截角四面体：4 个正六边形面与 4 个正三角形面。适用于截角四面体纳米晶、部分贵金属胶体，以及生长过程中顶点被溶蚀的四面体。 截断参数常用原棱上的截取比：完全截角（截到棱中点的三分之一处）给出正六边形；截得更少则六边形非正，并更接近原四面体。截得过多会变成八面体取向的多面体，应改用截角八面体或超球。"
+  },
+  {
+    "id": "models/shape-independent/be-polyelectrolyte",
+    "title": "聚电解质",
+    "url": "models/shape-independent/be-polyelectrolyte.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "聚电解质 polyelectrolyte 半柔性带电链在半稀释区常出现静电相关峰，并在更低 $q$ 有关联长度。Borue–Erukhimovich（BE）型分母把屏蔽 $\\kappa$ 与峰位 $q_*$ 写进同一个有理式；物理图像来自 Barrat–Joanny 的静电持久长度与 Dobrynin 的标度。 中性链回到排除体积或 Debye。峰非常宽且像微乳时，Teubner–Strey 也可能拟合，但参数解释不同。"
+  },
+  {
+    "id": "models/shape-independent/broad-peak",
+    "title": "宽峰",
+    "url": "models/shape-independent/broad-peak.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "宽峰 broad peak 液体、微乳、聚电解质或凝胶常出现又宽又不一定对称的相关峰。宽峰经验式用 $q_0$、关联长度 $\\xi$ 与指数 $m$ 抓住峰位和宽度，不引入晶格。 峰变得又尖又有高阶时，应改用层状堆叠。双连续微乳且可用 $q^2,q^4$ 展开时，Teubner–Strey 更有物理内容。"
+  },
+  {
+    "id": "models/shape-independent/correlation-length",
+    "title": "关联长度",
+    "url": "models/shape-independent/correlation-length.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "关联长度 correlation length 只需要一个关联长度、又希望高 $q$ 指数可调时，用广义洛伦兹 $1/(1+(q\\xi)^m)$。它覆盖 OZ（$m=2$）到接近 DAB/Porod（$m=4$）的中间情形。 有峰则加 $q_0$ 变成宽峰。明确两相光滑界面时优先 DAB，以便把 $\\xi$ 连到面积。"
+  },
+  {
+    "id": "models/shape-independent/dab",
+    "title": "Debye–Anderson–Brumberger",
+    "url": "models/shape-independent/dab.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "Debye–Anderson–Brumberger DAB 两相随机介质、孔材料或旋节后期的无规两相，相关函数接近 $\\exp(-r/\\xi)$ 时，用 Debye–Anderson–Brumberger。高 $q$ 自动给出 Porod $q^{-4}$，低 $q$ 由 $\\xi$ 决定。 若高 $q$ 是 $q^{-2}$ 而不是 $q^{-4}$，应改用洛伦兹。界面分形则改用表面分形。有峰时不是随机两相。"
+  },
+  {
+    "id": "models/shape-independent/fractal-core-shell",
+    "title": "核壳分形",
+    "url": "models/shape-independent/fractal-core-shell.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "核壳分形 fractal core-shell 致密核外面是分形冠状（胶束、吸附聚合物、部分溶剂化的聚集体）时，把核的球振幅与分形壳的 Teixeira 关联合在一起。核衬度与壳衬度通常不同。 无致密核时用星形聚合物或质量分形。壳是均匀密壳时用核壳球。"
+  },
+  {
+    "id": "models/shape-independent/fractal",
+    "title": "分形",
+    "url": "models/shape-independent/fractal.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "分形 fractal 聚集体由近乎相同的建造块按标度不变的方式堆起来时，用 Teixeira 分形散射。低 $q$ 由整体截断 $\\xi$ 给出 Guinier 型饱和，中间 $q^{-D}$，高 $q$ 回到建造块形式因子。 只关心中间斜率时可用质量分形或纯幂律。界面粗糙主导则用表面分形。核与分形壳衬度不同时用核壳分形。"
+  },
+  {
+    "id": "models/shape-independent/gauss-lorentz-gel",
+    "title": "高斯–洛伦兹凝胶",
+    "url": "models/shape-independent/gauss-lorentz-gel.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "高斯–洛伦兹凝胶 Gauss–Lorentz gel 化学凝胶同时有冻结的固态不均质与液体般的热涨落。Shibayama 把前者写成高斯（尺寸 $\\Xi$），后者写成洛伦兹（关联长度 $\\xi$）。 两个分量都是洛伦兹时用双洛伦兹。需要额外幂律网络尾时用凝胶拟合经验式。"
+  },
+  {
+    "id": "models/shape-independent/gaussian-peak",
+    "title": "高斯峰",
+    "url": "models/shape-independent/gaussian-peak.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "高斯峰 Gaussian peak 弱有序或仪器分辨率主导的相关峰接近高斯时，用高斯峰作经验描述。典型对象：宽而对称的层状/立方弱峰、分辨率卷积后的布拉格残峰，以及只需要峰位与宽度的筛选。 峰明显不对称或有 Lorentz 尾时改用洛伦兹峰或宽峰。有明确晶格或层状堆叠时应改用层状 / 准晶形式因子，而不是一个孤立高斯。"
+  },
+  {
+    "id": "models/shape-independent/gel-fit",
+    "title": "凝胶拟合",
+    "url": "models/shape-independent/gel-fit.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "凝胶拟合 gel fit 凝胶或玻璃态网络的经验拟合：在 Gauss–Lorentz 之外再允许一段幂律，用来吸收簇、挂链或逾渗网络的中间斜率。它不是唯一的凝胶理论，只是常用的少参数包络。 能用 Gauss–Lorentz 说清时不要加幂律。明确分形凝胶应改用质量分形。"
+  },
+  {
+    "id": "models/shape-independent/guinier-porod",
+    "title": "Guinier–Porod",
+    "url": "models/shape-independent/guinier-porod.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "Guinier–Porod Guinier–Porod 需要同时描述低 $q$ 的 $R_g$ 与高 $q$ 幂律、又不想引入完整几何振荡时，用 Hammouda 的 Guinier–Porod。该衔接在交叉点强制连续，适合高分子、聚集体与多孔体系的两段曲线。 维数参数 $s$ 区分类球（$s=0$）、类棒（$s=1$）与类片（$s=2$）的 Guinier 前因子。若曲线有多层结构（两套 $R_g$），应改用统一幂律–Rg 或多级 Guinier–Porod，而不是把一个 $R_g$ 拉得过宽。 Guinier Porod Rg"
+  },
+  {
+    "id": "models/shape-independent/guinier",
+    "title": "Guinier",
+    "url": "models/shape-independent/guinier.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "Guinier Guinier 当只关心整体尺寸、不假定具体外形时，Guinier 分析给出低 $q$ 的回转半径。典型对象包括：蛋白质与柔性链的整体 $R_g$、任意凸形状稀释颗粒的尺寸估计，以及尚未选定几何模型前的定标。 适用窗口约为 $qR_g\\lesssim 1$。$\\log I$ 对 $q^2$ 呈直线，截距是前向散射 $I(0)$。一旦出现振荡极小、幂律尾或相关峰，应离开纯 Guinier，改用完整形式因子或 Guinier–Porod / 统一模型。 Guinier Rg"
+  },
+  {
+    "id": "models/shape-independent",
+    "title": "形状无关",
+    "url": "models/shape-independent/index.html",
+    "section": "模型手册",
+    "headings": [
+      "模型条目"
+    ],
+    "text": "形状无关 Shape-independent functions 形状无关函数不假定具体粒子外形，而用 Guinier、Porod、幂律、分形、聚合物链与峰函数等描述 $I(q)$ 的局部斜率与特征尺度。适合初步定标、多尺度拼接或缺乏明确几何时的经验拟合。 Guinier Porod Rg Teubner"
+  },
+  {
+    "id": "models/shape-independent/line",
+    "title": "线性",
+    "url": "models/shape-independent/line.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "线性 line 本页选定线性本底 $I(q)=A+B q$。它不是粒子形状模型，也不给出半径、厚度或分形维数。用途只是：吸收未扣净的残差斜率、弱的多重散射/漏光随 $q$ 的缓变，或在极窄窗口里做经验基线。 文献里也有人写 $A+B q^2$（与某些探测器或密度涨落展开有关）。本手册不采用平方项：页内公式、配图与参数表一律是 $A+Bq$。若数据其实是 Porod 尾、幂律或 Guinier，应改用那些模型，而不是把形状信息塞进 $B$。"
+  },
+  {
+    "id": "models/shape-independent/lorentz",
+    "title": "洛伦兹",
+    "url": "models/shape-independent/lorentz.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "洛伦兹 Lorentz 临界涨落、半稀释溶液或凝胶的热涨落常用 Ornstein–Zernike / 洛伦兹型：$I\\sim 1/(1+\\xi^2 q^2)$。典型对象：近临界二元混合物、聚合物溶液的浓度涨落、以及只需要一个关联长度的筛选拟合。 若高 $q$ 掉得比 $q^{-2}$ 更快，应改用 DAB（$q^{-4}$ 尾）或带指数 $m$ 的关联长度模型。出现相关峰时改用宽峰或 Teubner–Strey。"
+  },
+  {
+    "id": "models/shape-independent/mass-fractal",
+    "title": "质量分形",
+    "url": "models/shape-independent/mass-fractal.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "质量分形 mass fractal 质量随半径按 $M\\sim R^{D_m}$ 增长的聚集体，中间区 $I\\sim q^{-D_m}$。$D_m$ 在 $1$–$3$ 之间：近线形网络偏低，密实团簇接近 $3$。 需要建造块振荡或指数截断的完整 Teixeira 式时，用分形页。高 $q$ 若转到表面尾，用质量–表面分形。"
+  },
+  {
+    "id": "models/shape-independent/mass-surface-fractal",
+    "title": "质量–表面分形",
+    "url": "models/shape-independent/mass-surface-fractal.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "质量–表面分形 mass-surface fractal 聚集体在中间 $q$ 按质量分形生长，高 $q$ 看见一次颗粒的粗糙或光滑表面时，把 $q^{-D_m}$ 接到 $q^{D_s-6}$。转折给出一次颗粒尺度。 只有一段斜率时不要用本模型。需要建造块振荡时回到完整分形页。"
+  },
+  {
+    "id": "models/shape-independent/mono-gauss-coil",
+    "title": "单分散高斯链",
+    "url": "models/shape-independent/mono-gauss-coil.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "单分散高斯链 monodisperse Gaussian coil 理想链、$\\theta$ 溶剂中的线形高分子，且分子量分布很窄时，用 Debye 单分散高斯链。低 $q$ 给出 $R_g$，高 $q$ 趋近 $q^{-2}$。 明显多分散用 Zimm 多分散 Debye。良溶剂排除体积使高 $q$ 接近 $q^{-1/\\nu}$（$\\nu\\approx 0.588$），应改用排除体积链。半柔性棒段明显时用柔性圆柱。"
+  },
+  {
+    "id": "models/shape-independent/peak-lorentz",
+    "title": "洛伦兹峰",
+    "url": "models/shape-independent/peak-lorentz.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "洛伦兹峰 peak Lorentz 相关峰带明显洛伦兹尾（指数关联的畴或寿命）时，用洛伦兹峰。比高斯更“瘦顶宽尾”。适合液体峰、短程有序的无定形相关峰。 非常宽、峰位可移到 $q=0$ 附近时，宽峰或 Teubner–Strey 更合适。层状高阶峰应改用堆叠模型。"
+  },
+  {
+    "id": "models/shape-independent/poly-gauss-coil",
+    "title": "多分散高斯链",
+    "url": "models/shape-independent/poly-gauss-coil.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "多分散高斯链 polydisperse Gaussian coil 工业高分子或未分级样品的 $M_w/M_n$ 明显大于 $1$ 时，对 Debye 函数做 Schulz–Zimm 平均。低 $q$ 的 $R_g$ 接近 $z$ 均，前向散射仍由 $M_w$ 主导。 分布很窄时回到单分散 Debye。排除体积与多分散会混在高 $q$ 尾上，不要两个都自由拟合。"
+  },
+  {
+    "id": "models/shape-independent/polymer-excl-volume",
+    "title": "聚合物排除体积",
+    "url": "models/shape-independent/polymer-excl-volume.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "聚合物排除体积 polymer excluded volume 良溶剂中自避链的 Flory 指数 $\\nu\\approx 0.588$，中间区 $I\\sim q^{-1/\\nu}\\approx q^{-1.70}$，而不是理想链的 $q^{-2}$。Pedersen 与 Schurtenberger 给出含持久长度的蠕虫链数值/插值形式因子。 $\\theta$ 溶剂回到 Debye。刚性足够高、已看见 $q^{-1}$ 时，用柔性圆柱往往更直接。"
+  },
+  {
+    "id": "models/shape-independent/porod",
+    "title": "Porod",
+    "url": "models/shape-independent/porod.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "Porod Porod 高 $q$ 只看见界面时，Porod 定律把 $I\\sim q^{-4}$ 的幅度连到比表面积。典型对象：锐利两相（孔材料、相分离聚合物、乳滴），以及形式因子振荡已经衰减、只剩界面尾的胶体。 判据：$\\log I$–$\\log q$ 上斜率接近 $-4$；Porod 图 $q^4 I(q)$ 趋向平台。斜率显著偏离 $-4$ 时，应改用表面分形、模糊界面或纯幂律，而不是强加 Porod 常数。 Porod surface"
+  },
+  {
+    "id": "models/shape-independent/power-law",
+    "title": "幂律",
+    "url": "models/shape-independent/power-law.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "幂律 power law 当一段 $q$ 窗口里 $I(q)$ 接近纯幂律、又不想引入 Guinier 转折或界面面积时，用 $I\\sim q^{-m}$ 作经验描述。常见于分形区的局部拟合、背景斜率，或只关心有效指数的筛选。 它不是粒子形状：同一指数可来自质量分形、棒/片的中间区、粗糙表面或未扣净的本底。看到直线就写“球形/柱形”是误读。"
+  },
+  {
+    "id": "models/shape-independent/rpa",
+    "title": "无规相近似",
+    "url": "models/shape-independent/rpa.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "无规相近似 RPA 聚合物共混或熔体的浓度涨落在平均场下用 de Gennes 无规相近似（RPA）。$S(q)$ 由 Debye 函数与 Flory–Huggins $\\chi$ 构成；趋近旋节时 $S(0)$ 发散。 嵌段共聚物有 Leibler 峰，本页只写共混均聚物的 de Gennes 式。已经相分离成畴时改用 TS、层状或几何模型。"
+  },
+  {
+    "id": "models/shape-independent/spinodal",
+    "title": "旋节分解",
+    "url": "models/shape-independent/spinodal.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "旋节分解 spinodal 旋节分解早期，Cahn–Hilliard 给出一个随时间指数增长、峰位几乎固定的 $q_m$。静态测量上常把瞬时结构写成 $I\\sim 1/[B+(q^2-q_c^2)^2]$。 后期粗化、峰位按 $t^{-1/3}$ 移动时，本页的早期式不够，应改用更完整的动力学或 Teubner–Strey 型宽峰。聚合物共混的热力学用 RPA 讨论 $S(q)$，再谈动力学。"
+  },
+  {
+    "id": "models/shape-independent/star-polymer",
+    "title": "星形聚合物",
+    "url": "models/shape-independent/star-polymer.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "星形聚合物 star polymer 多条高斯臂从同一中心长出、核可忽略时，用 Benoit 星形因子。臂数 $f$ 增大使中间 $q$ 比线形链更“密实”，但仍不是硬球振荡。 有明显致密核时用聚合物胶束。臂有排除体积或静电时，本页的高斯臂假定失效。"
+  },
+  {
+    "id": "models/shape-independent/surface-fractal",
+    "title": "表面分形",
+    "url": "models/shape-independent/surface-fractal.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "表面分形 surface fractal 界面在一定尺度上粗糙、面积随码尺变化时，Bale–Schmidt 给出 $I\\sim q^{D_s-6}$。光滑面 $D_s=2$ 回到 Porod $q^{-4}$；极粗糙面 $D_s\\to 3$ 接近 $q^{-3}$。 中间指数若小于 $3$，更像质量分形而不是表面。只想谈面积时用 Porod。"
+  },
+  {
+    "id": "models/shape-independent/teubner-strey",
+    "title": "Teubner–Strey",
+    "url": "models/shape-independent/teubner-strey.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "Teubner–Strey Teubner–Strey 双连续微乳、弱有序的两相流体常用 Teubner–Strey：强度是 $a+c q^2+d q^4$ 的倒数。峰位给出畴间距，宽度给出关联长度 $\\xi$。 层状有高阶峰时改用层状堆叠。旋节早期可用 Cahn 型，但 TS 也能拟合宽峰。 Teubner Strey microemulsion"
+  },
+  {
+    "id": "models/shape-independent/two-lorentzian",
+    "title": "双洛伦兹",
+    "url": "models/shape-independent/two-lorentzian.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "双洛伦兹 two Lorentzian 凝胶、半稀释溶液或微相分离体系常常同时有大尺度静态不均与小尺度热涨落。两个洛伦兹分量用两个 $\\xi$ 描述，而不引入峰位。 若其中一个分量其实是高斯型固态不均质，应改用高斯–洛伦兹凝胶。出现峰则改用宽峰或 Teubner–Strey。"
+  },
+  {
+    "id": "models/shape-independent/two-power-law",
+    "title": "双幂律",
+    "url": "models/shape-independent/two-power-law.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "双幂律 two power law 曲线在双对数上明显折成两段斜率、又不想引入 $R_g$ 时，用两段幂律加一个转折波矢。常见于质量分形转到表面 Porod、或棒的 $q^{-1}$ 转到截面 Guinier/Porod。 若低 $q$ 其实是 Guinier 坪，应改用 Guinier–Porod，而不是把坪误当成很缓的幂律。"
+  },
+  {
+    "id": "models/shape-independent/unified-power-rg",
+    "title": "统一幂律–Rg",
+    "url": "models/shape-independent/unified-power-rg.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "统一幂律–Rg unified power Rg 层级结构（聚集体上还有聚集体、链段上还有整链）需要一套以上 $R_g$ 与幂律时，用 Beaucage 统一指数/幂律。每一层是 Guinier 加上用误差函数截断的幂律，多层直接相加。 适合气凝胶、支化高分子、炭黑与多尺度孔。若只有一层 Guinier+一段幂律，Guinier–Porod 通常更省参数。出现几何振荡极小时，应回到具体形式因子。 unified Beaucage Rg"
+  },
+  {
+    "id": "models/sphere/adsorbed-layer",
+    "title": "吸附层",
+    "url": "models/sphere/adsorbed-layer.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "吸附层 adsorbed layer 吸附层模型描述固体或胶乳球核表面吸附的聚合物、表面活性剂或蛋白质层。核本身可以是已知半径的胶体，未知量主要是层厚、层平均密度与是否溶剂渗透。适用于稳定剂层、刷状吸附、蛋白质冠（protein corona）的粗描述。 与核壳球的差别在于物理图像：层往往稀疏、浓度沿径向下降，而不是均匀壳。若层很密、边界锐，核壳球足够；若层是高斯链冠状，聚合物胶束更合适。本页取“球核 + 有限厚度吸附层”这一中间描述，公式上仍落在 Pedersen 综述的同心壳框架内。"
+  },
+  {
+    "id": "models/sphere/binary-hard-sphere",
+    "title": "二元硬球",
+    "url": "models/sphere/binary-hard-sphere.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "二元硬球 binary hard sphere 二元硬球描述两种半径 $R_1,R_2$ 的硬球混合物。本页的形式因子部分给出两种颗粒的 $P_i(q)$ 与交叉振幅；浓度升高后，Ashcroft–Langreth 偏结构因子 $S_{ij}(q)$（或 Vrij 对硬球混合物的处理）进入强度。适用于双峰胶体、大小胶乳混合物、以及“单一 Schulz 球无法同时拟合两个振荡周期”的样品。 若两种粒子只是稀溶液混合物、无相互作用，强度是两条 $P(q)$ 的加权和。一旦体积分数不可忽略，交叉项 $S_{12}$ 会在低 $q$ 产生非平凡干涉，必须与一元硬球结构因子区分。"
+  },
+  {
+    "id": "models/sphere/core-multi-shell",
+    "title": "核–多层壳",
+    "url": "models/sphere/core-multi-shell.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "核–多层壳 core multi-shell 核–多层壳把径向剖面离散成核加 $N$ 层同心均匀壳，每层有自己的厚度与 SLD。适用于量子点的多层配体/无机壳、层层组装胶囊、以及已知化学分层但层数固定的纳米颗粒。与洋葱球的差别主要是叙述方式：本页强调“核 + $N$ 层”的有限分层，洋葱强调连续或周期性径向剖面。 层数过多时参数迅速超过数据信息量。两层以上通常需要对比变分或固定若干 SLD。"
+  },
+  {
+    "id": "models/sphere/core-shell-sphere",
+    "title": "核壳球",
+    "url": "models/sphere/core-shell-sphere.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "核壳球 core-shell sphere 核壳球描述径向两段均匀散射长度密度：核半径 $R_c$、壳外半径 $R_s$，以及核、壳、溶剂三套 $\\rho$。适用于无机核–有机壳纳米颗粒、嵌段共聚物球形胶束、带溶剂化壳的胶体，以及对比变分后仍需两段剖面的体系。 曲线直觉：与均匀球相比，第一极小位置由有效衬度半径决定，中间 $q$ 可出现肩峰或次级振荡。壳很薄且壳衬度接近溶剂时，退化为均匀球；核衬度匹配溶剂时，接近空心壳（囊泡极限）。 core-shell sphere Rg"
+  },
+  {
+    "id": "models/sphere/fuzzy-sphere",
+    "title": "模糊球",
+    "url": "models/sphere/fuzzy-sphere.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "模糊球 fuzzy sphere 模糊球把均匀球的尖锐界面换成径向密度渐变的“绒毛”表面。经典对象是温敏微凝胶：交联密度由核向外降低，溶胀态外壳高度水化（Stieger 等，2004）。也适用于表面接枝聚合物刷、凝胶颗粒以及任何“电镜看像球、但 Porod 尾明显软于 $q^{-4}$”的胶体。 塌缩态微凝胶可接近均匀硬球；溶胀态必须引入模糊宽度 $\\sigma$，否则高 $q$ 拟合会系统偏离并虚报多分散。 fuzzy sphere Rg"
+  },
+  {
+    "id": "models/sphere",
+    "title": "球",
+    "url": "models/sphere/index.html",
+    "section": "模型手册",
+    "headings": [
+      "模型条目"
+    ],
+    "text": "球 Sphere form factors 球类形式因子描述等轴或近似等轴粒子：$I(q)$ 在低 $q$ 由回转半径主导，高 $q$ 出现与半径相关的振荡或平滑衰减。核壳、囊泡与径向分层等变体用额外衬度壳层解释中间 $q$ 特征。 sphere form factor Rg"
+  },
+  {
+    "id": "models/sphere/linear-pearls",
+    "title": "直线珍珠串",
+    "url": "models/sphere/linear-pearls.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "直线珍珠串 linear pearls 直线珍珠串把若干相同（或相近）的球沿一条直线排列，球心距 $d\\ge 2R$。适用于刚性连接的球状蛋白质重复单元、短的胶束串、以及尚未弯曲成珍珠项链（可有持久长度）的寡聚体。若链可弯、有键角涨落，应改用圆柱类中的珍珠项链。 相对单个球，低 $q$ 的 $R_g$ 增大，并在 $q\\sim 2\\pi/d$ 出现串内干涉调制。球数 $N$ 很少时调制宽而弱。"
+  },
+  {
+    "id": "models/sphere/micromagnetic-ff-3d",
+    "title": "三维微磁形式因子",
+    "url": "models/sphere/micromagnetic-ff-3d.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "三维微磁形式因子 micromagnetic form factor 3D 当纳米颗粒或微结构内部的磁化 $\\mathbf{M}(\\mathbf{r})$ 不是均匀块、不能用单个磁 Rayleigh 球概括时，需要三维微磁形式因子：由微磁学给出的 $\\mathbf{M}(\\mathbf{r})$ 做傅里叶变换，再按偶极选择规则投影到 $\\mathbf{q}$ 垂直分量（Mühlbauer 等，2019）。适用于涡旋、花态、畴壁、skyrmion 袋，以及核–壳磁性颗粒中的自旋错向晕。 均匀饱和磁化的球体在严格意义上不产生小角磁散射涨落（均匀 $\\mathbf{M}$ 只贡献 $q=0$ 的宏观磁化）；小角信号来自空间不均匀。若只关心“磁核半径 vs 核半径”，先用均匀磁球；本页针对三维微磁纹理。"
+  },
+  {
+    "id": "models/sphere/multilayer-vesicle",
+    "title": "多层囊泡",
+    "url": "models/sphere/multilayer-vesicle.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "多层囊泡 multilayer vesicle 多层囊泡（MLV、寡层脂质体）由若干同心双层与水层交替构成。中间 $q$ 可出现与膜间距 $d$ 相关的宽峰或次级振荡，层数 $n$ 不大时峰较宽。适用于阴阳离子表面活性剂混合物形成的寡层囊泡、未充分挤压的脂质体，以及“单壳囊泡拟合残差在膜峰处系统化”的样品。 层数趋于很大、侧向尺寸远大于膜间距时，更接近层状堆叠而非封闭球壳；此时应对照层状分类，而不是无限增加球壳层数。"
+  },
+  {
+    "id": "models/sphere/onion",
+    "title": "洋葱球",
+    "url": "models/sphere/onion.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "洋葱球 onion 洋葱球描述径向多层、近似球对称的“洋葱”剖面：交替的高/低 SLD 壳，层数可以比寡层囊泡更多，且不一定对应脂质双层。适用于多层聚合物胶囊、交替沉积电解质壳、某些多层氧化物颗粒，以及想用同一套同心壳框架覆盖“看起来像洋葱”的样品。 若层是脂质膜–水交替且层数不多，多层囊泡更贴切；若剖面连续光滑，径向 SLD 球更合适。"
+  },
+  {
+    "id": "models/sphere/polymer-micelle",
+    "title": "聚合物胶束",
+    "url": "models/sphere/polymer-micelle.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "聚合物胶束 polymer micelle 球形聚合物胶束由不溶核与溶于溶剂的冠状链组成。Pedersen 与 Gerstenberg（1996）把核当作均匀球，把冠状当作接在核表面的高斯链，并包含核–链与链–链干涉。适用于嵌段共聚物胶束、星形胶束以及“核壳球拟合在中高 $q$ 留下链状残差”的样品。 若冠状很浓、排除体积使链拉伸，均匀壳可能是更好的第一近似；若臂数很少、链稀疏，则更接近星形聚合物。本页对应稀溶液、非贯穿的 Pedersen–Gerstenberg 图像。"
+  },
+  {
+    "id": "models/sphere/raspberry",
+    "title": "树莓",
+    "url": "models/sphere/raspberry.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "树莓 raspberry 树莓粒子由较大核球与吸附或化学锚定在表面的许多小球组成，形如覆盆子。对象包括 Pickering 乳液表面的纳米颗粒层、核表面装饰的金/硅球簇，以及“大胶体 + 小卫星”的层级组装（Larson-Smith 与 Pozzo 及相关散射模型）。 曲线上常同时看到核半径决定的低 $q$ 振荡与卫星半径决定的高 $q$ 特征；卫星之间的表面相关会在中间 $q$ 给出额外调制。若卫星已熔成连续壳，应改核壳球。"
+  },
+  {
+    "id": "models/sphere/sphere",
+    "title": "均匀球",
+    "url": "models/sphere/sphere.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "均匀球 sphere 当粒子可视为各向同性、内部散射长度密度近似均匀的球体时，均匀球形式因子是最直接的解析模型。典型对象包括：稀释胶乳与无机纳米颗粒、近似球形的乳液滴、胶束疏水核的粗描述，以及许多可用等效球半径概括的胶体。 适用的经验判据：$p(r)$ 单峰且较对称；低 $q$ 的 Guinier 区给出与几何半径自洽的回转半径；$\\log I$–$\\log q$ 上可见与半径相关的振荡极小，高 $q$ 趋近 Porod $q^{-4}$。明显长径比、空心壳层或径向分层时，应改用核壳、囊泡或模糊球，而不是给均匀球强加额外参数。 sphere Rayleigh Rg Porod"
+  },
+  {
+    "id": "models/sphere/spherical-sld",
+    "title": "径向 SLD 球",
+    "url": "models/sphere/spherical-sld.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "径向 SLD 球 spherical SLD 当球对称粒子的散射长度密度沿半径连续变化、不能用两三层常数壳概括时，用任意 $\\rho(r)$ 的径向傅里叶变换。对象包括扩散界面、溶胀微凝胶的平滑剖面、合金颗粒的径向梯度、以及由对比变分重建的 $\\rho(r)$。 实践中 $\\rho(r)$ 仍要参数化（分段线性、样条、tanh 界面、多层离散）。“任意”指模型不再预设核壳跳变，而不是完全非参数反演——后者更接近 IFT，需正则化。"
+  },
+  {
+    "id": "models/sphere/superball",
+    "title": "超球",
+    "url": "models/sphere/superball.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "超球 superball 超球是一族由指数 $p$ 控制的超二次曲面，在球（$p=1$）与立方体（$p\\to\\infty$）之间连续变形，也可取 $p&lt;1$ 偏向八面体。适用于圆角立方纳米颗粒、超球胶体、以及“既不像完美球也不像尖角立方”的等轴粒子（Baus &amp; Colot 的超二次体；Jiao 等的超球堆积）。 若粒子明显是矩形棱柱或平行六面体，应直接用平行六面体类，而不是把 $p$ 推到极大。$p$ 接近 1 时与均匀球在有限 $q$ 上几乎无法分辨。"
+  },
+  {
+    "id": "models/sphere/vesicle",
+    "title": "囊泡",
+    "url": "models/sphere/vesicle.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "囊泡 vesicle 囊泡（单层脂质体、表面活性剂囊泡）是溶剂填充的球形双层：内外半径 $R_{\\mathrm{in}},R_{\\mathrm{out}}$，膜厚 $t=R_{\\mathrm{out}}-R_{\\mathrm{in}}$，膜的 SLD 与内外溶剂（常相同）形成壳衬度。适用于稀释的单层囊泡、聚合物囊泡，以及核壳模型中核衬度被溶剂匹配的极限。 与实心核壳的区别：内部是溶剂而非高衬度核，低 $q$ 的有效体积由膜体积而非整个外球体积主导；$I(0)$ 对膜厚与膜衬度敏感。多层洋葱状囊泡应改用多层囊泡或洋葱球。 vesicle shell Rg"
+  },
+  {
+    "id": "models/structure-factor/hard-sphere",
+    "title": "硬球结构因子",
+    "url": "models/structure-factor/hard-sphere.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "硬球结构因子 hard sphere 中性或短程排斥的球形胶体，相互作用可近似为不可穿透硬核时，用 Percus–Yevick（PY）硬球结构因子。典型对象：浓胶乳、微乳液滴、蛋白质在高盐下的有效硬球，以及只需要一个体积分数来解释低 $q$ 压低与第一相关峰的体系。 稀溶液 $S(q)\\approx 1$，不必加本页。出现长程静电排斥（低盐带电胶体）应改用 Hayter–MSA；短程黏性吸引用黏性硬球或方阱。两种半径的混合物用二元硬球，而不是把一元 PY 硬球平均两次。 Percus-Yevick hard sphere S(q)"
+  },
+  {
+    "id": "models/structure-factor/hayter-msa",
+    "title": "Hayter–MSA 结构因子",
+    "url": "models/structure-factor/hayter-msa.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "Hayter–MSA 结构因子 Hayter MSA 带电胶体或胶束在低到中等盐下以屏蔽库仑（Yukawa）势相互作用时，用 Hayter–Penfold 平均球近似及其 rescaled MSA（RMSA）。典型对象：离子胶束、电荷稳定乳胶、低盐蛋白质，以及低 $q$ 被强烈压低、相关峰随盐浓度移动的体系。 高盐、静电几乎被屏蔽时退回硬球。短程吸引主导时不要用纯排斥 Hayter。体积分数与 Debye 长度必须有独立约束，否则电荷会被吸收进 $\\kappa$ 与 $\\eta$。 Hayter MSA RMSA Debye Yukawa S(q)"
+  },
+  {
+    "id": "models/structure-factor",
+    "title": "结构因子",
+    "url": "models/structure-factor/index.html",
+    "section": "模型手册",
+    "headings": [
+      "模型条目"
+    ],
+    "text": "结构因子 Structure factors S(q) 结构因子 $S(q)$ 描述粒子间相互作用对散射的调制：稀溶液 $S(q)\\approx 1$，浓溶液或强排斥/吸引时在低–中 $q$ 出现峰或抑制。通常与形式因子相乘使用，本类只收录常见解析 $S(q)$。 structure factor S(q) Percus-Yevick Hayter"
+  },
+  {
+    "id": "models/structure-factor/square-well",
+    "title": "方阱结构因子",
+    "url": "models/structure-factor/square-well.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "方阱结构因子 square well 硬核之外有一段宽度有限的吸引方阱（$u=-\\varepsilon$ 于 $\\sigma&lt;r&lt;\\lambda\\sigma$）时，用方阱闭包下的 $S(q)$。典型对象：中等程耗尽吸引、弱吸附层造成的有限宽度吸引，以及阱宽 $\\lambda$ 可从化学上估计的胶体。 零程极限用黏性硬球。需要平滑的 Yukawa 尾或同时有排斥时用双 Yukawa。Sharma–Sharma 所用 MSA 对深阱、高密度并不特别合适，浅阱低 $\\eta$ 更稳妥。 square well S(q)"
+  },
+  {
+    "id": "models/structure-factor/sticky-hard-sphere",
+    "title": "黏性硬球结构因子",
+    "url": "models/structure-factor/sticky-hard-sphere.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "黏性硬球结构因子 sticky hard sphere 硬核之外还有极短程吸引（表面黏性、耗尽、疏水接触）时，用 Baxter 黏性硬球 $S(q)$。典型对象：弱絮凝胶体、黏性蛋白质溶液、以及低 $q$ 明显抬升但相关峰仍像硬球的体系。 阱宽可与直径相比时用方阱。长程静电用 Hayter 或双 Yukawa。$\\tau$ 很大（弱黏）时退回普通硬球。 sticky hard sphere Baxter Percus-Yevick"
+  },
+  {
+    "id": "models/structure-factor/two-yukawa",
+    "title": "双 Yukawa 结构因子",
+    "url": "models/structure-factor/two-yukawa.html",
+    "section": "模型手册",
+    "headings": [
+      "适用场景",
+      "物理图像",
+      "示意图",
+      "核心公式",
+      "参数表",
+      "拟合注意",
+      "相近模型",
+      "参考文献"
+    ],
+    "text": "双 Yukawa 结构因子 two Yukawa 有效势需要两段 Yukawa（通常短程吸引加长程排斥，或短程排斥肩加较长吸引）时，用双 Yukawa $S(q)$。典型对象：带电蛋白质的簇集（低 $q$ 额外峰或零角抬升）、胶束同时有空间位阻与静电、以及单 Yukawa / 纯硬球无法同时拟合相关峰与低 $q$ 的体系。 只有排斥用 Hayter；只有极短程吸引用黏性硬球。参数比单 Yukawa 多一倍，必须有浓度或盐系列。 two Yukawa S(q)"
   }
 ];
