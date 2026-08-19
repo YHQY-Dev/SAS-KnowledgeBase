@@ -37,8 +37,10 @@
       <h3>推导</h3>
       <p>中段圆柱（与均匀圆柱相同）</p>
       $$A_{\mathrm{cyl}}(q,\alpha)=\Delta\rho\,(\pi R^2 L)\cdot\frac{2J_1(qR\sin\alpha)}{qR\sin\alpha}\cdot\frac{\sin(qL\cos\alpha/2)}{qL\cos\alpha/2}.$$
-      <p>球心到圆柱端面的距离由相切约束固定：$h=\sqrt{R_{\mathrm{bell}}^2-R^2}$。两端球缺相对原点的位移为 $\pm(L/2+h)$，相位因子 $\mathrm{e}^{\pm i q(L/2+h)\cos\alpha}$。球缺振幅 $A_{\mathrm{bell}}$ 可由半径 $R_{\mathrm{bell}}$ 的球 Rayleigh 积分减去截平面以内的球冠得到（Kaya）。总振幅</p>
-      $$A(q,\alpha)=A_{\mathrm{cyl}}(q,\alpha)+A_{\mathrm{bell}}(q,R_{\mathrm{bell}},h,\alpha).$$
+      <p>球心到圆柱端面的距离由相切约束固定：$h=\sqrt{R_{\mathrm{bell}}^2-R^2}$。令 $q_\perp=q\sin\alpha$、$q_z=q\cos\alpha$、$a(z)=\sqrt{R_{\mathrm{bell}}^2-z^2}$，两端球缺的合振幅可写成一维数值积分（$q_\perp\to0$ 时取连续极限）</p>
+      $$A_{\mathrm{bell}}(q,\alpha)=4\pi\Delta\rho\int_h^{R_{\mathrm{bell}}}\frac{a(z)J_1(q_\perp a(z))}{q_\perp}\cos\!\left[q_z\left(\frac{L}{2}+h+z\right)\right]\,\mathrm{d}z.$$
+      <p>该式已包含两端球缺的相位因子；总振幅</p>
+      $$A(q,\alpha)=A_{\mathrm{cyl}}(q,\alpha)+A_{\mathrm{bell}}(q,\alpha).$$
       <p><span data-term="powder-average">粉末平均</span></p>
       $$P(q)=\frac{\displaystyle\int_0^{\pi/2}|A(q,\alpha)|^2\sin\alpha\,\mathrm{d}\alpha}{\displaystyle\int_0^{\pi/2}|A(0,\alpha)|^2\sin\alpha\,\mathrm{d}\alpha}.$$
       <p>$R_{\mathrm{bell}}=R$ 则 $h=0$，球缺退化为半球，即端帽圆柱。$L\to 0$ 且两球外切时接近哑铃双球。</p>

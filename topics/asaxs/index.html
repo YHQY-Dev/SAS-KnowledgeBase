@@ -24,7 +24,7 @@
       <p>核心问题：如何选边与能量点、如何把差分曲线接到<span data-term="form-factor">形式因子</span> / 模型、如何与 XAS/AWAXS 交叉验证，以及如何避免荧光、吸收校正与能量漂移毁掉差分信号。</p>
 
       <figure class="figure">
-        <img src="../../assets/figures/fig-17-asaxs-energy-scan.png" alt="<span data-term="asaxs">ASAXS</span> 吸收边能量扫描与差分" width="900">
+        <img src="../../assets/figures/fig-17-asaxs-energy-scan.png" alt="ASAXS 吸收边能量扫描与差分" width="900">
         <figcaption>在目标元素吸收边下方取若干能量 $E_1,E_2,\ldots$，测 $I(q,E)$；差分 $\Delta I(q)$ 强调该元素分布相关的结构项，远离边的参考能量给出「常规」衬度曲线。<span class="fig-source">配图：自制示意</span></figcaption>
       </figure>
 
@@ -33,7 +33,7 @@
       <p>综述将 <span data-term="asaxs">ASAXS</span> 在材料科学中的机会归纳为三类（Goerigk, Haubold, Lyon &amp; Simon 2003）：</p>
       <ol>
         <li><strong>衬度增强与背景分离：</strong> 差分 <span data-term="asaxs">ASAXS</span> 突出含共振元素的散射体，能量无关的背景（孔隙、碳载体等）在差分中抵消。典型：多孔碳上 Pt 催化剂粒径分布——仅 88% 的 Pt 以平均半径 0.8 nm 的小粒子分散，约 60% 位于粒子表面、与反应物接触（Haubold et al., 引自 Goerigk 2003）。</li>
-        <li><strong>相组成与比体积：</strong> 两相强度 $d\sigma/d\Omega(q)=(\rho_\alpha(E)-\rho_\beta(E))^2 S_\phi(q)$；在边附近扫能量可定析出相化学组成或各相比体积。例：Al–Zn–Cu–Mg 时效析出相中 Cu 含量仅 7–8%，EXAFS 无法决断时 <span data-term="asaxs">ASAXS</span> 可定量（Goerigk 2003）。</li>
+        <li><strong>相组成与比体积：</strong> 两相强度 $d\sigma/d\Omega(q)=|\rho_\alpha(E)-\rho_\beta(E)|^2 S_\phi(q)$；在边附近扫能量可定析出相化学组成或各相比体积。例：Al–Zn–Cu–Mg 时效析出相中 Cu 含量仅 7–8%，EXAFS 无法决断时 <span data-term="asaxs">ASAXS</span> 可定量（Goerigk 2003）。</li>
         <li><strong>与 AWAXS / AXRD 联用：</strong> 小角给纳米畴尺寸与元素分布，宽角/衍射给局域配位与晶格，同一能量序列下拼接多尺度模型（Goerigk 2003）。</li>
       </ol>
       <p>实验上，欧洲 JUSIFA（Hamburg）、D2AM（Grenoble）、D22（Orsay）等束线针对 <span data-term="asaxs">ASAXS</span> 优化：固定出口双晶单色器利于能量扫描时保持对准；反常变化小，要求通量监测、探测器效率随 $E$ 的标定与长时间稳定性（Goerigk 2003）。</p>
@@ -79,7 +79,7 @@
       <p>两能量 $E_a$、$E_b$（均在边下、荧光可忽略区）的强度差：</p>
       $$\Delta I(q)=I(q,E_a)-I(q,E_b)$$
       <p>在稀溶液、单组分共振粒子近似下，$\Delta I$ 突出含共振元素的<span data-term="form-factor">形式因子</span>贡献；对多组分/核–壳，差分对应「共振元素加权」的部分结构因子。实践中常取 3–5 个能量点，用线性组合或正交化分离共振项，而非只做一次简单相减（Goerigk 2003）。</p>
-      <p>二元析出相（<span data-term="asaxs">ASAXS</span> 2007）：若 $I(q)\propto(\sum_{i,j}\Delta c_i\Delta c_j F_i F_j)^2 S_{\mathrm{PM}}(q)$，则 $\sqrt{I(q)}$ 对 $f_{\mathrm{res}}$ 作图应为直线，斜率比给出元素浓度差之比——无需假设完整 $P(q)$ 即可检验相成分。</p>
+      <p>二元析出相（<span data-term="asaxs">ASAXS</span> 2007）：若 $I(q)\propto\left|\sum_i\Delta c_i F_i(q)\right|^2 S_{\mathrm{PM}}(q)$，则在给定几何与结构项的近似下，$\sqrt{I(q)}$ 对 $f_{\mathrm{res}}$ 作图可检验线性，斜率比可用于估计元素浓度差之比——无需把整套 $P(q)$ 都作为自由参数。</p>
       <p>生物离子体系（Pabit 2010）：相干振幅叠加 $I=|f_{\mathrm{NA}}F_{\mathrm{NA}}+f_{\mathrm{ion}}(E)N_{\mathrm{ions}}F_{\mathrm{ion}}|^2$，边下展开为 $af'^2+bf'+c$；$b(q)$ 携带离子–核酸空间关联，$c(q)$ 以核酸为主。</p>
 
       <h3>$q$ 与能量几何</h3>

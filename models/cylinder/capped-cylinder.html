@@ -37,8 +37,10 @@
       <h3>推导</h3>
       <p>中段（$V_{\mathrm{cyl}}=\pi R^2 L$）</p>
       $$A_{\mathrm{cyl}}(q,\alpha)=\Delta\rho\,V_{\mathrm{cyl}}\cdot\frac{2J_1(qR\sin\alpha)}{qR\sin\alpha}\cdot\frac{\sin(qL\cos\alpha/2)}{qL\cos\alpha/2}.$$
-      <p>两端半球合起来体积等于一个整球 $4\pi R^3/3$，但质心不在原点：球心分别在圆柱端面 $z=\pm L/2$。半球振幅 $A_{\mathrm{hemi}}$ 可由球 Rayleigh 函数加端面圆盘的相位修正得到。总振幅</p>
-      $$A(q,\alpha)=A_{\mathrm{cyl}}(q,\alpha)+A_{\mathrm{hemi}}(q,R,\alpha).$$
+      <p>两端半球合起来体积等于一个整球 $4\pi R^3/3$，但质心不在原点：球心分别在圆柱端面 $z=\pm L/2$。令 $q_\perp=q\sin\alpha$、$q_z=q\cos\alpha$、$a(z)=\sqrt{R^2-z^2}$，两端半球的合振幅为（$q_\perp\to0$ 时取连续极限）</p>
+      $$A_{\mathrm{hemi}}(q,\alpha)=4\pi\Delta\rho\int_0^R\frac{a(z)J_1(q_\perp a(z))}{q_\perp}\cos\!\left[q_z\left(\frac{L}{2}+z\right)\right]\,\mathrm{d}z.$$
+      <p>总振幅</p>
+      $$A(q,\alpha)=A_{\mathrm{cyl}}(q,\alpha)+A_{\mathrm{hemi}}(q,\alpha).$$
       <p><span data-term="powder-average">粉末平均</span>与圆柱相同：</p>
       $$P(q)=\frac{\displaystyle\int_0^{\pi/2}|A(q,\alpha)|^2\sin\alpha\,\mathrm{d}\alpha}{\displaystyle\int_0^{\pi/2}|A(0,\alpha)|^2\sin\alpha\,\mathrm{d}\alpha}.$$
       <p>$L\to 0$ 回到均匀球；$R_{\mathrm{bell}}$ 大于 $R$ 时回到一般哑铃。</p>

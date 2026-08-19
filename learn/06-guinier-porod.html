@@ -91,7 +91,7 @@
       <p>设某球状蛋白 Guinier 区测得斜率 $s = \mathrm{d}\ln I/\mathrm{d}q^2 = -120\,\mathrm{\AA}^2$（$q$ 以 Å$^{-1}$ 计）：</p>
       $$R_g = \sqrt{-3s} = \sqrt{360}\approx 19.0\,\mathrm{\AA}.$$
       <p>若拟合用到 $q_{\max}=0.06\,\mathrm{\AA}^{-1}$，则 $q_{\max} R_g \approx 1.14$，落在可接受窗口；若盲目用到 $0.10\,\mathrm{\AA}^{-1}$，$q R_g\approx 1.9$，直线已弯，结果不可信。</p>
-      <p><strong>算例 2（绝对 $I(0)$ 与分子量）：</strong> 绝对标定后 Guinier 截距得 $I(0)=0.12\,\mathrm{cm}^{-1}$，浓度 $C=5\,\mathrm{mg/mL}=5\times 10^{-3}\,\mathrm{g/cm}^3$，$\Delta\rho_M = 2.0\times 10^{10}\,\mathrm{cm}^{-2}$（电子密度差）：</p>
+      <p><strong>算例 2（绝对 $I(0)$ 与分子量）：</strong> 绝对标定后 Guinier 截距得 $I(0)=0.12\,\mathrm{cm}^{-1}$，浓度 $C=5\,\mathrm{mg/mL}=5\times 10^{-3}\,\mathrm{g/cm}^3$，$\Delta\rho_M = 2.0\times 10^{10}\,\mathrm{cm}^2/\mathrm{g}$（质量比散射长度密度差）：</p>
       $$M = \frac{I(0)\,N_A}{C\,(\Delta\rho_M)^2} \approx \frac{0.12 \times 6.02\times 10^{23}}{5\times 10^{-3} \times (2.0\times 10^{10})^2} \approx 3.6\times 10^4\,\mathrm{g/mol}.$$
       <p>与化学 $M$ 偏差 $>15\%$ 时优先查标定、浓度、聚集，而非强行扩 Guinier 区间。</p>
 
@@ -131,8 +131,8 @@
       <p>（绝对强度、$q$ 覆盖足够时）联系体积分数 $\phi$。实践中积分上下限截断会产生系统误差：低 $q$ 用 Guinier 外推，高 $q$ 用 Porod 尾外推——这正是绝对标定与背景质量再次关键的地方。</p>
       <div class="keybox">
         <strong>Porod 平台算例（数量级）</strong>
-        <p>绝对标定后，高 $q$ 区 $q^4 I(q)$ 平台 $\approx 8\times 10^{-5}\,\mathrm{cm}^{-1}\,\mathrm{Å}^4$，$\Delta\rho = 3\times 10^{-6}\,\mathrm{Å}^{-2}$：</p>
-        $$S_V \approx \frac{8\times 10^{-5}}{2\pi (3\times 10^{-6})^2} \approx 1.4\times 10^{6}\,\mathrm{Å}^{-1} \approx 140\,\mathrm{m}^2/\mathrm{cm}^3.$$
+        <p>绝对标定后，高 $q$ 区 $q^4 I(q)$ 平台 $\approx 8\times 10^{-5}\,\mathrm{cm}^{-1}\,\mathrm{Å}^{-4}$，$\Delta\rho = 3\times 10^{-6}\,\mathrm{Å}^{-2}$。将 $\mathrm{cm}^{-1}$ 转为 $\mathrm{Å}^{-1}$ 后：</p>
+        $$S_V \approx \frac{8\times 10^{-13}}{2\pi (3\times 10^{-6})^2} \approx 1.4\times 10^{-2}\,\mathrm{Å}^{-1} \approx 140\,\mathrm{m}^2/\mathrm{cm}^3.$$
         <p>若 $\sigma/I > 30\%$ 或平台来自常数背景而非 $q^{-4}$，此数无物理意义——先查第 04 章本底与第 05 章标定。</p>
       </div>
 
@@ -145,7 +145,7 @@
       $$I(Q) = \frac{G}{Q^s}\exp\!\left(-\frac{Q^2 R_g^2}{3-s}\right)\quad (Q \leq Q_1), \qquad Q_1 = \frac{1}{R_g}\sqrt{\frac{(d-s)(3-s)}{2}},$$
       <p>约束 $d > s$ 且 $s &lt; 3$。圆柱等可含<strong>两个 Guinier 区</strong>（低 $q$ 见全长 $R_{g2}$，中间 $q$ 见截面 $R_{g1}$）加一个 Porod 区——共三或四个 $q$ 区（Hammouda §4）。</p>
       <figure class="figure">
-        <img src="../assets/figures/fig-05-guinier-porod.png" alt="<span data-term="guinier-porod-model">Guinier–Porod 模型</span>示意" width="900">
+        <img src="../assets/figures/fig-05-guinier-porod.png" alt="Guinier–Porod 模型示意" width="900">
         <figcaption>Guinier 区与 Porod（幂律）区在衔接点 $q_1$ 光滑连接；$R_g$ 与幂律指数是主要可调参数。<span class="fig-source">配图：自制示意</span></figcaption>
       </figure>
       <p>适用场景：宽 $q$ 范围的粗粒度描述、多层级结构的第一轮参数化（如 Pluronic P85 从 unimer→球状 micelle→柱状 micelle→层状 micelle，Hammouda Table 1）。不适用：需要精确 <span data-term="form-factor">$P(q)$</span> 振荡、强 <span data-term="structure-factor">$S(q)$</span> 峰、或必须报生物发表级 $R_g$/<span data-term="maximum-dimension">$D_{\max}$</span> 时——后者仍优先经典 Guinier + <span data-term="indirect-fourier-transform">IFT</span>。模型不能再现单分散紧凑粒子的振荡；峰可用 $P(q)\times S(q)$ 扩展。</p>

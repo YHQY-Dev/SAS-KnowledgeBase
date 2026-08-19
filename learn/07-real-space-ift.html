@@ -43,7 +43,7 @@
         </ul>
       </div>
       <p>物理上，$p(r)$ 与粒子内<span data-term="scattering-length-density">散射长度密度</span>涨落 $\Delta\rho(\mathbf{r})$ 的空间自相关有关：它统计的是「相距 $r$ 的两点同时落在高衬度区域」的加权概率，而非原子坐标本身。因此 $p(r)$ 对整体延伸、域间距离、中空/壳层等<strong>全局几何</strong>敏感，但对原子级细节不分辨——这与 Shannon 采样极限一致：可用 $q$ 窗越宽，$p(r)$ 上可辨的结构越多，但仍受 <span data-term="maximum-dimension">$D_{\max}$</span> 与信噪比封顶。</p>
-      <p>归一化约定因软件而异：ATSAS/<span data-term="gnom">GNOM</span> 族常使 $p(r)$ 与 $I(0)$、$R_g$ 通过下节积分式自洽；阅读文献时务必核对「$p(r)$ 是否已按体积/电子数归一」。学习路径上只需记住：<strong>同一套数据、同一程序内</strong>比较 $p(r)$ 形状与 Guinier 参数即可，跨软件对比要查文档。</p>
+      <p>归一化约定因软件而异：本章采用 $I(q)=4\pi\int p(r)\,\mathrm{sinc}(qr)\,\mathrm{d}r$ 的定义；若软件把 $4\pi$ 吸收到 $p(r)$ 中，后面的积分式也要同步改变。阅读文献时务必核对「$p(r)$ 是否已按体积/电子数归一」。学习路径上只需记住：<strong>同一套数据、同一程序内</strong>比较 $p(r)$ 形状与 Guinier 参数即可，跨软件对比要查文档。</p>
 
       <h2>为何直接傅里叶变换失败：病态与 IFT</h2>
       <p>形式上，$p(r)$ 可由 $I(q)$ 的逆变换写出。对有限、带噪声的实验数据直接数值求逆，会得到剧烈振荡甚至大片负值的「解」——这是经典的<strong>病态（ill-posed）</strong>积分方程：核平滑、高频分量被压扁，噪声在实空间被放大（Glatter 1977）。</p>

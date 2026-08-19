@@ -31,14 +31,14 @@
  <li><strong>与已知结构对照：</strong> CRYSOL（X 射线）等从原子坐标算理论 $I(q)$；</li>
  <li><strong>柔性体系：</strong> 单一刚体不够时用 <span data-term="ensemble-optimization">EOM</span> 等系综方法。</li>
  </ol>
- <p>ATSAS（EMBL Hamburg）把上述步骤做成可串联的模块：PRIMUS/qt 作交互入口，DATTOOLS 做批处理，<span data-term="gnom">GNOM</span>、DAMMIF、CRYSOL、<span data-term="ensemble-optimization">EOM</span> 等各司其职（Franke et al. 2017）。2.8 版新增 AMBIMETER（形状歧义评分）、DATCLASS（紧凑/扁平/无序分类）、CHROMIXS（SEC 联用）、SASRES（FSC 分辨率估计）、SHANUM（有效 $q$ 范围）、SREFLEX/SASREF（柔性/刚体混合）等——使「该不该建模、用哪种建模」可在进入 DAM 之前有定量依据。核心难题不是「会点哪个按钮」，而是：前一步数据/假设不合格时，后一步的漂亮拟合往往是<strong>假阳性</strong>；以及如何按发表规范报告与存档（Trewhella 2017 → SASBDB）。</p>
+ <p>ATSAS（EMBL Hamburg）把上述步骤做成可串联的模块：PRIMUS/qt 作交互入口，DATTOOLS 做批处理，<span data-term="gnom">GNOM</span>、DAMMIF、CRYSOL、<span data-term="ensemble-optimization">EOM</span> 等各司其职（Franke et al. 2017）。本文以 ATSAS 2.8 时代的文献和程序命名为历史基线；AMBIMETER、DATCLASS、CHROMIXS、SASRES、SHANUM、SREFLEX/SASREF 等功能的具体可用性应以当前安装版本文档为准。核心难题不是「会点哪个按钮」，而是：前一步数据/假设不合格时，后一步的漂亮拟合往往是<strong>假阳性</strong>；以及如何按发表规范报告与存档（Trewhella 2017 → SASBDB）。</p>
 
  <h2>文献主线</h2>
  <h3>Franke et al. 2017：ATSAS 2.8 管线地图</h3>
  <p>综述按「数据工具 → 整体参数 → 实空间 → 形状/刚体/系综」组织程序族：</p>
  <ul>
  <li><strong>PRIMUS / DATTOOLS：</strong> DATCMP/CORMAP 比较曲线显著性；DATAVER 平均重复测量；DATMERGE/ALMERGE 合并浓度系列或外推无限稀释；DATABSOLUTE 绝对标定（水/<span data-term="glassy-carbon">玻璃碳</span>）；SHANUM/DATCROP 确定有效 Shannon 通道与 $q$ 范围；AUTORG/DATRG 自动 Guinier；</li>
- <li><strong><span data-term="gnom">GNOM</span> / DATGNOM：</strong> 正则化 IFT，输出 $p(r)$、$R_g$、$I(0)$、<span data-term="maximum-dimension">$D_{\max}$</span>；GNOM5（2.8 默认）支持多探测器 <span data-term="sans">SANS</span> 数据联合反演；</li>
+ <li><strong><span data-term="gnom">GNOM</span> / DATGNOM：</strong> 正则化 IFT，输出 $p(r)$、$R_g$、$I(0)$、<span data-term="maximum-dimension">$D_{\max}$</span>；GNOM/GNOM5 的多探测器或联合数据功能随版本而异，应以所用版本文档为准；</li>
  <li><strong>DATCLASS / AMBIMETER：</strong> 建模前分类（紧凑/扁平/无序）与歧义评分（$<1.5$ 较唯一，$>2.5$ 高歧义）；</li>
  <li><strong>DAMMIN / DAMMIF / GASBOR：</strong> 哑原子或 dummy residue $ab\ initio$ 形状；DAMMIF 比 DAMMIN 快 25–40 倍，无限搜索体积（Franke &amp; Svergun 2009）；DAMAVER/DAMSEL/DAMCLUST 聚类与选代表模型；SASRES 报告 FSC 分辨率；</li>
  <li><strong>MONSA / SASREFCV：</strong> 多相/<span data-term="contrast-variation">衬度变化</span>数据联合重建（与 <a href="../sans-contrast/index.html"><span data-term="sans">SANS</span> 衬度</a> 联用）；</li>
@@ -86,10 +86,10 @@
  $$I(q)=I(0)\exp\left(-\frac{R_g^2 q^2}{3}\right), \quad q R_g \lesssim 1.3.$$
  <p>合格判据：$R_g$ 与 <span data-term="gnom">GNOM</span> 从 $p(r)$ 导出的 $R_g$ 宜在约 $\pm 5\%$ 内一致；线性残差无系统趋势。</p>
  <p>IFT / <span data-term="gnom">GNOM</span>：</p>
- $$I(q)=\int_0^{D_{\max}} p(r)\,\frac{\sin(qr)}{qr}\,\mathrm{d}r$$
- <p>（仪器 smearing 时核更复杂；见 <a href="../ift/index.html">IFT 专题</a>）。$p(r)$ 是进入 DAMMIF 的标准输入之一。</p>
+ $$I(q)=4\pi\int_0^{D_{\max}} p(r)\,\frac{\sin(qr)}{qr}\,\mathrm{d}r$$
+ <p>（本文采用与学习章一致的 $4\pi$ 约定；若软件把前因子吸收到 $p(r)$，需按软件文档换写。仪器 smearing 时核更复杂；见 <a href="../ift/index.html">IFT 专题</a>。）$p(r)$ 主要用于确定 $D_{\max}$、检查形状和约束后续建模，不应简单描述为 DAMMIF 的直接标准输入。</p>
  <p>哑原子模型拟合实验曲线时，目标函数含数据残差与紧致/连通惩罚项（DAMMIN/DAMMIF）；多轮独立运行后 DAMSEL/DAMCLUST 聚类，SASRES 用 FSC 思路估计有效分辨率（Franke 2017）。AMBIMETER 分数 $>2.5$ 时须报告多簇模型而非单一形状。</p>
- <p>CRYSOL：由原子坐标与水合壳层参数计算理论 $I_{\mathrm{calc}}(q)$，用约化 $\chi^2$（或 CORMAP 类无误差棒检验）判断是否与溶液数据相容——晶体结构未必等于溶液构象。CRYSOL 3（2.8 测试版）用表面水珠粒分层处理凹凸表面水合，改善高 $q$ 拟合。</p>
+ <p>CRYSOL：由原子坐标与水合壳层参数计算理论 $I_{\mathrm{calc}}(q)$，用约化 $\chi^2$（或 CORMAP 类无误差棒检验）判断是否与溶液数据相容——晶体结构未必等于溶液构象。CRYSOL 3 的水合壳层处理和版本状态应按实际发行版本核对；不要把 2.8 时代的测试版描述当作当前默认行为。</p>
 
  <h3>推荐工作流（解读层）</h3>
  <table>

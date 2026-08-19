@@ -25,7 +25,7 @@
  <p>因此核心问题是：何时值得做<span data-term="contrast-variation">衬度变化</span>系列（而非仅靠 <span data-term="saxs">SAXS</span>），如何设计 H<sub>2</sub>O/D<sub>2</sub>O 匹配点与氘代策略，以及如何避免「匹配了却看不见」的假阴性（本底、交换、样品质量）。</p>
 
  <figure class="figure">
- <img src="../../assets/figures/fig-16-sans-contrast-matching.png" alt="<span data-term="sans">SANS</span> <span data-term="contrast-matching">衬度匹配</span>示意" width="900">
+ <img src="../../assets/figures/fig-16-sans-contrast-matching.png" alt="SANS 衬度匹配示意" width="900">
  <figcaption>H<sub>2</sub>O/D<sub>2</sub>O 调节溶剂 SLD：组分 A 在匹配点 $\Delta\rho_A=0$ 时对相干散射不可见，剩余信号主要来自未匹配组分 B；选择性氘代可拉开 A、B 的匹配点。<span class="fig-source">配图：自制示意</span></figcaption>
  </figure>
 
@@ -81,7 +81,8 @@
  <p>均匀粒子：</p>
  $$I(q)\propto n\,(\rho-\rho_s)^2\,V^2\,P(q).$$
  <p>故 $\sqrt{I(0)}\propto|\Delta\rho|$（Krueger 2017）。对溶剂系列作 $\sqrt{I(0)}$（或 Stuhrmann 约定下的带符号 $\sqrt{I(0)}$）对 %D<sub>2</sub>O 的图，过零点即<strong>匹配点</strong>（contrast match point）。多组分时总振幅是各组分衬度加权贡献之和：</p>
- $$I(q)=\sum_{i,j} n_i n_j \, \Delta\rho_i \Delta\rho_j \, F_i(q) F_j(q) + \text{交叉项}$$
+ $$I(q)=n\left\langle\left|\sum_i\Delta\rho_i F_i(q)\right|^2\right\rangle$$
+ <p>这里讨论的是同一复合粒子内的多个组分，$F_i(0)$ 取对应组分体积；若是多种粒子的混合物并且存在相互关联，则应进一步写成含部分结构因子 $S_{ij}(q)$ 的形式。</p>
  <p>匹配一点只消掉一个组分的平均 $\Delta\rho$，不等于内部结构消失；组分内部 SLD 不均匀（疏水核、糖基化、结合离子）会导致「残余散射」（Krueger 2017；Grillo 2008 §5.2.4）。</p>
 
  <h3>与 <span data-term="saxs">SAXS</span> 电子密度衬度的区别</h3>

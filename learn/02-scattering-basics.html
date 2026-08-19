@@ -45,17 +45,17 @@
       <p>这里 $2\theta$ 为散射角。$q$ 的量纲为长度$^{-1}$，习惯用 Å$^{-1}$ 或 nm$^{-1}$（$1\,\text{nm}^{-1} = 0.1\,\text{Å}^{-1}$）。</p>
       <p><strong>尺度换算：</strong> 一阶对应关系为</p>
       $$ d \approx \frac{2\pi}{q} $$
-      <p>例如 $q = 0.1\,\text{Å}^{-1}$ 对应 $d \approx 63$ Å（6.3 nm）。更精确地说，$d$ 是傅里叶空间中周期，而非粒径；粒径参数 $R_g$、<span data-term="maximum-dimension">$D_{\max}$</span> 需通过特定分析（Guinier、<span data-term="pair-distance-distribution">$p(r)$</span> 等）获得。</p>
+      <p>例如 $q = 0.1\,\text{Å}^{-1}$ 对应 $d \approx 62.8$ Å。更精确地说，$d$ 是傅里叶空间中周期，而非粒径；粒径参数 $R_g$、<span data-term="maximum-dimension">$D_{\max}$</span> 需通过特定分析（Guinier、<span data-term="pair-distance-distribution">$p(r)$</span> 等）获得。</p>
       <p><strong>单位换算算例：</strong> 文献给出 $q_{\max}=6.0$ nm$^{-1}$ → $0.60$ Å$^{-1}$。若 $R_g=35$ Å，则 Guinier 上限 $q \lesssim 1/R_g = 0.029$ Å$^{-1}$（$\approx 0.29$ nm$^{-1}$）。混用 nm$^{-1}$ 与 Å 是拟合软件报错的常见原因。</p>
       <table>
         <thead>
-          <tr><th>$q$ (Å$^{-1}$)</th><th>$d=2\pi/q$</th><th>敏感对象（示意）</th></tr>
+          <tr><th>$q$ (Å$^{-1}$)</th><th>$d=2\pi/q$（Å）</th><th>敏感对象（示意）</th></tr>
         </thead>
         <tbody>
-          <tr><td>0.001</td><td>≈ 6.3 μm</td><td>大相分离域、<span data-term="usaxs">USAXS</span></td></tr>
-          <tr><td>0.01</td><td>≈ 630 nm</td><td>大复合物、囊泡</td></tr>
-          <tr><td>0.1</td><td>≈ 63 nm</td><td>蛋白质、小胶束</td></tr>
-          <tr><td>1.0</td><td>≈ 6.3 nm</td><td>紧凑纳米颗粒</td></tr>
+          <tr><td>0.001</td><td>≈ 6283 Å</td><td>大相分离域、<span data-term="usaxs">USAXS</span></td></tr>
+          <tr><td>0.01</td><td>≈ 628 Å</td><td>大复合物、囊泡</td></tr>
+          <tr><td>0.1</td><td>≈ 62.8 Å</td><td>蛋白质、小胶束</td></tr>
+          <tr><td>1.0</td><td>≈ 6.28 Å</td><td>紧凑纳米颗粒</td></tr>
         </tbody>
       </table>
       <div class="keybox">
@@ -64,8 +64,8 @@
       <p>在二维探测器上，每个像素对应一组 $(q_x, q_y)$；各向同性样品的 $I(q)$ 由以束心为圆心的方位角平均得到。各向异性样品则须保留 $I(q,\varphi)$ 或在选定楔区积分——这是数据还原阶段的话题（第 04 章）。</p>
       <h3>由几何估算 $q_{\min}$、$q_{\max}$</h3>
       <p>透射针孔几何一阶估算（小角）：</p>
-      $$ q_{\min} \approx \frac{4\pi}{\lambda}\,\frac{r_{\text{bs}}}{L}, \qquad q_{\max} \approx \frac{4\pi}{\lambda}\,\frac{R_{\text{det}}/2}{L} $$
-      <p>其中 $r_{\text{bs}}$ 为束阻半径，$L$ 为样品–探测器距离，$R_{\text{det}}$ 为探测器有效半径。算例：$\lambda=1.54$ Å，$L=4$ m，$r_{\text{bs}}=1.5$ mm → $q_{\min} \approx 0.003$ Å$^{-1}$（$d \sim 2$ μm）；$R_{\text{det}}=150$ mm → $q_{\max} \approx 0.3$ Å$^{-1}$。改变 $L$ 或波长是扩展 $q$ 窗口的物理手段，非后处理可补救。</p>
+      $$ q_{\min} \approx \frac{4\pi}{\lambda}\,\frac{r_{\text{bs}}}{L}, \qquad q_{\max} \approx \frac{4\pi}{\lambda}\,\frac{R_{\text{det}}}{L} $$
+      <p>其中 $r_{\text{bs}}$ 为束阻半径，$L$ 为样品–探测器距离，$R_{\text{det}}$ 为探测器有效半径。算例：$\lambda=1.54$ Å，$L=4$ m，$r_{\text{bs}}=1.5$ mm → $q_{\min} \approx 0.003$ Å$^{-1}$（$d \sim 2.1\times10^3$ Å）；$R_{\text{det}}=150$ mm → $q_{\max} \approx 0.3$ Å$^{-1}$。改变 $L$ 或波长是扩展 $q$ 窗口的物理手段，非后处理可补救。</p>
       <table>
         <thead>
           <tr><th>参数</th><th>增大 → 对 $q$ 的影响</th><th>副作用</th></tr>
@@ -107,7 +107,8 @@
       <p>透射几何、弱散射时用<span data-term="born-approximation">玻恩近似</span>：入射波当作未畸变平面波，每个体积元只散射一次。二次波相对入射波的相位差由<span data-term="scattering-vector-q">散射矢量</span> $\mathbf{q}=\mathbf{k}_s-\mathbf{k}_i$ 决定，全部体积元相干叠加就是<span data-term="scattering-amplitude">散射振幅</span></p>
       $$F(\mathbf{q})=\int_V \Delta\rho(\mathbf{r})\, e^{i\mathbf{q}\cdot\mathbf{r}}\, d\mathbf{r}.$$
       <p>均匀溶剂的傅里叶变换只落在 $\mathbf{q}=0$（被<span data-term="beamstop">束阻</span>挡住），所以积分里是过剩密度 $\Delta\rho$。探测器测不到相位，强度是模方：</p>
-      $$ I(q) \propto \frac{1}{V}\lvert F(\mathbf{q})\rvert^2 $$
+      $$ I(q) \propto \frac{1}{V_{\mathrm{ill}}}\lvert F(\mathbf{q})\rvert^2 $$
+      <p>这里 $V_{\mathrm{ill}}$ 是受照样品体积，不是单个粒子的体积；后文粒子体积仍记为 $V$。</p>
       <p>对<strong>单分散、稀释、各向同性</strong>的相同粒子体系，上式化为</p>
       $$ I(q) = n\,(\Delta\rho)^2 V^2 P(q)\, S(q) \quad \text{(式 2.1)} $$
       <p>各项含义：</p>
@@ -126,7 +127,7 @@
           <span class="fig-source">配图：自制示意</span>
         </figcaption>
       </figure>
-      <p><strong>前向散射与分子量：</strong> 稀溶液中 $I(0) = n(\Delta\rho)^2 V^2$。对相同形状系列，$I(0) \propto M_w^2$（$M_w$ 为分子量）。实验上从 Guinier 外推 $\ln I(0)$，结合 $\Delta\rho$ 与绝对标定可估 MW——但须确认 $S(q)\approx 1$ 且 $q_{\min}$ 足够低。</p>
+      <p><strong>前向散射与分子量：</strong> 稀溶液中 $I(0) = n(\Delta\rho)^2 V^2$。在<strong>固定数浓度</strong>、相同形状和衬度条件下，$I(0) \propto M_w^2$；固定质量浓度时则为近似 $I(0)\propto M_w$。实验上从 Guinier 外推 $\ln I(0)$，结合 $\Delta\rho$ 与绝对标定可估 MW——但须确认 $S(q)\approx 1$ 且 $q_{\min}$ 足够低。</p>
       <div class="keybox">
         <strong>关键结论：</strong>式 (2.1) 中四项独立可调：$n$（浓度）、$\Delta\rho$（缓冲液）、$V$/$P(q)$（尺寸形状）、$S(q)$（相互作用）。拟合前须固定已知项。
       </div>
@@ -135,7 +136,7 @@
       <p><span data-term="form-factor">形式因子</span>是归一化振幅的模方（尖括号为<span data-term="powder-average">粉末平均</span>）：</p>
       $$ P(q) = \left\langle \left\lvert \frac{F(\mathbf{q})}{F(0)} \right\rvert^2 \right\rangle $$
       <p>均匀粒子时 $F(0)=\Delta\rho V$，上式即 $P(q)=\langle\lvert F\rvert^2\rangle/(\Delta\rho)^2 V^2$。对半径 $R$ 的实心球，解析结果为</p>
-      $$ P_{\text{sphere}}(q) = \left[\frac{3V(\sin qR - qR\cos qR)}{(qR)^3}\right]^2 $$
+      $$ P_{\text{sphere}}(q) = \left[\frac{3(\sin x - x\cos x)}{x^3}\right]^2, \qquad x=qR $$
       <p>其中 $V = \frac{4}{3}\pi R^3$。低频极限 $qR \ll 1$ 给出</p>
       $$ P(q) \approx \exp\left(-\frac{q^2 R_g^2}{3}\right), \quad R_g = \sqrt{\frac{3}{5}}R $$
       <p>此即<span data-term="guinier-analysis">Guinier 定律</span>所依托的展开：低 $q$ 区 $\ln I(q)$ 对 $q^2$ 呈线性，斜率给出<span data-term="radius-of-gyration">回转半径</span> $R_g$。</p>
@@ -203,7 +204,7 @@
       <h2>$I(q)$ 曲线上的特征区段</h2>
       <p>一条质量良好的稀释溶液 $I(q)$ 可粗分为三区（示意，边界依体系而异）：</p>
       <figure class="figure">
-        <img src="../assets/figures/fig-05-guinier-porod.png" alt="<span data-term="guinier-porod-model">Guinier–Porod 模型</span>示意" width="900">
+        <img src="../assets/figures/fig-05-guinier-porod.png" alt="Guinier–Porod 模型示意" width="900">
         <figcaption>
           图：<span data-term="guinier-porod-model">Guinier–Porod 模型</span>将 $I(q)$ 分为 Guinier 区、中间过渡区与 Porod 尾，用于无模型尺寸提取。
           <span class="fig-source">配图：自制示意</span>
@@ -256,7 +257,7 @@
         <li>$q > 0.3$ Å$^{-1}$：若 SNR 足够，可能见到 Porod 尾或水合层偏离 $q^{-4}$。</li>
       </ul>
       <p>若 $q_{\min} > 0.05$ Å$^{-1}$，Guinier 区完全缺失，则<strong>不能</strong>可靠外推 $R_g$——这是实验设计层面的硬约束。此时须 <span data-term="sec-saxs">SEC-SAXS</span> 降低 $q_{\min}$，或改用 $p(r)$ 上界估计 <span data-term="maximum-dimension">$D_{\max}$</span>。</p>
-      <p><strong>分子量粗估：</strong> 对球状蛋白，$M_w \approx I(0) / [c \cdot (\Delta\rho)^2 \cdot V^2]$（须绝对标定）。$R=30$ Å、$c=5$ mg/mL、$\Delta\rho=0.1$ e/Å$^3$ 时，$I(0)$ 量级约 $10^{-1}$–$10^0$ cm$^{-1}$（依仪器而定）——相对强度不足以定 MW，须<span data-term="glassy-carbon">玻璃碳</span>或水标定（第 05 章）。</p>
+      <p><strong>分子量粗估：</strong> 对球状蛋白，若 $c$ 为质量浓度、$\Delta\rho$ 为普通 SLD 差，则 $M_w \approx cN_A(\Delta\rho)^2V^2/I(0)$（各量必须使用一致单位，且须绝对标定）。$R=30$ Å、$c=5$ mg/mL、$\Delta\rho=0.1$ e/Å$^3$ 时，$I(0)$ 量级约 $10^{-1}$–$10^0$ cm$^{-1}$（依仪器而定）——相对强度不足以定 MW，须<span data-term="glassy-carbon">玻璃碳</span>或水标定（第 05 章）。</p>
 
       <h2>常见坑</h2>
       <div class="note">

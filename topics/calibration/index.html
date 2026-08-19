@@ -15,7 +15,7 @@
       <h1>绝对标定（Absolute calibration）</h1>
       <p class="subtitle-en">Placing $I(q)$ on the differential scattering cross-section scale</p>
 
-      <p>本导读综合 Dreiss 等（2006）对台式 <span data-term="saxs">SAXS</span> 标定方法的比较、Zhang 等（2010）对<span data-term="glassy-carbon">玻璃碳</span>（glassy carbon）均匀性与稳定性的系统评估、Allen 等（2017）发布的 NIST SRM 3600 认证流程、Cookson 等（2006）对同步辐射针孔 <span data-term="saxs">SAXS</span> 采集与归一化策略、Zeng 等（2017）对专用束线标定与分子量验证的实践，以及 Wignall &amp; Bates（1987）对 <span data-term="sans">SANS</span> 绝对标定的经典框架。目标：理解<strong>为什么</strong>需要绝对标定、<strong>怎样</strong>用一级/二级标样把数据放到 $\mathrm{d}\Sigma/\mathrm{d}\Omega$（单位 $\mathrm{cm}^{-1}$，常写作 $\mathrm{cm}^{-1}\,\mathrm{sr}^{-1}$ 视归一化约定而定）尺度，以及实验室与束线日常中最易踩的坑。</p>
+      <p>本导读综合 Dreiss 等（2006）对台式 <span data-term="saxs">SAXS</span> 标定方法的比较、Zhang 等（2010）对<span data-term="glassy-carbon">玻璃碳</span>（glassy carbon）均匀性与稳定性的系统评估、Allen 等（2017）发布的 NIST SRM 3600 认证流程、Cookson 等（2006）对同步辐射针孔 <span data-term="saxs">SAXS</span> 采集与归一化策略、Zeng 等（2017）对专用束线标定与分子量验证的实践，以及 Wignall &amp; Bates（1987）对 <span data-term="sans">SANS</span> 绝对标定的经典框架。目标：理解<strong>为什么</strong>需要绝对标定、<strong>怎样</strong>用一级/二级标样把一维方位角平均数据放到 $\mathrm{cm}^{-1}$ 尺度；若报告每单位立体角的微分截面，则明确写作 $\mathrm{cm}^{-1}\,\mathrm{sr}^{-1}$，并以软件/证书定义为准。</p>
       <p>绝对标定不是还原链末端的「锦上添花」，而是把散射强度与材料本征性质挂钩的<strong>定量关口</strong>。未标定数据仍可做 Guinier 斜率、条纹位置等几何分析，但无法可靠回答：粒子<span data-term="number-density">数密度</span>多少、<span data-term="volume-fraction">体积分数</span>多少、比表面积多少、与 <span data-term="sans">SANS</span> 或其他台站数据能否直接拼接、模型拟合中的振幅参数是否物理。工业与医药实验室长期停留在任意单位，正是 Allen 2017 推动 SRM 3600 的动因；生物 <span data-term="saxs">SAXS</span> 发表规范（Trewhella 2017）则明确要求 $\mathrm{cm}^{-1}$ 尺度以便 $M$ 交叉验证。</p>
 
       <h2>问题是什么</h2>
@@ -56,7 +56,7 @@
         <li>与 <span data-term="sans">SANS</span> 测定的 GC 截面在重叠 $Q$ 区一致，支撑 <span data-term="saxs">SAXS</span> 二级标准地位。</li>
       </ul>
       <figure class="figure">
-        <img src="../../assets/figures/fig-08-glassy-carbon-standard.png" alt="<span data-term="glassy-carbon">玻璃碳</span>标样概念图" width="900">
+      <img src="../../assets/figures/fig-08-glassy-carbon-standard.png" alt="玻璃碳标样概念图" width="900">
         <figcaption><span data-term="glassy-carbon">玻璃碳</span>在 $q > 0.01$ Å$^{-1}$ 区空间均匀性优于约 2%；同批次片间差异 $\pm 2.5\%$，不同批次可差 $>10\%$。APS <span data-term="usaxs">USAXS</span> 一级法与 <span data-term="sans">SANS</span> 交叉验证其绝对截面。<span class="fig-source">配图：自制示意</span></figcaption>
       </figure>
 
@@ -79,7 +79,7 @@
       <ul>
         <li><strong>一级：</strong> <span data-term="glassy-carbon">玻璃碳</span>（与 Zhang / SRM 路线一致）锚定绝对尺度；</li>
         <li><strong>二级：</strong> 纯水验证；分钟级完成，不同 $L$、波长下重复性良好；</li>
-        <li><strong>应用：</strong> 用 $M = I(0) N_A / [C(\Delta\rho_M)^2]$ 测标准蛋白，与已知 $M$ 偏差 $<10\%$ 作为束线性能与样品 QC。</li>
+        <li><strong>应用：</strong> 用 $M = I(0) N_A / [C(\Delta\rho_M)^2]$ 测标准蛋白；这里 $\Delta\rho_M$ 必须是质量比散射长度密度差（cm$^2$/g），与已知 $M$ 偏差 $<10\%$ 可作为束线性能与样品 QC。</li>
       </ul>
       <p>该文的价值在于把「标定」从偶发标定日变成<strong>可重复的台站规程</strong>，并示范如何用分子量反查数据质量——若 $M$ 系统性偏高，优先查浓度、背景与 CF，而非强行调 <span data-term="maximum-dimension">$D_{\max}$</span> 或 Guinier 区间。</p>
 
@@ -112,8 +112,8 @@
 
       <h3>纯水一级标样（生物/稀溶液常用）</h3>
       <p>纯液体在 $q\to 0$ 的相干截面由涨落理论给出：</p>
-      <p>$$\left(\frac{\partial\Sigma}{\partial\Omega}\right)_{H_2O}(0)=\rho n_e^2 b_e^2 (\rho k T)\chi_T,$$</p>
-      <p>293 K、$10^5$ Pa 下水 $\chi_T \approx 4.591\times 10^{-10}\,\mathrm{Pa}^{-1}$，得 $(\mathrm{d}\Sigma/\mathrm{d}\Omega)_{H_2O}(0)\approx 1.65\times 10^{-2}\,\mathrm{cm}^{-1}$（Dreiss 2006）。<span data-term="sans">SANS</span> 中水作二级标样很常见；<span data-term="saxs">SAXS</span> 上信号弱，但在高流强旋转阳极 + 优化光路后已可行（Pedersen 2004，见 Dreiss 引文）。</p>
+      <p>$$\left(\frac{\partial\Sigma}{\partial\Omega}\right)_{H_2O}(0)=\rho_0 n_e^2 b_e^2 k_{\mathrm B}T\chi_T,$$</p>
+      <p>其中 $\rho_0$ 为单位体积内的水分子数，$n_e$ 为每个分子的电子数，$b_e$ 为 Thomson 因子。293 K、$10^5$ Pa 下水 $\chi_T \approx 4.591\times 10^{-10}\,\mathrm{Pa}^{-1}$，得 $(\mathrm{d}\Sigma/\mathrm{d}\Omega)_{H_2O}(0)\approx 1.65\times 10^{-2}\,\mathrm{cm}^{-1}$（Dreiss 2006）。<span data-term="sans">SANS</span> 中水作二级标样很常见；<span data-term="saxs">SAXS</span> 上信号弱，但在高流强旋转阳极 + 优化光路后已可行（Pedersen 2004，见 Dreiss 引文）。</p>
 
       <h3><span data-term="usaxs">USAXS</span> 一级法与 SRM 3600</h3>
       <p>APS <span data-term="usaxs">USAXS</span> 用光电二极管同时测 $I_0(0)$ 与 $I_S(Q)$，直接按定义归一（Allen 2017）：</p>
@@ -123,7 +123,7 @@
       <h3>生物样品分子量（绝对尺度 QC）</h3>
       <p>稀溶液、单分散、已知 $\Delta\rho_M$ 时（Zeng 2017；Trewhella 2017）：</p>
       <p>$$M=\frac{I(0)\,N_A}{C\,(\Delta\rho_M)^2},$$</p>
-      <p>$C$ 为质量浓度（g/cm$^3$），$I(0)$ 为绝对单位 <span data-term="forward-scattering">前向散射</span>。与序列/组成预测 $M$、Porod 体积/$M$、<span data-term="pair-distance-distribution">$p(r)$</span> 积分比对的<strong>三法互证</strong>是标定是否可信的最快检验。相对强度法依赖 BSA 等标准蛋白比值，<span data-term="radiation-damage">辐射损伤</span>与聚集使 $I(0)/c$ 漂移，不可替代绝对标定。</p>
+      <p>$C$ 为质量浓度（g/cm$^3$），$\Delta\rho_M$ 为质量比散射长度密度差（cm$^2$/g），$I(0)$ 为绝对单位 <span data-term="forward-scattering">前向散射</span>。与序列/组成预测 $M$、Porod 体积/$M$、<span data-term="pair-distance-distribution">$p(r)$</span> 积分比对的<strong>三法互证</strong>是标定是否可信的最快检验。相对强度法依赖 BSA 等标准蛋白比值，<span data-term="radiation-damage">辐射损伤</span>与聚集使 $I(0)/c$ 漂移，不可替代绝对标定。</p>
 
       <h3><span data-term="porod-invariant">Porod 不变量</span>与界面（绝对尺度）</h3>
       <p>两相体系高 $q$ 区 <span data-term="porod-law">Porod 定律</span>：$I(q) \to K_p/q^4$，<span data-term="porod-invariant">Porod 不变量</span> $Q_P = \int_0^\infty q^2 I(q)\,\mathrm{d}q$ 与比表面积 $S/V$、体积分数 $\phi$ 相关（Wignall 1987）。绝对 $K_p$ 可约束孔洞数密度、乳胶核壳参数等——相对单位下 $K_p$ 无物理意义。</p>
@@ -192,7 +192,7 @@
         <li><strong>几何改变即复标 → 如何判断：</strong> 相机长度、针孔、光强、探测器位置任一改变，CF 即变；用<span data-term="glassy-carbon">玻璃碳</span>做快速复标（Dreiss 2006）。换配置后首测标样，CF 变化 $>3\%$ 须调查。</li>
         <li><strong><span data-term="glassy-carbon">玻璃碳</span>批次与 $Q$ 区 → 如何判断：</strong> 不同批次截面可差 $>10\%$；标定拟合用 $q>0.01$ Å$^{-1}$ 较稳（Zhang 2010）。SRM 3600 给出认证值与 95% 置信带，勿随意换批次。</li>
         <li><strong>狭缝与 <span data-term="desmearing">desmearing</span> → 如何判断：</strong> <span data-term="usaxs">USAXS</span> 数据常狭缝 smear；与 pinhole 比较前需 Lake 等算法 <span data-term="desmearing">desmear</span>，或比较 smeared 模型（Zhang 2010）。未 <span data-term="desmearing">desmear</span> 时低 $q$ 抬高、$I(0)$ 偏大。</li>
-        <li><strong>单位与 $I(0)$ 分子量 → 如何判断：</strong> 生物 <span data-term="saxs">SAXS</span> 发表规范要求 $\mathrm{cm}^{-1}$ 绝对尺度，以便用 $M = I(0) N_A / [C(\Delta\rho_M)^2]$ 验证样品（Trewhella 2017）；相对单位无法做此检验。$M$ 偏差 $>15\%$ 提示标定或浓度问题。</li>
+        <li><strong>单位与 $I(0)$ 分子量 → 如何判断：</strong> 生物 <span data-term="saxs">SAXS</span> 发表规范要求 $\mathrm{cm}^{-1}$ 绝对尺度，以便用 $M = I(0) N_A / [C(\Delta\rho_M)^2]$ 验证样品（其中 $\Delta\rho_M$ 为 cm$^2$/g 的质量比对比度；Trewhella 2017）；相对单位无法做此检验。$M$ 偏差 $>15\%$ 提示标定或浓度问题。</li>
         <li><strong>不要只靠「标准蛋白」→ 如何判断：</strong> BSA、溶菌酶等易<span data-term="radiation-damage">辐射损伤</span>或聚集，仅宜作流程检查，不宜替代绝对标定（Trewhella 2017）。标准蛋白 $I(0)/c$ 随曝光漂移 $>5\%$ 即失效。</li>
         <li><strong>浓度与 $I(0)$ 线性 → 如何判断：</strong> 绝对标定后，稀释系列 $I(0)/c$ 应恒定（$\pm 5\%$）；非线性提示聚集、$S(q)$ 或浓度测定错误（Zeng 2017）。</li>
         <li><strong>能量扫描 / <span data-term="asaxs">ASAXS</span> → 如何判断：</strong> 变 $\lambda$ 后 $I_0$/$I_t$ 线性关系可能变（Cookson 2006）；须用二级环状标样或 GC 在每个能量点复标，勿假设 CF 能量无关。</li>
