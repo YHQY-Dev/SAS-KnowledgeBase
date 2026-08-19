@@ -30,9 +30,21 @@
         <figcaption>Caille 峰被双层形式因子调制；节点处峰被压低。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>$F(q)$ 取头基–尾链页的对称双层振幅，$S(q)$ 取 Caille 堆叠页的 Nallet 求和。粉末强度</p>
+      <h3>出发点</h3>
+      <p>粉末层状相的强度可分离为双层形式因子与层间结构因子。法向剖面仍是头–尾–头两段矩形，一维振幅 $F(q)=\int\Delta\rho(z)\,\mathrm{e}^{iqz}\,\mathrm{d}z$。层心 $z_n=nd+u_n$ 的热起伏由 Caille 关联器描述：</p>
+      $$\bigl\langle[u_n-u_0]^2\bigr\rangle=\frac{\eta d^2}{2\pi^2}\bigl[\gamma_{\mathrm{E}}+\ln(\pi n)\bigr],\qquad\eta=\frac{q_0^2 k_{\mathrm{B}}T}{8\pi\sqrt{K\bar{B}}},\quad q_0=\frac{2\pi}{d}.$$
+      <p>横向无限给出与均匀片相同的 Lorentz $2\pi/q^2$。约束 $t_{\mathrm{bil}}=t_{\mathrm{t}}+2t_{\mathrm{h}}\lt d$，溶剂间隙为 $d-t_{\mathrm{bil}}$。</p>
+      <h3>推导</h3>
+      <p>偶函数剖面只贡献余弦。尾链积分给出 $\Delta\rho_{\mathrm{t}} t_{\mathrm{t}}\,\mathrm{sinc}(qt_{\mathrm{t}}/2)$；两侧头基积分经和差化积给出相位 $\cos\bigl(q(t_{\mathrm{t}}+t_{\mathrm{h}})/2\bigr)$。对称双层振幅</p>
+      $$F(q)=\Delta\rho_{\mathrm{t}} t_{\mathrm{t}}\,\mathrm{sinc}\!\left(\frac{q t_{\mathrm{t}}}{2}\right)+2\Delta\rho_{\mathrm{h}} t_{\mathrm{h}}\,\mathrm{sinc}\!\left(\frac{q t_{\mathrm{h}}}{2}\right)\cos\!\left(\frac{q(t_{\mathrm{t}}+t_{\mathrm{h}})}{2}\right),$$
+      <p>其中 $\Delta\rho_{\mathrm{t}}=\rho_{\mathrm{t}}-\rho_{\mathrm{s}}$，$\Delta\rho_{\mathrm{h}}=\rho_{\mathrm{h}}-\rho_{\mathrm{s}}$，$\mathrm{sinc}\,x=\sin x/x$。层间：高斯位移的特征函数 $\exp(-q^2\langle[u_n-u_0]^2\rangle/2)$ 代入关联器，有限 $N$ 对求和即 Nallet 的 Caille $S(q)$</p>
+      $$S(q)=N+2\sum_{n=1}^{N-1}(N-n)\cos(nqd)\,\exp\!\left(-\frac{\eta q^2 d^2}{4\pi^2}\bigl[\gamma_{\mathrm{E}}+\ln(\pi n)\bigr]\right).$$
+      <p>粉末强度（绝对前置因子收进 $\mathrm{scale}$）</p>
       $$I(q)=\frac{2\pi}{d q^2}\,|F(q)|^2\,S(q)+B.$$
-      <p>第 $n$ 级峰的有效 Caille 指数仍为 $\eta_n=n^2\eta$。总双层厚度 $t_{\mathrm{bil}}=t_{\mathrm{t}}+2t_{\mathrm{h}}$ 应小于 $d$（水层或溶剂间隙为 $d-t_{\mathrm{bil}}$）。</p>
+      <p>对比变化只改 $F$，不应改 $d,\eta,N$。若 $\Delta\rho_{\mathrm{t}}=\Delta\rho_{\mathrm{h}}$，则 $|F|^2\to(\Delta\rho)^2 t_{\mathrm{bil}}^2 P_{\mathrm{t}}$，退回均匀 Caille 堆叠。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>布拉格位置仍是 $q_n=2\pi n/d$，有效指数 $\eta_n=n^2\eta$。峰附近 $S\sim|q-q_n|^{\eta_n-2}$，粉末峰带幂律尾。峰强度被 $|F(q_n)|^2$ 调制：双层节点处整级峰可以消失，并不等于 $\eta$ 极大。</p>
+      <p>$F(0)=\Delta\rho_{\mathrm{t}} t_{\mathrm{t}}+2\Delta\rho_{\mathrm{h}} t_{\mathrm{h}}$。$\eta\to 0$ 时 $S$ 回到 Laue 函数，$S(0)=N^2$。高 $q$ 包络由两段 $\mathrm{sinc}$ 决定，Lorentz 与 $|F|^2$ 合起来给出振荡 Porod $\sim q^{-4}$。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

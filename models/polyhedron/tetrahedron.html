@@ -30,8 +30,23 @@
         <figcaption>正四面体粉末平均 $I(q)/I(0)$（体内 Debye 求和）。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      $$F(\mathbf{q})=\Delta\rho\int_V e^{-i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3 r,\qquad P(q)=\langle |F|^2\rangle_{\Omega}/|F(0)|^2.$$
-      <p>闭式可将体积分化为面上的多边形形式因子之和。边长 $a$ 的体积 $V=a^3\sqrt{2}/12$。稀释 $I(q)=\mathrm{scale}\cdot P(q)+B$。</p>
+      <h3>出发点</h3>
+      <p>稀释、取向无规的均匀粒子，相干散射振幅是特征函数的傅里叶变换</p>
+      $$F(\mathbf{q})=\Delta\rho\int_V \mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r.$$
+      <p>正四面体 $V$ 由四张等边三角形面围成。边长 $a$ 时体积 $V=a^3\sqrt{2}/12$，$F(\mathbf{0})=\Delta\rho V$。</p>
+      <h3>推导</h3>
+      <p>因 $\nabla\cdot(\mathbf{q}\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}})=i q^2\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}$，散度定理把体积分降到面上：</p>
+      $$\int_V\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r=\frac{1}{i q^2}\sum_f(\mathbf{q}\cdot\hat{\mathbf{n}}_f)\int_{S_f}\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}S.$$
+      <p>每张面是平面多边形。面上 $\nabla_\parallel\cdot(\mathbf{q}_\parallel\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}})=i q_\parallel^2\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}$，再把面积分化为边积分。直边上相位线性，积分就是 $\mathrm{sinc}$。令 $\hat{\boldsymbol{\nu}}_j$ 为该边在面内的外法向、$\mathbf{L}_j$ 为边矢、$\mathbf{c}_j$ 为中点，</p>
+      $$f_f(\mathbf{q})\equiv\int_{S_f}\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}S=\frac{1}{i q_\parallel^2}\sum_{j\in\partial f}(\mathbf{q}_\parallel\cdot\hat{\boldsymbol{\nu}}_j)|\mathbf{L}_j|\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{c}_j}\,\mathrm{sinc}\!\left(\frac{\mathbf{q}\cdot\mathbf{L}_j}{2}\right).$$
+      <p>$q_\parallel\to 0$ 时 $f_f\to\mathrm{Area}_f\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}_f}$。四面体有 4 面 $\times$ 3 边，代入即得闭式 $F(\mathbf{q})$。粉末平均等价于 Debye 双重体积分（图中 $I(q)$ 用此求值）：</p>
+      $$P(q)=\frac{\langle|F|^2\rangle_\Omega}{|F(\mathbf{0})|^2}=\frac{1}{V^2}\int_V\int_V\frac{\sin(q|\mathbf{r}-\mathbf{r}'|)}{q|\mathbf{r}-\mathbf{r}'|}\,\mathrm{d}^3r\,\mathrm{d}^3r'.$$
+      <p>稀释 $I(q)=n(\Delta\rho)^2 V^2 P(q)+B$，拟合里常把前置因子收成 $\mathrm{scale}$。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>均匀体 $P=1-q^2 R_g^2/3+O(q^4)$。正四面体对质心的二阶矩给出闭式 $R_g^2=3a^2/40$，故</p>
+      $$P(q)=1-\frac{q^2 a^2}{40}+O(q^4).$$
+      <p>外接球半径 $R_{\mathrm{cir}}=\sqrt{6}\,a/4$，因而 $R_g=R_{\mathrm{cir}}/\sqrt{5}$。Guinier 指数形式在 $qR_g\lesssim 1$ 可用。</p>
+      <p>大 $q$ 尖锐面给出 Porod $q^{-4}$；棱与顶点产生更弱的 $q^{-5}$、$q^{-6}$ 修正，并把振荡相对球抹浅。第一极小不再对应 $\tan x=x$。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

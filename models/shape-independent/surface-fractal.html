@@ -26,9 +26,16 @@
         <figcaption>$I\sim q^{D_s-6}$（图中 $D_s=2.5$）。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>Bale–Schmidt 表面分形</p>
-      $$I(q)\simeq A\,q^{D_s-6}+B,\qquad 2\le D_s\le 3.$$
-      <p>$D_s=2$ 即 Porod。$A$ 含衬度与粗糙界面的广义面积。</p>
+      <h3>出发点</h3>
+      <p>表面分形把“面积”变成随码尺变化的量：在尺度 $r$ 上 $S(r)\sim r^{\,2-D_s}$。锐利但粗糙的界面使 Debye 相关在小 $r$ 的缺口不再是线性（Porod 的 $D_s=2$），而是 $r^{3-D_s}$。Bale–Schmidt 由此得到推广的 Porod 指数。</p>
+      <h3>推导</h3>
+      <p>光滑面：$\gamma(r)=1-\mathrm{const}\cdot r+\cdots$，Fourier 给出 $q^{-4}=q^{2-6}$。一般表面维数把线性换成</p>
+      $$\gamma(r)=1-C\,r^{3-D_s}+\cdots,\qquad 2\le D_s\le 3.$$
+      <p>$\mathrm{FT}[r^{\,3-D_s}]\propto q^{-(6-D_s)}$，故</p>
+      $$I(q)\simeq A\,q^{D_s-6}+B.$$
+      <p>$D_s=2$ 回到 Porod $q^{-4}$；$D_s\to 3$ 接近 $q^{-3}$。$A$ 含衬度与粗糙界面的广义面积，没有绝对标定时不能读成真面积。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>本式描述界面区（高 $q$ 相对整体尺寸）。低 $q$ 仍由颗粒/孔径的 Guinier 或质量分形控制，本页不含那段。中间指数若已小于 $3$，更像质量分形 $q^{-D_m}$，不要把 $D_m$ 改写成越界的 $D_s$。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

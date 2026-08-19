@@ -26,9 +26,15 @@
         <figcaption>长、短两个关联长度的洛伦兹叠加。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>双洛伦兹</p>
+      <h3>出发点</h3>
+      <p>两套独立的指数关联（例如大尺度静态不均与小尺度热涨落）在互不耦合时，强度是两个 Ornstein–Zernike 项之和。每一项仍由 $\gamma_i(r)\propto\mathrm{e}^{-r/\xi_i}/r$ 的三维 Fourier 变换得到。</p>
+      <h3>推导</h3>
+      <p>单洛伦兹的推导见洛伦兹页：$\mathrm{FT}[\mathrm{e}^{-r/\xi}/r]\propto 1/(1+\xi^2 q^2)$。线性叠加</p>
       $$I(q)=\frac{A_1}{1+\xi_1^2 q^2}+\frac{A_2}{1+\xi_2^2 q^2}+B.$$
-      <p>约定 $\xi_1>\xi_2$。两套幅度 $A_i$ 吸收衬度与涨落强度。</p>
+      <p>约定 $\xi_1>\xi_2$。幅度 $A_i$ 吸收各套涨落的衬度与强度。交叉项被略去，相当于两套模在平均场下解耦；若有耦合峰，应改用宽峰或 Teubner–Strey。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>低 $q$ 由长分量主导：$I\simeq A_1+A_2-(A_1\xi_1^2+A_2\xi_2^2)q^2+\cdots$。高 $q$ 两套都 $\sim q^{-2}$，合起来仍是 $q^{-2}$，系数 $A_1/\xi_1^2+A_2/\xi_2^2$。短 $\xi$ 控制何时进入这条尾。</p>
+      <p>$\xi_1\to\xi_2$ 时退化为单洛伦兹。固态不均质若低 $q$ 不发散，应把长分量换成高斯（Gauss–Lorentz 凝胶）。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

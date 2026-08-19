@@ -26,9 +26,16 @@
         <figcaption>静电相关峰：$I\propto(q^2+\kappa^2)/[(q^2+\kappa^2)^2+q_*^4]$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>Borue–Erukhimovich 型聚电解质强度</p>
+      <h3>出发点</h3>
+      <p>半稀释聚电解质的浓度模同时受链熵与屏蔽库仑作用。RPA 把理想链响应的逆与 Debye–Hückel 势相加。Borue–Erukhimovich 把结果写成一个有理式：分母含 $(q^2+\kappa^2)^2$ 与峰位参数 $q_*^4$。</p>
+      <h3>推导</h3>
+      <p>Edwards 链在高 $q$ 有 $S_0^{-1}\propto q^2$；屏蔽库仑 $v(q)\propto 1/(q^2+\kappa^2)$。RPA：$S^{-1}=S_0^{-1}+v$。把两项通分，等价于把逆写成 $(q^2+\kappa^2)$ 与 $1/(q^2+\kappa^2)$ 的线性组合：</p>
+      $$S^{-1}(q)\propto (q^2+\kappa^2)+\frac{q_*^4}{q^2+\kappa^2}=\frac{(q^2+\kappa^2)^2+q_*^4}{q^2+\kappa^2}.$$
+      <p>于是</p>
       $$I(q)=\frac{C(q^2+\kappa^2)}{(q^2+\kappa^2)^2+q_*^4}+B.$$
-      <p>$\kappa$ 为 Debye 屏蔽波矢，$q_*$ 控制峰位。无盐、半稀释时 $q_*$ 随浓度升高。高 $q$ 链统计需另接形式因子。</p>
+      <p>$\kappa$ 为大离子屏蔽波矢；$q_*$ 来自静电与链熵的竞争，控制峰位。高盐 $\kappa\gg q_*$ 时峰被抹掉，回到洛伦兹型。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>低 $q$：$I(0)=C\kappa^2/(\kappa^4+q_*^4)$，有限、不发散（与中性 RPA 趋旋节不同）。峰约在 $q\sim q_*$ 量级。高 $q$：$I\sim C/q^2$，即链的 $q^{-2}$ 统计；局域棒或排除体积需另接形式因子。$2\pi/q_*$ 是静电相关距离，不是硬球半径。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

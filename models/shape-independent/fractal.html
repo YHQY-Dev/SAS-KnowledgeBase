@@ -26,9 +26,16 @@
         <figcaption>建造块形式因子乘 Teixeira 分形 $S(q)$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>Teixeira 分形结构因子（$D$ 为分形维数）</p>
+      <h3>出发点</h3>
+      <p>质量分形聚集体的成对密度在建造块半径 $r_0$ 与整体截断 $\xi$ 之间服从 $g(r)\propto r^{D-3}$。结构因子是这个相关的三维 Fourier 变换，再乘建造块形式因子 $P(q)$。Teixeira 给相关加上指数截断 $\mathrm{e}^{-r/\xi}$，以便积分闭合。</p>
+      <h3>推导</h3>
+      <p>取对关联（$r>r_0$）</p>
+      $$g(r)=\frac{D}{4\pi r_0^D}\,r^{D-3}\,\mathrm{e}^{-r/\xi}.$$
+      <p>$S(q)=1+4\pi n\int r^2 g(r)\,(\sin(qr)/(qr))\,\mathrm{d}r$。幂律 $r^{D-3}$ 的变换给出 $q^{-D}$；指数截断把积分写成 Gamma 函数与复数 $(1-iq\xi)^{1-D}$。取虚部后得到 Teixeira 式</p>
       $$S(q)=1+\frac{D\Gamma(D-1)\sin[(D-1)\arctan(q\xi)]}{(q r_0)^D}\,\bigl(1+(q\xi)^{-2}\bigr)^{(1-D)/2}.$$
-      <p>观测强度 $I(q)\propto P(q)\,S(q)+B$，$P(q)$ 为建造块形式因子（常取半径 $r_0$ 的均匀球）。</p>
+      <p>观测 $I(q)\propto P(q)\,S(q)+B$。$P(q)$ 常取半径 $r_0$ 的均匀球 $\Phi(qr_0)^2$。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>$q\xi\ll 1$：$S(q)$ 饱和到与聚集体总质量有关的常数，整体呈 Guinier 型，截断长度 $\xi$ 与 $R_g$ 同量级。中间 $1/\xi\ll q\ll 1/r_0$：$S(q)\sim q^{-D}$。高 $q$：$S\to 1$，曲线回到建造块 $P(q)$，光滑球则进入 Porod $q^{-4}$。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

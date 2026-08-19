@@ -31,9 +31,19 @@
         <figcaption>细长方形截面柱的粉末平均：中间 $q^{-1}$ 与截面振荡。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      $$F(q,\theta,\phi)=\mathrm{sinc}\!\left(\frac{qC\cos\theta}{2}\right)\mathrm{sinc}\!\left(\frac{qA\sin\theta\cos\phi}{2}\right)\mathrm{sinc}\!\left(\frac{qB\sin\theta\sin\phi}{2}\right),$$
-      $$P(q)=\frac{2}{\pi}\int_0^{\pi/2}\int_0^{\pi/2}|F|^2\sin\theta\,\mathrm{d}\theta\,\mathrm{d}\phi.$$
-      <p>$\theta$ 是 $C$ 轴与 $\mathbf{q}$ 的夹角。$A=B=C$ 时与立方平行六面体相同。体积 $V=ABC$。</p>
+      <h3>出发点</h3>
+      <p>稀释、取向无规的均匀粒子，相干散射振幅是衬度对平面波相位的体积分</p>
+      $$F(\mathbf{q})=\int_V \Delta\rho(\mathbf{r})\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r.$$
+      <p>几何仍是直角砖块 $V=ABC$，但指定 $C$ 为挤出轴。令 $\theta$ 为 $\mathbf{q}$ 与 $C$ 轴夹角、$\phi$ 为截面方位，则 $q_\parallel=q\cos\theta$，截面分量 $q A\sin\theta\cos\phi$、$q B\sin\theta\sin\phi$。</p>
+      <h3>推导</h3>
+      <p>体积分在三棱上分离，各得一个 $\mathrm{sinc}\,x=\sin x/x$。与平行六面体同一闭式，只是把 $q_x,q_y,q_z$ 写成棱柱角：</p>
+      $$F(q,\theta,\phi)=\Delta\rho\,V\cdot\mathrm{sinc}\!\left(\frac{qC\cos\theta}{2}\right)\mathrm{sinc}\!\left(\frac{qA\sin\theta\cos\phi}{2}\right)\mathrm{sinc}\!\left(\frac{qB\sin\theta\sin\phi}{2}\right).$$
+      <p>对轴极角与截面滚转粉末平均（第一卦限，$\int_0^{\pi/2}\sin\theta\,\mathrm{d}\theta\cdot\frac{2}{\pi}\int_0^{\pi/2}\mathrm{d}\phi$）</p>
+      $$P(q)=\frac{2}{\pi}\int_0^{\pi/2}\int_0^{\pi/2}|F/F(0)|^2\sin\theta\,\mathrm{d}\theta\,\mathrm{d}\phi.$$
+      <p>$A=B=C$ 时与立方平行六面体相同。稀释 $I(q)=n(\Delta\rho)^2 V^2 P(q)+B$。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>与砖块同一 Taylor：$\mathrm{sinc}^2(q_i L_i/2)=1-q_i^2 L_i^2/12+O(q^4)$，粉末后 $P=1-q^2(A^2+B^2+C^2)/36+O(q^4)$，故 $R_g^2=(A^2+B^2+C^2)/12$。Guinier 指数形式在 $qR_g\lesssim 1$ 可用。</p>
+      <p>细长 $C\gg A,B$ 时中间区 $\sim q^{-1}$，高 $q$ 振荡由截面边长决定；扁平 $C\ll A,B$ 时中间区 $\sim q^{-2}$。尖锐界面大 $q$ 包络仍是 Porod $q^{-4}$。方形截面的极小相位不同于圆柱的 $J_1$ 根。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

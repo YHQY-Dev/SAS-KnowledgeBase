@@ -30,10 +30,23 @@
         <figcaption>定性示意，不是上节解析式的数值求值。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>半球帽是哑铃式在 $R_{\mathrm{bell}}=R$、$h=0$ 的特例。总振幅</p>
-      $$A(q,\alpha)=A_{\mathrm{cyl}}(q,R,L,\alpha)+A_{\mathrm{hemi}}(q,R,\alpha),$$
-      $$R_g^2=\frac{(L+2R)^2}{12}+\frac{R^2}{5}\cdot\frac{3L+8R}{3L+4R}.$$
-      <p>第二式为均匀胶囊的回转半径（常用于核对 Guinier）。粉末平均同圆柱。</p>
+      <h3>出发点</h3>
+      <p>稀释、取向无规的均匀胶囊，相干散射振幅是衬度对平面波相位的体积分</p>
+      $$F(\mathbf{q})=\int_V \Delta\rho(\mathbf{r})\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r.$$
+      <p>端帽圆柱是哑铃在 $R_{\mathrm{bell}}=R$、$h=0$ 的特例：中段圆柱加上两端半球。中段仍是轴向 $\mathrm{sinc}$ 乘径向 $2J_1$；半球是球积分在 $z$ 半空间的限制，并平移到 $\pm L/2$。</p>
+      <h3>推导</h3>
+      <p>中段（$V_{\mathrm{cyl}}=\pi R^2 L$）</p>
+      $$A_{\mathrm{cyl}}(q,\alpha)=\Delta\rho\,V_{\mathrm{cyl}}\cdot\frac{2J_1(qR\sin\alpha)}{qR\sin\alpha}\cdot\frac{\sin(qL\cos\alpha/2)}{qL\cos\alpha/2}.$$
+      <p>两端半球合起来体积等于一个整球 $4\pi R^3/3$，但质心不在原点：球心分别在圆柱端面 $z=\pm L/2$。半球振幅 $A_{\mathrm{hemi}}$ 可由球 Rayleigh 函数加端面圆盘的相位修正得到。总振幅</p>
+      $$A(q,\alpha)=A_{\mathrm{cyl}}(q,\alpha)+A_{\mathrm{hemi}}(q,R,\alpha).$$
+      <p>粉末平均与圆柱相同：</p>
+      $$P(q)=\frac{\displaystyle\int_0^{\pi/2}|A(q,\alpha)|^2\sin\alpha\,\mathrm{d}\alpha}{\displaystyle\int_0^{\pi/2}|A(0,\alpha)|^2\sin\alpha\,\mathrm{d}\alpha}.$$
+      <p>$L\to 0$ 回到均匀球；$R_{\mathrm{bell}}$ 大于 $R$ 时回到一般哑铃。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>对圆柱加两个半球关于原点取二阶矩，均匀胶囊的回转半径为</p>
+      $$R_g^2=\frac{\tfrac{1}{4}L^3+R L^2+3 L R^2+\tfrac{12}{5}R^3}{3L+4R}.$$
+      <p>$L=0$ 时回到球的 $3R^2/5$；$R\to 0$ 回到细棒的 $L^2/12$。与 Guinier $P=1-q^2 R_g^2/3+\cdots$ 一致，指数形式在 $qR_g\lesssim 1$ 可用。注意本页 $L$ 只是中段长，尖端到尖端为 $L+2R$。</p>
+      <p>细长时中间区仍 $\sim q^{-1}$。相对平端圆柱，半球去掉锐利圆盘端面，高 $q$ 的端面特征减弱。大 $q$ 整体仍趋近 Porod $q^{-4}$。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

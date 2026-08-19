@@ -31,11 +31,22 @@
         <figcaption>细长圆柱粉末平均 $I(q)/I(0)$：Guinier、中间 $q^{-1}$ 与截面振荡。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>取向为 $\alpha$ 的均匀圆柱振幅（$V=\pi R^2 L$）</p>
-      $$F(q,\alpha)=V\cdot\frac{2J_1(qR\sin\alpha)}{qR\sin\alpha}\cdot\frac{\sin(qL\cos\alpha/2)}{qL\cos\alpha/2}.$$
-      <p>一维粉末平均形式因子</p>
+      <h3>出发点</h3>
+      <p>稀释、取向无规的均匀粒子，相干散射振幅是衬度对平面波相位的体积分</p>
+      $$F(\mathbf{q})=\int_V \Delta\rho(\mathbf{r})\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r.$$
+      <p>均匀圆柱内 $\Delta\rho$ 为常数。取柱坐标，轴沿 $\hat{\mathbf{z}}$，$z\in[-L/2,L/2]$，径向 $r_\perp\le R$。令 $\alpha$ 为 $\mathbf{q}$ 与轴的夹角，则 $q_z=q\cos\alpha$、$q_\perp=q\sin\alpha$，相位分离为轴向与径向：</p>
+      $$F(q,\alpha)=\Delta\rho\int_{-L/2}^{L/2}\mathrm{e}^{i q_z z}\,\mathrm{d}z\int_0^R r_\perp\,\mathrm{d}r_\perp\int_0^{2\pi}\mathrm{e}^{i q_\perp r_\perp\cos\phi}\,\mathrm{d}\phi.$$
+      <h3>推导</h3>
+      <p>轴向积分是有限长度的傅里叶变换：$\int_{-L/2}^{L/2}\mathrm{e}^{i q_z z}\,\mathrm{d}z=L\,\mathrm{sinc}(qL\cos\alpha/2)$，其中 $\mathrm{sinc}u=\sin u/u$。角向积分给出零阶圆柱 Bessel：$2\pi J_0(q_\perp r_\perp)$。径向再用标准递推 $\int_0^R r J_0(q_\perp r)\,\mathrm{d}r=(R/q_\perp)J_1(q_\perp R)$，于是</p>
+      $$F(q,\alpha)=\Delta\rho\,V\cdot\frac{2J_1(qR\sin\alpha)}{qR\sin\alpha}\cdot\frac{\sin(qL\cos\alpha/2)}{qL\cos\alpha/2},\qquad V=\pi R^2 L.$$
+      <p>$q\to 0$ 时 $2J_1(x)/x\to 1$ 且 $\mathrm{sinc}\to 1$，故 $F(0)=\Delta\rho V$。归一化形式因子取模方后对无规取向平均（立体角元 $\sin\alpha\,\mathrm{d}\alpha$，由对称性积分到 $\pi/2$）：</p>
       $$P(q)=\frac{\displaystyle\int_0^{\pi/2}|F(q,\alpha)|^2\sin\alpha\,\mathrm{d}\alpha}{\displaystyle\int_0^{\pi/2}|F(0,\alpha)|^2\sin\alpha\,\mathrm{d}\alpha}.$$
-      <p>回转半径 $R_g^2=R^2/2+L^2/12$。细长极限中间区 $I(q)\propto q^{-1}$；稀释观测强度常写 $I(q)=\mathrm{scale}\cdot P(q)+B$。</p>
+      <p>稀释极限下观测强度 $I(q)=n\langle|F|^2\rangle+B=n(\Delta\rho)^2 V^2 P(q)+B$，拟合里常把 $n(\Delta\rho)^2 V^2$ 收成 $\mathrm{scale}$。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>Taylor：$2J_1(x)/x=1-x^2/8+O(x^4)$，$\mathrm{sinc}u=1-u^2/6+O(u^4)$。代入 $|F/F(0)|^2$ 并对 $\sin\alpha\,\mathrm{d}\alpha$ 平均（$\langle\sin^2\alpha\rangle=2/3$，$\langle\cos^2\alpha\rangle=1/3$）得</p>
+      $$P(q)=1-q^2\Bigl(\frac{R^2}{6}+\frac{L^2}{36}\Bigr)+O(q^4).$$
+      <p>与 Guinier $P=1-q^2 R_g^2/3+\cdots$ 比较，立刻得到 $R_g^2=R^2/2+L^2/12$。指数形式 $I(q)\simeq I(0)\mathrm{e}^{-q^2 R_g^2/3}$ 在 $qR_g\lesssim 1$ 可用。</p>
+      <p>细长极限 $L\gg 2R$：中间区由轴向 $\mathrm{sinc}$ 在 $\alpha\simeq\pi/2$ 的贡献主导，$I\sim q^{-1}$；随后截面因子给出 Bessel 振荡，第一极小约在 $qR\approx 3.83$（$J_1$ 的第一正根）。扁平极限 $L\ll 2R$ 中间区接近 $q^{-2}$。大 $q$ 时尖锐界面给出 Porod 包络 $\sim q^{-4}$。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

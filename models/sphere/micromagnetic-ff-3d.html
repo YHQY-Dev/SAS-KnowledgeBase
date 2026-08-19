@@ -29,8 +29,19 @@
         <figcaption>核球形式因子叠加磁晕（较长关联长度）后的 $I(q)$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      $$\frac{\mathrm{d}\Sigma_{\mathrm{mag}}}{\mathrm{d}\Omega}\propto \bigl\lvert \widetilde{\mathbf{M}}_\perp(\mathbf{q})\bigr\rvert^2,\qquad \widetilde{\mathbf{M}}(\mathbf{q})=\int \mathbf{M}(\mathbf{r})\,e^{-i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3 r.$$
-      <p>核通道仍可用球或核壳振幅。稀溶液未极化示意：$I(q)=n\bigl(|F_n|^2+|F_m|^2\bigr)+B$，其中 $F_m$ 来自 $\rho_{\mathrm{mag}}\propto M$ 的磁散射长度密度。微磁学在交换长度 $l_H$ 上给出自旋错向晕，常在低 $q$ 叠加 Lorentz 样因子 $1/(1+q^2 l_H^2)$。</p>
+      <h3>出发点</h3>
+      <p>核通道仍是核 SLD 的傅里叶变换 $F_n(\mathbf{q})=\int\rho_n(\mathbf{r})\,\mathrm{e}^{-i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r$。磁通道由磁化的傅里叶变换出发</p>
+      $$\widetilde{\mathbf{M}}(\mathbf{q})=\int \mathbf{M}(\mathbf{r})\,\mathrm{e}^{-i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r.$$
+      <p>偶极选择规则只保留垂直于 $\mathbf{q}$ 的分量：Halpern–Johnson 矢量 $\mathbf{Q}=\hat{\mathbf{q}}\times[\hat{\mathbf{q}}\times\widetilde{\mathbf{M}}]$，即 $\widetilde{\mathbf{M}}_\perp=\widetilde{\mathbf{M}}-(\hat{\mathbf{q}}\cdot\widetilde{\mathbf{M}})\hat{\mathbf{q}}$。均匀饱和磁化只贡献 $q=0$ 的宏观磁化，小角磁信号来自 $\mathbf{M}(\mathbf{r})$ 的空间不均匀。</p>
+      <h3>推导</h3>
+      <p>磁微分散射截面正比于垂直分量模方</p>
+      $$\frac{\mathrm{d}\Sigma_{\mathrm{mag}}}{\mathrm{d}\Omega}\propto \bigl\lvert \widetilde{\mathbf{M}}_\perp(\mathbf{q})\bigr\rvert^2.$$
+      <p>若把磁化写成饱和值加涨落 $\mathbf{M}=M_s\hat{\mathbf{m}}+\delta\mathbf{M}$，线性化后 $F_m$ 由磁散射长度密度 $\rho_{\mathrm{mag}}\propto M$ 承担。稀溶液、未极化、核–磁交叉项取向平均为零时，示意</p>
+      $$I(q)=n\bigl(|F_n|^2+|F_m|^2\bigr)+B.$$
+      <p>均匀磁球：$F_m=\rho_m V\Phi(qR_m)$，与核 Rayleigh 同形但半径、衬度独立。微磁学在交换长度 $l_H$ 上给出自旋错向晕时，涨落相关近似为指数 $\langle\delta\mathbf{M}(0)\cdot\delta\mathbf{M}(r)\rangle\propto\mathrm{e}^{-r/l_H}$，傅里叶变换给出 Lorentz 因子 $1/(1+q^2 l_H^2)$，常叠加在粒子形式因子的低 $q$ 上。一般涡旋、花态、skyrmion 需对给定 $\mathbf{M}(\mathbf{r})$ 做三维数值变换。</p>
+      <h3>低 $q$ 与极限</h3>
+      <p>均匀磁核：$F_m(0)=\rho_m V_m$，Guinier 半径 $R_{g,m}=R_m\sqrt{3/5}$，死层表现为 $R_m&lt;R_n$。自旋错向晕在 $q l_H\lesssim 1$ 呈 Lorentz $I_{\mathrm{halo}}\propto 1/(1+q^2 l_H^2)$，没有粒子那样的 $I(0)\propto V^2$ 饱和（关联若被颗粒尺寸截断，则两者并存）。</p>
+      <p>均匀 $\mathbf{M}$ 的磁 SAS 极限为零（只剩 $q=0$）。大 $q$ 磁界面若尖锐，包络仍可走 $q^{-4}$；交换晕则更快或呈 Lorentz 尾。极化通道把 $|F_n|^2$、$|F_m|^2$ 与交叉项拆开，未极化数据无法唯一分离。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

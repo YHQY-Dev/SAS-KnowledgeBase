@@ -26,9 +26,16 @@
         <figcaption>中间区 $I\sim q^{-D_m}$（图中约 $2.2$）。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>质量分形中间区与 Guinier 截断（示意）</p>
-      $$I(q)\simeq G\exp(-q^2 R_g^2/3)+B_{\mathrm{f}}\,q^{-D_m}+B,\qquad 1\le D_m\lt 3.$$
-      <p>完整表式回到 Teixeira $S(q)$，其中 $D=D_m$。整体 $R_g$ 与截断 $\xi$ 同量级。</p>
+      <h3>出发点</h3>
+      <p>质量随半径 $M\sim R^{D_m}$ 增长，等价于成对距离分布在标度区 $\sim r^{D_m-3}$。三维 Fourier 变换把实空间指数 $D_m-3$ 变成 $q^{-D_m}$。本页写中间区加 Guinier 截断；完整截断与建造块见 Teixeira 分形页。</p>
+      <h3>推导</h3>
+      <p>$\gamma(r)\propto r^{D_m-3}$（$r_0\ll r\ll\xi$）。由 $\mathrm{FT}[r^{\alpha}]\propto q^{-\alpha-3}$、$\alpha=D_m-3$，得</p>
+      $$I(q)\sim q^{-D_m},\qquad 1\le D_m<3.$$
+      <p>低 $q$ 有限尺寸把相关截断，回到二阶矩 Guinier。把两段包络相加（示意，未做 $\mathrm{erf}$ 或 Teixeira 闭合）</p>
+      $$I(q)\simeq G\exp(-q^2 R_g^2/3)+B_{\mathrm{f}}\,q^{-D_m}+B.$$
+      <p>整体 $R_g$ 与截断 $\xi$ 同量级。严格写法应回到 $I\propto P(q)S(q)$，其中 $S$ 为 Teixeira、$D=D_m$。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>低 $q$：Guinier 坪，$R_g$ 是聚集体尺寸。中间：$q^{-D_m}$。高 $q$ 被一次颗粒表面截断：光滑面 $q^{-4}$，粗糙面 $q^{D_s-6}$，那是质量–表面分形的内容。把表面尾算进 $D_m$ 会得到假的 $3$–$4$ 之间的值。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

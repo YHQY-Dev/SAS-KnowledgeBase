@@ -30,10 +30,21 @@
         <figcaption>定性示意，不是上节解析式的数值求值；圆柱包络上叠了端帽干涉。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>取向 $\alpha$ 下振幅为中段圆柱与两端球缺之和（Kaya）</p>
-      $$A(q,\alpha)=A_{\mathrm{cyl}}(q,R,L,\alpha)+A_{\mathrm{bell}}(q,R_{\mathrm{bell}},h,\alpha),$$
-      $$P(q)=\int_0^{\pi/2}|A(q,\alpha)|^2\sin\alpha\,\mathrm{d}\alpha\Big/\int_0^{\pi/2}|A(0,\alpha)|^2\sin\alpha\,\mathrm{d}\alpha.$$
-      <p>几何约束 $R_{\mathrm{bell}}\ge R$，球心到端面的距离 $h=\sqrt{R_{\mathrm{bell}}^2-R^2}$。$L\to 0$ 且两球相切时接近哑铃双球。</p>
+      <h3>出发点</h3>
+      <p>稀释、取向无规的均匀哑铃，相干散射振幅是衬度对平面波相位的体积分</p>
+      $$F(\mathbf{q})=\int_V \Delta\rho(\mathbf{r})\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r.$$
+      <p>体积分成半径 $R$、长度 $L$ 的中段圆柱，以及两端半径 $R_{\mathrm{bell}}\ge R$ 的球缺。中段给出轴向 $\mathrm{sinc}$ 乘径向 $2J_1$；球缺是球振幅减去被圆柱占用的球冠，并带有沿轴的相位。</p>
+      <h3>推导</h3>
+      <p>中段圆柱（与均匀圆柱相同）</p>
+      $$A_{\mathrm{cyl}}(q,\alpha)=\Delta\rho\,(\pi R^2 L)\cdot\frac{2J_1(qR\sin\alpha)}{qR\sin\alpha}\cdot\frac{\sin(qL\cos\alpha/2)}{qL\cos\alpha/2}.$$
+      <p>球心到圆柱端面的距离由相切约束固定：$h=\sqrt{R_{\mathrm{bell}}^2-R^2}$。两端球缺相对原点的位移为 $\pm(L/2+h)$，相位因子 $\mathrm{e}^{\pm i q(L/2+h)\cos\alpha}$。球缺振幅 $A_{\mathrm{bell}}$ 可由半径 $R_{\mathrm{bell}}$ 的球 Rayleigh 积分减去截平面以内的球冠得到（Kaya）。总振幅</p>
+      $$A(q,\alpha)=A_{\mathrm{cyl}}(q,\alpha)+A_{\mathrm{bell}}(q,R_{\mathrm{bell}},h,\alpha).$$
+      <p>粉末平均</p>
+      $$P(q)=\frac{\displaystyle\int_0^{\pi/2}|A(q,\alpha)|^2\sin\alpha\,\mathrm{d}\alpha}{\displaystyle\int_0^{\pi/2}|A(0,\alpha)|^2\sin\alpha\,\mathrm{d}\alpha}.$$
+      <p>$R_{\mathrm{bell}}=R$ 则 $h=0$，球缺退化为半球，即端帽圆柱。$L\to 0$ 且两球外切时接近哑铃双球。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>$q\to 0$ 时 $A(0)=\Delta\rho(V_{\mathrm{cyl}}+V_{\mathrm{bell}})$。端帽把质量推到更远处，故 $R_g$ 大于同 $R$、$L$ 的平端圆柱。Guinier $P=1-q^2 R_g^2/3+\cdots$ 在 $qR_g\lesssim 1$ 可用。</p>
+      <p>细长时中间区仍可出现 $q^{-1}$。中等 $q$ 的端帽–中段干涉对两端间距 $L+2h$ 敏感。高 $q$ 由较大的 $R_{\mathrm{bell}}$ 与 $R$ 共同给出振荡；大 $q$ 尖锐界面 $\sim q^{-4}$，球面帽减弱平端面的圆盘特征。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

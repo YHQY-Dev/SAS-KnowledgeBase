@@ -29,9 +29,18 @@
         <figcaption>多层干涉在中间 $q$ 产生宽峰，并叠加整体囊泡形式因子。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>第 $k$ 层膜内外半径 $R_{k,{\mathrm{in}}},R_{k,{\mathrm{out}}}$，总振幅</p>
+      <h3>出发点</h3>
+      <p>多层囊泡是溶剂与膜沿半径交替的球对称剖面。相干振幅</p>
+      $$F(q)=4\pi\int_0^{R_{\max}} r^2\bigl[\rho(r)-\rho_w\bigr]\frac{\sin(qr)}{qr}\,\mathrm{d}r,$$
+      <p>其中 $\rho_w$ 为水层（及囊外溶剂）的 SLD。第 $k$ 层膜占据 $R_{k,{\mathrm{in}}}\le r\le R_{k,{\mathrm{out}}}$，膜 SLD 为 $\rho_m$。</p>
+      <h3>推导</h3>
+      <p>每层膜的贡献与单层囊泡相同：均匀球原函数给出 $V(R)\Phi(qR)$，$V=4\pi R^3/3$，$\Phi(x)=3(\sin x-x\cos x)/x^3$。对 $n$ 层求和</p>
       $$A(q)=\sum_{k=1}^{n}(\rho_m-\rho_w)\bigl[V(R_{k,{\mathrm{out}}})\Phi(qR_{k,{\mathrm{out}}})-V(R_{k,{\mathrm{in}}})\Phi(qR_{k,{\mathrm{in}}})\bigr].$$
-      <p>等间距简化：$R_{k,{\mathrm{in}}}=R_0+(k-1)d$，$t$ 为单层膜厚，$d$ 为重复间距，$\rho_w$ 为水层 SLD。$I(q)=n_{\mathrm{ves}}|A(q)|^2+B$。</p>
+      <p>等间距简化：$R_{k,{\mathrm{in}}}=R_0+(k-1)d$，$R_{k,{\mathrm{out}}}=R_{k,{\mathrm{in}}}+t$，$t$ 为单层膜厚，$d$ 为重复间距。水层衬度已选为参考，故水壳不再单独出现。稀释强度 $I(q)=n_{\mathrm{ves}}|A(q)|^2+B$。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>$q\to 0$ 时 $\Phi\to 1$，$A(0)=(\rho_m-\rho_w)$ 乘全部膜体积（各层 $V_{\mathrm{out}}-V_{\mathrm{in}}$ 之和）。整体 $R_g$ 由多层的径向二阶矩决定，略大于最外半径对应的薄壳值。</p>
+      <p>径向周期 $d$ 在 $q_k\approx 2\pi k/d$ 附近产生布拉格样峰；有限外半径把峰宽调制为 $\sim\pi/R_{\max}$，不是无限层状晶体的 $\delta$ 函数。薄膜极限下每层 $\propto R_k^2 t\,j_0(qR_k)$，峰来自这些球面波的相长。</p>
+      <p>大 $q$ 尖锐膜界面给出 Porod $q^{-4}$。单层极限 $n=1$ 回到囊泡闭式。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

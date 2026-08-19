@@ -30,13 +30,23 @@
         <figcaption>$q^{-2}$ 包络上的 Caille 峰：幂律尾，高阶更宽。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>Caille 参数与第 $n$ 级有效指数</p>
-      $$\eta=\frac{q_0^2 k_{\mathrm{B}}T}{8\pi\sqrt{K\bar{B}}},\qquad q_0=\frac{2\pi}{d},\qquad \eta_n=n^2\eta.$$
-      <p>有限 $N$ 层的 Nallet 求和（$\gamma_{\mathrm{E}}$ 为 Euler 常数）</p>
+      <h3>出发点</h3>
+      <p>有限畴内 $N$ 层以平均间距 $d$ 堆叠。第 $n$ 层中心 $z_n=nd+u_n$，其中 $u_n$ 是法向位移。谐波层状弹性（压缩模量 $\bar{B}$、弯曲模量 $K$）给出 Caille 参数</p>
+      $$\eta=\frac{q_0^2 k_{\mathrm{B}}T}{8\pi\sqrt{K\bar{B}}},\qquad q_0=\frac{2\pi}{d}.$$
+      <p>Landau–Peierls：均方位移随层序对数发散。相隔 $n$ 层的位移关联器（$\gamma_{\mathrm{E}}$ 为 Euler 常数）</p>
+      $$\bigl\langle[u_n-u_0]^2\bigr\rangle=\frac{\eta d^2}{2\pi^2}\bigl[\gamma_{\mathrm{E}}+\ln(\pi n)\bigr].$$
+      <p>单层厚度形式因子 $P_{\mathrm{t}}$ 与<a href="lamellar.html">层状</a>页相同；粉末 Lorentz $2\pi/q^2$ 同样来自无限片的取向平均。层间干涉全部进入 $S(q)$。</p>
+      <h3>推导</h3>
+      <p>谐波近似下位移为高斯，特征函数 $\langle\mathrm{e}^{iq(u_n-u_0)}\rangle=\exp(-q^2\langle[u_n-u_0]^2\rangle/2)$。代入关联器：</p>
+      $$\exp\Bigl(-\frac{q^2}{2}\bigl\langle[u_n-u_0]^2\bigr\rangle\Bigr)=\exp\!\left(-\frac{\eta q^2 d^2}{4\pi^2}\bigl[\gamma_{\mathrm{E}}+\ln(\pi n)\bigr]\right)=(\pi n)^{-\eta q^2 d^2/4\pi^2}\mathrm{e}^{-\eta q^2 d^2\gamma_{\mathrm{E}}/4\pi^2}.$$
+      <p>结构因子是层对之和 $S(q)=\sum_{m,n=0}^{N-1}\mathrm{e}^{iq(m-n)d}\langle\mathrm{e}^{iq(u_m-u_n)}\rangle$。令 $k=|m-n|$，有 $N-k$ 对相隔 $k$ 层的项，得到 Nallet 有限 $N$ 求和</p>
       $$S(q)=N+2\sum_{n=1}^{N-1}(N-n)\cos(nqd)\,\exp\!\left(-\frac{\eta q^2 d^2}{4\pi^2}\bigl[\gamma_{\mathrm{E}}+\ln(\pi n)\bigr]\right).$$
-      <p>粉末强度（单层 $P_{\mathrm{t}}$ 同层状页）</p>
-      $$I(q)=\frac{2\pi}{d q^2}\,P_{\mathrm{t}}(q)\,S(q)+B.$$
-      <p>峰附近渐近 $S\sim|q-q_n|^{\eta_n-2}$（再乘 Lorentz $1/q^2$）。</p>
+      <p>粉末强度把 Lorentz、单层形式因子与层间 $S$ 相乘（绝对前置因子收进 $\mathrm{scale}$）</p>
+      $$I(q)=\frac{2\pi}{d q^2}\,P_{\mathrm{t}}(q)\,S(q)+B,\qquad P_{\mathrm{t}}(q)=\left[\mathrm{sinc}\!\left(\frac{qt}{2}\right)\right]^2.$$
+      <p>$\eta\to 0$ 时指数因子 $\to 1$，$S$ 回到有限晶格的 Laue 函数 $N+2\sum(N-n)\cos(nqd)=\sin^2(Nqd/2)/\sin^2(qd/2)$。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>布拉格位置 $q_n=2\pi n/d$。第 $n$ 级的有效 Caille 指数 $\eta_n=n^2\eta$（因为 $q_n^2\propto n^2$）。无限体系在峰附近 $S\sim|q-q_n|^{\eta_n-2}$；再乘 Lorentz $1/q^2$ 后，粉末峰带幂律尾而不是高斯。有限 $N$ 把发散截断为有限峰高，峰宽含相干长度 $\sim Nd$。</p>
+      <p>高阶峰因 $\eta_n\propto n^2$ 迅速变宽、变弱。$q\to 0$ 且 $\eta=0$ 时 $S(0)=N^2$；热起伏使低 $q$ 不再完全相干。高 $q$ 的包络仍由 $P_{\mathrm{t}}$ 决定：第一零点约 $q=2\pi/t$，其后振荡 Porod $\sim q^{-4}$。形式因子节点可以压低整级布拉格峰，并不等于 $\eta$ 极大。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

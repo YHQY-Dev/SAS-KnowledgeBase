@@ -29,9 +29,19 @@
         <figcaption>核球振荡叠加冠状 Debye 链贡献后的 $I(q)$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>示意分解（Pedersen &amp; Gerstenberg）</p>
+      <h3>出发点</h3>
+      <p>胶束由一个不溶核与 $N_{\mathrm{agg}}$ 根接枝冠状链组成。总超额散射长度是核与各链之和</p>
+      $$F(\mathbf{q})=\beta_c F_c(\mathbf{q})+\beta_s\sum_{k=1}^{N_{\mathrm{agg}}}F_{\mathrm{chain},k}(\mathbf{q}),$$
+      <p>其中 $\beta_c,\beta_s$ 为核与单链的超额散射长度，$F_c$、$F_{\mathrm{chain},k}$ 为归一化振幅。稀释强度正比于 $\langle|F|^2\rangle$；把平方展开即得核、单链、核–链与链–链四项。</p>
+      <h3>推导</h3>
+      <p>核当作均匀球：$F_c=\Phi(qR_c)$，$P_c=\Phi^2$，$\Phi(x)=3(\sin x-x\cos x)/x^3$。单链取高斯链，自相关是 Debye 函数。令 $x=q^2 R_g^2$，</p>
+      $$P_{\mathrm{chain}}(q)=\frac{2(\mathrm{e}^{-x}-1+x)}{x^2},\qquad \psi(x)=\frac{1-\mathrm{e}^{-x}}{x}.$$
+      <p>$\psi$ 是链的形状振幅。核–链相位差来自链质心相对核表面的位移 $d$，取向平均给出 $\sin[q(R_c+d)]/[q(R_c+d)]$。交叉项因而含 $\Phi(qR_c)\,\psi\,\mathrm{sinc}[q(R_c+d)]$。链–链交叉在无表面相关时是 $[\psi\,\mathrm{sinc}]^2$。收集系数（Pedersen &amp; Gerstenberg）</p>
       $$I(q)\propto N_{\mathrm{agg}}^2\beta_c^2 P_c(q)+N_{\mathrm{agg}}\beta_s^2 P_{\mathrm{chain}}(q)+2N_{\mathrm{agg}}^2\beta_c\beta_s S_{cs}(q)+N_{\mathrm{agg}}(N_{\mathrm{agg}}-1)\beta_s^2 S_{ss}(q).$$
-      <p>$P_c$ 为核球形式因子；$P_{\mathrm{chain}}=2(e^{-x}-1+x)/x^2$、$x=q^2 R_g^2$ 为 Debye 函数；$S_{cs},S_{ss}$ 含 $\Phi(qR_c)$ 与链形状振幅 $\psi=(1-e^{-q^2 R_g^2})/(q^2 R_g^2)$ 及相位因子 $\mathrm{sinc}[q(R_c+d)]$。$\beta_c,\beta_s$ 为核与单链的超额散射长度。</p>
+      <p>$S_{cs},S_{ss}$ 即上述 $\Phi$、$\psi$ 与 $\mathrm{sinc}[q(R_c+d)]$ 的组合。第一项 $\propto N_{\mathrm{agg}}^2$ 因核体积随聚集数放大；单链自相关只 $\propto N_{\mathrm{agg}}$。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>$q\to 0$ 时 $P_c=P_{\mathrm{chain}}=S_{cs}=S_{ss}=1$，$I(0)\propto(N_{\mathrm{agg}}\beta_c+N_{\mathrm{agg}}\beta_s)^2$，即整个胶束超额散射长度的平方。整体 $R_g$ 由核的 $3R_c^2/5$ 与冠状壳层贡献合成，大于裸核。</p>
+      <p>中 $q$ 可见核球振荡；$\Phi(qR_c)=0$ 的根（第一根 $\approx 4.49/R_c$）被链项填浅，一般达不到零。高 $q$ 核 Porod $q^{-4}$ 被冠状 Debye 的 $q^{-2}$ 盖过（高斯链），这是相对密实核壳球的指纹。$\beta_s\to 0$ 或对比匹配冠状时回到均匀核球。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

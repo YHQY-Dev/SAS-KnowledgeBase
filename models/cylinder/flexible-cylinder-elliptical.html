@@ -30,9 +30,19 @@
         <figcaption>相对圆截面，高 $q$ 截面振荡更钝。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      $$P(q)\simeq P_{\mathrm{wp}}(q;L,b)\left\langle\left[\frac{2J_1(q R_{\mathrm{eff}}(\psi))}{q R_{\mathrm{eff}}(\psi)}\right]^2\right\rangle_{\psi},$$
+      <h3>出发点</h3>
+      <p>稀释链状粒子的相干散射振幅是衬度对平面波相位的体积分</p>
+      $$F(\mathbf{q})=\int_V \Delta\rho(\mathbf{r})\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r.$$
+      <p>与圆截面柔性圆柱相同，沿轮廓 $s$ 做构象平均；差别只在截面是椭圆 $(x/a)^2+(y/b_{\mathrm{cs}})^2\le 1$。解耦后链因子与截面因子相乘，截面须对滚转角 $\psi$ 再平均。</p>
+      <h3>推导</h3>
+      <p>蠕虫链 $P_{\mathrm{wp}}(q;L,b)$ 与圆截面情形相同。椭圆截面映成单位圆后，径向因子仍是 $2J_1(x)/x$，有效半径</p>
       $$R_{\mathrm{eff}}(\psi)=\sqrt{a^2\cos^2\psi+b_{\mathrm{cs}}^2\sin^2\psi}.$$
-      <p>$P_{\mathrm{wp}}$ 与柔性圆柱相同。注意 $b$ 是 Kuhn 长度，$b_{\mathrm{cs}}$ 是截面短半轴，符号不要混用。</p>
+      <p>弯曲链不再保留直轴的 $\mathrm{sinc}$，截面粉末平均只对 $\psi$：</p>
+      $$P(q)\simeq P_{\mathrm{wp}}(q;L,b)\left\langle\left[\frac{2J_1(q R_{\mathrm{eff}}(\psi))}{q R_{\mathrm{eff}}(\psi)}\right]^2\right\rangle_{\psi}.$$
+      <p>注意 $b$ 是 Kuhn 长度，$b_{\mathrm{cs}}$ 是截面短半轴。$a=b_{\mathrm{cs}}=R$ 回到圆截面柔性圆柱。刚性极限应改用椭圆截面直圆柱，那时才恢复轴向 $\mathrm{sinc}$ 与 $\int|F|^2\sin\alpha\,\mathrm{d}\alpha$。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>链的 $R_g$ 仍由 Benoit–Doty 式用 $L$、$b$ 计算；椭圆截面附加 $(a^2+b_{\mathrm{cs}}^2)/4$。低 $q$ Guinier 由链尺寸主导，截面修正通常很小。</p>
+      <p>中间区线圈 / 棒转折与圆截面相同。高 $q$ 轴比把不同 $\psi$ 的 Bessel 零点错开，振荡比圆截面更钝。大 $q$ 尖锐界面仍 $\sim q^{-4}$。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

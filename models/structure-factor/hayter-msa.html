@@ -26,9 +26,28 @@
         <figcaption>排斥 Yukawa 的 $S(q)$：低 $q$ 强烈压低，相关峰高于硬球。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>屏蔽库仑。$\gamma$ 是无量纲接触势，$\kappa$ 是筛选波数</p>
-      $$\beta u(r)=\gamma\,\frac{\sigma}{r}\,\mathrm{e}^{-\kappa(r-\sigma)}\quad(r>\sigma),\qquad \beta u(\sigma^+)=\gamma.$$
-      <p>MSA 给出 $S(q)=[1-n\hat{c}(q;\eta,\gamma,\kappa\sigma)]^{-1}$ 的闭式。$\kappa$ 由离子强度决定（水溶液室温约 $\kappa\simeq 0.329\sqrt{I}\ \mathrm{nm}^{-1}$，$I$ 以 mol L$^{-1}$）。RMSA 在 $g(\sigma^+)&lt;0$ 时把 $\sigma$ 放到接触非负后再计算 $S(q)$。</p>
+      <h3>出发点</h3>
+      <p>OZ 与结构因子</p>
+      $$h(r)=c(r)+n\int c(|\mathbf{r}-\mathbf{r}'|)\,h(r')\,\mathrm{d}^3r',\qquad
+        S(q)=\bigl[1-n\hat{c}(q)\bigr]^{-1}.$$
+      <p>硬核加屏蔽库仑（Yukawa）。令 $x=r/\sigma$、$k=\kappa\sigma$，无量纲接触势 $\gamma=\beta u(\sigma^+)$：</p>
+      $$\beta u(x)=\gamma\,\frac{\mathrm{e}^{-k(x-1)}}{x}\quad(x\gt 1),\qquad u=\infty\ (x\lt 1).$$
+      <p>平均球近似（MSA）：核内 $g=0$（即 $h=-1$），核外 $c(r)=-\beta u(r)$。$\kappa$ 由离子强度决定；室温水溶液 $1{:}1$ 电解质 $\kappa\simeq 3.29\sqrt{I}\ \mathrm{nm}^{-1}$（$I$ 以 mol L$^{-1}$）。</p>
+      <h3>推导</h3>
+      <p>Waisman / Hayter–Penfold 在核内把 $c(x)$ 写成硬球三次式再加筛选的双曲项：</p>
+      $$c(x)=A+Bx+\tfrac12\eta A x^3+\frac{C\sinh(kx)}{x}+\frac{D\bigl(\cosh(kx)-1\bigr)}{x}\quad(x\lt 1),$$
+      <p>$x\gt 1$ 则 $c(x)=-\gamma\,\mathrm{e}^{-k(x-1)}/x$。待定系数 $A,B,C,D$ 由接触处与 Yukawa 衔接以及核内 OZ 约束决定，可化成一个四次方程。核外 Yukawa 的傅里叶变换是初等的。令 $A_q=q\sigma$，</p>
+      $$n\hat{c}_{\mathrm{Y}}(q)=-24\eta\gamma\,\frac{k\sin A_q+A_q\cos A_q}{A_q(A_q^2+k^2)}.$$
+      <p>核内多项式与 $\sinh/\cosh$ 的傅里叶同样闭式。二者相加后</p>
+      $$S(q)=\bigl[1-n\hat{c}(q;\eta,\gamma,k)\bigr]^{-1}.$$
+      <p>若算出的接触值 $g(\sigma^+)&lt;0$（稀释强电荷时常发生），Hansen–Hayter 的 rescaled MSA 把硬核放大到有效直径 $\sigma'$，使 $g(\sigma'^+)=0$，再用 $(\eta',k',\gamma')$ 计算 $S(q)$。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>$A_q\to 0$ 时 Yukawa 尾 $n\hat{c}_{\mathrm{Y}}(0)=-24\eta\gamma(1+k)/k^2$。在核内仍用 PY 硬球压缩率的 RPA 叠加（MSA 的首项）给出</p>
+      $$S(0)^{-1}\approx\frac{(1+2\eta)^2}{(1-\eta)^4}+24\eta\gamma\,\frac{1+k}{k^2}.$$
+      <p>排斥 $\gamma&gt;0$ 使 $S(0)$ 随 $\gamma$ 增大、随 $k=\kappa\sigma$ 减小而进一步下降。稀溶液 Debye–Hückel 极限（硬核可忽略）化为</p>
+      $$S(q)\approx\Bigl[1+\frac{n\,4\pi L_{\mathrm{B}}Z_{\mathrm{eff}}^2}{q^2+\kappa^2}\Bigr]^{-1},\qquad
+        S(0)\approx\bigl[1+n\,4\pi L_{\mathrm{B}}Z_{\mathrm{eff}}^2/\kappa^2\bigr]^{-1},$$
+      <p>其中 $L_{\mathrm{B}}$ 为 Bjerrum 长度。DLVO 接触势与有效价的关系为 $\gamma=(Z_{\mathrm{eff}}^2 L_{\mathrm{B}}/\sigma)\bigl[\mathrm{e}^{k/2}/(1+k/2)\bigr]^2$。相关峰约在 $q\sim 2\pi/d$、$d\sim\sigma\,\eta^{-1/3}$。$q\sigma\gg 1$ 时 $S(q)\to 1$。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

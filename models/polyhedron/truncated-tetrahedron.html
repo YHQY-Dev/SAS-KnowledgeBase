@@ -30,9 +30,22 @@
         <figcaption>截角四面体粉末平均 $I(q)/I(0)$（体内 Debye 求和）。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>完全截角（Archimedean）时，原四面体边长 $a$ 上各棱被截去 $a/3$，剩余 12 个顶点。振幅</p>
-      $$F(\mathbf{q})=\Delta\rho\int_{V_{\mathrm{tr}}} e^{-i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3 r,\qquad P(q)=\langle |F|^2\rangle_{\Omega}/|F(0)|^2.$$
-      <p>体积小于原四面体 $a^3\sqrt{2}/12$（去掉四个小四面体）。稀释 $I(q)=\mathrm{scale}\cdot P(q)+B$。</p>
+      <h3>出发点</h3>
+      <p>稀释、取向无规的均匀粒子，相干散射振幅是特征函数的傅里叶变换</p>
+      $$F(\mathbf{q})=\Delta\rho\int_{V_{\mathrm{tr}}} \mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r.$$
+      <p>截角四面体由正四面体切去四个顶点得到。沿每条原棱截去比例 $\tau$（Archimedean 完全截角 $\tau=1/3$），剩余 4 个六边形面与 4 个三角形面。</p>
+      <h3>推导</h3>
+      <p>与任意凸多面体相同：因 $\nabla\cdot(\mathbf{q}\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}})=i q^2\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}$，散度定理把体积分降到面上；面上再把面积分化为边积分。直边上相位线性，故出现 $\mathrm{sinc}$：</p>
+      $$F(\mathbf{q})=\frac{\Delta\rho}{i q^2}\sum_f(\mathbf{q}\cdot\hat{\mathbf{n}}_f)\,f_f(\mathbf{q}),$$
+      $$f_f(\mathbf{q})=\frac{1}{i q_\parallel^2}\sum_{j\in\partial f}(\mathbf{q}_\parallel\cdot\hat{\boldsymbol{\nu}}_j)|\mathbf{L}_j|\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{c}_j}\,\mathrm{sinc}\!\left(\frac{\mathbf{q}\cdot\mathbf{L}_j}{2}\right).$$
+      <p>完全截角时 8 张面、18 条棱。体积也可由原四面体减去四个相似小四面体得到：小四面体棱长 $\tau a$，故</p>
+      $$V=V_{\mathrm{tet}}(1-4\tau^3),\qquad V_{\mathrm{tet}}=a^3\sqrt{2}/12.$$
+      <p>$\tau=1/3$ 时 $V=23 V_{\mathrm{tet}}/27$。粉末平均等价于 Debye 双重体积分（图中 $I(q)$ 用此求值）。稀释 $I(q)=n(\Delta\rho)^2 V^2 P(q)+B$。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>质心仍在原点。用平行轴定理扣除四个小四面体：小体质心在 $(1-\tau)\mathbf{v}$，$|\mathbf{v}|=\sqrt{6}\,a/4$ 为原顶点距，小体自身 $R_{g,\mathrm{s}}^2=3(\tau a)^2/40$。于是</p>
+      $$R_g^2=\frac{\displaystyle\frac{3a^2}{40}-4\tau^3\left[\frac{3\tau^2 a^2}{40}+(1-\tau)^2\frac{3a^2}{8}\right]}{1-4\tau^3}.$$
+      <p>Archimedean $\tau=1/3$ 时 $R_g^2=53 a^2/920$。$\tau\to 0$ 回到正四面体 $3a^2/40$。Guinier 指数形式在 $qR_g\lesssim 1$ 可用。</p>
+      <p>截去顶点去掉最远的质量，高 $q$ 振荡相对正四面体更接近球。尖锐面仍给出 Porod $q^{-4}$；$\tau$ 与尺寸多分散都浅化极小。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

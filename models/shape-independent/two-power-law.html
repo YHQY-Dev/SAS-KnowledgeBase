@@ -26,9 +26,16 @@
         <figcaption>两段幂律在 $q_c$ 处转折。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>平滑双幂律</p>
+      <h3>出发点</h3>
+      <p>若成对相关在 $r\sim 1/q_c$ 两侧服从两套幂律（两个标度区），Fourier 变换在 $q_c$ 两侧给出两个指数。本页不引入 $R_g$，只保留转折波矢 $q_c$ 与两个有效指数。交叉因子是经验平滑，不是唯一的微观核。</p>
+      <h3>推导</h3>
+      <p>分段幂律 $I\sim q^{-m_1}$（$q\ll q_c$）与 $I\sim q^{-m_2}$（$q\gg q_c$）在 $q_c$ 处一般不可导。取有理交叉</p>
       $$I(q)=\frac{A}{q^{m_1}}\frac{1}{1+(q/q_c)^{m_2-m_1}}+B.$$
-      <p>$q\ll q_c$ 时指数 $m_1$，$q\gg q_c$ 时指数 $m_2$。符号当场约定：$q_c$ 为转折波矢。</p>
+      <p>$q/q_c\to 0$ 时分母 $\to 1$，故 $I\sim A q^{-m_1}$。$q/q_c\to\infty$ 时分母 $\sim(q/q_c)^{m_2-m_1}$，于是</p>
+      $$I(q)\sim A\,q^{-m_1}(q_c/q)^{m_2-m_1}=A\,q_c^{m_2-m_1}q^{-m_2}.$$
+      <p>指数从 $m_1$ 连续过渡到 $m_2$，转折宽度由指数差 $m_2-m_1$ 控制。这与质量分形接到表面 Porod（$m_1=D_m$、$m_2=6-D_s$）是同一类写法。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>低 $q$ 仍是幂律 $q^{-m_1}$，没有 Guinier 饱和；若数据其实有坪，应改用 Guinier–Porod。高 $q$ 渐近 $q^{-m_2}$。$q_c\sim 2\pi/\xi$ 只给出中间长度的数量级，不是晶格常数。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

@@ -26,9 +26,15 @@
         <figcaption>Benoit 星：比线形链更早偏离 Debye。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>Benoit 高斯星（$v=q^2 R_{g,\mathrm{arm}}^2$，$f$ 为臂数）</p>
-      $$P(q)=\frac{2}{f v^2}\left[v-1+e^{-v}+\frac{f-1}{2}(1-e^{-v})^2\right].$$
-      <p>$f=1,2$ 回到线形 Debye。整星 $R_g^2=((3f-2)/f)\,R_{g,\mathrm{arm}}^2$。</p>
+      <h3>出发点</h3>
+      <p>$f$ 条高斯臂从同一中心长出。链段对要么在同一臂上（单臂 Debye），要么分属两臂（各从中心出发的两端距相乘）。对构象做高斯平均即 Benoit 星形因子。</p>
+      <h3>推导</h3>
+      <p>单臂上相隔 $n$ 个单体：$\langle\mathrm{e}^{iq\cdot R}\rangle=\mathrm{e}^{-q^2 nb^2/6}$。两臂上的单体到中心的位移独立，交叉项是两个 $(1-\mathrm{e}^{-v})/v$ 型因子的积。令 $v=q^2 R_{g,\mathrm{arm}}^2$，对臂内与臂间求和，得到</p>
+      $$P(q)=\frac{2}{f v^2}\left[v-1+\mathrm{e}^{-v}+\frac{f-1}{2}(1-\mathrm{e}^{-v})^2\right].$$
+      <p>$f=1$ 或 $2$：臂间项消失或并入一条线形链，回到 Debye。整星回转半径由各臂二阶矩与交叉矩合成</p>
+      $$R_g^2=\frac{3f-2}{f}\,R_{g,\mathrm{arm}}^2.$$
+      <h3>低 $q$ 与渐近</h3>
+      <p>低 $q$：$P=1-q^2 R_g^2/3+\cdots$，用的是整星 $R_g$，同一分子量下比线形链更小。高 $q$ 看见单臂高斯统计，仍 $\sim q^{-2}$；大 $f$ 时中间区更早偏离 Debye、更像密实物体，但不产生硬球振荡。有致密核时应改用胶束，而不是加大 $f$。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

@@ -26,10 +26,18 @@
         <figcaption>微乳峰：$I\sim 1/(a+c q^2+d q^4)$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>Teubner–Strey</p>
-      $$I(q)=\frac{8\pi/\xi}{a+c q^2+d q^4}+B,\qquad d_{\mathrm{TS}}=2\pi\left[\tfrac12\sqrt{a/d}-c/(4d)\right]^{-1/2},$$
-      $$\xi=\left[\tfrac12\sqrt{a/d}+c/(4d)\right]^{-1/2}.$$
-      <p>前置因子的写法随文献略有不同；拟合时常用无量纲标度吸收。符号当场约定：$d\gt 0$，$c$ 可为负。</p>
+      <h3>出发点</h3>
+      <p>双连续微乳的组成涨落用 Landau 自由能描述。对 Fourier 模 $\phi_q$ 展开到 $q^4$（Cahn–Hilliard 型梯度加平方 Laplacian），按能量均分，强度正比于分母的倒数 $1/(a+c q^2+d q^4)$。</p>
+      <h3>推导</h3>
+      <p>实空间密度泛函（到四阶梯度）</p>
+      $$F[\phi]=\frac{1}{2}\int\bigl[a\,\phi^2+c(\nabla\phi)^2+d(\nabla^2\phi)^2\bigr]\,\mathrm{d}^3r.$$
+      <p>Fourier 空间：$F=\frac12\sum_q(a+c q^2+d q^4)\lvert\phi_q\rvert^2$。经典统计 $\langle\lvert\phi_q\rvert^2\rangle\propto 1/(a+c q^2+d q^4)$，故</p>
+      $$I(q)=\frac{8\pi/\xi}{a+c q^2+d q^4}+B.$$
+      <p>（前置随文献略有不同，拟合时常被标度吸收。）$d>0$ 保证大 $q$ 稳定；$c<0$ 时分母在有限 $q$ 取极小，出现峰。令 $q_m^2=-c/(2d)$。由极点定义畴间距与关联长度</p>
+      $$d_{\mathrm{TS}}=2\pi\left[\tfrac12\sqrt{a/d}-c/(4d)\right]^{-1/2},\qquad\xi=\left[\tfrac12\sqrt{a/d}+c/(4d)\right]^{-1/2}.$$
+      <p>对应的实空间相关是衰减振荡 $\gamma(r)\propto(\mathrm{e}^{-r/\xi}/r)\sin(2\pi r/d_{\mathrm{TS}})$。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>低 $q$：$I(0)\propto 1/a$，有限。峰位 $q_m$ 满足 $d_{\mathrm{TS}}\sim 2\pi/q_m$。高 $q$：$I\sim 1/(d q^4)$，即 Porod 型 $q^{-4}$（光滑两相界面）。层状高阶峰不是本式所能给出的。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

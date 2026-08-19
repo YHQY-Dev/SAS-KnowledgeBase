@@ -26,9 +26,17 @@
         <figcaption>$I\sim 1/(1+\xi^2 q^2)$ 的缓慢衰减。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>Ornstein–Zernike / 洛伦兹</p>
+      <h3>出发点</h3>
+      <p>临界浓度涨落的 Ornstein–Zernike 相关在三维中取 Yukawa 形：$\gamma(r)\propto\mathrm{e}^{-r/\xi}/r$。强度是它的 Fourier 变换。这不是粒子外形，只是一个关联长度 $\xi$。</p>
+      <h3>推导</h3>
+      <p>各向同性三维变换</p>
+      $$I(q)\propto 4\pi\int_0^\infty r^2\cdot\frac{\mathrm{e}^{-r/\xi}}{r}\cdot\frac{\sin(qr)}{qr}\,\mathrm{d}r=\frac{4\pi}{q}\int_0^\infty\mathrm{e}^{-r/\xi}\sin(qr)\,\mathrm{d}r.$$
+      <p>积分 $\int_0^\infty\mathrm{e}^{-ar}\sin(br)\,\mathrm{d}r=b/(a^2+b^2)$，其中 $a=1/\xi$、$b=q$，得到 $\propto 1/(q^2+\xi^{-2})$。归一化到 $I(0)$：</p>
       $$I(q)=\frac{I(0)}{1+\xi^2 q^2}+B.$$
-      <p>有时把 $I(0)$ 写成与 $\xi$ 相关的临界幅度。高 $q$ 渐近 $q^{-2}$。</p>
+      <p>同一结果来自 Landau 展开只保留 $a+c q^2$：$\langle\lvert\phi_q\rvert^2\rangle\propto 1/(a+c q^2)$，关联长度 $\xi=\sqrt{c/a}$。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>低 $q$：$I=I(0)\,(1-\xi^2 q^2+O(q^4))$，等效 Guinier 半径满足 $R_g^2=3\xi^2$（仅在此二次展开意义上）。高 $q$ 渐近 $I\sim I(0)/(\xi^2 q^2)$，即 $q^{-2}$，比锐利界面的 $q^{-4}$ 慢。</p>
+      <p>若尾已是 $q^{-4}$，相关应改用 $\mathrm{e}^{-r/\xi}$（DAB）而不是 $\mathrm{e}^{-r/\xi}/r$。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

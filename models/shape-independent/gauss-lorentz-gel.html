@@ -26,9 +26,14 @@
         <figcaption>静态高斯不均质叠加热洛伦兹涨落。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>Gauss–Lorentz 凝胶</p>
+      <h3>出发点</h3>
+      <p>化学凝胶同时有冻结的固态浓度不均质与液体般的热涨落。前者的实空间相关近高斯（有限斑块，低 $q$ 不发散），Fourier 变换仍是高斯；后者是网格的 Ornstein–Zernike 模，$\gamma\sim\mathrm{e}^{-r/\xi}/r$。</p>
+      <h3>推导</h3>
+      <p>三维高斯 $\gamma_{\mathrm{G}}(r)\propto\exp(-r^2/(2\Xi^2))$ 的变换是 $\exp(-q^2\Xi^2/2)$。OZ 项的变换见洛伦兹页，为 $1/(1+q^2\xi^2)$。两套模线性叠加（Shibayama）</p>
       $$I(q)=I_G\exp(-q^2\Xi^2/2)+\frac{I_L}{1+q^2\xi^2}+B.$$
-      <p>$\Xi$ 为固态不均质尺寸，$\xi$ 为热涨落关联长度。通常 $\Xi>\xi$。</p>
+      <p>$\Xi$ 为固态斑块尺寸，$\xi$ 为热关联长度，通常 $\Xi>\xi$。固态项写成高斯而不是第二个洛伦兹，是为了让低 $q$ 饱和而不是 $\sim q^{-2}$ 继续抬升。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>低 $q$：$I\to I_G+I_L$，固态 Guinier 型曲率由 $\Xi$ 决定（注意指数是 $\Xi^2/2$ 而非 $R_g^2/3$，定义不同）。高 $q$ 高斯项指数衰减，只剩洛伦兹 $q^{-2}$ 尾。需要额外网络幂律时用凝胶拟合页。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

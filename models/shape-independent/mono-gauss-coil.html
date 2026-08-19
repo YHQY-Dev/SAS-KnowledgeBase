@@ -26,9 +26,16 @@
         <figcaption>Debye 函数：Guinier 转到 $q^{-2}$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>Debye 单分散高斯链（$x=q^2 R_g^2$）</p>
-      $$D(x)=\frac{e^{-x}-1+x}{x^2},\qquad P(q)=2D(x),\qquad P(0)=1.$$
-      <p>观测 $I(q)=I(0)\,P(q)+B$。Kratky 图 $q^2 I(q)$ 在高 $q$ 趋向平台。</p>
+      <h3>出发点</h3>
+      <p>理想高斯链：相隔 $n$ 个单体的两端距是高斯分布，$\langle R_n^2\rangle=nb^2$。形式因子是所有链段对相位因子的构象平均，不假定整体为球或棒。</p>
+      <h3>推导</h3>
+      <p>高斯平均 $\langle\mathrm{e}^{i\mathbf{q}\cdot\mathbf{R}_n}\rangle=\exp(-q^2 nb^2/6)$。对 $N$ 个单体双求和并换成积分。令 $u=\lvert i-j\rvert/N$，$x=q^2 R_g^2$，且 $R_g^2=Nb^2/6$：</p>
+      $$P(q)=\frac{1}{N^2}\sum_{i,j}\mathrm{e}^{-q^2\lvert i-j\rvert b^2/6}=2\int_0^1(1-u)\,\mathrm{e}^{-xu}\,\mathrm{d}u.$$
+      <p>积分：$\int_0^1\mathrm{e}^{-xu}\,\mathrm{d}u=(1-\mathrm{e}^{-x})/x$，$\int_0^1 u\mathrm{e}^{-xu}\,\mathrm{d}u=(1-\mathrm{e}^{-x}(x+1))/x^2$。整理得 Debye 函数</p>
+      $$D(x)=\frac{\mathrm{e}^{-x}-1+x}{x^2},\qquad P(q)=2D(x),\qquad x=q^2 R_g^2.$$
+      <p>$x\to 0$ 时 $D\to 1/2$，故 $P(0)=1$。观测 $I(q)=I(0)\,P(q)+B$。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>Taylor：$\mathrm{e}^{-x}=1-x+x^2/2-x^3/6+\cdots$，代入 $D=(x^2/2-x^3/6+\cdots)/x^2=1/2-x/6+\cdots$，故 $P=1-x/3+O(x^2)=1-q^2 R_g^2/3+\cdots$，即 Guinier。高 $q$（$x\gg 1$）：$D\sim 1/x$，故 $P\sim 2/(q^2 R_g^2)$，即 $q^{-2}$。Kratky 图 $q^2 I(q)$ 趋向平台 $2I(0)/R_g^2$。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

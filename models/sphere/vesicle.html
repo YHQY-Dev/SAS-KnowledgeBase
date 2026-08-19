@@ -30,10 +30,21 @@
         <figcaption>薄壳形式因子：低 $q$ Guinier 与壳干涉振荡。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>内外溶剂 SLD 相同、膜 SLD 为 $\rho_m$ 时，</p>
+      <h3>出发点</h3>
+      <p>稀释、取向无规时，相干振幅仍是衬度的傅里叶变换</p>
+      $$F(\mathbf{q})=\int_V \Delta\rho(\mathbf{r})\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r.$$
+      <p>单层囊泡是溶剂填充的球壳：膜 $R_{\mathrm{in}}\le r\le R_{\mathrm{out}}$ 为 $\rho_m$，内外溶剂同为 $\rho_{\mathrm{solv}}$。球对称下</p>
+      $$F(q)=4\pi(\rho_m-\rho_{\mathrm{solv}})\int_{R_{\mathrm{in}}}^{R_{\mathrm{out}}} r^2\frac{\sin(qr)}{qr}\,\mathrm{d}r.$$
+      <h3>推导</h3>
+      <p>这正是核壳积分在核衬度等于溶剂时的特例。利用均匀球原函数 $\int_0^{R} r^2\sin(qr)/(qr)\,\mathrm{d}r=V(R)\Phi(qR)/4\pi$，其中 $V(R)=4\pi R^3/3$，$\Phi(x)=3(\sin x-x\cos x)/x^3$，立刻得到闭式</p>
       $$A(q)=(\rho_m-\rho_{\mathrm{solv}})\bigl[V(R_{\mathrm{out}})\Phi(qR_{\mathrm{out}})-V(R_{\mathrm{in}})\Phi(qR_{\mathrm{in}})\bigr],$$
       $$I(q)=n|A(q)|^2+B.$$
-      <p>薄壳极限 $t\ll R$ 下，$A(q)\propto 4\pi R^2 t\,\Delta\rho\,j_0(qR)$，其中 $j_0(x)=\sin x/x$。符号与核壳页相同，$\Phi$ 为 Rayleigh 振幅。</p>
+      <p>薄壳极限 $t=R_{\mathrm{out}}-R_{\mathrm{in}}\ll R$、$R=(R_{\mathrm{in}}+R_{\mathrm{out}})/2$：把被积函数在 $r=R$ 处展开，径向积分宽度为 $t$，得 $A(q)\propto 4\pi R^2 t\,\Delta\rho\,j_0(qR)$，其中 $j_0(x)=\sin x/x=\mathrm{sinc}\,x$，$\Delta\rho=\rho_m-\rho_{\mathrm{solv}}$。</p>
+      <h3>低 $q$ 与极限</h3>
+      <p>$q\to 0$ 时 $\Phi\to 1$，$A(0)=\Delta\rho\cdot\tfrac{4\pi}{3}(R_{\mathrm{out}}^3-R_{\mathrm{in}}^3)$，即膜体积乘衬度，而不是外球体积。回转半径</p>
+      $$R_g^2=\frac{3}{5}\frac{R_{\mathrm{out}}^5-R_{\mathrm{in}}^5}{R_{\mathrm{out}}^3-R_{\mathrm{in}}^3}.$$
+      <p>薄壳时 $R_g\approx R$。与 Guinier $P=1-q^2 R_g^2/3+\cdots$ 一致；$qR_g\lesssim 1$ 可用指数形式。</p>
+      <p>薄壳 $P(q)\propto [j_0(qR)]^2$ 的零点在 $qR=n\pi$。有限厚度时极小由内外两项干涉决定。中间 $q$ 可出现片状 $q^{-2}$；大 $q$ 尖锐膜界面回到 Porod $q^{-4}$。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

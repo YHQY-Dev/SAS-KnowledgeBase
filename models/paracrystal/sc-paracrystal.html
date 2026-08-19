@@ -30,9 +30,22 @@
         <figcaption>粉末平均 SC 准晶 $I(q)$：$(100)$ 等峰随 $g$ 展宽、高阶衰减。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>有限 $N$ 的一维 Hosemann 因子（$g=\sigma_a/a$）</p>
-      $$Z_1(q_x)=1+\frac{2}{N}\sum_{k=1}^{N-1}(N-k)\cos(k q_x a)\,\mathrm{e}^{-k q_x^2 (g a)^2/2}.$$
-      <p>SC 三维格子因子为 $Z(q)=Z_1(q_x)Z_1(q_y)Z_1(q_z)$，粉末强度 $I(q)\propto P_{\mathrm{sph}}(q)\,\langle Z(\mathbf{q})\rangle_{\hat{q}}+B$。球形式因子 $P_{\mathrm{sph}}$ 取 Rayleigh 函数。反射位置 $q_{hkl}=(2\pi/a)\sqrt{h^2+k^2+l^2}$。</p>
+      <h3>出发点</h3>
+      <p>Hosemann 理想准晶：三个正交晶轴上的相邻平移独立涨落，误差沿该轴累积（第二类无序）。沿 $x$ 轴，第 $j$ 个格点 $x_j=\sum_{k=1}^{j}a_k$，间距 $a_k$ 独立同分布，均值 $a$、方差 $\sigma_a^2$。相对畸变 $g=\sigma_a/a$。高斯特征函数</p>
+      $$\bigl\langle\mathrm{e}^{iq_x a_k}\bigr\rangle=\mathrm{e}^{iq_x a}\,\mathrm{e}^{-q_x^2\sigma_a^2/2}=\mathrm{e}^{iq_x a}\,\mathrm{e}^{-q_x^2(ga)^2/2}.$$
+      <p>格点上的粒子取均匀球，形式因子 $P_{\mathrm{sph}}$ 为 Rayleigh 函数，与格子因子相乘。</p>
+      <h3>推导</h3>
+      <p>相隔 $k$ 步的位移方差按 $k$ 累积。有限 $N$ 个重复、按格点归一的一维格子因子</p>
+      $$Z_1(q_x)=1+\frac{2}{N}\sum_{k=1}^{N-1}(N-k)\cos(k q_x a)\,\mathrm{e}^{-k q_x^2(ga)^2/2}.$$
+      <p>无限链的几何级数（令 $\gamma_x=\mathrm{e}^{-q_x^2(ga)^2/2}$）给出 $Z_1^\infty=(1-\gamma_x^2)/(1-2\gamma_x\cos(q_x a)+\gamma_x^2)$。三维理想准晶把三轴独立乘起来。SC 惯例晶胞只有原点一个基点，晶胞因子为 $1$：</p>
+      $$Z(\mathbf{q})=Z_1(q_x)Z_1(q_y)Z_1(q_z).$$
+      <p>粉末样品对取向 $\hat{q}$ 平均。稀释极限下</p>
+      $$I(q)=n(\Delta\rho)^2 V^2 P_{\mathrm{sph}}(q)\,\bigl\langle Z(\mathbf{q})\bigr\rangle_{\hat{q}}+B,$$
+      $$P_{\mathrm{sph}}(q)=\left[\frac{3(\sin x-x\cos x)}{x^3}\right]^2,\qquad x=qR,\quad V=\frac{4\pi}{3}R^3.$$
+      <p>允许反射 $q_{hkl}=(2\pi/a)\sqrt{h^2+k^2+l^2}$（SC 无消光）。第一类无序只给与邻级无关的 $\mathrm{e}^{-q^2\langle u^2\rangle}$、峰保持 $\delta$ 锐度；准晶的指数带着 $k$，高阶峰被加宽并阻尼。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>$q\to 0$ 时 $Z_1\to N$，故 $Z(0)\to N^3$。第一峰为 $(100)$，$q_1=2\pi/a$。在 $q_{hkl}$ 上，邻级阻尼 $\exp(-2\pi^2(h^2+k^2+l^2)kg^2)$，高阶峰按 $g^2$ 与指数平方和迅速消失。$g\gtrsim 0.25$ 时只剩宽化的一级峰，格子类型不再可辨。</p>
+      <p>球形式因子不移动 $q_{hkl}$，只调制包络：低 $q$ 有 Guinier $R_g=R\sqrt{3/5}$，第一极小约 $qR\approx 4.49$，高 $q$ Porod $\sim q^{-4}$。$g\to 0$ 时 $Z$ 回到有限畴的立方 Laue 函数。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

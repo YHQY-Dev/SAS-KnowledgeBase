@@ -31,10 +31,23 @@
         <figcaption>核壳振幅相加后的粉末平均 $I(q)$：极小相对均匀椭球移动。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>取向 $\alpha$ 上核、壳有效半径 $R_{\mathrm{c,eff}}(\alpha)$、$R_{\mathrm{s,eff}}(\alpha)$ 同均匀椭球。体积 $V(R_\perp,R_\parallel)=\frac{4}{3}\pi R_\perp^2 R_\parallel$。振幅</p>
-      $$A(q,\alpha)=(\rho_c-\rho_s)V_c\Phi(q R_{\mathrm{c,eff}})+(\rho_s-\rho_{\mathrm{solv}})V_s\Phi(q R_{\mathrm{s,eff}}),$$
-      $$P(q)\propto\int_0^{\pi/2}|A(q,\alpha)|^2\sin\alpha\,\mathrm{d}\alpha.$$
-      <p>$\rho_c,\rho_s,\rho_{\mathrm{solv}}$ 分别为核、壳与溶剂 SLD。稀溶液 $I(q)=n\langle|A|^2\rangle+B$。</p>
+      <h3>出发点</h3>
+      <p>稀释、取向无规的粒子，相干散射振幅是衬度对平面波相位的体积分</p>
+      $$F(\mathbf{q})=\int \bigl[\rho(\mathbf{r})-\rho_{\mathrm{solv}}\bigr]\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r.$$
+      <p>核、壳取分段常数：共焦核椭球内为 $\rho_c$，核与外壳之间为 $\rho_s$，之外为溶剂。傅里叶变换对体积可加，故总振幅是两层均匀椭球振幅之差。</p>
+      <h3>推导</h3>
+      <p>均匀椭球由单位球的仿射像给出：取向 $\alpha$ 上振幅为 $\Delta\rho\,V\Phi(q R_{\mathrm{eff}}(\alpha))$，其中 $\Phi(x)=3(\sin x-x\cos x)/x^3$，$V(R_\perp,R_\parallel)=\frac{4}{3}\pi R_\perp^2 R_\parallel$，</p>
+      $$R_{\mathrm{eff}}(\alpha)=\sqrt{R_\perp^2\sin^2\alpha+R_\parallel^2\cos^2\alpha}.$$
+      <p>把空间写成“外壳相对溶剂”加“核相对壳”：外壳贡献 $(\rho_s-\rho_{\mathrm{solv}})V_s\Phi(q R_{\mathrm{s,eff}})$，核相对壳的超额 $(\rho_c-\rho_s)V_c\Phi(q R_{\mathrm{c,eff}})$。于是</p>
+      $$A(q,\alpha)=(\rho_c-\rho_s)V_c\Phi\bigl(q R_{\mathrm{c,eff}}(\alpha)\bigr)+(\rho_s-\rho_{\mathrm{solv}})V_s\Phi\bigl(q R_{\mathrm{s,eff}}(\alpha)\bigr).$$
+      <p>共焦约定 $R_{\perp,\mathrm{s}}^2=R_{\perp,\mathrm{c}}^2+t^2$、$R_{\parallel,\mathrm{s}}^2=R_{\parallel,\mathrm{c}}^2+t^2$，核与壳共用焦点；$t$ 不是沿法向的均匀厚度。单轴粉末平均</p>
+      $$P(q)=\frac{\displaystyle\int_0^{\pi/2}|A(q,\alpha)|^2\sin\alpha\,\mathrm{d}\alpha}{\displaystyle\int_0^{\pi/2}|A(0,\alpha)|^2\sin\alpha\,\mathrm{d}\alpha}.$$
+      <p>$A(0)=(\rho_c-\rho_s)V_c+(\rho_s-\rho_{\mathrm{solv}})V_s$。稀溶液 $I(q)=n\langle|A|^2\rangle+B$。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>$\Phi=1-x^2/10+O(x^4)$。核、壳共心，回转半径是衬度加权的二阶矩。均匀椭球 $R_g^2=(2R_\perp^2+R_\parallel^2)/5$，故</p>
+      $$R_g^2=\frac{(\rho_c-\rho_s)V_c R_{g,\mathrm{c}}^2+(\rho_s-\rho_{\mathrm{solv}})V_s R_{g,\mathrm{s}}^2}{(\rho_c-\rho_s)V_c+(\rho_s-\rho_{\mathrm{solv}})V_s}.$$
+      <p>$\rho_s=\rho_c$ 时回到均匀外壳椭球。Guinier 指数形式在 $qR_g\lesssim 1$ 可用。</p>
+      <p>极小由核、壳两项干涉决定，相对均匀椭球移动。大 $q$ 时每项 $\Phi\sim 3\cos x/x^2$，尖锐界面包络仍是 Porod $q^{-4}$，拍频反映两套有效半径；取向平均再把振荡抹浅。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

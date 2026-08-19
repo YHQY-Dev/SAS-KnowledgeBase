@@ -31,11 +31,25 @@
         <figcaption>长球粉末平均 $I(q)/I(0)$：相对球，振荡被轴比抹浅。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>令 $\Phi(x)=3(\sin x-x\cos x)/x^3$。有效半径</p>
-      $$R_{\mathrm{eff}}(\alpha)=\sqrt{R_\perp^2\sin^2\alpha+R_\parallel^2\cos^2\alpha}.$$
-      <p>一维粉末平均</p>
+      <h3>出发点</h3>
+      <p>稀释、取向无规的均匀粒子，相干散射振幅是衬度对平面波相位的体积分</p>
+      $$F(\mathbf{q})=\int_V \Delta\rho(\mathbf{r})\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r.$$
+      <p>均匀旋转椭球内 $\Delta\rho$ 为常数。它是单位球 $|\mathbf{u}|\le 1$ 经对角仿射 $A=\mathrm{diag}(R_\perp,R_\perp,R_\parallel)$ 的像：$\mathbf{r}=A\mathbf{u}$。体积 $V=|\det A|\cdot 4\pi/3=\frac{4}{3}\pi R_\perp^2 R_\parallel$。</p>
+      <h3>推导</h3>
+      <p>换元后 $\mathrm{d}^3r=|\det A|\,\mathrm{d}^3u$，相位 $\mathbf{q}\cdot A\mathbf{u}=(A^{\mathrm{T}}\mathbf{q})\cdot\mathbf{u}$。于是椭球振幅等于单位球振幅在波矢 $A^{\mathrm{T}}\mathbf{q}$ 上的取值：</p>
+      $$F(\mathbf{q})=\Delta\rho\,|\det A|\,F_{\mathrm{ball}}(A^{\mathrm{T}}\mathbf{q}).$$
+      <p>单位球的 Rayleigh 振幅 $F_{\mathrm{ball}}(\mathbf{k})=\frac{4\pi}{3}\Phi(|\mathbf{k}|)$，其中 $\Phi(x)=3(\sin x-x\cos x)/x^3$。令 $\alpha$ 为对称轴与 $\mathbf{q}$ 的夹角，则</p>
+      $$|A^{\mathrm{T}}\mathbf{q}|=q R_{\mathrm{eff}}(\alpha),\qquad R_{\mathrm{eff}}(\alpha)=\sqrt{R_\perp^2\sin^2\alpha+R_\parallel^2\cos^2\alpha}.$$
+      <p>故固定取向</p>
+      $$F(q,\alpha)=\Delta\rho\,V\,\Phi\bigl(q R_{\mathrm{eff}}(\alpha)\bigr).$$
+      <p>$q\to 0$ 时 $\Phi\to 1$，故 $F(0)=\Delta\rho V$。单轴粉末平均的测度 $\sin\alpha\,\mathrm{d}\alpha$ 在 $[0,\pi/2]$ 上积分为 1，归一化形式因子</p>
       $$P(q)=\int_0^{\pi/2}\Phi^2\bigl(q R_{\mathrm{eff}}(\alpha)\bigr)\sin\alpha\,\mathrm{d}\alpha.$$
-      <p>体积 $V=\frac{4}{3}\pi R_\perp^2 R_\parallel$。稀释观测强度常写 $I(q)=\mathrm{scale}\cdot P(q)+B$。</p>
+      <p>稀释极限 $I(q)=n(\Delta\rho)^2 V^2 P(q)+B$，拟合里常把 $n(\Delta\rho)^2 V^2$ 收成 $\mathrm{scale}$。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>Taylor：$\Phi=1-x^2/10+O(x^4)$。于是 $P=1-q^2\langle R_{\mathrm{eff}}^2\rangle/5+O(q^4)$。对 $\sin\alpha\,\mathrm{d}\alpha$ 积分 $\langle R_{\mathrm{eff}}^2\rangle=\int_0^{\pi/2}(R_\perp^2\sin^2\alpha+R_\parallel^2\cos^2\alpha)\sin\alpha\,\mathrm{d}\alpha=(2R_\perp^2+R_\parallel^2)/3$，故</p>
+      $$P(q)=1-\frac{q^2(2R_\perp^2+R_\parallel^2)}{15}+O(q^4).$$
+      <p>与 Guinier $P=1-q^2 R_g^2/3+\cdots$ 比较，立刻得到 $R_g^2=(2R_\perp^2+R_\parallel^2)/5$。指数形式 $I(q)\simeq I(0)\mathrm{e}^{-q^2 R_g^2/3}$ 在 $qR_g\lesssim 1$ 可用。</p>
+      <p>每一取向仍是尖锐界面的球振幅，大 $q$ 包络 $\sim q^{-4}$（Porod）。轴比 $\varepsilon=R_\parallel/R_\perp\gg 1$ 时中间区趋近 $q^{-1}$；$\varepsilon\ll 1$ 时趋近 $q^{-2}$。粉末平均把球的极小抹浅，第一极小不再满足单纯的 $\tan x=x$。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

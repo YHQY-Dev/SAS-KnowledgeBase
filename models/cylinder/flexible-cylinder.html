@@ -30,11 +30,21 @@
         <figcaption>蠕虫链 $I(q)$：线圈区、棒的 $q^{-1}$ 与截面衰减。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>解耦近似（截面相对链构象）</p>
+      <h3>出发点</h3>
+      <p>稀释链状粒子的相干散射振幅仍是衬度对平面波相位的体积分</p>
+      $$F(\mathbf{q})=\int_V \Delta\rho(\mathbf{r})\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r.$$
+      <p>把体积元沿蠕虫轮廓 $s\in[0,L]$ 与圆形截面分解。截面尺度远小于持久长度时，振幅因子分解为链构象平均与截面因子之积（解耦近似）。</p>
+      <h3>推导</h3>
+      <p>截面在垂直于局部切向的平面内积分，与直圆柱的径向部分相同：$2J_1(qR)/(qR)$（对局部截面方位已平均，弯曲链不再保留单一 $\alpha$ 的 $\mathrm{sinc}$）。构象部分是 Kratky–Porod 蠕虫链</p>
+      $$P_{\mathrm{wp}}(q;L,b)=\frac{1}{L^2}\int_0^L\mathrm{d}s\int_0^L\mathrm{d}s'\,\bigl\langle\mathrm{e}^{i\mathbf{q}\cdot[\mathbf{r}(s)-\mathbf{r}(s')]}\bigr\rangle,$$
+      <p>其中 $b$ 为 Kuhn 长度（持久长度 $\ell_p=b/2$）。解耦后</p>
       $$P(q)\simeq P_{\mathrm{wp}}(q;L,b)\,P_{\mathrm{cs}}(qR),\qquad P_{\mathrm{cs}}(x)=\left[\frac{2J_1(x)}{x}\right]^2.$$
-      <p>蠕虫链回转半径（Benoit–Doty）</p>
-      $$R_g^2=\frac{Lb}{6}\left[1-\frac{3}{2n_b}+\frac{3}{n_b^2}-\frac{3}{2n_b^3}(1-\mathrm{e}^{-2n_b})\right],\quad n_b=L/b.$$
-      <p>$P_{\mathrm{wp}}$ 在小 $q$ 回到 Guinier，中间过渡到细棒极限。排除体积用 Pedersen–Schurtenberger 的数值表或等价插值。</p>
+      <p>$P_{\mathrm{wp}}$ 在小 $q$ 回到 Guinier，中间过渡到细棒 $q^{-1}$；有排除体积时用数值插值把 Debye 的 $q^{-2}$ 改到约 $q^{-1.7}$。稀释强度 $I(q)=n(\Delta\rho)^2 V^2 P(q)+B$，轮廓体积 $V=\pi R^2 L$。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>蠕虫链回转半径由 Benoit–Doty 式给出（$n_b=L/b$）：</p>
+      $$R_g^2=\frac{Lb}{6}\left[1-\frac{3}{2n_b}+\frac{3}{n_b^2}-\frac{3}{2n_b^3}(1-\mathrm{e}^{-2n_b})\right].$$
+      <p>$n_b\to\infty$ 时 $R_g^2\to Lb/6$（高斯链）；$n_b\to 0$ 时 $R_g^2\to L^2/12$（直棒）。截面再给一个可加的 $R^2/2$。Guinier 在 $qR_g\lesssim 1$ 可用。</p>
+      <p>$q\ell_p\sim 1$ 附近从线圈转为棒的 $q^{-1}$；更高 $q$ 由 $P_{\mathrm{cs}}$ 控制，第一极小约在 $qR\approx 3.83$。大 $q$ 尖锐截面趋近 Porod $q^{-4}$。完全刚性 $b\to L$ 且忽略弯曲，应改回直圆柱（含轴向 $\mathrm{sinc}$ 与粉末平均 $\int|F|^2\sin\alpha\,\mathrm{d}\alpha$）。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

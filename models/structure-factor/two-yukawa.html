@@ -26,9 +26,23 @@
         <figcaption>双 Yukawa $S(q)$：相关峰之外可出现低 $q$ 簇集特征。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>双 Yukawa 势（$r&gt;\sigma$）</p>
-      $$\beta u(r)=\frac{K_1}{r/\sigma}\,\mathrm{e}^{-z_1(r/\sigma-1)}+\frac{K_2}{r/\sigma}\,\mathrm{e}^{-z_2(r/\sigma-1)}.$$
-      <p>$S(q)=[1-n\hat{c}(q)]^{-1}$，其中 $\hat{c}$ 由 MSA 闭包对两段 Yukawa 的解析解给出。$z_1\gg z_2$ 且 $K_1$ 与 $K_2$ 异号时，短程与长程竞争，低 $q$ 可出现额外结构。</p>
+      <h3>出发点</h3>
+      <p>OZ 与结构因子</p>
+      $$h(r)=c(r)+n\int c(|\mathbf{r}-\mathbf{r}'|)\,h(r')\,\mathrm{d}^3r',\qquad
+        S(q)=\bigl[1-n\hat{c}(q)\bigr]^{-1}.$$
+      <p>硬核外交互为两段 Yukawa。令 $x=r/\sigma$，接触强度 $K_i$ 与无量纲筛选 $z_i$ 可正可负：</p>
+      $$\beta u(x)=\frac{K_1}{x}\,\mathrm{e}^{-z_1(x-1)}+\frac{K_2}{x}\,\mathrm{e}^{-z_2(x-1)}\quad(x\gt 1),\qquad u=\infty\ (x\lt 1).$$
+      <p>闭包为平均球近似（MSA）：核内 $h=-1$，核外 $c(r)=-\beta u(r)$。单段排斥 Yukawa（$K_2=0$、$K_1&gt;0$）回到 Hayter–MSA。</p>
+      <h3>推导</h3>
+      <p>Høye–Blum 给出多 Yukawa 的 MSA 解析途径：核内 $c(x)$ 是硬球多项式加上两套 $\sinh(z_i x)/x$、$\bigl(\cosh(z_i x)-1\bigr)/x$ 项，待定系数由接触衔接与 OZ 约束的非线性方程组决定。Liu、Chen 与 Chen 把它化成便于求根的实现。核外两段尾的傅里叶变换与 Hayter 同型。令 $A=q\sigma$，第 $i$ 段</p>
+      $$n\hat{c}_i(q)=-24\eta K_i\,\frac{z_i\sin A+A\cos A}{A(A^2+z_i^2)}.$$
+      <p>完整 $n\hat{c}$ 还含核内项。结构因子</p>
+      $$S(q)=\bigl[1-n\hat{c}_{\mathrm{core}}(q)-n\hat{c}_1(q)-n\hat{c}_2(q)\bigr]^{-1}.$$
+      <p>$K_1=K_2=0$ 回到 PY 硬球。$z_1\gg z_2$ 且 $K_1$ 与 $K_2$ 异号时，短程与长程竞争，低 $q$ 可出现簇峰或抬升。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>$A\to 0$ 时 $n\hat{c}_i(0)=-24\eta K_i(1+z_i)/z_i^2$。RPA 叠加硬球压缩率给出</p>
+      $$S(0)^{-1}\approx\frac{(1+2\eta)^2}{(1-\eta)^4}+24\eta\sum_{i=1}^{2}K_i\,\frac{1+z_i}{z_i^2}.$$
+      <p>$K_i&gt;0$（排斥）降低 $S(0)$；$K_i&lt;0$（吸引）升高 $S(0)$。短程吸引（$z$ 大、$K&lt;0$）加长程排斥（$z$ 小、$K&gt;0$）时，中 $q$ 相关峰仍在 $q\sigma\sim 2\pi$，而 $S(0)$ 可由吸引主导而抬升，对应平衡簇。两段同号则只是改写单 Yukawa 的有效接触势与筛选。$q\sigma\gg 1$ 时 $S(q)\to 1$。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

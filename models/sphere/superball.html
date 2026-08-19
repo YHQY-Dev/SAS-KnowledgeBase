@@ -29,8 +29,18 @@
         <figcaption>$p&gt;1$ 时相对球形式因子，振荡被形状偏离所调制。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      $$\lvert x\rvert^{2p}+\lvert y\rvert^{2p}+\lvert z\rvert^{2p}=R^{2p}.$$
-      <p>散射振幅 $F(\mathbf{q})=\Delta\rho\int_{V(p,R)} e^{-i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3 r$，粉末样品再对取向平均 $P(q)=\langle |F|^2\rangle_{\Omega}/|F(0)|^2$。$p=1$ 时回到 Rayleigh 球。</p>
+      <h3>出发点</h3>
+      <p>均匀超球的振幅仍是衬度对平面波相位的体积分，只是积分域由超二次曲面围成</p>
+      $$F(\mathbf{q})=\Delta\rho\int_{V(p,R)}\mathrm{e}^{-i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3 r,\qquad \lvert x\rvert^{2p}+\lvert y\rvert^{2p}+\lvert z\rvert^{2p}=R^{2p}.$$
+      <p>$p=1$ 时域是半径 $R$ 的球；$p\to\infty$ 时域是边长 $2R$ 的立方。粉末或溶液需再对取向平均。</p>
+      <h3>推导</h3>
+      <p>$p=1$：球对称，角积分给出 $\sin(qr)/(qr)$，再令 $u=qr$ 分部积分，回到 Rayleigh 闭式 $F=\Delta\rho V\Phi(qR)$，$\Phi(x)=3(\sin x-x\cos x)/x^3$。</p>
+      <p>$p\neq 1$：一般无简单闭式。可在粒子坐标系把 $\mathbf{q}$ 写成相对超球轴的方向 $(\theta,\phi)$，对域 $V(p,R)$ 做三维数值积分（或沿超球半径的一维积分再角向求积），得到 $F(\mathbf{q};p,R)$。粉末形式因子</p>
+      $$P(q)=\frac{\langle |F(\mathbf{q})|^2\rangle_{\Omega}}{|F(0)|^2}.$$
+      <p>$F(0)=\Delta\rho\,\mathrm{Vol}(p,R)$。超球体积有已知表达式（含 Beta 函数）：$p=1$ 时 $4\pi R^3/3$；$p\to\infty$ 时 $(2R)^3$。立方极限也可改用平行六面体的解析形式因子再取向平均作为校核。</p>
+      <h3>低 $q$ 与极限</h3>
+      <p>任意形状的 Guinier 展开 $P=1-q^2 R_g^2/3+O(q^4)$ 仍成立。$p=1$ 时 $R_g=R\sqrt{3/5}$。立方（边长 $a=2R$）$R_g^2=a^2/4=R^2$，即 $R_g=R$。中间 $p$ 的 $R_g(p)$ 介于两者之间，随 $p$ 单调变化。</p>
+      <p>$p=1$ 的零点在 $\tan x=x$。$p$ 增大时极小变浅、相位向立方体面法向特征移动。尖锐界面的粉末平均包络仍是 Porod $q^{-4}$；棱角使振荡不如球深。$p\to 1$ 在有限 $q$ 窗上几乎无法与均匀球分辨。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

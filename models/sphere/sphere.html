@@ -31,11 +31,25 @@
         <figcaption>单分散均匀球 $I(q)/I(0)$：Guinier 坪、振荡极小与 Porod 尾。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>Rayleigh 均匀球形式因子（$x=qR$）</p>
-      $$P(q)=\left[\frac{3(\sin x-x\cos x)}{x^3}\right]^2,\qquad x=qR.$$
-      <p>回转半径与 Guinier 展开</p>
-      $$R_g=R\sqrt{\frac{3}{5}},\qquad I(q)\simeq I(0)\,\mathrm{e}^{-q^2 R_g^2/3}\quad (qR_g\lesssim 1).$$
-      <p>稀释极限下观测强度常写为 $I(q)=\mathrm{scale}\cdot P(q)+B$。第一极小位置给出半径的粗估计 $R\approx 4.49/q_1$。</p>
+      <h3>出发点</h3>
+      <p>稀释、取向无规的均匀粒子，相干散射振幅是衬度对平面波相位的体积分</p>
+      $$F(\mathbf{q})=\int_V \Delta\rho(\mathbf{r})\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r.$$
+      <p>均匀球内 $\Delta\rho$ 为常数。球对称使相位只依赖 $r=|\mathbf{r}|$ 与 $q=|\mathbf{q}|$，角积分给出球 Bessel 核 $\mathrm{sinc}(qr)=\sin(qr)/(qr)$：</p>
+      $$F(q)=4\pi\Delta\rho\int_0^R r^2\,\frac{\sin(qr)}{qr}\,\mathrm{d}r.$$
+      <h3>推导</h3>
+      <p>令 $u=qr$，则 $\mathrm{d}r=\mathrm{d}u/q$，$r=u/q$，上限 $x=qR$：</p>
+      $$F(q)=\frac{4\pi\Delta\rho}{q^3}\int_0^x u\sin u\,\mathrm{d}u.$$
+      <p>分部积分：$\int u\sin u\,\mathrm{d}u=-u\cos u+\int\cos u\,\mathrm{d}u=-u\cos u+\sin u$。于是</p>
+      $$F(q)=\frac{4\pi\Delta\rho}{q^3}(\sin x-x\cos x)= \Delta\rho\,V\cdot\Phi(x),\qquad V=\frac{4\pi}{3}R^3,$$
+      $$\Phi(x)=\frac{3(\sin x-x\cos x)}{x^3},\qquad x=qR.$$
+      <p>$q\to 0$ 时 $\Phi\to 1$，故 $F(0)=\Delta\rho V$。归一化形式因子取模方</p>
+      $$P(q)=\left|\frac{F(q)}{F(0)}\right|^2=\Phi(x)^2=\left[\frac{3(\sin x-x\cos x)}{x^3}\right]^2.$$
+      <p>稀释极限下观测强度 $I(q)=n\,|F(q)|^2+B=n(\Delta\rho)^2 V^2 P(q)+B$，拟合里常把 $n(\Delta\rho)^2 V^2$ 收成 $\mathrm{scale}$。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>Taylor：$\sin x=x-x^3/6+x^5/120+\cdots$，$\cos x=1-x^2/2+x^4/24+\cdots$，代入得 $\Phi=1-x^2/10+O(x^4)$。于是</p>
+      $$P(q)=1-\frac{(qR)^2}{5}+O(q^4).$$
+      <p>与 Guinier $P=1-q^2 R_g^2/3+\cdots$ 比较，立刻得到 $R_g^2=3R^2/5$，即 $R_g=R\sqrt{3/5}$。指数形式 $I(q)\simeq I(0)\mathrm{e}^{-q^2 R_g^2/3}$ 在 $qR_g\lesssim 1$ 可用。</p>
+      <p>$\Phi(x)=0$ 等价于 $\tan x=x$。第一正根 $x_1\approx 4.4934$，故第一极小 $q_1\approx 4.49/R$。大 $x$ 时 $\Phi\sim 3\cos x/x^2$，强度包络 $\sim q^{-4}$，即尖锐界面的 Porod 定律。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

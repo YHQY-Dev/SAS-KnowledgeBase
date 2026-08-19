@@ -27,9 +27,22 @@
         <figcaption>低 $q$ 指数衰减 $I(0)\exp(-q^2 R_g^2/3)$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>Guinier 近似（三维各向同性）</p>
-      $$I(q)=I(0)\,\exp(-q^2 R_g^2/3),\qquad qR_g\lesssim 1.$$
-      <p>直线形式 $\ln I=\ln I(0)-q^2 R_g^2/3$。球的换算是 $R_g=R\sqrt{3/5}$，薄壳 $R_g=R$，高斯链 $R_g^2=Nb^2/6$。</p>
+      <h3>出发点</h3>
+      <p>稀释、取向无规的有限物体，相干振幅是衬度对平面波相位的体积分。不假定外形，只要求 $\Delta\rho(\mathbf{r})$ 有紧支集：</p>
+      $$F(\mathbf{q})=\int \Delta\rho(\mathbf{r})\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r,\qquad I(\mathbf{q})=\lvert F(\mathbf{q})\rvert^2.$$
+      <p>把原点放在散射长度质心，使 $\int\mathbf{r}\,\Delta\rho(\mathbf{r})\,\mathrm{d}^3r=0$。各向同性粉末平均后强度只依赖 $q=\lvert\mathbf{q}\rvert$。</p>
+      <h3>推导</h3>
+      <p>低 $q$ 把相位 Taylor 展开：$\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}=1+i\mathbf{q}\cdot\mathbf{r}-(\mathbf{q}\cdot\mathbf{r})^2/2+O(q^3)$。代入 $F$：零阶给出 $F(0)=\int\Delta\rho=\Delta\rho_{\mathrm{eff}}V$；一阶因质心选择而消失。</p>
+      <p>二阶项经取向平均 $\langle(\mathbf{q}\cdot\mathbf{r})^2\rangle=q^2\langle r^2\rangle/3$（三维）。回转半径按衬度二阶矩定义</p>
+      $$R_g^2=\frac{\int r^2\Delta\rho(\mathbf{r})\,\mathrm{d}^3r}{\int\Delta\rho(\mathbf{r})\,\mathrm{d}^3r}.$$
+      <p>于是 $F(q)=F(0)\,(1-q^2 R_g^2/6+O(q^4))$。强度取模方，交叉到 $q^2$ 为止：</p>
+      $$\frac{I(q)}{I(0)}=1-\frac{q^2 R_g^2}{3}+O(q^4).$$
+      <p>把前两项看成指数的 Taylor：$\mathrm{e}^{-x}=1-x+O(x^2)$，即 Guinier 近似</p>
+      $$I(q)=I(0)\,\exp(-q^2 R_g^2/3).$$
+      <p>指数形式与多项式在 $q^2$ 阶精确一致；更高阶由具体外形决定，Guinier 不再给出。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>适用窗口 $qR_g\lesssim 1$。直线形式 $\ln I=\ln I(0)-q^2 R_g^2/3$，斜率直接读 $R_g$。这是形状无关的：$R_g$ 与几何的换算才依赖外形——均匀球 $R_g=R\sqrt{3/5}$，薄球壳 $R_g=R$，高斯链 $R_g^2=Nb^2/6$。</p>
+      <p>超出窗口后出现 $q^4$ 及更高阶，Guinier 直线向下弯，表观 $R_g$ 偏小。高 $q$ 的幂律或振荡不属于本式；那些是 Porod 或完整 $P(q)$ 的内容。准一维/二维物体应改用带维数 $s$ 的广义 Guinier（见 Guinier–Porod），指数分母换成 $3-s$。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

@@ -30,10 +30,19 @@
         <figcaption>定性示意，不是上节腰带模糊式的数值求值；高 $q$ 比锐界面下降更快。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>在椭圆核壳振幅上把腰带项乘以界面因子</p>
-      $$A_{\mathrm{belt}}\to A_{\mathrm{belt}}\,\mathrm{e}^{-q^2\sigma_{\mathrm{belt}}^2/2},$$
-      $$P(q)\propto\bigl\langle\bigl|A_{\mathrm{core}}+A_{\mathrm{face}}+A_{\mathrm{belt}}\bigr|^2\bigr\rangle_{\alpha,\psi}.$$
-      <p>强度若把模糊写在 $|A|^2$ 外，须声明约定，避免与振幅形式差一倍指数。</p>
+      <h3>出发点</h3>
+      <p>稀释、取向无规的分层盘，相干散射振幅是衬度对平面波相位的体积分</p>
+      $$F(\mathbf{q})=\int_V \Delta\rho(\mathbf{r})\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r.$$
+      <p>几何与椭圆核壳 bicelle 相同：核、面帽与腰带，径向仍是 $2J_1(x)/x$，轴向仍是 $\mathrm{sinc}$。差别在腰带–溶剂界面不是锐跳变，而是宽度 $\sigma_{\mathrm{belt}}$ 的渐变（误差函数剖面）。</p>
+      <h3>推导</h3>
+      <p>锐界面椭圆核壳振幅写成 $A=A_{\mathrm{core}}+A_{\mathrm{face}}+A_{\mathrm{belt}}$，其中每块都由圆柱核 $F(q,R_{\mathrm{eff}},H,\alpha)$ 的衬度差构成。把腰带的径向密度跳变与误差函数卷积，等价于振幅乘高斯界面因子</p>
+      $$A_{\mathrm{belt}}(q,\alpha,\psi)\;\to\;A_{\mathrm{belt}}(q,\alpha,\psi)\,\mathrm{e}^{-q^2\sigma_{\mathrm{belt}}^2/2}.$$
+      <p>面帽与核保持锐界面，因此厚度方向的 $\mathrm{sinc}$ 基本不受 $\sigma_{\mathrm{belt}}$ 影响。粉末平均</p>
+      $$P(q)=\frac{\bigl\langle\bigl|A_{\mathrm{core}}+A_{\mathrm{face}}+A_{\mathrm{belt}}\bigr|^2\bigr\rangle_{\alpha,\psi}}{\bigl\langle|A(0)|^2\bigr\rangle}.$$
+      <p>若把模糊写在强度 $|A|^2$ 外而成 $\mathrm{e}^{-q^2\sigma^2}$，指数差一倍，须在实现里声明约定。$\sigma_{\mathrm{belt}}\to 0$ 回到锐界面椭圆核壳盘。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>低 $q$ 的 $R_g$ 与锐界面椭圆盘几乎相同：界面模糊只微扰边缘质量分布。Guinier 仍由盘面半轴主导。</p>
+      <p>中间区 $q^{-2}$ 仍在。高 $q$ 径向振荡被 $\mathrm{e}^{-q^2\sigma_{\mathrm{belt}}^2}$ 阻尼，比锐腰带衰减更快；法向厚度极小保留。若 $\sigma$ 大到与腰带厚相当，Porod 指数可暂时陡于 $-4$，随后由剩余锐界面（面帽）拉回。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

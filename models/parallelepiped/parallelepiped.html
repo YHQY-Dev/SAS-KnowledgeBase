@@ -31,11 +31,21 @@
         <figcaption>取向平均 $I(q)/I(0)$：三边长使振荡比球更浅、相位更密。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>令 $\mathrm{sinc}\,x=\sin x/x$。取向 $\mathbf{q}=(q_x,q_y,q_z)$ 下</p>
-      $$F(\mathbf{q})=ABC\cdot\mathrm{sinc}\!\left(\frac{q_x A}{2}\right)\mathrm{sinc}\!\left(\frac{q_y B}{2}\right)\mathrm{sinc}\!\left(\frac{q_z C}{2}\right).$$
-      <p>一维粉末平均（第一卦限，权重 $\sin\theta$）</p>
-      $$P(q)=\frac{\langle |F|^2\rangle_{\theta,\phi}}{|F(0)|^2}.$$
-      <p>稀释 $I(q)=\mathrm{scale}\cdot P(q)+B$。</p>
+      <h3>出发点</h3>
+      <p>稀释、取向无规的均匀粒子，相干散射振幅是衬度对平面波相位的体积分</p>
+      $$F(\mathbf{q})=\int_V \Delta\rho(\mathbf{r})\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r.$$
+      <p>直角砖块取中心在原点、棱平行坐标轴：$|x|\le A/2$、$|y|\le B/2$、$|z|\le C/2$。体内 $\Delta\rho$ 为常数，积分在三轴上分离。</p>
+      <h3>推导</h3>
+      <p>一维因子 $\int_{-L/2}^{L/2}\mathrm{e}^{i q_x x}\,\mathrm{d}x=L\,\mathrm{sinc}(q_x L/2)$，其中 $\mathrm{sinc}\,x=\sin x/x$。三轴相乘给出闭式</p>
+      $$F(\mathbf{q})=\Delta\rho\,ABC\cdot\mathrm{sinc}\!\left(\frac{q_x A}{2}\right)\mathrm{sinc}\!\left(\frac{q_y B}{2}\right)\mathrm{sinc}\!\left(\frac{q_z C}{2}\right).$$
+      <p>$F(\mathbf{0})=\Delta\rho V$，$V=ABC$。一维粉末平均对欧拉角积分 $|F|^2$；正交对称收到第一卦限，权重 $\sin\theta$：</p>
+      $$P(q)=\frac{\langle |F(\mathbf{q})|^2\rangle_{\theta,\phi}}{|F(\mathbf{0})|^2}.$$
+      <p>稀释 $I(q)=n(\Delta\rho)^2 V^2 P(q)+B$，拟合里常把前置因子收成 $\mathrm{scale}$。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>Taylor：$\mathrm{sinc}\,u=1-u^2/6+O(u^4)$，故 $\mathrm{sinc}^2(q_x A/2)=1-q_x^2 A^2/12+O(q^4)$。三轴相乘后</p>
+      $$P=1-\frac{\langle q_x^2 A^2+q_y^2 B^2+q_z^2 C^2\rangle}{12}+O(q^4).$$
+      <p>粉末平均 $\langle q_x^2\rangle=q^2/3$ 等，于是 $P=1-q^2(A^2+B^2+C^2)/36+O(q^4)$。与 Guinier $P=1-q^2 R_g^2/3+\cdots$ 比较得 $R_g^2=(A^2+B^2+C^2)/12$。指数形式在 $qR_g\lesssim 1$ 可用。</p>
+      <p>沿主轴 $\mathrm{sinc}\sim 1/q$，但粉末平均尖锐平面的包络仍是 Porod $q^{-4}$。一棱远长于另两棱时中间区 $\sim q^{-1}$；一棱远短时 $\sim q^{-2}$。$A,B,C$ 置换不改变粉末 $P(q)$。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

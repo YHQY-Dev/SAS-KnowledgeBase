@@ -29,9 +29,21 @@
         <figcaption>相对均匀球，高 $q$ 振荡被界面模糊因子压低。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>Stieger 等采用的示意形式（球 × 高斯界面因子）</p>
+      <h3>出发点</h3>
+      <p>均匀核加高斯模糊界面，等价于硬球密度与三维高斯的卷积。稀释振幅仍从傅里叶变换出发</p>
+      $$F(\mathbf{q})=\int \Delta\rho(\mathbf{r})\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r.$$
+      <p>卷积定理：$\Delta\rho=\Delta\rho_{\mathrm{sphere}}\ast g$ 则 $F(q)=F_{\mathrm{sphere}}(q)\,g(q)$。取 $g(\mathbf{r})\propto\mathrm{e}^{-r^2/(2\sigma^2)}$，其傅里叶变换 $g(q)=\mathrm{e}^{-q^2\sigma^2/2}$。</p>
+      <h3>推导</h3>
+      <p>硬球部分与均匀球相同：令 $x=qR$，分部积分得到 $F_{\mathrm{sphere}}=\Delta\rho V\Phi(x)$，$V=4\pi R^3/3$，$\Phi(x)=3(\sin x-x\cos x)/x^3$。乘上高斯因子</p>
+      $$F(q)=\Delta\rho V\,\Phi(qR)\,\mathrm{e}^{-q^2\sigma^2/2}.$$
+      <p>归一化强度 $P(q)=|F/F(0)|^2$。因 $F(0)=\Delta\rho V$，指数在模方后变为 $\mathrm{e}^{-q^2\sigma^2}$（这是强度而非振幅上的约定）：</p>
       $$P(q)=\left[\frac{3(\sin x-x\cos x)}{x^3}\right]^2 \mathrm{e}^{-q^2\sigma^2},\qquad x=qR.$$
-      <p>$\sigma$ 为界面均方宽度；指数取 $-q^2\sigma^2$ 是强度（$P(q)$）约定。完整微凝胶模型还可叠加链涨落的 Lorentz 项以描述网络内部相关，本页只保留几何模糊核。</p>
+      <p>完整微凝胶模型还可叠加链涨落的 Lorentz 项以描述网络内部相关，本页只保留几何模糊核。稀释 $I(q)=n(\Delta\rho)^2 V^2 P(q)+B$。</p>
+      <h3>低 $q$ 与极限</h3>
+      <p>$\Phi=1-x^2/10+O(x^4)$，再乘 $\mathrm{e}^{-q^2\sigma^2}=1-q^2\sigma^2+O(q^4)$，得 $P=1-q^2(R^2/5+\sigma^2)+O(q^4)$。与 Guinier $P=1-q^2 R_g^2/3+\cdots$ 比较</p>
+      $$R_g^2=\frac{3}{5}R^2+3\sigma^2.$$
+      <p>$\sigma\to 0$ 回到均匀球 $R_g=R\sqrt{3/5}$。$\Phi(x)=0$ 仍在 $\tan x=x$ 的根上（第一正根 $x_1\approx 4.49$），故单分散时极小位置仍约 $q_1\approx 4.49/R$，但深度被高斯包络压低。</p>
+      <p>大 $x$ 时硬球包络 $\sim q^{-4}$，再乘 $\mathrm{e}^{-q^2\sigma^2}$，高 $q$ 衰减快于 Porod。这是模糊界面相对尖锐界面的指纹。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

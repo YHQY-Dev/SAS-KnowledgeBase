@@ -31,9 +31,21 @@
         <figcaption>核壳 $\mathrm{sinc}$ 振幅相加后的粉末平均 $I(q)$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>令 $F(A,B,C;\mathbf{q})$ 为均匀砖块归一化振幅。体积 $V=ABC$。核壳振幅</p>
-      $$A(\mathbf{q})=(\rho_c-\rho_s)V_c F_c+(\rho_s-\rho_{\mathrm{solv}})V_s F_s,$$
-      <p>其中外壳边长 $A_s=A_c+2t$ 等。粉末平均 $P(q)\propto\langle|A|^2\rangle$。$\rho_c,\rho_s,\rho_{\mathrm{solv}}$ 为核、壳、溶剂 SLD。</p>
+      <h3>出发点</h3>
+      <p>稀释粒子的相干散射振幅是衬度对平面波相位的体积分</p>
+      $$F(\mathbf{q})=\int \bigl[\rho(\mathbf{r})-\rho_{\mathrm{solv}}\bigr]\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r.$$
+      <p>核、壳取分段常数：核砖块边长 $A_c,B_c,C_c$ 内为 $\rho_c$，核与外壳之间为 $\rho_s$。傅里叶变换对体积可加。</p>
+      <h3>推导</h3>
+      <p>均匀砖块归一化振幅是三轴 $\mathrm{sinc}$ 之积（$\mathrm{sinc}\,x=\sin x/x$）</p>
+      $$F(A,B,C;\mathbf{q})=\mathrm{sinc}\!\left(\frac{q_x A}{2}\right)\mathrm{sinc}\!\left(\frac{q_y B}{2}\right)\mathrm{sinc}\!\left(\frac{q_z C}{2}\right),\qquad V=ABC.$$
+      <p>写成“外壳相对溶剂”加“核相对壳”。外壳边长 $A_s=A_c+2t$ 等（各面外扩 $t$，不是共焦椭球的 $R^2+t^2$）。于是</p>
+      $$A(\mathbf{q})=(\rho_c-\rho_s)V_c F_c+(\rho_s-\rho_{\mathrm{solv}})V_s F_s.$$
+      <p>$A(\mathbf{0})=(\rho_c-\rho_s)V_c+(\rho_s-\rho_{\mathrm{solv}})V_s$。粉末平均 $P(q)=\langle|A|^2\rangle/|A(\mathbf{0})|^2$。稀溶液 $I(q)=n\langle|A|^2\rangle+B$。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>均匀砖块 $R_g^2=(A^2+B^2+C^2)/12$。核、壳共心，复合回转半径是衬度加权二阶矩</p>
+      $$R_g^2=\frac{(\rho_c-\rho_s)V_c R_{g,\mathrm{c}}^2+(\rho_s-\rho_{\mathrm{solv}})V_s R_{g,\mathrm{s}}^2}{(\rho_c-\rho_s)V_c+(\rho_s-\rho_{\mathrm{solv}})V_s}.$$
+      <p>$\rho_s=\rho_c$ 或 $t\to 0$ 回到均匀平行六面体。Guinier 指数形式在 $qR_g\lesssim 1$ 可用。</p>
+      <p>中等 $q$ 的肩峰或极小位移来自核–壳 $\mathrm{sinc}$ 干涉。大 $q$ 尖锐界面包络仍是 Porod $q^{-4}$；拍频反映内外两套边长。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

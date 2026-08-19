@@ -31,11 +31,25 @@
         <figcaption>粉末平均 $I(q)$：$q^{-2}$ 包络与厚度 $\mathrm{sinc}$ 振荡。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>令 $\mathrm{sinc}\,x=\sin x/x$。矩形剖面的厚度形式因子</p>
+      <h3>出发点</h3>
+      <p>稀释、取向无规的均匀无限平板。相干振幅是衬度对平面波相位的体积分</p>
+      $$F(\mathbf{q})=\int_V \Delta\rho(\mathbf{r})\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r.$$
+      <p>取板心为原点、法向为 $z$，板内 $\Delta\rho$ 为常数、厚度为 $t$、横向面积为 $A$：</p>
+      $$F(\mathbf{q})=\Delta\rho\int_A\mathrm{e}^{i\mathbf{q}_\perp\cdot\mathbf{r}_\perp}\,\mathrm{d}^2r_\perp\int_{-t/2}^{t/2}\mathrm{e}^{i q_z z}\,\mathrm{d}z.$$
+      <p>厚度积分与 $q_z$ 的一维矩形傅里叶变换相同。令 $\mathrm{sinc}\,x=\sin x/x$，</p>
+      $$\int_{-t/2}^{t/2}\mathrm{e}^{i q_z z}\,\mathrm{d}z=t\,\mathrm{sinc}\!\left(\frac{q_z t}{2}\right).$$
+      <h3>推导</h3>
+      <p>$A\to\infty$ 时面内积分趋向 $\delta^2(\mathbf{q}_\perp)$：只有法向几乎平行 $\mathbf{q}$ 的片层才散射。对有限大圆盘（半径 $R$，$A=\pi R^2$），面内因子是 $2J_1(q_\perp R)/(q_\perp R)$。取向平均用 $\alpha=\angle(\mathbf{q},\hat{\mathbf{n}})$，$q_\perp=q\sin\alpha$。当 $qR\gg 1$，Bessel 包络尖锐地集中在 $\alpha\approx 0,\pi$。对该峰积分给出</p>
+      $$\Bigl\langle\Bigl[\frac{2J_1(qR\sin\alpha)}{qR\sin\alpha}\Bigr]^2\Bigr\rangle=\frac{2}{q^2 R^2}=\frac{2\pi}{q^2 A}.$$
+      <p>这就是无限片的粉末 Lorentz 因子 $2\pi/q^2$。取向片的厚度振幅在贡献取向处取 $q_z=q$，故</p>
+      $$\bigl\langle|F|^2\bigr\rangle=(\Delta\rho)^2(At)^2\cdot\frac{2\pi}{q^2 A}\cdot P_{\mathrm{t}}(q)=\frac{2\pi A t^2}{q^2}(\Delta\rho)^2 P_{\mathrm{t}}(q),$$
       $$P_{\mathrm{t}}(q)=\left[\mathrm{sinc}\!\left(\frac{qt}{2}\right)\right]^2.$$
-      <p>粉末平均无限片（体积分数 $\phi$，衬度 $\Delta\rho$）</p>
+      <p>数密度 $n$，体积分数 $\phi=nAt$，观测强度 $I(q)=n\langle|F|^2\rangle+B$：</p>
       $$I(q)=\frac{2\pi\phi t}{q^2}(\Delta\rho)^2 P_{\mathrm{t}}(q)+B.$$
-      <p>二维取向数据应回到 $I(q,\alpha)\propto |F(q\cos\alpha)|^2$，不要先做粉末平均。符号当场约定：$t$ 为板厚，$B$ 为常数本底。</p>
+      <p>拟合里常把 $\phi(\Delta\rho)^2$ 收成 $\mathrm{scale}$。已取向的二维数据应回到 $I(q,\alpha)\propto|F(q\cos\alpha)|^2$，不要先做粉末平均。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>Taylor：$\mathrm{sinc}\,x=1-x^2/6+O(x^4)$，$x=qt/2$，于是 $P_{\mathrm{t}}=1-(qt)^2/12+O(q^4)$。与一维 Guinier $P=1-q^2 R_g^2/3+\cdots$ 比较，薄板法向 $R_g^2=t^2/12$。Lorentz $2\pi/q^2$ 在 $q\to 0$ 仍在：无限片没有整体 Guinier 坪，中间区 $I\sim q^{-2}$。</p>
+      <p>$\mathrm{sinc}(qt/2)=0$ 的第一正根 $qt/2=\pi$，故第一零点 $q_1=2\pi/t$。大 $q$ 时 $\mathrm{sinc}\sim 2\sin(qt/2)/(qt)$，$P_{\mathrm{t}}\sim q^{-2}$，再乘 Lorentz 得振荡包络 $\sim q^{-4}$，即尖锐界面的 Porod 定律。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

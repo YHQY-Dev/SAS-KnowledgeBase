@@ -26,13 +26,30 @@
         <figcaption>黏性硬球 $S(q)$：相对纯硬球，低 $q$ 抬升。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>Baxter 黏性参数 $\tau$ 由方阱深度 $\varepsilon&gt;0$、宽度 $\Delta$ 的黏性极限定义（$\Delta\to 0$，$\varepsilon\to\infty$，二阶维里系数有限）</p>
-      $$\frac{1}{12\tau}\approx\lim\frac{\Delta}{\sigma}\,\mathrm{e}^{\varepsilon/kT}
-      \qquad\text{或等价地}\qquad
-      12\tau\approx\lim\frac{\sigma}{\Delta}\,\mathrm{e}^{-\varepsilon/kT}.$$
-      <p>$\lambda$ 取物理小根，使接触值有限。结构因子仍写成</p>
-      $$S(q)=\bigl[1-n\hat{c}(q;\eta,\lambda)\bigr]^{-1},$$
-      <p>其中 $\hat{c}$ 在硬球 PY 多项式上增加与 $\lambda$ 成正比的接触项。$\tau\to\infty$ 时 $\lambda\to 0$，回到 Percus–Yevick 硬球。</p>
+      <h3>出发点</h3>
+      <p>OZ 方程与结构因子的定义与硬球页相同：</p>
+      $$h(r)=c(r)+n\int c(|\mathbf{r}-\mathbf{r}'|)\,h(r')\,\mathrm{d}^3r',\qquad
+        S(q)=\bigl[1-n\hat{c}(q)\bigr]^{-1}.$$
+      <p>Baxter 黏性硬球把深度 $\varepsilon\to\infty$、宽度 $\Delta\to 0$ 的方阱取成接触处的 $\delta$ 吸引，并保持二阶维里有限。黏性参数 $\tau$ 由该极限定义（$\tau$ 越小越黏）</p>
+      $$\frac{1}{12\tau}=\lim_{\Delta\to 0}\frac{\Delta}{\sigma}\,\mathrm{e}^{\varepsilon/k_{\mathrm{B}}T}.$$
+      <p>闭包仍是 Percus–Yevick：$r\gt\sigma$ 时 $c=0$（除接触 $\delta$），$r\lt\sigma$ 时 $g=0$。接触黏性使 $c$ 在 $r=\sigma$ 上多出与 $\lambda(\eta,\tau)$ 成正比的 $\delta$ 项。</p>
+      <h3>推导</h3>
+      <p>PY 把 $1-n\hat{c}$ 因式分解为 Baxter 函数 $\tilde{Q}(q)\,\tilde{Q}(-q)$。无量纲 $x=r/\sigma$ 上，$Q$ 只在硬核内非零：</p>
+      $$q(x)=\frac{a}{2}(x^2-1)+b(x-1)+\frac{\lambda}{12}\quad(0\lt x\lt 1),\qquad q(x)=0\ (x\gt 1),$$
+      $$a=\frac{1+2\eta-\mu}{(1-\eta)^2},\qquad
+        b=\frac{-3\eta+\mu}{2(1-\eta)^2},\qquad
+        \mu=\lambda\eta(1-\eta).$$
+      <p>$\lambda$ 满足二次式，物理根取较小者（接触值有限、$\tau\to\infty$ 时 $\lambda\to 0$）：</p>
+      $$\frac{\eta}{12}\lambda^2-\Bigl(\tau+\frac{\eta}{1-\eta}\Bigr)\lambda+\frac{1+\eta/2}{(1-\eta)^2}=0.$$
+      <p>令 $A=q\sigma$，傅里叶因式</p>
+      $$\tilde{Q}(q)=1-12\eta\int_0^1 \mathrm{e}^{i A x}\,q(x)\,\mathrm{d}x$$
+      <p>是初等积分（二次多项式乘平面波）。结构因子的闭式为</p>
+      $$S(q)=\bigl[\tilde{Q}(q)\,\tilde{Q}(-q)\bigr]^{-1}=\bigl[1-n\hat{c}(q;\eta,\lambda)\bigr]^{-1}.$$
+      <p>$\tau\to\infty$ 时 $\lambda=0$，回到 Percus–Yevick 硬球。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>$q\to 0$ 时 $\tilde{Q}(0)=a$，故 $S(0)=1/a^2$。代入 $a$ 与 $\mu=\lambda\eta(1-\eta)$ 得</p>
+      $$S(0)=\frac{(1-\eta)^4}{\bigl(1+2\eta-\lambda\eta(1-\eta)\bigr)^2}.$$
+      <p>$\lambda=0$ 时还原为 PY 硬球 $S(0)=(1-\eta)^4/(1+2\eta)^2$。黏性增大则 $\lambda$ 增大、分母减小，$S(0)$ 升高（压缩率变大）。旋节线在 $1+2\eta=\lambda\eta(1-\eta)$ 处，$S(0)\to\infty$；Baxter 临界点约 $\eta_{\mathrm{c}}\approx 0.121$、$\tau_{\mathrm{c}}\approx 0.098$。第一峰位仍由硬核 $q\sigma\sim 2\pi$ 主导。$q\sigma\gg 1$ 时 $S(q)\to 1$。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

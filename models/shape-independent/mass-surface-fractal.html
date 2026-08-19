@@ -26,9 +26,14 @@
         <figcaption>先 $q^{-D_m}$ 再接到表面尾。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>质量–表面两段（平滑交叉）</p>
+      <h3>出发点</h3>
+      <p>聚集体在 $r_0\ll r\ll\xi$ 按质量分形 $g(r)\sim r^{D_m-3}$ 排列，一次颗粒表面在 $r\lesssim r_0$ 按表面分形 $r^{3-D_s}$ 粗糙。两个标度区的 Fourier 变换给出两段幂律，交叉 $q_c\sim 1/r_0$。</p>
+      <h3>推导</h3>
+      <p>质量段：$I\sim q^{-D_m}$。表面段：Bale–Schmidt $I\sim q^{D_s-6}$。用与双幂律相同的有理交叉，令 $m_1=D_m$、$m_2=6-D_s$：</p>
       $$I(q)=\frac{A}{q^{D_m}}\frac{1}{1+(q/q_c)^{6-D_s-D_m}}+B.$$
-      <p>$q\ll q_c$ 指数 $D_m$，$q\gg q_c$ 指数 $6-D_s$。光滑一次颗粒取 $D_s=2$。</p>
+      <p>$q\ll q_c$ 时分母 $\to 1$，指数 $D_m$。$q\gg q_c$ 时分母 $\sim(q/q_c)^{6-D_s-D_m}$，指数变成 $6-D_s$。光滑一次颗粒取 $D_s=2$，高 $q$ 即 Porod $q^{-4}$。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>本交叉式在 $q\to 0$ 仍是 $q^{-D_m}$，没有整体 Guinier；更大尺度的 $\xi$ 截断需另加或回到 Teixeira。高 $q$ 渐近 $q^{D_s-6}$。只有一段斜率时退化为单幂律，不要同时报告 $D_m$ 与 $D_s$。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

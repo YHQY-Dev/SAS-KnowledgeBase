@@ -26,9 +26,16 @@
         <figcaption>Cahn 型峰：$I\sim 1/[B+(q^2-q_c^2)^2]$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>早期静态示意（峰位 $q_c$）</p>
+      <h3>出发点</h3>
+      <p>旋节分解早期，Cahn–Hilliard 把组成涨落线性化。自由能含体相 $f(\phi)$ 与界面梯度 $\kappa\lvert\nabla\phi\rvert^2$，迁移率 $M$ 把化学势的 Laplacian 变成增长速率 $R(q)$。散射强度按 $I(q,t)=I(q,0)\mathrm{e}^{2R(q)t}$ 指数放大。</p>
+      <h3>推导</h3>
+      <p>$\partial_t\phi=M\nabla^2(\delta F/\delta\phi)$，$F=\int[f(\phi)+(\kappa/2)\lvert\nabla\phi\rvert^2]$。对均匀态线性化，$\hat\phi(q)$ 的增长率</p>
+      $$R(q)=-M q^2(f''+\kappa q^2).$$
+      <p>$f''<0$（旋节内）时，$R(q)$ 在 $q_m=\sqrt{-f''/(2\kappa)}$ 取正最大，该模式最快增长。冻结某一时刻，曲线仍环绕 $q_c\approx q_m$。把 $R(q)$ 的四次形写成静态有理峰（示意）</p>
       $$I(q)=\frac{A}{p+(q^2-q_c^2)^2}+B.$$
-      <p>动力学原式 $I(q,t)=I(q,0)\exp[2R(q)t]$，$R(q)=-Mq^2(\kappa q^2+f'')$，$q_m=\sqrt{-f''/(2\kappa)}$。</p>
+      <p>展开分母 $p+q^4-2q_c^2 q^2+q_c^4$，即 $a+c q^2+d q^4$ 型，与 Teubner–Strey 同族，但这里 $q_c$ 来自动力学最大增长，而不是平衡 Landau 系数。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>低 $q$：$R(q)\sim -M f'' q^2$，早期 $q\to 0$ 并不增长（守恒场），静态式在 $q=0$ 为 $A/(p+q_c^4)$。峰在 $q_c$。高 $q$：$I\sim A/q^4$。单帧与 TS 几乎无法区分；须有时间序列（峰高指数增长、峰位近似固定）才能声称早期旋节。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

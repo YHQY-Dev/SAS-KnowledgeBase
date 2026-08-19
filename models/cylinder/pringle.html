@@ -30,9 +30,19 @@
         <figcaption>相对平盘，曲率阻尼高 $q$ 振荡。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>平盘振幅 $F_{\mathrm{disk}}(q,\alpha)$ 乘鞍面相位因子后取向平均。示意上常用</p>
+      <h3>出发点</h3>
+      <p>稀释、取向无规的均匀盘，相干散射振幅是衬度对平面波相位的体积分</p>
+      $$F(\mathbf{q})=\int_V \Delta\rho(\mathbf{r})\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r.$$
+      <p>平盘即短圆柱：径向 $2J_1(qR\sin\alpha)/(qR\sin\alpha)$ 乘厚度 $\mathrm{sinc}(qH\cos\alpha/2)$。马鞍盘把中面弯成 $z\propto x^2-y^2$，体积分在盘面坐标上多一个相位 $\mathrm{e}^{i q_z z(x,y)}$。</p>
+      <h3>推导</h3>
+      <p>平盘振幅（$V=\pi R^2 H$）</p>
+      $$F_{\mathrm{disk}}(q,\alpha)=\Delta\rho\,V\cdot\frac{2J_1(qR\sin\alpha)}{qR\sin\alpha}\cdot\frac{\sin(qH\cos\alpha/2)}{qH\cos\alpha/2}.$$
+      <p>鞍面 $z=\kappa(x^2-y^2)$ 在薄盘近似下把径向积分变成带相位的 Fourier–Bessel 变换，一般需数值求值。曲率很小时相位展开的二次项给出 Debye–Waller 型阻尼，粉末平均后可用示意插值</p>
       $$P(q)\simeq P_{\mathrm{disk}}(q;R,H)\,\mathrm{e}^{-q^2\sigma_{\mathrm{saddle}}^2/(1+c\,q^2 R^2)},$$
-      <p>其中 $P_{\mathrm{disk}}$ 即短圆柱（Fournet）粉末平均。精确鞍面振幅需对盘面做数值傅里叶变换；上式只用于标明曲率如何压振荡。</p>
+      <p>其中 $P_{\mathrm{disk}}$ 是 $|F_{\mathrm{disk}}|^2$ 对 $\sin\alpha\,\mathrm{d}\alpha$ 的粉末平均，$\sigma_{\mathrm{saddle}}^2=\langle z^2\rangle$ 为中面均方起伏。分母使大 $q$ 阻尼饱和，避免把 Porod 完全抹掉。$\sigma\to 0$ 回到平盘。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>低 $q$ 的 $R_g$ 相对平盘增加约 $\langle z^2\rangle$：薄盘 $R_g^2\simeq R^2/2+H^2/12+\sigma_{\mathrm{saddle}}^2$。Guinier 在 $qR_g\lesssim 1$ 可用，曲率对 Guinier 的修正通常小于对高 $q$ 振荡的阻尼。</p>
+      <p>中间区仍接近 $q^{-2}$。半径与厚度极小被鞍起伏抹圆。大 $q$ 若局部界面仍尖锐，包络回到 Porod $q^{-4}$。不出现堆叠峰：这是单片弯曲，不是一维格子。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

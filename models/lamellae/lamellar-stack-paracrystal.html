@@ -30,11 +30,21 @@
         <figcaption>一维准晶干涉：高阶峰随 $\sigma_d$ 迅速消失。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>有限 $N$ 层、高斯间距涨落 $\sigma_d$ 的格子因子</p>
-      $$S(q)=1+\frac{2}{N}\sum_{k=1}^{N-1}(N-k)\cos(kqd)\,\mathrm{e}^{-k q^2\sigma_d^2/2}.$$
-      <p>无限堆叠极限可写成 $g=\mathrm{e}^{-q^2\sigma_d^2/2}$ 的闭式 $(1-g^2)/(1-2g\cos(qd)+g^2)$。粉末强度</p>
-      $$I(q)=\frac{2\pi}{d q^2}\,P_{\mathrm{t}}(q)\,S(q)+B,$$
-      <p>其中 $P_{\mathrm{t}}$ 与层状页相同。相对无序 $\sigma_d/d$ 通常只有百分之几到十几。</p>
+      <h3>出发点</h3>
+      <p>Hosemann 一维准晶：相邻间距独立涨落，误差沿堆叠方向累积（第二类无序）。令第 $k$ 个间距 $d_k$ 为独立同分布，均值 $d$、方差 $\sigma_d^2$，则第 $j$ 层位置</p>
+      $$z_j=z_0+\sum_{k=1}^{j}d_k.$$
+      <p>高斯间距的特征函数 $\langle\mathrm{e}^{iqd_k}\rangle=\mathrm{e}^{iqd}\,\mathrm{e}^{-q^2\sigma_d^2/2}$。单层 $P_{\mathrm{t}}$ 与粉末 Lorentz 同<a href="lamellar.html">层状</a>页；层间干涉全部进入格子因子 $S(q)$。</p>
+      <h3>推导</h3>
+      <p>相隔 $k$ 层的相位是 $k$ 个独立间距之和，方差按 $k$ 累积：$\mathrm{Var}(z_{j+k}-z_j)=k\sigma_d^2$。高斯平均给出 Debye–Waller 式阻尼 $\mathrm{e}^{-k q^2\sigma_d^2/2}$，但指数里带着邻级 $k$，高阶峰会被加宽而不只是压低。有限 $N$ 层、按层归一的干涉函数</p>
+      $$S(q)=\frac{1}{N}\Bigl\langle\Bigl|\sum_{j=0}^{N-1}\mathrm{e}^{iqz_j}\Bigr|^2\Bigr\rangle=1+\frac{2}{N}\sum_{k=1}^{N-1}(N-k)\cos(kqd)\,\mathrm{e}^{-k q^2\sigma_d^2/2}.$$
+      <p>无限堆叠把几何级数求和。令 $\gamma=\mathrm{e}^{-q^2\sigma_d^2/2}$，</p>
+      $$S_\infty(q)=\frac{1-\gamma^2}{1-2\gamma\cos(qd)+\gamma^2}.$$
+      <p>粉末强度（$P_{\mathrm{t}}$ 同层状页）</p>
+      $$I(q)=\frac{2\pi}{d q^2}\,P_{\mathrm{t}}(q)\,S(q)+B.$$
+      <p>相对无序 $g=\sigma_d/d$ 通常只有百分之几到十几；Hosemann 要求 $g\lesssim 0.25$ 才保持可分辨的准晶峰。第一类无序（原子在完美格点附近振动）只给与 $k$ 无关的 $\mathrm{e}^{-q^2\langle u^2\rangle}$，峰保持 $\delta$ 函数锐度——与准晶不同。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>$q\to 0$ 时 $\gamma\to 1$、$S(0)=N$。布拉格位置 $q_n=2\pi n/d$。在第 $n$ 级峰上，邻级阻尼 $\gamma^k=\exp(-k q_n^2\sigma_d^2/2)=\exp(-2\pi^2 n^2 k g^2)$，故高阶峰按 $n^2 g^2$ 迅速消失，峰宽随级数增大。这与 Caille 的幂律尾 $|q-q_n|^{\eta_n-2}$ 不同：准晶峰形近 Lorentz / 高斯混合。</p>
+      <p>$\sigma_d\to 0$ 时 $S$ 回到有限 $N$ 的 Laue 函数。高 $q$ 包络仍由 $P_{\mathrm{t}}$ 决定，振荡 Porod $\sim q^{-4}$。形式因子节点同样可以压低整级峰。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

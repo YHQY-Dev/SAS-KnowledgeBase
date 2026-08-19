@@ -26,10 +26,25 @@
         <figcaption>方阱 $S(q)$：相对硬球，吸引使低 $q$ 抬升。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>方阱势 $u(r)=\infty$（$r&lt;\sigma$），$u=-\varepsilon$（$\sigma&lt;r&lt;\lambda\sigma$），核外为零。MSA 闭包</p>
-      $$\hat{c}(q)=\hat{c}_{\mathrm{HS}}(q)+\hat{c}_{\mathrm{well}}(q),\qquad
+      <h3>出发点</h3>
+      <p>OZ 与结构因子仍是</p>
+      $$h(r)=c(r)+n\int c(|\mathbf{r}-\mathbf{r}'|)\,h(r')\,\mathrm{d}^3r',\qquad
         S(q)=\bigl[1-n\hat{c}(q)\bigr]^{-1}.$$
-      <p>阱的傅里叶项正比于 $\varepsilon$ 与球壳积分 $[\sin(\lambda x)-\lambda x\cos(\lambda x)-\sin x+x\cos x]/x^3$，$x=q\sigma$。本页采用 Sharma 与 Sharma 对硬球结构因子的方阱推广。</p>
+      <p>方阱势：$u=\infty$（$r\lt\sigma$），$u=-\varepsilon$（$\sigma\lt r\lt\lambda\sigma$），$u=0$（$r\gt\lambda\sigma$），阱宽比 $\lambda\gt 1$。平均球近似（MSA）在核外取 $c(r)=-\beta u(r)$；核内仍用 Percus–Yevick 硬球的 $c_{\mathrm{HS}}$（Sharma–Sharma 对 PY 硬球的方阱推广）。因此阱段 $c=\beta\varepsilon$ 为常数。</p>
+      <h3>推导</h3>
+      <p>直接相关分成核与阱</p>
+      $$\hat{c}(q)=\hat{c}_{\mathrm{HS}}(q)+\hat{c}_{\mathrm{well}}(q).$$
+      <p>$\hat{c}_{\mathrm{HS}}$ 即硬球页的 Wertheim 多项式之傅里叶变换。阱贡献是球壳上常数的傅里叶变换。令 $A=q\sigma$、$\beta\varepsilon=\varepsilon/k_{\mathrm{B}}T$，</p>
+      $$\hat{c}_{\mathrm{well}}(q)=4\pi\int_{\sigma}^{\lambda\sigma} r^2(\beta\varepsilon)\,\frac{\sin(qr)}{qr}\,\mathrm{d}r.$$
+      <p>$\int r\sin(qr)\,\mathrm{d}r=-r\cos(qr)/q+\sin(qr)/q^2$，上下限相减后乘 $n=6\eta/(\pi\sigma^3)$ 得</p>
+      $$n\hat{c}_{\mathrm{well}}(q)=24\eta\,\frac{\varepsilon}{k_{\mathrm{B}}T}\,\frac{\sin(\lambda A)-\lambda A\cos(\lambda A)-\sin A+A\cos A}{A^3}.$$
+      <p>闭式结构因子</p>
+      $$S(q)=\bigl[1-n\hat{c}_{\mathrm{HS}}(q)-n\hat{c}_{\mathrm{well}}(q)\bigr]^{-1}.$$
+      <p>$\varepsilon=0$ 回到 PY 硬球；$\lambda\to 1^+$ 且 $\varepsilon\to\infty$、维里有限时趋向 Baxter 黏性极限。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>$A\to 0$ 时 $[\sin(\lambda A)-\lambda A\cos(\lambda A)-\sin A+A\cos A]/A^3\to(\lambda^3-1)/3$，故 $n\hat{c}_{\mathrm{well}}(0)=8\eta(\varepsilon/k_{\mathrm{B}}T)(\lambda^3-1)$。叠上硬球压缩率</p>
+      $$S(0)^{-1}=\frac{(1+2\eta)^2}{(1-\eta)^4}-8\eta\,\frac{\varepsilon}{k_{\mathrm{B}}T}\,(\lambda^3-1).$$
+      <p>吸引（$\varepsilon&gt;0$）使 $S(0)$ 升高；分母过零对应 MSA 旋节线，超出此范围闭式不再代表稳定流体。第一峰仍大致在 $q\sigma\sim 2\pi$。$q\sigma\gg 1$ 时阱壳层以 $q^{-2}$ 振荡衰减，硬核项以 $q^{-4}$ 衰减，$S(q)\to 1$。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

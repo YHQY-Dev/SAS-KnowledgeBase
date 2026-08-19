@@ -30,9 +30,17 @@
         <figcaption>空心公式在很小 $t$ 下的粉末平均 $I(q)$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>有限壁空心振幅 $A(t)$ 在 $t\to 0$ 时</p>
-      $$A(\mathbf{q})\simeq\Delta\rho\, t\sum_{\mathrm{faces}}S_f\,\mathrm{sinc}(\mathbf{q}\cdot\mathbf{a}_f/2)\,\mathrm{sinc}(\mathbf{q}\cdot\mathbf{b}_f/2)\,e^{i\mathbf{q}\cdot\mathbf{r}_f},$$
-      <p>其中 $S_f$ 是第 $f$ 个矩形面的面积。粉末平均后 $P(0)=1$。实际拟合中 $t$ 与 $\Delta\rho$ 只以乘积出现，须固定其一。</p>
+      <h3>出发点</h3>
+      <p>有限壁空心振幅是外砖块减去内砖块。薄壁 $t\ll A,B,C$ 时对 $t$ 做一阶展开，体积分退化为六个矩形面上的面积分：散射由壳层（面）贡献，体积近似为 $t S$，$S=2(AB+AC+BC)$。</p>
+      <h3>推导</h3>
+      <p>内边长 $A-2t$ 等。令 $G(A,B,C)=V F$ 为未归一化砖块振幅。$A(t)=\Delta\rho\bigl[G(A,B,C)-G(A-2t,B-2t,C-2t)\bigr]$。$t\to 0$ 时 $A(t)\simeq \Delta\rho\cdot 2t\,(\partial G/\partial A+\partial G/\partial B+\partial G/\partial C)$。每个 $\partial G/\partial L$ 来自垂直于该棱的一对面：面上二维 Fourier 仍是两个 $\mathrm{sinc}$ 之积，并带面心相位 $\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}_f}$。于是</p>
+      $$A(\mathbf{q})\simeq\Delta\rho\, t\sum_{\mathrm{faces}}S_f\,\mathrm{sinc}(\mathbf{q}\cdot\mathbf{a}_f/2)\,\mathrm{sinc}(\mathbf{q}\cdot\mathbf{b}_f/2)\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}_f},$$
+      <p>其中 $S_f$ 为第 $f$ 个矩形面的面积，$\mathbf{a}_f,\mathbf{b}_f$ 为面上两边。$A(\mathbf{0})=\Delta\rho\, t S$。粉末平均后 $P(0)=1$。实际拟合中 $t$ 与 $\Delta\rho$ 只以乘积出现，须固定其一。稀释 $I(q)=n\langle|A|^2\rangle+B$。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>薄壳回转半径是面上 $r^2$ 的面积平均。对面心距离与面内二阶矩求和得</p>
+      $$R_g^2=\frac{AB(A^2+B^2)+AC(A^2+C^2)+BC(B^2+C^2)}{12(AB+AC+BC)}+\frac{ABC(A+B+C)}{4(AB+AC+BC)}.$$
+      <p>立方 $A=B=C=L$ 时 $R_g^2=5L^2/12$，大于实心立方的 $L^2/4$。Guinier 指数形式在 $qR_g\lesssim 1$ 可用。</p>
+      <p>中间区接近面散射，包络可显 $q^{-2}$；更高 $q$ 尖锐面仍给出 Porod $q^{-4}$。若 $q_{\max}$ 已能分辨壁厚振荡，应回到有限 $t$，而不是在本极限里拟合虚假的 $t$。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

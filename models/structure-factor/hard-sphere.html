@@ -26,12 +26,29 @@
         <figcaption>PY 硬球 $S(q)$：低 $q$ 压低，第一相关峰随后振荡回到 $1$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>令 $\eta$ 为硬球体积分数，$x=q\sigma$，$\sigma=2R$。PY 直接相关在核内</p>
-      $$c(r)=-\alpha-\beta(r/\sigma)-\gamma(r/\sigma)^3\quad(r\lt\sigma),\qquad c(r)=0\ (r\gt\sigma),$$
-      $$\alpha=\frac{(1+2\eta)^2}{(1-\eta)^4},\quad
-        \beta=\frac{-6\eta(1+\eta/2)^2}{(1-\eta)^4},\quad
+      <h3>出发点</h3>
+      <p>全相关 $h=g-1$ 与直接相关 $c$ 由 Ornstein–Zernike（OZ）方程联系，$n$ 为数密度：</p>
+      $$h(r)=c(r)+n\int c(|\mathbf{r}-\mathbf{r}'|)\,h(r')\,\mathrm{d}^3r'.$$
+      <p>傅里叶空间是代数式 $\hat{h}=\hat{c}+n\hat{c}\,\hat{h}$。结构因子定义为密度涨落谱</p>
+      $$S(q)=1+n\hat{h}(q)=\bigl[1-n\hat{c}(q)\bigr]^{-1}.$$
+      <p>硬球势 $u=\infty$（$r\lt\sigma$）、$u=0$（$r\gt\sigma$），$\sigma=2R$。Percus–Yevick（PY）闭包 $c(r)=\bigl[1-\mathrm{e}^{\beta u(r)}\bigr]g(r)$ 给出核内 $g=0$、核外 $c=0$，从而 $c$ 只活在 $r\lt\sigma$。</p>
+      <h3>推导</h3>
+      <p>Wertheim–Thiele 对 PY 硬球的解是核内三次多项式。令 $\eta=n\pi\sigma^3/6$ 为体积分数，</p>
+      $$c(r)=-\alpha-\beta\Bigl(\frac{r}{\sigma}\Bigr)-\gamma\Bigl(\frac{r}{\sigma}\Bigr)^3\quad(r\lt\sigma),\qquad c(r)=0\ (r\gt\sigma),$$
+      $$\alpha=\frac{(1+2\eta)^2}{(1-\eta)^4},\qquad
+        \beta=\frac{-6\eta(1+\eta/2)^2}{(1-\eta)^4},\qquad
         \gamma=\frac{\eta}{2}\alpha.$$
-      <p>结构因子 $S(q)=[1-n\hat{c}(q)]^{-1}$，$n=6\eta/(\pi\sigma^3)$。$\hat{c}$ 的闭式见 Ashcroft &amp; Lekner。前向值 $S(0)=(1-\eta)^4/(1+2\eta)^2$。</p>
+      <p>球对称傅里叶变换 $\hat{c}(q)=4\pi\int_0^\sigma r^2 c(r)\,[\sin(qr)/(qr)]\,\mathrm{d}r$。代入多项式并令 $A=q\sigma$，分部积分得到 Ashcroft–Lekner 闭式。$4\pi n\sigma^3=24\eta$，故</p>
+      $$n\hat{c}(q)=-24\eta\Bigl[\alpha\,\psi_1(A)+\beta\,\psi_2(A)+\gamma\,\psi_3(A)\Bigr],$$
+      $$\psi_1=\frac{\sin A-A\cos A}{A^3},\qquad
+        \psi_2=\frac{2A\sin A-(A^2-2)\cos A-2}{A^4},$$
+      $$\psi_3=\frac{-A^4\cos A+4\bigl[(3A^2-6)\cos A+(A^3-6A)\sin A+6\bigr]}{A^6}.$$
+      <p>于是 $S(q)=\bigl[1-n\hat{c}(q)\bigr]^{-1}$ 是 $\eta$ 与 $A=q\sigma$ 的显式函数。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>$A\to 0$ 时 $\psi_1\to 1/3$，$\psi_2\to 1/4$，$\psi_3\to 1/6$，因此 $n\hat{c}(0)=-24\eta(\alpha/3+\beta/4+\gamma/6)$。把 $\alpha,\beta,\gamma$ 代入并通分，分子化为 $(1+2\eta)^2$，得到压缩率恒等式</p>
+      $$1-n\hat{c}(0)=\frac{(1+2\eta)^2}{(1-\eta)^4},\qquad
+        S(0)=\frac{(1-\eta)^4}{(1+2\eta)^2}.$$
+      <p>这是 PY 的压缩率路径：$S(0)=n k_{\mathrm{B}}T\,\chi_T$。$\eta\to 0$ 时 $S(0)\to 1$；$\eta$ 增大则 $S(0)$ 迅速下降（硬核压低渗透涨落）。第一相关峰约在 $q\sigma\sim 2\pi$，随 $\eta$ 增高而变锐、略内移。$q\sigma\gg 1$ 时 $\hat{c}\sim q^{-4}$ 振荡，$S(q)\to 1$。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

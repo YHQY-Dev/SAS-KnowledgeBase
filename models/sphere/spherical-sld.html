@@ -29,8 +29,19 @@
         <figcaption>平滑径向剖面对应的 $I(q)$，高 $q$ 振荡弱于硬球。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      $$A(q)=4\pi\int_0^{\infty} r^2\bigl[\rho(r)-\rho_{\mathrm{solv}}\bigr]\frac{\sin(qr)}{qr}\,\mathrm{d}r,\qquad I(q)=n|A(q)|^2+B.$$
-      <p>数值上取 $r\le R_{\max}$，$\rho(r)=\rho_{\mathrm{solv}}$ 之外。离散 $M$ 层时用核–多层壳求和，并令层厚 $\Delta r\ll 2\pi/q_{\max}$。</p>
+      <h3>出发点</h3>
+      <p>球对称下散射振幅是径向衬度的正弦变换，稀释粒子</p>
+      $$A(q)=4\pi\int_0^{\infty} r^2\bigl[\rho(r)-\rho_{\mathrm{solv}}\bigr]\frac{\sin(qr)}{qr}\,\mathrm{d}r.$$
+      <p>与均匀球的差别只在于 $\rho(r)$ 不再是常数：任意（参数化的）径向剖面都从同一积分出发。实践上 $\rho(r)=\rho_{\mathrm{solv}}$（$r&gt;R_{\max}$）。</p>
+      <h3>推导</h3>
+      <p>令 $u=qr$，则 $\mathrm{d}r=\mathrm{d}u/q$，</p>
+      $$A(q)=\frac{4\pi}{q}\int_0^{\infty} r\bigl[\rho(r)-\rho_{\mathrm{solv}}\bigr]\sin(qr)\,\mathrm{d}r.$$
+      <p>若把 $\rho(r)$ 切成 $M$ 层常数壳、层厚 $\Delta r$，上式退化为核–多层壳求和 $A=\sum_i(\rho_i-\rho_{i-1})V(R_i)\Phi(qR_i)$。要在 $q\le q_{\max}$ 上逼近连续剖面，须 $\Delta r\ll 2\pi/q_{\max}$。光滑参数化（tanh 界面、样条）可直接数值求积。稀释强度 $I(q)=n|A(q)|^2+B$。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>$q\to 0$ 时 $\sin(qr)/(qr)\to 1$，超额散射长度 $A(0)=4\pi\int r^2\Delta\rho(r)\,\mathrm{d}r$。回转半径</p>
+      $$R_g^2=\frac{\int_0^{R_{\max}} r^4\Delta\rho(r)\,\mathrm{d}r}{\int_0^{R_{\max}} r^2\Delta\rho(r)\,\mathrm{d}r}.$$
+      <p>均匀球时回到 $R_g=R\sqrt{3/5}$。Guinier $I\simeq I(0)\mathrm{e}^{-q^2 R_g^2/3}$ 在 $qR_g\lesssim 1$ 可用。</p>
+      <p>尖锐界面：$\Phi\sim 3\cos x/x^2$，强度包络 Porod $q^{-4}$。光滑界面（宽度 $\sigma$）相当于实空间卷积，振幅多乘高斯因子，衰减快于 $q^{-4}$，振荡极小被抹浅。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

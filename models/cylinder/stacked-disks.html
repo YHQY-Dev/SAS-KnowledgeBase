@@ -30,10 +30,21 @@
         <figcaption>单盘包络上叠加一维层状干涉。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>取向 $\alpha$ 下</p>
-      $$I(q,\alpha)\propto |F_{\mathrm{disk}}(q,\alpha)|^2\,S_{1\mathrm{D}}(q\cos\alpha),$$
+      <h3>出发点</h3>
+      <p>稀释、取向无规的堆叠盘，相干散射振幅是衬度对平面波相位的体积分</p>
+      $$F(\mathbf{q})=\int_V \Delta\rho(\mathbf{r})\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r.$$
+      <p>若 $N$ 片相同圆盘沿共同法向排列、层间距 $d$，总振幅是单盘振幅乘以一维格子的相位和。单盘本身仍是短圆柱：径向 $2J_1$ 乘厚度 $\mathrm{sinc}$。</p>
+      <h3>推导</h3>
+      <p>单盘（均匀短圆柱，$V=\pi R^2 H$）</p>
+      $$F_{\mathrm{disk}}(q,\alpha)=\Delta\rho\,V\cdot\frac{2J_1(qR\sin\alpha)}{qR\sin\alpha}\cdot\frac{\sin(qH\cos\alpha/2)}{qH\cos\alpha/2}.$$
+      <p>第 $k$ 片中心在 $z_k=kd$（可加高斯涨落）。对无规层间距平均后，取向 $\alpha$ 下的强度因子化为单盘模方乘一维干涉函数（$q_\parallel=q\cos\alpha$）：</p>
       $$S_{1\mathrm{D}}(q_\parallel)=1+\frac{2}{N}\sum_{k=1}^{N-1}(N-k)\cos(k d q_\parallel)\,\mathrm{e}^{-k(q_\parallel\sigma_d)^2/2}.$$
-      <p>一维数据再对 $\sin\alpha\,\mathrm{d}\alpha$ 平均。$F_{\mathrm{disk}}$ 可以是均匀短圆柱，也可以是核壳盘。</p>
+      <p>$N=1$ 或 $\sigma_d$ 很大时 $S_{1\mathrm{D}}\to 1$，回到单盘。一维粉末平均</p>
+      $$P(q)=\frac{\displaystyle\int_0^{\pi/2}|F_{\mathrm{disk}}(q,\alpha)|^2 S_{1\mathrm{D}}(q\cos\alpha)\sin\alpha\,\mathrm{d}\alpha}{\displaystyle\int_0^{\pi/2}|F_{\mathrm{disk}}(0,\alpha)|^2\sin\alpha\,\mathrm{d}\alpha}.$$
+      <p>$F_{\mathrm{disk}}$ 也可换成核壳盘振幅。稀释强度 $I(q)=n\langle|F_{\mathrm{disk}}|^2 S_{1\mathrm{D}}\rangle+B$。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>整叠的 $R_g$ 沿法向近似为有限一维格子：$R_g^2\simeq R^2/2+(N^2-1)d^2/12$（外加单盘厚度）。低 $q$ Guinier 由堆叠总高主导，不要当成单盘半径。</p>
+      <p>中间区单盘包络 $\sim q^{-2}$，并在 $q\simeq 2\pi/d$ 出现层状峰；峰宽随 $N$ 变窄，随 $\sigma_d$ 增宽，高阶峰被无序迅速压掉。大 $q$ 回到单盘的 Bessel / $\mathrm{sinc}$ 振荡与 Porod $q^{-4}$。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

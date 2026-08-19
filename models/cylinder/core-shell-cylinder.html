@@ -31,10 +31,21 @@
         <figcaption>径向核壳振幅相加后的粉末平均 $I(q)$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>令 $F(q,R,L,\alpha)$ 为半径 $R$、长度 $L$ 的均匀圆柱振幅。核壳振幅</p>
-      $$A(q,\alpha)=(\rho_c-\rho_s)F(q,R_c,L,\alpha)+(\rho_s-\rho_{\mathrm{solv}})F(q,R_s,L,\alpha),$$
-      $$P(q)\propto\int_0^{\pi/2}|A(q,\alpha)|^2\sin\alpha\,\mathrm{d}\alpha.$$
-      <p>$\rho_c,\rho_s,\rho_{\mathrm{solv}}$ 分别为核、壳与溶剂的散射长度密度。稀溶液 $I(q)=n\langle|A|^2\rangle+B$。</p>
+      <h3>出发点</h3>
+      <p>稀释、取向无规的粒子，相干散射振幅是衬度对平面波相位的体积分</p>
+      $$F(\mathbf{q})=\int_V \Delta\rho(\mathbf{r})\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r.$$
+      <p>核壳圆柱把 $\Delta\rho(r_\perp)$ 分成两段常数：核 $r_\perp\le R_c$ 为 $\rho_c-\rho_{\mathrm{solv}}$，壳 $R_c\lt r_\perp\le R_s$ 为 $\rho_s-\rho_{\mathrm{solv}}$；轴向仍是同一长度 $L$。体积分因此写成两层均匀圆柱之差。</p>
+      <h3>推导</h3>
+      <p>单层均匀圆柱的振幅已在圆柱页导出：轴向 $\mathrm{sinc}(qL\cos\alpha/2)$ 乘径向 $2J_1(qR\sin\alpha)/(qR\sin\alpha)$，再乘体积 $V(R)=\pi R^2 L$。令</p>
+      $$F(q,R,L,\alpha)=V(R)\,\frac{2J_1(qR\sin\alpha)}{qR\sin\alpha}\cdot\frac{\sin(qL\cos\alpha/2)}{qL\cos\alpha/2}.$$
+      <p>把壳层写成“半径 $R_s$ 的圆柱减去半径 $R_c$ 的圆柱”，核写成半径 $R_c$ 的圆柱，按衬度重排后</p>
+      $$A(q,\alpha)=(\rho_c-\rho_s)F(q,R_c,L,\alpha)+(\rho_s-\rho_{\mathrm{solv}})F(q,R_s,L,\alpha).$$
+      <p>$q\to 0$ 时 $A(0)=(\rho_c-\rho_s)V(R_c)+(\rho_s-\rho_{\mathrm{solv}})V(R_s)$，即净衬度体积。粉末平均</p>
+      $$P(q)=\frac{\displaystyle\int_0^{\pi/2}|A(q,\alpha)|^2\sin\alpha\,\mathrm{d}\alpha}{\displaystyle\int_0^{\pi/2}|A(0,\alpha)|^2\sin\alpha\,\mathrm{d}\alpha}.$$
+      <p>稀释强度 $I(q)=n\langle|A|^2\rangle+B$。$\rho_c=\rho_s$ 回到均匀圆柱；$\rho_c=\rho_{\mathrm{solv}}$ 回到空心管。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>低 $q$ 仍是 Guinier：$P=1-q^2 R_g^2/3+O(q^4)$。$R_g$ 由两层圆柱对原点的二阶矩加权得到，粗略介于 $R_c$ 与 $R_s$ 的均匀柱之间，并含同一 $L^2/12$ 轴向项。指数形式在 $qR_g\lesssim 1$ 可用。</p>
+      <p>细长时中间区仍接近 $q^{-1}$。截面振荡的相位由有效衬度半径决定，不再固定在 $qR_s\approx 3.83$；核–壳干涉可把第一极小移深或填浅。大 $q$ 由最锐的径向密度跳变控制，尖锐界面包络 $\sim q^{-4}$。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

@@ -27,9 +27,19 @@
         <figcaption>经验曲线 $I\sim q^{-m}$（图中 $m=3$）。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>纯幂律加本底</p>
+      <h3>出发点</h3>
+      <p>各向同性强度是成对相关 $\gamma(r)$ 的三维 Fourier 变换。若在一段尺度上相关呈幂律（没有单一特征长度），</p>
+      $$\gamma(r)\sim r^{\,D-3}\qquad(r_{\min}\ll r\ll r_{\max}),$$
+      <p>则其变换在对应窗口 $1/r_{\max}\ll q\ll 1/r_{\min}$ 也是幂律。本页把指数留作自由参数 $m$，不先验等同于某个 $D$。</p>
+      <h3>推导</h3>
+      <p>三维径向变换 $I(q)\propto 4\pi\int r^2\gamma(r)\,(\sin(qr)/(qr))\,\mathrm{d}r$。幂函数的 Fourier 变换是幂函数：$\mathrm{FT}[r^{\,\alpha}]\propto q^{-\alpha-3}$（在标度区内，两端截断只影响窗口外）。取 $\alpha=D-3$，得到</p>
+      $$I(q)\sim q^{-D}.$$
+      <p>拟合里写成纯幂律加本底，并把 $D$ 换成有效指数 $m$：</p>
       $$I(q)=A\,q^{-m}+B.$$
-      <p>$A$ 吸收衬度与前置因子，$m$ 为有效指数。本模型不引入特征长度。</p>
+      <p>$A$ 吸收衬度、体积与截断带来的量纲前置。同一 $m$ 可来自质量分形（$m=D_m$）、表面分形（$m=6-D_s$）、细棒中间区（$m\approx 1$）或薄片（$m\approx 2$），公式本身不断言是哪一种。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>本式在全 $q$ 上都是同一斜率，没有 Guinier 坪，也没有内禀转折。真实物体在 $q\to 0$ 必须饱和（有限 $R_g$），在 $q\to\infty$ 或回到建造块、或进入 Porod。因此纯幂律只在中间窗口使用。</p>
+      <p>若窗口两端已看见坪或第二段斜率，应改用 Guinier–Porod、双幂律或分形，而不是把 $m$ 当成全局形状。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

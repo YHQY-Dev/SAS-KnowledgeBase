@@ -30,9 +30,19 @@
         <figcaption>可弯曲珠链的 $I(q)$：单珠振荡叠加链干涉。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>珠的归一化振幅 $\psi(q)=\Phi(qR)$。自由连接下珠–珠干涉含 $\mathrm{sinc}(qA)$ 的几何级数（Schweins &amp; Huber）。示意上</p>
-      $$P(q)\propto S_{\mathrm{ss}}(q)+S_{\mathrm{rr}}(q)+S_{\mathrm{sr}}(q),$$
-      <p>其中 $S_{\mathrm{ss}}$ 由 $N$、$\psi$ 与 $\sin(qA)/(qA)$ 构成，$S_{\mathrm{rr}}$、$S_{\mathrm{sr}}$ 含杆的 $\mathrm{Si}$ 积分。$N=1$ 回到均匀球；$\ell\to 0$ 且刚性排列回到直线串珠。</p>
+      <h3>出发点</h3>
+      <p>稀释项链的相干散射振幅是衬度对平面波相位的体积分</p>
+      $$F(\mathbf{q})=\int_V \Delta\rho(\mathbf{r})\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r.$$
+      <p>体积分成 $N$ 个半径 $R$ 的均匀球珠与 $N-1$ 根长 $\ell$ 的连接杆。珠心距 $A=2R+\ell$。自由连接意味着相邻杆取向无规，珠–珠相位因子对取向平均后成为 $\mathrm{sinc}(qA)$ 的幂。</p>
+      <h3>推导</h3>
+      <p>单珠振幅是 Rayleigh 函数 $\psi(q)=\Delta\rho V_{\mathrm{s}}\Phi(qR)$，$\Phi(x)=3(\sin x-x\cos x)/x^3$，$V_{\mathrm{s}}=4\pi R^3/3$。自由连接下第 $i$、$j$ 珠的干涉</p>
+      $$\bigl\langle\mathrm{e}^{i\mathbf{q}\cdot(\mathbf{R}_i-\mathbf{R}_j)}\bigr\rangle=\Bigl[\frac{\sin(qA)}{qA}\Bigr]^{|i-j|}.$$
+      <p>珠–珠项因此是几何级数 $S_{\mathrm{ss}}=N|\psi|^2+2|\psi|^2\sum_{k=1}^{N-1}(N-k)[\mathrm{sinc}(qA)]^k$。细杆是径向半径趋于零的短圆柱：轴向 $\mathrm{sinc}(q\ell\cos\beta/2)$ 对杆取向平均后出现正弦积分 $\mathrm{Si}$，得到杆–杆 $S_{\mathrm{rr}}$ 与珠–杆 $S_{\mathrm{sr}}$。总强度</p>
+      $$P(q)\propto S_{\mathrm{ss}}(q)+S_{\mathrm{rr}}(q)+S_{\mathrm{sr}}(q).$$
+      <p>$N=1$ 回到均匀球；杆衬度消失时只剩 $S_{\mathrm{ss}}$。若项链被拉成刚性直线，应改用直线串珠，而不是本页的自由连接平均。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>自由连接链的 $R_g^2\simeq (N-1)A^2/6$ 加上珠自身的 $3R^2/5$（$N$ 大且忽略杆粗细）。Guinier $P=1-q^2 R_g^2/3+\cdots$ 在 $qR_g\lesssim 1$ 可用。</p>
+      <p>中等 $q$ 由珠心距干涉调制；高 $q$ 看到单珠 Rayleigh 振荡，第一极小 $qR\approx 4.49$。杆很细时高 $q$ 不出现圆柱的 $J_1$ 极小。大 $q$ 珠表面给出 Porod $q^{-4}$。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

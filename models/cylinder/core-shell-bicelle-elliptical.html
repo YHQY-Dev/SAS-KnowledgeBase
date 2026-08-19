@@ -30,10 +30,19 @@
         <figcaption>定性示意，不是上节双重平均式的数值求值；椭圆盘面使振荡更钝。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>径向因子中的有效半径</p>
-      $$R_{\mathrm{eff}}(\psi)=\sqrt{a^2\cos^2\psi+b^2\sin^2\psi},$$
-      $$P(q)\propto\int_0^{\pi/2}\mathrm{d}\alpha\sin\alpha\int_0^{\pi}\mathrm{d}\psi\,\bigl|A\bigl(q,\alpha,R_{\mathrm{eff}}(\psi)\bigr)\bigr|^2.$$
-      <p>$A$ 与圆盘核壳 bicelle 相同，只是把 $R$ 换成 $R_{\mathrm{eff}}$。厚度方向的 $\mathrm{sinc}$ 不依赖 $\psi$。</p>
+      <h3>出发点</h3>
+      <p>稀释、取向无规的分层盘，相干散射振幅是衬度对平面波相位的体积分</p>
+      $$F(\mathbf{q})=\int_V \Delta\rho(\mathbf{r})\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r.$$
+      <p>椭圆核壳 bicelle 与圆盘相同，分成核、面帽与腰带；盘面是椭圆半轴 $a$、$b$。轴向 $\mathrm{sinc}$ 不依赖盘面方位；径向 $2J_1(x)/x$ 中的半径换成 $R_{\mathrm{eff}}(\psi)$。</p>
+      <h3>推导</h3>
+      <p>椭圆映成单位圆后</p>
+      $$R_{\mathrm{eff}}(\psi)=\sqrt{a^2\cos^2\psi+b^2\sin^2\psi}.$$
+      <p>把圆盘核壳振幅 $A(q,\alpha;R)$ 中所有径向半径换成相应的 $R_{\mathrm{eff}}$（核用 $a,b$，腰带外缘用 $a+t_{\mathrm{belt}}$、$b+t_{\mathrm{belt}}$），厚度方向的 $\mathrm{sinc}(q H\cos\alpha/2)$ 保持不变。粉末须对法向极角与盘面滚转双重平均：</p>
+      $$P(q)=\frac{\displaystyle\int_0^{\pi/2}\sin\alpha\,\mathrm{d}\alpha\int_0^{\pi}\mathrm{d}\psi\,\bigl|A\bigl(q,\alpha,R_{\mathrm{eff}}(\psi)\bigr)\bigr|^2}{\displaystyle\int_0^{\pi/2}\sin\alpha\,\mathrm{d}\alpha\int_0^{\pi}\mathrm{d}\psi\,\bigl|A(0)\bigr|^2}.$$
+      <p>$a=b=R$ 时回到圆盘核壳 bicelle。稀释强度 $I(q)=n\langle|A|^2\rangle+B$。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>椭圆盘的 $R_g^2\simeq(a^2+b^2)/4+L_{\mathrm{tot}}^2/12$。低 $q$ Guinier 由盘面尺寸主导。中间区仍接近 $q^{-2}$。</p>
+      <p>轴比把径向 Bessel 零点按 $\psi$ 错开，粉末平均后截面振荡比圆盘更钝。厚度振荡（法向 $\mathrm{sinc}$）不受 $\psi$ 影响。大 $q$ 尖锐界面 $\sim q^{-4}$。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

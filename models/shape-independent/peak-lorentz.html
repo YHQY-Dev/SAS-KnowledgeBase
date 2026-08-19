@@ -26,9 +26,14 @@
         <figcaption>洛伦兹型相关峰，尾比重比高斯大。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>洛伦兹峰</p>
+      <h3>出发点</h3>
+      <p>本式是经验峰形。洛伦兹线对应实空间的指数相干 $\mathrm{e}^{-r/\xi}\mathrm{e}^{i q_0 r}$（一维），比高斯更瘦顶、更重尾。峰位仍经验地读 $d=2\pi/q_0$，半高半宽 $\Gamma$ 与关联长度 $\xi\sim 1/\Gamma$ 同量级。</p>
+      <h3>推导</h3>
+      <p>指数 $\mathrm{e}^{-\Gamma\lvert r\rvert}$ 的 Fourier 变换是洛伦兹 $2\Gamma/(\Gamma^2+\omega^2)$。把频率原点移到 $q_0$，并归一到峰高 $A$：</p>
       $$I(q)=\frac{A}{1+[(q-q_0)/\Gamma]^2}+B.$$
-      <p>$\Gamma$ 为半高半宽（HWHM）。$d=2\pi/q_0$。</p>
+      <p>$\Gamma$ 为 HWHM：当 $\lvert q-q_0\rvert=\Gamma$ 时强度降到峰值一半。$q_0=0$ 时回到中心在原点的洛伦兹，但本页的峰通常 $q_0\neq 0$，与 Ornstein–Zernike 的 $1/(1+\xi^2 q^2)$ 不是同一个函数（后者在 $q=0$ 最大）。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>翼上 $I\sim A\Gamma^2/(q-q_0)^2$，即离开峰后 $\sim q^{-2}$，比高斯慢、比 Porod $q^{-4}$ 仍慢。低 $q$ 若远离峰，强度接近 $A/(1+(q_0/\Gamma)^2)+B$，不是 Guinier 展开。尾与本底 $B$ 强相关，须有足够宽的 $q$ 翼。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

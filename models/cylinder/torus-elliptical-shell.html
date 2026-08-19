@@ -30,10 +30,21 @@
         <figcaption>环的低频振荡叠加截面衰减。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>均匀圆截面环的示意振幅含 $J_0(q R\sin\alpha)$ 与截面 $2J_1(qr)/(qr)$。椭圆截面把 $r$ 换成 $R_{\mathrm{eff}}(\psi)$；壳层再对外内截面振幅相减：</p>
+      <h3>出发点</h3>
+      <p>稀释、取向无规的环形粒子，相干散射振幅是衬度对平面波相位的体积分</p>
+      $$F(\mathbf{q})=\int_V \Delta\rho(\mathbf{r})\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r.$$
+      <p>圆环由截面沿半径 $R$ 的圆轨道扫过而成。把积分分成沿中心线的环坐标与管截面：前者给出 $J_0(qR\sin\alpha)$（$\alpha$ 为 $\mathbf{q}$ 与环轴夹角），后者给出与圆柱径向相同的 $2J_1(x)/x$。闭合拓扑不再出现直柱的轴向 $\mathrm{sinc}$。</p>
+      <h3>推导</h3>
+      <p>圆截面实心环在 $r\ll R$ 的解耦极限下，体积 $V=2\pi^2 R r^2$，</p>
+      $$A(q,\alpha)=\Delta\rho\,V\cdot J_0(q R\sin\alpha)\cdot\frac{2J_1(qr)}{qr}.$$
+      <p>椭圆截面把 $r$ 换成 $R_{\mathrm{eff}}(\psi)=\sqrt{a^2\cos^2\psi+b^2\sin^2\psi}$，并对截面方位 $\psi$ 平均。壳层是外截面减去内截面：</p>
       $$A(q,\alpha,\psi)\propto J_0(q R\sin\alpha)\bigl[V_{\mathrm{out}}\Phi_{\mathrm{cs}}(q,a_{\mathrm{out}},b_{\mathrm{out}},\psi)-V_{\mathrm{in}}\Phi_{\mathrm{cs}}(q,a_{\mathrm{in}},b_{\mathrm{in}},\psi)\bigr],$$
-      $$P(q)=\bigl\langle|A|^2\bigr\rangle_{\alpha,\psi}.$$
-      <p>回转半径（圆截面实心环）$R_g^2=R^2+5r^2/4$；椭圆与壳层须按 Kawaguchi 的对应式修正。</p>
+      <p>其中 $\Phi_{\mathrm{cs}}=2J_1(q R_{\mathrm{eff}})/(q R_{\mathrm{eff}})$。有限管径与环半径耦合时，$J_0$ 与截面因子不能完全分离，须对截面做数值积分。粉末平均</p>
+      $$P(q)=\frac{\bigl\langle|A|^2\bigr\rangle_{\alpha,\psi}}{|A(0)|^2}.$$
+      <p>开口直管应改用空心圆柱（恢复轴向 $\mathrm{sinc}$ 与 $\int|F|^2\sin\alpha\,\mathrm{d}\alpha$）。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>圆截面实心环 $R_g^2=R^2+5r^2/4$；椭圆与壳层把 $r^2$ 换成相应截面二阶矩。低 $q$ Guinier 由主半径 $R$ 主导。</p>
+      <p>中等 $q$ 出现与 $R$ 相关的环状振荡（$J_0$ 的零点）。高 $q$ 由管截面控制，第一组 $J_1$ 极小约在 $q\bar a\approx 3.83$。大 $q$ 尖锐管壁给出 Porod $q^{-4}$。低–中 $q$ 不是细长棒的 $q^{-1}$。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

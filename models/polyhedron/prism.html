@@ -30,10 +30,23 @@
         <figcaption>等边三棱柱粉末平均 $I(q)/I(0)$（体内 Debye 求和）。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      $$F(\mathbf{q})=H\cdot\mathrm{sinc}\!\left(\frac{q_\parallel H}{2}\right)F_\triangle(q_\perp,\psi),$$
-      <p>$F_\triangle$ 是边长 $a$ 的等边三角形二维形式因子，$\psi$ 为截面方位。粉末</p>
-      $$P(q)=\langle |F|^2\rangle_{\theta,\psi}/|F(0)|^2.$$
-      <p>体积 $V=\sqrt{3}\,a^2 H/4$。$R_g^2=a^2/24+H^2/12$。</p>
+      <h3>出发点</h3>
+      <p>稀释、取向无规的均匀粒子，相干散射振幅是特征函数的傅里叶变换</p>
+      $$F(\mathbf{q})=\Delta\rho\int_V \mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r.$$
+      <p>直三棱柱沿轴方向均匀，底面是边长 $a$ 的等边三角形、高度 $H$。积分分离为轴向一维与底面二维。</p>
+      <h3>推导</h3>
+      <p>取轴沿 $z$，柱体 $|z|\le H/2$。$\int_{-H/2}^{H/2}\mathrm{e}^{i q_\parallel z}\,\mathrm{d}z=H\,\mathrm{sinc}(q_\parallel H/2)$。剩余是三角形示性函数的二维 Fourier $F_\triangle(q_\perp,\psi)$：</p>
+      $$F(\mathbf{q})=\Delta\rho\,H\cdot\mathrm{sinc}\!\left(\frac{q_\parallel H}{2}\right)F_\triangle(q_\perp,\psi).$$
+      <p>$F_\triangle$ 再由平面散度化为三边之和：$\nabla_\perp\cdot(\mathbf{q}_\perp\mathrm{e}^{i\mathbf{q}_\perp\cdot\boldsymbol{\rho}})=i q_\perp^2\mathrm{e}^{i\mathbf{q}_\perp\cdot\boldsymbol{\rho}}$。等边三角形质心在原点、外接半径 $a/\sqrt{3}$；边矢 $\mathbf{L}_k$、中点 $\mathbf{c}_k$、面内的外法向 $\hat{\boldsymbol{\nu}}_k$：</p>
+      $$F_\triangle(\mathbf{q}_\perp)=\frac{1}{i q_\perp^2}\sum_{k=1}^{3}(\mathbf{q}_\perp\cdot\hat{\boldsymbol{\nu}}_k)|\mathbf{L}_k|\,\mathrm{e}^{i\mathbf{q}_\perp\cdot\mathbf{c}_k}\,\mathrm{sinc}\!\left(\frac{\mathbf{q}_\perp\cdot\mathbf{L}_k}{2}\right).$$
+      <p>$q_\perp\to 0$ 时 $F_\triangle\to\mathrm{Area}_\triangle=\sqrt{3}\,a^2/4$，故 $F(\mathbf{0})=\Delta\rho V$、$V=\sqrt{3}\,a^2 H/4$。粉末对轴极角与截面滚转平均；也可用 Debye 双重体积分（图中 $I(q)$ 用此求值）</p>
+      $$P(q)=\langle |F|^2\rangle_{\theta,\psi}/|F(\mathbf{0})|^2.$$
+      <p>稀释 $I(q)=n(\Delta\rho)^2 V^2 P(q)+B$。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>挤出体的回转半径是底面二维 $R_{g,2\mathrm{D}}^2$ 与高度项之和。等边三角形对质心 $R_{g,2\mathrm{D}}^2=a^2/24$，轴向均匀段贡献 $H^2/12$，故</p>
+      $$R_g^2=\frac{a^2}{24}+\frac{H^2}{12},\qquad P(q)=1-\frac{q^2 R_g^2}{3}+O(q^4).$$
+      <p>Guinier 指数形式在 $qR_g\lesssim 1$ 可用。</p>
+      <p>细长 $H\gg a$ 时中间区 $\sim q^{-1}$；扁平 $H\ll a$ 时 $\sim q^{-2}$。高 $q$ 尖锐面 Porod $q^{-4}$，振荡相位由边长 $a$ 与棱决定，不同于圆柱的 $J_1$ 根。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

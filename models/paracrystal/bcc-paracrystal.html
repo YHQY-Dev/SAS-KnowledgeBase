@@ -30,10 +30,19 @@
         <figcaption>粉末 BCC 准晶 $I(q)$：$(110)$ 为首峰，奇数 $h+k+l$ 消光。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>一维 $Z_1$ 与 SC 页相同。BCC 再乘两点晶胞因子</p>
-      $$|F_{\mathrm{bcc}}|^2=2+2\cos\bigl(a(q_x+q_y+q_z)/2\bigr),$$
-      $$I(q)\propto P_{\mathrm{sph}}(q)\,\bigl\langle Z_1(q_x)Z_1(q_y)Z_1(q_z)\,|F_{\mathrm{bcc}}|^2\bigr\rangle_{\hat{q}}+B.$$
-      <p>允许反射满足 $h+k+l$ 为偶数。由 $q_1$ 反推 $a=2\pi\sqrt{2}/q_1$。</p>
+      <h3>出发点</h3>
+      <p>三维准晶的轴向无序与<a href="sc-paracrystal.html">简单立方准晶</a>相同：三轴独立的 Hosemann 间距涨落，相对畸变 $g=\sigma_a/a$。BCC 惯例晶胞另有体心基点 $(a/2,a/2,a/2)$，几何结构因子在部分 $hkl$ 上消光。格点粒子仍取均匀球 $P_{\mathrm{sph}}$。</p>
+      <h3>推导</h3>
+      <p>一维因子（高斯累积阻尼）</p>
+      $$Z_1(q_x)=1+\frac{2}{N}\sum_{k=1}^{N-1}(N-k)\cos(k q_x a)\,\mathrm{e}^{-k q_x^2(ga)^2/2}.$$
+      <p>体心两点振幅 $F_{\mathrm{bcc}}=1+\mathrm{e}^{ia(q_x+q_y+q_z)/2}$，模方</p>
+      $$|F_{\mathrm{bcc}}|^2=\bigl|1+\mathrm{e}^{ia(q_x+q_y+q_z)/2}\bigr|^2=2+2\cos\bigl(a(q_x+q_y+q_z)/2\bigr).$$
+      <p>当 $\mathbf{q}$ 落在倒易点 $q_{hkl}=(2\pi/a)(h,k,l)$ 上，$\mathrm{e}^{i\pi(h+k+l)}=(-1)^{h+k+l}$，故 $h+k+l$ 为奇数时 $F_{\mathrm{bcc}}=0$。三维格子因子是三轴 $Z_1$ 与晶胞因子的乘积，再粉末平均：</p>
+      $$I(q)=n(\Delta\rho)^2 V^2 P_{\mathrm{sph}}(q)\,\bigl\langle Z_1(q_x)Z_1(q_y)Z_1(q_z)\,|F_{\mathrm{bcc}}|^2\bigr\rangle_{\hat{q}}+B.$$
+      <p>$P_{\mathrm{sph}}$ 为 Rayleigh 函数，$x=qR$。Matsuoka 指出，把晶胞因子并入准晶乘积时系数须用修正后的形式；几何消光规则本身与完美 BCC 相同。高阶峰的高斯阻尼仍来自指数中的邻级 $k$，不是与 $k$ 无关的 Debye–Waller。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>第一允许峰为 $(110)$，$q_1=(2\pi/a)\sqrt{2}$，由 $q_1$ 反推 $a=2\pi\sqrt{2}/q_1$。随后 $(200),(211)$ 对应 $\sqrt{4},\sqrt{6}$。邻级阻尼 $\exp(-k q_{hkl}^2(ga)^2/2)$ 使高阶峰按指数平方和与 $g^2$ 消失；$g$ 过大时只剩宽化 $(110)$，与液体样 $S(q)$ 难以区分。</p>
+      <p>$g\to 0$ 时回到有限畴 BCC 的 Laue 图样。球形式因子只调制包络：Guinier $R_g=R\sqrt{3/5}$，高 $q$ Porod $\sim q^{-4}$，不移动 $q_{hkl}$。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

@@ -29,8 +29,21 @@
         <figcaption>多层振幅求和后的 $I(q)$，振荡结构比单壳更丰富。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
+      <h3>出发点</h3>
+      <p>稀释球对称粒子的振幅是径向衬度的正弦变换</p>
+      $$F(q)=4\pi\int_0^{R_M} r^2\bigl[\rho(r)-\rho_{\mathrm{solv}}\bigr]\frac{\sin(qr)}{qr}\,\mathrm{d}r.$$
+      <p>核–多层壳把 $\rho(r)$ 离散成 $M=N+1$ 段常数：第 $i$ 区 $R_{i-1}&lt;r\le R_i$ 取 $\rho_i$（约定 $R_0=0$，$i=1$ 为核），最外 $r&gt;R_M$ 回到溶剂。</p>
+      <h3>推导</h3>
+      <p>逐壳积分，每段用均匀球原函数 $\int_0^{R} r^2\sin(qr)/(qr)\,\mathrm{d}r=V(R)\Phi(qR)/4\pi$，$V(R)=4\pi R^3/3$，$\Phi(x)=3(\sin x-x\cos x)/x^3$：</p>
+      $$F(q)=\sum_{i=1}^{M}(\rho_i-\rho_{\mathrm{solv}})\bigl[V(R_i)\Phi(qR_i)-V(R_{i-1})\Phi(qR_{i-1})\bigr],$$
+      <p>其中 $V(0)\Phi(0)=0$。把同一 $\Phi(qR_i)$ 的系数合并：来自第 $i$ 段的 $+\rho_i$ 与第 $i+1$ 段的 $-\rho_{i+1}$，最外再减溶剂，得到界面跳变形式</p>
       $$A(q)=\sum_{i=1}^{M}(\rho_i-\rho_{i-1})V(R_i)\Phi(qR_i),\qquad \rho_0=\rho_{\mathrm{solv}},\; R_1&lt;R_2&lt;\cdots&lt;R_M.$$
-      <p>$i=1$ 为核，$i\ge 2$ 为各壳外半径。$I(q)=n|A(q)|^2+B$。$M=N+1$（核 + $N$ 壳）。</p>
+      <p>$M=1$ 即均匀球；$M=2$ 即核壳球。稀释强度 $I(q)=n|A(q)|^2+B$。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>$q\to 0$ 时 $\Phi\to 1$，超额散射长度是各壳体积的衬度加权</p>
+      $$A(0)=\sum_{i=1}^{M}(\rho_i-\rho_{\mathrm{solv}})\bigl[V(R_i)-V(R_{i-1})\bigr].$$
+      <p>$R_g^2$ 由 $\int r^2\Delta\rho\,\mathrm{d}V/\int\Delta\rho\,\mathrm{d}V$ 给出，即各壳贡献 $(3/5)(\rho_i-\rho_{\mathrm{solv}})(R_i^5-R_{i-1}^5)$ 之和再除以 $A(0)$ 的体积因子。Guinier 指数在 $qR_g\lesssim 1$ 可用。</p>
+      <p>极小由多项 $\Phi(qR_i)$ 干涉决定，没有单一的 $\tan x=x$。大 $q$ 每项 $\sim q^{-2}$，尖锐界面的强度包络仍是 Porod $q^{-4}$；最外半径主导振荡相位。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

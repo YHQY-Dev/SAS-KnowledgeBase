@@ -30,10 +30,19 @@
         <figcaption>粉末 FCC 准晶 $I(q)$：$(111)$ 为首峰，混指数消光。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>一维 $Z_1$ 与 SC 页相同。令 $a_1=a(q_x+q_y)/2$ 等，四点晶胞</p>
-      $$|F_{\mathrm{fcc}}|^2=\bigl|1+\mathrm{e}^{i a_1}+\mathrm{e}^{i a_2}+\mathrm{e}^{i a_3}\bigr|^2,$$
-      $$I(q)\propto P_{\mathrm{sph}}(q)\,\bigl\langle Z_1(q_x)Z_1(q_y)Z_1(q_z)\,|F_{\mathrm{fcc}}|^2\bigr\rangle_{\hat{q}}+B.$$
-      <p>由 $q_1$ 反推 $a=2\pi\sqrt{3}/q_1$。相对无序 $g$ 通常只有百分之几到二十；Hosemann 要求 $g\lesssim 0.25$ 才保持准晶图像。</p>
+      <h3>出发点</h3>
+      <p>三维准晶的轴向无序与<a href="sc-paracrystal.html">简单立方准晶</a>相同：三轴独立的 Hosemann 间距涨落，相对畸变 $g=\sigma_a/a$。FCC 惯例晶胞有四点：原点与三个面心。几何结构因子只在 $h,k,l$ 全奇或全偶时非零。格点粒子仍取均匀球 $P_{\mathrm{sph}}$。</p>
+      <h3>推导</h3>
+      <p>一维因子（高斯累积阻尼）</p>
+      $$Z_1(q_x)=1+\frac{2}{N}\sum_{k=1}^{N-1}(N-k)\cos(k q_x a)\,\mathrm{e}^{-k q_x^2(ga)^2/2}.$$
+      <p>令 $a_1=a(q_x+q_y)/2$、$a_2=a(q_y+q_z)/2$、$a_3=a(q_z+q_x)/2$，四点振幅</p>
+      $$F_{\mathrm{fcc}}=1+\mathrm{e}^{ia_1}+\mathrm{e}^{ia_2}+\mathrm{e}^{ia_3},\qquad |F_{\mathrm{fcc}}|^2=\bigl|1+\mathrm{e}^{ia_1}+\mathrm{e}^{ia_2}+\mathrm{e}^{ia_3}\bigr|^2.$$
+      <p>在倒易点 $q_{hkl}=(2\pi/a)(h,k,l)$ 上，面心相位为 $\mathrm{e}^{i\pi(h+k)}$ 等。$h,k,l$ 奇偶混杂时四项相消，$F_{\mathrm{fcc}}=0$；全奇或全偶时 $|F_{\mathrm{fcc}}|^2=16$。三维格子因子是三轴 $Z_1$ 与晶胞因子的乘积，再粉末平均：</p>
+      $$I(q)=n(\Delta\rho)^2 V^2 P_{\mathrm{sph}}(q)\,\bigl\langle Z_1(q_x)Z_1(q_y)Z_1(q_z)\,|F_{\mathrm{fcc}}|^2\bigr\rangle_{\hat{q}}+B.$$
+      <p>$P_{\mathrm{sph}}$ 为 Rayleigh 函数。准晶阻尼来自 $\mathrm{e}^{-k q^2(ga)^2/2}$：高阶峰既降强又变宽，不同于只压低强度、不按 $k$ 加宽的 Debye–Waller。Hosemann 要求 $g\lesssim 0.25$ 才保持可分辨的准晶峰。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>第一允许峰为 $(111)$，$q_1=(2\pi/a)\sqrt{3}$，由 $q_1$ 反推 $a=2\pi\sqrt{3}/q_1$。随后 $(200),(220),(311)$ 对应 $\sqrt{4}:\sqrt{8}:\sqrt{11}$。邻级阻尼使高阶峰按 $g^2$ 与 $h^2+k^2+l^2$ 迅速消失；$g$ 过大时格子类型不可辨。</p>
+      <p>$g\to 0$ 时回到有限畴 FCC 的 Laue 图样。球形式因子只调制包络：Guinier $R_g=R\sqrt{3/5}$，高 $q$ Porod $\sim q^{-4}$，不移动 $q_{hkl}$。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

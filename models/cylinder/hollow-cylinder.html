@@ -31,10 +31,22 @@
         <figcaption>空心管粉末平均 $I(q)$：壁厚干涉叠加在圆柱包络上。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>令 $F(q,R,L,\alpha)$ 为均匀圆柱振幅。空心管</p>
-      $$A(q,\alpha)=(\rho-\rho_{\mathrm{solv}})\bigl[F(q,R_{\mathrm{out}},L,\alpha)-F(q,R_{\mathrm{in}},L,\alpha)\bigr],$$
-      $$P(q)\propto\int_0^{\pi/2}|A(q,\alpha)|^2\sin\alpha\,\mathrm{d}\alpha.$$
-      <p>薄壁极限 $t\ll R$ 时，径向因子接近管壁上的环状振幅，截面振荡间距主要由平均半径决定。</p>
+      <h3>出发点</h3>
+      <p>稀释、取向无规的均匀管壁，相干散射振幅是衬度对平面波相位的体积分</p>
+      $$F(\mathbf{q})=\int_V \Delta\rho(\mathbf{r})\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r.$$
+      <p>空心圆柱在 $R_{\mathrm{in}}\le r_\perp\le R_{\mathrm{out}}$、$|z|\le L/2$ 内 $\Delta\rho=\rho-\rho_{\mathrm{solv}}$ 为常数，管腔与溶剂相同。积分等于外圆柱减去内圆柱，轴向与径向仍然分离。</p>
+      <h3>推导</h3>
+      <p>均匀圆柱振幅（体积因子已含在 $F$ 内）</p>
+      $$F(q,R,L,\alpha)=(\pi R^2 L)\,\frac{2J_1(qR\sin\alpha)}{qR\sin\alpha}\cdot\frac{\sin(qL\cos\alpha/2)}{qL\cos\alpha/2}.$$
+      <p>空心管因此是核壳圆柱在 $\rho_c=\rho_{\mathrm{solv}}$ 时的特例：</p>
+      $$A(q,\alpha)=(\rho-\rho_{\mathrm{solv}})\bigl[F(q,R_{\mathrm{out}},L,\alpha)-F(q,R_{\mathrm{in}},L,\alpha)\bigr].$$
+      <p>$q\to 0$ 时 $A(0)=\Delta\rho\cdot\pi(R_{\mathrm{out}}^2-R_{\mathrm{in}}^2)L$。粉末平均</p>
+      $$P(q)=\frac{\displaystyle\int_0^{\pi/2}|A(q,\alpha)|^2\sin\alpha\,\mathrm{d}\alpha}{\displaystyle\int_0^{\pi/2}|A(0,\alpha)|^2\sin\alpha\,\mathrm{d}\alpha}.$$
+      <p>薄壁 $t=R_{\mathrm{out}}-R_{\mathrm{in}}\ll R_{\mathrm{out}}$ 时，径向因子接近平均半径处的环：$J_0(q\bar R\sin\alpha)$ 类振荡，间距由 $\bar R$ 而非实心柱的 $J_1$ 零点单独决定。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>Taylor 展开后与 Guinier 比较，空心管的回转半径比同外径实心柱更大：径向贡献从 $R_{\mathrm{out}}^2/2$ 换成 $(R_{\mathrm{out}}^2+R_{\mathrm{in}}^2)/2$，轴向仍是 $L^2/12$，即</p>
+      $$R_g^2=\frac{R_{\mathrm{out}}^2+R_{\mathrm{in}}^2}{2}+\frac{L^2}{12}.$$
+      <p>细长管中间区仍 $\sim q^{-1}$。壁厚干涉在 $q\sim\pi/t$ 量级出现调制。大 $q$ 时内外两个尖锐界面给出 Porod $q^{-4}$；极薄壁时截面更像空心壳，振荡包络可接近 $q^{-2}$ 再进入界面尾。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

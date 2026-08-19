@@ -29,9 +29,22 @@
         <figcaption>相对裸核，吸附层改变极小位置与中 $q$ 强度。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>均匀层近似（与核壳同构，$\rho_c$ 为核）</p>
-      $$A(q)=(\rho_c-\rho_L)V(R)\Phi(qR)+(\rho_L-\rho_{\mathrm{solv}})V(R+\delta)\Phi\bigl(q(R+\delta)\bigr),$$
-      <p>$\delta$ 为层厚，$\rho_L$ 为层平均 SLD。稀疏层可把 $\rho_L$ 写成 $\phi_{\mathrm{pol}}\rho_{\mathrm{pol}}+(1-\phi_{\mathrm{pol}})\rho_{\mathrm{solv}}$，用聚合物体积分数 $\phi_{\mathrm{pol}}$ 代替独立 SLD。</p>
+      <h3>出发点</h3>
+      <p>稀释、取向无规时，相干散射振幅是衬度对平面波相位的体积分</p>
+      $$F(\mathbf{q})=\int_V \Delta\rho(\mathbf{r})\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r.$$
+      <p>均匀吸附层取球对称、分段常数剖面：核 $r&lt;R$ 为 $\rho_c$，层 $R\le r\le R+\delta$ 为平均 $\rho_L$，之外为溶剂 $\rho_{\mathrm{solv}}$。角积分后只剩径向正弦变换</p>
+      $$F(q)=4\pi\int_0^{R+\delta} r^2\bigl[\rho(r)-\rho_{\mathrm{solv}}\bigr]\frac{\sin(qr)}{qr}\,\mathrm{d}r.$$
+      <h3>推导</h3>
+      <p>把积分拆成核与层两段。均匀球的原函数为 $\int_0^{R} r^2\sin(qr)/(qr)\,\mathrm{d}r=V(R)\Phi(qR)/4\pi$，其中 $V(R)=4\pi R^3/3$，$\Phi(x)=3(\sin x-x\cos x)/x^3$。于是</p>
+      $$F(q)=(\rho_c-\rho_{\mathrm{solv}})V(R)\Phi(qR)+(\rho_L-\rho_{\mathrm{solv}})\bigl[V(R+\delta)\Phi\bigl(q(R+\delta)\bigr)-V(R)\Phi(qR)\bigr].$$
+      <p>合并 $\Phi(qR)$ 的系数，得到与核壳球同构的闭式</p>
+      $$A(q)=(\rho_c-\rho_L)V(R)\Phi(qR)+(\rho_L-\rho_{\mathrm{solv}})V(R+\delta)\Phi\bigl(q(R+\delta)\bigr).$$
+      <p>稀疏层把层平均写成体积分数加权 $\rho_L=\phi_{\mathrm{pol}}\rho_{\mathrm{pol}}+(1-\phi_{\mathrm{pol}})\rho_{\mathrm{solv}}$，层衬度即 $\phi_{\mathrm{pol}}(\rho_{\mathrm{pol}}-\rho_{\mathrm{solv}})$，可用 $\phi_{\mathrm{pol}}$ 代替独立的层 SLD。稀释强度 $I(q)=n|A(q)|^2+B$。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>$q\to 0$ 时 $\Phi\to 1$，超额散射长度</p>
+      $$A(0)=(\rho_c-\rho_{\mathrm{solv}})V(R)+(\rho_L-\rho_{\mathrm{solv}})\bigl[V(R+\delta)-V(R)\bigr].$$
+      <p>与 Guinier $P=1-q^2 R_g^2/3+\cdots$ 比较，$R_g^2$ 由衬度的二阶矩给出：$R_g^2=(3/5)[(\rho_c-\rho_L)R^5+(\rho_L-\rho_{\mathrm{solv}})(R+\delta)^5]/[(\rho_c-\rho_L)R^3+(\rho_L-\rho_{\mathrm{solv}})(R+\delta)^3]$。层很稀时 $R_g$ 接近裸核的 $R\sqrt{3/5}$。</p>
+      <p>两套尖锐界面仍给出 Porod 包络 $\sim q^{-4}$，振荡因核、层半径不同而出现拍频。$\Phi(qR)=0$ 的根一般不再是强度的严格零点，因为层项不同时为零。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

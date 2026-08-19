@@ -31,10 +31,21 @@
         <figcaption>定性示意，不是上节三区振幅式的数值求值；中间区接近盘的 $q^{-2}$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>取向 $\alpha$ 下振幅（核、面、带三区）</p>
-      $$A(q,\alpha)=\sum_{k\in\{\mathrm{core},\,\mathrm{face},\,\mathrm{belt}\}}(\rho_k-\rho_{\mathrm{solv}})F_k(q,R_k,L_k,\alpha),$$
-      $$P(q)\propto\int_0^{\pi/2}|A(q,\alpha)|^2\sin\alpha\,\mathrm{d}\alpha.$$
-      <p>$F_k$ 为相应外接圆柱振幅之差（分层）。面帽主要改沿法向的 $\mathrm{sinc}$；腰带改径向 $J_1$。</p>
+      <h3>出发点</h3>
+      <p>稀释、取向无规的分层盘，相干散射振幅是衬度对平面波相位的体积分</p>
+      $$F(\mathbf{q})=\int_V \Delta\rho(\mathbf{r})\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r.$$
+      <p>核壳双层盘把体积分成核、上下面帽与边缘腰带三块均匀区。每一块都是有限圆柱（或圆柱之差），因此每块的振幅仍是轴向 $\mathrm{sinc}$ 乘径向 $2J_1(x)/x$。</p>
+      <h3>推导</h3>
+      <p>均匀圆柱核</p>
+      $$F(q,R,H,\alpha)=\pi R^2 H\cdot\frac{2J_1(qR\sin\alpha)}{qR\sin\alpha}\cdot\frac{\sin(qH\cos\alpha/2)}{qH\cos\alpha/2}.$$
+      <p>令核为半径 $R$、厚度 $L$；面帽把轴向厚度扩到 $L+2t_{\mathrm{face}}$、半径仍为 $R$；腰带再把半径扩到 $R+t_{\mathrm{belt}}$、厚度与外面相同。按衬度叠加：</p>
+      $$A(q,\alpha)=(\rho_{\mathrm{core}}-\rho_{\mathrm{face}})F(q,R,L,\alpha)+(\rho_{\mathrm{face}}-\rho_{\mathrm{belt}})F(q,R,L+2t_{\mathrm{face}},\alpha)+(\rho_{\mathrm{belt}}-\rho_{\mathrm{solv}})F(q,R+t_{\mathrm{belt}},L+2t_{\mathrm{face}},\alpha).$$
+      <p>面帽主要改沿法向的 $\mathrm{sinc}$；腰带改径向 $J_1$。$q\to 0$ 时 $A(0)$ 等于各区衬度乘体积之和。粉末平均</p>
+      $$P(q)=\frac{\displaystyle\int_0^{\pi/2}|A(q,\alpha)|^2\sin\alpha\,\mathrm{d}\alpha}{\displaystyle\int_0^{\pi/2}|A(0,\alpha)|^2\sin\alpha\,\mathrm{d}\alpha}.$$
+      <p>稀释强度 $I(q)=n\langle|A|^2\rangle+B$。腰带与面帽衬度都退到溶剂时，回到短圆柱（盘）。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>盘状几何 $L\ll 2R$：$R_g^2$ 以盘半径为主（量级 $R^2/2$），厚度只给 $L_{\mathrm{tot}}^2/12$ 量级的小修正。Guinier 在 $qR_g\lesssim 1$ 可用。</p>
+      <p>中间区接近薄盘 $q^{-2}$。更高 $q$ 出现双层厚度振荡，第一组法向极小约在 $q\sim 2\pi/L_{\mathrm{tot}}$ 与径向 Bessel 极小的混合。大 $q$ 尖锐界面给出 Porod $q^{-4}$。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

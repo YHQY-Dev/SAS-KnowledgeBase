@@ -26,9 +26,14 @@
         <figcaption>峰位可移的宽相关峰。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>宽峰经验式</p>
-      $$I(q)=\frac{A}{1+(|q-q_0|\xi)^m}+B.$$
-      <p>$q_0=0$、$m=2$ 回到洛伦兹。特征间距仍可粗读为 $2\pi/q_0$。</p>
+      <h3>出发点</h3>
+      <p>本式是经验相关峰：把 Ornstein–Zernike 的极点从 $q=0$ 移到 $q_0$，再把分母幂次从 $2$ 改成可调 $m$。它不来自晶格求和，也不导出 Teubner–Strey 那套 $d_{\mathrm{TS}}$ 与 $\xi$ 的约束关系。</p>
+      <h3>推导</h3>
+      <p>OZ 为 $I\propto 1/(1+\xi^2 q^2)$。液体峰需要有限周期，于是把 $q$ 换成 $\lvert q-q_0\rvert$；再让尾的陡度自由，把平方换成 $m$：</p>
+      $$I(q)=\frac{A}{1+(\lvert q-q_0\rvert\xi)^m}+B.$$
+      <p>$q_0=0$、$m=2$ 精确回到洛伦兹。$\xi$ 使 $q\xi\sim 1$ 时离开峰值，$m$ 控制翼：$m=2$ 为洛伦兹尾，$m=4$ 更接近 DAB/Porod 陡度。特征间距仍可粗读 $2\pi/q_0$，但峰可以很宽，不必是布拉格。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>峰在 $q_0$；$q\to 0$ 处 $I=A/(1+(q_0\xi)^m)+B$，一般不是极大。高 $q$ 渐近 $A/(\xi^m q^m)$。$q_0\to 0$ 时峰并入原点，本式变成关联长度模型。有高阶峰或 $q^4$ Landau 结构时应改用层状堆叠或 Teubner–Strey。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

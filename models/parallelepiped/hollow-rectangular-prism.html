@@ -30,8 +30,18 @@
         <figcaption>外减内砖块后的粉末平均 $I(q)$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      $$A(\mathbf{q})=\Delta\rho\bigl[V_{\mathrm{out}}F(A,B,C;\mathbf{q})-V_{\mathrm{in}}F(A-2t,B-2t,C-2t;\mathbf{q})\bigr],$$
-      <p>$t$ 须满足 $A,B,C>2t$。粉末平均 $P(q)\propto\langle|A|^2\rangle$。体积差 $V_{\mathrm{out}}-V_{\mathrm{in}}$ 是壁的实体积。</p>
+      <h3>出发点</h3>
+      <p>稀释粒子的相干散射振幅是衬度对平面波相位的体积分。壁内 $\Delta\rho$ 为常数，内腔与溶剂衬度相同，故振幅等于外砖块减去内砖块：</p>
+      $$A(\mathbf{q})=\Delta\rho\int_{V_{\mathrm{out}}\setminus V_{\mathrm{in}}}\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r.$$
+      <h3>推导</h3>
+      <p>均匀砖块的体积分是三轴 $\mathrm{sinc}$ 之积。令 $F(A,B,C;\mathbf{q})$ 为归一化振幅，$V=ABC$，则 $V F=\int_V\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r$。内外同心、棱平行，相减得闭式</p>
+      $$A(\mathbf{q})=\Delta\rho\bigl[V_{\mathrm{out}}F(A,B,C;\mathbf{q})-V_{\mathrm{in}}F(A-2t,B-2t,C-2t;\mathbf{q})\bigr].$$
+      <p>须 $A,B,C&gt;2t$。壁的实体积 $V_{\mathrm{wall}}=V_{\mathrm{out}}-V_{\mathrm{in}}$，$A(\mathbf{0})=\Delta\rho V_{\mathrm{wall}}$。这正是核壳砖块在 $\rho_c=\rho_{\mathrm{solv}}$ 时的特例。粉末平均 $P(q)=\langle|A|^2\rangle/|A(\mathbf{0})|^2$。稀释 $I(q)=n|A|^2$ 的取向平均 $+B$。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>实心砖块 $R_g^2=(A^2+B^2+C^2)/12$。空心是外减内的二阶矩</p>
+      $$R_g^2=\frac{V_{\mathrm{out}}R_{g,\mathrm{out}}^2-V_{\mathrm{in}}R_{g,\mathrm{in}}^2}{V_{\mathrm{out}}-V_{\mathrm{in}}}.$$
+      <p>内边长 $A-2t$ 等。Guinier 指数形式在 $qR_g\lesssim 1$ 可用。$t\to A/2$ 等内腔消失时回到实心棱柱。</p>
+      <p>空腔引入额外干涉，中间 $q$ 极小相对实心柱移动。大 $q$ 仍是尖锐界面 Porod $q^{-4}$；壁厚振荡尺度 $\sim\pi/t$。薄壁极限下 $t$ 与 $\Delta\rho$ 只以乘积出现。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

@@ -29,8 +29,17 @@
         <figcaption>多层径向剖面产生的 $I(q)$ 振荡与层间峰。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      $$A(q)=4\pi\int_0^{R_{\max}} r^2\,\bigl[\rho(r)-\rho_{\mathrm{solv}}\bigr]\,\frac{\sin(qr)}{qr}\,\mathrm{d}r,$$
-      <p>分段常数 $\rho(r)$ 时退化为与核–多层壳相同的求和。重复间距 $d$ 的周期性剖面在 $q_k=2\pi k/d$ 附近增强。</p>
+      <h3>出发点</h3>
+      <p>球对称径向剖面的散射振幅是衬度的正弦变换。稀释粒子</p>
+      $$A(q)=4\pi\int_0^{R_{\max}} r^2\,\bigl[\rho(r)-\rho_{\mathrm{solv}}\bigr]\,\frac{\sin(qr)}{qr}\,\mathrm{d}r.$$
+      <p>洋葱球把 $\rho(r)$ 取为多层同心常数壳（层数可比寡层囊泡更多，且不必是膜–水交替）。出发积分与均匀球相同，只是 $\Delta\rho$ 随 $r$ 分段变化。</p>
+      <h3>推导</h3>
+      <p>分段常数时，逐壳用均匀球原函数 $\int_0^{R} r^2\sin(qr)/(qr)\,\mathrm{d}r=V(R)\Phi(qR)/4\pi$，$V=4\pi R^3/3$，$\Phi(x)=3(\sin x-x\cos x)/x^3$，并合并界面跳变，得到与核–多层壳相同的求和</p>
+      $$A(q)=\sum_{i}(\rho_i-\rho_{i-1})V(R_i)\Phi(qR_i),\qquad \rho_0=\rho_{\mathrm{solv}}.$$
+      <p>若剖面以间距 $d$ 近似周期，把 $\rho(r)-\rho_{\mathrm{solv}}$ 写成周期函数与有限半径窗的乘积：傅里叶变换是径向 Bragg 峰与整体形状因子的卷积。稀释强度 $I(q)=n|A(q)|^2+B$。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>$q\to 0$ 时 $A(0)=4\pi\int_0^{R_{\max}} r^2[\rho(r)-\rho_{\mathrm{solv}}]\,\mathrm{d}r$。整体 $R_g^2=\int r^4\Delta\rho\,\mathrm{d}r/\int r^2\Delta\rho\,\mathrm{d}r$，由外半径与各层衬度共同决定。Guinier 区反映整个洋葱，而不是单层间距。</p>
+      <p>周期性剖面在 $q_k=2\pi k/d$ 附近增强；峰宽受 $R_{\max}$ 调制（$\sim\pi/R_{\max}$），不能套无限层状晶体的峰宽公式。大 $q$ 尖锐界面仍走 Porod $q^{-4}$；层数越多、衬度交替越强，中间 $q$ 的径向峰越锐。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

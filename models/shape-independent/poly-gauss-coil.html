@@ -26,9 +26,14 @@
         <figcaption>Schulz–Zimm 平均后的 Debye 曲线。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>Schulz–Zimm 多分散 Debye（$U=M_w/M_n-1$，$z=1/U$，$u=q^2 R_g^2/(z+1)$）</p>
+      <h3>出发点</h3>
+      <p>单分散 Debye 来自高斯链段对 $\langle\mathrm{e}^{iq\cdot R_n}\rangle=\mathrm{e}^{-q^2 nb^2/6}$。分子量按 Schulz–Zimm 分布时，$N$ 不同则 $R_g^2\propto N$ 不同，需对 Debye 函数做强度加权平均。分布可用 $U=M_w/M_n-1$、$z=1/U$ 参数化，积分仍闭合。</p>
+      <h3>推导</h3>
+      <p>Schulz–Zimm：$w(N)\propto N^z\mathrm{e}^{-(z+1)N/\langle N\rangle_w}$。单链 $P(q;N)=2(\mathrm{e}^{-x}-1+x)/x^2$，$x=q^2 R_g^2(N)$。对 $N$ 积分后（Zimm），令 $u=q^2 R_g^2/(z+1)$，其中 $R_g$ 取与 $z$ 均链长对应的回转半径，得到</p>
       $$P(q)=\frac{2}{z(z+1)u^2}\bigl[(1+zu)^{-z}+zu(z+1)-1\bigr].$$
-      <p>$U\to 0$ 回到单分散 Debye。$R_g$ 须声明是哪一种平均。</p>
+      <p>$U\to 0$（$z\to\infty$）时 $(1+zu)^{-z}\to\mathrm{e}^{-x}$，$u\to x$，回到单分散 Debye。前向散射仍由 $M_w$ 主导：$I(0)\propto\langle N\rangle_w$。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>低 $q$ 仍是 Guinier，但 $R_g$ 接近 $z$ 均，比数均大；多分散使曲率变缓。高 $q$ 每条链仍 $\sim q^{-2}$，平均不改变指数，只改 Kratky 平台高度。排除体积不要用 $U$ 去冒充：那会改变的是 $1/\nu$ 而不是 $M_w/M_n$。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

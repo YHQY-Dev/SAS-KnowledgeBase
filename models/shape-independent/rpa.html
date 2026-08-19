@@ -26,9 +26,15 @@
         <figcaption>de Gennes RPA：$S(q)$ 由 Debye 与 $\chi$ 决定。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>de Gennes 二元均聚物 RPA（对称度 $N$，体积分数 $\phi$）</p>
-      $$\frac{1}{S(q)}=\frac{1}{\phi N g_D(q R_g)}+\frac{1}{(1-\phi) N g_D(q R_g)}-2\chi,$$
-      <p>其中 $g_D$ 为归一化 Debye 函数 $P(q)$。观测 $I(q)\propto (\Delta\rho)^2 S(q)+B$。旋节 $\chi_s$ 使 $S(0)\to\infty$。</p>
+      <h3>出发点</h3>
+      <p>不可压缩二元均聚物熔体的浓度响应：每组份先当作理想高斯链（Debye 函数 $g_D$），再用平均场 Flory–Huggins $\chi$ 把两组份耦合并减去。这是 de Gennes 无规相近似，给出结构因子 $S(q)$ 而不是粒子外形。</p>
+      <h3>推导</h3>
+      <p>理想链对浓度的响应是 $\phi N g_D(q R_g)$，其中 $g_D=P_{\mathrm{Debye}}=2(\mathrm{e}^{-x}-1+x)/x^2$、$x=q^2 R_g^2$。RPA 逆加接触相互作用 $-2\chi$ 与不可压缩（两组份浓度相反）。二元标量结构因子满足</p>
+      $$\frac{1}{S(q)}=\frac{1}{\phi N g_D(q R_g)}+\frac{1}{(1-\phi) N g_D(q R_g)}-2\chi.$$
+      <p>观测 $I(q)\propto(\Delta\rho)^2 S(q)+B$。$\chi=0$ 时 $S$ 回到两组 Debye 的并联；$\chi$ 增大则长波涨落增强。旋节 $\chi_s$ 使 $S(0)\to\infty$：</p>
+      $$\chi_s=\frac{1}{2}\left(\frac{1}{\phi N}+\frac{1}{(1-\phi)N}\right).$$
+      <h3>低 $q$ 与渐近</h3>
+      <p>低 $q$：$g_D\to 1$，$S(0)$ 由 $\chi_s-\chi$ 决定，趋近旋节时发散，这是随后 Cahn 动力学的起点。高 $q$：$g_D\sim 2/(q^2 R_g^2)$，$S(q)$ 回到链的 $q^{-2}$，相互作用变得不重要。已经出现畴峰时应离开均聚物 RPA，改用 Leibler 嵌段式或 Teubner–Strey。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

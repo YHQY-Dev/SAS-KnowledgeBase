@@ -30,9 +30,21 @@
         <figcaption>轴比使截面振荡相对圆圆柱更浅。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      $$R_{\mathrm{eff}}(\psi)=\sqrt{a^2\cos^2\psi+b^2\sin^2\psi},$$
-      $$F(q,\alpha,\psi)=V\cdot\frac{2J_1(q R_{\mathrm{eff}}\sin\alpha)}{q R_{\mathrm{eff}}\sin\alpha}\cdot\frac{\sin(qL\cos\alpha/2)}{qL\cos\alpha/2}.$$
-      <p>粉末平均对 $\alpha$ 与 $\psi$ 积分 $|F|^2$。$a=b=R$ 时回到均匀圆柱。</p>
+      <h3>出发点</h3>
+      <p>稀释、取向无规的均匀粒子，相干散射振幅是衬度对平面波相位的体积分</p>
+      $$F(\mathbf{q})=\int_V \Delta\rho(\mathbf{r})\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r.$$
+      <p>椭圆截面柱在 $|z|\le L/2$、$(x/a)^2+(y/b)^2\le 1$ 内 $\Delta\rho$ 为常数。轴向积分仍给出 $\mathrm{sinc}$；截面不再圆对称，须引入截面长轴相对 $\mathbf{q}_\perp$ 的方位角 $\psi$。</p>
+      <h3>推导</h3>
+      <p>作 $x=a\xi$、$y=b\eta$，椭圆映成单位圆。径向积分回到圆柱 Bessel，只是把半径换成该方位上的有效半径</p>
+      $$R_{\mathrm{eff}}(\psi)=\sqrt{a^2\cos^2\psi+b^2\sin^2\psi}.$$
+      <p>于是振幅与圆截面圆柱同形，体积 $V=\pi ab L$：</p>
+      $$F(q,\alpha,\psi)=\Delta\rho\,V\cdot\frac{2J_1(q R_{\mathrm{eff}}\sin\alpha)}{q R_{\mathrm{eff}}\sin\alpha}\cdot\frac{\sin(qL\cos\alpha/2)}{qL\cos\alpha/2}.$$
+      <p>$q\to 0$ 时 $F(0)=\Delta\rho V$。无规粉末须对极角与截面滚转同时平均：</p>
+      $$P(q)=\frac{\displaystyle\int_0^{\pi/2}\sin\alpha\,\mathrm{d}\alpha\int_0^{\pi}\mathrm{d}\psi\,|F(q,\alpha,\psi)|^2}{\displaystyle\int_0^{\pi/2}\sin\alpha\,\mathrm{d}\alpha\int_0^{\pi}\mathrm{d}\psi\,|F(0,\alpha,\psi)|^2}.$$
+      <p>$a=b=R$ 时 $R_{\mathrm{eff}}$ 与 $\psi$ 无关，回到均匀圆柱。稀释强度 $I(q)=n(\Delta\rho)^2 V^2 P(q)+B$。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>截面二阶矩给出 $R_g^2=(a^2+b^2)/4+L^2/12$（圆截面 $a=b=R$ 时回到 $R^2/2+L^2/12$）。Guinier $P=1-q^2 R_g^2/3+\cdots$ 在 $qR_g\lesssim 1$ 可用。</p>
+      <p>细长极限中间区仍 $\sim q^{-1}$。轴比 $a/b\neq 1$ 把不同 $\psi$ 的 Bessel 零点错开，粉末平均后截面振荡变浅、极小不再对应单一 $qR$。大 $q$ 尖锐界面仍趋近 Porod $q^{-4}$。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

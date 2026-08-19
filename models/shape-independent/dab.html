@@ -26,9 +26,19 @@
         <figcaption>$I\sim (1+\xi^2 q^2)^{-2}$，高 $q$ 为 Porod 尾。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>DAB 强度（两相衬度 $\Delta\rho$、体积分数 $\phi$）</p>
+      <h3>出发点</h3>
+      <p>完全随机的两相介质（孔、旋节后期无规畴）没有优先周期。Debye 取相关函数为纯指数 $\gamma(r)=\mathrm{e}^{-r/\xi}$（注意没有 $1/r$），$\xi$ 是穿过两相的平均弦长尺度。强度是它的三维 Fourier 变换。</p>
+      <h3>推导</h3>
+      <p>各向同性变换</p>
+      $$4\pi\int_0^\infty r^2\mathrm{e}^{-r/\xi}\frac{\sin(qr)}{qr}\,\mathrm{d}r=\frac{8\pi\xi^3}{(1+q^2\xi^2)^2}.$$
+      <p>（对 $r\mathrm{e}^{-ar}\sin(qr)$ 分部积分两次即可。）两相衬度与体积分数给出绝对前置 $(\Delta\rho)^2\phi(1-\phi)V$，常把照射体积收进标度，写成</p>
       $$I(q)=\frac{8\pi\phi(1-\phi)(\Delta\rho)^2\xi^3}{(1+q^2\xi^2)^2}+B.$$
-      <p>比表面积 $S/V=4\phi(1-\phi)/\xi$。高 $q$ 回到 $I\sim 2\pi(\Delta\rho)^2 S/q^4$。</p>
+      <p>小 $r$ 展开 $\gamma=1-r/\xi+\cdots$，与 Porod 的 $\gamma'(0)=-S/(4\phi(1-\phi)V)$ 比较，得到比表面积</p>
+      $$\frac{S}{V}=\frac{4\phi(1-\phi)}{\xi}.$$
+      <h3>低 $q$ 与渐近</h3>
+      <p>低 $q$：$I(0)=8\pi\phi(1-\phi)(\Delta\rho)^2\xi^3$，展开 $I/I(0)=1-2\xi^2 q^2+O(q^4)$，等效 $R_g^2=6\xi^2$。高 $q$：$(1+q^2\xi^2)^2\sim q^4\xi^4$，故</p>
+      $$I(q)\to\frac{8\pi\phi(1-\phi)(\Delta\rho)^2}{\xi q^4}=\frac{2\pi(\Delta\rho)^2 S}{q^4},$$
+      <p>自动回到 Porod。OZ 洛伦兹是 $\mathrm{e}^{-r/\xi}/r$ 的变换，尾为 $q^{-2}$；DAB 多一个 $1/(1+q^2\xi^2)$，尾为 $q^{-4}$。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

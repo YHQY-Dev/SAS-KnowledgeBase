@@ -26,9 +26,15 @@
         <figcaption>Guinier 转到 $q^{-1/\nu}$（$\nu\approx 0.588$）。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
-      <p>标度区与 Guinier 截断（示意；完整蠕虫链见 Pedersen–Schurtenberger）</p>
-      $$I(q)\simeq I(0)\exp(-q^2 R_g^2/3)\quad (qR_g\lesssim 1),\qquad I(q)\sim q^{-1/\nu}\quad (2\pi/R_g\ll q\ll 2\pi/b).$$
-      <p>好溶剂 $\nu\approx 0.588$；理想链 $\nu=1/2$ 回到 Debye 尾 $q^{-2}$。更短尺度可再接到 $q^{-1}$。</p>
+      <h3>出发点</h3>
+      <p>自避链的成对距离不再是高斯。Flory 指数 $\nu$ 使 $\langle R^2(s)\rangle\propto s^{2\nu}$，标度区的对关联为 $g(r)\sim r^{1/\nu-3}$（$b\ll r\ll R_g$）。三维 Fourier 变换给出中间区幂律 $q^{-1/\nu}$，而不是 Debye 的 $q^{-2}$。</p>
+      <h3>推导</h3>
+      <p>由 $\mathrm{FT}[r^{\alpha}]\propto q^{-\alpha-3}$、$\alpha=1/\nu-3$，得 $I\sim q^{-1/\nu}$。好溶剂 $\nu\approx 0.588$，故 $1/\nu\approx 1.70$。理想链 $\nu=1/2$ 回到 $q^{-2}$，并应改用完整 Debye 而不是纯幂律。</p>
+      <p>短于持久长度 $b$ 的尺度，链局部是棒，$g(r)$ 沿弧长近似一维，中间区再接到 $q^{-1}$。整体仍有二阶矩，低 $q$ 为 Guinier。包络示意</p>
+      $$I(q)\simeq I(0)\exp(-q^2 R_g^2/3)\quad(qR_g\lesssim 1),\qquad I(q)\sim q^{-1/\nu}\quad(2\pi/R_g\ll q\ll 2\pi/b).$$
+      <p>完整蠕虫链形式因子是数值/插值（Pedersen–Schurtenberger），本页只给出由对关联推出的标度。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>低 $q$：Guinier，$R_g=R_g(L,b,\nu)$。中间：$q^{-1/\nu}$。更短尺度：$q^{-1}$，再短则看见截面 Porod。本底会伪装成更陡的尾，从而高估 $\nu$。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>

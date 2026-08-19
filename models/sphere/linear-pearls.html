@@ -29,8 +29,21 @@
         <figcaption>单球形式因子乘以直线干涉因子后的 $I(q)$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
+      <h3>出发点</h3>
+      <p>$N$ 个相同均匀球沿直线排列，球心 $\mathbf{r}_j=j\,d\,\hat{\mathbf{z}}$（$d\ge 2R$）。总振幅是单球振幅乘相位因子之和</p>
+      $$F(\mathbf{q})=\sum_{j=1}^{N}F_1(\mathbf{q})\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}_j},\qquad F_1(\mathbf{q})=\Delta\rho V\Phi(qR).$$
+      <p>$V=4\pi R^3/3$，$\Phi(x)=3(\sin x-x\cos x)/x^3$ 来自单球体积分（与均匀球页相同）。溶液中直线取向无规，需对 $\hat{\mathbf{z}}$ 相对 $\mathbf{q}$ 的夹角平均。</p>
+      <h3>推导</h3>
+      <p>$|F|^2=|F_1|^2\sum_{i,j}\mathrm{e}^{i\mathbf{q}\cdot(\mathbf{r}_i-\mathbf{r}_j)}$。取向平均 $\langle\mathrm{e}^{i\mathbf{q}\cdot\mathbf{d}}\rangle=\sin(qd)/(qd)$（Debye 公式），球心距 $d_{ij}=|i-j|\,d$，故</p>
       $$P(q)=P_{\mathrm{sphere}}(q;R)\cdot \frac{1}{N^2}\sum_{i=1}^{N}\sum_{j=1}^{N}\frac{\sin(q d_{ij})}{q d_{ij}},\qquad d_{ij}=|i-j|\,d.$$
-      <p>$P_{\mathrm{sphere}}$ 为 Rayleigh 球形式因子。若珠粒衬度或半径不同，应以振幅 $F_i$ 取代，干涉项变为 $F_i F_j \mathrm{sinc}(qd_{ij})$。</p>
+      <p>$P_{\mathrm{sphere}}=\Phi(qR)^2$ 为 Rayleigh 球形式因子。对角 $i=j$ 贡献 $1/N$；令 $k=|i-j|$，双和可写成</p>
+      $$\frac{1}{N}+\frac{2}{N^2}\sum_{k=1}^{N-1}(N-k)\frac{\sin(qkd)}{qkd}.$$
+      <p>若珠粒衬度或半径不同，应以振幅 $F_i$ 取代，干涉项变为 $F_i F_j \sin(qd_{ij})/(qd_{ij})$。稀释 $I(q)=n_{\mathrm{chain}} N^2 |F_1(0)|^2 P(q)+B$。</p>
+      <h3>低 $q$ 与渐近</h3>
+      <p>干涉因子在 $q\to 0$ 时趋于 1，$I(0)\propto (N\Delta\rho V)^2$。把单球 $R_g^2=3R^2/5$ 与直线上 $N$ 个点的 $d^2(N^2-1)/12$ 相加：</p>
+      $$R_g^2\approx \frac{3}{5}R^2+\frac{d^2(N^2-1)}{12}.$$
+      <p>与 Guinier $P=1-q^2 R_g^2/3+\cdots$ 一致。中 $q$ 在 $q\sim 2\pi k/d$ 出现串内干涉调制；$N$ 很小时峰宽。</p>
+      <p>高 $q$ 干涉振荡平均掉，包络回到单球 Porod $q^{-4}$。单球零点仍在 $\tan(qR)=qR$（第一根 $\approx 4.49/R$），被干涉因子调制但不被抹去（单分散时）。</p>
       <h2>参数表</h2>
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
