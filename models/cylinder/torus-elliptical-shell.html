@@ -18,7 +18,7 @@
       <p>椭圆环壳是主半径 $R$ 的圆环，管截面为椭圆半轴 $a$、$b$ 的壳层（可退化到实心椭圆截面环）。适用于纳米环、环形胶束、以及空心管被弯成闭合环的样品。</p>
       <p>低 $q$ 的 $R_g$ 由环的主半径主导；中等 $q$ 出现与 $R$ 相关的环状振荡；高 $q$ 由管截面 $a$、$b$ 决定。开口直管应使用空心圆柱，不要把缺口环硬拟合成闭合环面。</p>
       <h2>物理图像</h2>
-      <p>Kawaguchi 在柱坐标下给出圆环及其变体（椭圆截面、管状环、堆叠环）的回转半径与散射函数，曲线由对截面与环方位的数值积分得到。壳层意味着截面是空心椭圆环，内壁衬度接近溶剂。</p>
+      <p>Kawaguchi 在柱坐标下给出圆环及其变体（椭圆截面、管状环、堆叠环）的<span data-term="radius-of-gyration">回转半径</span>与散射函数，曲线由对截面与环方位的数值积分得到。壳层意味着截面是空心椭圆环，内壁衬度接近溶剂。</p>
       <p>相对空心直圆柱，闭合拓扑把轴向 $\mathrm{sinc}$ 换成环的 $J_0(qR\sin\alpha)$ 类因子，低 $q$ 不再是细长棒的 $q^{-1}$。</p>
       <h2>示意图</h2>
       <figure class="figure">
@@ -31,7 +31,7 @@
       </figure>
       <h2>核心公式</h2>
       <h3>出发点</h3>
-      <p>稀释、取向无规的环形粒子，相干散射振幅是衬度对平面波相位的体积分</p>
+      <p>稀释、取向无规的环形粒子，相干<span data-term="scattering-amplitude">散射振幅</span>是衬度对平面波相位的体积分</p>
       $$F(\mathbf{q})=\int_V \Delta\rho(\mathbf{r})\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r.$$
       <p>圆环由截面沿半径 $R$ 的圆轨道扫过而成。把积分分成沿中心线的环坐标与管截面：前者给出 $J_0(qR\sin\alpha)$（$\alpha$ 为 $\mathbf{q}$ 与环轴夹角），后者给出与圆柱径向相同的 $2J_1(x)/x$。闭合拓扑不再出现直柱的轴向 $\mathrm{sinc}$。</p>
       <h3>推导</h3>
@@ -39,7 +39,7 @@
       $$A(q,\alpha)=\Delta\rho\,V\cdot J_0(q R\sin\alpha)\cdot\frac{2J_1(qr)}{qr}.$$
       <p>椭圆截面把 $r$ 换成 $R_{\mathrm{eff}}(\psi)=\sqrt{a^2\cos^2\psi+b^2\sin^2\psi}$，并对截面方位 $\psi$ 平均。壳层是外截面减去内截面：</p>
       $$A(q,\alpha,\psi)\propto J_0(q R\sin\alpha)\bigl[V_{\mathrm{out}}\Phi_{\mathrm{cs}}(q,a_{\mathrm{out}},b_{\mathrm{out}},\psi)-V_{\mathrm{in}}\Phi_{\mathrm{cs}}(q,a_{\mathrm{in}},b_{\mathrm{in}},\psi)\bigr],$$
-      <p>其中 $\Phi_{\mathrm{cs}}=2J_1(q R_{\mathrm{eff}})/(q R_{\mathrm{eff}})$。有限管径与环半径耦合时，$J_0$ 与截面因子不能完全分离，须对截面做数值积分。粉末平均</p>
+      <p>其中 $\Phi_{\mathrm{cs}}=2J_1(q R_{\mathrm{eff}})/(q R_{\mathrm{eff}})$。有限管径与环半径耦合时，$J_0$ 与截面因子不能完全分离，须对截面做数值积分。<span data-term="powder-average">粉末平均</span></p>
       $$P(q)=\frac{\bigl\langle|A|^2\bigr\rangle_{\alpha,\psi}}{|A(0)|^2}.$$
       <p>开口直管应改用空心圆柱（恢复轴向 $\mathrm{sinc}$ 与 $\int|F|^2\sin\alpha\,\mathrm{d}\alpha$）。</p>
       <h3>低 $q$ 与渐近</h3>
@@ -58,8 +58,8 @@
       </table>
       <h2>拟合注意</h2>
       <p>$R$ 与截面尺寸在只有 Guinier 时相关。要分开它们需要看到环振荡与截面 Porod。壳厚与壁衬度简并，同空心圆柱。</p>
-      <p>多分散：主半径分布强烈抹平环振荡；截面多分散抹平高 $q$。取向：平躺在基底上的环给出二维各向异性；溶液中粉末平均。不要把环的 $J_0$ 峰当成堆叠层间距。</p>
-      <p>磁性：磁环的磁矩可沿环（涡流）或沿法向，磁形式因子与核通道几何相同但取向因子不同，须单独磁 SLD。</p>
+      <p><span data-term="polydispersity">多分散</span>：主半径分布强烈抹平环振荡；截面多分散抹平高 $q$。取向：平躺在基底上的环给出二维各向异性；溶液中粉末平均。不要把环的 $J_0$ 峰当成堆叠层间距。</p>
+      <p>磁性：磁环的磁矩可沿环（涡流）或沿法向，磁<span data-term="form-factor">形式因子</span>与核通道几何相同但取向因子不同，须单独磁 SLD。</p>
       <h2>相近模型</h2>
       <ul>
         <li><a href="hollow-cylinder.html">空心圆柱</a> — 未闭合的直管。</li>

@@ -17,9 +17,9 @@
       <h2>适用场景</h2>
       <p>三个半轴 $R_a,R_b,R_c$ 均不等的均匀椭球。适用于既不是旋转对称、也尚未尖角化成砖块的粒子：压扁又拉长的胶束、不规则纳米晶的光滑近似，以及电镜给出三个特征尺寸的胶体。</p>
       <p>若其中两轴相等，应改用旋转椭球（少一个自由参数）。若棱角分明，应改用平行六面体。轴比都接近 1 时与球无法分辨。</p>
-      <p>一维粉末平均把三个半轴的信息叠进同一条 $I(q)$，可辨识性弱于旋转椭球；没有电镜或二维数据时不要同时放开三个半轴与多分散。</p>
+      <p>一维<span data-term="powder-average">粉末平均</span>把三个半轴的信息叠进同一条 $I(q)$，可辨识性弱于旋转椭球；没有电镜或二维数据时不要同时放开三个半轴与<span data-term="polydispersity">多分散</span>。</p>
       <h2>物理图像</h2>
-      <p>每一取向的振幅仍是有效半径 $R_{\mathrm{eff}}(\theta,\phi)$ 上的 Rayleigh 球振幅。Mittelbach 与 Porod 给出对球面角的二重平均。回转半径 $R_g^2=(R_a^2+R_b^2+R_c^2)/5$。</p>
+      <p>每一取向的振幅仍是有效半径 $R_{\mathrm{eff}}(\theta,\phi)$ 上的 Rayleigh 球振幅。Mittelbach 与 Porod 给出对球面角的二重平均。<span data-term="radius-of-gyration">回转半径</span> $R_g^2=(R_a^2+R_b^2+R_c^2)/5$。</p>
       <p>一轴显著长于另两轴时，中间区接近椭圆截面圆柱；三轴都中等时，振荡被双重取向平均抹得很浅。二维图案需要三个欧拉角，而不是单个极角。</p>
       <h2>示意图</h2>
       <figure class="figure">
@@ -32,7 +32,7 @@
       </figure>
       <h2>核心公式</h2>
       <h3>出发点</h3>
-      <p>稀释、取向无规的均匀粒子，相干散射振幅是衬度对平面波相位的体积分</p>
+      <p>稀释、取向无规的均匀粒子，相干<span data-term="scattering-amplitude">散射振幅</span>是衬度对平面波相位的体积分</p>
       $$F(\mathbf{q})=\int_V \Delta\rho(\mathbf{r})\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r.$$
       <p>三轴椭球是单位球 $|\mathbf{u}|\le 1$ 经 $A=\mathrm{diag}(R_a,R_b,R_c)$ 的仿射像。体积 $V=|\det A|\cdot 4\pi/3=\frac{4}{3}\pi R_a R_b R_c$。</p>
       <h3>推导</h3>

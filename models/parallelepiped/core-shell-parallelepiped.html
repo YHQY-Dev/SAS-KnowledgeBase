@@ -19,7 +19,7 @@
       <p>核衬度匹配溶剂时接近空心矩形棱柱；壳衬度匹配溶剂时回到均匀平行六面体。薄壳且 $t$ 远小于最短边时，可再与薄壁空心极限对照。</p>
       <p>壳厚、核边长与两段衬度高度相关。面选择性包覆（只盖一部分晶面）不是本模型。</p>
       <h2>物理图像</h2>
-      <p>振幅是两块同心砖块形式因子的衬度加权差：外壳相对溶剂，加上核相对壳。取向平均与均匀平行六面体相同。中等 $q$ 的干涉来自核–壳界面。</p>
+      <p>振幅是两块同心砖块<span data-term="form-factor">形式因子</span>的衬度加权差：外壳相对溶剂，加上核相对壳。取向平均与均匀平行六面体相同。中等 $q$ 的干涉来自核–壳界面。</p>
       <p>本页用各边外扩 $t$ 的相似壳（不是共焦椭球那种 $R^2+t^2$）。若实验上壳沿法向等厚，在棱处外壳并不是严格平行六面体，这是几何近似。</p>
       <h2>示意图</h2>
       <figure class="figure">
@@ -28,11 +28,11 @@
       </figure>
       <figure class="figure">
         <img src="../../assets/figures/models/parallelepiped/core-shell-parallelepiped-iq.png" alt="核壳平行六面体 I(q) 示意" width="900">
-        <figcaption>核壳 $\mathrm{sinc}$ 振幅相加后的粉末平均 $I(q)$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+        <figcaption>核壳 $\mathrm{sinc}$ 振幅相加后的<span data-term="powder-average">粉末平均</span> $I(q)$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
       <h3>出发点</h3>
-      <p>稀释粒子的相干散射振幅是衬度对平面波相位的体积分</p>
+      <p>稀释粒子的相干<span data-term="scattering-amplitude">散射振幅</span>是衬度对平面波相位的体积分</p>
       $$F(\mathbf{q})=\int \bigl[\rho(\mathbf{r})-\rho_{\mathrm{solv}}\bigr]\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r.$$
       <p>核、壳取分段常数：核砖块边长 $A_c,B_c,C_c$ 内为 $\rho_c$，核与外壳之间为 $\rho_s$。傅里叶变换对体积可加。</p>
       <h3>推导</h3>
@@ -42,7 +42,7 @@
       $$A(\mathbf{q})=(\rho_c-\rho_s)V_c F_c+(\rho_s-\rho_{\mathrm{solv}})V_s F_s.$$
       <p>$A(\mathbf{0})=(\rho_c-\rho_s)V_c+(\rho_s-\rho_{\mathrm{solv}})V_s$。粉末平均 $P(q)=\langle|A|^2\rangle/|A(\mathbf{0})|^2$。稀溶液 $I(q)=n\langle|A|^2\rangle+B$。</p>
       <h3>低 $q$ 与渐近</h3>
-      <p>均匀砖块 $R_g^2=(A^2+B^2+C^2)/12$。核、壳共心，复合回转半径是衬度加权二阶矩</p>
+      <p>均匀砖块 $R_g^2=(A^2+B^2+C^2)/12$。核、壳共心，复合<span data-term="radius-of-gyration">回转半径</span>是衬度加权二阶矩</p>
       $$R_g^2=\frac{(\rho_c-\rho_s)V_c R_{g,\mathrm{c}}^2+(\rho_s-\rho_{\mathrm{solv}})V_s R_{g,\mathrm{s}}^2}{(\rho_c-\rho_s)V_c+(\rho_s-\rho_{\mathrm{solv}})V_s}.$$
       <p>$\rho_s=\rho_c$ 或 $t\to 0$ 回到均匀平行六面体。Guinier 指数形式在 $qR_g\lesssim 1$ 可用。</p>
       <p>中等 $q$ 的肩峰或极小位移来自核–壳 $\mathrm{sinc}$ 干涉。大 $q$ 尖锐界面包络仍是 Porod $q^{-4}$；拍频反映内外两套边长。</p>
@@ -52,13 +52,13 @@
         <tbody>
           <tr><td>核边长</td><td>$A_c,B_c,C_c$</td><td>均匀核三棱全长</td><td>Å 或 nm</td><td>10–800 Å</td></tr>
           <tr><td>壳厚</td><td>$t$</td><td>各面外扩厚度</td><td>Å 或 nm</td><td>2–60 Å</td></tr>
-          <tr><td>核 / 壳 / 溶剂 SLD</td><td>$\rho_c,\rho_s,\rho_{\mathrm{solv}}$</td><td>三段散射长度密度</td><td>Å$^{-2}$</td><td>组成与对比决定</td></tr>
+          <tr><td>核 / 壳 / 溶剂 SLD</td><td>$\rho_c,\rho_s,\rho_{\mathrm{solv}}$</td><td>三段<span data-term="scattering-length-density">散射长度密度</span></td><td>Å$^{-2}$</td><td>组成与对比决定</td></tr>
           <tr><td>取向角</td><td>$\theta,\phi$</td><td>棱取向（二维）</td><td>度</td><td>由取向分布约束</td></tr>
-          <tr><td>标度 / 本底</td><td>$n$, $B$</td><td>数密度与本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
+          <tr><td>标度 / 本底</td><td>$n$, $B$</td><td><span data-term="number-density">数密度</span>与本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
         </tbody>
       </table>
       <h2>拟合注意</h2>
-      <p>衬度比与 $t$ 是主简并。优先固定 $\rho$，只放几何；核边长多分散与壳厚竞争。空心极限把 $\rho_c$ 设为溶剂，不要再放核尺寸。</p>
+      <p>衬度比与 $t$ 是主简并。优先固定 $\rho$，只放几何；核边长<span data-term="polydispersity">多分散</span>与壳厚竞争。空心极限把 $\rho_c$ 设为溶剂，不要再放核尺寸。</p>
       <p>取向与磁性同均匀砖块：二维需 $\theta,\phi$；磁壳/死层与核 SLD 分通道。</p>
       <h2>相近模型</h2>
       <ul>

@@ -16,7 +16,7 @@
       <p class="subtitle-en">flexible elliptical cylinder</p>
       <h2>适用场景</h2>
       <p>蠕虫链的截面是椭圆而不是圆：在 $L$、$b$ 之外再加半轴 $a$、$b_{\mathrm{cs}}$。适用于带状胶束、压扁的半柔性纤维，以及圆截面柔性圆柱在高 $q$ 振荡深度拟合不好的数据。</p>
-      <p>链统计（线圈 / 棒转折）仍由 $L$ 与 Kuhn 长度决定；轴比只改截面因子。轴比接近 1 时退回柔性圆柱。</p>
+      <p>链统计（线圈 / 棒转折）仍由 $L$ 与 <span data-term="kuhn-length">Kuhn 长度</span>决定；轴比只改截面因子。轴比接近 1 时退回柔性圆柱。</p>
       <h2>物理图像</h2>
       <p>解耦：$P(q)\simeq P_{\mathrm{wp}}(q;L,b)\,P_{\mathrm{cs}}^{\mathrm{(ell)}}(q)$。截面因子是椭圆盘（或无限长椭圆柱）径向振幅对截面方位的平均，与刚性椭圆圆柱的径向部分相同，但不含有限直轴的 $\mathrm{sinc}$（弯曲已在 $P_{\mathrm{wp}}$ 里）。</p>
       <p>若持久长度短到与截面尺寸相当，解耦失败，需要更精细的短链数值模型。</p>
@@ -31,13 +31,13 @@
       </figure>
       <h2>核心公式</h2>
       <h3>出发点</h3>
-      <p>稀释链状粒子的相干散射振幅是衬度对平面波相位的体积分</p>
+      <p>稀释链状粒子的相干<span data-term="scattering-amplitude">散射振幅</span>是衬度对平面波相位的体积分</p>
       $$F(\mathbf{q})=\int_V \Delta\rho(\mathbf{r})\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r.$$
       <p>与圆截面柔性圆柱相同，沿轮廓 $s$ 做构象平均；差别只在截面是椭圆 $(x/a)^2+(y/b_{\mathrm{cs}})^2\le 1$。解耦后链因子与截面因子相乘，截面须对滚转角 $\psi$ 再平均。</p>
       <h3>推导</h3>
       <p>蠕虫链 $P_{\mathrm{wp}}(q;L,b)$ 与圆截面情形相同。椭圆截面映成单位圆后，径向因子仍是 $2J_1(x)/x$，有效半径</p>
       $$R_{\mathrm{eff}}(\psi)=\sqrt{a^2\cos^2\psi+b_{\mathrm{cs}}^2\sin^2\psi}.$$
-      <p>弯曲链不再保留直轴的 $\mathrm{sinc}$，截面粉末平均只对 $\psi$：</p>
+      <p>弯曲链不再保留直轴的 $\mathrm{sinc}$，截面<span data-term="powder-average">粉末平均</span>只对 $\psi$：</p>
       $$P(q)\simeq P_{\mathrm{wp}}(q;L,b)\left\langle\left[\frac{2J_1(q R_{\mathrm{eff}}(\psi))}{q R_{\mathrm{eff}}(\psi)}\right]^2\right\rangle_{\psi}.$$
       <p>注意 $b$ 是 Kuhn 长度，$b_{\mathrm{cs}}$ 是截面短半轴。$a=b_{\mathrm{cs}}=R$ 回到圆截面柔性圆柱。刚性极限应改用椭圆截面直圆柱，那时才恢复轴向 $\mathrm{sinc}$ 与 $\int|F|^2\sin\alpha\,\mathrm{d}\alpha$。</p>
       <h3>低 $q$ 与渐近</h3>
@@ -54,7 +54,7 @@
         </tbody>
       </table>
       <h2>拟合注意</h2>
-      <p>截面轴比与半径多分散同样钝化高 $q$。没有带状形貌的独立证据时，优先圆截面。$L$、$b$ 的可辨识性与柔性圆柱相同，不因椭圆截面改善。</p>
+      <p>截面轴比与半径<span data-term="polydispersity">多分散</span>同样钝化高 $q$。没有带状形貌的独立证据时，优先圆截面。$L$、$b$ 的可辨识性与柔性圆柱相同，不因椭圆截面改善。</p>
       <p>取向：溶液中构象平均已在 $P_{\mathrm{wp}}$ 内。剪切取向的带状胶束会出现二维各向异性，须加 $\theta,\phi$，不能只用粉末蠕虫链。</p>
       <p>磁性同柔性圆柱：磁信号来自缀合颗粒或磁各向异性截面时，磁 SLD 与核通道分开。</p>
       <h2>相近模型</h2>

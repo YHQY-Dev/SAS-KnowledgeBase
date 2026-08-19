@@ -27,7 +27,7 @@
       </figure>
       <h2>核心公式</h2>
       <h3>出发点</h3>
-      <p>三维 Guinier 来自振幅的二阶矩：$I=G\exp(-q^2 R_g^2/3)$。若物体在一个或两个方向上“无限长”，取向平均先给出几何前因子 $q^{-s}$（棒 $s=1$，片 $s=2$），再对剩余的有限截面做 Guinier。Hammouda 把两段写成统一的广义 Guinier，并在高 $q$ 接到幂律。</p>
+      <p>三维 Guinier 来自振幅的二阶矩：$I=G\exp(-q^2 R_g^2/3)$。若物体在一个或两个方向上“无限长”，<span data-term="powder-average">取向平均</span>先给出几何前因子 $q^{-s}$（棒 $s=1$，片 $s=2$），再对剩余的有限截面做 Guinier。Hammouda 把两段写成统一的广义 Guinier，并在高 $q$ 接到幂律。</p>
       <h3>推导</h3>
       <p>无限长细棒：$I(q)\simeq(\pi L/q)\,I_{\mathrm{cs}}(q)$，截面 Guinier $I_{\mathrm{cs}}=\exp(-q^2 R_c^2/2)$，即 $s=1$、$3-s=2$。无限薄片：$I(q)\simeq(2\pi A/q^2)\exp(-q^2 T^2/12)$，即 $s=2$、$3-s=1$。合写为</p>
       $$I_{\mathrm{G}}(q)=\frac{G}{q^s}\exp\!\left[-\frac{q^2 R_g^2}{3-s}\right]\qquad(q\le q_1).$$
@@ -43,7 +43,7 @@
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
         <tbody>
-          <tr><td>回转半径</td><td>$R_g$</td><td>Guinier 区尺寸</td><td>Å</td><td>10–1000 Å</td></tr>
+          <tr><td><span data-term="radius-of-gyration">回转半径</span></td><td>$R_g$</td><td>Guinier 区尺寸</td><td>Å</td><td>10–1000 Å</td></tr>
           <tr><td>维数</td><td>$s$</td><td>Guinier 前因子维数</td><td>无量纲</td><td>$0$（球）、$1$（棒）、$2$（片）</td></tr>
           <tr><td>Porod 指数</td><td>$m$</td><td>高 $q$ 幂律</td><td>无量纲</td><td>1–4</td></tr>
           <tr><td>Guinier 幅度</td><td>$G$</td><td>低 $q$ 前置因子</td><td>与强度单位一致</td><td>与 $I(0)$ 相关</td></tr>
@@ -51,8 +51,8 @@
         </tbody>
       </table>
       <h2>拟合注意</h2>
-      <p>取向：粉末数据里 $s$ 是有效维数，不是欧拉角。高度取向的棒/片应分方向拟合，或改用圆柱/层状形式因子。</p>
-      <p>多分散抹圆 $q_1$，使表观 $m$ 变缓。磁性：$s$ 与 $m$ 可以与核通道不同，若磁化沿长轴或界面分布。</p>
+      <p>取向：粉末数据里 $s$ 是有效维数，不是欧拉角。高度取向的棒/片应分方向拟合，或改用圆柱/层状<span data-term="form-factor">形式因子</span>。</p>
+      <p><span data-term="polydispersity">多分散</span>抹圆 $q_1$，使表观 $m$ 变缓。磁性：$s$ 与 $m$ 可以与核通道不同，若磁化沿长轴或界面分布。</p>
       <p>可辨识性：$G$、$R_g$、$m$ 在窄窗口内相关。没有跨越 $q_1$ 的数据时，本模型退化为纯 Guinier 或纯幂律。不要与统一模型的 $P$、$B$ 同时自由拟合同一段。</p>
       <h2>相近模型</h2>
       <ul>

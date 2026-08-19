@@ -32,7 +32,7 @@
       </figure>
       <h2>核心公式</h2>
       <h3>出发点</h3>
-      <p>稀释、取向无规的分层盘，相干散射振幅是衬度对平面波相位的体积分</p>
+      <p>稀释、取向无规的分层盘，相干<span data-term="scattering-amplitude">散射振幅</span>是衬度对平面波相位的体积分</p>
       $$F(\mathbf{q})=\int_V \Delta\rho(\mathbf{r})\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r.$$
       <p>核壳双层盘把体积分成核、上下面帽与边缘腰带三块均匀区。每一块都是有限圆柱（或圆柱之差），因此每块的振幅仍是轴向 $\mathrm{sinc}$ 乘径向 $2J_1(x)/x$。</p>
       <h3>推导</h3>
@@ -40,7 +40,7 @@
       $$F(q,R,H,\alpha)=\pi R^2 H\cdot\frac{2J_1(qR\sin\alpha)}{qR\sin\alpha}\cdot\frac{\sin(qH\cos\alpha/2)}{qH\cos\alpha/2}.$$
       <p>令核为半径 $R$、厚度 $L$；面帽把轴向厚度扩到 $L+2t_{\mathrm{face}}$、半径仍为 $R$；腰带再把半径扩到 $R+t_{\mathrm{belt}}$、厚度与外面相同。按衬度叠加：</p>
       $$A(q,\alpha)=(\rho_{\mathrm{core}}-\rho_{\mathrm{face}})F(q,R,L,\alpha)+(\rho_{\mathrm{face}}-\rho_{\mathrm{belt}})F(q,R,L+2t_{\mathrm{face}},\alpha)+(\rho_{\mathrm{belt}}-\rho_{\mathrm{solv}})F(q,R+t_{\mathrm{belt}},L+2t_{\mathrm{face}},\alpha).$$
-      <p>面帽主要改沿法向的 $\mathrm{sinc}$；腰带改径向 $J_1$。$q\to 0$ 时 $A(0)$ 等于各区衬度乘体积之和。粉末平均</p>
+      <p>面帽主要改沿法向的 $\mathrm{sinc}$；腰带改径向 $J_1$。$q\to 0$ 时 $A(0)$ 等于各区衬度乘体积之和。<span data-term="powder-average">粉末平均</span></p>
       $$P(q)=\frac{\displaystyle\int_0^{\pi/2}|A(q,\alpha)|^2\sin\alpha\,\mathrm{d}\alpha}{\displaystyle\int_0^{\pi/2}|A(0,\alpha)|^2\sin\alpha\,\mathrm{d}\alpha}.$$
       <p>稀释强度 $I(q)=n\langle|A|^2\rangle+B$。腰带与面帽衬度都退到溶剂时，回到短圆柱（盘）。</p>
       <h3>低 $q$ 与渐近</h3>
@@ -53,7 +53,7 @@
           <tr><td>盘半径</td><td>$R$</td><td>疏水核的径向半径</td><td>Å 或 nm</td><td>20–500 Å</td></tr>
           <tr><td>核厚度</td><td>$L$</td><td>疏水核沿法向的厚度</td><td>Å 或 nm</td><td>20–50 Å（脂双层）</td></tr>
           <tr><td>面帽 / 腰带厚</td><td>$t_{\mathrm{face}},t_{\mathrm{belt}}$</td><td>头基层与边缘带厚度</td><td>Å</td><td>5–20 Å</td></tr>
-          <tr><td>各区 SLD</td><td>$\rho_{\mathrm{core}},\rho_{\mathrm{face}},\rho_{\mathrm{belt}}$</td><td>核、面、带的散射长度密度</td><td>Å$^{-2}$</td><td>由脂质组成 / 氘代</td></tr>
+          <tr><td>各区 SLD</td><td>$\rho_{\mathrm{core}},\rho_{\mathrm{face}},\rho_{\mathrm{belt}}$</td><td>核、面、带的<span data-term="scattering-length-density">散射长度密度</span></td><td>Å$^{-2}$</td><td>由脂质组成 / 氘代</td></tr>
           <tr><td>取向角</td><td>$\theta,\phi$</td><td>盘法向相对光束（二维）</td><td>度</td><td>磁场可取向</td></tr>
           <tr><td>标度 / 本底</td><td>$\mathrm{scale}$, $B$</td><td>前置因子与本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
         </tbody>
@@ -61,7 +61,7 @@
       <h2>拟合注意</h2>
       <p>半径与腰带厚、三套 $\rho$ 严重简并。中子对比（氘代链 / 头基 / 溶剂）是解开剖面的正途；单对比 SAXS 往往只能约束厚度与一个有效半径。</p>
       <p>取向：快翻滚 bicelle 在溶液中接近粉末平均；磁场取向的向列相必须拟合 $\theta$ 分布，否则会把取向峰误认为堆叠。</p>
-      <p>多分散主要在盘半径；厚度多分散抹平双层 Bragg 样振荡。磁性：磷脂盘通常无磁衬度；掺镧系离子或磁颗粒时须单独给磁 SLD，且磁取向轴常沿盘法向。</p>
+      <p><span data-term="polydispersity">多分散</span>主要在盘半径；厚度多分散抹平双层 Bragg 样振荡。磁性：磷脂盘通常无磁衬度；掺镧系离子或磁颗粒时须单独给磁 SLD，且磁取向轴常沿盘法向。</p>
       <h2>相近模型</h2>
       <ul>
         <li><a href="stacked-disks.html">堆叠圆盘</a> — 多片沿法向相关，出现层间距峰。</li>

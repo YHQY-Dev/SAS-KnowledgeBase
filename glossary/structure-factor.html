@@ -18,7 +18,7 @@
       <h2>定义</h2>
       <p><strong>结构因子</strong> $S(q)$ 描述散射体之间的空间排列与相互作用引起的散射调制。对 $N$ 个粒子的系综，</p>
       $$ I(q) \propto \frac{1}{N} \left| \sum_{j=1}^{N} f_j(\mathbf{q})\, e^{i\mathbf{q}\cdot\mathbf{r}_j} \right|^2 $$
-      <p>在均匀各向同性液体中，$S(q)$ 只依赖 $q$ 的模长。理想稀溶液中粒子互不相关，$S(q)=1$（归一化约定下）。</p>
+      <p>其中 $f_j$ 是第 $j$ 个粒子的<span data-term="scattering-amplitude">散射振幅</span>。均匀各向同性液体里，$S(q)$ 只依赖 $q$ 的模长，并由<span data-term="pair-correlation">对关联</span> $g(r)$ 经 <span data-term="ornstein-zernike">Ornstein–Zernike</span> 方程得到：$S(q)=[1-n\hat{c}(q)]^{-1}$。理想稀溶液中粒子互不相关，$S(q)=1$。</p>
 
       <h2>物理直觉</h2>
       <p>$S(q)$ 是「粒子放在哪里」的信息：峰位反映典型间距（如胶体晶体 Bragg 峰），峰形反映关联长度与有序度。聚合物浓溶液、嵌段共聚物微相分离、蛋白质结晶前簇等，都会在特定 $q$ 出现 $S(q)$ 特征。</p>
@@ -29,7 +29,7 @@
       <h2>典型情形</h2>
       <ul>
         <li><strong>稀溶液</strong>：$S(q)\approx 1$，曲线形状由 <span data-term="form-factor">形式因子</span> 主导。</li>
-        <li><strong>硬球流体</strong>：$S(q)$ 可用 Percus–Yevick 等理论，出现相关峰。</li>
+        <li><strong>硬球流体</strong>：$S(q)$ 可用 <span data-term="percus-yevick">Percus–Yevick</span> 等理论，出现相关峰。</li>
         <li><strong>微相分离</strong>：$q^*$ 处峰对应畴尺寸 $d \sim 2\pi/q^*$。</li>
         <li><strong>吸引相互作用</strong>：低 $q$ 增强或团簇导致 $I(0)$ 发散趋势（需外推处理）。</li>
       </ul>
@@ -44,8 +44,12 @@
       <h2>相关词条</h2>
       <ul>
         <li><span data-term="form-factor">形式因子</span> $P(q)$</li>
-        <li><span data-term="scattering-vector-q">散射矢量</span> $q$</li>
-        <li><span data-term="contrast">衬度</span></li>
+        <li><span data-term="scattering-amplitude">散射振幅</span> $F(\mathbf{q})$</li>
+        <li><span data-term="ornstein-zernike">Ornstein–Zernike 方程</span></li>
+        <li><span data-term="pair-correlation">对关联函数</span> $g(r)$</li>
+        <li><span data-term="percus-yevick">Percus–Yevick 闭包</span></li>
+        <li><span data-term="mean-spherical-approximation">平均球近似</span></li>
+        <li><a href="../models/structure-factor/index.html">结构因子模型</a></li>
       </ul>
 
       <h2>出现于</h2>

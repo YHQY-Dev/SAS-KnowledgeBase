@@ -15,10 +15,10 @@
       <h1>Caille 层状堆叠</h1>
       <p class="subtitle-en">lamellar stack Caille</p>
       <h2>适用场景</h2>
-      <p>多层膜沿法向以平均间距 $d$ 堆叠，且层间无序主要来自热弯曲起伏（smectic A / 溶致层状）时，用 Caille <span data-term="structure-factor">结构因子</span>乘以单层厚度形式因子。典型对象：溶致层状相、多层脂质体、柔性表面活性剂膜的粉末谱。</p>
-      <p>$I(q)$ 在 $q_n=2\pi n/d$ 出现布拉格峰，峰有幂律尾而不是高斯；高阶峰按 $n^2\eta$ 迅速变宽。刚性层、间距无关联涨落更接近准晶堆叠。横向有限的 tactoid 用堆叠圆盘。</p>
+      <p>多层膜沿法向以平均间距 $d$ 堆叠，且层间无序主要来自热弯曲起伏（smectic A / 溶致层状）时，用 Caille <span data-term="structure-factor">结构因子</span>乘以单层厚度<span data-term="form-factor">形式因子</span>。典型对象：溶致层状相、多层脂质体、柔性表面活性剂膜的粉末谱。</p>
+      <p>$I(q)$ 在 $q_n=2\pi n/d$ 出现布拉格峰，峰有幂律尾而不是高斯；高阶峰按 $n^2\eta$ 迅速变宽。刚性层、间距无关联涨落更接近<span data-term="paracrystal">准晶</span>堆叠。横向有限的 tactoid 用堆叠圆盘。</p>
       <h2>物理图像</h2>
-      <p>Caille（1972）由层状弹性（弯曲模量 $K$ 与压缩模量 $\bar{B}$）给出位移的对数关联：均方位移随层序对数发散（Landau–Peierls）。Nallet 把有限畴 $N$ 的离散求和写成 Debye–Waller 因子 $\propto(\pi n)^{-\eta q^2 d^2/4\pi^2}$。粉末平均再乘 $2\pi/(q^2 d)$。</p>
+      <p>Caille（1972）由层状弹性（弯曲模量 $K$ 与压缩模量 $\bar{B}$）给出位移的对数关联：均方位移随层序对数发散（Landau–Peierls）。Nallet 把有限畴 $N$ 的离散求和写成 Debye–Waller 因子 $\propto(\pi n)^{-\eta q^2 d^2/4\pi^2}$。<span data-term="powder-average">粉末平均</span>再乘 $2\pi/(q^2 d)$。</p>
       <p>单层仍用矩形厚度剖面。峰位定 $d$，峰形与漫散射定 $\eta$ 与 $N$。形式因子在节点处压低整级峰，可与起伏加宽混淆。</p>
       <h2>示意图</h2>
       <figure class="figure">
@@ -62,7 +62,7 @@
       <h2>拟合注意</h2>
       <p>片层取向：粉末谱把层状峰抹成较宽的环；二维弧向宽度才约束取向分布。不要用 $\eta$ 去吸收未取向样品的几何平均。</p>
       <p>畴大小 $N$ 与 $\eta$ 都加宽峰：$N$ 近高斯型相干长度，$\eta$ 给幂律尾。高阶峰是否存在是分开二者的关键。Caille $\eta$ 与<span data-term="instrument-smearing">仪器分辨率</span>强相关： smearing 同样加宽峰、填尾，低分辨数据上 $\eta$ 往往被高估；须把分辨率函数卷积进去，或用高分辨限制 $\eta$ 下限。</p>
-      <p>多分散：厚度分布调制峰强度（经 $P_{\mathrm{t}}$），间距分布则更接近准晶，与 $\eta$ 不同向。磁性：磁通道的 $S(q)$ 仍由同一套 $d,\eta,N$ 描述，但 $P_{\mathrm{t}}$ 用磁厚度与磁 SLD。</p>
+      <p><span data-term="polydispersity">多分散</span>：厚度分布调制峰强度（经 $P_{\mathrm{t}}$），间距分布则更接近准晶，与 $\eta$ 不同向。磁性：磁通道的 $S(q)$ 仍由同一套 $d,\eta,N$ 描述，但 $P_{\mathrm{t}}$ 用磁厚度与磁 SLD。</p>
       <p>可辨识性：只有一级峰时，$d$ 可定，$\eta$、$N$ 与分辨率几乎完全共线。要报 $\eta$，需要高分辨、多级峰或独立的弹性常数估计。</p>
       <h2>相近模型</h2>
       <ul>
@@ -73,7 +73,7 @@
       </ul>
       <h2>参考文献</h2>
       <ul>
-        <li>Caillé, A. Remarques sur la diffusion des rayons X dans les smectiques. <em>C. R. Acad. Sci. Paris, Sér. B</em> 1972, 274, 891–893.</li>
+        <li><span data-term="caille">Caillé</span>, A. Remarques sur la diffusion des rayons X dans les smectiques. <em>C. R. Acad. Sci. Paris, Sér. B</em> 1972, 274, 891–893.</li>
         <li>Nallet, F.; Laversanne, R.; Roux, D. Modelling X-ray or neutron scattering spectra of lyotropic lamellar phases: interplay between form and structure factors. <em>J. Phys. II France</em> 1993, 3, 487–502. DOI: <a href="https://doi.org/10.1051/jp2:1993146" target="_blank" rel="noopener noreferrer">10.1051/jp2:1993146</a></li>
         <li>Zhang, R.; Tristram-Nagle, S.; Sun, W.; Headrick, R. L.; Irving, T. C.; Suter, R. M.; Nagle, J. F. Small-angle x-ray scattering from lipid bilayers is well described by modified Caillé theory but not by paracrystalline theory. <em>Biophys. J.</em> 1996, 70, 349–357. DOI: <a href="https://doi.org/10.1016/S0006-3495(96)79576-0" target="_blank" rel="noopener noreferrer">10.1016/S0006-3495(96)79576-0</a></li>
       </ul>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lorentz 因子 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>Lorentz 因子</h1>
+      <p class="subtitle-en">Lorentz factor</p>
+      <h2>定义</h2>
+      <p>粉末样品中，层法向均匀分布在球面上。无限片的散射集中在倒易空间的法向尖刺上，取向平均后还要乘几何权重——即层状 <strong>Lorentz 因子</strong>，理想无限片常给出 $\propto 1/q^2$。观测强度是</p>
+      $$I(q)\propto \frac{\lvert F_{\mathrm{bilayer}}(q)\rvert^2}{q^2}\,S_{\mathrm{inter}}(q).$$
+      <p>有限横向尺寸会把 $1/q^2$ 截断或改成其他幂。纤维取向有另一套 Lorentz 校正。</p>
+
+      <h2>物理直觉</h2>
+      <p>这是<span data-term="powder-average">粉末平均</span>在「散射集中在低维倒易流形」时的特例：不是把 $|F|^2$ 在球面上均匀抹开，而是尖刺扫过 Ewald 球的时间（或立体角）不同，低 $q$ 权更大。</p>
+
+      <h2>常见混淆</h2>
+      <ul>
+        <li>Lorentz <em>因子</em> ≠ Lorentzian <em>峰形</em>（后者是 $1/(1+q^2\xi^2)$ 那样的相关峰）。</li>
+        <li>对溶液中的有限颗粒不要额外除 $q^2$；那一步只属于层状/纤维粉末几何。</li>
+      </ul>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="powder-average">粉末平均</span></li>
+        <li><span data-term="form-factor">形式因子</span></li>
+        <li><span data-term="caille">Caillé 理论</span></li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../models/lamellae/lamellar.html">层状</a></li>
+        <li><a href="../models/lamellae/index.html">层状分类</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Caillé 理论 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>Caillé 理论</h1>
+      <p class="subtitle-en">Caillé theory</p>
+      <h2>定义</h2>
+      <p><strong>Caillé 理论</strong>描述溶胀层状相（脂质体多层、表面活性剂 $L_\alpha$）中，层法向位移 $u_n$ 的热起伏。层不再是理想晶体，Bragg 峰失去 $\delta$ 函数，变成幂律奇点，翼部 $I\propto \lvert q-q_m\rvert^{-1+\eta_m}$。无量纲 Caillé 参数 $\eta$ 由弯曲模量 $K$ 与压缩模量 $\bar{B}$ 决定：$\eta$ 越大，层越软、高阶峰衰减越快。</p>
+      <p>粉末样品还要乘层状 <span data-term="lorentz-factor">Lorentz 因子</span>，并乘双层本身的 <span data-term="form-factor">形式因子</span> $\lvert F_{\mathrm{bilayer}}(q)\rvert^2$。</p>
+
+      <h2>物理直觉</h2>
+      <p>二维层状相在热涨落下没有真正的三维长程序（Peierls–Landau），但有代数衰减的准长程序——这就是「峰有幂律翅膀」而不是高斯宽化。准晶（Hosemann）用的是静态位移无序，物理不同，不要把 $\eta$ 与准晶 $g$ 因子混用。</p>
+
+      <h2>常见混淆</h2>
+      <ul>
+        <li>Caillé $\eta$ 不是<span data-term="polydispersity">多分散</span>：尺寸分布也会压高阶峰，但峰形不是幂律翼。</li>
+        <li>单层囊泡没有层间堆叠，不必上 Caillé；那是单层形式因子问题。</li>
+      </ul>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="paracrystal">准晶</span>（另一类峰宽化）</li>
+        <li><span data-term="lorentz-factor">Lorentz 因子</span></li>
+        <li><span data-term="structure-factor">结构因子</span></li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../models/lamellae/lamellar-stack-caille.html">层状堆叠（Caillé）</a></li>
+        <li><a href="../models/lamellae/lamellar-hg-stack-caille.html">头基–层状堆叠（Caillé）</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

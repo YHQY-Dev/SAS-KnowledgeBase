@@ -18,7 +18,7 @@
       <p>本导读以 Mühlbauer 等（2019）<em>Magnetic small-angle neutron scattering</em>（DOI: <a href="https://doi.org/10.1103/RevModPhys.91.015004" target="_blank" rel="noopener noreferrer">10.1103/RevModPhys.91.015004</a>）为核心，结合 Jeffries 等（2021）方法学综述与 Wiedenmann 专章中的 SANSPOL 实践，说明核散射与磁散射如何共存、极化中子如何拆分自旋通道，以及磁性纳米颗粒 / 畴结构在 <span data-term="sans">SANS</span> 中「看见」的是什么——以及它与宏观磁化强度测量的差别。</p>
 
       <h2>问题是什么</h2>
-      <p>中子同时「感受」原子核与原子磁矩：相干散射振幅含<strong>核项</strong>与<strong>磁项</strong>。普通（非磁性）<span data-term="sans">SANS</span> 中我们调的是核<span data-term="scattering-length-density">散射长度密度（SLD）</span>与溶剂的<span data-term="contrast">衬度</span>；一旦样品有纳米尺度磁化不均匀（颗粒、畴壁、涡旋、skyrmion 等），倒易空间还会出现磁散射贡献——其依赖外场方向、中子极化与自旋翻转通道（Mühlbauer 2019）。</p>
+      <p>中子同时「感受」原子核与原子磁矩：相干<span data-term="scattering-amplitude">散射振幅</span>含<strong>核项</strong>与<strong>磁项</strong>。普通（非磁性）<span data-term="sans">SANS</span> 中我们调的是核<span data-term="scattering-length-density">散射长度密度（SLD）</span>与溶剂的<span data-term="contrast">衬度</span>；一旦样品有纳米尺度磁化不均匀（颗粒、畴壁、涡旋、skyrmion 等），倒易空间还会出现磁散射贡献——其依赖外场方向、中子极化与自旋翻转通道（Mühlbauer 2019）。</p>
       <p>磁 <span data-term="sans">SANS</span> 探测的是 $q$ 窗口内（典型 $0.01\lesssim q\lesssim5\,\mathrm{nm}^{-1}$，对应结构尺寸约 1–300 nm）磁化矢量场 $\mathbf{M}(\mathbf{r})$ 的傅里叶分量，而非宏观体积平均 $\langle\mathbf{M}\rangle$（Mühlbauer 2019）。均匀饱和磁化在严格意义上不产生小角<strong>磁</strong>散射——只有空间涨落才给出 $q\neq0$ 信号。</p>
       <p>核心问题因此是：（1）如何把核散射与磁散射从总强度中分离；（2）极化中子 / 自旋分析（SANSPOL、POLARIS）给出哪些额外约束；（3）<span data-term="sans">SANS</span> 敏感尺度与 VSM / SQUID 等<strong>体积平均磁化</strong>有何不同。误解这三点，容易把「磁散射峰」直接当成「畴尺寸」或把「$I(q)$ 消失」当成「样品不磁」。本专题记为 <span data-term="magnetic-sans">磁性 SANS</span>。</p>
 
@@ -45,7 +45,7 @@
 
       <h2>核散射 vs 磁散射</h2>
       <h3>振幅与截面直觉</h3>
-      <p>弹性相干散射中，磁相互作用只耦合到<strong>垂直于散射矢量 $\mathbf{q}$ 的磁化分量</strong>（$\mathbf{M}_\perp$）。核振幅 $\widetilde{N}(\mathbf{q})$ 与磁 Halpern–Johnson 振幅进入强度时出现交叉项与纯磁项；未极化测量得到的是对自旋态平均后的组合。稀溶液磁性颗粒常写成核<span data-term="form-factor">形式因子</span>与磁形式因子的叠加，浓体系则还需<span data-term="structure-factor">结构因子</span>与取向平均（Mühlbauer 2019；Wiedenmann 2006）。</p>
+      <p>弹性相干散射中，磁相互作用只耦合到<strong>垂直于散射矢量 $\mathbf{q}$ 的磁化分量</strong>（$\mathbf{M}_\perp$）。核振幅 $\widetilde{N}(\mathbf{q})$ 与磁 Halpern–Johnson 振幅进入强度时出现交叉项与纯磁项；未极化测量得到的是对自旋态平均后的组合。稀溶液磁性颗粒常写成核<span data-term="form-factor">形式因子</span>与磁形式因子的叠加，浓体系则还需<span data-term="structure-factor">结构因子</span>与<span data-term="powder-average">取向平均</span>（Mühlbauer 2019；Wiedenmann 2006）。</p>
       <p>关键几何约束：</p>
       $$I_{\mathrm{mag}}(\mathbf{q})\;\propto\;\bigl|\widetilde{M}_\perp(\mathbf{q})\bigr|^2,\qquad \mathbf{M}_\perp=\mathbf{M}-\bigl(\mathbf{M}\cdot\hat{\mathbf{q}}\bigr)\hat{\mathbf{q}}.$$
       <p>磁散射长度 $b_m\cong b_H\mu_a$（$b_H=2.70\times10^{-15}\,\mathrm{m}\,\mu_B^{-1}$），与核 $b$ 同量级；铁磁体磁 SLD 可与核 SLD 相当（Wiedenmann 2006）。</p>

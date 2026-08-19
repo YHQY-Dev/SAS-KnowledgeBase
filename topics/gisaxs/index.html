@@ -26,7 +26,7 @@
         <li>入射角 $\alpha_i$ 与<span data-term="critical-angle">临界角</span> $\alpha_c$ 关系决定的<strong>探测深度</strong>；</li>
         <li>原位条件下（温度、溶剂、反应）的动力学演化。</li>
       </ul>
-      <p>与透射 <span data-term="saxs">SAXS</span> 不同，<span data-term="gisaxs">GISAXS</span> 必须处理<strong>界面反射与折射</strong>：同一散射事件可伴随入射或出射方向的 Fresnel 反射，形成所谓的 <span data-term="dwba">DWBA</span>（distorted-wave Born approximation）图像，而非简单的 Born 近似条纹。掠入射 footprint 效应使束在膜内路径 $\sim 2t/\sin\alpha_i$，在 $\alpha_i\sim\alpha_c$ 时可在弱散射软物质薄膜中获得足够计数（Hexemer &amp; Müller-Buschbaum 2015）。</p>
+      <p>与透射 <span data-term="saxs">SAXS</span> 不同，<span data-term="gisaxs">GISAXS</span> 必须处理<strong>界面反射与折射</strong>：同一散射事件可伴随入射或出射方向的 Fresnel 反射，形成所谓的 <span data-term="dwba">DWBA</span>（distorted-wave Born approximation）图像，而非简单的 <span data-term="born-approximation">Born 近似</span>条纹。掠入射 footprint 效应使束在膜内路径 $\sim 2t/\sin\alpha_i$，在 $\alpha_i\sim\alpha_c$ 时可在弱散射软物质薄膜中获得足够计数（Hexemer &amp; Müller-Buschbaum 2015）。</p>
 
       <figure class="figure">
         <img src="../../assets/figures/fig-11-gisaxs-geometry.png" alt="<span data-term="gisaxs">GISAXS</span> 反射几何与 Yoneda / 镜面峰" width="900">
@@ -67,7 +67,7 @@
         <li><strong>毫秒级时间分辨：</strong> 快单光子计数探测器 + 高 brilliance 源，原位成膜、退火、溶剂退火动力学。</li>
         <li><strong>软 X 射线 / tender X 射线 <span data-term="gisaxs">GISAXS</span>：</strong> 在吸收边附近微调能量，强烈改变衬度而不改几何。</li>
         <li><strong>GISANS / TOF-GISANS：</strong> 中子衬度与氘代策略；时间飞行模式扩展 $q$ 与深度信息。</li>
-        <li><strong>分析软件：</strong> IsGISAXS、BornAgain 等支持 DWBA；DA / LMA / SSCA 处理多分散与尺寸–间距关联（Hexemer &amp; Müller-Buschbaum 2015）。</li>
+        <li><strong>分析软件：</strong> IsGISAXS、BornAgain 等支持 DWBA；DA / LMA / SSCA 处理<span data-term="polydispersity">多分散</span>与尺寸–间距关联（Hexemer &amp; Müller-Buschbaum 2015）。</li>
       </ul>
       <p>有效表面近似下漫散射截面：</p>
       $$\left.\frac{d\sigma}{d\Omega}\right|_{\mathrm{diff}}=\frac{C\pi^2}{\lambda^4}(1-n^2)^2|T_i|^2|T_f|^2 P(\mathbf{q}),$$

@@ -42,7 +42,7 @@
           <li><strong>二者等价（理想数据下）：</strong> 知道完整无噪声 $I(q)$ 可唯一确定 $p(r)$；实践中 $q$ 有限、有噪声，反演必须正则化。</li>
         </ul>
       </div>
-      <p>物理上，$p(r)$ 与粒子内散射长度密度涨落 $\Delta\rho(\mathbf{r})$ 的空间自相关有关：它统计的是「相距 $r$ 的两点同时落在高衬度区域」的加权概率，而非原子坐标本身。因此 $p(r)$ 对整体延伸、域间距离、中空/壳层等<strong>全局几何</strong>敏感，但对原子级细节不分辨——这与 Shannon 采样极限一致：可用 $q$ 窗越宽，$p(r)$ 上可辨的结构越多，但仍受 <span data-term="maximum-dimension">$D_{\max}$</span> 与信噪比封顶。</p>
+      <p>物理上，$p(r)$ 与粒子内<span data-term="scattering-length-density">散射长度密度</span>涨落 $\Delta\rho(\mathbf{r})$ 的空间自相关有关：它统计的是「相距 $r$ 的两点同时落在高衬度区域」的加权概率，而非原子坐标本身。因此 $p(r)$ 对整体延伸、域间距离、中空/壳层等<strong>全局几何</strong>敏感，但对原子级细节不分辨——这与 Shannon 采样极限一致：可用 $q$ 窗越宽，$p(r)$ 上可辨的结构越多，但仍受 <span data-term="maximum-dimension">$D_{\max}$</span> 与信噪比封顶。</p>
       <p>归一化约定因软件而异：ATSAS/<span data-term="gnom">GNOM</span> 族常使 $p(r)$ 与 $I(0)$、$R_g$ 通过下节积分式自洽；阅读文献时务必核对「$p(r)$ 是否已按体积/电子数归一」。学习路径上只需记住：<strong>同一套数据、同一程序内</strong>比较 $p(r)$ 形状与 Guinier 参数即可，跨软件对比要查文档。</p>
 
       <h2>为何直接傅里叶变换失败：病态与 IFT</h2>
@@ -105,7 +105,7 @@
       </div>
 
       <h2>读 $p(r)$ 形状：从球到中空</h2>
-      <p>$p(r)$ 不是「真实原子坐标」，而是与数据相容的距离统计。下表给出稀溶液单分散情形下的典型目视印象（理想化；真实曲线常带多分散与噪声）：</p>
+      <p>$p(r)$ 不是「真实原子坐标」，而是与数据相容的距离统计。下表给出稀溶液单分散情形下的典型目视印象（理想化；真实曲线常带<span data-term="polydispersity">多分散</span>与噪声）：</p>
       <table>
         <thead>
           <tr><th>形貌直觉</th><th>$p(r)$ 典型特征</th><th><span data-term="maximum-dimension">$D_{\max}$</span> / $R_g$ 关系（量级）</th><th>注意</th></tr>
@@ -124,8 +124,8 @@
       <p>标准 IFT 假设 $I(q)\propto P(q)$（或等价的单粒子 $p(r)$）。当<span data-term="structure-factor">$S(q)$</span> $\neq 1$ 时，测得强度实为 $I(q)\propto P(q)S(q)$，直接 IFT 得到的「$p(r)$」是<strong>被相互作用扭曲的平均核</strong>，低 $q$ 常被压低，稀溶液下才恢复的 $p(r)$ 形状才是单粒子 PDDF。</p>
       <p>两条文献路线可处理浓相互作用体系，学习路径上知道分工即可：</p>
       <ul>
-        <li><strong><span data-term="gift">GIFT</span>（generalized IFT）：</strong> Fritz 等（2000）在 Glatter 族 IFT 上同时拟合模型无关 $p(r)$ 与带电胶体 <span data-term="structure-factor">$S(q)$</span>（RMSA / HNC / RY 等闭包）。可在体积分数 $\lesssim 0.3$ 的带电胶体中分离粒内与粒间效应，但电荷、离子强度、半径、$\phi$ 存在简并——文献指出电荷与离子强度<strong>不能同时唯一确定</strong>，固定半径或独立电泳约束可破退化。</li>
-        <li><strong>SQ-IFT：</strong> Fukasawa &amp; Sato（2011）对 $S(q)$ 本身做 IFT，得到对关联函数 $g(r)$，可模型无关地读蛋白溶液中的有效结构因子与簇集行为；与 <span data-term="gift">GIFT</span>「先假设 $S(q)$ 模型」互补。</li>
+        <li><strong><span data-term="gift">GIFT</span>（generalized IFT）：</strong> Fritz 等（2000）在 Glatter 族 IFT 上同时拟合模型无关 $p(r)$ 与带电胶体 <span data-term="structure-factor">$S(q)$</span>（RMSA / HNC / RY 等闭包）。可在<span data-term="volume-fraction">体积分数</span> $\lesssim 0.3$ 的带电胶体中分离粒内与粒间效应，但电荷、离子强度、半径、$\phi$ 存在简并——文献指出电荷与离子强度<strong>不能同时唯一确定</strong>，固定半径或独立电泳约束可破退化。</li>
+        <li><strong>SQ-IFT：</strong> Fukasawa &amp; Sato（2011）对 $S(q)$ 本身做 IFT，得到<span data-term="pair-correlation">对关联</span>函数 $g(r)$，可模型无关地读蛋白溶液中的有效结构因子与簇集行为；与 <span data-term="gift">GIFT</span>「先假设 $S(q)$ 模型」互补。</li>
       </ul>
       <p>生物缓冲液中的蛋白在 $>5$–$10\,\mathrm{mg\,ml^{-1}}$ 常出现可测 $S(q)$；带电胶体（CTAB 胶束等）即使 1% 浓度也可能强相互作用。判断口诀：<strong>稀释后低 $q$ 抬升、$p(r)$ 形状变、$I(0)/c$ 非线性</strong> → 先走浓度外推或 <span data-term="gift">GIFT</span>/SQ-IFT，勿把 $S(q)$ 压低当成「分子变紧凑」。第 08 章将显式拟合 $P(q)S(q)$；BioSAS 默认仍优先无限稀释。</p>
 

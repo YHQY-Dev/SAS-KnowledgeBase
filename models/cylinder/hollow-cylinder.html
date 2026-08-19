@@ -28,11 +28,11 @@
       </figure>
       <figure class="figure">
         <img src="../../assets/figures/models/cylinder/hollow-cylinder-iq.png" alt="空心圆柱 I(q) 示意" width="900">
-        <figcaption>空心管粉末平均 $I(q)$：壁厚干涉叠加在圆柱包络上。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+        <figcaption>空心管<span data-term="powder-average">粉末平均</span> $I(q)$：壁厚干涉叠加在圆柱包络上。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
       <h3>出发点</h3>
-      <p>稀释、取向无规的均匀管壁，相干散射振幅是衬度对平面波相位的体积分</p>
+      <p>稀释、取向无规的均匀管壁，相干<span data-term="scattering-amplitude">散射振幅</span>是衬度对平面波相位的体积分</p>
       $$F(\mathbf{q})=\int_V \Delta\rho(\mathbf{r})\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r.$$
       <p>空心圆柱在 $R_{\mathrm{in}}\le r_\perp\le R_{\mathrm{out}}$、$|z|\le L/2$ 内 $\Delta\rho=\rho-\rho_{\mathrm{solv}}$ 为常数，管腔与溶剂相同。积分等于外圆柱减去内圆柱，轴向与径向仍然分离。</p>
       <h3>推导</h3>
@@ -44,7 +44,7 @@
       $$P(q)=\frac{\displaystyle\int_0^{\pi/2}|A(q,\alpha)|^2\sin\alpha\,\mathrm{d}\alpha}{\displaystyle\int_0^{\pi/2}|A(0,\alpha)|^2\sin\alpha\,\mathrm{d}\alpha}.$$
       <p>薄壁 $t=R_{\mathrm{out}}-R_{\mathrm{in}}\ll R_{\mathrm{out}}$ 时，径向因子接近平均半径处的环：$J_0(q\bar R\sin\alpha)$ 类振荡，间距由 $\bar R$ 而非实心柱的 $J_1$ 零点单独决定。</p>
       <h3>低 $q$ 与渐近</h3>
-      <p>Taylor 展开后与 Guinier 比较，空心管的回转半径比同外径实心柱更大：径向贡献从 $R_{\mathrm{out}}^2/2$ 换成 $(R_{\mathrm{out}}^2+R_{\mathrm{in}}^2)/2$，轴向仍是 $L^2/12$，即</p>
+      <p>Taylor 展开后与 Guinier 比较，空心管的<span data-term="radius-of-gyration">回转半径</span>比同外径实心柱更大：径向贡献从 $R_{\mathrm{out}}^2/2$ 换成 $(R_{\mathrm{out}}^2+R_{\mathrm{in}}^2)/2$，轴向仍是 $L^2/12$，即</p>
       $$R_g^2=\frac{R_{\mathrm{out}}^2+R_{\mathrm{in}}^2}{2}+\frac{L^2}{12}.$$
       <p>细长管中间区仍 $\sim q^{-1}$。壁厚干涉在 $q\sim\pi/t$ 量级出现调制。大 $q$ 时内外两个尖锐界面给出 Porod $q^{-4}$；极薄壁时截面更像空心壳，振荡包络可接近 $q^{-2}$ 再进入界面尾。</p>
       <h2>参数表</h2>
@@ -54,14 +54,14 @@
           <tr><td>内半径</td><td>$R_{\mathrm{in}}$</td><td>管腔内半径</td><td>Å 或 nm</td><td>5–400 Å</td></tr>
           <tr><td>外半径</td><td>$R_{\mathrm{out}}$</td><td>管壁外半径</td><td>Å 或 nm</td><td>大于内半径一个壁厚</td></tr>
           <tr><td>长度</td><td>$L$</td><td>管的轴向长度</td><td>Å 或 nm</td><td>20–5000 Å</td></tr>
-          <tr><td>壁 SLD</td><td>$\rho$</td><td>管壁散射长度密度</td><td>Å$^{-2}$</td><td>由组成计算</td></tr>
+          <tr><td>壁 SLD</td><td>$\rho$</td><td>管壁<span data-term="scattering-length-density">散射长度密度</span></td><td>Å$^{-2}$</td><td>由组成计算</td></tr>
           <tr><td>取向角</td><td>$\theta,\phi$</td><td>轴相对光束（二维）</td><td>度</td><td>由取向分布约束</td></tr>
           <tr><td>标度 / 本底</td><td>$\mathrm{scale}$, $B$</td><td>前置因子与本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
         </tbody>
       </table>
       <h2>拟合注意</h2>
       <p>内外半径与壁衬度三联简并：薄壁高衬度与厚壁低衬度可给出相近 $I(q)$。优先用组成固定 $\rho$，或用对比变分。</p>
-      <p>多分散：外半径分布抹平截面极小；长度分布改 $q^{-1}$ 区。内半径多分散与壁厚多分散在数据上几乎不可分，通常只放一个径向宽度。</p>
+      <p><span data-term="polydispersity">多分散</span>：外半径分布抹平截面极小；长度分布改 $q^{-1}$ 区。内半径多分散与壁厚多分散在数据上几乎不可分，通常只放一个径向宽度。</p>
       <p>取向与磁性同均匀圆柱：二维用 $\theta,\phi$；磁管壁的磁 SLD 与核 SLD 分开。管腔含磁性流体时须单独建模，不能只用壁的 $\Delta\rho$。</p>
       <h2>相近模型</h2>
       <ul>

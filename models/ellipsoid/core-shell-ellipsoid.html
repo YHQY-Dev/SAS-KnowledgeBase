@@ -19,7 +19,7 @@
       <p>共焦约定使壳厚沿法向不均匀：长轴端更“薄”、赤道更“厚”，或反过来取决于半轴。若壳只是均匀外扩（相似放大），几何不同，拟合时不要混用两种厚度定义。轴比接近 1 时退化为核壳球；核衬度匹配溶剂时接近空心椭球壳。</p>
       <p>壳厚、核半轴与两段衬度高度相关。有中子 H/D 或 ASAXS 对比点时，简并可显著减弱。</p>
       <h2>物理图像</h2>
-      <p>共焦核壳：外壳半轴满足 $R_{\perp,\mathrm{s}}^2=R_{\perp,\mathrm{c}}^2+t^2$、$R_{\parallel,\mathrm{s}}^2=R_{\parallel,\mathrm{c}}^2+t^2$，从而与核共用焦点。每一取向的振幅是核、壳两个有效球振幅的衬度加权和，再对 $\alpha$ 粉末平均（Chen 胶束图像；Pedersen 综述写法）。</p>
+      <p>共焦核壳：外壳半轴满足 $R_{\perp,\mathrm{s}}^2=R_{\perp,\mathrm{c}}^2+t^2$、$R_{\parallel,\mathrm{s}}^2=R_{\parallel,\mathrm{c}}^2+t^2$，从而与核共用焦点。每一取向的振幅是核、壳两个有效球振幅的衬度加权和，再对 $\alpha$ <span data-term="powder-average">粉末平均</span>（Chen 胶束图像；Pedersen 综述写法）。</p>
       <p>中等 $q$ 的肩峰或极小位移来自核–壳干涉。高 $q$ 仍由最锐的密度跳变控制。取向平均会进一步抹浅振荡。</p>
       <h2>示意图</h2>
       <figure class="figure">
@@ -32,7 +32,7 @@
       </figure>
       <h2>核心公式</h2>
       <h3>出发点</h3>
-      <p>稀释、取向无规的粒子，相干散射振幅是衬度对平面波相位的体积分</p>
+      <p>稀释、取向无规的粒子，相干<span data-term="scattering-amplitude">散射振幅</span>是衬度对平面波相位的体积分</p>
       $$F(\mathbf{q})=\int \bigl[\rho(\mathbf{r})-\rho_{\mathrm{solv}}\bigr]\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r.$$
       <p>核、壳取分段常数：共焦核椭球内为 $\rho_c$，核与外壳之间为 $\rho_s$，之外为溶剂。傅里叶变换对体积可加，故总振幅是两层均匀椭球振幅之差。</p>
       <h3>推导</h3>
@@ -44,7 +44,7 @@
       $$P(q)=\frac{\displaystyle\int_0^{\pi/2}|A(q,\alpha)|^2\sin\alpha\,\mathrm{d}\alpha}{\displaystyle\int_0^{\pi/2}|A(0,\alpha)|^2\sin\alpha\,\mathrm{d}\alpha}.$$
       <p>$A(0)=(\rho_c-\rho_s)V_c+(\rho_s-\rho_{\mathrm{solv}})V_s$。稀溶液 $I(q)=n\langle|A|^2\rangle+B$。</p>
       <h3>低 $q$ 与渐近</h3>
-      <p>$\Phi=1-x^2/10+O(x^4)$。核、壳共心，回转半径是衬度加权的二阶矩。均匀椭球 $R_g^2=(2R_\perp^2+R_\parallel^2)/5$，故</p>
+      <p>$\Phi=1-x^2/10+O(x^4)$。核、壳共心，<span data-term="radius-of-gyration">回转半径</span>是衬度加权的二阶矩。均匀椭球 $R_g^2=(2R_\perp^2+R_\parallel^2)/5$，故</p>
       $$R_g^2=\frac{(\rho_c-\rho_s)V_c R_{g,\mathrm{c}}^2+(\rho_s-\rho_{\mathrm{solv}})V_s R_{g,\mathrm{s}}^2}{(\rho_c-\rho_s)V_c+(\rho_s-\rho_{\mathrm{solv}})V_s}.$$
       <p>$\rho_s=\rho_c$ 时回到均匀外壳椭球。Guinier 指数形式在 $qR_g\lesssim 1$ 可用。</p>
       <p>极小由核、壳两项干涉决定，相对均匀椭球移动。大 $q$ 时每项 $\Phi\sim 3\cos x/x^2$，尖锐界面包络仍是 Porod $q^{-4}$，拍频反映两套有效半径；取向平均再把振荡抹浅。</p>
@@ -56,12 +56,12 @@
           <tr><td>共焦参数</td><td>$t$</td><td>使外壳与核共焦的长度，$R_{\mathrm{s}}^2=R_{\mathrm{c}}^2+t^2$</td><td>Å 或 nm</td><td>5–80 Å</td></tr>
           <tr><td>核 / 壳 / 溶剂 SLD</td><td>$\rho_c,\rho_s,\rho_{\mathrm{solv}}$</td><td>三段散射长度密度</td><td>Å$^{-2}$</td><td>组成与对比决定</td></tr>
           <tr><td>取向角</td><td>$\theta,\phi$</td><td>对称轴取向（二维）</td><td>度</td><td>由取向分布约束</td></tr>
-          <tr><td>标度 / 本底</td><td>$n$, $B$</td><td>数密度与本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
+          <tr><td>标度 / 本底</td><td>$n$, $B$</td><td><span data-term="number-density">数密度</span>与本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
         </tbody>
       </table>
       <h2>拟合注意</h2>
       <p>衬度比、壳参数 $t$ 与核半轴是主简并。优先固定由化学计量或对比实验得到的 $\rho$，只放几何；或固定 $t$、拟合衬度。不要把共焦 $t$ 当成沿法向的均匀壳厚。</p>
-      <p>多分散通常加在核尺寸或 $t$ 上，同样抹平振荡。一维数据上轴比与多分散几乎不可分。</p>
+      <p><span data-term="polydispersity">多分散</span>通常加在核尺寸或 $t$ 上，同样抹平振荡。一维数据上轴比与多分散几乎不可分。</p>
       <p>磁性：磁核加非磁壳（或磁死层）时，磁 SLD 剖面与核 SLD 剖面独立；须分通道，而不是只用一套 $\Delta\rho$。二维取向 $\theta,\phi$ 对核与壳相同，但磁矩方向另有因子。</p>
       <h2>相近模型</h2>
       <ul>

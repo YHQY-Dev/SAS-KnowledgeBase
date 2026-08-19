@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>相关函数 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>相关函数</h1>
+      <p class="subtitle-en">Debye correlation function</p>
+      <h2>定义</h2>
+      <p>Debye <strong>相关函数</strong> $\gamma(r)$ 是衬度涨落 $\Delta\rho(\mathbf{x})$ 的空间自相关（常归一化 $\gamma(0)=1$）：</p>
+      $$\gamma(r)=\frac{\langle \Delta\rho(\mathbf{x})\Delta\rho(\mathbf{x}+\mathbf{r})\rangle}{\langle(\Delta\rho)^2\rangle}.$$
+      <p>各向同性时强度是它的正弦变换，这就是 Debye 公式。均匀粒子的 $\gamma$ 可由自相关体积（characteristic function）得到，与 <span data-term="pair-distance-distribution">$p(r)$</span> 只差几何权重：$p(r)\propto r^2\gamma(r)$（有限支撑时）。</p>
+
+      <h2>物理直觉</h2>
+      <p>$\gamma(r)$ 回答「分开 $r$ 的两点，衬度还相不相关」。相关在短程就断 → 高 $q$ 慢衰减；相关延伸很远 → 低 $q$ 很陡。指数型 $\gamma=e^{-r/\xi}$ 给出 Debye–Bueche / 洛伦兹形式，即无规两相介质的经典闭式。</p>
+      <p>尖锐界面使 $\gamma$ 在 $r\to 0$ 有线性项，傅里叶后就是 <span data-term="porod-law">Porod</span> $q^{-4}$。界面有限厚度会改变小 $r$ 的展开，高 $q$ 比 $q^{-4}$ 衰减更快。</p>
+
+      <h2>常见混淆</h2>
+      <ul>
+        <li>$\gamma(r)$ 是衬度涨落的相关；<span data-term="pair-correlation">$g(r)$</span> 是粒子中心的相关。两相多孔介质用 $\gamma$，硬球流体用 $g$。</li>
+        <li><span data-term="correlation-length">关联长度</span> $\xi$ 常被取作 $\gamma$ 的衰减长度，但不同模型对 $\xi$ 的定义差一个数值因子。</li>
+      </ul>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="two-phase-model">两相模型</span></li>
+        <li><span data-term="porod-law">Porod 定律</span></li>
+        <li><span data-term="porod-invariant">Porod 不变量</span></li>
+        <li><span data-term="pair-distance-distribution">$p(r)$</span></li>
+        <li><span data-term="interfacial-thickness">界面厚度</span></li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../models/shape-independent/dab.html">Debye–Anderson–Brumberger</a></li>
+        <li><a href="../models/shape-independent/porod.html">Porod</a></li>
+        <li><a href="../learn/07-real-space-ift.html">学习路径 07 · IFT</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

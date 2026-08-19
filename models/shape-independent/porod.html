@@ -15,9 +15,9 @@
       <h1>Porod</h1>
       <p class="subtitle-en">Porod</p>
       <h2>适用场景</h2>
-      <p>高 $q$ 只看见界面时，<span data-term="porod-law">Porod 定律</span>把 $I\sim q^{-4}$ 的幅度连到比表面积。典型对象：锐利两相（孔材料、相分离聚合物、乳滴），以及形式因子振荡已经衰减、只剩界面尾的胶体。</p>
+      <p>高 $q$ 只看见界面时，<span data-term="porod-law">Porod 定律</span>把 $I\sim q^{-4}$ 的幅度连到比表面积。典型对象：锐利两相（孔材料、相分离聚合物、乳滴），以及<span data-term="form-factor">形式因子</span>振荡已经衰减、只剩界面尾的胶体。</p>
       <p>判据：$\log I$–$\log q$ 上斜率接近 $-4$；Porod 图 $q^4 I(q)$ 趋向平台。斜率显著偏离 $-4$ 时，应改用表面分形、模糊界面或纯幂律，而不是强加 Porod 常数。</p>
-      <p>绝对强度下 Porod 不变量与两相衬度、体积分数相联系。没有绝对标定仍可谈指数，但不能把幅度读成真实面积。</p>
+      <p>绝对强度下 Porod 不变量与两相衬度、<span data-term="volume-fraction">体积分数</span>相联系。没有绝对标定仍可谈指数，但不能把幅度读成真实面积。</p>
       <h2>物理图像</h2>
       <p>锐利界面上密度跳跃的三维 Fourier 变换给出 $q^{-4}$。前置因子是界面面积 $S$ 与衬度平方：光滑两相 $I(q)\to 2\pi(\Delta\rho)^2 S/q^4$。这与粒子外形无关，只要求界面在探测尺度上是光滑的。</p>
       <p>表面粗糙或分形使指数变成 $D_s-6$。扩散界面（模糊球）使尾比 $q^{-4}$ 掉得更快。磁性若只在部分界面上有磁化跳跃，磁 Porod 面积不必等于核面积。</p>
@@ -28,7 +28,7 @@
       </figure>
       <h2>核心公式</h2>
       <h3>出发点</h3>
-      <p>高 $q$ 只分辨界面附近的密度跳跃。两相介质的 Debye 相关函数 $\gamma(r)$ 由衬度自相关定义，强度是它的三维 Fourier 变换：</p>
+      <p>高 $q$ 只分辨界面附近的密度跳跃。两相介质的 Debye <span data-term="correlation-function">相关函数</span> $\gamma(r)$ 由衬度自相关定义，强度是它的三维 Fourier 变换：</p>
       $$I(q)=(\Delta\rho)^2\phi(1-\phi)V\int\gamma(r)\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r.$$
       <p>若界面在探测尺度上锐利且局部可看成平面，$\gamma(r)$ 在 $r\to 0$ 有线性缺口，而不是更光滑的 $r^2$ 开头。正是这个非解析性决定了 $q^{-4}$ 尾。</p>
       <h3>推导</h3>
@@ -50,8 +50,8 @@
         </tbody>
       </table>
       <h2>拟合注意</h2>
-      <p>取向：粉末平均已经包含在 $q^{-4}$ 里。高度取向的片或纤维应回到二维 Porod，指数和前置因子都会变。</p>
-      <p>多分散不改变渐近指数，但改变到达 Porod 区的 $q$。界面厚度或多分散“模糊”会让 $q^4 I$ 继续下降。磁性通道的 Porod 只看见磁化跳跃面。</p>
+      <p>取向：<span data-term="powder-average">粉末平均</span>已经包含在 $q^{-4}$ 里。高度取向的片或纤维应回到二维 Porod，指数和前置因子都会变。</p>
+      <p><span data-term="polydispersity">多分散</span>不改变渐近指数，但改变到达 Porod 区的 $q$。<span data-term="interfacial-thickness">界面厚度</span>或多分散“模糊”会让 $q^4 I$ 继续下降。磁性通道的 Porod 只看见磁化跳跃面。</p>
       <p>可辨识性：本底 $B$ 与 Porod 幅度强相关，须先在足够高的 $q$ 约束 $B$。把 $-3$ 到 $-4$ 之间的有效指数硬拟合成 $S$，会系统偏面积。</p>
       <h2>相近模型</h2>
       <ul>

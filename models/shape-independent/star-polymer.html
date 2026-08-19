@@ -18,8 +18,8 @@
       <p>多条高斯臂从同一中心长出、核可忽略时，用 Benoit 星形因子。臂数 $f$ 增大使中间 $q$ 比线形链更“密实”，但仍不是硬球振荡。</p>
       <p>有明显致密核时用聚合物胶束。臂有排除体积或静电时，本页的高斯臂假定失效。</p>
       <h2>物理图像</h2>
-      <p>Benoit 对 $f$ 条高斯臂做构象平均。令 $v=q^2 R_{g,\mathrm{arm}}^2$，形式因子含单臂 Debye 与臂间交叉项。整星 $R_g$ 随 $f$ 增加而小于同分子量线形链。</p>
-      <p>取向平均已包含。磁性若只标记核，曲线接近小球而不是星。</p>
+      <p>Benoit 对 $f$ 条高斯臂做构象平均。令 $v=q^2 R_{g,\mathrm{arm}}^2$，<span data-term="form-factor">形式因子</span>含单臂 Debye 与臂间交叉项。整星 $R_g$ 随 $f$ 增加而小于同分子量线形链。</p>
+      <p><span data-term="powder-average">取向平均</span>已包含。磁性若只标记核，曲线接近小球而不是星。</p>
       <h2>示意图</h2>
       <figure class="figure">
         <img src="../../assets/figures/models/shape-independent/star-polymer-iq.png" alt="星形聚合物 I(q) 示意" width="900">
@@ -31,7 +31,7 @@
       <h3>推导</h3>
       <p>单臂上相隔 $n$ 个单体：$\langle\mathrm{e}^{iq\cdot R}\rangle=\mathrm{e}^{-q^2 nb^2/6}$。两臂上的单体到中心的位移独立，交叉项是两个 $(1-\mathrm{e}^{-v})/v$ 型因子的积。令 $v=q^2 R_{g,\mathrm{arm}}^2$，对臂内与臂间求和，得到</p>
       $$P(q)=\frac{2}{f v^2}\left[v-1+\mathrm{e}^{-v}+\frac{f-1}{2}(1-\mathrm{e}^{-v})^2\right].$$
-      <p>$f=1$ 或 $2$：臂间项消失或并入一条线形链，回到 Debye。整星回转半径由各臂二阶矩与交叉矩合成</p>
+      <p>$f=1$ 或 $2$：臂间项消失或并入一条线形链，回到 Debye。整星<span data-term="radius-of-gyration">回转半径</span>由各臂二阶矩与交叉矩合成</p>
       $$R_g^2=\frac{3f-2}{f}\,R_{g,\mathrm{arm}}^2.$$
       <h3>低 $q$ 与渐近</h3>
       <p>低 $q$：$P=1-q^2 R_g^2/3+\cdots$，用的是整星 $R_g$，同一分子量下比线形链更小。高 $q$ 看见单臂高斯统计，仍 $\sim q^{-2}$；大 $f$ 时中间区更早偏离 Debye、更像密实物体，但不产生硬球振荡。有致密核时应改用胶束，而不是加大 $f$。</p>
@@ -41,13 +41,13 @@
         <tbody>
           <tr><td>臂回转半径</td><td>$R_{g,\mathrm{arm}}$</td><td>单臂 $R_g$</td><td>Å</td><td>10–200 Å</td></tr>
           <tr><td>臂数</td><td>$f$</td><td>从中心长出的臂</td><td>无量纲</td><td>通常 $3$–$64$</td></tr>
-          <tr><td>前向散射</td><td>$I(0)$</td><td>与数密度、总分子量有关</td><td>与强度单位一致</td><td>绝对标定</td></tr>
+          <tr><td><span data-term="forward-scattering">前向散射</span></td><td>$I(0)$</td><td>与<span data-term="number-density">数密度</span>、总分子量有关</td><td>与强度单位一致</td><td>绝对标定</td></tr>
           <tr><td>标度 / 本底</td><td>$\mathrm{scale}$, $B$</td><td>前置因子与常数本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
         </tbody>
       </table>
       <h2>拟合注意</h2>
       <p>取向：溶液中各向同性。剪切可能拉直臂，表观 $f$ 会错。</p>
-      <p>臂长多分散相当于把 $v$ 平均，与 $f$ 相关。磁性核与臂衬度不同时，应回到胶束模型。</p>
+      <p>臂长<span data-term="polydispersity">多分散</span>相当于把 $v$ 平均，与 $f$ 相关。磁性核与臂衬度不同时，应回到胶束模型。</p>
       <p>可辨识性：大 $f$ 的星在有限 $q$ 窗口里像模糊球。没有高分子量极限的 $q^{-2}$ 臂尾时，不要声称 $f$。</p>
       <h2>相近模型</h2>
       <ul>

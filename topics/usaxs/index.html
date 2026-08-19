@@ -18,7 +18,7 @@
       <p>本导读说明为何需要进入极低 <span data-term="scattering-vector-q">$q$</span>、<span data-term="bonse-hart">Bonse–Hart</span> 与针孔几何的差异、狭缝 <span data-term="instrument-smearing">smearing</span> 的处理，以及如何把 <span data-term="usaxs">USAXS</span> 与 <span data-term="saxs">SAXS</span> 拼接并对接到<span data-term="glassy-carbon">玻璃碳</span> / NIST SRM 3600 <span data-term="absolute-intensity">绝对标定</span>。核心文献：Peyronel &amp; Pink（2018）<span data-term="usaxs">USAXS</span> 专章；辅以 Pedersen（1995）仪器与 smearing、Zhang 等（2010）<span data-term="glassy-carbon">玻璃碳</span>标样、Allen 等（2017）SRM 3600、Jeffries 等（2021）方法学导论。</p>
 
  <h2>问题是什么</h2>
- <p>常规 pinhole <span data-term="saxs">SAXS</span> 的最低 $q$ 往往落在 $\sim 10^{-2}\,\mathrm{\AA}^{-1}$ 量级，对应实空间尺度 $L=2\pi/q$ 约数十纳米。若样品含微米级畴、大孔、聚集体、层次结构或分形网络，低 $q$ 的 <span data-term="guinier-analysis">Guinier</span> 区与<span data-term="forward-scattering">前向散射</span> $I(0)$ 会落在仪器盲区之外——曲线在「尚未变平」处就被截断，无法可靠求 $R_g$、体积分数、分形维数或层次结构的大尺度相关。</p>
+ <p>常规 pinhole <span data-term="saxs">SAXS</span> 的最低 $q$ 往往落在 $\sim 10^{-2}\,\mathrm{\AA}^{-1}$ 量级，对应实空间尺度 $L=2\pi/q$ 约数十纳米。若样品含微米级畴、大孔、聚集体、层次结构或分形网络，低 $q$ 的 <span data-term="guinier-analysis">Guinier</span> 区与<span data-term="forward-scattering">前向散射</span> $I(0)$ 会落在仪器盲区之外——曲线在「尚未变平」处就被截断，无法可靠求 $R_g$、<span data-term="volume-fraction">体积分数</span>、分形维数或层次结构的大尺度相关。</p>
  <p><strong><span data-term="usaxs">USAXS</span>（ultra-small-angle X-ray scattering）</strong> 把可达 $q$ 延伸到约 $10^{-4}$–$10^{-3}\,\mathrm{\AA}^{-1}$（Si 220 晶体对 $\Delta q\sim 10^{-4}\,\mathrm{\AA}^{-1}$；Si 440 可达 $\sim 3\times 10^{-5}\,\mathrm{\AA}^{-1}$），对应数百纳米到数微米（Peyronel 2018）。它回答的典型问题是：</p>
  <ul>
  <li>大尺度结构是否存在、是否进入 Guinier 平台？特征长度是否在 $0.1$–$20\,\mu\mathrm{m}$？</li>
@@ -36,7 +36,7 @@
  </thead>
  <tbody>
  <tr><td><span data-term="waxs">WAXS</span> / 衍射</td><td>原子（$\sim 1$–$10\,\mathrm{\AA}$）</td><td>$\sim 0.6$–$6$</td><td>晶胞、链堆积</td></tr>
- <tr><td><span data-term="saxs">SAXS</span></td><td>分子/纳米（$\sim 10$–$100\,\mathrm{nm}$）</td><td>$\sim 0.06$–$0.6$</td><td>胶束、片层、形式因子</td></tr>
+ <tr><td><span data-term="saxs">SAXS</span></td><td>分子/纳米（$\sim 10$–$100\,\mathrm{nm}$）</td><td>$\sim 0.06$–$0.6$</td><td>胶束、片层、<span data-term="form-factor">形式因子</span></td></tr>
  <tr><td><span data-term="saxs">SAXS</span> / <span data-term="usaxs">USAXS</span> 过渡</td><td>纳米–亚微米（$\sim 100$–$500\,\mathrm{nm}$）</td><td>$\sim 0.007$–$0.06$</td><td>大胶束、小聚集体</td></tr>
  <tr><td><span data-term="usaxs">USAXS</span></td><td>微米（$\sim 0.1$–$20\,\mu\mathrm{m}$）</td><td>$\sim 3\times 10^{-5}$–$6\times 10^{-4}$</td><td>孔洞、晶粒、网络、层次聚集</td></tr>
  </tbody>

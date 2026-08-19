@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>微分散射截面 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>微分散射截面</h1>
+      <p class="subtitle-en">differential scattering cross-section</p>
+      <h2>定义</h2>
+      <p>宏观 <strong>微分散射截面</strong> $\mathrm{d}\Sigma/\mathrm{d}\Omega$ 是：样品单位体积、向单位立体角散射的概率，单位 $\mathrm{cm}^{-1}$（有时对每个粒子用 $\mathrm{d}\sigma/\mathrm{d}\Omega$，单位 $\mathrm{cm}^2$）。<span data-term="absolute-intensity">绝对强度</span>标定就是把探测器计数换成这个量。稀释相干部分</p>
+      $$\frac{\mathrm{d}\Sigma}{\mathrm{d}\Omega}=n\,\lvert F(q)\rvert^2.$$
+      <p>文献里的 $I(q)$ 若已绝对标定，通常指 $\mathrm{d}\Sigma/\mathrm{d}\Omega$。</p>
+
+      <h2>物理直觉</h2>
+      <p>相对单位只比较形状；要谈<span data-term="volume-fraction">体积分数</span>、分子量、比表面积，必须把 $I$ 放到截面尺度，并与 <span data-term="contrast">$\Delta\rho$</span> 的单位一致（SAXS 电子密度 vs SANS 的 $\mathrm{cm}^{-2}$）。</p>
+
+      <h2>常见混淆</h2>
+      <ul>
+        <li>$\mathrm{d}\sigma/\mathrm{d}\Omega$（每粒子）与 $\mathrm{d}\Sigma/\mathrm{d}\Omega$（单位体积）差一个 $n$。</li>
+        <li>「归一化到入射束监视器」还不是绝对截面，还缺厚度、透射、立体角、探测器效率。</li>
+      </ul>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="absolute-intensity">绝对强度</span></li>
+        <li><span data-term="number-density">数密度</span></li>
+        <li><span data-term="scattering-amplitude">散射振幅</span></li>
+        <li><span data-term="forward-scattering">前向散射</span></li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../learn/05-absolute-calibration.html">学习路径 05 · 绝对标定</a></li>
+        <li><a href="../topics/calibration/index.html">专题 · 绝对标定</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

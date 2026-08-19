@@ -27,11 +27,11 @@
       </figure>
       <figure class="figure">
         <img src="../../assets/figures/models/sphere/vesicle-iq.png" alt="囊泡 I(q) 示意" width="900">
-        <figcaption>薄壳形式因子：低 $q$ Guinier 与壳干涉振荡。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+        <figcaption>薄壳<span data-term="form-factor">形式因子</span>：低 $q$ Guinier 与壳干涉振荡。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
       <h3>出发点</h3>
-      <p>稀释、取向无规时，相干振幅仍是衬度的傅里叶变换</p>
+      <p>稀释、取向无规时，相干<span data-term="scattering-amplitude">散射振幅</span>仍是<span data-term="contrast">衬度</span>的傅里叶变换</p>
       $$F(\mathbf{q})=\int_V \Delta\rho(\mathbf{r})\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r.$$
       <p>单层囊泡是溶剂填充的球壳：膜 $R_{\mathrm{in}}\le r\le R_{\mathrm{out}}$ 为 $\rho_m$，内外溶剂同为 $\rho_{\mathrm{solv}}$。球对称下</p>
       $$F(q)=4\pi(\rho_m-\rho_{\mathrm{solv}})\int_{R_{\mathrm{in}}}^{R_{\mathrm{out}}} r^2\frac{\sin(qr)}{qr}\,\mathrm{d}r.$$
@@ -41,7 +41,7 @@
       $$I(q)=n|A(q)|^2+B.$$
       <p>薄壳极限 $t=R_{\mathrm{out}}-R_{\mathrm{in}}\ll R$、$R=(R_{\mathrm{in}}+R_{\mathrm{out}})/2$：把被积函数在 $r=R$ 处展开，径向积分宽度为 $t$，得 $A(q)\propto 4\pi R^2 t\,\Delta\rho\,j_0(qR)$，其中 $j_0(x)=\sin x/x=\mathrm{sinc}\,x$，$\Delta\rho=\rho_m-\rho_{\mathrm{solv}}$。</p>
       <h3>低 $q$ 与极限</h3>
-      <p>$q\to 0$ 时 $\Phi\to 1$，$A(0)=\Delta\rho\cdot\tfrac{4\pi}{3}(R_{\mathrm{out}}^3-R_{\mathrm{in}}^3)$，即膜体积乘衬度，而不是外球体积。回转半径</p>
+      <p>$q\to 0$ 时 $\Phi\to 1$，$A(0)=\Delta\rho\cdot\tfrac{4\pi}{3}(R_{\mathrm{out}}^3-R_{\mathrm{in}}^3)$，即膜体积乘衬度，而不是外球体积。<span data-term="radius-of-gyration">回转半径</span></p>
       $$R_g^2=\frac{3}{5}\frac{R_{\mathrm{out}}^5-R_{\mathrm{in}}^5}{R_{\mathrm{out}}^3-R_{\mathrm{in}}^3}.$$
       <p>薄壳时 $R_g\approx R$。与 Guinier $P=1-q^2 R_g^2/3+\cdots$ 一致；$qR_g\lesssim 1$ 可用指数形式。</p>
       <p>薄壳 $P(q)\propto [j_0(qR)]^2$ 的零点在 $qR=n\pi$。有限厚度时极小由内外两项干涉决定。中间 $q$ 可出现片状 $q^{-2}$；大 $q$ 尖锐膜界面回到 Porod $q^{-4}$。</p>
@@ -52,13 +52,13 @@
           <tr><td>内半径</td><td>$R_{\mathrm{in}}$</td><td>溶剂核的半径</td><td>Å 或 nm</td><td>50–2000 Å</td></tr>
           <tr><td>外半径</td><td>$R_{\mathrm{out}}$</td><td>膜外表面半径</td><td>Å 或 nm</td><td>内半径加膜厚</td></tr>
           <tr><td>膜厚</td><td>$t$</td><td>$R_{\mathrm{out}}-R_{\mathrm{in}}$</td><td>Å</td><td>20–50 Å（脂质双层量级）</td></tr>
-          <tr><td>膜 SLD</td><td>$\rho_m$</td><td>双层平均散射长度密度</td><td>Å$^{-2}$</td><td>头基/尾链可再分层</td></tr>
+          <tr><td>膜 SLD</td><td>$\rho_m$</td><td>双层平均<span data-term="scattering-length-density">散射长度密度</span></td><td>Å$^{-2}$</td><td>头基/尾链可再分层</td></tr>
           <tr><td>溶剂 SLD</td><td>$\rho_{\mathrm{solv}}$</td><td>囊内囊外溶剂（简化相同）</td><td>Å$^{-2}$</td><td>H/D 可调</td></tr>
         </tbody>
       </table>
       <h2>拟合注意</h2>
-      <p>$R$ 与 $t$ 在有限 $q$ 窗上相关；膜厚最好用高 $q$ 或独立的膜面积/组成约束。尺寸多分散强烈抹平囊泡振荡，且大囊泡的第一极小常落在 $q_{\min}$ 之外，此时只能约束 $R_g$ 量级。</p>
-      <p>取向平均对球囊泡仍平凡。脂质膜通常无磁性衬度；若膜镶嵌磁性颗粒，须单独给出磁 SLD，不能把核通道壳厚直接当成磁厚度。若囊泡扁化或成管，应离开球类。多层重复间距出现衍射样峰时，改多层囊泡，不要用单壳硬撑。</p>
+      <p>$R$ 与 $t$ 在有限 $q$ 窗上相关；膜厚最好用高 $q$ 或独立的膜面积/组成约束。尺寸<span data-term="polydispersity">多分散</span>强烈抹平囊泡振荡，且大囊泡的第一极小常落在 $q_{\min}$ 之外，此时只能约束 $R_g$ 量级。</p>
+      <p><span data-term="powder-average">取向平均</span>对球囊泡仍平凡。脂质膜通常无磁性衬度；若膜镶嵌磁性颗粒，须单独给出磁 SLD，不能把核通道壳厚直接当成磁厚度。若囊泡扁化或成管，应离开球类。多层重复间距出现衍射样峰时，改多层囊泡，不要用单壳硬撑。</p>
       <h2>相近模型</h2>
       <ul>
         <li><a href="multilayer-vesicle.html">多层囊泡</a> — 多层同心膜的求和。</li>

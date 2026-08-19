@@ -19,7 +19,7 @@
       <p>曲线直觉：与均匀球相比，第一极小位置由有效衬度半径决定，中间 $q$ 可出现肩峰或次级振荡。壳很薄且壳衬度接近溶剂时，退化为均匀球；核衬度匹配溶剂时，接近空心壳（囊泡极限）。</p>
       <p>壳厚、核半径与两段衬度高度相关：“厚壳低衬度”与“薄壳高衬度”可给出相近 $I(q)$。有中子 H/D 或 ASAXS 对比点时，简并可显著减弱。</p>
       <h2>物理图像</h2>
-      <p>球对称振幅按半径分段积分，等价于两层均匀球振幅之差（或加权和）。Pedersen（1997）把同心壳写成各界面处 Rayleigh 振幅乘以该层相对溶剂的衬度，再相加。强度为振幅模方，稀溶液下再乘数密度。</p>
+      <p>球对称振幅按半径分段积分，等价于两层均匀球振幅之差（或加权和）。Pedersen（1997）把同心壳写成各界面处 Rayleigh 振幅乘以该层相对溶剂的衬度，再相加。强度为振幅模方，稀溶液下再乘<span data-term="number-density">数密度</span>。</p>
       <p>核壳的“额外”信息出现在中等 $q$：壳干涉改变极小深度与相位。高 $q$ 仍由最锐的密度跳变控制，尖锐界面给出 $q^{-4}$；界面模糊则应改用模糊球或径向剖面。</p>
       <h2>示意图</h2>
       <figure class="figure">
@@ -32,7 +32,7 @@
       </figure>
       <h2>核心公式</h2>
       <h3>出发点</h3>
-      <p>稀释、取向无规的球对称粒子，相干散射振幅是衬度对平面波相位的体积分</p>
+      <p>稀释、取向无规的球对称粒子，相干<span data-term="scattering-amplitude">散射振幅</span>是衬度对平面波相位的体积分</p>
       $$F(\mathbf{q})=\int_V \Delta\rho(\mathbf{r})\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r.$$
       <p>核壳取分段常数：核 $r&lt;R_c$ 为 $\rho_c$，壳 $R_c\le r\le R_s$ 为 $\rho_s$，之外为溶剂 $\rho_{\mathrm{solv}}$。角积分给出球 Bessel 核 $\sin(qr)/(qr)$：</p>
       $$F(q)=4\pi\int_0^{R_s} r^2\bigl[\rho(r)-\rho_{\mathrm{solv}}\bigr]\frac{\sin(qr)}{qr}\,\mathrm{d}r.$$
@@ -41,9 +41,9 @@
       $$F(q)=(\rho_c-\rho_{\mathrm{solv}})V(R_c)\Phi(qR_c)+(\rho_s-\rho_{\mathrm{solv}})\bigl[V(R_s)\Phi(qR_s)-V(R_c)\Phi(qR_c)\bigr].$$
       <p>合并核项系数 $(\rho_c-\rho_{\mathrm{solv}})-(\rho_s-\rho_{\mathrm{solv}})=\rho_c-\rho_s$，得到闭式</p>
       $$A(q)=(\rho_c-\rho_s)V(R_c)\Phi(qR_c)+(\rho_s-\rho_{\mathrm{solv}})V(R_s)\Phi(qR_s).$$
-      <p>$q\to 0$ 时 $\Phi\to 1$。归一化形式因子 $P(q)=|A(q)/A(0)|^2$。稀溶液 $I(q)=n|A(q)|^2+B$，拟合里常把 $n$ 与衬度收成标度。</p>
+      <p>$q\to 0$ 时 $\Phi\to 1$。归一化<span data-term="form-factor">形式因子</span> $P(q)=|A(q)/A(0)|^2$。稀溶液 $I(q)=n|A(q)|^2+B$，拟合里常把 $n$ 与衬度收成标度。</p>
       <h3>低 $q$ 与渐近</h3>
-      <p>Taylor 展开 $\Phi=1-x^2/10+O(x^4)$。超额散射长度 $A(0)=(\rho_c-\rho_s)V(R_c)+(\rho_s-\rho_{\mathrm{solv}})V(R_s)$。回转半径由衬度二阶矩给出</p>
+      <p>Taylor 展开 $\Phi=1-x^2/10+O(x^4)$。超额散射长度 $A(0)=(\rho_c-\rho_s)V(R_c)+(\rho_s-\rho_{\mathrm{solv}})V(R_s)$。<span data-term="radius-of-gyration">回转半径</span>由衬度二阶矩给出</p>
       $$R_g^2=\frac{3}{5}\frac{(\rho_c-\rho_s)R_c^5+(\rho_s-\rho_{\mathrm{solv}})R_s^5}{(\rho_c-\rho_s)R_c^3+(\rho_s-\rho_{\mathrm{solv}})R_s^3}.$$
       <p>$\rho_s=\rho_c$ 时回到均匀球 $R_g=R_s\sqrt{3/5}$。指数形式 $I(q)\simeq I(0)\mathrm{e}^{-q^2 R_g^2/3}$ 在 $qR_g\lesssim 1$ 可用。</p>
       <p>极小由核、壳两项干涉决定，不再满足单纯的 $\tan x=x$。大 $q$ 时每项 $\Phi\sim 3\cos x/x^2$，尖锐界面的强度包络仍是 Porod $q^{-4}$，拍频反映两套半径。</p>
@@ -60,7 +60,7 @@
         </tbody>
       </table>
       <h2>拟合注意</h2>
-      <p>衬度比与壳厚是主简并。优先固定由化学计量或对比实验得到的 $\rho$，只放几何参数；或固定壳厚、拟合衬度。多分散通常加在核半径或外半径上，同样抹平振荡。</p>
+      <p>衬度比与壳厚是主简并。优先固定由化学计量或对比实验得到的 $\rho$，只放几何参数；或固定壳厚、拟合衬度。<span data-term="polydispersity">多分散</span>通常加在核半径或外半径上，同样抹平振荡。</p>
       <p>取向对球核壳仍无关。磁性核壳：核磁 SLD 与壳磁 SLD 可独立于核 SLD（例如磁核加非磁壳、或磁死层），须在拟合注意中分开，而不是只用一套 $\Delta\rho$。</p>
       <h2>相近模型</h2>
       <ul>

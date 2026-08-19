@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kuhn 长度 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>Kuhn 长度</h1>
+      <p class="subtitle-en">Kuhn length</p>
+      <h2>定义</h2>
+      <p><strong>Kuhn 长度</strong> $b$ 是把蠕虫状链（Kratky–Porod）映射为等效自由连接链时的链段长。轮廓长度 $L$、段数 $N=L/b$。对理想蠕虫链，Kuhn 长度与<span data-term="persistence-length">持续长度</span> $\ell_p$ 的关系是 $b=2\ell_p$。</p>
+      <p>散射上：$q\ll 1/R_g$ 看整链<span data-term="radius-of-gyration">回转半径</span>；$1/R_g\ll q\ll 1/b$ 是高斯或排除体积链的 Debye 区；$q\gtrsim 1/b$ 看到局部棒状（$I\sim q^{-1}$）。</p>
+
+      <h2>物理直觉</h2>
+      <p>$\ell_p$ 描述切向关联 $e^{-s/\ell_p}$ 的衰减；$b$ 是「从多远开始可以当成独立链段」的同一物理的另一种尺子。读文献时先看作者用的是 $b$ 还是 $\ell_p$，不要混用数值。</p>
+
+      <h2>常见混淆</h2>
+      <ul>
+        <li>$b$ 不是化学单体长度：一个 Kuhn 段通常含许多单体。</li>
+        <li>排除体积链的 $R_g$ 标度是 $N^{\nu}$（$\nu\approx 0.588$），理想链才是 $N^{1/2}$；Kuhn 定义本身不自动包含排除体积。</li>
+      </ul>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="persistence-length">持续长度</span></li>
+        <li><span data-term="wormlike-chain">蠕虫状链</span></li>
+        <li><span data-term="debye-function">Debye 函数</span></li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../models/cylinder/flexible-cylinder.html">柔性圆柱</a></li>
+        <li><a href="../models/shape-independent/mono-gauss-coil.html">单分散高斯链</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

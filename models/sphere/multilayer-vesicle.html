@@ -26,11 +26,11 @@
       </figure>
       <figure class="figure">
         <img src="../../assets/figures/models/sphere/multilayer-vesicle-iq.png" alt="多层囊泡 I(q) 示意" width="900">
-        <figcaption>多层干涉在中间 $q$ 产生宽峰，并叠加整体囊泡形式因子。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+        <figcaption>多层干涉在中间 $q$ 产生宽峰，并叠加整体囊泡<span data-term="form-factor">形式因子</span>。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
       <h3>出发点</h3>
-      <p>多层囊泡是溶剂与膜沿半径交替的球对称剖面。相干振幅</p>
+      <p>多层囊泡是溶剂与膜沿半径交替的球对称剖面。相干<span data-term="scattering-amplitude">散射振幅</span></p>
       $$F(q)=4\pi\int_0^{R_{\max}} r^2\bigl[\rho(r)-\rho_w\bigr]\frac{\sin(qr)}{qr}\,\mathrm{d}r,$$
       <p>其中 $\rho_w$ 为水层（及囊外溶剂）的 SLD。第 $k$ 层膜占据 $R_{k,{\mathrm{in}}}\le r\le R_{k,{\mathrm{out}}}$，膜 SLD 为 $\rho_m$。</p>
       <h3>推导</h3>
@@ -49,11 +49,11 @@
           <tr><td>膜厚</td><td>$t$</td><td>单层双层厚度</td><td>Å</td><td>20–50 Å</td></tr>
           <tr><td>重复间距</td><td>$d$</td><td>相邻膜中心距</td><td>Å</td><td>50–200 Å</td></tr>
           <tr><td>层数</td><td>$n$</td><td>同心膜的数目</td><td>无量纲</td><td>2–20（寡层）</td></tr>
-          <tr><td>膜 / 水 SLD</td><td>$\rho_m,\rho_w$</td><td>双层与水层散射长度密度</td><td>Å$^{-2}$</td><td>氘代可调</td></tr>
+          <tr><td>膜 / 水 SLD</td><td>$\rho_m,\rho_w$</td><td>双层与水层<span data-term="scattering-length-density">散射长度密度</span></td><td>Å$^{-2}$</td><td>氘代可调</td></tr>
         </tbody>
       </table>
       <h2>拟合注意</h2>
-      <p>$n$ 与峰值锐度相关，但与尺寸多分散、间距涨落（准晶无序）竞争：三者都能把峰抹宽。优先用独立的层间距估计（例如宽角层状峰）固定 $d$，再拟合 $n$ 或无序度。</p>
+      <p>$n$ 与峰值锐度相关，但与尺寸<span data-term="polydispersity">多分散</span>、间距涨落（<span data-term="paracrystal">准晶</span>无序）竞争：三者都能把峰抹宽。优先用独立的层间距估计（例如宽角层状峰）固定 $d$，再拟合 $n$ 或无序度。</p>
       <p>球对称假设要求囊泡近似等轴。巨大多层脂质体若成堆叠片，应改层状模型。磁性脂质体少见；若膜含磁性颗粒，磁 SLD 只存在于颗粒壳，而不是整层均匀磁化。</p>
       <h2>相近模型</h2>
       <ul>

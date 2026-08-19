@@ -75,7 +75,7 @@
         </a>
         <a class="card" href="form-factor.html">
           <strong><span data-term="form-factor">形式因子 $P(q)$</span></strong>
-          单粒子形状与尺寸；与 <span data-term="structure-factor">结构因子 $S(q)$</span> 成对出现。
+          单粒子形状与尺寸；由 <span data-term="scattering-amplitude">散射振幅 $F(\mathbf{q})$</span> 归一化而来，与 <span data-term="structure-factor">结构因子 $S(q)$</span> 成对出现。
         </a>
         <a class="card" href="coherent-scattering.html">
           <strong><span data-term="coherent-scattering">相干散射</span></strong>
@@ -84,6 +84,35 @@
         <a class="card" href="volume-fraction.html">
           <strong><span data-term="volume-fraction">体积分数 $\phi$</span></strong>
           绝对强度下浓度/相含量解释的关键参数。
+        </a>
+      </div>
+
+      <h3>散射积分与液体理论</h3>
+      <p class="muted">模型手册「出发点」里出现、但原先没有独立词条的量。</p>
+      <div class="card-grid">
+        <a class="card" href="scattering-amplitude.html">
+          <strong><span data-term="scattering-amplitude">散射振幅 $F(\mathbf{q})$</span></strong>
+          衬度对平面波相位的体积分；$I\propto\lvert F\rvert^2$，$P=\lvert F/F(0)\rvert^2$。
+        </a>
+        <a class="card" href="born-approximation.html">
+          <strong><span data-term="born-approximation">玻恩近似</span></strong>
+          透射 SAS 的默认出发点；掠入射升级为 <span data-term="dwba">DWBA</span>。
+        </a>
+        <a class="card" href="powder-average.html">
+          <strong><span data-term="powder-average">粉末平均</span></strong>
+          取向无规时 $I(q)$ 只依赖 $q$ 的模长。
+        </a>
+        <a class="card" href="ornstein-zernike.html">
+          <strong><span data-term="ornstein-zernike">OZ 方程</span></strong>
+          液体 $S(q)$ 的骨架；闭包见 PY / MSA。
+        </a>
+        <a class="card" href="pair-correlation.html">
+          <strong><span data-term="pair-correlation">$g(r)$</span></strong>
+          粒间对关联；与粒内 $p(r)$ 不是同一个量。
+        </a>
+        <a class="card" href="correlation-function.html">
+          <strong><span data-term="correlation-function">$\gamma(r)$</span></strong>
+          衬度涨落自相关；Porod / DAB / 两相模型的实空间语言。
         </a>
       </div>
 
@@ -173,7 +202,7 @@
 
       <h2>建议学习顺序</h2>
       <ol>
-        <li>先建立 <a href="scattering-vector-q.html">$q$</a>、<a href="contrast.html">衬度</a>、<a href="form-factor.html">$P(q)$</a> / <a href="structure-factor.html">$S(q)$</a> 四件套。</li>
+        <li>先建立 <a href="scattering-vector-q.html">$q$</a>、<a href="contrast.html">衬度</a>、<a href="scattering-amplitude.html">$F(\mathbf{q})$</a>、<a href="form-factor.html">$P(q)$</a> / <a href="structure-factor.html">$S(q)$</a>。</li>
         <li>再学 <a href="guinier-analysis.html">Guinier</a> 与 <a href="porod-law.html">Porod</a>，能对曲线「分区说话」。</li>
         <li>做实验时补 <a href="data-reduction.html">数据还原</a>、<a href="absolute-intensity.html">绝对强度</a>、<a href="instrument-smearing.html">smearing</a>。</li>
         <li>按样品类型跳到 <a href="saxs.html">SAXS</a> / <a href="sans.html">SANS</a> / <a href="gisaxs.html">GISAXS</a> 等变体词条，再回 <a href="../learn/index.html">学习路径</a> 或 <a href="../topics/index.html">专题手册</a>。</li>

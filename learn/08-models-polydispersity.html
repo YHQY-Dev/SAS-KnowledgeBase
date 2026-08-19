@@ -17,13 +17,13 @@
 
       <h2>导语：何时从「读曲线」升级到「拟合模型」</h2>
       <p>第 06 章用 Guinier / Porod 锚定两端；第 07 章用 <span data-term="indirect-fourier-transform">IFT</span> 得到模型无关的 <span data-term="pair-distance-distribution">$p(r)$</span> 与 <span data-term="maximum-dimension">$D_{\max}$</span>。到这一步，你通常已经知道：整体尺寸、是否紧凑/细长、界面是否尖锐、有没有聚集迹象。若问题仍停在「大概多大、大概什么形貌」，不必急着上显式形状模型。</p>
-      <p>显式模型拟合在下列情形才真正划算：需要报告几何参数（半径、长度、壳厚）、需要尺寸分布宽度、需要把相互作用与形状分开、或需要用同一模型比较一批样品。本章给出 <span data-term="form-factor">形式因子</span> $P(q)$、<span data-term="structure-factor">结构因子</span> $S(q)$、多分散如何抹平振荡与加权 $R_g$，以及 Beaucage / Guinier–Porod 粗模型与详细形状模型的分工；重点是<strong>可辨识性</strong>——参数多并不等于信息多。</p>
+      <p>显式模型拟合在下列情形才真正划算：需要报告几何参数（半径、长度、壳厚）、需要尺寸分布宽度、需要把相互作用与形状分开、或需要用同一模型比较一批样品。本章给出 <span data-term="form-factor">形式因子</span> $P(q)$、<span data-term="structure-factor">结构因子</span> $S(q)$、多分散如何抹平振荡与加权 $R_g$，以及 Beaucage / Guinier–Porod 粗模型与详细形状模型的分工；重点是<strong>可辨识性</strong>——参数多并不等于信息多。$P(q)$ 来自<span data-term="scattering-amplitude">散射振幅</span> $F$ 的模方，推导见 <a href="../glossary/scattering-amplitude.html">散射振幅</a> 与 <a href="../models/index.html">模型手册</a>。</p>
       <p>各解析模型的适用场景、公式与参数表见 <a href="../models/index.html">模型手册</a>（按球、圆柱、层状、结构因子等分类查阅）。</p>
 
       <h2>从模型无关结果到显式拟合</h2>
       <p>稀溶液、近似各向同性取向平均后，常写</p>
       $$I(q) = n\,(\Delta\rho)^2\,V^2\,P(q)\,S(q) + B,$$
-      <p>其中 $n$ 为数密度，$V$ 为粒子体积，$\Delta\rho$ 为<span data-term="contrast">衬度</span>（散射长度密度差），$B$ 为常数本底。稀释极限下 $S(q)\to 1$，形状信息集中在 $P(q)$。</p>
+      <p>其中 $n$ 为<span data-term="number-density">数密度</span>，$V$ 为粒子体积，$\Delta\rho$ 为<span data-term="contrast">衬度</span>（<span data-term="scattering-length-density">散射长度密度</span>差），$B$ 为常数本底，$P=\langle\lvert F/F(0)\rvert^2\rangle$。稀释极限下 $S(q)\to 1$，形状信息集中在 $P(q)$。</p>
       <p>升级判据可以很实用：</p>
       <ul>
         <li><strong>IFT 已稳定、形状假设清晰：</strong> $p(r)$ 呈球状/棒状/核壳特征峰，且 $q$ 覆盖足够宽 → 可试对应解析 $P(q)$。</li>
@@ -78,11 +78,11 @@
       </table>
 
       <h2>结构因子 $S(q)$：稀限与相互作用</h2>
-      <p>粒子间干涉由<span data-term="structure-factor">结构因子</span> $S(q)$ 承担。完全无规、无相互作用的理想气体极限：$S(q)=1$。有斥力时，低 $q$ 的 $S(0)$ 常被压低（渗透压升高、密度涨落受抑）；有吸引力或临界涨落时，低 $q$ 可上翘。硬球、带电胶体常用 Percus–Yevick / RMSA 等闭包给出解析或半解析 $S(q)$。</p>
+      <p>粒子间干涉由<span data-term="structure-factor">结构因子</span> $S(q)$ 承担。完全无规、无相互作用的理想气体极限：$S(q)=1$。有斥力时，低 $q$ 的 $S(0)$ 常被压低（渗透压升高、密度涨落受抑）；有吸引力或临界涨落时，低 $q$ 可上翘。硬球、带电胶体常用 <span data-term="percus-yevick">Percus–Yevick</span> / RMSA 等闭包给出解析或半解析 $S(q)$。</p>
       <p>实践分工：</p>
       <ul>
         <li><strong>先稀释：</strong> 生物 SAS 与许多胶体实验优先做浓度系列，把表观 $I(0)$、$R_g$ 外推到无限稀释，避免把 $S(q)$ 误读成形状。</li>
-        <li><strong>必须浓样时：</strong> 同时拟合 $P(q)\times S(q)$，但体积分数、电荷、尺寸彼此相关——需要独立约束（浓度、ζ 电位、已知形貌）。</li>
+        <li><strong>必须浓样时：</strong> 同时拟合 $P(q)\times S(q)$，但<span data-term="volume-fraction">体积分数</span>、电荷、尺寸彼此相关——需要独立约束（浓度、ζ 电位、已知形貌）。</li>
         <li><strong>峰不一定是「晶格」：</strong> 液体样短程有序即可在某一 $q$ 出现宽峰；$2\pi/q_{\mathrm{peak}}$ 只是特征间距量级，不是严格晶格常数。</li>
       </ul>
       <p>记住：低 $q$ 被 $S(q)$ 压低时，表观 Guinier $R_g$ 与 $I(0)$ 都会偏小；这与聚集导致的低 $q$ 上翘方向相反，勿用同一套「修 $q_{\min}$」故事解释两种现象。带电胶体（胶束、latex）即使稀释仍可能有可测 $S(q)$：Fritz 等（2000）用 CTAB 胶束展示，1%–20% 浓度下必须 <span data-term="gift">GIFT</span> 分离 $P$ 与 $S$；生物蛋白在生理离子强度下通常可稀释至 $S(q)\approx 1$，但高浓度或低盐缓冲仍是例外。</p>
@@ -94,7 +94,7 @@
         <li>分布越宽，$q_{\min}$ 不足时越容易低估大端；同时 Guinier「线性窗口」变窄。</li>
         <li>单分散球的振荡在 $\sigma_R/\langle R\rangle\gtrsim 10\%$–$15\%$ 时即可显著抹平——「没有极小」不能否定球状，只说明可能多分散或分辨率/狭缝 smearing 不足。</li>
       </ul>
-      <p>常用分布：Schulz–Zimm（解析便利）、对数正态（材料学常见）、高斯（窄分布近似）。拟合时报告 $\langle R\rangle$ 的哪一种矩、以及多分散度定义（$\mathrm{PD}=\sigma/\langle R\rangle$ 或 $z$ 参数），并与电镜/DLS 的矩定义对照，否则「和文献差 20%」可能只是加权方式不同。Beaucage（2004）从 unified 拟合的 $B,G,R_g$ 直接提取 $\langle R^2\rangle,\langle R^6\rangle,\langle R^8\rangle$ 等矩，并可与 BET 比表面积矩对照——这是软物质纳米粉体常用的内部一致性检验。</p>
+      <p>常用分布：<span data-term="schultz-zimm">Schulz–Zimm</span>（解析便利）、对数正态（材料学常见）、高斯（窄分布近似）。拟合时报告 $\langle R\rangle$ 的哪一种矩、以及多分散度定义（$\mathrm{PD}=\sigma/\langle R\rangle$ 或 $z$ 参数），并与电镜/DLS 的矩定义对照，否则「和文献差 20%」可能只是加权方式不同。Beaucage（2004）从 unified 拟合的 $B,G,R_g$ 直接提取 $\langle R^2\rangle,\langle R^6\rangle,\langle R^8\rangle$ 等矩，并可与 BET 比表面积矩对照——这是软物质纳米粉体常用的内部一致性检验。</p>
       <p>从 IFT 到显式分布的分工：第 07 章 <span data-term="gnom">GNOM</span> 亦可给出尺寸分布，但多分散宽时 <span data-term="maximum-dimension">$D_{\max}$</span> 与 $\alpha$ 不稳；学习路径上先用 $p(r)$ 判断「单峰还是宽化」，再在第 08 章用 Schulz 球或 Beaucage PDI 量化宽度。Weyerich 等（1999）的 <span data-term="gift">GIFT</span> 多分散扩展适合浓相互作用 + 宽分布并存，但非线性强，不建议作为入门首选。</p>
       <p>仪器 <span data-term="instrument-smearing">smearing</span>（狭缝准直、有限 $\Delta\lambda$、探测器像素）会进一步抹平尖锐特征。若数据来自狭缝几何，应 <span data-term="desmearing">desmear</span> 或在模型中卷积分辨率函数（见 Pedersen 等仪器学讨论）；否则<span data-term="polydispersity">多分散度</span>会被高估。Grillo（2008）在软物质 <span data-term="sans">SANS</span> 教程中系统讨论了分辨率与多分散的卷积效应——二者在数据上同为「振荡变钝」，必须用几何信息区分。</p>
 
@@ -139,7 +139,7 @@
           <tr><td>初级粒子 $R_g$、PDI、层级数</td><td>是（宽 $q$，含 <span data-term="usaxs">USAXS</span> 更佳）</td><td>需第一极小相位定 $R$</td></tr>
           <tr><td>分形聚集体 + 初级球</td><td>是（多级 unified）</td><td>需单球壳厚/核壳化学</td></tr>
           <tr><td>强 $S(q)$、带电浓胶体</td><td>否（不分离 $P$、$S$）</td><td>$P(q)\times S(q)$ 或稀释系列</td></tr>
-          <tr><td>棒/盘明显各向异性</td><td>仅粗 $R_g$、幂律指数</td><td>柱/盘 $P(q)$ + 取向或粉末平均</td></tr>
+          <tr><td>棒/盘明显各向异性</td><td>仅粗 $R_g$、幂律指数</td><td>柱/盘 $P(q)$ + 取向或<span data-term="powder-average">粉末平均</span></td></tr>
           <tr><td>发表级几何（壳厚 Å 级）</td><td>否</td><td>核壳 $P(q)$ + 对比数据</td></tr>
         </tbody>
       </table>

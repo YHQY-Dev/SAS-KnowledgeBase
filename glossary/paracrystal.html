@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>准晶 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>准晶</h1>
+      <p class="subtitle-en">paracrystal</p>
+      <h2>定义</h2>
+      <p>Hosemann <strong>准晶</strong>（paracrystal）让相邻点阵间距成为随机变量：误差沿晶列累积，第 $m$ 阶反射的宽度 $\propto m^2$。高阶峰迅速消失，只剩低阶宽峰。一维层堆、以及 SC / BCC / FCC 胶体晶体都可以写成准晶格子乘单粒子 <span data-term="form-factor">形式因子</span>。</p>
+      <p>无序程度常用无量纲 $g=\sigma_d/\bar{d}$（间距相对标准偏差）。$g\to 0$ 回到理想晶体；$g$ 过大则只剩液体样相关峰。</p>
+
+      <h2>物理直觉</h2>
+      <p>与热起伏的 <span data-term="caille">Caillé</span> 不同：准晶是静态几何无序（堆积缺陷、多分散占位），峰形接近变宽的 Bragg，而不是膜柔性的幂律翼。选哪一种要看样品：柔软溶胀膜 → Caillé；固体胶体晶体、硬层堆 → 准晶更常见。</p>
+
+      <h2>常见混淆</h2>
+      <ul>
+        <li>名称里的「准」不是准晶材料（quasicrystal，五次对称）。这里是 paracrystal。</li>
+        <li>液体 <span data-term="structure-factor">$S(q)$</span>（PY / MSA）没有点阵；准晶假定仍有可编号的格点。</li>
+      </ul>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="caille">Caillé 理论</span></li>
+        <li><span data-term="structure-factor">结构因子</span></li>
+        <li><span data-term="polydispersity">多分散</span></li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../models/paracrystal/index.html">准晶分类</a></li>
+        <li><a href="../models/lamellae/lamellar-stack-paracrystal.html">层状准晶堆叠</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>界面厚度 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>界面厚度</h1>
+      <p class="subtitle-en">interfacial thickness</p>
+      <h2>定义</h2>
+      <p><strong>界面厚度</strong>描述 $\Delta\rho$ 从一相变到另一相所跨越的距离。理想两相是阶跃，<span data-term="porod-law">Porod</span> 为 $q^{-4}$。有限厚度（误差函数、tanh、高斯卷积）使 <span data-term="correlation-function">$\gamma(r)$</span> 的小 $r$ 展开改变，高强度区多乘一个衰减因子。常见约定：振幅乘 $e^{-q^2\sigma^2/2}$，强度乘 $e^{-q^2\sigma^2}$（Debye–Waller 式界面因子）。</p>
+
+      <h2>物理直觉</h2>
+      <p>$\sigma$ 越大，越看不清锐利边界，高 $q$ 振荡被抹掉。低 $q$ / Guinier 几乎不动，因为整体尺寸仍由外轮廓决定。核壳若壳厚与 $\sigma$ 同量级，二者高度相关，需要对比变分或固定其一。</p>
+
+      <h2>常见混淆</h2>
+      <ul>
+        <li>界面厚度 ≠ <span data-term="polydispersity">尺寸多分散</span>：多分散改变极小位置的叠加；界面因子主要压高 $q$ 振幅。</li>
+        <li>仪器 <span data-term="instrument-smearing">smearing</span> 也会钝化振荡，须用分辨率函数区分。</li>
+      </ul>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="porod-law">Porod 定律</span></li>
+        <li><span data-term="two-phase-model">两相模型</span></li>
+        <li><span data-term="polydispersity">多分散</span></li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../models/sphere/fuzzy-sphere.html">模糊球</a></li>
+        <li><a href="../models/shape-independent/porod.html">Porod</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

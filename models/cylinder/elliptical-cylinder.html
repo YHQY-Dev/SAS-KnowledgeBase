@@ -18,8 +18,8 @@
       <p>截面为椭圆（半轴 $a$、$b$）、沿轴长度为 $L$ 的直柱。适用于压扁的纳米棒、带状胶束、以及圆截面圆柱无法同时拟合 Bessel 极小位置与深度的刚性长颗粒。</p>
       <p>细长时中间区仍是 $q^{-1}$；轴比偏离 1 会抹平截面振荡。若颗粒还会弯曲，应改用椭圆截面柔性圆柱。</p>
       <h2>物理图像</h2>
-      <p>Fournet 圆柱振幅中的 $qR\sin\alpha$ 换成 $q R_{\mathrm{eff}}(\psi)\sin\alpha$，再对截面方位 $\psi$ 与极角 $\alpha$ 平均。体积 $V=\pi a b L$。回转半径 $R_g^2=(a^2+b^2)/4+L^2/12$。</p>
-      <p>二维图案中，截面长轴与短轴给出不同的赤道弧调制；粉末平均只留下轴比阻尼。</p>
+      <p>Fournet 圆柱振幅中的 $qR\sin\alpha$ 换成 $q R_{\mathrm{eff}}(\psi)\sin\alpha$，再对截面方位 $\psi$ 与极角 $\alpha$ 平均。体积 $V=\pi a b L$。<span data-term="radius-of-gyration">回转半径</span> $R_g^2=(a^2+b^2)/4+L^2/12$。</p>
+      <p>二维图案中，截面长轴与短轴给出不同的赤道弧调制；<span data-term="powder-average">粉末平均</span>只留下轴比阻尼。</p>
       <h2>示意图</h2>
       <figure class="figure">
         <img src="../../assets/figures/models/cylinder/elliptical-cylinder-geometry.png" alt="椭圆截面圆柱几何" width="900">
@@ -31,7 +31,7 @@
       </figure>
       <h2>核心公式</h2>
       <h3>出发点</h3>
-      <p>稀释、取向无规的均匀粒子，相干散射振幅是衬度对平面波相位的体积分</p>
+      <p>稀释、取向无规的均匀粒子，相干<span data-term="scattering-amplitude">散射振幅</span>是衬度对平面波相位的体积分</p>
       $$F(\mathbf{q})=\int_V \Delta\rho(\mathbf{r})\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r.$$
       <p>椭圆截面柱在 $|z|\le L/2$、$(x/a)^2+(y/b)^2\le 1$ 内 $\Delta\rho$ 为常数。轴向积分仍给出 $\mathrm{sinc}$；截面不再圆对称，须引入截面长轴相对 $\mathbf{q}_\perp$ 的方位角 $\psi$。</p>
       <h3>推导</h3>
@@ -57,7 +57,7 @@
         </tbody>
       </table>
       <h2>拟合注意</h2>
-      <p>轴比与半径多分散都钝化高 $q$ 振荡。一维数据上两者几乎不可分；有二维弧或电镜截面时再放开 $a/b$。</p>
+      <p>轴比与半径<span data-term="polydispersity">多分散</span>都钝化高 $q$ 振荡。一维数据上两者几乎不可分；有二维弧或电镜截面时再放开 $a/b$。</p>
       <p>长度多分散改 $q^{-1}$ 区，与截面轴比正交，通常可以同时放一个长度宽度和一个截面参数。取向 $\theta,\phi$：二维还需要截面滚转角。</p>
       <p>磁性：椭圆截面的磁退磁因子各向异性，磁 SLD 与核 SLD 仍须分通道；不要把磁各向异性误读成几何轴比。</p>
       <h2>相近模型</h2>

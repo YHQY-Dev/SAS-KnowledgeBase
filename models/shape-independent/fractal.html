@@ -15,10 +15,10 @@
       <h1>分形</h1>
       <p class="subtitle-en">fractal</p>
       <h2>适用场景</h2>
-      <p>聚集体由近乎相同的建造块按标度不变的方式堆起来时，用 Teixeira <span data-term="fractal-scattering">分形散射</span>。低 $q$ 由整体截断 $\xi$ 给出 Guinier 型饱和，中间 $q^{-D}$，高 $q$ 回到建造块形式因子。</p>
+      <p>聚集体由近乎相同的建造块按标度不变的方式堆起来时，用 Teixeira <span data-term="fractal-scattering">分形散射</span>。低 $q$ 由整体截断 $\xi$ 给出 Guinier 型饱和，中间 $q^{-D}$，高 $q$ 回到建造块<span data-term="form-factor">形式因子</span>。</p>
       <p>只关心中间斜率时可用质量分形或纯幂律。界面粗糙主导则用表面分形。核与分形壳衬度不同时用核壳分形。</p>
       <h2>物理图像</h2>
-      <p>结构因子把分形维数 $D$、建造块半径 $r_0$ 与指数截断 $\xi$ 组合起来。取向平均的 Teixeira $S(q)$ 在 $1/\xi\ll q\ll 1/r_0$ 给出 $q^{-D}$。</p>
+      <p><span data-term="structure-factor">结构因子</span>把分形维数 $D$、建造块半径 $r_0$ 与指数截断 $\xi$ 组合起来。<span data-term="powder-average">取向平均</span>的 Teixeira $S(q)$ 在 $1/\xi\ll q\ll 1/r_0$ 给出 $q^{-D}$。</p>
       <p>建造块仍可用球形式因子。磁性若只在建造块核上，高 $q$ 磁形式因子与核通道不同，但中间指数可以相同。</p>
       <h2>示意图</h2>
       <figure class="figure">
@@ -29,7 +29,7 @@
       <h3>出发点</h3>
       <p>质量分形聚集体的成对密度在建造块半径 $r_0$ 与整体截断 $\xi$ 之间服从 $g(r)\propto r^{D-3}$。结构因子是这个相关的三维 Fourier 变换，再乘建造块形式因子 $P(q)$。Teixeira 给相关加上指数截断 $\mathrm{e}^{-r/\xi}$，以便积分闭合。</p>
       <h3>推导</h3>
-      <p>取对关联（$r>r_0$）</p>
+      <p>取<span data-term="pair-correlation">对关联</span>（$r>r_0$）</p>
       $$g(r)=\frac{D}{4\pi r_0^D}\,r^{D-3}\,\mathrm{e}^{-r/\xi}.$$
       <p>$S(q)=1+4\pi n\int r^2 g(r)\,(\sin(qr)/(qr))\,\mathrm{d}r$。幂律 $r^{D-3}$ 的变换给出 $q^{-D}$；指数截断把积分写成 Gamma 函数与复数 $(1-iq\xi)^{1-D}$。取虚部后得到 Teixeira 式</p>
       $$S(q)=1+\frac{D\Gamma(D-1)\sin[(D-1)\arctan(q\xi)]}{(q r_0)^D}\,\bigl(1+(q\xi)^{-2}\bigr)^{(1-D)/2}.$$
@@ -48,7 +48,7 @@
       </table>
       <h2>拟合注意</h2>
       <p>取向：各向同性聚集体不必引入 $\theta,\phi$。若聚集体被拉伸成各向异性分形，有效 $D$ 随方向变。</p>
-      <p>多分散建造块抹平高 $q$ 振荡，并改变 $r_0$。磁性：磁 $D$ 可以不同于核 $D$，若只有部分颗粒带磁矩。</p>
+      <p><span data-term="polydispersity">多分散</span>建造块抹平高 $q$ 振荡，并改变 $r_0$。磁性：磁 $D$ 可以不同于核 $D$，若只有部分颗粒带磁矩。</p>
       <p>可辨识性：$D$、$\xi$、$r_0$ 需要跨越三个区的窗口。只拟合中间直线时本模型退化为幂律，不要报告 $\xi$。</p>
       <h2>相近模型</h2>
       <ul>

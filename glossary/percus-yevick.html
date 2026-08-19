@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Percus–Yevick 闭包 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>Percus–Yevick 闭包</h1>
+      <p class="subtitle-en">Percus–Yevick closure</p>
+      <h2>定义</h2>
+      <p><strong>Percus–Yevick（PY）闭包</strong>把直接相关与<span data-term="pair-correlation">对关联</span>、势函数连起来：</p>
+      $$c(r)=\bigl[1-e^{\beta u(r)}\bigr] g(r).$$
+      <p>对硬球势（$r&lt;\sigma$ 时 $u=\infty$，核外 $u=0$），它给出核内 $g=0$、核外 $c=0$。代入 <span data-term="ornstein-zernike">OZ</span> 后，$c(r)$ 在核内是三次多项式（Wertheim–Thiele），傅里叶变换有闭式，即胶体散射里常用的 Ashcroft–Lekner 硬球 $S(q)$。</p>
+
+      <h2>物理直觉</h2>
+      <p>PY 对短程排斥很准，对长程库仑并不好——带电胶体应改用 <span data-term="mean-spherical-approximation">MSA</span>（Hayter–Penfold）。PY 硬球只有一个无量纲密度 $\eta$，所以「一个体积分数就能解释低 $q$ 压低和第一峰」时，它是最省参数的选择。</p>
+
+      <h2>常见混淆</h2>
+      <ul>
+        <li>PY 是闭包名称，不是「硬球」的同义词：硬球还可以用其他闭包；PY 也可以形式地写给别的势，只是硬球才有著名解析解。</li>
+        <li>二元混合物要用 Ashcroft–Langreth 的部分结构因子 $S_{ij}$，不是把一元 PY 平均两次。</li>
+      </ul>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="ornstein-zernike">Ornstein–Zernike 方程</span></li>
+        <li><span data-term="structure-factor">结构因子</span></li>
+        <li><span data-term="volume-fraction">体积分数</span></li>
+        <li><span data-term="mean-spherical-approximation">平均球近似</span></li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../models/structure-factor/hard-sphere.html">硬球结构因子</a></li>
+        <li><a href="../models/sphere/binary-hard-sphere.html">二元硬球</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

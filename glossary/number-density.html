@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>数密度 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>数密度</h1>
+      <p class="subtitle-en">number density</p>
+      <h2>定义</h2>
+      <p><strong>数密度</strong> $n$ 是单位体积内散射体的个数。稀释、互不相关时</p>
+      $$I(q)=n\,\lvert F(q)\rvert^2+B=n(\Delta\rho)^2 V^2 P(q)+B.$$
+      <p>与<span data-term="volume-fraction">体积分数</span>的关系是 $\phi=nV$（单分散）。绝对强度标定后，若已知 <span data-term="contrast">$\Delta\rho$</span> 与 $V$，可由 <span data-term="forward-scattering">$I(0)$</span> 反推 $n$ 或分子量。</p>
+
+      <h2>物理直觉</h2>
+      <p>$n$ 只把曲线整体抬升或压低，不改变 $P(q)$ 的形状。拟合里常把 $n(\Delta\rho)^2 V^2$ 收成无量纲「scale」：相对单位下 $n$ 与衬度平方不可分。</p>
+      <p>液体理论里的 $n$ 还出现在 <span data-term="ornstein-zernike">Ornstein–Zernike</span> 方程和 $S(q)=[1-n\hat{c}(q)]^{-1}$ 中，那里它是相互作用流体的密度，不一定等于「拟合标度里的那个 $n$」。硬球常用体积分数 $\eta=n\pi\sigma^3/6$ 代替。</p>
+
+      <h2>常见混淆</h2>
+      <ul>
+        <li>质量浓度 $c$（mg/mL）不是 $n$：还须分子量或比体积才能换算。</li>
+        <li>浓溶液 $I\neq n\lvert F\rvert^2$，还要乘 <span data-term="structure-factor">$S(q)$</span>；把 $S(0)&lt;1$ 的压低当成 $n$ 变小会系统偏差。</li>
+      </ul>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="volume-fraction">体积分数</span> $\phi$</li>
+        <li><span data-term="scattering-amplitude">散射振幅</span></li>
+        <li><span data-term="absolute-intensity">绝对强度</span></li>
+        <li><span data-term="forward-scattering">前向散射</span> $I(0)$</li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../learn/02-scattering-basics.html">学习路径 02 · 散射基础</a></li>
+        <li><a href="../learn/05-absolute-calibration.html">学习路径 05 · 绝对标定</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

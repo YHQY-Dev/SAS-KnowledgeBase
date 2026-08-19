@@ -95,7 +95,7 @@
       <h2>物理图像：衬度、相干散射与统计平均</h2>
       <p>弹性相干散射的强度，本质上是样品内<span data-term="scattering-length-density">散射长度密度</span>起伏的傅里叶变换的模方。Jeffries 2021 将背景扣除后的信号写为过剩密度 $\Delta\rho(\mathbf{r})=\rho(\mathbf{r})-\rho_s$ 的傅里叶变换模方；相位在探测中丢失，故只能读强度。对稀释、各向同性体系，背景扣除后的强度常写为</p>
       $$ I(q) = n\,(\Delta\rho)^2 V^2 P(q)\, S(q) $$
-      <p>其中 $n$ 为数密度，$V$ 为单粒子体积，$\Delta\rho$ 为粒子与溶剂的<span data-term="contrast">衬度</span>（散射长度密度差），$P(q)$ 为<span data-term="form-factor">形式因子</span>（单粒子形状与尺寸），$S(q)$ 为<span data-term="structure-factor">结构因子</span>（粒子间关联）。稀溶液中常近似 $S(q)\approx 1$，此时曲线几乎只反映 $P(q)$。</p>
+      <p>其中 $n$ 为<span data-term="number-density">数密度</span>，$V$ 为单粒子体积，$\Delta\rho$ 为粒子与溶剂的<span data-term="contrast">衬度</span>（散射长度密度差），$P(q)$ 为<span data-term="form-factor">形式因子</span>（单粒子形状与尺寸），$S(q)$ 为<span data-term="structure-factor">结构因子</span>（粒子间关联）。稀溶液中常近似 $S(q)\approx 1$，此时曲线几乎只反映 $P(q)$。</p>
       <p><strong>直觉：</strong> 可把每个散射中心视为向外辐射的球面波；$\mathbf{q}$ 固定时，波程差由散射体内部距离决定，相干叠加产生干涉条纹。$P(q)$ 编码「单个物体内部」的距离分布；$S(q)$ 编码「物体与物体之间」的距离分布。晶体学中的 structure factor 指倒易格点上的衍射振幅——与 SAS 的 $S(q)$ <strong>同名不同物</strong>，读文献时须看上下文。</p>
       <p>实验上测到的是<strong>大量散射体</strong>的统计平均（球对称样品为方位角平均后的 $I(q)$）。这意味着：</p>
       <ul>
@@ -203,7 +203,7 @@
       <p><strong>信息层次（生物 SAS）：</strong> 由浅入深通常为：(1) $R_g$、$I(0)$/分子量；(2) $p(r)$ 与 <span data-term="maximum-dimension">$D_{\max}$</span>；(3) 低分辨 ab initio 包络；(4) 与晶体/NMR/EM 联合约束的全原子模型。Boldon 等（2015）将 Guinier、Fourier（IFT）、Porod 三区对应上述不同信息密度——并非每条曲线都能走完四层。</p>
 
       <h2>相对强度与<span data-term="absolute-intensity">绝对强度</span></h2>
-      <p>许多实验室筛选实验只比较同一样品、同一光路下的相对 $I(q)$ 形状——足以看折叠、寡聚趋势。但分子量、孔隙比表面积、体积分数等<strong>定量</strong>量须把数据标到绝对截面 $I(q)$（cm$^{-1}$），并已知 $\Delta\rho$、浓度与束流监测。Jeffries 2021 指出，绝对标定后 $I(0)$ 直接与散射截面、原子组成挂钩；Svergun 等（2003）给出由 $I(0)$ 估算溶质分子量的标准流程（<span data-term="glassy-carbon">玻璃碳</span>、水、参考蛋白等，详见第 05 章）。</p>
+      <p>许多实验室筛选实验只比较同一样品、同一光路下的相对 $I(q)$ 形状——足以看折叠、寡聚趋势。但分子量、孔隙比表面积、<span data-term="volume-fraction">体积分数</span>等<strong>定量</strong>量须把数据标到绝对截面 $I(q)$（cm$^{-1}$），并已知 $\Delta\rho$、浓度与束流监测。Jeffries 2021 指出，绝对标定后 $I(0)$ 直接与散射截面、原子组成挂钩；Svergun 等（2003）给出由 $I(0)$ 估算溶质分子量的标准流程（<span data-term="glassy-carbon">玻璃碳</span>、水、参考蛋白等，详见第 05 章）。</p>
       <table>
         <thead>
           <tr><th>分析目标</th><th>是否需绝对强度</th><th>备注</th></tr>
@@ -227,7 +227,7 @@
         <tbody>
           <tr><td>信号极弱或平坦</td><td><span data-term="contrast-matching">衬度匹配</span>、浓度过低、样品未进入束斑</td><td>算 $\Delta\rho$；提高浓度；检查束线对齐与样品位置</td></tr>
           <tr><td>低 $q$ 异常抬高</td><td>浓溶液 $S(q)$、灰尘聚集体、束阻溢出</td><td>浓度系列外推；过滤样品；检查直射束遮挡</td></tr>
-          <tr><td>Guinier 外推 $R_g$ 不合理</td><td>$q_{\min}$ 太高、多分散、形状非紧凑</td><td>核对 $q_{\min} R_g \lesssim 1$；IFT 得 $p(r)$；SEC 分馏</td></tr>
+          <tr><td>Guinier 外推 $R_g$ 不合理</td><td>$q_{\min}$ 太高、<span data-term="polydispersity">多分散</span>、形状非紧凑</td><td>核对 $q_{\min} R_g \lesssim 1$；IFT 得 $p(r)$；SEC 分馏</td></tr>
           <tr><td>高 $q$ 不遵循 $q^{-4}$</td><td>界面模糊、柔性链、未扣背景</td><td>检查背景扣除；勿强行做 Porod；考虑分形或聚合物模型</td></tr>
           <tr><td>重复测量曲线漂移</td><td><span data-term="radiation-damage">辐射损伤</span>、沉淀、温度变化</td><td>分次短曝光对比；流动池；温控</td></tr>
           <tr><td>与晶体结构 $R_g$ 差 &gt;10%</td><td>溶液构象不同、寡聚、结合配体</td><td>非错误——正是 SAS 的价值；做复合物模型拟合</td></tr>

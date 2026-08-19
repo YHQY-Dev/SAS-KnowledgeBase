@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>对关联函数 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>对关联函数</h1>
+      <p class="subtitle-en">pair correlation function</p>
+      <h2>定义</h2>
+      <p><strong>对关联函数</strong>（径向分布函数）$g(r)$ 给出：以一个粒子为原点，距它 $r$ 处出现另一个粒子中心的概率密度，相对理想气体的倍数。理想气 $g=1$；硬核内 $g=0$。全相关 $h=g-1$ 的傅里叶变换进入 <span data-term="structure-factor">结构因子</span></p>
+      $$S(q)=1+n\int [g(r)-1]\,e^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}V.$$
+      <p>这与单粒子距离分布 <span data-term="pair-distance-distribution">$p(r)$</span> 不是同一个量：$p(r)$ 描述<strong>一个</strong>粒子内部的点–点距离，$g(r)$ 描述<strong>不同</strong>粒子中心之间的距离。</p>
+
+      <h2>物理直觉</h2>
+      <p>硬球流体的 $g(r)$ 在接触 $r=\sigma$ 有一个峰，随后振荡并回到 1，对应壳层堆积。峰越锐，$S(q)$ 的第一相关峰越强。IFT / GIFT 一类方法有时从实验 $I(q)$ 同时抽取粒内 $p(r)$ 与有效 $g(r)$，前提是相互作用不太复杂。</p>
+
+      <h2>常见混淆</h2>
+      <ul>
+        <li>$g(r)$ ≠ $p(r)$：一个是粒间，一个是粒内。</li>
+        <li>$S(q)$ 的峰位 $\sim 2\pi/d$ 对应 $g(r)$ 的主周期 $d$，不是<span data-term="form-factor">形式因子</span>极小。</li>
+      </ul>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="ornstein-zernike">Ornstein–Zernike 方程</span></li>
+        <li><span data-term="structure-factor">结构因子</span></li>
+        <li><span data-term="pair-distance-distribution">距离分布</span> $p(r)$</li>
+        <li><span data-term="number-density">数密度</span></li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../models/structure-factor/hard-sphere.html">硬球结构因子</a></li>
+        <li><a href="../learn/08-models-polydispersity.html">学习路径 08 · 模型与多分散</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

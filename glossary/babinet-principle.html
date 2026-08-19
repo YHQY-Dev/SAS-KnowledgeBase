@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>巴比涅原理 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>巴比涅原理</h1>
+      <p class="subtitle-en">Babinet's principle</p>
+      <h2>定义</h2>
+      <p><strong>巴比涅原理</strong>（光学互补原理在 SAS 中的版本）：把 $\Delta\rho\to -\Delta\rho$ 只改变 <span data-term="scattering-amplitude">振幅</span>的符号，强度 $\lvert F\rvert^2$ 不变。因此「溶剂中的均匀颗粒」与「同样形状的孔洞（颗粒 SLD 换成溶剂、孔内为原颗粒）」给出相同 $I(q)$。</p>
+      <p>更一般地，整体加上常<span data-term="number-density">数密度</span>不改变 $q\neq 0$ 的散射。实验只对衬度差敏感。</p>
+
+      <h2>物理直觉</h2>
+      <p>这就是为什么空洞、气泡、多孔材料可以用与实心颗粒相同的形式因子来拟合——只是把 $\Delta\rho$ 理解成孔相对基体的差。核壳、囊泡没有整体变号那么简单：内部还有第二段衬度，正负壳层会在极小位置上表现出来，不能只靠巴比涅把核壳说成「实心球」。 </p>
+
+      <h2>常见混淆</h2>
+      <ul>
+        <li>巴比涅不意味着「正衬度与负衬度的核壳曲线一样」：分层剖面变号后，$F(q)$ 的零点一般会动。</li>
+        <li>吸收、多重散射、磁散射通道不满足这条简单互补。</li>
+      </ul>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="contrast">衬度</span></li>
+        <li><span data-term="scattering-amplitude">散射振幅</span></li>
+        <li><span data-term="form-factor">形式因子</span></li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../learn/02-scattering-basics.html">学习路径 02 · 散射基础</a></li>
+        <li><a href="../models/sphere/vesicle.html">囊泡</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

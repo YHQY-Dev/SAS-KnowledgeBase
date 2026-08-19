@@ -18,7 +18,7 @@
       <p>树莓粒子由较大核球与吸附或化学锚定在表面的许多小球组成，形如覆盆子。对象包括 Pickering 乳液表面的纳米颗粒层、核表面装饰的金/硅球簇，以及“大胶体 + 小卫星”的层级组装（Larson-Smith 与 Pozzo 及相关散射模型）。</p>
       <p>曲线上常同时看到核半径决定的低 $q$ 振荡与卫星半径决定的高 $q$ 特征；卫星之间的表面相关会在中间 $q$ 给出额外调制。若卫星已熔成连续壳，应改核壳球。</p>
       <h2>物理图像</h2>
-      <p>总振幅 ≈ 核振幅 + 各卫星振幅乘以相位因子 $\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}_j}$。取向与卫星位置平均后，交叉项含 $\mathrm{sinc}(qL)$，$L=R_{\mathrm{core}}+R_{\mathrm{sat}}$，卫星–卫星项含 $[\mathrm{sinc}(qL)]^2$ 或表面液体样结构因子。强度因此不是两种球 $P(q)$ 的简单相加。</p>
+      <p>总振幅 ≈ 核振幅 + 各卫星振幅乘以相位因子 $\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}_j}$。取向与卫星位置平均后，交叉项含 $\mathrm{sinc}(qL)$，$L=R_{\mathrm{core}}+R_{\mathrm{sat}}$，卫星–卫星项含 $[\mathrm{sinc}(qL)]^2$ 或表面液体样<span data-term="structure-factor">结构因子</span>。强度因此不是两种球 $P(q)$ 的简单相加。</p>
       <h2>示意图</h2>
       <figure class="figure">
         <img src="../../assets/figures/models/sphere/raspberry-geometry.png" alt="树莓粒子：大核与表面卫星球" width="900">
@@ -26,7 +26,7 @@
       </figure>
       <figure class="figure">
         <img src="../../assets/figures/models/sphere/raspberry-iq.png" alt="树莓粒子 I(q) 示意" width="900">
-        <figcaption>核形式因子与卫星及交叉项叠加后的 $I(q)$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+        <figcaption>核<span data-term="form-factor">形式因子</span>与卫星及交叉项叠加后的 $I(q)$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
       <h3>出发点</h3>
@@ -38,7 +38,7 @@
       $$I(q)\propto \bigl|F_c\bigr|^2 + N\bigl|F_s\bigr|^2 + 2N F_c F_s\,\frac{\sin(qL)}{qL} + N(N-1)\bigl|F_s\bigr|^2\left[\frac{\sin(qL)}{qL}\right]^2,$$
       <p>其中 $L=R_c+R_s$。表面拥挤时应把最后一项中的 $[\mathrm{sinc}(qL)]^2$ 换成球面二维液体结构因子 $S_{\mathrm{sat}}(q)$。强度因此不是两种球 $P(q)$ 的简单相加。</p>
       <h3>低 $q$ 与渐近</h3>
-      <p>$q\to 0$ 时 $\Phi\to 1$、$\mathrm{sinc}\to 1$，$I(0)\propto(F_c(0)+N F_s(0))^2$。回转半径把核的 $3R_c^2/5$ 与质量为 $N$ 的卫星壳（半径 $L$）合成；$N$ 大时 $R_g$ 明显大于裸核。</p>
+      <p>$q\to 0$ 时 $\Phi\to 1$、$\mathrm{sinc}\to 1$，$I(0)\propto(F_c(0)+N F_s(0))^2$。<span data-term="radius-of-gyration">回转半径</span>把核的 $3R_c^2/5$ 与质量为 $N$ 的卫星壳（半径 $L$）合成；$N$ 大时 $R_g$ 明显大于裸核。</p>
       <p>低 $q$ 振荡由核 $\Phi(qR_c)$ 主导，第一极小约在 $q\approx 4.49/R_c$，但被交叉项填浅。高 $q$ 卫星 $\Phi(qR_s)$ 显现，零点约 $4.49/R_s$。大 $q$ 包络是两套尖锐界面的 Porod $q^{-4}$；中间 $q$ 的 $\mathrm{sinc}(qL)$ 给出核–卫星干涉调制。</p>
       <h2>参数表</h2>
       <table>
@@ -51,7 +51,7 @@
         </tbody>
       </table>
       <h2>拟合注意</h2>
-      <p>$N$ 与 $\Delta\rho_s$ 强相关，覆盖率与卫星半径亦相关。电镜给出 $N$ 与 $R_s$ 的先验极有价值。核多分散会抹低 $q$ 振荡，卫星多分散影响高 $q$。</p>
+      <p>$N$ 与 $\Delta\rho_s$ 强相关，覆盖率与卫星半径亦相关。电镜给出 $N$ 与 $R_s$ 的先验极有价值。核<span data-term="polydispersity">多分散</span>会抹低 $q$ 振荡，卫星多分散影响高 $q$。</p>
       <p>取向：若卫星随机布满球面，整体仍近各向同性。磁性卫星或磁核会引入磁–核交叉项，须用磁 SLD 而不是把 $N$ 当成磁矩个数。</p>
       <h2>相近模型</h2>
       <ul>

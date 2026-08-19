@@ -15,11 +15,11 @@
       <h1>聚合物排除体积</h1>
       <p class="subtitle-en">polymer excluded volume</p>
       <h2>适用场景</h2>
-      <p>良溶剂中自避链的 Flory 指数 $\nu\approx 0.588$，中间区 $I\sim q^{-1/\nu}\approx q^{-1.70}$，而不是理想链的 $q^{-2}$。Pedersen 与 Schurtenberger 给出含<span data-term="persistence-length">持久长度</span>的蠕虫链数值/插值形式因子。</p>
+      <p>良溶剂中自避链的 Flory 指数 $\nu\approx 0.588$，中间区 $I\sim q^{-1/\nu}\approx q^{-1.70}$，而不是理想链的 $q^{-2}$。Pedersen 与 Schurtenberger 给出含<span data-term="persistence-length">持久长度</span>的蠕虫链数值/插值<span data-term="form-factor">形式因子</span>。</p>
       <p>$\theta$ 溶剂回到 Debye。刚性足够高、已看见 $q^{-1}$ 时，用柔性圆柱往往更直接。</p>
       <h2>物理图像</h2>
-      <p>排除体积把链段对关联改成 $g(r)\sim r^{1/\nu-3}$（在 $b\ll r\ll R_g$）。短于持久长度 $b$ 的尺度回到局域棒 $q^{-1}$。整体仍有 Guinier $R_g(L,b,\nu)$。</p>
-      <p>取向平均对溶液中的链已经做完。磁性标记子链只反映被标记段的 $\nu$ 与 $R_g$。</p>
+      <p>排除体积把链段<span data-term="pair-correlation">对关联</span>改成 $g(r)\sim r^{1/\nu-3}$（在 $b\ll r\ll R_g$）。短于持久长度 $b$ 的尺度回到局域棒 $q^{-1}$。整体仍有 Guinier $R_g(L,b,\nu)$。</p>
+      <p><span data-term="powder-average">取向平均</span>对溶液中的链已经做完。磁性标记子链只反映被标记段的 $\nu$ 与 $R_g$。</p>
       <h2>示意图</h2>
       <figure class="figure">
         <img src="../../assets/figures/models/shape-independent/polymer-excl-volume-iq.png" alt="排除体积链 I(q) 示意" width="900">
@@ -39,7 +39,7 @@
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
         <tbody>
-          <tr><td>回转半径</td><td>$R_g$</td><td>整链尺寸</td><td>Å</td><td>由 $L,b,\nu$ 决定</td></tr>
+          <tr><td><span data-term="radius-of-gyration">回转半径</span></td><td>$R_g$</td><td>整链尺寸</td><td>Å</td><td>由 $L,b,\nu$ 决定</td></tr>
           <tr><td>Flory 指数</td><td>$\nu$</td><td>排除体积指数</td><td>无量纲</td><td>理想 $0.5$，良溶剂 $\approx 0.588$</td></tr>
           <tr><td>持久长度</td><td>$b$</td><td>局域刚性</td><td>Å</td><td>聚合物相关</td></tr>
           <tr><td>标度 / 本底</td><td>$\mathrm{scale}$, $B$</td><td>前置因子与常数本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
@@ -47,7 +47,7 @@
       </table>
       <h2>拟合注意</h2>
       <p>取向：流动会改变表观 $\nu$。粉末/静态溶液用各向同性公式。</p>
-      <p>多分散与排除体积都改变高 $q$ 尾，联合拟合会退化。磁性标记密度若沿链不均匀，有效 $\nu$ 会偏。</p>
+      <p><span data-term="polydispersity">多分散</span>与排除体积都改变高 $q$ 尾，联合拟合会退化。磁性标记密度若沿链不均匀，有效 $\nu$ 会偏。</p>
       <p>可辨识性：把本底当成更陡的尾会高估 $\nu$。需要足够宽的无本底窗口。有 $q^{-1}$ 棒区时不要只用一个 $\nu$ 撑到底。</p>
       <h2>相近模型</h2>
       <ul>

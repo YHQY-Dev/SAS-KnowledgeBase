@@ -18,7 +18,7 @@
       <p>有效势需要两段 Yukawa（通常短程吸引加长程排斥，或短程排斥肩加较长吸引）时，用双 Yukawa $S(q)$。典型对象：带电蛋白质的簇集（低 $q$ 额外峰或零角抬升）、胶束同时有空间位阻与静电、以及单 Yukawa / 纯硬球无法同时拟合相关峰与低 $q$ 的体系。</p>
       <p>只有排斥用 Hayter；只有极短程吸引用黏性硬球。参数比单 Yukawa 多一倍，必须有浓度或盐系列。</p>
       <h2>物理图像</h2>
-      <p>硬核外交互 $u(r)=K_1\mathrm{e}^{-z_1(r/\sigma-1)}/r+K_2\mathrm{e}^{-z_2(r/\sigma-1)}/r$。MSA 下 Ornstein–Zernike 仍有解析途径（Høye–Blum；Liu、Chen 与 Chen 给出便于计算 $S(q)$ 的求根实现）。短吸长斥时，$S(q)$ 可在普通相关峰之外再出现低 $q$ 簇峰或 $S(0)$ 抬升，对应于平衡簇。</p>
+      <p>硬核外交互 $u(r)=K_1\mathrm{e}^{-z_1(r/\sigma-1)}/r+K_2\mathrm{e}^{-z_2(r/\sigma-1)}/r$。MSA 下 <span data-term="ornstein-zernike">Ornstein–Zernike</span> 仍有解析途径（Høye–Blum；Liu、Chen 与 Chen 给出便于计算 $S(q)$ 的求根实现）。短吸长斥时，$S(q)$ 可在普通相关峰之外再出现低 $q$ 簇峰或 $S(0)$ 抬升，对应于平衡簇。</p>
       <p>两套 $(K_i,z_i)$ 与 $\eta$ 强烈耦合。符号相反的两段才能同时产生“低 $q$ 结构 + 中 $q$ 相关峰”；两段同号则只是改写单 Yukawa 的有效电荷与筛选。</p>
       <h2>示意图</h2>
       <figure class="figure">
@@ -27,12 +27,12 @@
       </figure>
       <h2>核心公式</h2>
       <h3>出发点</h3>
-      <p>OZ 与结构因子</p>
+      <p>OZ 与<span data-term="structure-factor">结构因子</span></p>
       $$h(r)=c(r)+n\int c(|\mathbf{r}-\mathbf{r}'|)\,h(r')\,\mathrm{d}^3r',\qquad
         S(q)=\bigl[1-n\hat{c}(q)\bigr]^{-1}.$$
       <p>硬核外交互为两段 Yukawa。令 $x=r/\sigma$，接触强度 $K_i$ 与无量纲筛选 $z_i$ 可正可负：</p>
       $$\beta u(x)=\frac{K_1}{x}\,\mathrm{e}^{-z_1(x-1)}+\frac{K_2}{x}\,\mathrm{e}^{-z_2(x-1)}\quad(x\gt 1),\qquad u=\infty\ (x\lt 1).$$
-      <p>闭包为平均球近似（MSA）：核内 $h=-1$，核外 $c(r)=-\beta u(r)$。单段排斥 Yukawa（$K_2=0$、$K_1&gt;0$）回到 Hayter–MSA。</p>
+      <p>闭包为<span data-term="mean-spherical-approximation">平均球近似</span>（MSA）：核内 $h=-1$，核外 $c(r)=-\beta u(r)$。单段排斥 Yukawa（$K_2=0$、$K_1&gt;0$）回到 Hayter–MSA。</p>
       <h3>推导</h3>
       <p>Høye–Blum 给出多 Yukawa 的 MSA 解析途径：核内 $c(x)$ 是硬球多项式加上两套 $\sinh(z_i x)/x$、$\bigl(\cosh(z_i x)-1\bigr)/x$ 项，待定系数由接触衔接与 OZ 约束的非线性方程组决定。Liu、Chen 与 Chen 把它化成便于求根的实现。核外两段尾的傅里叶变换与 Hayter 同型。令 $A=q\sigma$，第 $i$ 段</p>
       $$n\hat{c}_i(q)=-24\eta K_i\,\frac{z_i\sin A+A\cos A}{A(A^2+z_i^2)}.$$
@@ -55,8 +55,8 @@
         </tbody>
       </table>
       <h2>拟合注意</h2>
-      <p>可辨识性：$S(q)$ 的半径（或直径）与形式因子半径、<span data-term="volume-fraction">体积分数</span>与标度在同时自由拟合时高度退化。先在稀溶液固定 $P(q)$，再用浓度系列的低 $q$ 变化约束 $S(q)$；不要把 $P(q)$ 与 $S(q)$ 的全部参数一起放开。 五六个势参数极易过拟合。先用 Hayter 或硬球看相关峰能否单独说明，再只在低 $q$ 残差明确时打开第二段 Yukawa。盐或 pH 系列应主要改变长程段。</p>
-      <p>取向对球无关。多分散使簇峰与相关峰都变钝。磁性通道共用核 $S(q)$。</p>
+      <p>可辨识性：$S(q)$ 的半径（或直径）与<span data-term="form-factor">形式因子</span>半径、<span data-term="volume-fraction">体积分数</span>与标度在同时自由拟合时高度退化。先在稀溶液固定 $P(q)$，再用浓度系列的低 $q$ 变化约束 $S(q)$；不要把 $P(q)$ 与 $S(q)$ 的全部参数一起放开。 五六个势参数极易过拟合。先用 Hayter 或硬球看相关峰能否单独说明，再只在低 $q$ 残差明确时打开第二段 Yukawa。盐或 pH 系列应主要改变长程段。</p>
+      <p>取向对球无关。<span data-term="polydispersity">多分散</span>使簇峰与相关峰都变钝。磁性通道共用核 $S(q)$。</p>
       <h2>相近模型</h2>
       <ul>
         <li><a href="hayter-msa.html">Hayter–MSA 结构因子</a> — 只有一段排斥 Yukawa。</li>

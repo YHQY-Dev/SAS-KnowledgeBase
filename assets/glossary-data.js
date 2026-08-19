@@ -996,5 +996,376 @@ window.SAS_GLOSSARY_DATA = {
       "learn/04-data-reduction.html",
       "topics/data-reduction/index.html"
     ]
+  },
+
+  "scattering-amplitude": {
+    "id": "scattering-amplitude",
+    "titleZh": "散射振幅",
+    "titleEn": "scattering amplitude",
+    "abbr": "F(q)",
+    "tip": "衬度对平面波相位的体积分；强度是它的模方。形式因子 P(q) 是归一化后的 |F|^2。",
+    "aliases": [
+      "F(q)",
+      "F(q)",
+      "散射振幅",
+      "form amplitude"
+    ],
+    "appearsIn": [
+      "learn/02-scattering-basics.html",
+      "learn/08-models-polydispersity.html",
+      "models/index.html",
+      "models/sphere/sphere.html",
+      "glossary/form-factor.html"
+    ]
+  },
+  "born-approximation": {
+    "id": "born-approximation",
+    "titleZh": "玻恩近似",
+    "titleEn": "Born approximation",
+    "abbr": "BA",
+    "tip": "弱散射、单次散射时，把入射波当未畸变平面波，散射振幅化为衬度的傅里叶变换。",
+    "aliases": [
+      "Born",
+      "运动学近似",
+      "一阶玻恩",
+      "kinematic"
+    ],
+    "appearsIn": [
+      "learn/02-scattering-basics.html",
+      "glossary/scattering-amplitude.html",
+      "glossary/dwba.html",
+      "topics/gisaxs/index.html"
+    ]
+  },
+  "powder-average": {
+    "id": "powder-average",
+    "titleZh": "粉末平均",
+    "titleEn": "powder / orientational average",
+    "abbr": "",
+    "tip": "对各向异性粒子相对 q 的取向做无规平均；溶液与粉末样品的 I(q) 只依赖 q 的模长。",
+    "aliases": [
+      "取向平均",
+      "取向无规",
+      "粉末平均",
+      "orientational average"
+    ],
+    "appearsIn": [
+      "learn/02-scattering-basics.html",
+      "learn/08-models-polydispersity.html",
+      "models/cylinder/cylinder.html",
+      "models/ellipsoid/ellipsoid.html"
+    ]
+  },
+  "number-density": {
+    "id": "number-density",
+    "titleZh": "数密度",
+    "titleEn": "number density",
+    "abbr": "n",
+    "tip": "单位体积内的粒子数。稀释强度 I(q)=n|F(q)|²；与体积分数的关系是 φ=nV。",
+    "aliases": [
+      "n",
+      "数密度",
+      "粒子数密度"
+    ],
+    "appearsIn": [
+      "learn/02-scattering-basics.html",
+      "learn/05-absolute-calibration.html",
+      "learn/08-models-polydispersity.html",
+      "glossary/volume-fraction.html",
+      "glossary/absolute-intensity.html"
+    ]
+  },
+  "ornstein-zernike": {
+    "id": "ornstein-zernike",
+    "titleZh": "Ornstein–Zernike 方程",
+    "titleEn": "Ornstein–Zernike equation",
+    "abbr": "OZ",
+    "tip": "把全相关 h=g−1 分解为直接相关 c 与间接链；傅里叶空间给出 S(q)=[1−n ĉ(q)]⁻¹。",
+    "aliases": [
+      "OZ",
+      "Ornstein-Zernike",
+      "OZ 方程"
+    ],
+    "appearsIn": [
+      "models/structure-factor/hard-sphere.html",
+      "models/structure-factor/hayter-msa.html",
+      "glossary/structure-factor.html",
+      "glossary/pair-correlation.html"
+    ]
+  },
+  "pair-correlation": {
+    "id": "pair-correlation",
+    "titleZh": "对关联函数",
+    "titleEn": "pair correlation function",
+    "abbr": "g(r)",
+    "tip": "找到一个粒子后，距离 r 处再找到另一个粒子的相对概率。h=g−1 的傅里叶变换给出 S(q)。",
+    "aliases": [
+      "g(r)",
+      "径向分布函数",
+      "rdf",
+      "对分布"
+    ],
+    "appearsIn": [
+      "glossary/ornstein-zernike.html",
+      "glossary/structure-factor.html",
+      "models/structure-factor/hard-sphere.html",
+      "learn/08-models-polydispersity.html"
+    ]
+  },
+  "percus-yevick": {
+    "id": "percus-yevick",
+    "titleZh": "Percus–Yevick 闭包",
+    "titleEn": "Percus–Yevick closure",
+    "abbr": "PY",
+    "tip": "液体理论常用闭包；硬球势下给出 Wertheim–Thiele 解析 c(r)，从而有闭式 S(q)。",
+    "aliases": [
+      "PY",
+      "Percus-Yevick",
+      "PY 闭包"
+    ],
+    "appearsIn": [
+      "models/structure-factor/hard-sphere.html",
+      "models/sphere/binary-hard-sphere.html",
+      "glossary/ornstein-zernike.html",
+      "glossary/structure-factor.html"
+    ]
+  },
+  "mean-spherical-approximation": {
+    "id": "mean-spherical-approximation",
+    "titleZh": "平均球近似",
+    "titleEn": "mean spherical approximation",
+    "abbr": "MSA",
+    "tip": "硬核加长程尾势的液体闭包；Hayter–Penfold 用它给出带电胶体的 Yukawa 结构因子。",
+    "aliases": [
+      "MSA",
+      "平均球近似",
+      "mean spherical"
+    ],
+    "appearsIn": [
+      "models/structure-factor/hayter-msa.html",
+      "models/structure-factor/two-yukawa.html",
+      "glossary/ornstein-zernike.html"
+    ]
+  },
+  "correlation-function": {
+    "id": "correlation-function",
+    "titleZh": "相关函数",
+    "titleEn": "Debye correlation function",
+    "abbr": "γ(r)",
+    "tip": "衬度涨落的空间自相关；I(q) 是它的傅里叶变换。两相介质的 Porod 不变量与比表面积都从 γ 来。",
+    "aliases": [
+      "γ(r)",
+      "gamma(r)",
+      "Debye 相关",
+      "特征函数"
+    ],
+    "appearsIn": [
+      "learn/02-scattering-basics.html",
+      "glossary/porod-law.html",
+      "glossary/porod-invariant.html",
+      "models/shape-independent/dab.html",
+      "models/shape-independent/porod.html"
+    ]
+  },
+  "babinet-principle": {
+    "id": "babinet-principle",
+    "titleZh": "巴比涅原理",
+    "titleEn": "Babinet's principle",
+    "abbr": "",
+    "tip": "均匀粒子与「同等形状的孔」只差衬度符号；强度 |Δρ|² 相同。SAS 只看见衬度差，分不清物质与空洞。",
+    "aliases": [
+      "Babinet",
+      "巴比涅",
+      "互补原理"
+    ],
+    "appearsIn": [
+      "learn/02-scattering-basics.html",
+      "glossary/contrast.html",
+      "glossary/scattering-amplitude.html",
+      "models/sphere/vesicle.html"
+    ]
+  },
+  "kuhn-length": {
+    "id": "kuhn-length",
+    "titleZh": "Kuhn 长度",
+    "titleEn": "Kuhn length",
+    "abbr": "b",
+    "tip": "把半柔顺链改写成等效自由连接链时的链段长度；与持续长度通常差一个因子 2。",
+    "aliases": [
+      "b",
+      "Kuhn",
+      "库恩长度"
+    ],
+    "appearsIn": [
+      "glossary/persistence-length.html",
+      "glossary/wormlike-chain.html",
+      "models/cylinder/flexible-cylinder.html",
+      "models/shape-independent/polymer-excl-volume.html"
+    ]
+  },
+  "debye-function": {
+    "id": "debye-function",
+    "titleZh": "Debye 函数",
+    "titleEn": "Debye function",
+    "abbr": "D(x)",
+    "tip": "理想高斯链（无规线团）的形式因子。中间 q 呈 q⁻²，是聚合物稀溶液的默认曲线。",
+    "aliases": [
+      "Debye",
+      "高斯链",
+      "无规线团"
+    ],
+    "appearsIn": [
+      "models/shape-independent/mono-gauss-coil.html",
+      "models/shape-independent/poly-gauss-coil.html",
+      "models/shape-independent/star-polymer.html",
+      "learn/08-models-polydispersity.html"
+    ]
+  },
+  "wormlike-chain": {
+    "id": "wormlike-chain",
+    "titleZh": "蠕虫状链",
+    "titleEn": "wormlike chain",
+    "abbr": "WLC",
+    "tip": "Kratky–Porod 半柔顺链：持续长度介于刚性棒与高斯线团之间。柔性圆柱模型用它做骨架。",
+    "aliases": [
+      "WLC",
+      "Kratky-Porod",
+      "半柔顺链",
+      "蠕虫链"
+    ],
+    "appearsIn": [
+      "models/cylinder/flexible-cylinder.html",
+      "models/cylinder/flexible-cylinder-elliptical.html",
+      "glossary/persistence-length.html",
+      "glossary/kuhn-length.html"
+    ]
+  },
+  "caille": {
+    "id": "caille",
+    "titleZh": "Caillé 理论",
+    "titleEn": "Caillé theory",
+    "abbr": "",
+    "tip": "层状相中层法向热起伏破坏长程 Bragg 阶：峰变幂律翼，用无量纲 η 描述柔性。",
+    "aliases": [
+      "Caille",
+      "Caillé",
+      "Caille 参数"
+    ],
+    "appearsIn": [
+      "models/lamellae/lamellar-stack-caille.html",
+      "models/lamellae/lamellar-hg-stack-caille.html",
+      "models/lamellae/index.html"
+    ]
+  },
+  "paracrystal": {
+    "id": "paracrystal",
+    "titleZh": "准晶",
+    "titleEn": "paracrystal",
+    "abbr": "",
+    "tip": "Hosemann 准晶：点阵间距有累积无序，Bragg 峰随阶数变宽、高阶消失。用于层堆与胶体晶体。",
+    "aliases": [
+      "Hosemann",
+      "准晶体",
+      "次晶"
+    ],
+    "appearsIn": [
+      "models/paracrystal/index.html",
+      "models/lamellae/lamellar-stack-paracrystal.html",
+      "models/paracrystal/fcc-paracrystal.html",
+      "glossary/caille.html"
+    ]
+  },
+  "lorentz-factor": {
+    "id": "lorentz-factor",
+    "titleZh": "Lorentz 因子",
+    "titleEn": "Lorentz factor",
+    "abbr": "",
+    "tip": "粉末层状（或纤维）取向平均时，倒易空间环的几何权重，常给出额外的 1/q²。不是 Lorentzian 峰形。",
+    "aliases": [
+      "Lorentz correction",
+      "洛伦兹因子",
+      "Lorentz 校正"
+    ],
+    "appearsIn": [
+      "models/lamellae/lamellar.html",
+      "models/lamellae/lamellar-stack-caille.html",
+      "glossary/powder-average.html",
+      "glossary/caille.html"
+    ]
+  },
+  "interfacial-thickness": {
+    "id": "interfacial-thickness",
+    "titleZh": "界面厚度",
+    "titleEn": "interfacial thickness",
+    "abbr": "σ",
+    "tip": "两相之间密度过渡层的宽度。模糊界面使高 q 比理想 Porod q⁻⁴ 衰减更快，常乘 e^{−q²σ²}。",
+    "aliases": [
+      "界面宽度",
+      "模糊度",
+      "扩散界面",
+      "σ"
+    ],
+    "appearsIn": [
+      "models/sphere/fuzzy-sphere.html",
+      "models/shape-independent/porod.html",
+      "glossary/porod-law.html",
+      "glossary/correlation-function.html"
+    ]
+  },
+  "two-phase-model": {
+    "id": "two-phase-model",
+    "titleZh": "两相模型",
+    "titleEn": "two-phase model",
+    "abbr": "",
+    "tip": "样品由两种近似均匀的 SLD 组成，中间是界面。Porod、不变量、DAB 都建立在这一图像上。",
+    "aliases": [
+      "两相介质",
+      "Debye 两相",
+      "多孔两相"
+    ],
+    "appearsIn": [
+      "glossary/porod-law.html",
+      "glossary/porod-invariant.html",
+      "glossary/correlation-function.html",
+      "models/shape-independent/dab.html",
+      "models/shape-independent/porod.html"
+    ]
+  },
+  "schultz-zimm": {
+    "id": "schultz-zimm",
+    "titleZh": "Schulz–Zimm 分布",
+    "titleEn": "Schulz–Zimm distribution",
+    "abbr": "",
+    "tip": "胶体和聚合物常用的尺寸（或分子量）分布；相对宽度 σ/⟨R⟩ 会抹平形式因子振荡。",
+    "aliases": [
+      "Schulz",
+      "Zimm",
+      "Schulz-Zimm",
+      "伽马分布"
+    ],
+    "appearsIn": [
+      "glossary/polydispersity.html",
+      "learn/08-models-polydispersity.html",
+      "models/sphere/sphere.html",
+      "models/shape-independent/poly-gauss-coil.html"
+    ]
+  },
+  "differential-cross-section": {
+    "id": "differential-cross-section",
+    "titleZh": "微分散射截面",
+    "titleEn": "differential scattering cross-section",
+    "abbr": "dΣ/dΩ",
+    "tip": "绝对强度的物理含义：单位体积、单位立体角的散射概率。标定后的 I(q) 常用 cm⁻¹。",
+    "aliases": [
+      "dΣ/dΩ",
+      "微分散面",
+      "绝对截面"
+    ],
+    "appearsIn": [
+      "glossary/absolute-intensity.html",
+      "learn/05-absolute-calibration.html",
+      "topics/calibration/index.html",
+      "learn/02-scattering-basics.html"
+    ]
   }
 };

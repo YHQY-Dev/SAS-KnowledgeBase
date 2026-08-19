@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>两相模型 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>两相模型</h1>
+      <p class="subtitle-en">two-phase model</p>
+      <h2>定义</h2>
+      <p><strong>两相模型</strong>假定样品体积由相 1、相 2 填满，各相内部 $\rho$ 近似常数，差别集中在界面。体积分数 $\phi$、衬度 $\Delta\rho=\rho_1-\rho_2$。此时 <span data-term="porod-invariant">Porod 不变量</span></p>
+      $$Q=\int_0^\infty q^2 I(q)\,\mathrm{d}q \propto \phi(1-\phi)(\Delta\rho)^2,$$
+      <p>高 $q$ 的 $q^4 I(q)$ 给出比表面积（Porod）。相关函数常取 $\gamma(r)=e^{-r/\xi}$，即 Debye–Anderson–Brumberger（DAB）形式。</p>
+
+      <h2>物理直觉</h2>
+      <p>多孔固体、相分离聚合物、浓乳液在「只关心界面与体积分数、不关心单个粒子外形」时，用两相语言比用球/柱<span data-term="form-factor">形式因子</span>更直接。一旦有第三相或连续密度梯度，不变量与 Porod 常数的解释就要改。</p>
+
+      <h2>常见混淆</h2>
+      <ul>
+        <li>稀释颗粒在溶剂中也是两相，但通常改用单粒子 $F(q)$，把溶剂当均匀本底。</li>
+        <li>$\phi(1-\phi)$ 在 $\phi=1/2$ 最大：不是「浓度越高信号越强」。</li>
+      </ul>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="correlation-function">相关函数</span> $\gamma(r)$</li>
+        <li><span data-term="porod-law">Porod 定律</span></li>
+        <li><span data-term="porod-invariant">Porod 不变量</span></li>
+        <li><span data-term="volume-fraction">体积分数</span></li>
+        <li><span data-term="babinet-principle">巴比涅原理</span></li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../models/shape-independent/dab.html">DAB</a></li>
+        <li><a href="../models/shape-independent/porod.html">Porod</a></li>
+        <li><a href="../learn/06-guinier-porod.html">学习路径 06 · Guinier / Porod</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

@@ -18,7 +18,7 @@
       <p>哑铃（barbell）是圆柱中段加上两端半径更大的球状端帽：$R_{\mathrm{bell}}\ge R$。适用于棒状胶束末端膨胀、哑铃状纳米颗粒、以及两端比中段更“圆”的短棒。当端帽半径等于圆柱半径且球心落在端面内时，退化为端帽圆柱（半球帽）。</p>
       <p>相对平端圆柱，低 $q$ 的有效 $R_g$ 更大，中等 $q$ 出现端帽与中段的干涉调制。两端球心在圆柱外时，几何是真正的哑铃而不是胶囊。</p>
       <h2>物理图像</h2>
-      <p>Kaya 给出圆柱加球形端帽的散射振幅：中段圆柱贡献与两端球（或球缺）贡献相加，再对取向平均。端帽半径大于中段时，球心在圆柱延长线之外，中间有一段“颈”。该式同时覆盖哑铃、哑铃极限下的双球、以及半球帽圆柱等若干几何。</p>
+      <p>Kaya 给出圆柱加球形端帽的<span data-term="scattering-amplitude">散射振幅</span>：中段圆柱贡献与两端球（或球缺）贡献相加，再对取向平均。端帽半径大于中段时，球心在圆柱延长线之外，中间有一段“颈”。该式同时覆盖哑铃、哑铃极限下的双球、以及半球帽圆柱等若干几何。</p>
       <p>干涉项对两端间距 $L+2h$ 敏感，$h$ 由 $R$ 与 $R_{\mathrm{bell}}$ 的几何约束决定，不能当作第三个自由长度随便放。</p>
       <h2>示意图</h2>
       <figure class="figure">
@@ -31,7 +31,7 @@
       </figure>
       <h2>核心公式</h2>
       <h3>出发点</h3>
-      <p>稀释、取向无规的均匀哑铃，相干散射振幅是衬度对平面波相位的体积分</p>
+      <p>稀释、取向无规的均匀哑铃，相干<span data-term="scattering-amplitude">散射振幅</span>是<span data-term="contrast">衬度</span>对平面波相位的体积分</p>
       $$F(\mathbf{q})=\int_V \Delta\rho(\mathbf{r})\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r.$$
       <p>体积分成半径 $R$、长度 $L$ 的中段圆柱，以及两端半径 $R_{\mathrm{bell}}\ge R$ 的球缺。中段给出轴向 $\mathrm{sinc}$ 乘径向 $2J_1$；球缺是球振幅减去被圆柱占用的球冠，并带有沿轴的相位。</p>
       <h3>推导</h3>
@@ -39,7 +39,7 @@
       $$A_{\mathrm{cyl}}(q,\alpha)=\Delta\rho\,(\pi R^2 L)\cdot\frac{2J_1(qR\sin\alpha)}{qR\sin\alpha}\cdot\frac{\sin(qL\cos\alpha/2)}{qL\cos\alpha/2}.$$
       <p>球心到圆柱端面的距离由相切约束固定：$h=\sqrt{R_{\mathrm{bell}}^2-R^2}$。两端球缺相对原点的位移为 $\pm(L/2+h)$，相位因子 $\mathrm{e}^{\pm i q(L/2+h)\cos\alpha}$。球缺振幅 $A_{\mathrm{bell}}$ 可由半径 $R_{\mathrm{bell}}$ 的球 Rayleigh 积分减去截平面以内的球冠得到（Kaya）。总振幅</p>
       $$A(q,\alpha)=A_{\mathrm{cyl}}(q,\alpha)+A_{\mathrm{bell}}(q,R_{\mathrm{bell}},h,\alpha).$$
-      <p>粉末平均</p>
+      <p><span data-term="powder-average">粉末平均</span></p>
       $$P(q)=\frac{\displaystyle\int_0^{\pi/2}|A(q,\alpha)|^2\sin\alpha\,\mathrm{d}\alpha}{\displaystyle\int_0^{\pi/2}|A(0,\alpha)|^2\sin\alpha\,\mathrm{d}\alpha}.$$
       <p>$R_{\mathrm{bell}}=R$ 则 $h=0$，球缺退化为半球，即端帽圆柱。$L\to 0$ 且两球外切时接近哑铃双球。</p>
       <h3>低 $q$ 与渐近</h3>
@@ -59,7 +59,7 @@
       </table>
       <h2>拟合注意</h2>
       <p>$R$、$R_{\mathrm{bell}}$ 与 $L$ 三联相关：端帽变大与中段变短可给出相近 $R_g$。需要中等 $q$ 的干涉结构，或电镜约束端帽比。</p>
-      <p>多分散优先加在 $R$ 或 $L$ 之一；同时放端帽半径分布几乎不可辨识。取向同圆柱：一维粉末平均，二维用 $\theta,\phi$。</p>
+      <p><span data-term="polydispersity">多分散</span>优先加在 $R$ 或 $L$ 之一；同时放端帽半径分布几乎不可辨识。取向同圆柱：一维粉末平均，二维用 $\theta,\phi$。</p>
       <p>磁性：若只有端帽（或只有中段）带磁矩，磁振幅的几何与核通道不同，须分通道给磁 SLD，不能共用一个 $\Delta\rho$。</p>
       <h2>相近模型</h2>
       <ul>

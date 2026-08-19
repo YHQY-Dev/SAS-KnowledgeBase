@@ -25,11 +25,11 @@
 
       <figure class="figure">
         <img src="../assets/figures/fig-03-iq-regimes.png" alt="I(q) 曲线三区示意" width="900">
-        <figcaption>对数–对数 $I(q)$ 的典型分区：低 $q$ Guinier → 中间形式因子/结构因子 → 高 $q$ Porod 尾。真实曲线分区边界因尺寸与多分散而移动。<span class="fig-source">配图：自制示意</span></figcaption>
+        <figcaption>对数–对数 $I(q)$ 的典型分区：低 $q$ Guinier → 中间形式因子/结构因子 → 高 $q$ Porod 尾。真实曲线分区边界因尺寸与<span data-term="polydispersity">多分散</span>而移动。<span class="fig-source">配图：自制示意</span></figcaption>
       </figure>
 
       <h2>回转半径 $R_g$ 是什么</h2>
-      <p><span data-term="radius-of-gyration">回转半径</span> $R_g$ 是散射长度密度「质心」的二阶矩：</p>
+      <p><span data-term="radius-of-gyration">回转半径</span> $R_g$ 是<span data-term="scattering-length-density">散射长度密度</span>「质心」的二阶矩：</p>
       $$R_g^2 = \frac{\displaystyle\int (\mathbf{r}-\mathbf{r}_0)^2\,\Delta\rho(\mathbf{r})\,\mathrm{d}V}{\displaystyle\int \Delta\rho(\mathbf{r})\,\mathrm{d}V}.$$
       <p>它不是「半径」本身，而是形状的整体尺寸度量。对均匀球体 $R = R_g\sqrt{5/3}$；对细长棒、薄盘、空心壳，换算系数不同。稀溶液单分散无相互作用体系中，$R_g$ 几乎总是第一批要报告的参数——它对绝对强度标定不敏感（Guinier 斜率只依赖形状），但对<strong>低 $q$ 数据质量</strong>极度敏感。</p>
       <table>
@@ -80,7 +80,7 @@
       <h3>$I(0)$ 的物理含义</h3>
       <p><span data-term="forward-scattering">前向散射</span> $I(0)$ 正比于「总衬度体积」的平方：稀溶液单分散时</p>
       $$I(0) = n\,V^2\,(\Delta\rho)^2 = c\,M\,(\Delta\rho_M)^2 / N_A$$
-      <p>（记号随质量浓度 / 数密度约定而变）。因此：</p>
+      <p>（记号随质量浓度 / <span data-term="number-density">数密度</span>约定而变）。因此：</p>
       <ul>
         <li>$I(0)$ 对<strong>聚集</strong>极敏感：二聚体可使 $I(0)$ 近似翻倍（同浓度）。</li>
         <li>$I(0)$ 对<strong>浓度误差、绝对标定误差</strong>线性敏感。</li>
@@ -126,7 +126,7 @@
       <h3><span data-term="porod-invariant">Porod 不变量</span></h3>
       <p>对两相体系，不变量</p>
       $$Q = \int_0^\infty q^2 I(q)\,\mathrm{d}q = 2\pi^2\,(\Delta\rho)^2\,\phi(1-\phi)$$
-      <p>（绝对强度、$q$ 覆盖足够时）联系体积分数 $\phi$。实践中积分上下限截断会产生系统误差：低 $q$ 用 Guinier 外推，高 $q$ 用 Porod 尾外推——这正是绝对标定与背景质量再次关键的地方。</p>
+      <p>（绝对强度、$q$ 覆盖足够时）联系<span data-term="volume-fraction">体积分数</span> $\phi$。实践中积分上下限截断会产生系统误差：低 $q$ 用 Guinier 外推，高 $q$ 用 Porod 尾外推——这正是绝对标定与背景质量再次关键的地方。</p>
 
       <p>（绝对强度、$q$ 覆盖足够时）联系体积分数 $\phi$。实践中积分上下限截断会产生系统误差：低 $q$ 用 Guinier 外推，高 $q$ 用 Porod 尾外推——这正是绝对标定与背景质量再次关键的地方。</p>
       <div class="keybox">

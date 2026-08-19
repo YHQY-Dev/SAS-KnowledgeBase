@@ -18,7 +18,7 @@
       <p>马鞍形（普林格尔）盘是半径 $R$、厚度 $H$ 的薄盘被弯成双曲抛物面（高斯曲率为负）。适用于翘曲的纳米盘、马鞍形蛋白质组装、以及平盘模型在中等 $q$ 过冲、需要额外曲率阻尼的片状颗粒。</p>
       <p>相对平盘，中间 $q^{-2}$ 区仍在，但厚度振荡与盘半径极小被曲率抹圆。曲率很小时应退回平盘或核壳双层盘，不要额外放鞍参数。</p>
       <h2>物理图像</h2>
-      <p>中面近似为 $z\propto x^2-y^2$（或等价的鞍面参数）。散射振幅是弯曲薄片上的相位积分，粉末平均后等效于平盘形式因子乘以随 $q$ 增加的阻尼。特征长度是鞍的均方起伏 $\sigma_{\mathrm{saddle}}$，而不是又一个半径。</p>
+      <p>中面近似为 $z\propto x^2-y^2$（或等价的鞍面参数）。<span data-term="scattering-amplitude">散射振幅</span>是弯曲薄片上的相位积分，<span data-term="powder-average">粉末平均</span>后等效于平盘<span data-term="form-factor">形式因子</span>乘以随 $q$ 增加的阻尼。特征长度是鞍的均方起伏 $\sigma_{\mathrm{saddle}}$，而不是又一个半径。</p>
       <p>与堆叠圆盘的差别：这里是单片弯曲，不出现层间距 Bragg 峰。</p>
       <h2>示意图</h2>
       <figure class="figure">
@@ -31,7 +31,7 @@
       </figure>
       <h2>核心公式</h2>
       <h3>出发点</h3>
-      <p>稀释、取向无规的均匀盘，相干散射振幅是衬度对平面波相位的体积分</p>
+      <p>稀释、取向无规的均匀盘，相干<span data-term="scattering-amplitude">散射振幅</span>是<span data-term="contrast">衬度</span>对平面波相位的体积分</p>
       $$F(\mathbf{q})=\int_V \Delta\rho(\mathbf{r})\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r.$$
       <p>平盘即短圆柱：径向 $2J_1(qR\sin\alpha)/(qR\sin\alpha)$ 乘厚度 $\mathrm{sinc}(qH\cos\alpha/2)$。马鞍盘把中面弯成 $z\propto x^2-y^2$，体积分在盘面坐标上多一个相位 $\mathrm{e}^{i q_z z(x,y)}$。</p>
       <h3>推导</h3>
@@ -55,7 +55,7 @@
         </tbody>
       </table>
       <h2>拟合注意</h2>
-      <p>$\sigma_{\mathrm{saddle}}$ 与半径多分散、厚度多分散都钝化振荡。没有实空间（电镜）翘曲证据时，优先平盘加一种多分散。曲率不是结构因子：低 $q$ 不应出现堆叠峰。</p>
+      <p>$\sigma_{\mathrm{saddle}}$ 与半径<span data-term="polydispersity">多分散</span>、厚度多分散都钝化振荡。没有实空间（电镜）翘曲证据时，优先平盘加一种多分散。曲率不是<span data-term="structure-factor">结构因子</span>：低 $q$ 不应出现堆叠峰。</p>
       <p>取向：粉末平均会进一步掩盖鞍的方位。二维若有四次对称调制，才支持鞍面取向，而不是简单的单轴盘取向。</p>
       <p>磁性：薄盘磁矩常垂直盘面；弯曲使局部法向散开，磁形式因子比核通道更钝，须单独磁 SLD 与可能更小的磁 $\sigma$。</p>
       <h2>相近模型</h2>

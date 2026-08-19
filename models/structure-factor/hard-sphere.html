@@ -15,10 +15,10 @@
       <h1>硬球结构因子</h1>
       <p class="subtitle-en">hard sphere</p>
       <h2>适用场景</h2>
-      <p>中性或短程排斥的球形胶体，相互作用可近似为不可穿透硬核时，用 Percus–Yevick（PY）硬球<span data-term="structure-factor">结构因子</span>。典型对象：浓胶乳、微乳液滴、蛋白质在高盐下的有效硬球，以及只需要一个体积分数来解释低 $q$ 压低与第一相关峰的体系。</p>
+      <p>中性或短程排斥的球形胶体，相互作用可近似为不可穿透硬核时，用 <span data-term="percus-yevick">Percus–Yevick</span>（PY）硬球<span data-term="structure-factor">结构因子</span>。典型对象：浓胶乳、微乳液滴、蛋白质在高盐下的有效硬球，以及只需要一个体积分数来解释低 $q$ 压低与第一相关峰的体系。</p>
       <p>稀溶液 $S(q)\approx 1$，不必加本页。出现长程静电排斥（低盐带电胶体）应改用 Hayter–MSA；短程黏性吸引用黏性硬球或方阱。两种半径的混合物用二元硬球，而不是把一元 PY 硬球平均两次。</p>
       <h2>物理图像</h2>
-      <p>Ornstein–Zernike 方程在 PY 闭包下对硬球有 Wertheim–Thiele 解析解。直接相关函数在直径 $\sigma=2R$ 内是三次多项式、核外为零。Ashcroft 与 Lekner 把它写成 $S(q)=[1-n\hat{c}(q)]^{-1}$ 的闭式，供液体与胶体散射使用。</p>
+      <p><span data-term="ornstein-zernike">Ornstein–Zernike</span> 方程在 PY 闭包下对硬球有 Wertheim–Thiele 解析解。直接<span data-term="correlation-function">相关函数</span>在直径 $\sigma=2R$ 内是三次多项式、核外为零。Ashcroft 与 Lekner 把它写成 $S(q)=[1-n\hat{c}(q)]^{-1}$ 的闭式，供液体与胶体散射使用。</p>
       <p>$S(0)=(1-\eta)^4/(1+2\eta)^2$ 随体积分数 $\eta$ 迅速下降，这就是渗透压缩率被硬核压低。第一峰约在 $q\sigma\sim 2\pi$，随 $\eta$ 增高而变锐。取向对球无影响；磁性通道若只有核衬度变化，仍乘同一 $S(q)$。</p>
       <h2>示意图</h2>
       <figure class="figure">
@@ -27,13 +27,13 @@
       </figure>
       <h2>核心公式</h2>
       <h3>出发点</h3>
-      <p>全相关 $h=g-1$ 与直接相关 $c$ 由 Ornstein–Zernike（OZ）方程联系，$n$ 为数密度：</p>
+      <p>全相关 $h=g-1$ 与直接相关 $c$ 由 <span data-term="ornstein-zernike">Ornstein–Zernike（OZ）</span> 方程联系，$n$ 为<span data-term="number-density">数密度</span>：</p>
       $$h(r)=c(r)+n\int c(|\mathbf{r}-\mathbf{r}'|)\,h(r')\,\mathrm{d}^3r'.$$
       <p>傅里叶空间是代数式 $\hat{h}=\hat{c}+n\hat{c}\,\hat{h}$。结构因子定义为密度涨落谱</p>
       $$S(q)=1+n\hat{h}(q)=\bigl[1-n\hat{c}(q)\bigr]^{-1}.$$
-      <p>硬球势 $u=\infty$（$r\lt\sigma$）、$u=0$（$r\gt\sigma$），$\sigma=2R$。Percus–Yevick（PY）闭包 $c(r)=\bigl[1-\mathrm{e}^{\beta u(r)}\bigr]g(r)$ 给出核内 $g=0$、核外 $c=0$，从而 $c$ 只活在 $r\lt\sigma$。</p>
+      <p>硬球势 $u=\infty$（$r\lt\sigma$）、$u=0$（$r\gt\sigma$），$\sigma=2R$。<span data-term="percus-yevick">Percus–Yevick（PY）</span> 闭包 $c(r)=\bigl[1-\mathrm{e}^{\beta u(r)}\bigr]g(r)$ 给出核内 $g=0$、核外 $c=0$，从而 $c$ 只活在 $r\lt\sigma$。</p>
       <h3>推导</h3>
-      <p>Wertheim–Thiele 对 PY 硬球的解是核内三次多项式。令 $\eta=n\pi\sigma^3/6$ 为体积分数，</p>
+      <p>Wertheim–Thiele 对 PY 硬球的解是核内三次多项式。令 $\eta=n\pi\sigma^3/6$ 为<span data-term="volume-fraction">体积分数</span>，</p>
       $$c(r)=-\alpha-\beta\Bigl(\frac{r}{\sigma}\Bigr)-\gamma\Bigl(\frac{r}{\sigma}\Bigr)^3\quad(r\lt\sigma),\qquad c(r)=0\ (r\gt\sigma),$$
       $$\alpha=\frac{(1+2\eta)^2}{(1-\eta)^4},\qquad
         \beta=\frac{-6\eta(1+\eta/2)^2}{(1-\eta)^4},\qquad
@@ -53,7 +53,7 @@
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
         <tbody>
-          <tr><td>硬球半径</td><td>$R$</td><td>硬核半径，$\sigma=2R$</td><td>Å</td><td>与形式因子半径可比</td></tr>
+          <tr><td>硬球半径</td><td>$R$</td><td>硬核半径，$\sigma=2R$</td><td>Å</td><td>与<span data-term="form-factor">形式因子</span>半径可比</td></tr>
           <tr><td>体积分数</td><td>$\eta$</td><td>硬球占据的体积分数</td><td>无量纲</td><td>$0.02$–$0.45$（PY 在更高密度变差）</td></tr>
           <tr><td>标度 / 本底</td><td>$\mathrm{scale}$, $B$</td><td>若写成 $I=P\,S+B$ 的前置与本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
         </tbody>
@@ -61,7 +61,7 @@
       <h2>拟合注意</h2>
       <p>可辨识性：$S(q)$ 的半径（或直径）与形式因子半径、<span data-term="volume-fraction">体积分数</span>与标度在同时自由拟合时高度退化。先在稀溶液固定 $P(q)$，再用浓度系列的低 $q$ 变化约束 $S(q)$；不要把 $P(q)$ 与 $S(q)$ 的全部参数一起放开。 硬球 $R$ 应与 $P(q)$ 的几何半径一致，或明确它是有效相互作用半径（溶剂化层）。</p>
       <p>取向对球无关。尺寸<span data-term="polydispersity">多分散</span>会抹浅 $S(q)$ 的峰；严格来说一元 PY 假定单分散直径。磁性：磁 $P(q)$ 仍乘同一核 $S(q)$，不要给磁通道另造一套 $\eta$。</p>
-      <p>PY 在 $\eta\gtrsim 0.45$ 或需要热力学自洽时变差。相关峰很锐且峰位比接近立方格子时，应改用准晶而不是把 $\eta$ 推向结晶。</p>
+      <p>PY 在 $\eta\gtrsim 0.45$ 或需要热力学自洽时变差。相关峰很锐且峰位比接近立方格子时，应改用<span data-term="paracrystal">准晶</span>而不是把 $\eta$ 推向结晶。</p>
       <h2>相近模型</h2>
       <ul>
         <li><a href="sticky-hard-sphere.html">黏性硬球结构因子</a> — 硬核上再加零程黏性吸引。</li>

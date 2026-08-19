@@ -15,7 +15,7 @@
       <h1>头基–尾链 Caille 堆叠</h1>
       <p class="subtitle-en">lamellar HG stack Caille</p>
       <h2>适用场景</h2>
-      <p>多层双层既需要头基–尾链两段衬度，又需要 Caille 热起伏堆叠时，把头–尾–头形式因子与 Caille $S(q)$ 相乘。这是溶致层状相与多层脂质体最常用的组合：低 $q$ 峰形反映弹性起伏，高 $q$ 漫散射与峰强度比反映双层剖面。</p>
+      <p>多层双层既需要头基–尾链两段衬度，又需要 Caille 热起伏堆叠时，把头–尾–头<span data-term="form-factor">形式因子</span>与 Caille $S(q)$ 相乘。这是溶致层状相与多层脂质体最常用的组合：低 $q$ 峰形反映弹性起伏，高 $q$ 漫散射与峰强度比反映双层剖面。</p>
       <p>若只要平均厚度、对比不足，退回均匀 Caille 堆叠。无层状峰时退回头基–尾链孤立片。多层同心囊泡有曲率与闭合几何，应改多层囊泡，而不是无限平面堆叠。</p>
       <h2>物理图像</h2>
       <p>Nallet 的要点是形式与结构可分离：粉末强度 $\propto |F_{\mathrm{HG}}(q)|^2 S_{\mathrm{Caille}}(q)/q^2$。$F_{\mathrm{HG}}$ 与头基–尾链页相同；$S_{\mathrm{Caille}}$ 与 Caille 堆叠页相同。布拉格峰强度被 $|F|$ 调制，节点附近整级峰可以消失，并不等于 $\eta$ 极大。</p>
@@ -31,7 +31,7 @@
       </figure>
       <h2>核心公式</h2>
       <h3>出发点</h3>
-      <p>粉末层状相的强度可分离为双层形式因子与层间结构因子。法向剖面仍是头–尾–头两段矩形，一维振幅 $F(q)=\int\Delta\rho(z)\,\mathrm{e}^{iqz}\,\mathrm{d}z$。层心 $z_n=nd+u_n$ 的热起伏由 Caille 关联器描述：</p>
+      <p>粉末层状相的强度可分离为双层形式因子与层间<span data-term="structure-factor">结构因子</span>。法向剖面仍是头–尾–头两段矩形，一维振幅 $F(q)=\int\Delta\rho(z)\,\mathrm{e}^{iqz}\,\mathrm{d}z$。层心 $z_n=nd+u_n$ 的热起伏由 Caille 关联器描述：</p>
       $$\bigl\langle[u_n-u_0]^2\bigr\rangle=\frac{\eta d^2}{2\pi^2}\bigl[\gamma_{\mathrm{E}}+\ln(\pi n)\bigr],\qquad\eta=\frac{q_0^2 k_{\mathrm{B}}T}{8\pi\sqrt{K\bar{B}}},\quad q_0=\frac{2\pi}{d}.$$
       <p>横向无限给出与均匀片相同的 Lorentz $2\pi/q^2$。约束 $t_{\mathrm{bil}}=t_{\mathrm{t}}+2t_{\mathrm{h}}\lt d$，溶剂间隙为 $d-t_{\mathrm{bil}}$。</p>
       <h3>推导</h3>
@@ -59,7 +59,7 @@
       </table>
       <h2>拟合注意</h2>
       <p>取向、畴大小与 $\eta$ 的分工与 Caille 堆叠页相同。Caille $\eta$ 与仪器分辨率强相关：卷积不足时，幂律尾被当成更大的 $\eta$，同时高 $q$ 形式因子节点被填浅，头基厚度会被高估。先固定分辨率，再放 $\eta$，最后才放两段厚度。</p>
-      <p>多分散：厚度分布主要改 $|F|^2$（峰强度比）；不要用 $\eta$ 去拟合形式因子节点。间距若有静态高斯无序，应改准晶堆叠或与 Caille 明确分工，二者不要同时自由拟合。</p>
+      <p><span data-term="polydispersity">多分散</span>：厚度分布主要改 $|F|^2$（峰强度比）；不要用 $\eta$ 去拟合形式因子节点。间距若有静态高斯无序，应改<span data-term="paracrystal">准晶</span>堆叠或与 Caille 明确分工，二者不要同时自由拟合。</p>
       <p>磁性：磁 $F(q)$ 按磁剖面；同一套 $d,\eta,N$ 描述层间关联。可辨识性：一级峰只能定 $d$；剖面需要高 $q$ 或对比；$\eta$ 需要分辨尾与高阶峰。</p>
       <h2>相近模型</h2>
       <ul>
@@ -71,7 +71,7 @@
       <h2>参考文献</h2>
       <ul>
         <li>Nallet, F.; Laversanne, R.; Roux, D. Modelling X-ray or neutron scattering spectra of lyotropic lamellar phases: interplay between form and structure factors. <em>J. Phys. II France</em> 1993, 3, 487–502. DOI: <a href="https://doi.org/10.1051/jp2:1993146" target="_blank" rel="noopener noreferrer">10.1051/jp2:1993146</a></li>
-        <li>Caillé, A. Remarques sur la diffusion des rayons X dans les smectiques. <em>C. R. Acad. Sci. Paris, Sér. B</em> 1972, 274, 891–893.</li>
+        <li><span data-term="caille">Caillé</span>, A. Remarques sur la diffusion des rayons X dans les smectiques. <em>C. R. Acad. Sci. Paris, Sér. B</em> 1972, 274, 891–893.</li>
         <li>Zhang, R.; Tristram-Nagle, S.; Sun, W.; Headrick, R. L.; Irving, T. C.; Suter, R. M.; Nagle, J. F. Small-angle x-ray scattering from lipid bilayers is well described by modified Caillé theory but not by paracrystalline theory. <em>Biophys. J.</em> 1996, 70, 349–357. DOI: <a href="https://doi.org/10.1016/S0006-3495(96)79576-0" target="_blank" rel="noopener noreferrer">10.1016/S0006-3495(96)79576-0</a></li>
       </ul>
       <nav class="pager">

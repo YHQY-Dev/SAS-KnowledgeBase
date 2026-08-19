@@ -16,9 +16,9 @@
       <p class="subtitle-en">fuzzy sphere</p>
       <h2>适用场景</h2>
       <p>模糊球把均匀球的尖锐界面换成径向密度渐变的“绒毛”表面。经典对象是温敏微凝胶：交联密度由核向外降低，溶胀态外壳高度水化（Stieger 等，2004）。也适用于表面接枝聚合物刷、凝胶颗粒以及任何“电镜看像球、但 Porod 尾明显软于 $q^{-4}$”的胶体。</p>
-      <p>塌缩态微凝胶可接近均匀硬球；溶胀态必须引入模糊宽度 $\sigma$，否则高 $q$ 拟合会系统偏离并虚报多分散。</p>
+      <p>塌缩态微凝胶可接近均匀硬球；溶胀态必须引入模糊宽度 $\sigma$，否则高 $q$ 拟合会系统偏离并虚报<span data-term="polydispersity">多分散</span>。</p>
       <h2>物理图像</h2>
-      <p>实空间剖面常取误差函数或高斯卷积的球：$\rho(r)\propto \tfrac{1}{2}\mathrm{erfc}[(r-R)/(\sqrt{2}\sigma)]$。本页约定形式因子（强度）乘以高斯界面因子 $\mathrm{e}^{-q^2\sigma^2}$，等价于振幅乘 $\mathrm{e}^{-q^2\sigma^2/2}$。模糊主要抑制高 $q$ 振荡并加快衰减，低 $q$ 的 $R_g$ 仍由整体尺寸主导。</p>
+      <p>实空间剖面常取误差函数或高斯卷积的球：$\rho(r)\propto \tfrac{1}{2}\mathrm{erfc}[(r-R)/(\sqrt{2}\sigma)]$。本页约定<span data-term="form-factor">形式因子</span>（强度）乘以高斯界面因子 $\mathrm{e}^{-q^2\sigma^2}$，等价于振幅乘 $\mathrm{e}^{-q^2\sigma^2/2}$。模糊主要抑制高 $q$ 振荡并加快衰减，低 $q$ 的 $R_g$ 仍由整体尺寸主导。</p>
       <h2>示意图</h2>
       <figure class="figure">
         <img src="../../assets/figures/models/sphere/fuzzy-sphere-geometry.png" alt="模糊球：核半径与界面宽度" width="900">
@@ -30,7 +30,7 @@
       </figure>
       <h2>核心公式</h2>
       <h3>出发点</h3>
-      <p>均匀核加高斯模糊界面，等价于硬球密度与三维高斯的卷积。稀释振幅仍从傅里叶变换出发</p>
+      <p>均匀核加高斯模糊界面，等价于硬球密度与三维高斯的卷积。稀释<span data-term="scattering-amplitude">散射振幅</span>仍从傅里叶变换出发</p>
       $$F(\mathbf{q})=\int \Delta\rho(\mathbf{r})\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r.$$
       <p>卷积定理：$\Delta\rho=\Delta\rho_{\mathrm{sphere}}\ast g$ 则 $F(q)=F_{\mathrm{sphere}}(q)\,g(q)$。取 $g(\mathbf{r})\propto\mathrm{e}^{-r^2/(2\sigma^2)}$，其傅里叶变换 $g(q)=\mathrm{e}^{-q^2\sigma^2/2}$。</p>
       <h3>推导</h3>

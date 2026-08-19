@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ornstein–Zernike 方程 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>Ornstein–Zernike 方程</h1>
+      <p class="subtitle-en">Ornstein–Zernike equation</p>
+      <h2>定义</h2>
+      <p><strong>Ornstein–Zernike（OZ）方程</strong>是液体理论的出发点。全相关 $h(r)=g(r)-1$ 写成直接相关 $c(r)$ 加上经第三个粒子传递的间接相关：</p>
+      $$h(r)=c(r)+n\int c(\lvert\mathbf{r}-\mathbf{r}'\rvert)\,h(r')\,\mathrm{d}^3r'.$$
+      <p>傅里叶变换后变成代数式 $\hat{h}=\hat{c}+n\hat{c}\,\hat{h}$。各向同性流体的<span data-term="structure-factor">结构因子</span>就是密度涨落谱</p>
+      $$S(q)=1+n\hat{h}(q)=\bigl[1-n\hat{c}(q)\bigr]^{-1}.$$
+      <p>OZ 本身不闭合：还须一条连接 $c$、$g$ 与相互作用势 $u(r)$ 的闭包，例如 <span data-term="percus-yevick">Percus–Yevick</span> 或 <span data-term="mean-spherical-approximation">平均球近似</span>。</p>
+
+      <h2>物理直觉</h2>
+      <p>$c(r)$ 描述「两个粒子直接看见对方」的那一段，通常比 $g(r)$ 更短程。知道 $c$ 就能用上式算出整个 $S(q)$，包括低 $q$ 的压缩率 $S(0)$ 和第一相关峰。</p>
+
+      <h2>常见混淆</h2>
+      <ul>
+        <li>OZ 不是一种 $S(q)$ 模型，而是所有液体闭包共享的骨架。</li>
+        <li>$\hat{h}(q)$ 与单粒子 <span data-term="scattering-amplitude">$F(q)$</span> 不是一回事：前者是粒间关联，后者是粒内衬度。</li>
+      </ul>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="pair-correlation">对关联函数</span> $g(r)$</li>
+        <li><span data-term="percus-yevick">Percus–Yevick 闭包</span></li>
+        <li><span data-term="mean-spherical-approximation">平均球近似</span></li>
+        <li><span data-term="structure-factor">结构因子</span></li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../models/structure-factor/hard-sphere.html">硬球结构因子</a></li>
+        <li><a href="../models/structure-factor/hayter-msa.html">Hayter–MSA</a></li>
+        <li><a href="../models/structure-factor/index.html">结构因子分类</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

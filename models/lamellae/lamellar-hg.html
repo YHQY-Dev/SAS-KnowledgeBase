@@ -18,8 +18,8 @@
       <p>当无限片层沿法向可分成头基与尾链两段不同<span data-term="scattering-length-density">散射长度密度</span>时，用对称的头–尾–头剖面代替单矩形。典型对象是脂质或表面活性剂双层：疏水尾链夹在两层极性头基之间，溶剂在外侧。</p>
       <p>相对均匀层状：高 $q$ 的节点位置与深度随 $\rho_{\mathrm{h}}/\rho_{\mathrm{t}}$ 移动，对比变化（H/D 或 SAXS/SANS）能分开两段厚度。若层间出现布拉格峰，应改头基–尾链 Caille 堆叠。弯曲闭合膜用囊泡；有限半径双层盘用核壳双层盘。</p>
       <h2>物理图像</h2>
-      <p>振幅是三段矩形剖面的一维傅里叶变换：中央尾链厚度 $t_{\mathrm{t}}$、两侧头基各 $t_{\mathrm{h}}$。头基项带相位 $\cos\bigl(q(t_{\mathrm{t}}+t_{\mathrm{h}})/2\bigr)$，因此头、尾衬度可以相消，形式因子在均匀层看不到的 $q$ 处出现额外节点。</p>
-      <p>粉末平均仍给出 $2\pi/q^2$。总几何厚度 $t_{\mathrm{t}}+2t_{\mathrm{h}}$ 决定振荡总尺度；衬度比决定节点如何分配。Nallet 用该剖面解释溶致层状相的高 $q$ 漫散射。</p>
+      <p>振幅是三段矩形剖面的一维傅里叶变换：中央尾链厚度 $t_{\mathrm{t}}$、两侧头基各 $t_{\mathrm{h}}$。头基项带相位 $\cos\bigl(q(t_{\mathrm{t}}+t_{\mathrm{h}})/2\bigr)$，因此头、尾衬度可以相消，<span data-term="form-factor">形式因子</span>在均匀层看不到的 $q$ 处出现额外节点。</p>
+      <p><span data-term="powder-average">粉末平均</span>仍给出 $2\pi/q^2$。总几何厚度 $t_{\mathrm{t}}+2t_{\mathrm{h}}$ 决定振荡总尺度；衬度比决定节点如何分配。Nallet 用该剖面解释溶致层状相的高 $q$ 漫散射。</p>
       <h2>示意图</h2>
       <figure class="figure">
         <img src="../../assets/figures/models/lamellae/lamellar-hg-geometry.png" alt="头基–尾链层状截面：头基与尾链厚度" width="900">
@@ -33,14 +33,14 @@
       <h3>出发点</h3>
       <p>孤立、取向无规的无限双层。法向剖面由两段矩形组成：中央尾链 $|z|\lt t_{\mathrm{t}}/2$ 的衬度为 $\Delta\rho_{\mathrm{t}}=\rho_{\mathrm{t}}-\rho_{\mathrm{s}}$，两侧头基 $t_{\mathrm{t}}/2\lt|z|\lt t_{\mathrm{t}}/2+t_{\mathrm{h}}$ 的衬度为 $\Delta\rho_{\mathrm{h}}=\rho_{\mathrm{h}}-\rho_{\mathrm{s}}$。一维振幅</p>
       $$F(q)=\int_{-\infty}^{\infty}\Delta\rho(z)\,\mathrm{e}^{iqz}\,\mathrm{d}z.$$
-      <p>$\Delta\rho(z)$ 为偶函数，正弦项抵消，只剩余弦。粉末 Lorentz 因子与均匀无限片相同，来自横向无限的取向平均，推导见<a href="lamellar.html">层状</a>页。</p>
+      <p>$\Delta\rho(z)$ 为偶函数，正弦项抵消，只剩余弦。粉末 <span data-term="lorentz-factor">Lorentz 因子</span>与均匀无限片相同，来自横向无限的取向平均，推导见<a href="lamellar.html">层状</a>页。</p>
       <h3>推导</h3>
       <p>把积分拆成尾链一段与两侧头基：</p>
       $$F(q)=2\Delta\rho_{\mathrm{t}}\int_0^{t_{\mathrm{t}}/2}\cos(qz)\,\mathrm{d}z+2\Delta\rho_{\mathrm{h}}\int_{t_{\mathrm{t}}/2}^{t_{\mathrm{t}}/2+t_{\mathrm{h}}}\cos(qz)\,\mathrm{d}z.$$
       <p>第一项：$\int_0^{a}\cos(qz)\,\mathrm{d}z=\sin(qa)/q$，故 $2\Delta\rho_{\mathrm{t}}\sin(qt_{\mathrm{t}}/2)/q=\Delta\rho_{\mathrm{t}} t_{\mathrm{t}}\,\mathrm{sinc}(qt_{\mathrm{t}}/2)$，其中 $\mathrm{sinc}\,x=\sin x/x$。</p>
       <p>第二项：$2\Delta\rho_{\mathrm{h}}[\sin(q(t_{\mathrm{t}}/2+t_{\mathrm{h}}))-\sin(qt_{\mathrm{t}}/2)]/q$。和差化积 $\sin(a+b)-\sin a=2\cos(a+b/2)\sin(b/2)$，取 $a=qt_{\mathrm{t}}/2$、$b=qt_{\mathrm{h}}$，得到 $2\Delta\rho_{\mathrm{h}} t_{\mathrm{h}}\,\mathrm{sinc}(qt_{\mathrm{h}}/2)\cos\bigl(q(t_{\mathrm{t}}+t_{\mathrm{h}})/2\bigr)$。于是对称双层振幅</p>
       $$F(q)=\Delta\rho_{\mathrm{t}} t_{\mathrm{t}}\,\mathrm{sinc}\!\left(\frac{q t_{\mathrm{t}}}{2}\right)+2\Delta\rho_{\mathrm{h}} t_{\mathrm{h}}\,\mathrm{sinc}\!\left(\frac{q t_{\mathrm{h}}}{2}\right)\cos\!\left(\frac{q(t_{\mathrm{t}}+t_{\mathrm{h}})}{2}\right).$$
-      <p>总几何厚度 $t_{\mathrm{bil}}=t_{\mathrm{t}}+2t_{\mathrm{h}}$。均匀片的恒等式 $|F|^2=(\Delta\rho)^2 t^2 P_{\mathrm{t}}$ 在此推广为 $|F|^2$；体积分数 $\phi$ 按双层体积计，粉末强度</p>
+      <p>总几何厚度 $t_{\mathrm{bil}}=t_{\mathrm{t}}+2t_{\mathrm{h}}$。均匀片的恒等式 $|F|^2=(\Delta\rho)^2 t^2 P_{\mathrm{t}}$ 在此推广为 $|F|^2$；<span data-term="volume-fraction">体积分数</span> $\phi$ 按双层体积计，粉末强度</p>
       $$I(q)=\frac{2\pi\phi}{q^2 t_{\mathrm{bil}}}|F(q)|^2+B.$$
       <p>若 $\Delta\rho_{\mathrm{t}}=\Delta\rho_{\mathrm{h}}=\Delta\rho$，三段并成一块矩形，$F\to\Delta\rho\, t_{\mathrm{bil}}\,\mathrm{sinc}(q t_{\mathrm{bil}}/2)$，退回均匀层状。对比匹配使 $\Delta\rho_{\mathrm{t}}\to 0$ 时，$F$ 只剩两头基的干涉。</p>
       <h3>低 $q$ 与渐近</h3>
@@ -60,7 +60,7 @@
       </table>
       <h2>拟合注意</h2>
       <p>取向与均匀层状相同：一维是粉末平均；二维才拟合 $\theta,\phi$。剪切取向的膜，弧向宽度与畴大小相关，不要用厚度去吸收。</p>
-      <p>多分散：头基与尾链厚度分布高度相关，一维曲线上常只能约束 $t_{\mathrm{bil}}$ 与一个衬度比。对比系列或独立面积/组成是解开 $t_{\mathrm{h}}$ 与 $t_{\mathrm{t}}$ 的关键。</p>
+      <p><span data-term="polydispersity">多分散</span>：头基与尾链厚度分布高度相关，一维曲线上常只能约束 $t_{\mathrm{bil}}$ 与一个衬度比。对比系列或独立面积/组成是解开 $t_{\mathrm{h}}$ 与 $t_{\mathrm{t}}$ 的关键。</p>
       <p>磁性：脂质头基通常无磁矩；若膜镶嵌磁性片，磁通道只用磁 SLD 剖面，不必与核通道的 $t_{\mathrm{h}},t_{\mathrm{t}}$ 相同。<span data-term="instrument-smearing">仪器 smearing</span> 填浅高 $q$ 节点，易被误读成头基变厚。</p>
       <p>可辨识性：没有对比变化时，两段 SLD 与两段厚度强相关。出现层状峰时改堆叠模型，不要在孤立片上加假周期。</p>
       <h2>相近模型</h2>

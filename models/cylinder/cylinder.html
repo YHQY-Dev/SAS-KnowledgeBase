@@ -17,9 +17,9 @@
       <h2>适用场景</h2>
       <p>当粒子可视为均匀<span data-term="scattering-length-density">散射长度密度</span>的有限长直圆柱时，取向平均圆柱<span data-term="form-factor">形式因子</span>是棒状与盘状物体的基线模型。典型对象包括：刚性棒状胶束、短纤维与纳米棒、近似圆柱的病毒衣壳片段，以及长径比中等、截面接近圆形的胶体。</p>
       <p>曲线判据：细长棒（$L\gg 2R$）在中间 $q$ 出现 $\sim q^{-1}$ 区，随后由半径给出的 Bessel 振荡与 Porod $q^{-4}$；扁平盘（$L\ll 2R$）中间区接近 $q^{-2}$。低 $q$ 的 Guinier 区由整体<span data-term="radius-of-gyration">回转半径</span>控制。截面明显椭圆、空心或径向核壳时，应改用相应变体，而不是给均匀圆柱强加额外参数。</p>
-      <p>稀溶液、相互作用可忽略时只拟合 $P(q)$。二维各向异性图案需要取向分布，而不是只用一维粉末平均。</p>
+      <p>稀溶液、相互作用可忽略时只拟合 $P(q)$。二维各向异性图案需要取向分布，而不是只用一维<span data-term="powder-average">粉末平均</span>。</p>
       <h2>物理图像</h2>
-      <p>有限圆柱的散射振幅是沿轴的 $\mathrm{sinc}$ 因子与径向圆柱 Bessel 因子 $2J_1(x)/x$ 的乘积。Fournet 给出对圆柱轴与 $\mathbf{q}$ 夹角 $\alpha$ 的取向平均：$P(q)=\int_0^{\pi/2}|F(q,\alpha)|^2\sin\alpha\,\mathrm{d}\alpha$。约定 $P(0)=1$ 时，强度还含数密度、体积平方与衬度平方，拟合中常收进标度因子。</p>
+      <p>有限圆柱的<span data-term="scattering-amplitude">散射振幅</span>是沿轴的 $\mathrm{sinc}$ 因子与径向圆柱 Bessel 因子 $2J_1(x)/x$ 的乘积。Fournet 给出对圆柱轴与 $\mathbf{q}$ 夹角 $\alpha$ 的取向平均：$P(q)=\int_0^{\pi/2}|F(q,\alpha)|^2\sin\alpha\,\mathrm{d}\alpha$。约定 $P(0)=1$ 时，强度还含<span data-term="number-density">数密度</span>、体积平方与衬度平方，拟合中常收进标度因子。</p>
       <p>长度主导低–中 $q$（棒的 $q^{-1}$ 或盘的 $q^{-2}$），半径主导高 $q$ 振荡。粉末平均会抹掉二维弧上的取向信息；磁场或剪切下的二维数据必须保留 $\theta,\phi$。</p>
       <h2>示意图</h2>
       <figure class="figure">
@@ -32,7 +32,7 @@
       </figure>
       <h2>核心公式</h2>
       <h3>出发点</h3>
-      <p>稀释、取向无规的均匀粒子，相干散射振幅是衬度对平面波相位的体积分</p>
+      <p>稀释、取向无规的均匀粒子，相干<span data-term="scattering-amplitude">散射振幅</span>是<span data-term="contrast">衬度</span>对平面波相位的体积分</p>
       $$F(\mathbf{q})=\int_V \Delta\rho(\mathbf{r})\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r.$$
       <p>均匀圆柱内 $\Delta\rho$ 为常数。取柱坐标，轴沿 $\hat{\mathbf{z}}$，$z\in[-L/2,L/2]$，径向 $r_\perp\le R$。令 $\alpha$ 为 $\mathbf{q}$ 与轴的夹角，则 $q_z=q\cos\alpha$、$q_\perp=q\sin\alpha$，相位分离为轴向与径向：</p>
       $$F(q,\alpha)=\Delta\rho\int_{-L/2}^{L/2}\mathrm{e}^{i q_z z}\,\mathrm{d}z\int_0^R r_\perp\,\mathrm{d}r_\perp\int_0^{2\pi}\mathrm{e}^{i q_\perp r_\perp\cos\phi}\,\mathrm{d}\phi.$$

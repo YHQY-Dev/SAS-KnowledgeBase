@@ -15,11 +15,11 @@
       <h1>无规相近似</h1>
       <p class="subtitle-en">RPA</p>
       <h2>适用场景</h2>
-      <p>聚合物共混或熔体的浓度涨落在平均场下用 de Gennes 无规相近似（RPA）。$S(q)$ 由 Debye 函数与 Flory–Huggins <span data-term="flory-huggins-chi">$\chi$</span> 构成；趋近旋节时 $S(0)$ 发散。</p>
+      <p>聚合物共混或熔体的浓度涨落在平均场下用 de Gennes 无规相近似（RPA）。$S(q)$ 由 <span data-term="debye-function">Debye 函数</span>与 Flory–Huggins <span data-term="flory-huggins-chi">$\chi$</span> 构成；趋近旋节时 $S(0)$ 发散。</p>
       <p>嵌段共聚物有 Leibler 峰，本页只写共混均聚物的 de Gennes 式。已经相分离成畴时改用 TS、层状或几何模型。</p>
       <h2>物理图像</h2>
       <p>RPA 把理想链的 Debye 响应加上平均场相互作用：$\chi$ 越大，长波涨落越强。$S^{-1}(q)=[\phi N g_D]^{-1}+[(1-\phi)N g_D]^{-1}-2\chi$。</p>
-      <p>这是结构因子语言，不是粒子外形。取向在各向同性熔体中平凡；外场取向的链要用各向异性 Debye。</p>
+      <p>这是<span data-term="structure-factor">结构因子</span>语言，不是粒子外形。取向在各向同性熔体中平凡；外场取向的链要用各向异性 Debye。</p>
       <h2>示意图</h2>
       <figure class="figure">
         <img src="../../assets/figures/models/shape-independent/rpa-iq.png" alt="聚合物共混 RPA I(q) 示意" width="900">
@@ -39,16 +39,16 @@
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
         <tbody>
-          <tr><td>回转半径</td><td>$R_g$</td><td>链的 Debye $R_g$</td><td>Å</td><td>熔体链尺寸</td></tr>
+          <tr><td><span data-term="radius-of-gyration">回转半径</span></td><td>$R_g$</td><td>链的 Debye $R_g$</td><td>Å</td><td>熔体链尺寸</td></tr>
           <tr><td>聚合度</td><td>$N$</td><td>有效段数</td><td>无量纲</td><td>与 $R_g$ 相关</td></tr>
-          <tr><td>体积分数</td><td>$\phi$</td><td>其中一组份</td><td>无量纲</td><td>$0.1$–$0.9$</td></tr>
+          <tr><td><span data-term="volume-fraction">体积分数</span></td><td>$\phi$</td><td>其中一组份</td><td>无量纲</td><td>$0.1$–$0.9$</td></tr>
           <tr><td>相互作用</td><td>$\chi$</td><td>Flory–Huggins 参数</td><td>无量纲</td><td>近旋节时接近 $\chi_s$</td></tr>
           <tr><td>标度 / 本底</td><td>$\mathrm{scale}$, $B$</td><td>前置因子与常数本底</td><td>与强度单位一致</td><td>实验相关</td></tr>
         </tbody>
       </table>
       <h2>拟合注意</h2>
       <p>取向：各向同性 RPA 不含量纲取向角。流动会使 $g_D$ 各向异性。</p>
-      <p>多分散 $N$ 改变 $S(0)$ 与旋节位置，须声明是何种平均。磁性标记共混：磁 $\Delta\rho$ 只进入幅度，除非两组份磁化率不同。</p>
+      <p><span data-term="polydispersity">多分散</span> $N$ 改变 $S(0)$ 与旋节位置，须声明是何种平均。磁性标记共混：磁 $\Delta\rho$ 只进入幅度，除非两组份磁化率不同。</p>
       <p>可辨识性：$\chi$ 与 $N$、本底、绝对标定强相关。没有绝对强度时只能谈 $S(q)/S(0)$ 的形状。已经出现畴峰时不要继续用均聚物 RPA。</p>
       <h2>相近模型</h2>
       <ul>

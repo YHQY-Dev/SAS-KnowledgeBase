@@ -17,10 +17,10 @@
       <h2>适用场景</h2>
       <p>当粒子可视为各向同性、内部<span data-term="scattering-length-density">散射长度密度</span>近似均匀的球体时，均匀球<span data-term="form-factor">形式因子</span>是最直接的解析模型。典型对象包括：稀释胶乳与无机纳米颗粒、近似球形的乳液滴、胶束疏水核的粗描述，以及许多可用等效球半径概括的胶体。</p>
       <p>适用的经验判据：$p(r)$ 单峰且较对称；低 $q$ 的 Guinier 区给出与几何半径自洽的<span data-term="radius-of-gyration">回转半径</span>；$\log I$–$\log q$ 上可见与半径相关的振荡极小，高 $q$ 趋近 Porod $q^{-4}$。明显长径比、空心壳层或径向分层时，应改用核壳、囊泡或模糊球，而不是给均匀球强加额外参数。</p>
-      <p>稀溶液、相互作用可忽略时只拟合 $P(q)$。体积分数升高、低 $q$ 被压低或出现相关峰时，应另加<span data-term="structure-factor">结构因子</span>，不要把 $S(q)$ 误读成半径变化。</p>
+      <p>稀溶液、相互作用可忽略时只拟合 $P(q)$。<span data-term="volume-fraction">体积分数</span>升高、低 $q$ 被压低或出现相关峰时，应另加<span data-term="structure-factor">结构因子</span>，不要把 $S(q)$ 误读成半径变化。</p>
       <h2>物理图像</h2>
-      <p>均匀球的散射振幅是球体积内平面波相位的积分。Rayleigh 给出归一化振幅 $\Phi(x)=3(\sin x-x\cos x)/x^3$，强度 $P(q)=|\Phi(qR)|^2$，并约定 $P(0)=1$。第一极小约在 $qR\approx 4.49$；低 $q$ 回到 Guinier，$R_g=R\sqrt{3/5}$。</p>
-      <p>绝对强度还含数密度、衬度平方与体积平方。拟合中常把它们收进无量纲标度因子，本底吸收溶剂与仪器的常数项。球的取向平均是平凡的：取向对 $I(q)$ 无影响。</p>
+      <p>均匀球的<span data-term="scattering-amplitude">散射振幅</span>是球体积内平面波相位的积分。Rayleigh 给出归一化振幅 $\Phi(x)=3(\sin x-x\cos x)/x^3$，强度 $P(q)=|\Phi(qR)|^2$，并约定 $P(0)=1$。第一极小约在 $qR\approx 4.49$；低 $q$ 回到 Guinier，$R_g=R\sqrt{3/5}$。</p>
+      <p>绝对强度还含<span data-term="number-density">数密度</span>、衬度平方与体积平方。拟合中常把它们收进无量纲标度因子，本底吸收溶剂与仪器的常数项。球的<span data-term="powder-average">取向平均</span>是平凡的：取向对 $I(q)$ 无影响。</p>
       <h2>示意图</h2>
       <figure class="figure">
         <img src="../../assets/figures/models/sphere/sphere-geometry.png" alt="均匀球几何示意：半径 R" width="900">
@@ -32,7 +32,7 @@
       </figure>
       <h2>核心公式</h2>
       <h3>出发点</h3>
-      <p>稀释、取向无规的均匀粒子，相干散射振幅是衬度对平面波相位的体积分</p>
+      <p>稀释、取向无规的均匀粒子，相干<span data-term="scattering-amplitude">散射振幅</span>是<span data-term="contrast">衬度</span>对平面波相位的体积分</p>
       $$F(\mathbf{q})=\int_V \Delta\rho(\mathbf{r})\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r.$$
       <p>均匀球内 $\Delta\rho$ 为常数。球对称使相位只依赖 $r=|\mathbf{r}|$ 与 $q=|\mathbf{q}|$，角积分给出球 Bessel 核 $\mathrm{sinc}(qr)=\sin(qr)/(qr)$：</p>
       $$F(q)=4\pi\Delta\rho\int_0^R r^2\,\frac{\sin(qr)}{qr}\,\mathrm{d}r.$$
@@ -61,7 +61,7 @@
         </tbody>
       </table>
       <h2>拟合注意</h2>
-      <p><span data-term="polydispersity">多分散</span>是均匀球最常见的“看起来不像球”的原因。Schulz–Zimm 或对数正态（logN）尺寸分布会把第一极小抹平，并改变振荡相位；相对宽度 $\sigma_R/\langle R\rangle\gtrsim 10\%$ 时极小即可显著变钝。报告均值时须声明是数均、体积加权还是强度加权。</p>
+      <p><span data-term="polydispersity">多分散</span>是均匀球最常见的“看起来不像球”的原因。<span data-term="schultz-zimm">Schulz–Zimm</span> 或对数正态（logN）尺寸分布会把第一极小抹平，并改变振荡相位；相对宽度 $\sigma_R/\langle R\rangle\gtrsim 10\%$ 时极小即可显著变钝。报告均值时须声明是数均、体积加权还是强度加权。</p>
       <p>取向对球无关：不必引入取向角。仪器 smearing 与多分散在数据上同为振荡变钝，须用分辨率函数或针孔/狭缝几何信息区分。磁性测量时，核磁<span data-term="scattering-length-density">散射长度密度</span>与核（核散射）SLD 是不同通道：均匀磁化球的磁形式因子仍是 Rayleigh 函数，但磁半径、死层与核半径不必相同；核/壳磁 SLD 应单独给出，勿与核衬度混用。</p>
       <p>可辨识性：仅有低 $q$ Guinier 时，$R$ 与多分散、本底强相关。要约束 $R$，需要看到至少一个形式因子极小，或有独立的电镜/水力学半径。浓体系低 $q$ 压低应归因于 $S(q)$，而不是把 $R$ 拟合得偏小。</p>
       <h2>相近模型</h2>

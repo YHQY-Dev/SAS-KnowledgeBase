@@ -16,7 +16,7 @@
       <p class="subtitle-en">unified power Rg</p>
       <h2>适用场景</h2>
       <p>层级结构（聚集体上还有聚集体、链段上还有整链）需要一套以上 $R_g$ 与幂律时，用 Beaucage <span data-term="beaucage-unified">统一指数/幂律</span>。每一层是 Guinier 加上用误差函数截断的幂律，多层直接相加。</p>
-      <p>适合气凝胶、支化高分子、炭黑与多尺度孔。若只有一层 Guinier+一段幂律，Guinier–Porod 通常更省参数。出现几何振荡极小时，应回到具体形式因子。</p>
+      <p>适合气凝胶、支化高分子、炭黑与多尺度孔。若只有一层 Guinier+一段幂律，Guinier–Porod 通常更省参数。出现几何振荡极小时，应回到具体<span data-term="form-factor">形式因子</span>。</p>
       <h2>物理图像</h2>
       <p>一层写成 $G\exp(-q^2 R_g^2/3)$ 加上 $B[(\mathrm{erf}(q R_g/\sqrt{6}))^3/q]^P$。误差函数保证幂律在 $qR_g\ll 1$ 被关掉，从而不破坏 Guinier 坪。多层把下一层的 Guinier 再叠上去。</p>
       <p>这是包络描述，不编码外形振荡。磁性通道可以有自己的 $\{G,R_g,P\}$。</p>
@@ -42,15 +42,15 @@
       <table>
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
         <tbody>
-          <tr><td>回转半径</td><td>$R_g$</td><td>该层 Guinier 尺寸</td><td>Å</td><td>10–1000 Å</td></tr>
-          <tr><td>Guinier 幅度</td><td>$G$</td><td>该层前向幅度</td><td>与强度单位一致</td><td>与数密度、衬度相关</td></tr>
+          <tr><td><span data-term="radius-of-gyration">回转半径</span></td><td>$R_g$</td><td>该层 Guinier 尺寸</td><td>Å</td><td>10–1000 Å</td></tr>
+          <tr><td>Guinier 幅度</td><td>$G$</td><td>该层前向幅度</td><td>与强度单位一致</td><td>与<span data-term="number-density">数密度</span>、衬度相关</td></tr>
           <tr><td>幂律幅度 / 指数</td><td>$B$, $P$</td><td>截断幂律的前置与指数</td><td>与强度单位 / 无量纲</td><td>$P$ 通常 $1$–$4$</td></tr>
           <tr><td>本底</td><td>$B_{\mathrm{kg}}$</td><td>常数本底</td><td>与强度单位一致</td><td>仪器与溶剂相关</td></tr>
         </tbody>
       </table>
       <h2>拟合注意</h2>
-      <p>取向：有效 $P$ 与 $R_g$ 是粉末平均后的标量。取向棒/片应改用带 $s$ 的 Guinier–Porod 或几何模型。</p>
-      <p>多分散使层级边界变糊，$G$ 与 $B$ 的约束关系被破坏。磁性：磁层级不必与核层级一一对应。</p>
+      <p>取向：有效 $P$ 与 $R_g$ 是<span data-term="powder-average">粉末平均</span>后的标量。取向棒/片应改用带 $s$ 的 Guinier–Porod 或几何模型。</p>
+      <p><span data-term="polydispersity">多分散</span>使层级边界变糊，$G$ 与 $B$ 的约束关系被破坏。磁性：磁层级不必与核层级一一对应。</p>
       <p>可辨识性：两层以上参数极易交换。没有跨越两个转折的宽 $q$ 窗口时，不要增加层数。勿与 Hammouda 模型在同一段上同时自由拟合。</p>
       <h2>相近模型</h2>
       <ul>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>玻恩近似 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>玻恩近似</h1>
+      <p class="subtitle-en">Born approximation</p>
+      <h2>定义</h2>
+      <p><strong>玻恩近似</strong>（Born approximation，运动学近似）假定：入射波穿过样品时几乎不被衰减或折射畸变，每个体积元只散射一次。此时二次波的源就是未扰动平面波，总<span data-term="scattering-amplitude">散射振幅</span>化为</p>
+      $$F(\mathbf{q})=\int\Delta\rho(\mathbf{r})\,e^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}V.$$
+      <p>这是透射 <span data-term="saxs">SAXS</span> / <span data-term="sans">SANS</span> <span data-term="form-factor">形式因子</span>推导的默认出发点。模型手册里的闭式都建立在这一假设上。</p>
+
+      <h2>物理直觉</h2>
+      <p>「弱」的判据是多次散射可忽略：透射率不要太低、颗粒衬度与厚度的乘积不要太大。实验室软物质溶液通常满足；厚、强散射的 USAXS 样品或浓浆料可能偏离，见<span data-term="multiple-scattering">多重散射</span>。</p>
+      <p>掠入射靠近临界角时，反射/折射已把入射场改成「畸变波」，必须升级为<span data-term="dwba">DWBA</span>。DWBA 仍是对侧向结构做一阶玻恩微扰，只是参考波不再是真空平面波。</p>
+
+      <h2>常见混淆</h2>
+      <ul>
+        <li>玻恩近似 ≠ 「公式里可以随便忽略相位」：相位 $e^{i\mathbf{q}\cdot\mathbf{r}}$ 正是干涉的来源。</li>
+        <li>满足 Born 仍可能有仪器<span data-term="instrument-smearing">模糊</span>与<span data-term="polydispersity">多分散</span>，那些是实验效应，不是动力学散射。</li>
+      </ul>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="scattering-amplitude">散射振幅</span> $F(\mathbf{q})$</li>
+        <li><span data-term="dwba">畸变波玻恩近似</span></li>
+        <li><span data-term="multiple-scattering">多重散射</span></li>
+        <li><span data-term="coherent-scattering">相干散射</span></li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../learn/02-scattering-basics.html">学习路径 02 · 散射基础</a></li>
+        <li><a href="../topics/gisaxs/index.html">专题 · GISAXS</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

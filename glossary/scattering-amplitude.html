@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>散射振幅 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>散射振幅</h1>
+      <p class="subtitle-en">scattering amplitude</p>
+      <h2>定义</h2>
+      <p><strong>散射振幅</strong> $F(\mathbf{q})$ 是稀释极限、一阶<span data-term="born-approximation">玻恩近似</span>下，样品各体积元二次波的相干叠加。入射平面波 $e^{i\mathbf{k}_i\cdot\mathbf{r}}$ 在 $\mathbf{r}$ 处被<span data-term="scattering-length-density">散射长度密度</span> $\rho(\mathbf{r})$ 散射，出射方向波矢为 $\mathbf{k}_s$。相对相位由<span data-term="scattering-vector-q">散射矢量</span> $\mathbf{q}=\mathbf{k}_s-\mathbf{k}_i$ 决定，于是</p>
+      $$F(\mathbf{q})=\int \rho(\mathbf{r})\,e^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}V.$$
+      <p>均匀溶剂（或基体）$\rho_s$ 的傅里叶变换只落在 $\mathbf{q}=0$（未被散射的入射束，由<span data-term="beamstop">束阻</span>挡住）。进入小角探测器的是过剩密度 $\Delta\rho=\rho-\rho_s$，即<span data-term="contrast">衬度</span>场：</p>
+      $$F(\mathbf{q})=\int \Delta\rho(\mathbf{r})\,e^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}V.$$
+      <p>探测器测强度不测相位，故 $I\propto\lvert F\rvert^2$。</p>
+
+      <h2>物理直觉</h2>
+      <p>可把 $F$ 看成「谁在散射、相位差多少」的记账：体积元贡献 $\Delta\rho\,\mathrm{d}V$，再乘平面波相位。模型手册里球、柱、核壳的闭式，都是对这个积分在特定 $\Delta\rho(\mathbf{r})$ 上求出来的。</p>
+      <p>与<span data-term="form-factor">形式因子</span>的关系（均匀粒子、约定 $P(0)=1$）：</p>
+      $$P(q)=\left\lvert\frac{F(q)}{F(0)}\right\rvert^2.$$
+      <p>$F(0)=\Delta\rho\,V$ 是超额散射长度。稀释、单分散强度常写 $I(q)=n\lvert F(q)\rvert^2+B=n(\Delta\rho)^2 V^2 P(q)+B$，其中 $n$ 为<span data-term="number-density">数密度</span>。</p>
+      <p>各向异性粒子还须对取向做<span data-term="powder-average">粉末平均</span>：$I(q)=\langle\lvert F(\mathbf{q})\rvert^2\rangle$。掠入射几何下入射场已不是简单平面波，应改用<span data-term="dwba">DWBA</span>，而不是本页的透射 Born 积分。</p>
+
+      <h2>常见混淆</h2>
+      <ul>
+        <li>$F$ 是振幅，$P$ 是归一化强度：$P$ 不含 $n$ 与 $(\Delta\rho)^2$，拟合标度因子里才有它们。</li>
+        <li>晶体学结构因子 $F_{hkl}$ 与本页 $F(\mathbf{q})$ 名称相近：前者是晶胞求和，后者是连续衬度的傅里叶变换。</li>
+        <li>$\Delta\rho$ 写成常数从积分里提出，只对均匀粒子合法；核壳、径向剖面必须留在积分号内。</li>
+      </ul>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="born-approximation">玻恩近似</span>（本积分的适用条件）</li>
+        <li><span data-term="form-factor">形式因子</span> $P(q)$</li>
+        <li><span data-term="structure-factor">结构因子</span> $S(q)$</li>
+        <li><span data-term="contrast">衬度</span> $\Delta\rho$</li>
+        <li><span data-term="powder-average">粉末平均</span></li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../learn/02-scattering-basics.html">学习路径 02 · 散射基础</a></li>
+        <li><a href="../learn/08-models-polydispersity.html">学习路径 08 · 模型与多分散</a></li>
+        <li><a href="../models/index.html">模型手册</a>（各篇「出发点」）</li>
+        <li><a href="../models/sphere/sphere.html">均匀球</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Schulz–Zimm 分布 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>Schulz–Zimm 分布</h1>
+      <p class="subtitle-en">Schulz–Zimm distribution</p>
+      <h2>定义</h2>
+      <p><strong>Schulz–Zimm 分布</strong>是伽马型的尺寸或分子量分布，由均值 $\langle R\rangle$ 与相对宽度 $p=\sigma_R/\langle R\rangle$（或 Zimm 参数 $z=1/p^2-1$）刻画。对球等形式因子，观测曲线是</p>
+      $$I(q)=n\int_0^\infty f(R)\,\lvert F(q;R)\rvert^2\,\mathrm{d}R+B.$$
+      <p>权重 $f(R)$ 必须声明是数均、体积加权还是强度（$z$）加权：Guinier 得到的 $R_g$ 偏大端。</p>
+      <p>对数正态是另一常见选择；双峰混合物不是单峰 Schulz 能代替的。</p>
+
+      <h2>物理直觉</h2>
+      <p>$p\gtrsim 10\%$ 时均匀球的第一极小就会显著变钝。这常被误判为「不是球」或「界面很糊」。先试分布，再改形状。</p>
+
+      <h2>常见混淆</h2>
+      <ul>
+        <li>Schulz 分布的 $z$ 与 Zimm 图、Zimm 方程不是同一个 $z$。</li>
+        <li>仪器模糊与多分散都会抹振荡，见 <span data-term="instrument-smearing">smearing</span>。</li>
+      </ul>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="polydispersity">多分散</span></li>
+        <li><span data-term="form-factor">形式因子</span></li>
+        <li><span data-term="radius-of-gyration">回转半径</span></li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../learn/08-models-polydispersity.html">学习路径 08 · 模型与多分散</a></li>
+        <li><a href="../models/sphere/sphere.html">均匀球</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

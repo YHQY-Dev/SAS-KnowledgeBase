@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Debye 函数 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>Debye 函数</h1>
+      <p class="subtitle-en">Debye function</p>
+      <h2>定义</h2>
+      <p>理想高斯链的<span data-term="form-factor">形式因子</span>是 <strong>Debye 函数</strong>。令 $x=q^2 R_g^2$，</p>
+      $$P(q)=D(x)=\frac{2}{x^2}\bigl(e^{-x}-1+x\bigr).$$
+      <p>$q\to 0$ 时 $D=1-x/3+\cdots$，回到 Guinier（链的 $R_g^2=Nb^2/6$）。$x\gg 1$ 时 $D\sim 2/x\propto q^{-2}$，即无规线团的 Kratky 坪 $q^2 I(q)\to$ 常数。</p>
+      <p>推导：把链写成 $N$ 个高斯弹簧，对所有单体对 $e^{-q^2\langle r_{ij}^2\rangle/6}$ 求和，连续极限就是上式。排除体积链要用其他闭式（如聚合物排除体积模型），不能硬套 Debye。</p>
+
+      <h2>物理直觉</h2>
+      <p>高斯链没有明确外表面，所以没有球那样的振荡极小，也没有 Porod $q^{-4}$。高 $q$ 若看到 $q^{-1}$，说明已经分辨到局部棒状，应改用<span data-term="wormlike-chain">蠕虫状链</span>。</p>
+
+      <h2>常见混淆</h2>
+      <ul>
+        <li>Debye 相关函数 $\gamma(r)$（两相介质）与 Debye 链形式因子同名不同物。</li>
+        <li><span data-term="polydispersity">多分散</span>链要把 $D(x)$ 对分子量分布平均，不能只用一个 $R_g$ 的 Debye 去拟合宽分布。</li>
+      </ul>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="kuhn-length">Kuhn 长度</span></li>
+        <li><span data-term="wormlike-chain">蠕虫状链</span></li>
+        <li><span data-term="kratky-plot">Kratky 图</span></li>
+        <li><span data-term="correlation-function">相关函数</span> $\gamma(r)$（易混）</li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../models/shape-independent/mono-gauss-coil.html">单分散高斯链</a></li>
+        <li><a href="../models/shape-independent/poly-gauss-coil.html">多分散高斯链</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

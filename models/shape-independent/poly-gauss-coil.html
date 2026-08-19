@@ -15,8 +15,8 @@
       <h1>多分散高斯链</h1>
       <p class="subtitle-en">polydisperse Gaussian coil</p>
       <h2>适用场景</h2>
-      <p>工业高分子或未分级样品的 $M_w/M_n$ 明显大于 $1$ 时，对 Debye 函数做 Schulz–Zimm 平均。低 $q$ 的 $R_g$ 接近 $z$ 均，前向散射仍由 $M_w$ 主导。</p>
-      <p>分布很窄时回到单分散 Debye。排除体积与多分散会混在高 $q$ 尾上，不要两个都自由拟合。</p>
+      <p>工业高分子或未分级样品的 $M_w/M_n$ 明显大于 $1$ 时，对 <span data-term="debye-function">Debye 函数</span>做 <span data-term="schultz-zimm">Schulz–Zimm</span> 平均。低 $q$ 的 $R_g$ 接近 $z$ 均，<span data-term="forward-scattering">前向散射</span>仍由 $M_w$ 主导。</p>
+      <p>分布很窄时回到单分散 Debye。排除体积与<span data-term="polydispersity">多分散</span>会混在高 $q$ 尾上，不要两个都自由拟合。</p>
       <h2>物理图像</h2>
       <p>Zimm 把不同链长的 Debye 函数按 Schulz 分布积分。多分散参数 $U=M_w/M_n-1$，$z=1/U$。结果仍是闭合式，高 $q$ 仍 $\sim q^{-2}$，但低 $q$ 曲率变缓。</p>
       <p>这是分子量多分散，不是空间取向分布。</p>
@@ -29,7 +29,7 @@
       <h3>出发点</h3>
       <p>单分散 Debye 来自高斯链段对 $\langle\mathrm{e}^{iq\cdot R_n}\rangle=\mathrm{e}^{-q^2 nb^2/6}$。分子量按 Schulz–Zimm 分布时，$N$ 不同则 $R_g^2\propto N$ 不同，需对 Debye 函数做强度加权平均。分布可用 $U=M_w/M_n-1$、$z=1/U$ 参数化，积分仍闭合。</p>
       <h3>推导</h3>
-      <p>Schulz–Zimm：$w(N)\propto N^z\mathrm{e}^{-(z+1)N/\langle N\rangle_w}$。单链 $P(q;N)=2(\mathrm{e}^{-x}-1+x)/x^2$，$x=q^2 R_g^2(N)$。对 $N$ 积分后（Zimm），令 $u=q^2 R_g^2/(z+1)$，其中 $R_g$ 取与 $z$ 均链长对应的回转半径，得到</p>
+      <p>Schulz–Zimm：$w(N)\propto N^z\mathrm{e}^{-(z+1)N/\langle N\rangle_w}$。单链 $P(q;N)=2(\mathrm{e}^{-x}-1+x)/x^2$，$x=q^2 R_g^2(N)$。对 $N$ 积分后（Zimm），令 $u=q^2 R_g^2/(z+1)$，其中 $R_g$ 取与 $z$ 均链长对应的<span data-term="radius-of-gyration">回转半径</span>，得到</p>
       $$P(q)=\frac{2}{z(z+1)u^2}\bigl[(1+zu)^{-z}+zu(z+1)-1\bigr].$$
       <p>$U\to 0$（$z\to\infty$）时 $(1+zu)^{-z}\to\mathrm{e}^{-x}$，$u\to x$，回到单分散 Debye。前向散射仍由 $M_w$ 主导：$I(0)\propto\langle N\rangle_w$。</p>
       <h3>低 $q$ 与渐近</h3>

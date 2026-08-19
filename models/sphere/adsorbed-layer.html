@@ -30,7 +30,7 @@
       </figure>
       <h2>核心公式</h2>
       <h3>出发点</h3>
-      <p>稀释、取向无规时，相干散射振幅是衬度对平面波相位的体积分</p>
+      <p>稀释、取向无规时，相干<span data-term="scattering-amplitude">散射振幅</span>是衬度对平面波相位的体积分</p>
       $$F(\mathbf{q})=\int_V \Delta\rho(\mathbf{r})\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r.$$
       <p>均匀吸附层取球对称、分段常数剖面：核 $r&lt;R$ 为 $\rho_c$，层 $R\le r\le R+\delta$ 为平均 $\rho_L$，之外为溶剂 $\rho_{\mathrm{solv}}$。角积分后只剩径向正弦变换</p>
       $$F(q)=4\pi\int_0^{R+\delta} r^2\bigl[\rho(r)-\rho_{\mathrm{solv}}\bigr]\frac{\sin(qr)}{qr}\,\mathrm{d}r.$$
@@ -39,7 +39,7 @@
       $$F(q)=(\rho_c-\rho_{\mathrm{solv}})V(R)\Phi(qR)+(\rho_L-\rho_{\mathrm{solv}})\bigl[V(R+\delta)\Phi\bigl(q(R+\delta)\bigr)-V(R)\Phi(qR)\bigr].$$
       <p>合并 $\Phi(qR)$ 的系数，得到与核壳球同构的闭式</p>
       $$A(q)=(\rho_c-\rho_L)V(R)\Phi(qR)+(\rho_L-\rho_{\mathrm{solv}})V(R+\delta)\Phi\bigl(q(R+\delta)\bigr).$$
-      <p>稀疏层把层平均写成体积分数加权 $\rho_L=\phi_{\mathrm{pol}}\rho_{\mathrm{pol}}+(1-\phi_{\mathrm{pol}})\rho_{\mathrm{solv}}$，层衬度即 $\phi_{\mathrm{pol}}(\rho_{\mathrm{pol}}-\rho_{\mathrm{solv}})$，可用 $\phi_{\mathrm{pol}}$ 代替独立的层 SLD。稀释强度 $I(q)=n|A(q)|^2+B$。</p>
+      <p>稀疏层把层平均写成<span data-term="volume-fraction">体积分数</span>加权 $\rho_L=\phi_{\mathrm{pol}}\rho_{\mathrm{pol}}+(1-\phi_{\mathrm{pol}})\rho_{\mathrm{solv}}$，层衬度即 $\phi_{\mathrm{pol}}(\rho_{\mathrm{pol}}-\rho_{\mathrm{solv}})$，可用 $\phi_{\mathrm{pol}}$ 代替独立的层 SLD。稀释强度 $I(q)=n|A(q)|^2+B$。</p>
       <h3>低 $q$ 与渐近</h3>
       <p>$q\to 0$ 时 $\Phi\to 1$，超额散射长度</p>
       $$A(0)=(\rho_c-\rho_{\mathrm{solv}})V(R)+(\rho_L-\rho_{\mathrm{solv}})\bigl[V(R+\delta)-V(R)\bigr].$$
@@ -52,7 +52,7 @@
           <tr><td>核半径</td><td>$R$</td><td>裸核半径</td><td>Å 或 nm</td><td>50–2000 Å</td></tr>
           <tr><td>层厚</td><td>$\delta$</td><td>吸附层径向厚度</td><td>Å</td><td>10–200 Å</td></tr>
           <tr><td>层平均 SLD</td><td>$\rho_L$</td><td>层内聚合物+溶剂平均</td><td>Å$^{-2}$</td><td>介于纯聚合物与溶剂之间</td></tr>
-          <tr><td>核 SLD</td><td>$\rho_c$</td><td>核散射长度密度</td><td>Å$^{-2}$</td><td>常由组成固定</td></tr>
+          <tr><td>核 SLD</td><td>$\rho_c$</td><td>核<span data-term="scattering-length-density">散射长度密度</span></td><td>Å$^{-2}$</td><td>常由组成固定</td></tr>
           <tr><td>聚合物体积分数</td><td>$\phi_{\mathrm{pol}}$</td><td>层内聚合物占有率</td><td>无量纲</td><td>0.01–0.5</td></tr>
         </tbody>
       </table>

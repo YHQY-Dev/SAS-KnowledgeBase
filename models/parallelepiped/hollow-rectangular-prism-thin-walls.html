@@ -27,7 +27,7 @@
       </figure>
       <figure class="figure">
         <img src="../../assets/figures/models/parallelepiped/hollow-rectangular-prism-thin-walls-iq.png" alt="薄壁空心矩形棱柱 I(q) 示意" width="900">
-        <figcaption>空心公式在很小 $t$ 下的粉末平均 $I(q)$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+        <figcaption>空心公式在很小 $t$ 下的<span data-term="powder-average">粉末平均</span> $I(q)$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <h2>核心公式</h2>
       <h3>出发点</h3>
@@ -37,7 +37,7 @@
       $$A(\mathbf{q})\simeq\Delta\rho\, t\sum_{\mathrm{faces}}S_f\,\mathrm{sinc}(\mathbf{q}\cdot\mathbf{a}_f/2)\,\mathrm{sinc}(\mathbf{q}\cdot\mathbf{b}_f/2)\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}_f},$$
       <p>其中 $S_f$ 为第 $f$ 个矩形面的面积，$\mathbf{a}_f,\mathbf{b}_f$ 为面上两边。$A(\mathbf{0})=\Delta\rho\, t S$。粉末平均后 $P(0)=1$。实际拟合中 $t$ 与 $\Delta\rho$ 只以乘积出现，须固定其一。稀释 $I(q)=n\langle|A|^2\rangle+B$。</p>
       <h3>低 $q$ 与渐近</h3>
-      <p>薄壳回转半径是面上 $r^2$ 的面积平均。对面心距离与面内二阶矩求和得</p>
+      <p>薄壳<span data-term="radius-of-gyration">回转半径</span>是面上 $r^2$ 的面积平均。对面心距离与面内二阶矩求和得</p>
       $$R_g^2=\frac{AB(A^2+B^2)+AC(A^2+C^2)+BC(B^2+C^2)}{12(AB+AC+BC)}+\frac{ABC(A+B+C)}{4(AB+AC+BC)}.$$
       <p>立方 $A=B=C=L$ 时 $R_g^2=5L^2/12$，大于实心立方的 $L^2/4$。Guinier 指数形式在 $qR_g\lesssim 1$ 可用。</p>
       <p>中间区接近面散射，包络可显 $q^{-2}$；更高 $q$ 尖锐面仍给出 Porod $q^{-4}$。若 $q_{\max}$ 已能分辨壁厚振荡，应回到有限 $t$，而不是在本极限里拟合虚假的 $t$。</p>
@@ -52,8 +52,8 @@
         </tbody>
       </table>
       <h2>拟合注意</h2>
-      <p>不要同时放开 $t$ 与 $\Delta\rho$。边长多分散会抹掉面干涉。若残差在高 $q$ 系统偏离，说明 $t$ 并非可忽略，应回到有限壁模型。</p>
-      <p>取向与磁性：薄磁壁的磁形式因子接近面散射；与核（空）通道完全不同。二维 $\theta,\phi$ 仍需要。</p>
+      <p>不要同时放开 $t$ 与 $\Delta\rho$。边长<span data-term="polydispersity">多分散</span>会抹掉面干涉。若残差在高 $q$ 系统偏离，说明 $t$ 并非可忽略，应回到有限壁模型。</p>
+      <p>取向与磁性：薄磁壁的磁<span data-term="form-factor">形式因子</span>接近面散射；与核（空）通道完全不同。二维 $\theta,\phi$ 仍需要。</p>
       <h2>相近模型</h2>
       <ul>
         <li><a href="hollow-rectangular-prism.html">空心矩形棱柱</a> — 有限壁厚，可分辨 $t$。</li>

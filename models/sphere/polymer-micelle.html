@@ -18,11 +18,11 @@
       <p>球形聚合物胶束由不溶核与溶于溶剂的冠状链组成。Pedersen 与 Gerstenberg（1996）把核当作均匀球，把冠状当作接在核表面的高斯链，并包含核–链与链–链干涉。适用于嵌段共聚物胶束、星形胶束以及“核壳球拟合在中高 $q$ 留下链状残差”的样品。</p>
       <p>若冠状很浓、排除体积使链拉伸，均匀壳可能是更好的第一近似；若臂数很少、链稀疏，则更接近星形聚合物。本页对应稀溶液、非贯穿的 Pedersen–Gerstenberg 图像。</p>
       <h2>物理图像</h2>
-      <p>$I(q)$ 四项：核自相关（球 $P_c$）、单链自相关（Debye 函数）、核–链交叉项、不同链之间的交叉项。低 $q$ 由整体胶束 $R_g$ 主导；中 $q$ 核振荡；高 $q$ 转入冠状链的 $q^{-2}$ 特征（高斯链）。聚集数 $N_{\mathrm{agg}}$ 同时放大核体积与冠状交叉项。</p>
+      <p>$I(q)$ 四项：核自相关（球 $P_c$）、单链自相关（<span data-term="debye-function">Debye 函数</span>）、核–链交叉项、不同链之间的交叉项。低 $q$ 由整体胶束 $R_g$ 主导；中 $q$ 核振荡；高 $q$ 转入冠状链的 $q^{-2}$ 特征（高斯链）。聚集数 $N_{\mathrm{agg}}$ 同时放大核体积与冠状交叉项。</p>
       <h2>示意图</h2>
       <figure class="figure">
         <img src="../../assets/figures/models/sphere/polymer-micelle-geometry.png" alt="聚合物胶束：球形核与冠状链" width="900">
-        <figcaption>核半径 $R_c$，冠状链回转半径 $R_{g,\mathrm{chain}}$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
+        <figcaption>核半径 $R_c$，冠状链<span data-term="radius-of-gyration">回转半径</span> $R_{g,\mathrm{chain}}$。<span class="fig-source">配图：按公式计算示意</span></figcaption>
       </figure>
       <figure class="figure">
         <img src="../../assets/figures/models/sphere/polymer-micelle-iq.png" alt="聚合物胶束 I(q) 示意" width="900">
@@ -36,7 +36,7 @@
       <h3>推导</h3>
       <p>核当作均匀球：$F_c=\Phi(qR_c)$，$P_c=\Phi^2$，$\Phi(x)=3(\sin x-x\cos x)/x^3$。单链取高斯链，自相关是 Debye 函数。令 $x=q^2 R_g^2$，</p>
       $$P_{\mathrm{chain}}(q)=\frac{2(\mathrm{e}^{-x}-1+x)}{x^2},\qquad \psi(x)=\frac{1-\mathrm{e}^{-x}}{x}.$$
-      <p>$\psi$ 是链的形状振幅。核–链相位差来自链质心相对核表面的位移 $d$，取向平均给出 $\sin[q(R_c+d)]/[q(R_c+d)]$。交叉项因而含 $\Phi(qR_c)\,\psi\,\mathrm{sinc}[q(R_c+d)]$。链–链交叉在无表面相关时是 $[\psi\,\mathrm{sinc}]^2$。收集系数（Pedersen &amp; Gerstenberg）</p>
+      <p>$\psi$ 是链的形状振幅。核–链相位差来自链质心相对核表面的位移 $d$，<span data-term="powder-average">取向平均</span>给出 $\sin[q(R_c+d)]/[q(R_c+d)]$。交叉项因而含 $\Phi(qR_c)\,\psi\,\mathrm{sinc}[q(R_c+d)]$。链–链交叉在无表面相关时是 $[\psi\,\mathrm{sinc}]^2$。收集系数（Pedersen &amp; Gerstenberg）</p>
       $$I(q)\propto N_{\mathrm{agg}}^2\beta_c^2 P_c(q)+N_{\mathrm{agg}}\beta_s^2 P_{\mathrm{chain}}(q)+2N_{\mathrm{agg}}^2\beta_c\beta_s S_{cs}(q)+N_{\mathrm{agg}}(N_{\mathrm{agg}}-1)\beta_s^2 S_{ss}(q).$$
       <p>$S_{cs},S_{ss}$ 即上述 $\Phi$、$\psi$ 与 $\mathrm{sinc}[q(R_c+d)]$ 的组合。第一项 $\propto N_{\mathrm{agg}}^2$ 因核体积随聚集数放大；单链自相关只 $\propto N_{\mathrm{agg}}$。</p>
       <h3>低 $q$ 与渐近</h3>
@@ -55,7 +55,7 @@
       </table>
       <h2>拟合注意</h2>
       <p>$N_{\mathrm{agg}}$、$R_c$ 与核衬度通过核体积耦合；冠状 $R_g$ 与 $\beta_s$ 在高 $q$ 相关。优先用 NMR/浓度估计聚集数或用对比匹配核/冠状之一。排除体积与非高斯链会改变高 $q$ 指数，勿把 $R_g$ 解释成真实链尺寸而不声明高斯假设。</p>
-      <p>取向无关（球核 + 各向同性冠状）。磁性若只存在于核，磁形式因子接近核球，冠状对磁通道不可见——这是分离核尺寸的有用约束。</p>
+      <p>取向无关（球核 + 各向同性冠状）。磁性若只存在于核，磁<span data-term="form-factor">形式因子</span>接近核球，冠状对磁通道不可见——这是分离核尺寸的有用约束。</p>
       <h2>相近模型</h2>
       <ul>
         <li><a href="../shape-independent/star-polymer.html">星形聚合物</a> — 无致密核、臂从中心长出。</li>

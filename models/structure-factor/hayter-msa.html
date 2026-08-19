@@ -15,7 +15,7 @@
       <h1>Hayter–MSA 结构因子</h1>
       <p class="subtitle-en">Hayter MSA</p>
       <h2>适用场景</h2>
-      <p>带电胶体或胶束在低到中等盐下以屏蔽库仑（Yukawa）势相互作用时，用 Hayter–Penfold 平均球近似及其 rescaled MSA（RMSA）。典型对象：离子胶束、电荷稳定乳胶、低盐蛋白质，以及低 $q$ 被强烈压低、相关峰随盐浓度移动的体系。</p>
+      <p>带电胶体或胶束在低到中等盐下以屏蔽库仑（Yukawa）势相互作用时，用 Hayter–Penfold <span data-term="mean-spherical-approximation">平均球近似</span>及其 rescaled MSA（RMSA）。典型对象：离子胶束、电荷稳定乳胶、低盐蛋白质，以及低 $q$ 被强烈压低、相关峰随盐浓度移动的体系。</p>
       <p>高盐、静电几乎被屏蔽时退回硬球。短程吸引主导时不要用纯排斥 Hayter。体积分数与 Debye 长度必须有独立约束，否则电荷会被吸收进 $\kappa$ 与 $\eta$。</p>
       <h2>物理图像</h2>
       <p>硬核外交互为 Yukawa，接触势 $\gamma$ 无量纲：$\beta u(r)=\gamma(\sigma/r)\mathrm{e}^{-\kappa(r-\sigma)}$（$r&gt;\sigma$），于是 $\beta u(\sigma^+)=\gamma$。MSA 对该势有解析 $c(r)$（Waisman / Hayter–Penfold）。当接触处 $g(\sigma^+)$ 算出为负时，Hansen–Hayter 把硬核放大到有效直径（RMSA），使接触值非负，这是稀释强电荷体系的常用修正。</p>
@@ -27,12 +27,12 @@
       </figure>
       <h2>核心公式</h2>
       <h3>出发点</h3>
-      <p>OZ 与结构因子</p>
+      <p><span data-term="ornstein-zernike">OZ</span> 与<span data-term="structure-factor">结构因子</span></p>
       $$h(r)=c(r)+n\int c(|\mathbf{r}-\mathbf{r}'|)\,h(r')\,\mathrm{d}^3r',\qquad
         S(q)=\bigl[1-n\hat{c}(q)\bigr]^{-1}.$$
       <p>硬核加屏蔽库仑（Yukawa）。令 $x=r/\sigma$、$k=\kappa\sigma$，无量纲接触势 $\gamma=\beta u(\sigma^+)$：</p>
       $$\beta u(x)=\gamma\,\frac{\mathrm{e}^{-k(x-1)}}{x}\quad(x\gt 1),\qquad u=\infty\ (x\lt 1).$$
-      <p>平均球近似（MSA）：核内 $g=0$（即 $h=-1$），核外 $c(r)=-\beta u(r)$。$\kappa$ 由离子强度决定；室温水溶液 $1{:}1$ 电解质 $\kappa\simeq 3.29\sqrt{I}\ \mathrm{nm}^{-1}$（$I$ 以 mol L$^{-1}$）。</p>
+      <p><span data-term="mean-spherical-approximation">平均球近似（MSA）</span>：核内 $g=0$（即 $h=-1$），核外 $c(r)=-\beta u(r)$。$\kappa$ 由离子强度决定；室温水溶液 $1{:}1$ 电解质 $\kappa\simeq 3.29\sqrt{I}\ \mathrm{nm}^{-1}$（$I$ 以 mol L$^{-1}$）。</p>
       <h3>推导</h3>
       <p>Waisman / Hayter–Penfold 在核内把 $c(x)$ 写成硬球三次式再加筛选的双曲项：</p>
       $$c(x)=A+Bx+\tfrac12\eta A x^3+\frac{C\sinh(kx)}{x}+\frac{D\bigl(\cosh(kx)-1\bigr)}{x}\quad(x\lt 1),$$
@@ -60,8 +60,8 @@
         </tbody>
       </table>
       <h2>拟合注意</h2>
-      <p>可辨识性：$S(q)$ 的半径（或直径）与形式因子半径、<span data-term="volume-fraction">体积分数</span>与标度在同时自由拟合时高度退化。先在稀溶液固定 $P(q)$，再用浓度系列的低 $q$ 变化约束 $S(q)$；不要把 $P(q)$ 与 $S(q)$ 的全部参数一起放开。 <strong>Hayter 必须约束体积分数与 Debye 长度</strong>：$\eta$ 用浓度与有效体积；$\kappa$ 用已知盐与缓冲。只放开有效电荷（或 $\gamma$）。三套参数一起漂会得到任意组合的“看起来像”的相关峰。</p>
-      <p>取向对球无关。多分散电荷与尺寸都会抹浅峰。磁性测量时静电 $S(q)$ 由核电荷决定，磁 $P(q)$ 仍乘同一 $S(q)$。</p>
+      <p>可辨识性：$S(q)$ 的半径（或直径）与<span data-term="form-factor">形式因子</span>半径、<span data-term="volume-fraction">体积分数</span>与标度在同时自由拟合时高度退化。先在稀溶液固定 $P(q)$，再用浓度系列的低 $q$ 变化约束 $S(q)$；不要把 $P(q)$ 与 $S(q)$ 的全部参数一起放开。 <strong>Hayter 必须约束体积分数与 Debye 长度</strong>：$\eta$ 用浓度与有效体积；$\kappa$ 用已知盐与缓冲。只放开有效电荷（或 $\gamma$）。三套参数一起漂会得到任意组合的“看起来像”的相关峰。</p>
+      <p>取向对球无关。<span data-term="polydispersity">多分散</span>电荷与尺寸都会抹浅峰。磁性测量时静电 $S(q)$ 由核电荷决定，磁 $P(q)$ 仍乘同一 $S(q)$。</p>
       <h2>相近模型</h2>
       <ul>
         <li><a href="hard-sphere.html">硬球结构因子</a> — 高盐、$\gamma\to 0$ 的极限。</li>

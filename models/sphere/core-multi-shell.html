@@ -30,7 +30,7 @@
       </figure>
       <h2>核心公式</h2>
       <h3>出发点</h3>
-      <p>稀释球对称粒子的振幅是径向衬度的正弦变换</p>
+      <p>稀释球对称粒子的<span data-term="scattering-amplitude">散射振幅</span>是径向<span data-term="contrast">衬度</span>的正弦变换</p>
       $$F(q)=4\pi\int_0^{R_M} r^2\bigl[\rho(r)-\rho_{\mathrm{solv}}\bigr]\frac{\sin(qr)}{qr}\,\mathrm{d}r.$$
       <p>核–多层壳把 $\rho(r)$ 离散成 $M=N+1$ 段常数：第 $i$ 区 $R_{i-1}&lt;r\le R_i$ 取 $\rho_i$（约定 $R_0=0$，$i=1$ 为核），最外 $r&gt;R_M$ 回到溶剂。</p>
       <h3>推导</h3>
@@ -49,13 +49,13 @@
         <thead><tr><th>参数</th><th>符号</th><th>含义</th><th>单位</th><th>典型范围</th></tr></thead>
         <tbody>
           <tr><td>各层外半径</td><td>$R_i$</td><td>第 $i$ 区的外半径</td><td>Å</td><td>递增，核约 10–200 Å</td></tr>
-          <tr><td>各层 SLD</td><td>$\rho_i$</td><td>第 $i$ 区散射长度密度</td><td>Å$^{-2}$</td><td>由组成或对比</td></tr>
+          <tr><td>各层 SLD</td><td>$\rho_i$</td><td>第 $i$ 区<span data-term="scattering-length-density">散射长度密度</span></td><td>Å$^{-2}$</td><td>由组成或对比</td></tr>
           <tr><td>壳层数</td><td>$N$</td><td>核以外的均匀壳数目</td><td>无量纲</td><td>1–6（再多宜改径向剖面）</td></tr>
           <tr><td>溶剂 SLD</td><td>$\rho_{\mathrm{solv}}$</td><td>最外层以外的介质</td><td>Å$^{-2}$</td><td>可调</td></tr>
         </tbody>
       </table>
       <h2>拟合注意</h2>
-      <p>相邻层的 $\rho_i$ 与 $R_i$ 强相关。把若干 $\rho_i$ 固定为化学计量值，只拟合厚度，是更稳的做法。多分散通常加在最外半径或核半径上。</p>
+      <p>相邻层的 $\rho_i$ 与 $R_i$ 强相关。把若干 $\rho_i$ 固定为化学计量值，只拟合厚度，是更稳的做法。<span data-term="polydispersity">多分散</span>通常加在最外半径或核半径上。</p>
       <p>取向无关。磁性多层（磁核、非磁壳、磁帽层）必须给每层磁 SLD，核通道与磁通道的 $R_i$ 可以不同（死层）。</p>
       <h2>相近模型</h2>
       <ul>

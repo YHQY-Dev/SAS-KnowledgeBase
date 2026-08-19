@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>粉末平均 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>粉末平均</h1>
+      <p class="subtitle-en">powder / orientational average</p>
+      <h2>定义</h2>
+      <p><strong>粉末平均</strong>（取向平均）指粒子取向相对 <span data-term="scattering-vector-q">$\mathbf{q}$</span> 均匀无规时，把振幅模方对取向积分。各向同性溶液、无规粉末都用这一步，使测得强度只依赖 $q=\lvert\mathbf{q}\rvert$：</p>
+      $$I(q)=\bigl\langle \lvert F(\mathbf{q})\rvert^2 \bigr\rangle_{\hat{u}} = \int \lvert F(q,\hat{u})\rvert^2 \,\mathrm{d}\Omega_{\hat{u}}\Big/\int \mathrm{d}\Omega_{\hat{u}}.$$
+      <p>球对称粒子取向平均是平凡的。圆柱常用轴与 $\mathbf{q}$ 的夹角 $\alpha$：$\langle\cdots\rangle=\int_0^{\pi/2}\lvert F(q,\alpha)\rvert^2\sin\alpha\,\mathrm{d}\alpha$。</p>
+
+      <h2>物理直觉</h2>
+      <p>单取向粒子的 $F$ 依赖 $\mathbf{q}$ 的方向（例如棒沿轴向与径向完全不同）。探测器若对所有取向一视同仁，看到的是这些曲线的权重混合，振荡变钝、各向异性信息被洗掉。流动、磁场或掠入射薄膜可以打破无规取向，此时不要用粉末平均公式去套 2D 图。</p>
+
+      <h2>常见混淆</h2>
+      <ul>
+        <li>粉末平均 ≠ <span data-term="polydispersity">尺寸多分散</span>：前者混取向，后者混半径；两者都会抹平振荡，但物理不同。</li>
+        <li>层状粉末还有额外的 <span data-term="lorentz-factor">Lorentz 因子</span>（横向无限片的取向权重），不只是对 $F$ 做球面平均。</li>
+      </ul>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="scattering-amplitude">散射振幅</span></li>
+        <li><span data-term="form-factor">形式因子</span></li>
+        <li><span data-term="lorentz-factor">Lorentz 因子</span></li>
+        <li><span data-term="polydispersity">多分散</span></li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../models/cylinder/cylinder.html">圆柱</a></li>
+        <li><a href="../models/ellipsoid/ellipsoid.html">椭球</a></li>
+        <li><a href="../models/lamellae/lamellar.html">层状</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

@@ -38,12 +38,12 @@
  <li><strong>熔体 Leibler RPA：</strong> 无序相<span data-term="structure-factor">结构因子</span> $S(q)=N/[F(x)-2\chi N]$，$x=q^2R_g^2$；$\chi N$ 趋近 spinodal 时 $S(q^*)$ 发散，对应 <span data-term="order-disorder-transition">ODT</span> 附近宽峰。强分凝样品可见完整 Bragg 列，弱分凝仅低阶峰，需 TEM 或剪切取向补证。</li>
  <li><strong>峰列定相：</strong> lamellae $1{:}2{:}3\ldots$；hex $1{:}\sqrt{3}{:}2\ldots$；bcc $1{:}\sqrt{2}{:}\sqrt{3}\ldots$；gyroid 等网络相峰更密、更弱。偶数峰可因对称性消光或形式因子极小值而缺失——勿单凭缺失判「无序」。</li>
  <li><strong>非平衡与动力学：</strong> HPL、HML 等 perforated lamellar 可为 gyroid 前驱；相变路径依赖退火史与剪切（LAOS 取向可增强峰信息）。同步辐射时间分辨可追踪 <span data-term="order-disorder-transition">ODT</span>、结晶与胶束化动力学。</li>
- <li><strong>溶液胶束：</strong> 稀溶液 $I\propto n P(q)S(q)$（$n$ 为数密度）；浓胶束/液晶相再次出现 Bragg 峰，须区分胶束间 $S(q)$ 与单胶束 $P(q)$。</li>
+ <li><strong>溶液胶束：</strong> 稀溶液 $I\propto n P(q)S(q)$（$n$ 为<span data-term="number-density">数密度</span>）；浓胶束/液晶相再次出现 Bragg 峰，须区分胶束间 $S(q)$ 与单胶束 $P(q)$。</li>
  <li><span data-term="saxs">SAXS</span> 与 <span data-term="sans">SANS</span> 互补：X 射线靠电子密度差；中子靠氘化嵌段 / 溶剂<span data-term="contrast">衬度</span>匹配拆分配方（见 <a href="../sans-contrast/index.html"><span data-term="sans">SANS</span> 衬度专题</a>）。</li>
  </ul>
 
  <h3>Trask, Hernandez &amp; Cochran 2017：热力学—动力学—散射</h3>
- <p>Oxford Soft Condensed Matter 手册章（DOI: <a href="https://doi.org/10.1093/oxfordhb/9780199667925.013.7" target="_blank" rel="noopener noreferrer">10.1093/oxfordhb/9780199667925.013.7</a>）把 Flory–Huggins $\chi_{AB}$、$N$、体积分数 $f$ 与散射放在同一框架：</p>
+ <p>Oxford Soft Condensed Matter 手册章（DOI: <a href="https://doi.org/10.1093/oxfordhb/9780199667925.013.7" target="_blank" rel="noopener noreferrer">10.1093/oxfordhb/9780199667925.013.7</a>）把 Flory–Huggins $\chi_{AB}$、$N$、<span data-term="volume-fraction">体积分数</span> $f$ 与散射放在同一框架：</p>
  <ul>
  <li><strong>分凝区：</strong> 弱分凝（$\chi N\sim 10$–20，<span data-term="order-disorder-transition">ODT</span> 附近）用 Leibler 弱分凝理论；强分凝（$\chi N\sim 100$）界面趋锐、畴间距标度 $\sim N^{2/3}$；中间区需自洽场（SCFT）等。</li>
  <li><strong>相图与散射：</strong> 对称 diblock 在 $\chi N\approx 10.5$、$f=0.5$ 附近有 Landau 临界点；非对称组成 <span data-term="order-disorder-transition">ODT</span> 常为弱一级相变（disorder → bcc 等）。变温 <span data-term="saxs">SAXS</span> 可绘相边界，峰宽反映缺陷与关联长度。</li>
@@ -52,16 +52,16 @@
  <p>适合作为「为何出现这些峰」的热力学入口，再回到 Hamley 的实验峰列读图。</p>
 
  <h3>Hall 1989：结晶聚合物的片层 <span data-term="saxs">SAXS</span></h3>
- <p>半结晶聚合物（含结晶性嵌段）的 <span data-term="saxs">SAXS</span> 与 BCP 微相峰不同：信号来自晶区（$\rho_c$）与非晶区（$\rho_a$）交替的片层堆叠，取向纤维上常见 meridional 长周期峰（two-point / four-point 图样）。Hall 综述的两相模型给出：</p>
+ <p>半结晶聚合物（含结晶性嵌段）的 <span data-term="saxs">SAXS</span> 与 BCP 微相峰不同：信号来自晶区（$\rho_c$）与非晶区（$\rho_a$）交替的片层堆叠，取向纤维上常见 meridional 长周期峰（two-point / four-point 图样）。Hall 综述的<span data-term="two-phase-model">两相模型</span>给出：</p>
  <ul>
  <li><strong><span data-term="porod-invariant">Porod 不变量</span> $Q$：</strong> $Q=\int s^2 I(s)\,\mathrm{d}s \propto (\rho_c-\rho_a)^2\omega_c\omega_a$，联系晶相体积分数与密度差；需额外输入才能单独解 $\omega_c$。</li>
- <li><strong>一维相关函数 $\gamma(r)$：</strong> 由 $I(s)$ Fourier 变换得到，峰位给出片层/非晶层厚度分布；对界面过渡区、相内密度涨落敏感。</li>
- <li><strong>准晶（paracrystalline）模型：</strong> 片层厚度与周期存在分布时，高阶峰变宽、甚至只剩单宽峰——与 BCP 多分散抹峰机制类似，但物理图像不同。</li>
+ <li><strong>一维<span data-term="correlation-function">相关函数</span> $\gamma(r)$：</strong> 由 $I(s)$ Fourier 变换得到，峰位给出片层/非晶层厚度分布；对界面过渡区、相内密度涨落敏感。</li>
+ <li><strong><span data-term="paracrystal">准晶</span>（paracrystalline）模型：</strong> 片层厚度与周期存在分布时，高阶峰变宽、甚至只剩单宽峰——与 BCP 多分散抹峰机制类似，但物理图像不同。</li>
  </ul>
  <p>半结晶 BCP 须同时看 <span data-term="saxs">SAXS</span> 长周期与 <span data-term="waxs">WAXS</span> 晶胞峰（Hamley 2004 §6），勿把片层 $d$ 与微相 $d$ 混为一谈。</p>
 
  <h3>Müller-Buschbaum 2016：薄膜 BCP → <span data-term="gisaxs">GISAXS</span></h3>
- <p>体相透射 <span data-term="saxs">SAXS</span> 给出粉末平均峰列；衬底上的 BCP 薄膜常有面内/面外取向、埋藏界面与厚度约束，须用掠入射几何。综述 <em><span data-term="gisaxs">GISAXS</span> and GISANS as metrology…</em>（DOI: <a href="https://doi.org/10.1016/j.eurpolymj.2016.04.007" target="_blank" rel="noopener noreferrer">10.1016/j.eurpolymj.2016.04.007</a>）说明如何从 2D 图样读面内周期、厚度与三维形貌——站内细节见 <a href="../gisaxs/index.html"><span data-term="gisaxs">GISAXS</span></a>（<span data-term="dwba">DWBA</span>、<span data-term="yoneda">Yoneda</span> 带）。</p>
+ <p>体相透射 <span data-term="saxs">SAXS</span> 给出<span data-term="powder-average">粉末平均</span>峰列；衬底上的 BCP 薄膜常有面内/面外取向、埋藏界面与厚度约束，须用掠入射几何。综述 <em><span data-term="gisaxs">GISAXS</span> and GISANS as metrology…</em>（DOI: <a href="https://doi.org/10.1016/j.eurpolymj.2016.04.007" target="_blank" rel="noopener noreferrer">10.1016/j.eurpolymj.2016.04.007</a>）说明如何从 2D 图样读面内周期、厚度与三维形貌——站内细节见 <a href="../gisaxs/index.html"><span data-term="gisaxs">GISAXS</span></a>（<span data-term="dwba">DWBA</span>、<span data-term="yoneda">Yoneda</span> 带）。</p>
 
  <h2>关键公式与结论</h2>
  <h3>无规线团形式因子与 $R_g$</h3>

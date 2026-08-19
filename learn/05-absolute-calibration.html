@@ -16,7 +16,7 @@
       <p class="subtitle-en">Absolute intensity calibration — placing $I(q)$ on the cross-section scale</p>
 
       <h2>导语：从「任意单位」到可比较的物理量</h2>
-      <p>第 04 章把探测器图像还原为校正过的 $I(q)$；本章回答下一个问题：<strong>这条曲线的纵轴代表什么物理量？</strong> 若不做绝对标定，$I(q)$ 往往只有计数率或归一化强度——换仪器、换曝光时间、换样品厚度，数值无法直接比较。绝对标定的任务，是把实验强度与样品的<strong>微分散射截面</strong> $\mathrm{d}\Sigma/\mathrm{d}\Omega$（单位 $\mathrm{cm}^{-1}$，有时写作 $\mathrm{cm}^{-1}\,\mathrm{sr}^{-1}$ 视归一化约定而定）联系起来。</p>
+      <p>第 04 章把探测器图像还原为校正过的 $I(q)$；本章回答下一个问题：<strong>这条曲线的纵轴代表什么物理量？</strong> 若不做绝对标定，$I(q)$ 往往只有计数率或归一化强度——换仪器、换曝光时间、换样品厚度，数值无法直接比较。绝对标定的任务，是把实验强度与样品的<strong><span data-term="differential-cross-section">微分散射截面</span></strong> $\mathrm{d}\Sigma/\mathrm{d}\Omega$（单位 $\mathrm{cm}^{-1}$，有时写作 $\mathrm{cm}^{-1}\,\mathrm{sr}^{-1}$ 视归一化约定而定）联系起来。</p>
       <p>Jeffries 2021 在入门综述中强调：现代 SAS 发表规范（尤其生物 <span data-term="saxs">SAXS</span>）越来越要求报告绝对尺度数据，以便用 $I(0)$ 验证分子量、孔隙率与界面面积。Dreiss 等（2006）系统比较了台式 <span data-term="saxs">SAXS</span> 上多种标样；Zhang 等（2010）评估<span data-term="glassy-carbon">玻璃碳</span>作为通用二级标样的可行性；Allen 等（2017）发布 NIST SRM 3600 认证流程——本章综合这些工作，给出学习路径中的系统讲解。更详细的专题导读见 <a href="../topics/calibration/index.html">绝对标定专题</a>。</p>
 
       <h2>为什么需要绝对尺度</h2>
@@ -27,7 +27,7 @@
         </thead>
         <tbody>
           <tr><td>分子量 $M$（生物 <span data-term="saxs">SAXS</span>）</td><td>$M = I(0) N_A / [C(\Delta\rho_M)^2]$ 要求 $\mathrm{cm}^{-1}$ 尺度的 $I(0)$ 与精确浓度 $C$</td><td>标定 5–10% + 浓度 5% → $M$ 约 10–15%</td></tr>
-          <tr><td>粒子数密度 / 体积分数</td><td><span data-term="forward-scattering">前向散射</span> $I(0) \propto n V^2 (\Delta\rho)^2$；$n$ 或 $\phi$ 需已知截面尺度</td><td>取决于 $P(0)$ 与多分散；常 10–20%</td></tr>
+          <tr><td>粒子<span data-term="number-density">数密度</span> / <span data-term="volume-fraction">体积分数</span></td><td><span data-term="forward-scattering">前向散射</span> $I(0) \propto n V^2 (\Delta\rho)^2$；$n$ 或 $\phi$ 需已知截面尺度</td><td>取决于 $P(0)$ 与<span data-term="polydispersity">多分散</span>；常 10–20%</td></tr>
           <tr><td>比表面积（<span data-term="porod-invariant">Porod 不变量</span>）</td><td>Porod 积分 $\int q^2 I(q)\,\mathrm{d}q$ 与绝对单位相关</td><td>高 $q$ 背景扣除敏感；15–25%</td></tr>
           <tr><td>跨仪器 / <span data-term="saxs">SAXS</span>–<span data-term="sans">SANS</span> 拼接</td><td>不同几何的 $I(q)$ 须在同一 $\mathrm{d}\Sigma/\mathrm{d}\Omega$ 尺度上比较</td><td>二级标样锚定后约 5–10%</td></tr>
           <tr><td>检验数据质量</td><td>$I(0)/c$ 与化学 $M$ 偏差 $>15\%$ 提示标定、浓度或聚集问题</td><td>—</td></tr>

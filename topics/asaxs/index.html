@@ -51,8 +51,8 @@
       <h3>Bazin 等 1997：纳米金属簇上的技术分工</h3>
       <p>对纳米级单/多金属簇，Bazin 等用 ab initio 计算比较 XAS、AWAXS、<span data-term="asaxs">ASAXS</span> 与 DAFS（衍射反常精细结构）各自信息量（Bazin, Sayers &amp; Rehr 1997）：</p>
       <ul>
-        <li><strong>XAS：</strong> 吸收边附近给局域配位与电子态，但对粒径多分散不敏感；$L_{III}$ 白线强度随团簇尺寸缓慢变化，勿简单等同电荷转移。</li>
-        <li><strong><span data-term="asaxs">ASAXS</span>：</strong> 在衍射峰 $(0,0,0)$ 附近（Debye 函数分析）可提取粒径分布、形态与簇内两金属分布——尺度恰在 <span data-term="asaxs">ASAXS</span> 窗口。</li>
+        <li><strong>XAS：</strong> 吸收边附近给局域配位与电子态，但对粒径<span data-term="polydispersity">多分散</span>不敏感；$L_{III}$ 白线强度随团簇尺寸缓慢变化，勿简单等同电荷转移。</li>
+        <li><strong><span data-term="asaxs">ASAXS</span>：</strong> 在衍射峰 $(0,0,0)$ 附近（<span data-term="debye-function">Debye 函数</span>分析）可提取粒径分布、形态与簇内两金属分布——尺度恰在 <span data-term="asaxs">ASAXS</span> 窗口。</li>
         <li><strong>AWAXS / DAFS：</strong> 宽角/衍射给晶格与长程有序；DAFS 结合衍射与吸收但受限于峰选择。</li>
       </ul>
       <p>方法论启示：<span data-term="asaxs">ASAXS</span> 应纳入多技术联用清单，而非单独宣称「元素成像」（Bazin 1997）。</p>
@@ -68,12 +68,12 @@
 
       <h2>要点与公式</h2>
       <h3>原子散射因子与有效衬度</h3>
-      <p>原子对 X 射线的相干散射振幅：</p>
+      <p>原子对 X 射线的相干<span data-term="scattering-amplitude">散射振幅</span>：</p>
       $$f(E)=f_0+f'(E)+if''(E),$$
       <p>其中 $f_0\approx Z$（远离边），$f'(E)$、$f''(E)$ 在吸收边附近剧烈变化且由色散关系联系。实用能量窗：相对边位移 $\Delta E/E$ 约在 $10^{-3}$–$5\times10^{-2}$；更接近边时需用吸收测量 + Kramers–Kronig（DIFFKK）或合金标样校正表值 $f'$/$f''$（Goerigk 2003）。</p>
       <p>两相体系（析出相 $\alpha$ / 基体 $\beta$）小角强度：</p>
       $$\frac{d\sigma}{d\Omega}(q,E)=\bigl[\rho_\alpha(E)-\rho_\beta(E)\bigr]^2 S_\phi(q),$$
-      <p>$\rho(E)=\sum_i n_i f_i(E)/\Omega_i$ 为相的电子密度；$S_\phi(q)$ 为几何结构因子（Patterson 型）。边扫描实质是只调某一元素的 $f_i(E)$，从而分离该元素对衬度的贡献（Goerigk 2003；<span data-term="asaxs">ASAXS</span> 2007）。</p>
+      <p>$\rho(E)=\sum_i n_i f_i(E)/\Omega_i$ 为相的电子密度；$S_\phi(q)$ 为几何<span data-term="structure-factor">结构因子</span>（Patterson 型）。边扫描实质是只调某一元素的 $f_i(E)$，从而分离该元素对衬度的贡献（Goerigk 2003；<span data-term="asaxs">ASAXS</span> 2007）。</p>
 
       <h3>差分曲线与线性组合</h3>
       <p>两能量 $E_a$、$E_b$（均在边下、荧光可忽略区）的强度差：</p>
@@ -106,7 +106,7 @@
           <tr><th>技术</th><th>敏感尺度</th><th><span data-term="asaxs">ASAXS</span> 相对优势</th><th><span data-term="asaxs">ASAXS</span> 局限</th></tr>
         </thead>
         <tbody>
-          <tr><td>XAS (EXAFS/XANES)</td><td>局域配位（&lt;2 nm）</td><td><span data-term="asaxs">ASAXS</span> 给纳米畴尺寸/体积分数</td><td>XAS 不分辨多分散粒径分布</td></tr>
+          <tr><td>XAS (EXAFS/XANES)</td><td>局域配位（&lt;2 nm）</td><td><span data-term="asaxs">ASAXS</span> 给纳米畴尺寸/<span data-term="volume-fraction">体积分数</span></td><td>XAS 不分辨多分散粒径分布</td></tr>
           <tr><td>AWAXS</td><td>晶格 / 中程有序</td><td><span data-term="asaxs">ASAXS</span> 看更大不均匀体与背景分离</td><td>需同一能量序列拼接</td></tr>
           <tr><td>常规 <span data-term="saxs">SAXS</span></td><td>1–100 nm 总电子密度</td><td><span data-term="asaxs">ASAXS</span> 元素标记破简并</td><td>信噪比低、实验慢</td></tr>
         </tbody>

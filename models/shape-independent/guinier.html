@@ -16,8 +16,8 @@
       <p class="subtitle-en">Guinier</p>
       <h2>适用场景</h2>
       <p>当只关心整体尺寸、不假定具体外形时，<span data-term="guinier-analysis">Guinier 分析</span>给出低 $q$ 的<span data-term="radius-of-gyration">回转半径</span>。典型对象包括：蛋白质与柔性链的整体 $R_g$、任意凸形状稀释颗粒的尺寸估计，以及尚未选定几何模型前的定标。</p>
-      <p>适用窗口约为 $qR_g\lesssim 1$。$\log I$ 对 $q^2$ 呈直线，截距是<span data-term="forward-scattering">前向散射</span> $I(0)$。一旦出现振荡极小、幂律尾或相关峰，应离开纯 Guinier，改用完整形式因子或 Guinier–Porod / 统一模型。</p>
-      <p>稀溶液、相互作用可忽略时 $I(0)$ 正比数密度、体积平方与<span data-term="contrast">衬度</span>平方。浓体系低 $q$ 被 $S(q)$ 压低或抬升时，不要把表观 $R_g$ 当成粒子尺寸。</p>
+      <p>适用窗口约为 $qR_g\lesssim 1$。$\log I$ 对 $q^2$ 呈直线，截距是<span data-term="forward-scattering">前向散射</span> $I(0)$。一旦出现振荡极小、幂律尾或相关峰，应离开纯 Guinier，改用完整<span data-term="form-factor">形式因子</span>或 Guinier–Porod / 统一模型。</p>
+      <p>稀溶液、相互作用可忽略时 $I(0)$ 正比<span data-term="number-density">数密度</span>、体积平方与<span data-term="contrast">衬度</span>平方。浓体系低 $q$ 被 $S(q)$ 压低或抬升时，不要把表观 $R_g$ 当成粒子尺寸。</p>
       <h2>物理图像</h2>
       <p>任意有限物体的散射在 $q\to 0$ 都可对相位作 Taylor 展开。第一项给出 $I(0)$，第二项把质量分布的二阶矩收成 $R_g$，于是 $I(q)\simeq I(0)\exp(-q^2 R_g^2/3)$。这是形状无关的：球、椭球、链、空心壳只是 $R_g$ 与几何参数的换算不同。</p>
       <p>取向平均已经包含在各向同性 $I(q)$ 里。磁性通道若磁化分布与核密度不同，磁 $R_g$ 不必等于核 $R_g$。</p>
@@ -28,9 +28,9 @@
       </figure>
       <h2>核心公式</h2>
       <h3>出发点</h3>
-      <p>稀释、取向无规的有限物体，相干振幅是衬度对平面波相位的体积分。不假定外形，只要求 $\Delta\rho(\mathbf{r})$ 有紧支集：</p>
+      <p>稀释、取向无规的有限物体，相干<span data-term="scattering-amplitude">散射振幅</span>是<span data-term="contrast">衬度</span>对平面波相位的体积分。不假定外形，只要求 $\Delta\rho(\mathbf{r})$ 有紧支集：</p>
       $$F(\mathbf{q})=\int \Delta\rho(\mathbf{r})\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r,\qquad I(\mathbf{q})=\lvert F(\mathbf{q})\rvert^2.$$
-      <p>把原点放在散射长度质心，使 $\int\mathbf{r}\,\Delta\rho(\mathbf{r})\,\mathrm{d}^3r=0$。各向同性粉末平均后强度只依赖 $q=\lvert\mathbf{q}\rvert$。</p>
+      <p>把原点放在散射长度质心，使 $\int\mathbf{r}\,\Delta\rho(\mathbf{r})\,\mathrm{d}^3r=0$。各向同性<span data-term="powder-average">粉末平均</span>后强度只依赖 $q=\lvert\mathbf{q}\rvert$。</p>
       <h3>推导</h3>
       <p>低 $q$ 把相位 Taylor 展开：$\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}=1+i\mathbf{q}\cdot\mathbf{r}-(\mathbf{q}\cdot\mathbf{r})^2/2+O(q^3)$。代入 $F$：零阶给出 $F(0)=\int\Delta\rho=\Delta\rho_{\mathrm{eff}}V$；一阶因质心选择而消失。</p>
       <p>二阶项经取向平均 $\langle(\mathbf{q}\cdot\mathbf{r})^2\rangle=q^2\langle r^2\rangle/3$（三维）。回转半径按衬度二阶矩定义</p>

@@ -16,10 +16,10 @@
       <p class="subtitle-en">ellipsoid</p>
       <h2>适用场景</h2>
       <p>当粒子可视为均匀<span data-term="scattering-length-density">散射长度密度</span>的旋转椭球（两个半轴相等、第三个不同）时，取向平均椭球<span data-term="form-factor">形式因子</span>是球与棒/盘之间的连续过渡。典型对象包括：略扁或略长的胶束、变形乳液滴、以及电镜显示轴比有限的无机纳米颗粒。</p>
-      <p>曲线判据：轴比 $\varepsilon=R_\parallel/R_\perp$ 接近 1 时接近均匀球的振荡；$\varepsilon\gg 1$（长球）中间区趋近 $q^{-1}$；$\varepsilon\ll 1$（扁球）趋近 $q^{-2}$。粉末平均会抹浅球的极小。明显三轴不等、核壳分层或截面呈椭圆柱时，应改用相应变体。</p>
+      <p>曲线判据：轴比 $\varepsilon=R_\parallel/R_\perp$ 接近 1 时接近均匀球的振荡；$\varepsilon\gg 1$（长球）中间区趋近 $q^{-1}$；$\varepsilon\ll 1$（扁球）趋近 $q^{-2}$。<span data-term="powder-average">粉末平均</span>会抹浅球的极小。明显三轴不等、核壳分层或截面呈椭圆柱时，应改用相应变体。</p>
       <p>稀溶液只拟合 $P(q)$。二维各向异性图案需要取向分布，而不是只用一维粉末平均。</p>
       <h2>物理图像</h2>
-      <p>旋转椭球沿某一取向的振幅等于半径为 $R_{\mathrm{eff}}(\alpha)$ 的均匀球振幅，其中 $\alpha$ 是对称轴与 $\mathbf{q}$ 的夹角。Guinier 给出对 $\alpha$ 的取向平均；$P(0)=1$。回转半径 $R_g^2=(2R_\perp^2+R_\parallel^2)/5$。</p>
+      <p>旋转椭球沿某一取向的振幅等于半径为 $R_{\mathrm{eff}}(\alpha)$ 的均匀球振幅，其中 $\alpha$ 是对称轴与 $\mathbf{q}$ 的夹角。Guinier 给出对 $\alpha$ 的取向平均；$P(0)=1$。<span data-term="radius-of-gyration">回转半径</span> $R_g^2=(2R_\perp^2+R_\parallel^2)/5$。</p>
       <p>长径比很大时，取向平均后的中间斜率接近有限圆柱；压扁时接近薄盘。轴比 $\to 1$ 回到 Rayleigh 球。磁场或剪切下须保留 $\theta,\phi$，粉末平均会丢掉弧向信息。</p>
       <h2>示意图</h2>
       <figure class="figure">
@@ -32,7 +32,7 @@
       </figure>
       <h2>核心公式</h2>
       <h3>出发点</h3>
-      <p>稀释、取向无规的均匀粒子，相干散射振幅是衬度对平面波相位的体积分</p>
+      <p>稀释、取向无规的均匀粒子，相干<span data-term="scattering-amplitude">散射振幅</span>是衬度对平面波相位的体积分</p>
       $$F(\mathbf{q})=\int_V \Delta\rho(\mathbf{r})\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r.$$
       <p>均匀旋转椭球内 $\Delta\rho$ 为常数。它是单位球 $|\mathbf{u}|\le 1$ 经对角仿射 $A=\mathrm{diag}(R_\perp,R_\perp,R_\parallel)$ 的像：$\mathbf{r}=A\mathbf{u}$。体积 $V=|\det A|\cdot 4\pi/3=\frac{4}{3}\pi R_\perp^2 R_\parallel$。</p>
       <h3>推导</h3>

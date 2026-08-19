@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>平均球近似 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>平均球近似</h1>
+      <p class="subtitle-en">mean spherical approximation</p>
+      <h2>定义</h2>
+      <p><strong>平均球近似</strong>（mean spherical approximation, MSA）是硬核流体的闭包：核内 $g=0$（不可穿透），核外 $c(r)=-\beta u(r)$。当尾势 $u$ 取屏蔽库仑（Yukawa）时，Hayter 与 Penfold 给出解析 $S(q)$，即带电胶体常用的 Hayter–MSA 结构因子。</p>
+      <p>它与 <span data-term="percus-yevick">PY</span> 硬球的差别：PY 核外 $c=0$（无吸引/长程尾）；MSA 允许核外有 $u(r)$，因此能描述静电排斥造成的低 $q$ 更强压低、相关峰随盐浓度移动。</p>
+
+      <h2>物理直觉</h2>
+      <p>Debye 长度变短（加盐）时，Yukawa 尾变短，$S(q)$ 向硬球极限靠拢。电荷与<span data-term="volume-fraction">体积分数</span>、直径高度相关：没有盐或浓度系列时不要同时放开所有势参数。</p>
+
+      <h2>常见混淆</h2>
+      <ul>
+        <li>MSA ≠ 「球的<span data-term="form-factor">形式因子</span>」：这是粒间势的闭包，乘的是已经算好的 $P(q)$。</li>
+        <li>两段 Yukawa（短程吸引 + 长程排斥）仍用同一 MSA 骨架，只是 $u(r)$ 更复杂，更易过拟合。</li>
+      </ul>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="ornstein-zernike">Ornstein–Zernike 方程</span></li>
+        <li><span data-term="percus-yevick">Percus–Yevick 闭包</span></li>
+        <li><span data-term="structure-factor">结构因子</span></li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../models/structure-factor/hayter-msa.html">Hayter–MSA</a></li>
+        <li><a href="../models/structure-factor/two-yukawa.html">双 Yukawa</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

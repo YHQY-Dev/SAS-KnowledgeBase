@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-base="..">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>蠕虫状链 · 术语表 · SAS 知识站</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="layout">
+    <aside id="site-sidebar"></aside>
+    <main class="content">
+      <h1>蠕虫状链</h1>
+      <p class="subtitle-en">wormlike chain</p>
+      <h2>定义</h2>
+      <p><strong>蠕虫状链</strong>（wormlike chain, Kratky–Porod）用轮廓长度 $L$ 与<span data-term="persistence-length">持续长度</span> $\ell_p$ 描述半柔顺聚合物或纤维。切向关联 $\langle \mathbf{u}(0)\cdot\mathbf{u}(s)\rangle=e^{-s/\ell_p}$。极限：$L\ll \ell_p$ 像刚性棒；$L\gg \ell_p$ 像高斯线团，等效 <span data-term="kuhn-length">Kuhn 长度</span> $b=2\ell_p$。</p>
+      <p>散射还要乘上有限截面（圆或椭圆）的形状因子。模型手册中的柔性圆柱，就是把蠕虫骨架的 $P_{\mathrm{chain}}(q)$ 与圆柱截面因子组合。</p>
+
+      <h2>物理直觉</h2>
+      <p>$\log I$–$\log q$ 上常出现三段：低 $q$ Guinier（整链 $R_g$）→ 中间 $q^{-2}$（无规线团）或直接 $q^{-1}$（更刚）→ 高 $q$ 截面振荡 / Porod。持续长度大致落在 $q^{-2}$ 转到 $q^{-1}$ 的交叉附近。</p>
+
+      <h2>常见混淆</h2>
+      <ul>
+        <li>蠕虫链的 $R_g$ 不是 $L/\sqrt{12}$（那是刚性细棒）；有插值公式，依赖 $L/\ell_p$。</li>
+        <li>排除体积（良溶剂溶胀）会改变中间区指数，单纯 Kratky–Porod 是无排除体积的。</li>
+      </ul>
+
+      <h2>相关词条</h2>
+      <ul>
+        <li><span data-term="persistence-length">持续长度</span></li>
+        <li><span data-term="kuhn-length">Kuhn 长度</span></li>
+        <li><span data-term="debye-function">Debye 函数</span></li>
+      </ul>
+
+      <h2>出现于</h2>
+      <ul>
+        <li><a href="../models/cylinder/flexible-cylinder.html">柔性圆柱</a></li>
+        <li><a href="../topics/polymers-bcp/index.html">专题 · 聚合物与嵌段共聚物</a></li>
+      </ul>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="../assets/nav.js"></script>
+  <script src="../assets/glossary-data.js"></script>
+  <script src="../assets/glossary.js"></script>
+  <script src="../assets/figures-boot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector("main.content"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ]
+        });
+      }
+      if (window.SASNav) SASNav.init();
+      if (window.SASGlossary) SASGlossary.init();
+    });
+  </script>
+</body>
+</html>

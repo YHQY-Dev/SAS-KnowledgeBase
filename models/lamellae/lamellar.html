@@ -16,10 +16,10 @@
       <p class="subtitle-en">lamellar</p>
       <h2>适用场景</h2>
       <p>当散射体可视为横向远大于仪器窗口、沿法向只有一层（或彼此无关联的多层）均匀板时，无限片层<span data-term="form-factor">形式因子</span>是最直接的描述。典型对象包括：稀释的溶致层状相单层、剥离后的黏土或氧化石墨烯片、以及横向尺寸已超出 $q_{\min}$ 所能分辨的脂质双层粗描述。</p>
-      <p>曲线判据：中间区接近 $I\sim q^{-2}$，并在 $q\sim 2\pi/t$ 出现厚度决定的振荡或拐点。若在 $q\simeq 2\pi/d$ 出现布拉格峰，说明层间有关联，应改用 Caille 或准晶堆叠，而不是给单层强加周期。横向有限（盘、tactoid）应改用堆叠圆盘或扁圆柱。</p>
-      <p>稀溶液、片层互不相关时只拟合 $P(q)$（含粉末 Lorentz 因子）。体积分数升高并出现层状峰时，把峰误读成厚度变化是常见错误。</p>
+      <p>曲线判据：中间区接近 $I\sim q^{-2}$，并在 $q\sim 2\pi/t$ 出现厚度决定的振荡或拐点。若在 $q\simeq 2\pi/d$ 出现布拉格峰，说明层间有关联，应改用 Caille 或<span data-term="paracrystal">准晶</span>堆叠，而不是给单层强加周期。横向有限（盘、tactoid）应改用堆叠圆盘或扁圆柱。</p>
+      <p>稀溶液、片层互不相关时只拟合 $P(q)$（含粉末 <span data-term="lorentz-factor">Lorentz 因子</span>）。<span data-term="volume-fraction">体积分数</span>升高并出现层状峰时，把峰误读成厚度变化是常见错误。</p>
       <h2>物理图像</h2>
-      <p>无限大平板的粉末平均把取向积分收成 $2\pi/q^2$：只有法向几乎平行 $\mathbf{q}$ 的片层才贡献。厚度方向若取矩形<span data-term="scattering-length-density">散射长度密度</span>剖面，振幅正比 $\mathrm{sinc}(qt/2)$，强度再乘该因子的平方。Nallet 把这一厚度形式因子与层间结构因子分开：孤立片相当于 $S(q)=1$。</p>
+      <p>无限大平板的<span data-term="powder-average">粉末平均</span>把取向积分收成 $2\pi/q^2$：只有法向几乎平行 $\mathbf{q}$ 的片层才贡献。厚度方向若取矩形<span data-term="scattering-length-density">散射长度密度</span>剖面，振幅正比 $\mathrm{sinc}(qt/2)$，强度再乘该因子的平方。Nallet 把这一厚度形式因子与层间<span data-term="structure-factor">结构因子</span>分开：孤立片相当于 $S(q)=1$。</p>
       <p>低 $q$ 的 $q^{-2}$ 来自二维扩展，不是 Porod $q^{-4}$。厚度振荡的第一零点约在 $qt=2\pi$。绝对强度还含面积浓度与衬度平方；拟合中常收进标度因子。</p>
       <h2>示意图</h2>
       <figure class="figure">
@@ -32,7 +32,7 @@
       </figure>
       <h2>核心公式</h2>
       <h3>出发点</h3>
-      <p>稀释、取向无规的均匀无限平板。相干振幅是衬度对平面波相位的体积分</p>
+      <p>稀释、取向无规的均匀无限平板。相干<span data-term="scattering-amplitude">散射振幅</span>是<span data-term="contrast">衬度</span>对平面波相位的体积分</p>
       $$F(\mathbf{q})=\int_V \Delta\rho(\mathbf{r})\,\mathrm{e}^{i\mathbf{q}\cdot\mathbf{r}}\,\mathrm{d}^3r.$$
       <p>取板心为原点、法向为 $z$，板内 $\Delta\rho$ 为常数、厚度为 $t$、横向面积为 $A$：</p>
       $$F(\mathbf{q})=\Delta\rho\int_A\mathrm{e}^{i\mathbf{q}_\perp\cdot\mathbf{r}_\perp}\,\mathrm{d}^2r_\perp\int_{-t/2}^{t/2}\mathrm{e}^{i q_z z}\,\mathrm{d}z.$$
@@ -44,7 +44,7 @@
       <p>这就是无限片的粉末 Lorentz 因子 $2\pi/q^2$。取向片的厚度振幅在贡献取向处取 $q_z=q$，故</p>
       $$\bigl\langle|F|^2\bigr\rangle=(\Delta\rho)^2(At)^2\cdot\frac{2\pi}{q^2 A}\cdot P_{\mathrm{t}}(q)=\frac{2\pi A t^2}{q^2}(\Delta\rho)^2 P_{\mathrm{t}}(q),$$
       $$P_{\mathrm{t}}(q)=\left[\mathrm{sinc}\!\left(\frac{qt}{2}\right)\right]^2.$$
-      <p>数密度 $n$，体积分数 $\phi=nAt$，观测强度 $I(q)=n\langle|F|^2\rangle+B$：</p>
+      <p><span data-term="number-density">数密度</span> $n$，体积分数 $\phi=nAt$，观测强度 $I(q)=n\langle|F|^2\rangle+B$：</p>
       $$I(q)=\frac{2\pi\phi t}{q^2}(\Delta\rho)^2 P_{\mathrm{t}}(q)+B.$$
       <p>拟合里常把 $\phi(\Delta\rho)^2$ 收成 $\mathrm{scale}$。已取向的二维数据应回到 $I(q,\alpha)\propto|F(q\cos\alpha)|^2$，不要先做粉末平均。</p>
       <h3>低 $q$ 与渐近</h3>
