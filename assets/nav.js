@@ -33,8 +33,8 @@
     { href: "learn/index.html", label: "学习路径" },
     { href: "topics/index.html", label: "专题手册" },
     { href: "glossary/index.html", label: "术语表" },
-    { href: "catalog/index.html", label: "文献目录" },
-    { href: "models/index.html", label: "模型手册" }
+    { href: "models/index.html", label: "模型手册" },
+    { href: "catalog/index.html", label: "文献目录" }
   ];
 
   var SIDEBARS = {
